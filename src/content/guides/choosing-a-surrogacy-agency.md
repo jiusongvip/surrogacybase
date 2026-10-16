@@ -20,7 +20,7 @@ sources:
     publishedOn: "2024-11-26"
     verifiedOn: "2026-10-14"
     supports: "That it is illegal to advertise for, or as, a surrogate under the Surrogacy Arrangements Act 1985, and that HFEA names surrogacy support organisations including Surrogacy UK, Brilliant Beginnings, My Surrogacy Journey and Nappy Endings."
-  - label: "Charity detail: SURROGACYUK FOUNDATION (no. 1205088)"
+  - label: "Surrogacy UK Foundation, registered charity no. 1205088 (Charity Commission register entry)"
     url: "https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884"
     publisher: "Charity Commission for England and Wales"
     verifiedOn: "2026-10-14"
@@ -116,7 +116,7 @@ None of these is proof of a bad provider. Each is a reason to slow down and get 
 5. **A single party holding the money and deciding its release.** Escrow should be [neutral](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/), not an agency's own account.
 6. **Undisclosed relationships.** If an agency is paid for referrals by a clinic, or a clinic pays for introductions, that is not disqualifying on its own. Concealing it is.
 
-## What this site does not publish, and why
+## Why there is no recommended-agency list
 
 There is no list of recommended agencies here, and no ranking. A defensible ranking would need audited data on how many programs each provider ran, what they charged, what happened when they failed, and how carriers were treated. [Registry surveillance in the United States records treatment cycles](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/) and does not record agreements, compensation or program outcomes. Nobody counts what a ranking would have to be built from.
 

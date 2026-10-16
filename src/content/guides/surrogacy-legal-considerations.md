@@ -95,7 +95,7 @@ In Colombia, the Constitutional Court's 2009 decision [T-968](https://www.cortec
 
 The most consequential rule, and the least intuitive. In the United Kingdom, [the surrogate is the legal mother at birth unless a parental order is obtained](https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/), and the intended parents must [wait until the child is born and then apply to court](https://lawcom.gov.uk/project/surrogacy/) for an order making them the legal parents, a process the Commission describes as typically taking six months to a year.
 
-In the United States the answer depends on the state, and on whether a pre-birth order is available there. In Canada, the federal sources verified here govern reimbursement; [parentage is a matter of provincial and territorial law](/destinations/ca), and no national rule was found to cite.
+In the United States the answer depends on the state, and on whether a pre-birth order is available there. In Canada, the verified federal rules govern reimbursement rather than parentage, which [is a matter of provincial and territorial law](/destinations/ca); there is no national rule that decides it.
 
 **Ask:** who is the legal parent at the moment of birth, what document changes that, from whom, and how long does it take?
 
@@ -103,7 +103,7 @@ In the United States the answer depends on the state, and on whether a pre-birth
 
 Who may commission an arrangement is set explicitly in some systems and by practice in others, and the criteria that recur are genetic connection, marital or relationship status, and residency or citizenship.
 
-ASRM's state survey records, for example, that [Louisiana restricts surrogacy agreements to married heterosexual genetic intended parents](https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1). UK material describes eligibility for a parental order as set by legislation, which is why this site's UK page states no eligibility criteria it has not verified.
+ASRM's state survey records, for example, that [Louisiana restricts surrogacy agreements to married heterosexual genetic intended parents](https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1). UK material describes eligibility for a parental order as set by legislation, so the criteria applied to you are the ones written into the statute, and confirming that you meet them is a lawyer's reading of your facts rather than something a general guide can settle.
 
 There is a limit to how far general information can go here, and it is worth being direct about it: eligibility findings are specific to your facts. Two people with the same plan in the same state can get different answers. This site will tell you what a source says, and will not infer the rest.
 
@@ -114,9 +114,9 @@ There is a limit to how far general information can go here, and it is worth bei
 Payment rules vary from "negotiated between parties" to criminal prohibition, and they sit inside the enforceability question rather than beside it.
 
 - **United Kingdom.** Only the surrogate's reasonable expenses may be paid. [Paying anything more must be authorised by the family court before a parental order can be made](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and [advertising for, or as, a surrogate is illegal](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/) under the Surrogacy Arrangements Act 1985.
-- **Canada.** A reimbursement model. Under the [Assisted Human Reproduction Act regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2019-193/page-1.html), expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed, and [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates them, requires receipts, and requires records to be kept for five years.
-- **United States.** State by state, with no national position verified here.
-- **Greece.** One law firm's account states that payment and any financial benefit to the carrier is prohibited, and that a transfer requires prior judicial permission. That is a commercial source, its statute number is internally inconsistent, and the site's [Greece page](/destinations/gr) is published as insufficient rather than as a description of Greek law.
+- **Canada.** A reimbursement model. Under the [Assisted Human Reproduction Act regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2019-193/page-1.html), expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed, and [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates them, requires receipts, and requires records to be kept for six years.
+- **United States.** State by state; there is no federal framework, and each state sets its own rules.
+- **Greece.** Surrogacy requires a prior court decision under Civil Code article 1458, applied through article 13 of Law 3305/2005, and the arrangement is altruistic by statute: the agreement for a third woman to carry must be made without any consideration, while the costs of achieving the pregnancy, of carrying, giving birth and the postnatal period, and the carrier's lost earnings, are expressly not consideration, with the amounts set by the independent regulator. Since Law 5197/2025 (16 May 2025) both the intending parents and the surrogate must hold permanent residence in Greece. The [Greece page](/destinations/gr) cites each of these to its source: the 2005 provisions come from the gazette text itself, while the 2025 amendment is so far recorded from corroborating law-firm accounts, so its exact wording and any transitional provisions remain unconfirmed.
 
 **Ask:** what may lawfully be paid here, to whom, on what documentation, and what does a court do about it afterwards?
 
@@ -128,10 +128,10 @@ Nothing on this site answers that for you, and a provider who answers it confide
 
 ## How to use the destination pages
 
-The [destination pages](/destinations) are organised around these five questions, with one claim per source and a date for every check. Three of them are marked as insufficient on purpose: for Colombia and Greece the only openable sources were a single court decision and a law firm's practice page, and for India, Ukraine and Portugal we could not retrieve the statutory text at all.
+The [destination pages](/destinations) are organised around these five questions, with one claim per source and a date for every check. Five jurisdictions have a published record: the United States, the United Kingdom, Canada, Colombia and Greece. Each record names the source for every claim and states plainly what is still unverified: for Colombia, that the newest decision it rests on is dated 18 April 2024 and later legislative developments could not be confirmed; for Greece, that the 2025 amendment's exact wording and transitional provisions are not yet confirmed against the gazette text itself.
 
-That has a consequence you should expect. A short list of destinations is not a statement that other countries are closed to you. It means nobody here has read the law of those places and can tell you what it says.
+That has a consequence you should expect. A short list of destinations is not a statement that other countries are closed to you. It means the law of those places has not been read against its sources by anyone in a position to tell you what it says.
 
 ## What this page is not
 
-It is not legal advice, and it does not create any professional relationship. Legal applicability depends on jurisdiction and on facts about you that no published guide has. Where this page states a rule, it names the source and the date the link was last opened, so you can check whether it still says that. Where a question needs a lawyer, it says that too rather than filling the space.
+It is not legal advice, and it does not create any professional relationship. Legal applicability depends on jurisdiction and on facts about you that no published guide has. Where this page states a rule, it names the source and the date the link was last opened, so you can check whether it still says that. And where a question can only be answered by a lawyer admitted in the jurisdiction, on your facts, no general page can honestly answer it for you.

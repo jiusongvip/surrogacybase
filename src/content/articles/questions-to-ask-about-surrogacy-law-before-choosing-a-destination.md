@@ -56,7 +56,7 @@ For each of those six, ask what kind of document the answer rests on. A rough hi
 4. **Court decisions and enacted legislation or regulations.** What the system actually says. Readable, dated, and attributable.
 5. **A lawyer admitted in that jurisdiction, on your facts.** The only source that can answer dimensions three and six for you.
 
-When you read a destination claim, ask which level it comes from. If a page cannot say, it is repeating something. The [destination pages on this site](/destinations) put the source and the date it was opened next to each claim for exactly this reason, and mark two jurisdictions as insufficient rather than describing them from a law firm's summary.
+When you read a destination claim, ask which level it comes from. If a page cannot say, it is repeating something. The [destination pages](/destinations) put the source and the date it was opened next to each claim for exactly this reason, and mark which claims rest on a law firm's or an academic's account rather than on the statute or the decision text itself, instead of smoothing them into a description of the law.
 
 ## Four traps that make most country comparisons worthless
 

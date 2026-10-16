@@ -8,12 +8,12 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import NeedsInput from '@/components/ui/NeedsInput.astro';
-import { TERMS_PAGE } from '@/data/policy-pages';
+import { TERMS_PAGE, TERMS_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath } from '@/i18n/paths';
 import { fill } from '@/i18n/ui';
 
-const UPDATED_ON = '2026-10-14';
+const UPDATED_ON = TERMS_REVISION;
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = TERMS_PAGE[lang];

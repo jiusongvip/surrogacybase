@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { BASIS_LABELS, UI } from '@/i18n/ui';
+import { formatDate } from '@/lib/dates';
 
 type Props = {
   rows: CollectionEntry<'jurisdictions'>[];
@@ -51,7 +52,7 @@ const basis = BASIS_LABELS[lang];
             </td>
           )}
           <td class="border-b border-line py-3 pr-4 align-top tnum text-[13px] text-muted">
-            {row.data.statusVerifiedOn}
+            {formatDate(row.data.statusVerifiedOn, lang)}
           </td>
         </tr>
       ))}

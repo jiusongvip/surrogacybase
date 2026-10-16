@@ -132,8 +132,8 @@ research again. That is the specific waste this ordering avoids.
 
 It does not recommend a program, a clinic or a gamete provider. It does not state what any country
 permits, or what any of these arrangements does to your legal position there. It gives no success
-figures, because a figure about outcomes is a claim a provider makes about itself, and this site
-labels those rather than repeating them.
+figures, because a figure about outcomes is a claim a provider makes about itself, and repeating
+such a claim would lend it a credibility it has not earned.
 
 What it does give you is the shape of the question list, and the name of the party who owes you an
 answer.

@@ -38,8 +38,12 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
 
   <div class="mt-6 grid gap-5">
     <div>
-      <label class="field-label" for="eq-stage">{copy.stageLabel}</label>
+      <label class="field-label" for="eq-stage">
+        {copy.stageLabel}
+        <span class="font-normal text-muted">{copy.optional}</span>
+      </label>
       <select class="field-input mt-1.5" id="eq-stage" data-field="stage">
+        <option value="">{copy.selectPlaceholder}</option>
         {stages.map((s) => <option value={s.value}>{s.label}</option>)}
       </select>
     </div>
@@ -66,17 +70,22 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
         <span class="font-normal text-muted">{copy.optional}</span>
       </label>
       <select class="field-input mt-1.5" id="eq-holder" data-field="holder">
+        <option value="">{copy.selectPlaceholder}</option>
         {holders.map((h) => <option value={h.value}>{h.label}</option>)}
       </select>
       <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{copy.holderHint}</p>
     </div>
 
     <div>
-      <label class="field-label" for="eq-question">{copy.questionLabel}</label>
+      <label class="field-label" for="eq-question">
+        {copy.questionLabel}
+        <span class="text-flag" aria-hidden="true">{copy.required}</span>
+      </label>
       <textarea
         class="field-input mt-1.5 min-h-[132px]"
         id="eq-question"
         data-field="question"
+        aria-required="true"
         rows="5"
         maxlength="1200"
         aria-describedby="eq-question-help"
@@ -90,12 +99,14 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
     <div>
       <label class="field-label" for="eq-reply">
         {copy.replyLabel}
+        <span class="text-flag" aria-hidden="true">{copy.required}</span>
         <span class="font-normal text-muted">{copy.replyNote}</span>
       </label>
       <input
         class="field-input mt-1.5"
         id="eq-reply"
         data-field="reply"
+        aria-required="true"
         type="email"
         autocomplete="email"
         maxlength="120"
@@ -172,7 +183,7 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
     const select = (name: 'stage' | 'holder') =>
       root.querySelector<HTMLSelectElement>(`[data-field="${name}"]`);
 
-    const EMPTY: Fields = { stage: 'research', places: '', holder: 'agency', question: '', reply: '' };
+    const EMPTY: Fields = { stage: '', places: '', holder: '', question: '', reply: '' };
 
     const read = (): Fields => {
       const out = { ...EMPTY };
@@ -197,9 +208,10 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
      * leaves out would be an enquiry nobody can answer.
      */
     function compose(v: Fields): string {
-      const lines = [fill(T.lineStage, { value: labelOf('stage') })];
+      const lines: string[] = [];
+      if (v.stage) lines.push(fill(T.lineStage, { value: labelOf('stage') }));
       if (v.places.trim()) lines.push(fill(T.lineInview, { value: v.places.trim() }));
-      if (v.holder !== 'none') lines.push(fill(T.lineHolder, { value: labelOf('holder') }));
+      if (v.holder) lines.push(fill(T.lineHolder, { value: labelOf('holder') }));
       lines.push(fill(T.lineQuestion, { value: v.question.trim() }));
       if (v.reply.trim()) lines.push(fill(T.lineReply, { value: v.reply.trim() }));
       lines.push('', T.lineFooter);
@@ -218,8 +230,13 @@ const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.exc
         box('question')?.focus();
         return false;
       }
-      if (!ADDRESS.test(v.reply.trim())) {
+      if (!v.reply.trim()) {
         status.textContent = T.needReply;
+        box('reply')?.focus();
+        return false;
+      }
+      if (!ADDRESS.test(v.reply.trim())) {
+        status.textContent = T.badReply;
         box('reply')?.focus();
         return false;
       }

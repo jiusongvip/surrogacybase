@@ -135,9 +135,10 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     download: 'Download as a file',
     sendMail: 'Open in my mail app',
     statusIdle:
-      'This site is a static build with no server, so pressing the button cannot send anything. It assembles your enquiry below, where you read it before it goes anywhere.',
+      'Nothing is sent when you press this button, because this site has no server. It writes your enquiry below from what you entered, so you read it before it goes anywhere.',
     needsLabel: 'the address enquiries are sent to',
-    needsWhy: 'set SITE.contactEmail in src/const.ts and the button opens your mail app with this enquiry already written',
+    needsWhy:
+      'No address for receiving enquiries has been published yet. Copy the enquiry below or download it, and send it yourself.',
     lineName: 'Name: {value}',
     lineEmail: 'Reply to: {value}',
     lineInterest: 'Most interested in: {value}',
@@ -164,25 +165,25 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
   },
   zh: {
     nameLabel: '姓名',
-    namePlaceholder: '你的称呼',
+    namePlaceholder: '您的称呼',
     emailLabel: '邮箱地址',
-    emailPlaceholder: '你会查看的邮箱',
-    interestLabel: '你最想了解哪一项？',
-    budgetLabel: '你的预算区间（美元）',
-    budgetHint: '这是你自己规划用的区间，不是本站估算出来的数字。选「暂不方便说」也是一个回答。',
-    messageLabel: '再多说说你的情况或问题',
+    emailPlaceholder: '您会查看的邮箱',
+    interestLabel: '您最想了解哪一项？',
+    budgetLabel: '您的预算区间（美元）',
+    budgetHint: '这是您自己规划用的区间，不是本站估算出来的数字。选「暂不方便说」也是一个回答。',
+    messageLabel: '再多说说您的情况或问题',
     optional: '（选填）',
-    required: '必填',
-    messagePlaceholder: '例如：正在考虑的目的地、时间线，以及你卡住的那个问题',
+    required: '*',
+    messagePlaceholder: '例如：正在考虑的目的地、时间线，以及您卡住的那个问题',
     selectPlaceholder: '请选择',
     submit: '提交问询',
     previewHeading: '实际发送的正文',
     copy: '复制',
     download: '下载为文件',
     sendMail: '在我的邮件应用中打开',
-    statusIdle: '本站是一个静态构建，没有服务器，所以按下按钮不会发出任何东西。它会先在下面组装好你的问询，让你在看过之后再决定它去哪里。',
+    statusIdle: '按下这个按钮不会发出任何东西，因为本站没有服务器。它会先用您填的内容在下面组装好问询，让您在看过之后再决定它去哪里。',
     needsLabel: '问询的收件地址',
-    needsWhy: '在 src/const.ts 里设置 SITE.contactEmail，这个按钮就会带着下面这份写好的问询打开你的邮件应用',
+    needsWhy: '本站还没有公布接收问询的地址。请复制下面的问询或把它下载下来，自己发出去。',
     lineName: '姓名：{value}',
     lineEmail: '回复至：{value}',
     lineInterest: '最想了解：{value}',
@@ -193,15 +194,15 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     exportHeading: '代孕问询',
     filename: 'surrogacybase-enquiry-zh.md',
     subjectFallback: '代孕问询',
-    needName: '请填写希望我们如何称呼你。',
+    needName: '请填写希望我们如何称呼您。',
     needEmail: '请填写邮箱地址，回复才有地方可去。',
-    needInterest: '请选择一个主题。它决定了回复要针对你的哪个问题来写。',
+    needInterest: '请选择一个主题。它决定了回复要针对您的哪个问题来写。',
     needBudget: '选一个区间，或者选「暂不方便说」。回复并不取决于这个数字。',
     badEmail: '这看起来不像一个邮箱地址。请核对一下，回复才有地方可去。',
-    copied: '已复制。这封问询现在在你的剪贴板里，而这个浏览器仍然保留着草稿。',
-    clipboardBlocked: '你的浏览器没有把剪贴板权限交给这个页面。请在上面选中正文后手动复制，或者下载为文件。',
+    copied: '已复制。这封问询现在在您的剪贴板里，而这个浏览器仍然保留着草稿。',
+    clipboardBlocked: '您的浏览器没有把剪贴板权限交给这个页面。请在上面选中正文后手动复制，或者下载为文件。',
     downloaded: '已下载为 {file}。草稿仍然留在这个浏览器里。',
-    submittedWithMail: '你的邮件应用已经打开，里面写好了下面这份问询。在你于那里按下发送之前，什么都没有被发出。',
+    submittedWithMail: '您的邮件应用已经打开，里面写好了下面这份问询。在您于那里按下发送之前，什么都没有被发出。',
     submittedWithoutMail: '目前什么都没有发出，因为本站没有服务器，而且尚未登记问询地址。复制上面的正文或把它下载下来，同样能交到我们手里。',
   },
 };
@@ -212,6 +213,8 @@ export type IntakeChrome = {
   stageLabel: string;
   placesLabel: string;
   optional: string;
+  required: string;
+  selectPlaceholder: string;
   placesPlaceholder: string;
   holderLabel: string;
   holderHint: string;
@@ -250,6 +253,7 @@ export type IntakeChrome = {
   subjectFallback: string;
   needQuestion: string;
   needReply: string;
+  badReply: string;
   copied: string;
   clipboardBlocked: string;
   downloaded: string;
@@ -259,10 +263,12 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
   en: {
     title: 'Write the enquiry down first',
     intro:
-      'Four fields, and no personal identifiers. What you type is assembled into a message you send yourself, so the question reaches the right party in a form they can answer.',
+      'Five fields, and none of them asks for identity documents, medical records or payment details. What you type is assembled into a message you send yourself, so the question reaches the right party in a form they can answer.',
     stageLabel: 'Where you are now',
     placesLabel: 'Countries or programs in view',
     optional: '(optional)',
+    required: '*',
+    selectPlaceholder: 'Select one',
     placesPlaceholder: 'For example: Georgia and Canada, or one named program',
     holderLabel: 'Who holds the answer now',
     holderHint: 'The party you are already dealing with decides which of your questions are theirs to answer.',
@@ -272,9 +278,9 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
     questionHelp:
       'Write the question, not the case file. Anything you would not want repeated back to you in an email belongs outside this box.',
     replyLabel: 'Reply address',
-    replyNote: '(used only to answer you)',
+    replyNote: '(only used to answer you)',
     replyPlaceholder: 'An address you read',
-    replyHelp: 'Kept in this browser until you send the enquiry. No list, no newsletter, no account.',
+    replyHelp: 'This browser holds it until you send the enquiry, and this site sends it nowhere. No list, no newsletter, no account.',
     doNotInclude: 'Do not include: {list}.',
     excluded: [
       'identity documents or passport numbers',
@@ -287,11 +293,11 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
     copy: 'Copy the enquiry',
     download: 'Download as a file',
     statusIdle:
-      'Nothing has been sent yet. The draft is kept in this browser so it survives a reload, and these buttons hand it to your mail app, your clipboard or a file.',
+      'Nothing has been sent yet. Your draft stays in this browser, so it is still here when you come back, and these buttons hand it to your mail app, your clipboard or a file.',
     previewHeading: 'The exact message',
     needsLabel: 'the address enquiries are sent to',
     needsWhy:
-      'set SITE.contactEmail in src/const.ts and the mail button goes live; copy and download already work',
+      'No address for receiving enquiries has been published yet, so there is no mail button. Copy and download work now.',
     lineStage: 'Where I am: {value}',
     lineInview: 'In view: {value}',
     lineHolder: 'Who holds it now: {value}',
@@ -303,6 +309,7 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
     subjectFallback: 'Assessment enquiry',
     needQuestion: 'Write the question first. An enquiry with no question in it cannot be answered.',
     needReply: 'Add the address to reply to. Without it the enquiry has nowhere to go back to.',
+    badReply: 'That does not look like an email address. Check it so the enquiry has somewhere to be answered.',
     copied: 'Copied. The enquiry is on your clipboard, and this browser still holds the draft.',
     clipboardBlocked:
       'Your browser would not give the page clipboard access. Select the message below and copy it by hand, or download the file.',
@@ -310,30 +317,32 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
   },
   zh: {
     title: '先把问询写成文字',
-    intro: '一共四项，不收集任何身份信息。你填写的内容会被组装成一封由你自己发送的邮件，这样问题才会以对方能够回答的形式，交到对的那一方手里。',
-    stageLabel: '你此刻在哪个阶段',
+    intro: '一共五项，其中没有一项要求身份证件、病历或付款信息。您填写的内容会被组装成一封由您自己发送的邮件，这样问题才会以对方能够回答的形式，交到对的那一方手里。',
+    stageLabel: '您此刻在哪个阶段',
     placesLabel: '正在考虑的国家或项目',
     optional: '（选填）',
+    required: '*',
+    selectPlaceholder: '请选择',
     placesPlaceholder: '例如：格鲁吉亚与加拿大，或某一个点名项目',
     holderLabel: '现在由谁持有答案',
-    holderHint: '你已经在和哪一方打交道，决定了你的哪些问题本该由他来回答。',
-    questionLabel: '你需要有人帮你理清什么',
-    questionPlaceholder: '一两句话：你卡住的那个决定，以及你手上那份文件没有写明什么。',
-    questionHelp: '写下问题，不要写案卷。任何你不希望在邮件里被复述一遍的内容，都不要放进这个框。',
+    holderHint: '您已经在和哪一方打交道，决定了您的哪些问题本该由他来回答。',
+    questionLabel: '您需要有人帮您理清什么',
+    questionPlaceholder: '一两句话：您卡住的那个决定，以及您手上那份文件没有写明什么。',
+    questionHelp: '写下问题，不要写案卷。任何您不希望在邮件里被复述一遍的内容，都不要放进这个框。',
     replyLabel: '回复地址',
-    replyNote: '（仅用于回复你）',
-    replyPlaceholder: '一个你会查看的地址',
-    replyHelp: '在你发出问询之前，它只保存在这个浏览器里。不进列表、不发简报、不建账号。',
+    replyNote: '（仅用于回复您）',
+    replyPlaceholder: '一个您会查看的地址',
+    replyHelp: '在您发出问询之前，它只保存在这个浏览器里。不进列表、不发简报、不建账号。',
     doNotInclude: '请勿包含：{list}。',
     excluded: ['身份证件或护照号码', '病历、检查影像或治疗方案', '胚胎、供体或孕母的身份信息', '银行、卡片或账户信息'],
     excludedJoin: '、',
     sendMail: '在我的邮件应用中打开',
     copy: '复制这封问询',
     download: '下载为文件',
-    statusIdle: '目前还没有发出任何内容。草稿保存在这个浏览器里，重新加载页面也不会丢失；下面这几个按钮会把它交给你的邮件应用、剪贴板或一个文件。',
+    statusIdle: '目前还没有发出任何内容。草稿留在这个浏览器里，您回来时它还在；下面这几个按钮会把它交给您的邮件应用、剪贴板或一个文件。',
     previewHeading: '实际发送的正文',
     needsLabel: '问询的收件地址',
-    needsWhy: '在 src/const.ts 里设置 SITE.contactEmail，邮件按钮就会启用；复制与下载现在已经可用',
+    needsWhy: '本站还没有公布接收问询的地址，所以没有邮件按钮。复制与下载现在就可以用。',
     lineStage: '我此刻的阶段：{value}',
     lineInview: '正在考虑：{value}',
     lineHolder: '目前由谁持有：{value}',
@@ -345,8 +354,9 @@ export const INTAKE_CHROME: Record<Lang, IntakeChrome> = {
     subjectFallback: '评估服务问询',
     needQuestion: '请先写下问题。一封没有问题在里面的问询，没有人能够回答。',
     needReply: '请补上要回复到的地址。没有它，这封问询就没有可以回信的地方。',
-    copied: '已复制。这封问询现在在你的剪贴板里，而这个浏览器仍然保留着草稿。',
-    clipboardBlocked: '你的浏览器没有把剪贴板权限交给这个页面。请在下面选中正文后手动复制，或者下载为文件。',
+    badReply: '这看起来不像一个邮箱地址。请核对一下，回复才有地方可去。',
+    copied: '已复制。这封问询现在在您的剪贴板里，而这个浏览器仍然保留着草稿。',
+    clipboardBlocked: '您的浏览器没有把剪贴板权限交给这个页面。请在下面选中正文后手动复制，或者下载为文件。',
     downloaded: '已下载为 {file}。草稿仍然留在这个浏览器里。',
   },
 };

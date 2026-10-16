@@ -42,7 +42,7 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   zh: {
     titleTag: '跨境代孕指南与工具',
     description:
-      '关于跨境代孕的独立指引：比较目的地、把报价拆成条目、分清亲权与国籍，然后把你答不出来的那个问题发出去。',
+      '关于跨境代孕的独立指引：比较目的地、把报价拆成条目、分清亲权与国籍，然后把您答不出来的那个问题发出去。',
   },
 };
 
@@ -62,11 +62,11 @@ export const HOME_HERO: Record<Lang, {
     note: 'More clarity for your family’s future',
   },
   zh: {
-    h1: '为你的代孕之旅提供可靠指引',
+    h1: '为您的代孕之旅提供可靠指引',
     lead: '我们帮助世界各地的委托父母弄清自己有哪些选择，比较目的地与费用，并在往前走之前，先把法律、医疗和实操上的问题准备好。',
     ctaPrimary: '查看目的地',
     ctaSecondary: '获取个性化指引',
-    note: '为你们一家人的未来，多一分清楚',
+    note: '为您一家人的未来，多一分清楚',
   },
 };
 
@@ -79,14 +79,14 @@ export const HOME_WHO: Record<Lang, {
 }> = {
   en: {
     eyebrow: 'Who we are',
-    heading: 'A global resource for surrogacy information',
+    heading: 'Independent information for cross-border surrogacy',
     para: 'SurrogacyBase is an independent resource for cross-border surrogacy. It exists so that intended parents can work out what applies to them: which places allow the arrangement at all, what a quote actually covers, and which questions only a professional in that jurisdiction can settle.',
     link: 'Learn more about us',
     advantagesHeading: 'Our advantages',
   },
   zh: {
     eyebrow: '我们是谁',
-    heading: '一个关于代孕信息的全球资源',
+    heading: '跨境代孕的独立信息资源',
     para: 'SurrogacyBase 是一个关于跨境代孕的独立资源。它存在的目的，是让委托父母能够弄清哪些内容适用于自己：哪些地方根本允许这种安排、一份报价实际覆盖什么，以及哪些问题只有该法域的专业人士才能确定。',
     link: '进一步了解我们',
     advantagesHeading: '我们的优势',
@@ -97,7 +97,7 @@ export const HOME_WHO: Record<Lang, {
 export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingual }[] = [
   {
     icon: 'book',
-    title: { en: 'Comprehensive information', zh: '覆盖完整的信息' },
+    title: { en: 'The decision end to end', zh: '从头到尾讲清这个决定' },
     body: {
       en: 'Legal, medical, financial and practical sides of one decision, because a plan that answers three of them and skips the fourth is not a plan.',
       zh: '同一个决定的法律、医疗、财务与实操四个面，因为一个回答了其中三项、跳过第四项的方案根本算不上方案。',
@@ -107,8 +107,8 @@ export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingua
     icon: 'scale',
     title: { en: 'Comparable and transparent', zh: '可比且透明' },
     body: {
-      en: 'The same questions asked of every destination, provider and quote. Two things only sit side by side once each line means the same thing on both.',
-      zh: '对每个目的地、每家服务方、每份报价问同样的问题。只有当每一行含义相同时，两样东西才真的能并排放在一起。',
+      en: 'The same questions asked of every destination, provider and quote. Two things only sit side by side once each item means the same thing on both.',
+      zh: '对每个目的地、每家服务方、每份报价问同样的问题。只有当每一项含义相同时，两样东西才真的能并排放在一起。',
     },
   },
   {
@@ -123,8 +123,8 @@ export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingua
     icon: 'arrow-up-right',
     title: { en: 'Real support', zh: '真实的支持' },
     body: {
-      en: 'Send the situation you are actually in and the answer is written against it, rather than sent out from a template to everyone who asks.',
-      zh: '把你实际所处的情况发过来，得到的回复是针对它写的，而不是从一份模板发给所有提问的人。',
+      en: 'The enquiry is written against the situation you are actually in, rather than a general answer sent to everyone who asks.',
+      zh: '问询是按您实际所处的情况写出来的，而不是把一份通用答复发给所有提问的人。',
     },
   },
 ];
@@ -144,7 +144,7 @@ export const HOME_SERVICES: Record<Lang, {
   zh: {
     eyebrow: '我们的服务',
     heading: '我们能帮上什么',
-    intro: '四种帮助，全都落在决定本身上而不是落在成交上：哪个目的地适用于你、整件事要花多少、就你面前的文件谈一次，以及见到那些人时该问什么。',
+    intro: '四种帮助，全都落在决定本身上而不是落在成交上：哪个目的地适用于您、整件事要花多少、就您面前的文件谈一次，以及见到那些人时该问什么。',
     cta: '了解我们的服务',
   },
 };
@@ -174,7 +174,7 @@ export const HOME_SERVICE_ITEMS: { icon: IconName; title: Bilingual; body: Bilin
     title: { en: 'One-to-one consultation', zh: '一对一咨询' },
     body: {
       en: 'Bring your documents and the question you actually came with: which countries have a route that can be documented here, what parentage and nationality turn on, and which parts only a lawyer can settle.',
-      zh: '带着你的文件，带着你真正来问的那个问题：哪些国家在这里有可核查的路径、亲权与国籍取决于什么、以及哪几部分只有律师能定。',
+      zh: '带着您的文件，带着您真正来问的那个问题：哪些国家在这里有可核查的路径、亲权与国籍取决于什么、以及哪几部分只有律师能定。',
     },
     href: '/assessment',
   },
@@ -203,7 +203,7 @@ export const HOME_COUNTRIES: Record<Lang, {
   en: {
     eyebrow: 'Destinations',
     heading: 'Surrogacy, country by country',
-    intro: 'Each card opens a record that names its sources and the date they were read. Where we could not source enough to answer a column, the card says so rather than filling the gap.',
+    intro: 'Each card opens a record that names its sources, the date they were read, and the questions those sources did not settle.',
     cta: 'View all destinations',
     learnMore: 'Learn more',
     checked: 'Record checked {date}',
@@ -213,7 +213,7 @@ export const HOME_COUNTRIES: Record<Lang, {
   zh: {
     eyebrow: '目的地',
     heading: '代孕，一个国家一个国家地看',
-    intro: '每张卡片打开的是一份记录，它会写明自己的来源以及阅读这些来源的日期。某一列我们没能核实到足够内容时，卡片会直接说明，而不会把那个空缺填上。',
+    intro: '每张卡片打开的是一份记录，它会写明自己的来源、阅读这些来源的日期，以及这些来源没能确定的问题。',
     cta: '查看全部目的地',
     learnMore: '了解更多',
     checked: '记录核查于{date}',
@@ -286,7 +286,7 @@ export const HOME_READING: Record<Lang, {
     viewAll: '查看全部专题解读',
     readMore: '阅读全文',
     emptyTitle: '这里还没有已发布的内容',
-    emptyBody: '这一节只列出已经上线的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
+    emptyBody: '这一节只列出已经发布的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
     emptyAction: '查看发布记录',
   },
 };
@@ -336,12 +336,12 @@ export const HOME_BAND: Record<Lang, {
   en: {
     eyebrow: 'Get personalized guidance',
     heading: 'Not sure where to start?',
-    para: 'Send the priorities and the questions you already have. The reply sets out what has to be checked, which of those checks decide the route, and what the next step is from where you are standing.',
+    para: 'Write out the priorities and the questions you already have. The enquiry this form composes sets out what has to be checked, which of those checks decide the route, and what the next step is from where you are standing.',
   },
   zh: {
     eyebrow: '获取个性化指引',
     heading: '不确定该从哪里开始？',
-    para: '把你已经在意的优先级和你手上已有的问题发过来。回复会列出哪些内容需要核查、这些核查里有几项决定路径，以及以你此刻的位置来看下一步是什么。',
+    para: '把您已经在意的优先级和您手上已有的问题写下来。这份表单组装出的问询会列出哪些内容需要核查、这些核查里有几项决定路径，以及以您此刻的位置来看下一步是什么。',
   },
 };
 
@@ -354,7 +354,7 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
   {
     icon: 'lock',
     label: { en: 'Confidential and secure', zh: '保密且安全' },
-    body: { en: 'Nothing leaves your browser until you send it.', zh: '在你自己发送之前，任何内容都不会离开你的浏览器。' },
+    body: { en: 'Nothing leaves your browser until you send it.', zh: '在您自己发送之前，任何内容都不会离开您的浏览器。' },
   },
   {
     icon: 'check',
@@ -363,10 +363,10 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
   },
   {
     icon: 'file-text',
-    label: { en: 'You see the message', zh: '你会看到正文' },
+    label: { en: 'You see the message', zh: '您会看到正文' },
     body: {
       en: 'The form assembles your enquiry on screen before it goes anywhere.',
-      zh: '表单会先把你的问询在屏幕上组装出来，再决定它去哪里。',
+      zh: '表单会先把您的问询在屏幕上组装出来，再决定它去哪里。',
     },
   },
 ];

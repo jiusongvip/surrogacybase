@@ -5,6 +5,7 @@
  */
 import { langFromPath } from '@/i18n/paths';
 import { UI, fill } from '@/i18n/ui';
+import { formatDate } from '@/lib/dates';
 
 type Props = {
   evidence: 'verified' | 'framework' | 'draft';
@@ -47,6 +48,6 @@ const note =
   <p class="font-semibold text-text">{note.heading}</p>
   <p class="mt-1">{note.body}</p>
   {reviewDueOn && (
-    <p class="mt-2 tnum">{fill(copy.nextDue, { date: reviewDueOn })}</p>
+    <p class="mt-2 tnum">{fill(copy.nextDue, { date: formatDate(reviewDueOn, lang) })}</p>
   )}
 </aside>

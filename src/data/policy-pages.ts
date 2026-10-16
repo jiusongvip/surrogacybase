@@ -101,6 +101,9 @@ export type UpdatesPage = {
   emptyAction: string;
 };
 
+/** The date the wording on this page last changed. Both languages carry the same stamp. */
+export const EDITORIAL_REVISION = '2026-10-16';
+
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
     title: 'Editorial policy',
@@ -180,7 +183,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     updatesAfter: ' records what actually changed and why.',
     correctionsNeeds: {
       label: 'Correction inbox address',
-      why: 'this page will name it once it exists',
+      why: 'no address to send a correction to is published here yet',
     },
     moneyHeading: 'Independence and money',
     commercial: [
@@ -191,11 +194,11 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     moneyNeeds: {
       label: 'Whether the assessment service is paid, and by whom it is performed',
-      why: 'deciding this changes what this section must disclose',
+      why: 'whether you would pay, and who reads your enquiry, are still open',
     },
     imageryHeading: 'Imagery',
     imageryBody:
-      "Illustration on this site is generated still-life imagery of documents, paper and desk objects. It is not documentary photography, and no picture here depicts a real surrogate, intended parent or child. That choice is deliberate: photographing families in this context either stages a situation that did not happen or uses a real family's circumstances to sell something to a stranger. Stock photography of unidentified people does neither, and it is why there is none here either.",
+      'Illustration on this site is generated, not photographed from anyone’s situation. It shows documents and desk objects, travel and coastal scenes, and occasionally people seen from behind. No picture here is documentary photography, no real surrogate, intended parent or child appears in one, and none is stock photography of an unidentified person. The choice is deliberate: on this subject a family photograph either stages something that did not happen or uses a real family’s circumstances to sell something to a stranger, and a borrowed stock image leaves the reader looking at a face that belongs to nobody in the story.',
     revised: 'Policy last revised {date}.',
   },
   zh: {
@@ -205,10 +208,10 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     eyebrow: '以下标准适用于每一篇指南、每一篇专题解读和每一个目的地页面',
     h1: '我们如何做研究',
     intro:
-      '关于代孕的搜索结果，大多数出自出售这项服务的一方之手。一个既是信息来源又是销售渠道的主体并不中立，所以这里的差别必须体现在一条说法发表之前要跨过的门槛上。这道门槛写在下面，你可以据此问责我们。',
+      '关于代孕的搜索结果，大多数出自出售这项服务的一方之手。一个既是信息来源又是销售渠道的主体并不中立，所以这里的差别必须体现在一条说法发表之前要跨过的门槛上。这道门槛写在下面，您可以据此问责我们。',
     levelsHeading: '三个证据等级',
     levelsIntro:
-      '每个页面都在标题下方的一行注明自己处于哪个等级。这是徽章的诚实版本：它告诉你正在阅读的是哪一类说法，而不是我们对它有多有信心。',
+      '每个页面都在标题下方的一行注明自己处于哪个等级。这是徽章的诚实版本：它告诉您正在阅读的是哪一类说法，而不是我们对它有多有信心。',
     levels: [
       {
         name: '已核实',
@@ -224,7 +227,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
     ],
     sourceHeading: '一条来源记录包含什么',
-    sourceIntro: '引证只有在你能重新核查它时才有用。每个页面下的每一条来源都带六个字段。',
+    sourceIntro: '引证只有在您能重新核查它时才有用。每个页面下的每一条来源都带六个字段。',
     sourceCaption: '已核实页面上的每一条来源都要记录，目的地的具体事实同样如此。',
     sourceFields: [
       ['label', '您在引证里看到的那行文字。'],
@@ -247,11 +250,11 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: '法域是说法的一部分',
-        p: '在某个州、省或国家成立的规则，绝不写成好像在其他地方也成立。目的地页面把每一句话限定在它来源的那个法律体系内，意向父母的准入条件也只写到有来源的材料所覆盖的范围。这个站点上没有任何内容是关于你自身情况的法律意见。',
+        p: '在某个州、省或国家成立的规则，绝不写成好像在其他地方也成立。目的地页面把每一句话限定在它来源的那个法律体系内，意向父母的准入条件也只写到有来源的材料所覆盖的范围。这个站点上没有任何内容是关于您自身情况的法律意见。',
       },
       {
-        h: '我们不从某个法律体系推算到你个人',
-        p: '读到某个法域允许某事，并不能确立你可以走这条路，也不能确立你的本国承认这一结果。跨国的亲权与证件问题，要交给相应体系里合格律师判断；触及这些内容的页面会在正文里说明，而不是放在脚注。',
+        h: '我们不从某个法律体系推算到您个人',
+        p: '读到某个法域允许某事，并不能确立您可以走这条路，也不能确立您的本国承认这一结果。跨国的亲权与证件问题，要交给相应体系里合格律师判断；触及这些内容的页面会在正文里说明，而不是放在脚注。',
       },
       {
         h: '不做排名，不做最佳名单',
@@ -268,12 +271,12 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     correctionsHeading: '更新、日期与更正',
     correctionsBody:
-      '如果你发现某条说法连它自己的来源都不再支持，请告诉我们。处理方式要么是改正这条说法，要么是在核查期间先把它撤下，而撤下这件事会被记录。',
+      '如果您发现某条说法连它自己的来源都不再支持，请告诉我们。处理方式要么是改正这条说法，要么是在核查期间先把它撤下，而撤下这件事会被记录。',
     updatesBefore:
       '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期，而',
     updatesLink: '更新日志',
     updatesAfter: '记录实际改了什么以及为什么改。',
-    correctionsNeeds: { label: '更正收件地址', why: '这个地址存在之后，本页会写明它' },
+    correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供发送更正的地址' },
     moneyHeading: '独立性与金钱',
     commercial: [
       '站点由谁运营，写在关于页上。',
@@ -283,23 +286,26 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     moneyNeeds: {
       label: '评估服务是否收费，以及由谁执行',
-      why: '这一项决定会改变本节必须披露的内容',
+      why: '您是否需要付费、由谁阅读您的问询，都还没有确定',
     },
     imageryHeading: '配图',
     imageryBody:
-      '本站的插图是生成的静物图像：文件、纸张与桌上的物件。它们不是纪实摄影，这里没有任何一张图片描绘真实的代孕者、意向父母或孩子。这个选择是刻意的：在这种语境下拍摄家庭，要么是把没有发生过的场景摆拍出来，要么是拿一个真实家庭的处境向陌生人兜售东西。无法辨认身份的图库照片两样都不做，这也是这里同样一张都不用其原因。',
+      '本站的插图是生成的，不是对任何家庭真实处境的拍摄。画面内容是文件与桌上的物件、旅途与海滨的场景，偶尔也有几个人朝海走去的背影。这里没有一张是纪实摄影，没有任何一张里出现真实的代孕者、意向父母或孩子，也没有一张是身份不明的图库照片。这个选择是刻意的：在代孕这个话题上，一张家庭照片要么摆拍出一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西；而借来的一张图库照片，只会让读者盯着一张不属于这个故事里任何人的脸。',
     revised: '方针最近修订于 {date}。',
   },
 };
+
+/** The date the wording on this page last changed. Both languages carry the same stamp. */
+export const PRIVACY_REVISION = '2026-10-16';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
     title: 'Privacy',
     description:
-      'What SurrogacyBase stores and does not store: static pages with no cookies, a quote tool that keeps data in your browser, and how information you send us is handled.',
+      'What SurrogacyBase stores and does not store: pages that set no cookies, a quote tool that keeps its data only in your browser, and how any information you send us is handled.',
     h1: 'Privacy',
     intro:
-      'This page describes what actually happens in the software. It is written to match the build, not to cover a hypothetical one, and it is the shorter policy as a result.',
+      'This page describes what actually happens when you read this site and use its tools. It promises only what the site really does, which is why it is shorter than most privacy policies.',
     shortHeading: 'The short version',
     shortBody:
       'Reading this site gives us nothing about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you decide to send us.',
@@ -307,15 +313,15 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     stored: [
       {
         h: 'Browsing this site',
-        body: 'Pages are static files. The site itself sets no cookies and stores nothing about you in your browser while you read. There is no account, no login, and no profile, so there is no identifier to link your reading history to.',
+        body: 'This site has no system that watches which pages you read. It sets no cookies and stores nothing about you in your browser while you read. There is no account, no login, and no profile, so there is no identifier to link your reading history to.',
       },
       {
         h: 'The quote comparison tool',
-        body: 'Everything you type is written to your own browser (local storage) and read back from it. Nothing the tool holds is sent to us or to a server: there is no endpoint for it. Clearing site data for this domain removes it permanently, and exporting gives you the only other copy.',
+        body: 'Everything you type is saved only in your own browser and read back from there. This site has no server that could receive it, so nothing the tool holds is sent to us or to anyone else. Clearing site data for this domain removes it permanently, and exporting gives you the only other copy.',
       },
       {
         h: 'The assessment enquiry form',
-        body: 'It asks for five things: where you are in the process, which countries or programs are in view, who holds the documents you have now, the question you need answered, and the address to reply to. Two of those are optional. No name, no date of birth, no situation details, and no documents. The page has no server to post to, so pressing a button sends nothing: the form assembles the enquiry in your browser and hands it to your own mail app, your clipboard or a downloaded file, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft this browser keeps so a half-written enquiry survives a reload. Clearing site data for this domain removes it, and deleting the file removes the rest.',
+        body: 'It asks for five things: where you are in the process, which countries or programs are in view, who holds the documents you have now, the question you need answered, and the address to reply to. Two of those are optional. No name, no date of birth, no situation details, and no documents. This page has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
       },
       {
         h: 'Information you send us directly',
@@ -337,27 +343,27 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: 'If you contact us',
     contact: [
       'A request for an assessment should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
-      'The enquiry form collects none of that material and cannot: there is no upload field and no endpoint. Where an enquiry is delivered, who reads it and how long it is kept is stated on this page before the address it goes to is published.',
+      'The enquiry form collects none of that material and has no way to: there is nowhere in it to attach a file. Where an enquiry is delivered, who reads it, and how long it is kept are set out on this page before any address to send it to appears on the site.',
       'Documents about other people belong to those people. Do not send a surrogate’s, a clinic’s or another intended parent’s material without their agreement.',
     ],
     unsettledHeading: 'Not yet settled, and you should know',
     unsettledIntro:
-      'Two things this page cannot state honestly yet. They are marked rather than guessed at, and both must be filled in before the site goes live.',
+      'Two things this page still cannot tell you honestly: who operates this site, and how and where it is hosted. Until both are settled, the privacy promises above rest on incomplete answers.',
     unsettledNeeds: [
       {
         label: 'Who operates the site and in which country',
-        why: 'a controller identity and jurisdiction are required for a real policy',
+        why: 'a privacy policy has to name the organisation answerable for your data and the law that governs it',
       },
       {
         label: 'The hosting provider and any server log retention it applies',
-        why: 'log handling is theirs, and the policy has to name it',
+        why: 'who hosts the site and how long it keeps access logs decide what data leaves your browser',
       },
     ],
     rightsBody:
       "Subject to applicable law, you can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. If you use the tool, deletion is in your hands already: clear this site's data in your browser settings.",
     requestNeeds: {
       label: 'Where to send a data request',
-      why: 'an address must exist before this promise is usable',
+      why: 'until there is an address to write to, you cannot ask us what we hold, to change it, or to delete it',
     },
     revised:
       'Privacy policy last revised {date}. Material changes get a dated note here, not a silent rewrite.',
@@ -365,62 +371,65 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   zh: {
     title: '隐私',
     description:
-      'SurrogacyBase 存了什么、没存什么：不设 cookie 的静态页面、把数据留在你浏览器里的报价工具，以及你主动发给我们的信息如何被处理。',
+      'SurrogacyBase 存了什么、没存什么：不设置 cookie 的页面、把数据只留在您浏览器里的报价工具，以及您主动发给我们的信息如何被处理。',
     h1: '隐私',
     intro:
-      '本页描述软件里实际发生的事情。它按当前的构建写成，而不是为一种假设的构建兜底，因此它是一份更短的政策。',
+      '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
     shortHeading: '简短版',
     shortBody:
-      '阅读这个站点，我们得不到关于你的任何信息。使用这些工具同样得不到，因为工作全部在你的浏览器里完成。我们唯一持有的信息，是你决定发给我们的那部分。',
+      '阅读这个站点，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您决定发给我们的那部分。',
     storedHeading: '存了什么，存在哪里',
     stored: [
       {
         h: '浏览本站',
-        body: '页面是静态文件。站点本身不设置任何 cookie，也不在你阅读时于你的浏览器里存储关于你的任何内容。这里没有账户、没有登录、没有个人档案，因此不存在一个可以用来关联你阅读历史的标识符。',
+        body: '本站没有任何系统会监视您读了哪些页面。它不设置任何 cookie，也不在您阅读时于您的浏览器里存储关于您的任何内容。这里没有账户、没有登录、没有个人档案，因此不存在一个可以用来关联您阅读历史的标识符。',
       },
       {
         h: '报价对比工具',
-        body: '你键入的一切都被写入你自己的浏览器（本地存储），并从那里读回。这个工具持有的任何内容都不会发给我们或任何服务器：不存在那样的接口。清除这个域名的站点数据会永久移除它，而导出得到的那份是唯一的另一份副本。',
+        body: '您键入的一切都只保存在您自己的浏览器里，并从那里读回。本站没有能够接收它的服务器，所以这个工具持有的任何内容都不会发给我们或任何其他人。清除这个域名的站点数据会永久移除它，而导出得到的那份是唯一的另一份副本。',
       },
       {
         h: '评估问询表单',
-        body: '它只要五件事：你在流程的哪一步、视野里有哪些国家或方案、你现在手里的文件由谁持有、你需要被回答的那个问题，以及回复寄往哪个地址。其中两项是可选的。不要姓名、不要出生日期、不要处境细节、也不要文件。这个页面没有可以提交的服务器，因此按下按钮不会发出任何东西：表单在你的浏览器里把问询组装好，交给你的邮件应用、剪贴板或一个下载的文件，而你填写的地址会被写进那段文字，好让收到它的人能够回答。在你发出之前，唯一的副本就是本浏览器保存的草稿，以便一份写了一半的问询能在刷新之后存活。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
+        body: '它只要五件事：您在流程的哪一步、视野里有哪些国家或方案、您现在手里的文件由谁持有、您需要被回答的那个问题，以及回复寄往哪个地址。其中两项是可选的。不要姓名、不要出生日期、不要处境细节、也不要文件。这个页面没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询写好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
       },
       {
-        h: '你直接发给我们的信息',
-        body: '一旦你从自己的邮件客户端发出一份问询，我们就持有你选择写入的内容，保留到足以回答并记录结果为止。不要发送任何你不希望在一封邮件往来中被复述回来的东西。',
+        h: '您直接发给我们的信息',
+        body: '一旦您从自己的邮件客户端发出一份问询，我们就持有您选择写入的内容，保留到足以回答并记录结果为止。不要发送任何您不希望在一封邮件往来中被复述回来的东西。',
       },
     ],
     avoidedHeading: '我们刻意不做的事',
     avoided: [
       '没有安装任何分析、广告、A/B 测试或会话录制脚本。',
-      '没有任何第三方嵌入、视频、地图，也没有代你从另一家公司加载的字体。',
+      '没有任何第三方嵌入、视频、地图，也没有代您从另一家公司加载的字体。',
       '不以阅读或使用工具为条件，收集健康、生育、怀孕或家庭细节。',
-      '不出售、不出租、不分享任何关于你的东西，因为根本没有关于你的东西被存储。',
+      '不出售、不出租、不分享任何关于您的东西，因为根本没有关于您的东西被存储。',
     ],
     avoidedTail:
       '当链接离开本站时，适用目标站点自己的政策。引证指向官方登记机构、法院、代孕机构与诊所，而那些页面可以设置我们无法控制的 cookie。',
-    strictHeading: '为什么这个站点对你的数据比多数站点更严格',
+    strictHeading: '为什么这个站点对您的数据比多数站点更严格',
     strictBody:
-      '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在一个人都还没有作出任何决定之前就把他暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；站点也不问你来这里是为了什么。',
-    contactHeading: '如果你联系我们',
+      '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在一个人都还没有作出任何决定之前就把他暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；站点也不问您来这里是为了什么。',
+    contactHeading: '如果您联系我们',
     contact: [
       '一次评估的请求只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
-      '问询表单不收集那些材料，也无法收集：没有上传字段，也没有接口。一次问询会送达哪里、由谁阅读、保留多久，会在它的收件地址被公布之前先写在本页上。',
+      '问询表单不收集那些材料，也没有收集它们的途径：里面没有任何可以附上文件的位置。一次问询会送达哪里、由谁阅读、保留多久，会在本站出现可供发送的收件地址之前，先写在本页上。',
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
-    unsettledHeading: '尚未确定，而你应该知道',
-    unsettledIntro: '有两件事本页现在还无法诚实写明。它们被标注出来而不是猜一个填上，而且两项都必须在站点上线之前补齐。',
+    unsettledHeading: '尚未确定，而您应该知道',
+    unsettledIntro: '有两件事本页现在还无法诚实告诉您：本站由谁运营，以及它托管在哪里、由谁托管。这两项确定之前，上面的隐私承诺建立在不完整的答案之上。',
     unsettledNeeds: [
-      { label: '站点由谁运营、在哪个国家', why: '一份真正的政策需要控制者身份与法域' },
-      { label: '托管服务商，以及它所适用的服务器日志保留策略', why: '日志处理由它决定，政策必须点名说明' },
+      { label: '站点由谁运营、在哪个国家', why: '一份隐私政策必须点名对您数据负责的那个组织，以及管辖它的法律' },
+      { label: '托管服务商，以及它所适用的服务器日志保留策略', why: '由谁托管本站、访问日志保留多久，决定了哪些数据会离开您的浏览器' },
     ],
     rightsBody:
-      '在适用法律允许的范围内，你可以询问我们关于你持有什么、要求更正，或要求删除。如果你使用工具，删除其实已经在你自己手里：在浏览器设置里清除本站的数据。',
-    requestNeeds: { label: '数据请求寄往何处', why: '地址必须先存在，这句承诺才可以使用' },
+      '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
+    requestNeeds: { label: '数据请求寄往何处', why: '在有可写的地址之前，您无法要求我们说明持有什么、改正它，或删除它' },
     revised: '隐私政策最近修订于 {date}。实质性变更会在本页留下一条带日期的说明，而不是悄悄改写。',
   },
 };
+
+/** The date the wording on this page last changed. Both languages carry the same stamp. */
+export const TERMS_REVISION = '2026-10-16';
 
 export const TERMS_PAGE: Record<Lang, TermsPage> = {
   en: {
@@ -461,7 +470,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     ],
     openHeading: 'Open questions this page cannot close yet',
     openIntro:
-      'A terms page needs a named operator behind it. Until that exists, these terms bind nothing, and the gap is marked instead of filled with a placeholder company.',
+      'No organisation is named yet as the operator of this site, so these terms do not bind you or anyone else to anything.',
     openNeeds: [
       {
         label: 'Operating entity, country and governing law',
@@ -477,41 +486,41 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
   zh: {
     title: '条款',
     description:
-      'SurrogacyBase 的内容边界的说明：它是发布出来的信息而非建议，是带日期的来源而非保证，也是一组整理你自己输入的工具。',
+      'SurrogacyBase 的内容边界的说明：它是发布出来的信息而非建议，是带日期的来源而非保证，也是一组整理您自己输入的工具。',
     h1: '使用条款',
-    intro: '用平实的话写，因为一个关于高风险决策的页面，不该把自己的边界藏在你需要破译的用词后面。',
+    intro: '用平实的话写，因为一个关于高风险决策的页面，不该把自己的边界藏在您需要破译的用词后面。',
     acceptance:
-      '使用本站即表示你接受这些条款。如果你不接受，有用的动作是离开，而不是仔细读完之后照样使用。',
+      '使用本站即表示您接受这些条款。如果您不接受，有用的动作是离开，而不是仔细读完之后照样使用。',
     boundaryHeading: '这是什么、不是什么的那条边界',
     terms: [
       {
-        h: '这是发布出来的信息，不是给你的建议',
-        body: '指南、专题解读与目的地页面描述某个来源说了什么、它适用于哪里。它们不是法律建议、医学建议、心理建议或财务建议，阅读其中任何一篇都不与任何人建立委托、医患或专业关系。一条规则是否触及你的情况，取决于你的法域、你的事实，以及你委托的那位合格专业人士。',
+        h: '这是发布出来的信息，不是给您的建议',
+        body: '指南、专题解读与目的地页面描述某个来源说了什么、它适用于哪里。它们不是法律建议、医学建议、心理建议或财务建议，阅读其中任何一篇都不与任何人建立委托、医患或专业关系。一条规则是否触及您的情况，取决于您的法域、您的事实，以及您委托的那位合格专业人士。',
       },
       {
         h: '不核实活的来源，就不要据一个页面行事',
-        body: '成文法、法规、法院裁判、机构政策与价格都会变化，而页面描述的是某份文件在它旁边记录的那个日期上说过什么。在你依据这里的任何内容签字、付款或出行之前，请打开被引用的来源，核对它是否仍然如页面所述，并与相应体系里的专业人士确认你自己的位置。',
+        body: '成文法、法规、法院裁判、机构政策与价格都会变化，而页面描述的是某份文件在它旁边记录的那个日期上说过什么。在您依据这里的任何内容签字、付款或出行之前，请打开被引用的来源，核对它是否仍然如页面所述，并与相应体系里的专业人士确认您自己的位置。',
       },
       {
         h: '别人的话属于别人',
         body: '来自法院、监管机构、诊所、机构与出版方的引文和摘要，被转载是为了辨明他们陈述了什么。一个链接或一条引证不是背书；被此处引用的服务方并未同意任何事情，除非它自己这样说。服务方作出的陈述，责任仍归该服务方。',
       },
       {
-        h: '工具整理你的输入，不评判某个服务方',
-        body: '报价对比工具的算术反映你填入的内容。在两个数字背后的范围一致之前，两个总额之间的差额并不等于成本差异；这个工具产出的任何东西，都不构成我们对某个服务方是否合法、是否胜任、是否值得付费的意见。',
+        h: '工具整理您的输入，不评判某个服务方',
+        body: '报价对比工具的算术反映您填入的内容。在两个数字背后的范围一致之前，两个总额之间的差额并不等于成本差异；这个工具产出的任何东西，都不构成我们对某个服务方是否合法、是否胜任、是否值得付费的意见。',
       },
       {
         h: '材料的使用',
-        body: '你可以阅读、链接、引用并打印这些材料，用于你自己的决定，或用于与你自己的律师或诊所的讨论，引用时请注明出处并附上链接。不要整批转载、不要当作你自己的研究呈现、也不要用来为某项服务做营销。我们引用的页面之所以被选中，是因为它们可以打开并重新核查；当你把一条说法转述给别人时，请保留那条引证。',
+        body: '您可以阅读、链接、引用并打印这些材料，用于您自己的决定，或用于与您自己的律师或诊所的讨论，引用时请注明出处并附上链接。不要整批转载、不要当作您自己的研究呈现、也不要用来为某项服务做营销。我们引用的页面之所以被选中，是因为它们可以打开并重新核查；当您把一条说法转述给别人时，请保留那条引证。',
       },
       {
         h: '在法律允许的限度内，不作任何保证',
-        body: '本站按其现状提供，不担保它完整、最新或适合你的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。这句话不削减你依法享有的任何权利，也不能免除我们改正一条写错了的说法的义务。',
+        body: '本站按其现状提供，不担保它完整、最新或适合您的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。这句话不削减您依法享有的任何权利，也不能免除我们改正一条写错了的说法的义务。',
       },
     ],
     openHeading: '本页现在还无法收口的开放问题',
     openIntro:
-      '一份条款页需要背后有一个具名的运营者。在那之前，这些条款不约束任何东西，而这个空缺被标注出来，而不是用一家占位的公司填上。',
+      '目前还没有任何机构被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
     openNeeds: [
       { label: '运营主体、国家与适用法', why: '哪一家法院、哪一套消费者保护规则适用，取决于这一项' },
       { label: '评估服务是否为有偿委托，以及委托范围', why: '一项收费服务需要它自己的供给、退款与限度条款' },

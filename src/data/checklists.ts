@@ -77,11 +77,11 @@ export const CHECKLISTS: Checklist[] = [
         ledeEm: 'your',
         ledeAfter:
           ' situation by a person who can answer them. This list is those questions, grouped by who usually owns the answer.',
-        note: 'Work through it once per destination. Nothing is uploaded: your statuses and notes stay in this browser, and the export is a document you keep.',
+        note: 'Work through it once per destination. Nothing is uploaded: your progress and notes stay in this browser, and the downloaded file is a document you keep.',
         closing: {
           heading: 'What this list will not do for you',
           body:
-            'It does not state what any country requires. A row marked Confirmed means a named professional answered it for your facts, and the note beside it should say who. When a row stays unasked, that is the honest reading of where your research is, and the export keeps it visible instead of tidying it away.',
+            'It does not state what any country requires. A question marked Confirmed means a named professional answered it for your facts, and the note beside it should say who. When a question is still marked Not asked yet, that is the honest reading of where your research is, and the downloaded file keeps it visible instead of tidying it away.',
         },
         links: ['Read the sourced destination record', 'The four legal questions to settle first'],
       },
@@ -91,13 +91,13 @@ export const CHECKLISTS: Checklist[] = [
           '入围名单上每一个国家都需要有人回答的问题：资格、亲权、国籍、医疗范围、资金、实地停留，以及争议的处理途径。',
         h1: '目的地研究清单',
         ledeBefore: '一个国家不是一个决定。它是一组问题，必须由能够回答的人，针对',
-        ledeEm: '你自己',
+        ledeEm: '您自己',
         ledeAfter: '的情况逐条回答。这份清单就是那些问题，按通常由谁负责回答来分组。',
-        note: '每个目的地都做一遍。不会上传任何东西：你的状态和备注只留在这个浏览器里，导出的文件由你自己保存。',
+        note: '每个目的地都做一遍。不会上传任何东西：您的进度与备注只留在这个浏览器里，下载的文件由您自己保存。',
         closing: {
-          heading: '这份清单不会替你做什么',
+          heading: '这份清单不会替您做什么',
           body:
-            '它不说明任何国家的要求。一行标注为已确认，只意味着某位具名的专业人士针对你的情况回答了它，旁边的备注应当写明是谁。一行仍然处于未询问，那就是你研究进度的诚实读数，导出的文件会把它留着，而不是整理掉。',
+            '它不说明任何国家的要求。一个标注为已确认的问题，只意味着某位具名的专业人士针对您的情况回答了它，旁边的备注应当写明是谁。一个问题仍然标着尚未询问，那就是您的研究进度诚实的读数，下载的文件会把它留着，而不是整理掉。',
         },
         links: ['阅读有来源的目的地记录', '最先要确定的四个法律问题'],
       },
@@ -111,7 +111,7 @@ export const CHECKLISTS: Checklist[] = [
         },
         hint: {
           en: 'Confirmed means one named professional has answered it for your own facts, in writing.',
-          zh: '已确认，指的是一位具名专业人士已经针对你自身的情况，以书面形式回答了它。',
+          zh: '已确认，指的是一位具名专业人士已经针对您自身的情况，以书面形式回答了它。',
         },
         items: [
           {
@@ -416,7 +416,7 @@ export const CHECKLISTS: Checklist[] = [
         closing: {
           heading: 'Then put the answers next to the numbers',
           body:
-            'Once the answers are in, the quote becomes comparable rather than merely readable. The comparison tool puts two or three quotes into the same rows and keeps unconfirmed amounts out of the totals, so a total never looks finished when it is not.',
+            'Once the answers are in, the quote becomes comparable rather than merely readable. The comparison tool sets two or three quotes against the same line items and keeps unconfirmed amounts out of the totals, so a total never looks finished when it is not.',
         },
         links: ['Compare the quotes', 'What a contract should state'],
       },
@@ -428,12 +428,12 @@ export const CHECKLISTS: Checklist[] = [
         ledeBefore: '',
         ledeEm: '',
         ledeAfter:
-          '两家机构可以报出同一个总额，卖的却是不同的东西。让差别显现出来的，是一份你可以再读一遍的书面回答，旁边写着它收到的日期和给出回答的人。',
-        note: '不要写下你不希望被留存的内容。这份清单在你的浏览器里运行，不在服务器上记录任何东西，也不会代你联系任何人。',
+          '两家机构可以报出同一个总额，卖的却是不同的东西。让差别显现出来的，是一份您可以再读一遍的书面回答，旁边写着它收到的日期和给出回答的人。',
+        note: '不要写下您不希望被留存的内容。这份清单在您的浏览器里运行，不在服务器上记录任何东西，也不会代您联系任何人。',
         closing: {
           heading: '然后把答案放在数字旁边',
           body:
-            '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两三份报价放进同样的行里，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
+            '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两三份报价对在同一组条目上，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
         },
         links: ['对比这些报价', '合同应当写明什么'],
       },
@@ -537,7 +537,7 @@ export const CHECKLISTS: Checklist[] = [
             id: 'recruitment',
             question: {
               en: 'How are candidates recruited, and what do you tell them about us?',
-              zh: '人选是如何招募的？你们会向他们如何描述我们？',
+              zh: '人选是如何招募的？您会向他们如何描述我们？',
             },
           },
           {
@@ -599,7 +599,7 @@ export const CHECKLISTS: Checklist[] = [
             id: 'multiples',
             question: {
               en: 'How do you limit the risk of a multiple pregnancy, and does that change the cost?',
-              zh: '你们如何控制多胎妊娠的风险？这会改变费用吗？',
+              zh: '您如何控制多胎妊娠的风险？这会改变费用吗？',
             },
           },
         ],
@@ -667,7 +667,7 @@ export const CHECKLISTS: Checklist[] = [
             id: 'agency-failure',
             question: {
               en: 'If your organisation stops operating, what happens to our funds, our embryos and our file?',
-              zh: '如果你们的机构停止运营，我们的资金、我们的胚胎和我们的档案会怎样？',
+              zh: '如果您的机构停止运营，我们的资金、我们的胚胎和我们的档案会怎样？',
             },
           },
         ],
@@ -691,14 +691,14 @@ export const CHECKLISTS: Checklist[] = [
             id: 'history',
             question: {
               en: 'How many programs have you run here, and over what period?',
-              zh: '你们在这里运行过多少个方案？跨越多长时间？',
+              zh: '您在这里运行过多少个方案？跨越多长时间？',
             },
           },
           {
             id: 'references',
             question: {
               en: 'Can we speak to previous families directly, rather than to families you have selected for us?',
-              zh: '我们能否直接与此前的家庭交谈，而不是与你们替我们挑选的家庭交谈？',
+              zh: '我们能否直接与此前的家庭交谈，而不是与您替我们挑选的家庭交谈？',
             },
           },
           {
@@ -759,7 +759,7 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
     needsOwner: 'Marked confirmed with no name beside it.',
     exportButton: 'Download as a document',
     resetButton: 'Clear this list',
-    idle: 'Nothing here is submitted. Your statuses and notes are stored in this browser only.',
+    idle: 'Nothing here is submitted. Your progress and notes are stored in this browser only.',
     progressOf: '{confirmed} of {total} confirmed',
     progressAsked: ', {n} asked without an answer',
     progressUnnamed: ', {n} confirmed without a name',
@@ -767,14 +767,14 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
     addOwn: 'Add a question of your own',
     addPrompt: 'The question you need answered',
     removeOne: 'Remove this question',
-    resetConfirm: 'Clear every status and note in this list?',
+    resetConfirm: 'Clear your progress and notes in this list?',
     noscript:
-      'This list works without JavaScript: every question above is on the page and prints as it is. Saving statuses and exporting needs a browser that runs scripts.',
+      'This list works without JavaScript: every question above is on the page and prints as it is. To save your progress or download the file, the browser needs to run scripts.',
     fallbackTitle: 'Checklist',
     savedLine: 'Saved',
     answerJoin: ': ',
     exportFooter:
-      'Generated by SurrogacyBase. The statuses and notes above were entered by the user in their own browser; nothing was sent to a server.',
+      'Generated by SurrogacyBase. You entered the progress and notes above in your own browser; nothing was sent to a server.',
   },
   zh: {
     statusTodo: '尚未询问',
@@ -786,21 +786,21 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
     needsOwner: '标注为已确认，但旁边没有写下名字。',
     exportButton: '下载为文档',
     resetButton: '清空这份清单',
-    idle: '这里没有任何内容会被提交。你的状态和备注只保存在这个浏览器里。',
-    progressOf: '共 {total} 行，其中 {confirmed} 行已确认',
-    progressAsked: '，{n} 行已询问但没有答复',
-    progressUnnamed: '，{n} 行确认时没有写名字',
+    idle: '这里没有任何内容会被提交。您的进度与备注只保存在这个浏览器里。',
+    progressOf: '共 {total} 个问题，其中 {confirmed} 个已确认',
+    progressAsked: '，{n} 个已询问但没有答复',
+    progressUnnamed: '，{n} 个确认时没有写名字',
     progressEnd: '。内容只保存在这个浏览器里。',
-    addOwn: '添加你自己的问题',
-    addPrompt: '你需要有人回答的那个问题',
+    addOwn: '添加您自己的问题',
+    addPrompt: '您需要有人回答的那个问题',
     removeOne: '移除这个问题',
-    resetConfirm: '要清空这份清单里的每一个状态和每一条备注吗？',
+    resetConfirm: '要清空这份清单里的进度和备注吗？',
     noscript:
-      '这份清单在没有 JavaScript 时同样可用：上面的每一个问题都在页面里，并按原样打印。保存状态与导出需要一个能运行脚本的浏览器。',
+      '这份清单在没有 JavaScript 时同样可用：上面的每一个问题都在页面里，并按原样打印。保存进度与下载文件需要一个能运行脚本的浏览器。',
     fallbackTitle: '清单',
     savedLine: '保存于',
     answerJoin: '：',
     exportFooter:
-      '由 SurrogacyBase 生成。上面的状态与备注是用户在自己的浏览器里填写的；没有任何内容被发送到服务器。',
+      '由 SurrogacyBase 生成。上面的进度与备注是您在自己的浏览器里填写的；没有任何内容被发送到服务器。',
   },
 };

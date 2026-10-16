@@ -81,7 +81,7 @@ Averaging across that distribution produces a number that describes no actual pr
 
 ## What to use instead of an average
 
-1. **Build the budget from components.** Nine payees, each with a named biller, is a budget. One borrowed number is a hope. The [cost guide](/guides/surrogacy-cost) sets out the components and the contingent items.
+1. **Build the budget from components.** A list of payees, each with a named biller, is a budget. One borrowed number is a hope. The [cost guide](/guides/surrogacy-cost) sets out the components and the contingent items.
 2. **Take the exclusions seriously.** The items outside a quote usually determine the final total. See [the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote).
 3. **Price the risk you carry.** How many transfer attempts you will fund, and what you will do if it does not work, changes your number more than the market average does.
 4. **Ask for the escrow schedule.** When the money must be in an account, and what happens to it, is more predictive of your exposure than the headline fee. See [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).

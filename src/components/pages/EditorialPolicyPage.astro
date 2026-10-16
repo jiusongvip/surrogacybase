@@ -10,12 +10,12 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import NeedsInput from '@/components/ui/NeedsInput.astro';
-import { EDITORIAL_PAGE } from '@/data/policy-pages';
+import { EDITORIAL_PAGE, EDITORIAL_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { fill } from '@/i18n/ui';
 
-const UPDATED_ON = '2026-10-14';
+const UPDATED_ON = EDITORIAL_REVISION;
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = EDITORIAL_PAGE[lang];

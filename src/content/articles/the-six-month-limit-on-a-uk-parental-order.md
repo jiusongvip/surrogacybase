@@ -17,20 +17,25 @@ sources:
     url: "https://www.gov.uk/legal-rights-when-using-surrogates-and-donors/become-the-childs-legal-parent"
     publisher: "GOV.UK, Ministry of Justice guidance"
     publishedOn: "2015-04-05"
-    verifiedOn: "2026-10-15"
-    supports: "That you must apply within 6 months of the child's birth, that the child must be living with the applicants, that at least one applicant must reside permanently in the United Kingdom, Channel Islands or Isle of Man, that one of them must be genetically related to the child, and that the surrogate and any partner give agreement on form A101A."
+    verifiedOn: "2026-10-16"
+    supports: "That you must apply within 6 months of the child's birth, that the child must be living with the applicants, that at least one applicant must reside permanently in the United Kingdom, Channel Islands or Isle of Man, that one of them must be genetically related to the child, that the surrogate and any partner give agreement on form A101A, and that the application for the order itself is made on the C51 form."
   - label: "Surrogacy (treatment information)"
     url: "https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/"
     publisher: "Human Fertilisation and Embryology Authority"
     publishedOn: "2016-04-08"
-    verifiedOn: "2026-10-15"
-    supports: "That the surrogate is the legal mother at birth unless a parental order is obtained and her spouse or partner is automatically the second legal parent, that payment beyond reasonable expenses must be authorised by the family court before an order can be made, and that an agreement made before birth is not legally binding."
+    verifiedOn: "2026-10-16"
+    supports: "That the surrogate is the legal mother at birth unless a parental order is obtained and her spouse or partner is automatically the second legal parent, that payment beyond reasonable expenses must be authorised by the family court before an order can be made, that an agreement made before birth is not legally binding, and that once the parental order is made the surrogate has no further rights or obligations in relation to the child."
   - label: "Surrogacy (law reform project)"
     url: "https://lawcom.gov.uk/project/surrogacy/"
     publisher: "Law Commission for England and Wales"
     publishedOn: "2023-03-29"
     verifiedOn: "2026-10-15"
     supports: "That intended parents must apply to court after the birth and the process typically takes six months to a year, that the final report proposed a pathway to legal parenthood from birth while leaving arrangements unenforceable, and the recorded government position of 10 April 2025 that reform is not currently a priority."
+  - label: "Check if you're a British citizen"
+    url: "https://www.gov.uk/check-british-citizen"
+    publisher: "GOV.UK, Home Office guidance"
+    verifiedOn: "2026-10-16"
+    supports: "That being born in the United Kingdom does not by itself make a child a British citizen: the guidance states that citizenship by UK birth depends on where the parents were from and their circumstances, such as being a British citizen or holding indefinite leave to remain."
 ---
 
 A parental order is the only route by which intended parents become the child's legal parents under United Kingdom law. It is not a document you arrange in advance. It is an application to a court, made after the child is born, and the guidance sets a short window for making it.
@@ -46,7 +51,7 @@ The [regulator's account](https://www.hfea.gov.uk/treatments/explore-all-treatme
 - It does not make your agreement enforceable. The regulator's own wording is that you can make an agreement beforehand, although it will not be legally binding.
 - It does not by itself settle the child's nationality or passport. Those are separate applications to separate authorities, with their own evidence requirements.
 
-The last point is the one people are most often surprised by, because a birth in the United Kingdom does not automatically make a child British. Treat the order and the travel documents as two workstreams with different decision-makers.
+The last point is the one people are most often surprised by, because [a birth in the United Kingdom does not automatically make a child British](https://www.gov.uk/check-british-citizen). Treat the order and the travel documents as two workstreams with different decision-makers.
 
 ## The conditions a court applies
 

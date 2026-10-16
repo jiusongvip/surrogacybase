@@ -59,10 +59,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: '工具',
     label: '工具',
     description:
-      '给意向父母的决策工具：逐行对比机构报价、把一个目的地研究透、把问题书面提交给机构。全部在你的浏览器里运行，不需要账户，也不上传任何东西。',
+      '给意向父母的决策工具：逐项对比机构报价、把一个目的地研究透、把问题书面提交给机构。全部在您的浏览器里运行，不需要账户，也不上传任何东西。',
     intro:
-      '指南告诉你该核查什么。而这些页面是你真正动手核查的地方：用你自己的数字和你自己的文件，离开时带走一份可以交给别人的文件。',
-    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交；你的填写内容保存在这个浏览器里，随时可以清空。',
+      '指南告诉您该核查什么。而这些页面是您真正动手核查的地方：用您自己的数字和您自己的文件，离开时带走一份可以交给别人的文件。',
+    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交；您的填写内容保存在这个浏览器里，随时可以清空。',
     available: '现在可用',
     building: '正在建设',
     open: '打开工具',
@@ -79,6 +79,8 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
 export type QuoteChrome = {
   stays: string;
   currency: string;
+  /** Sits under the currency selector: one amount column, so every quote must be stated in it. */
+  currencyNote: string;
   addItem: string;
   addQuote: string;
   loadExample: string;
@@ -133,13 +135,15 @@ export type QuoteChrome = {
 
 export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
   en: {
-    stays: 'Everything here stays in this browser tab. No account, no upload, no server copy.',
+    stays:
+      'Everything here stays in this browser tab. No account, no upload, no server copy. Downloading gives you the data behind this comparison as a JSON file, written the way it is stored rather than laid out as a document.',
     currency: 'Currency',
+    currencyNote: 'One currency for the whole table. Convert a quote stated in another before you enter it, so the columns stay comparable.',
     addItem: 'Add line item',
     addQuote: 'Add quote',
     loadExample: 'Load example',
     clearAll: 'Clear all',
-    download: 'Download',
+    download: 'Download the data as JSON',
     caption:
       'Each line item is entered once, then recorded for every quote as an amount and whether that quote includes it.',
     lineItem: 'Line item',
@@ -166,18 +170,18 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
     quoteWord: 'Quote',
     emptyTitle: 'No line items yet',
     emptyBody:
-      'Add each cost the quote names, one per row. Anything the quote does not mention is worth a row of its own, with the scope set to Needs checking.',
+      'Add each cost the quote names as its own line item. Anything the quote does not mention is worth adding too, with its scope set to Needs checking.',
     placeholderItem: 'Line item name',
     remove: 'Remove',
     unconfirmed: '{n} item{s} unconfirmed',
     notIncluded: '{n} listed as not included',
-    unreadable: '{n} amount{s} not readable as a number',
+    unreadable: '{n} amount{s} need a plain number, without a currency symbol or a range',
     pluralS: 's',
     oneS: '',
     exportTool: 'SurrogacyBase agency quote comparison',
     exportExample: 'Example figures. Invented for demonstration, not a real quote.',
     exportEntered:
-      'Entered by the user in their own browser. Totals exclude items marked Needs checking.',
+      'Entered in your own browser. Totals exclude items marked Needs checking.',
     exportFilename: 'surrogacy-quote-comparison.json',
     exampleLabels: [
       'Agency program fee',
@@ -194,13 +198,15 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
     exampleQuoteB: 'Example quote B',
   },
   zh: {
-    stays: '这里的一切只留在这个浏览器标签页里。没有账户，没有上传，服务器上没有副本。',
+    stays:
+      '这里的一切只留在这个浏览器标签页里。没有账户，没有上传，服务器上没有副本。下载得到的是这份对比背后的数据，是一个 JSON 文件，按存储的原样写出，而不是一份排版好的文档。',
     currency: '货币',
+    currencyNote: '整张表只用一种货币。报价若是别的货币开出的，请先换算再录入，各列才可比。',
     addItem: '添加条目',
     addQuote: '添加报价',
     loadExample: '载入示例',
     clearAll: '全部清空',
-    download: '下载',
+    download: '下载数据（JSON）',
     caption: '每个条目只录入一次，然后在每一份报价里记为金额，以及这份报价是否包含它。',
     lineItem: '条目',
     amount: '金额',
@@ -225,17 +231,17 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
     quoteWord: '报价',
     emptyTitle: '还没有条目',
     emptyBody:
-      '把报价里列出的每一项成本逐行加进来。报价没有提到的东西也值得单独占一行，并把范围设为待核查。',
+      '把报价里列出的每一项成本都加成单独的条目。报价没有提到的东西也值得补上一条，并把范围设为待核查。',
     placeholderItem: '条目名称',
     remove: '移除',
     unconfirmed: '{n} 项尚未确认',
     notIncluded: '{n} 项列为不包含',
-    unreadable: '{n} 个金额无法读作数字',
+    unreadable: '{n} 个金额要写成纯数字，不带货币符号，也不带区间',
     pluralS: '',
     oneS: '',
     exportTool: 'SurrogacyBase 机构报价对比',
     exportExample: '示例数字。为演示而虚构，不是一份真实报价。',
-    exportEntered: '由用户在自己的浏览器里填写。合计不包含标为待核查的条目。',
+    exportEntered: '由您自己在浏览器里填写。合计不包含标为待核查的条目。',
     exportFilename: 'surrogacy-quote-comparison-zh.json',
     exampleLabels: [
       '机构方案费',
@@ -260,13 +266,13 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
       'Compare two or three surrogacy quotes line by line: what each one includes, what it excludes, what is still unclear, and why the gap between two totals is not yet a cost difference.',
     h1: 'Agency quote comparison',
     intro:
-      'Two quotes rarely differ because one agency is cheaper. They differ because one quote counts things the other left out. This tool puts the same line items side by side so you can see which totals are complete and which are still missing rows.',
+      'Two quotes rarely differ because one agency is cheaper. They differ because one quote counts things the other left out. This tool puts the same line items side by side so you can see which totals are complete and which still have costs missing.',
     howToHeading: 'How to use it',
     howTo: [
       "Copy each quote in as its own column, keeping the provider's own wording for line items.",
-      'Set every row to included, not included, or needs checking. A row you cannot place is information, not a failure.',
+      'Set every line item to included, not included, or needs checking. One you cannot place is information, not a failure.',
       'Add the costs neither quote mentions: independent legal counsel, escrow administration, insurance, contingency, parentage proceedings.',
-      'Only read the difference once both columns carry the same rows.',
+      'Only read the difference once both columns cover the same line items.',
     ],
     limitsHeading: 'What this tool will not do',
     limits: [
@@ -283,22 +289,22 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   zh: {
     title: '机构报价对比',
     description:
-      '逐行对比两三份代孕报价：每份包含什么、排除什么、还有什么不确定，以及为什么两个总额之间的差额还算不上一笔成本差异。',
+      '逐项对比两三份代孕报价：每份包含什么、排除什么、还有什么不确定，以及为什么两个总额之间的差额还算不上一笔成本差异。',
     h1: '机构报价对比',
     intro:
-      '两份报价之所以不同，很少是因为某一家机构更便宜。它们的不同在于一份报价算了另一份没算的东西。这个工具把同样的条目并排放置，让你看清哪些总额是完整的，哪些仍然缺行。',
+      '两份报价之所以不同，很少是因为某一家机构更便宜。它们的不同在于一份报价算了另一份没算的东西。这个工具把同样的条目并排放置，让您看清哪些总额是完整的，哪些还缺着成本。',
     howToHeading: '怎么使用',
     howTo: [
       '把每一份报价录入成单独的一列，条目沿用服务方自己的措辞。',
-      '把每一行设为包含、不包含或待核查。一行放不进去，本身就是信息，不是失误。',
+      '把每个条目设为包含、不包含或待核查。有一个条目放不进去，本身就是信息，不是失误。',
       '补上两份报价都没有提到的成本：独立法律顾问、资金监管费、保险、备用金、亲权程序。',
-      '只有当两列承载同样的行之后，再去读那个差额。',
+      '只有当两列覆盖同样的条目之后，再去读那个差额。',
     ],
     limitsHeading: '这个工具不会做什么',
     limits: [
       '它不判断一个价格是否公道。那取决于背后的服务和它所在的市场。',
       '它不做货币换算。请按报价原本使用的货币来比较，否则汇率会变成差额的一部分。',
-      '它不在服务器上存任何东西，也不会把你的报价发给任何人。',
+      '它不在服务器上存任何东西，也不会把您的报价发给任何人。',
     ],
     bandHeading: '读懂一份报价只是决定的一部分',
     bandBody: '费用指南解释了代孕预算里通常包含什么，以及什么通常被排除在外。',

@@ -4,7 +4,7 @@
   "region": "North America",
   "basis": "mixed-patchwork",
   "eligibility": "There is no federal surrogacy law. Each state sets its own rules, and they differ enough that a state has to be examined on its own. ASRM's survey of state law lists gestational surrogacy as expressly permitted by statute in California, Colorado, Connecticut, Florida, Idaho, Illinois, Iowa, Massachusetts, Michigan, Nevada, New Hampshire, New Jersey, New York, Oklahoma, Rhode Island, Texas, Utah, Vermont, Virginia, Washington and West Virginia, and records other states as having no statutes or published case law either permitting or prohibiting it.",
-  "paymentModel": "Not a single national rule. Compensation is governed state by state, and the sources checked here do not support one statement about what may be paid across the country.",
+  "paymentModel": "Not a single national rule. Compensation is governed state by state, and no statement about what may be paid across the whole country is supported by the sources available here.",
   "parentage": "Parentage is decided under state law and state court practice, not federally. A US order is also a separate question from whether another country will recognise it.",
   "statusVerifiedOn": "2026-10-14",
   "insufficientData": false,
@@ -55,9 +55,9 @@
     }
   ],
   "openQuestions": [
-    "No statute text was verified for this page. The state legislature and code publisher sites attempted (California, Michigan, Nevada, Illinois, and two code publishers) returned 403 or failed to load, so this site quotes no section numbers.",
-    "The ASRM survey's bare address redirects to a login. The recorded link is the publicly loading form of the same page and has to be re-opened at each review.",
-    "Whether a US parentage order, birth certificate or passport application will be recognised where you live is a separate question, and nothing on this page answers it.",
+    "No statute text has been verified, so no section number is quoted here and no section number should be relied on. The state legislature and code publisher sites that would settle this (California, Michigan, Nevada, Illinois, and two code publishers) could not be reached.",
+    "The ASRM survey's bare address sits behind a login; the link cited here is the publicly readable copy of the same page.",
+    "Whether a US parentage order, birth certificate or passport application will be recognised where you live is a separate question, and nothing here answers it.",
     "Cost and clinic data for the United States come from providers or from registry surveillance of treatment cycles. There is no public registry of surrogacy agreements, payments or program outcomes."
   ]
 }

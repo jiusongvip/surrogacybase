@@ -36,7 +36,7 @@ sources:
     publisher: "Human Fertilisation and Embryology Authority"
     publishedOn: "2016-04-08"
     verifiedOn: "2026-10-15"
-    supports: "That the surrogate is the legal mother at birth unless a parental order is obtained, that payment is limited to reasonable expenses with anything further authorised by the family court, and that an agreement made beforehand is not legally binding. Note the page's 2016 date."
+    supports: "That the surrogate is the legal mother at birth unless a parental order is obtained, that payment is limited to reasonable expenses with anything further authorised by the family court, and that an agreement made beforehand is not legally binding. The guidance carries a publication date of 8 April 2016, which is why its current status should be checked against the regulator's pages today before relying on it."
 ---
 
 A transfer date is the point at which most of these arrangements stop being negotiable. Before it, every document is a draft and every answer can still be refused. After it, you are performing under terms you accepted while you were excited, and the money has started moving.

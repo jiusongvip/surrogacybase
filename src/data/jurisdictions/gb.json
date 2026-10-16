@@ -3,7 +3,7 @@
   "name": "United Kingdom",
   "region": "Northern Europe",
   "basis": "assisted-reproduction-law",
-  "eligibility": "The sources checked for this page describe the route to parenthood rather than who may use it, so this page does not state eligibility criteria. Who can apply for a parental order, and on what conditions, is set out in the legislation and needs confirming with a lawyer in the relevant part of the UK.",
+  "eligibility": "No eligibility criteria are stated by the sources available here; they describe the route to parenthood rather than who may use it. Who can apply for a parental order, and on what conditions, is set out in the legislation and needs confirming with a lawyer in the relevant part of the UK.",
   "paymentModel": "Intended parents may reimburse the surrogate's reasonable expenses. Paying anything more than reasonable expenses must be authorised by the family court before a parental order can be made. Advertising for, or as, a surrogate is illegal under the Surrogacy Arrangements Act 1985. A report by Surrogacy UK, cited by HFEA, records surrogates as typically reimbursed 10,000 to 15,000 pounds.",
   "parentage": "The surrogate is the legal mother at birth unless a parental order is obtained. A written arrangement is not legally binding, and the Law Commission's reform proposals keep arrangements unenforceable. Intended parents have to wait until the child is born and then apply to court, a process the Commission describes as typically taking six months to a year.",
   "statusVerifiedOn": "2026-10-14",
@@ -54,9 +54,9 @@
     }
   ],
   "openQuestions": [
-    "Surrogacy law in Scotland and Northern Ireland differs from England and Wales. This page is not a statement about those systems.",
+    "Surrogacy law in Scotland and Northern Ireland differs from England and Wales, and nothing here states the position in those systems.",
     "The Law Commission's draft Bill has not been enacted. The government's position as recorded on the project page is that reform is not currently prioritised, which may have changed since the April 2025 letter.",
-    "Whether your existing arrangement or a foreign order would be recognised in the UK is a separate legal question this page does not address.",
+    "Whether your existing arrangement or a foreign order would be recognised in the UK is a separate legal question that is not answered here.",
     "No UK total-cost figure was verified. The only sourced number is the reimbursement range for expenses above, which comes from an organisation's report rather than an official dataset."
   ]
 }

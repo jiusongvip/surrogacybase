@@ -49,7 +49,7 @@ sources:
     publisher: "Human Fertilisation and Embryology Authority"
     publishedOn: "2016-04-08"
     verifiedOn: "2026-10-14"
-    supports: "That in the United Kingdom the surrogate is the legal mother at birth unless a parental order is obtained. Note the page's 2016 publication date."
+    supports: "That in the United Kingdom the surrogate is the legal mother at birth unless a parental order is obtained. The guidance carries a publication date of 8 April 2016, which is why its current status should be checked against the regulator's pages today before relying on it."
   - label: "Surrogacy (law reform project)"
     url: "https://lawcom.gov.uk/project/surrogacy/"
     publisher: "Law Commission of England and Wales, with the Scottish Law Commission"

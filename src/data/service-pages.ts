@@ -96,28 +96,28 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: 'How does the site make money?',
-        a: 'Disclosed on this page once it is decided. If a paid relationship exists, it is labelled on the page where it applies.',
+        a: 'No commercial model is in place yet, so there is nothing to disclose. If a paid relationship exists, it will be labelled on the page where it applies.',
       },
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'Named before launch, because a site that asks for trust should say whose name is on it.',
+      'A site that asks for trust should say whose name stands behind it. That name is not here yet.',
     whoNeeds: [
       {
         label: 'Operating entity or individual',
-        why: 'required on the footer, terms and privacy policy',
+        why: 'you have no way yet to see who stands behind this site or who to hold responsible for what it publishes',
       },
       { label: 'Registration or incorporation details, if any' },
       { label: 'Contact email for corrections' },
       {
         label: 'Named author for each guide',
-        why: 'no byline is shown until a real person accepts it',
+        why: 'the guides carry no named author you could hold responsible for the text',
       },
     ],
     correctionsHeading: 'Corrections',
     correctionsBody:
       'If a source on a page no longer supports the claim next to it, that is a defect and we want to know. Send the page address and the claim, and the entry is either fixed or the claim is removed while the check is pending.',
-    correctionsNeeds: { label: 'Correction inbox', why: 'this page links here once it exists' },
+    correctionsNeeds: { label: 'Correction inbox', why: 'there is no address published yet for you to send a correction to' },
   },
   zh: {
     title: '关于我们',
@@ -132,36 +132,39 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     notHeading: '这个站点不是什么',
     statements: [
       {
-        q: '你们是代孕机构吗？',
+        q: '本站是代孕机构吗？',
         a: '不是。我们不为意向父母筛查或匹配代孕者，不运行方案，也不替任何人收取或持有资金。',
       },
       {
-        q: '你们是律师事务所或诊所吗？',
-        a: '不是。这里没有任何内容构成法律意见、医学意见或诊断。法律上是否适用于你，取决于你的法域、你的处境，以及你委托的那位专业人士。',
+        q: '本站是律师事务所或诊所吗？',
+        a: '不是。这里没有任何内容构成法律意见、医学意见或诊断。法律上是否适用于您，取决于您的法域、您的处境，以及您委托的那位专业人士。',
       },
       {
-        q: '你们会推荐具体的服务方吗？',
+        q: '本站会推荐具体的服务方吗？',
         a: '目的地页面陈述某个法律体系怎么规定，并列出来源。它们不是排名，也没有任何服务方付费出现在这里。',
       },
       {
         q: '这个站点靠什么盈利？',
-        a: '一旦确定，就在本页写明。如果存在收费关系，它会在关系实际发生的那个页面上标注出来。',
+        a: '目前还没有任何商业模式，所以没有可披露的内容。如果将来存在收费关系，它会在关系实际发生的那个页面上标注出来。',
       },
     ],
     whoHeading: '背后是谁',
-    whoBody: '上线之前会写明，因为一个要求别人信任的站点，应当说出上面署的是谁的名字。',
+    whoBody: '一个要求别人信任的站点，应当说出背后署的是谁的名字。这个名字目前还没有。',
     whoNeeds: [
-      { label: '运营主体或个人', why: '页脚、条款与隐私政策都要求写明' },
+      { label: '运营主体或个人', why: '您现在还无法看到本站背后是谁，也无从知道该由谁对它发布的内容负责' },
       { label: '登记或注册信息，如果有的话' },
       { label: '用于接收更正的邮箱地址' },
-      { label: '每篇指南署名的作者', why: '在真人接受署名之前，页面不显示任何作者栏' },
+      { label: '每篇指南署名的作者', why: '指南上没有一位您可以据以问责的具名作者' },
     ],
     correctionsHeading: '更正',
     correctionsBody:
       '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是缺陷，我们希望知道。把页面地址和那条说法发给我们，我们会要么改正这一条，要么在核查期间先把说法撤下。',
-    correctionsNeeds: { label: '更正收件地址', why: '这个地址存在之后，本页会链接到它' },
+    correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供您发送更正的地址' },
   },
 };
+
+/** The date the wording on this page last changed. Both languages carry the same stamp. */
+export const ASSESSMENT_REVISION = '2026-10-16';
 
 export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
   en: {
@@ -169,7 +172,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     description:
       'One-to-one consultation on the documents and options you already hold: a structured written read that names each gap and the professional who has to close it.',
     statusNote:
-      'Enquiries are open. The fee and the person who performs the read are not settled yet, and are marked below rather than guessed at.',
+      'The form below writes your enquiry out ready to send. Who reads it, on what scope and at what price is not settled yet, so none of it is promised here.',
     h1: 'What an assessment is, and what it is not',
     intro:
       'Reading gets you to a point where your own documents are the question. An assessment is the service for that point: not advice, not a match, not a rating of a provider. It is a structured read of what you already hold, in which each gap is written down together with the party who has to close it. The verification itself belongs to a lawyer, a clinic or an escrow provider, and is not something we do on your behalf.',
@@ -226,11 +229,11 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     ],
     settledHeading: 'What is settled, and what is not',
     settledBody:
-      'The scope above is the part that can be written down honestly now. A service page that promises a price, a person or a channel that does not exist is a dead link with confident wording around it, so the missing parts are listed rather than papered over.',
+      'The scope above is what can be stated honestly today. A service page that promises a price, a person, or a contact route that does not exist would only mislead you, so what is still missing is set out plainly below.',
     settledNeeds: [
       {
         label: 'Who performs an assessment',
-        why: 'a person with a named background, or the service does not launch',
+        why: 'without a named person behind it there is nothing to book',
       },
       {
         label: 'Scope and price of each engagement',
@@ -238,11 +241,11 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
       },
       {
         label: 'The address an enquiry is delivered to',
-        why: 'set SITE.contactEmail in src/const.ts and the form on the homepage gains its mail button',
+        why: 'this site has published no address for an enquiry to be delivered to yet',
       },
       {
         label: 'Any commercial relationship with providers',
-        why: 'if the model includes referrals, disclosure must exist before the first engagement',
+        why: 'you cannot yet be told whether a provider named here might one day pay for a referral',
       },
     ],
     startHeading: 'Start with the question you already have',
@@ -260,79 +263,79 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
   zh: {
     title: '评估服务说明',
     description:
-      '一对一咨询：把你已经持有的文件和选项做一次有结构的书面梳理，指出缺口，以及每一个问题必须由谁来回答。',
-    statusNote: '咨询已经开放。费用，以及由谁来做这次梳理，尚未确定，因此在本页下方标注为待补充，而不是猜测填入。',
+      '一对一咨询：把您已经持有的文件和选项做一次有结构的书面梳理，指出缺口，以及每一个问题必须由谁来回答。',
+    statusNote: '下面的表单会把您的问询写成可以发送的文字。由谁来读、范围多大、费用多少都还没有确定，所以这些都不在这里承诺。',
     h1: '评估是什么，以及它不是什么',
     intro:
-      '阅读会把你带到一个地步：你自己的文件成了问题所在。评估就是为这个地步准备的服务。它不是建议，不是匹配，也不是对某个服务方的评级。它是对已经在你手里的东西做一次有结构的梳理，并把每一个缺口都写明该由谁来补上。核实属于律师、诊所或资金监管方，不由我们代你完成。',
+      '阅读会把您带到一个地步：您自己的文件成了问题所在。评估就是为这个地步准备的服务。它不是建议，不是匹配，也不是对某个服务方的评级。它是对已经在您手里的东西做一次有结构的梳理，并把每一个缺口都写明该由谁来补上。核实属于律师、诊所或资金监管方，不由我们代您完成。',
     forHeading: '这项服务面向谁',
     forBody:
-      '不面向从零开始的人。如果你还不清楚流程有哪些阶段、一份报价里应当有什么，指南会免费回答这些。这一项服务针对的是那之后的阶段：文件已经摆在你面前，不确定的地方在于它没有说什么。法律风险也属于这类不确定：哪些国家在这里有可核查的路径、亲权与孩子的国籍取决于什么，以及其中哪些问题属于律师，而不是属于一个网站。',
-    bringHeading: '你会带着什么来',
+      '不面向从零开始的人。如果您还不清楚流程有哪些阶段、一份报价里应当有什么，指南会免费回答这些。这一项服务针对的是那之后的阶段：文件已经摆在您面前，不确定的地方在于它没有说什么。法律风险也属于这类不确定：哪些国家在这里有可核查的路径、亲权与孩子的国籍取决于什么，以及其中哪些问题属于律师，而不是属于一个网站。',
+    bringHeading: '您会带着什么来',
     brings: [
-      '一份你收到的报价、方案书或合同，希望对照一份「应当包含什么」的清单来读。',
-      '两个看起来金额不同的选项，你需要知道它们的范围是否根本可以比较。',
-      '一份目的地入围名单，你想要其中有来源的立场、尚未解决的问题，以及就你的情况而言本地律师必须确认什么。',
+      '一份您收到的报价、方案书或合同，希望对照一份「应当包含什么」的清单来读。',
+      '两个看起来金额不同的选项，您需要知道它们的范围是否根本可以比较。',
+      '一份目的地入围名单，您想要其中有来源的立场、尚未解决的问题，以及就您的情况而言本地律师必须确认什么。',
       '一次已经约好的会面所需的问题清单，让那一个小时花在真正要紧的事情上。',
     ],
     bringBefore:
       '只发送提出这个问题所必需的内容。把一份报价对照清单来读，不需要其他人的姓名、病历或付款信息，而',
-    bringLink: '你发送的任何内容会如何被处理',
-    bringAfter: '在你发送之前就已经写明在这里。',
-    receiveHeading: '你会收到什么',
+    bringLink: '您发送的任何内容会如何被处理',
+    bringAfter: '在您发送之前就已经写明在这里。',
+    receiveHeading: '您会收到什么',
     outcome: '第 {n} 项产出',
     receives: [
-      '一份书面地图：你的文件回答了哪些内容、没有回答哪些内容，以及在哪些地方自相矛盾。',
+      '一份书面地图：您的文件回答了哪些内容、没有回答哪些内容，以及在哪些地方自相矛盾。',
       '报价里具体的排除项与或有成本，逐条列为需要确认的项，而不是汇成一个总数。',
       '指向正确一方的问题：其中哪些属于某个法域的律师，哪些属于诊所，哪些属于机构，哪些属于资金监管方。',
       '一份可以在会议上当场读出来的对比视图，每一项旁边都放着它的来源。',
     ],
     receiveBody:
-      '产出是一份由你保存、可以交给律师的文件。它不以继续与我们合作为前提，也不包含委托某个特定服务方的建议。',
+      '产出是一份由您保存、可以交给律师的文件。它不以继续与我们合作为前提，也不包含委托某个特定服务方的建议。',
     neverHeading: '评估永远不会做的事',
     never: [
       {
-        h: '我们不给你法律结论',
-        p: '亲权、国籍、可执行资格与准入条件，由法律体系以及能在其中行事的专业人士决定。评估负责找出问题，以及谁能回答它。它不替你回答。',
+        h: '我们不给您法律结论',
+        p: '亲权、国籍、可执行资格与准入条件，由法律体系以及能在其中行事的专业人士决定。评估负责找出问题，以及谁能回答它。它不替您回答。',
       },
       {
-        h: '我们不代你做核实',
-        p: '一份文件可以对照清单来读，其中每一个缺口都能写明它该由谁来补。某家服务方是否持有资质、某一条款是否站得住、纸面上的数字是否诚实，这些要由有资格核实它们的人去查。我们给你的是核查清单，以及它必须发生的顺序，不是核查结果。',
+        h: '我们不代您做核实',
+        p: '一份文件可以对照清单来读，其中每一个缺口都能写明它该由谁来补。某家服务方是否持有资质、某一条款是否站得住、纸面上的数字是否诚实，这些要由有资格核实它们的人去查。我们给您的是核查清单，以及它必须发生的顺序，不是核查结果。',
       },
       {
         h: '我们不给医学意见',
-        p: '这里不解读任何检查影像、治疗方案、诊所报出的成功率，也不判断你的机会。这些是与你自己的临床医生进行的对话。',
+        p: '这里不解读任何检查影像、治疗方案、诊所报出的成功率，也不判断您的机会。这些是与您自己的临床医生进行的对话。',
       },
       {
         h: '我们不保证结果，也不承诺路径',
-        p: '没有可能性陈述，没有当作确定来呈现的时间表，也没有某个方案会成功、或者孩子一定会以你需要的方式被认定为你的人的保证。',
+        p: '没有可能性陈述，没有当作确定来呈现的时间表，也没有某个方案会成功、或者孩子一定会以您需要的方式被认定为您的人的保证。',
       },
       {
         h: '我们不匹配、不筛查、不提供代孕者',
         p: '我们不是机构，不持有人选名单，也不朝匹配方向收取费用。如果这个站点上的某项服务将来涉及转介，它会在实际发生的那个页面上披露。',
       },
       {
-        h: '我们不告诉你该选哪家服务方',
-        p: '评估可以让你看见一份文件没有说什么。它不为一家企业作担保，也不构成评级。',
+        h: '我们不告诉您该选哪家服务方',
+        p: '评估可以让您看见一份文件没有说什么。它不为一家企业作担保，也不构成评级。',
       },
     ],
     settledHeading: '已确定的，与尚未确定的',
     settledBody:
-      '上面的范围是现在可以诚实写下的部分。一个服务页面如果承诺一个并不存在的价格、人物或渠道，就是一个被自信措辞包裹的失效链接，所以缺少的部分会列出来，而不是用纸糊过去。',
+      '上面的范围是现在能够诚实说明的部分。一个服务页面如果承诺一个并不存在的价格、人物或联络途径，只会把您引向一个落空的结果，所以还缺少的部分会在下方如实列出。',
     settledNeeds: [
-      { label: '由谁来执行一次评估', why: '需要一位有具名背景的人，否则这项服务不上线' },
+      { label: '由谁来执行一次评估', why: '需要一个有具名背景的人，否则就没有可以预约的对象' },
       { label: '每次委托的范围与价格', why: '包含什么、需要多久、如果无法给出答案会怎样' },
-      { label: '问询最终送达的地址', why: '在 src/const.ts 里设置 SITE.contactEmail，首页表单就会获得它的邮件按钮' },
-      { label: '与服务方之间的任何商业关系', why: '如果模式包含转介，披露必须在第一次委托之前就存在' },
+      { label: '问询最终送达的地址', why: '本站尚未公布一个可供问询送达的地址' },
+      { label: '与服务方之间的任何商业关系', why: '您还无法得知，这里点名的一家公司将来是否可能为转介付费' },
     ],
-    startHeading: '从你已经有的那个问题开始',
+    startHeading: '从您已经有的那个问题开始',
     startBody:
-      '问询表单会把你的问题写成评估能够回答的形状：你处在哪一步、视野里有什么、文件现在在谁手里，以及它唯一没有说明的那件事。它在你自己的浏览器里把这段文字组织好，再交给你的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在你看不见的队列里。',
+      '问询表单会把您的问题写成评估能够回答的形状：您处在哪一步、视野里有什么、文件现在在谁手里，以及它唯一没有说明的那件事。它在您自己的浏览器里把这段文字组织好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
     startPrimary: '写一份问询',
     startSecondary: '阅读问询会如何被处理',
     diyHeading: '现在自己动手完成有用的那部分',
     diyBody:
-      '评估所做的工作，很大程度上就是免费工具已经结构化的那件工作。如果你把报价放进对比工具，缺口不需要付钱给任何人都能看见。',
+      '评估所做的工作，很大程度上就是免费工具已经结构化的那件工作。如果您把报价放进对比工具，缺口不需要付钱给任何人都能看见。',
     diyPrimary: '对比两份报价',
     diySecondary: '阅读合同应当写明什么',
     revised: '最近修订于 {date}。',

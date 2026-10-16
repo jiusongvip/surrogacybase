@@ -55,10 +55,10 @@ export type AssessmentNote = {
 export const ASSESSMENT_STEPS: AssessmentStep[] = [
   {
     num: '01',
-    title: { en: 'Your family situation', zh: '你的家庭情况' },
+    title: { en: 'Your family situation', zh: '您的家庭情况' },
     purpose: {
       en: 'These answers work out which access rules apply to you. They do not place you in a country, because "surrogacy is lawful here" and "this family may use it here" are two different findings.',
-      zh: '这些回答用来确定哪些准入规则适用于你。它们不会把你安置到某个国家，因为「代孕在这里合法」和「这个家庭可以在这里使用它」是两个不同的结论。',
+      zh: '这些回答用来确定哪些准入规则适用于您。它们不会把您安置到某个国家，因为「代孕在这里合法」和「这个家庭可以在这里使用它」是两个不同的结论。',
     },
     fields: [
       {
@@ -74,7 +74,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'relationship',
         kind: 'radio',
-        legend: { en: 'What is your marital or partnership status?', zh: '你的婚姻或伴侣关系状况是什么？' },
+        legend: { en: 'What is your marital or partnership status?', zh: '您的婚姻或伴侣关系状况是什么？' },
         hint: {
           en: 'Asked separately from the question above: some systems test the relationship, and some test the number of parents.',
           zh: '与上面的问题分开询问：一些体系检验的是关系，一些检验的是父母的数量。',
@@ -88,7 +88,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'nationality',
         kind: 'radio',
-        legend: { en: 'What is your nationality, or your main legal identity?', zh: '你的国籍，或者你的主要法律身份是什么？' },
+        legend: { en: 'What is your nationality, or your main legal identity?', zh: '您的国籍，或者您的主要法律身份是什么？' },
         hint: {
           en: 'Nationality, residence and marital status answer three different legal questions. None of them substitutes for another.',
           zh: '国籍、居住地和婚姻状况回答的是三个不同的法律问题，任何一个都不能替代另一个。',
@@ -107,7 +107,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'residence',
         kind: 'radio',
-        legend: { en: 'Where do you mainly live?', zh: '你主要居住在哪里？' },
+        legend: { en: 'Where do you mainly live?', zh: '您主要居住在哪里？' },
         hint: {
           en: 'Kept apart from nationality on purpose. A rule about residents and a rule about citizens are not the same rule.',
           zh: '刻意与国籍分开。关于居民的规则和关于公民的规则不是同一条规则。',
@@ -127,7 +127,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
   },
   {
     num: '02',
-    title: { en: 'What you are trying to settle', zh: '你想先确定什么' },
+    title: { en: 'What you are trying to settle', zh: '您想先确定什么' },
     purpose: {
       en: 'This step decides the order of the roadmap. A reader worried about paperwork after the birth and a reader worried about cost are not researching the same thing.',
       zh: '这一步决定路线图的顺序。担心出生之后文件的人，和担心费用的人，研究的不是同一件事。',
@@ -136,7 +136,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'stage',
         kind: 'radio',
-        legend: { en: 'Where are you now?', zh: '你现在处于哪个阶段？' },
+        legend: { en: 'Where are you now?', zh: '您现在处于哪个阶段？' },
         options: [
           { value: 'exploring', label: { en: 'Early. I am working out what is possible', zh: '早期。我在弄清楚什么是可行的' } },
           { value: 'comparing', label: { en: 'Comparing countries or regions', zh: '在比较不同的国家或地区' } },
@@ -149,7 +149,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'concerns',
         kind: 'check',
-        legend: { en: 'What matters most to you right now?', zh: '对现在的你来说，什么最重要？' },
+        legend: { en: 'What matters most to you right now?', zh: '对现在的您来说，什么最重要？' },
         hint: { en: 'Choose any that apply.', zh: '选择所有适用的项。' },
         options: [
           { value: 'eligibility', label: { en: 'Whether the law allows my situation', zh: '法律是否允许我的情况' } },
@@ -163,7 +163,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
         id: 'genetic',
         kind: 'radio',
         optional: true,
-        legend: { en: 'What is your current thinking on a genetic link?', zh: '关于遗传联系，你目前的想法是什么？' },
+        legend: { en: 'What is your current thinking on a genetic link?', zh: '关于遗传联系，您目前的想法是什么？' },
         hint: {
           en: 'Optional, because it can touch on sensitive medical information. A genetic arrangement can change the medical route and, in some places, the legal conditions. Do not type a diagnosis, a history or a test result here; none of that is needed to plan a research route.',
           zh: '这一项是可选的，因为它可能涉及敏感的医疗信息。遗传安排会改变医疗路径，在某些地方也会改变法律条件。请不要在这里填写诊断、病史或检查结果，规划一条研究路径并不需要这些。',
@@ -179,16 +179,16 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
   },
   {
     num: '03',
-    title: { en: 'Your practical conditions', zh: '你的现实条件' },
+    title: { en: 'Your practical conditions', zh: '您的现实条件' },
     purpose: {
       en: 'No amounts, and nothing about income, assets or ability to pay. This step asks how you relate to cost and travel, because those two decide which part of a legal system you have to read first.',
-      zh: '不问金额，也不问收入、资产或支付能力。这一步问的是你与费用和旅行的关系，因为这两项决定了你必须先读一个法律体系的哪一部分。',
+      zh: '不问金额，也不问收入、资产或支付能力。这一步问的是您与费用和旅行的关系，因为这两项决定了您必须先读一个法律体系的哪一部分。',
     },
     fields: [
       {
         id: 'budget',
         kind: 'radio',
-        legend: { en: 'How are you thinking about the budget?', zh: '你目前怎么考虑预算？' },
+        legend: { en: 'How are you thinking about the budget?', zh: '您目前怎么考虑预算？' },
         options: [
           { value: 'unknown', label: { en: 'I do not yet know what the whole thing costs', zh: '我还不知道整件事需要多少钱' } },
           { value: 'limited', label: { en: 'Tight. I need the full cost before I compare places', zh: '紧张。我需要在比较地点之前知道完整费用' } },
@@ -199,7 +199,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'travel',
         kind: 'radio',
-        legend: { en: 'How flexible are you about travelling to the destination?', zh: '关于前往目的地旅行，你的灵活程度如何？' },
+        legend: { en: 'How flexible are you about travelling to the destination?', zh: '关于前往目的地旅行，您的灵活程度如何？' },
         options: [
           { value: 'flexible', label: { en: 'I can travel when the process requires it', zh: '流程需要时我就能前往' } },
           { value: 'limited', label: { en: 'Work or family means only a few windows are possible', zh: '工作或家庭意味着只有少数几个时间窗口可行' } },
@@ -210,7 +210,7 @@ export const ASSESSMENT_STEPS: AssessmentStep[] = [
       {
         id: 'timing',
         kind: 'radio',
-        legend: { en: 'When do you want to move?', zh: '你希望什么时候推进？' },
+        legend: { en: 'When do you want to move?', zh: '您希望什么时候推进？' },
         options: [
           { value: 'research', label: { en: 'Research and compare first. No decision is being pushed', zh: '先研究和比较。没有被催促的决定' } },
           { value: 'months', label: { en: 'Within the next 6 to 12 months', zh: '在未来 6 到 12 个月之内' } },
@@ -227,11 +227,11 @@ export const ASSESSMENT_CORE: { title: Bilingual; body: Bilingual }[] = [
   {
     title: {
       en: 'Does the place you are looking at permit an arrangement like yours?',
-      zh: '你在看的这个地方，是否允许你所处的这类安排？',
+      zh: '您在看的这个地方，是否允许您所处的这类安排？',
     },
     body: {
       en: 'Not whether surrogacy happens there, and not whether agencies advertise there. Whether the rule names families in your situation, and who decides that.',
-      zh: '问的不是那里是否发生代孕，也不是机构是否在那里做广告。而是规则是否点名了你所处情况的家庭，以及由谁来判定。',
+      zh: '问的不是那里是否发生代孕，也不是机构是否在那里做广告。而是规则是否点名了您所处情况的家庭，以及由谁来判定。',
     },
   },
   {
@@ -274,7 +274,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     when: { field: 'family', values: ['partner'] },
     title: {
       en: 'Being a couple does not automatically make you two legal parents',
-      zh: '是伴侣并不会自动让你们成为两个法律上的父母',
+      zh: '是伴侣并不会自动让您成为两个法律上的父母',
     },
     body: {
       en: 'Some systems name one intended parent at birth and require a second route for the other, and some write their rule around a heterosexual couple. The restriction we found in one United States state is exactly that: married, heterosexual intended parents, genetic to the child. Ask who is a parent at birth, then ask what the second parent has to do.',
@@ -293,7 +293,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'Some systems recognise a spouse and not a partner, which changes who has to apply after the birth and whether a second parent can be named at all. Ask which status the rule is written against before assuming the answer follows the relationship.',
-      zh: '有些体系承认配偶而不承认伴侣，这会改变出生之后必须由谁提出申请，以及第二位父母能否被确立。先问规则写的是哪一种身份，再假设答案会跟着你的关系走。',
+      zh: '有些体系承认配偶而不承认伴侣，这会改变出生之后必须由谁提出申请，以及第二位父母能否被确立。先问规则写的是哪一种身份，再假设答案会跟着您的关系走。',
     },
     link: { en: 'Eligibility and parentage, question by question', zh: '逐条核对资格与亲权' },
     href: '/guides/surrogacy-legal-considerations',
@@ -307,7 +307,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'The destination decides what happens at birth. The country whose passport the child will claim, or the country you will return to, decides whether that birth result is accepted there. Those are two legal systems and two lawyers.',
-      zh: '目的地决定出生时发生什么。孩子将要申领护照的那个国家，或者你们要返回的那个国家，决定那里是否接受这个出生结果。这是两套法律体系，也是两位律师。',
+      zh: '目的地决定出生时发生什么。孩子将要申领护照的那个国家，或者您要返回的那个国家，决定那里是否接受这个出生结果。这是两套法律体系，也是两位律师。',
     },
     link: { en: 'What to ask before you shortlist', zh: '入围之前要问什么' },
     href: '/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
@@ -321,9 +321,9 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'A rule about residents and a rule about citizens are not the same rule. Where you live tends to decide who will treat you and where the birth gets registered; what passport you hold tends to decide what the child can claim. Answering both with one sentence is how a shortlist goes wrong.',
-      zh: '关于居民的规则和关于公民的规则不是同一条规则。你住在哪里通常决定了由谁来处理你们、出生在哪里登记；你持有什么护照通常决定了孩子可以主张什么。用一句话回答这两个问题，入围名单就是这样出错的。',
+      zh: '关于居民的规则和关于公民的规则不是同一条规则。您住在哪里通常决定了由谁来处理您、出生在哪里登记；您持有什么护照通常决定了孩子可以主张什么。用一句话回答这两个问题，入围名单就是这样出错的。',
     },
-    link: { en: 'Recognition where you live', zh: '你居住地的承认问题' },
+    link: { en: 'Recognition where you live', zh: '您居住地的承认问题' },
     href: '/guides/surrogacy-legal-considerations',
   },
   {
@@ -349,7 +349,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'In the United Kingdom the surrogate remains the legal mother at birth unless a parental order is obtained, and the arrangement itself is not enforceable. That is not a reason to rule the country out. It is a reason to know, before choosing anything, that a court application sits after the birth rather than before it.',
-      zh: '在英国，除非取得亲权令，代孕者在出生时仍然是法律上的母亲，而且安排本身不具有可执行性。这不是把这个国家排除在外的理由。它是一个理由，让你在选定任何东西之前就知道：一份法院申请排在出生之后，而不是出生之前。',
+      zh: '在英国，除非取得亲权令，代孕者在出生时仍然是法律上的母亲，而且安排本身不具有可执行性。这不是把这个国家排除在外的理由。它是一个理由，让您在选定任何东西之前就知道：一份法院申请排在出生之后，而不是出生之前。',
     },
     link: { en: 'Read the United Kingdom record', zh: '阅读英国记录' },
     href: '/destinations/gb',
@@ -361,7 +361,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     title: { en: 'Compare item lists, not headline figures', zh: '比较条目清单，而不是头部数字' },
     body: {
       en: 'Two quotes that differ by forty per cent can contain the same medicine and differ on what happens after a failed transfer. What you are comparing is scope: which stages are covered, who bills outside them, and what comes back if the program stops.',
-      zh: '两份相差百分之四十的报价可能包含同样的医疗内容，只是在移植失败之后如何处理上不同。你比较的是范围：覆盖哪些阶段、谁在其外另行计费，以及疗程停止时能退回什么。',
+      zh: '两份相差百分之四十的报价可能包含同样的医疗内容，只是在移植失败之后如何处理上不同。您比较的是范围：覆盖哪些阶段、谁在其外另行计费，以及疗程停止时能退回什么。',
     },
     link: { en: 'Put two quotes side by side', zh: '把两份报价并排放' },
     href: '/tools/agency-quote-comparison',
@@ -403,7 +403,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'A provider’s history of placing families in your situation is evidence about practice. It is not the rule, and it is not a promise about your case. Ask which provision says who may commission, then ask a lawyer in that jurisdiction to confirm it applies to you.',
-      zh: '一个机构安置过多少个与你情况相同的家庭，是关于惯例的证据。它不是规则，也不是关于你这个案例的承诺。先问哪一条规定写明谁可以委托，再请该辖区的律师确认它适用于你。',
+      zh: '一个机构安置过多少个与您情况相同的家庭，是关于惯例的证据。它不是规则，也不是关于您这个案例的承诺。先问哪一条规定写明谁可以委托，再请该辖区的律师确认它适用于您。',
     },
     link: { en: 'The destination records', zh: '目的地记录' },
     href: '/destinations',
@@ -425,11 +425,11 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     when: { field: 'budget', values: ['set'] },
     title: {
       en: 'A figure you already hold is worth testing against inclusions',
-      zh: '你已经持有的那个数字，值得对着包含项检验一次',
+      zh: '您已经持有的那个数字，值得对着包含项检验一次',
     },
     body: {
       en: 'Write the number down next to what it is stated to cover, then list what it does not. The gap between those two columns is the budget you will actually need, and it is the part a comparison of headline prices hides.',
-      zh: '把数字写下来，在旁边列出它据称覆盖的内容，然后再列出它不覆盖的内容。这两栏之间的差额才是你实际需要的预算，也正是头部价格比较会隐藏的那部分。',
+      zh: '把数字写下来，在旁边列出它据称覆盖的内容，然后再列出它不覆盖的内容。这两栏之间的差额才是您实际需要的预算，也正是头部价格比较会隐藏的那部分。',
     },
     link: { en: 'What to budget for and what to verify', zh: '该为什么做预算、该核实什么' },
     href: '/guides/surrogacy-cost',
@@ -457,7 +457,7 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     },
     body: {
       en: 'Learn how legal systems differ in shape first: which ones decide by statute, which by court decision, which region by region. Once the shapes make sense, a country name tells you what to expect instead of what to hope.',
-      zh: '先了解法律体系在形态上有什么不同：哪些由成文法决定，哪些由法院判决决定，哪些按地区分别决定。一旦这些形态说得通，一个国家的名字就会告诉你该期待什么，而不是该希望什么。',
+      zh: '先了解法律体系在形态上有什么不同：哪些由成文法决定，哪些由法院判决决定，哪些按地区分别决定。一旦这些形态说得通，一个国家的名字就会告诉您该期待什么，而不是该希望什么。',
     },
     link: { en: 'The destination records', zh: '目的地记录' },
     href: '/destinations',
@@ -470,10 +470,10 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
       zh: '只按价格比较地点，比较的是错误的那一列',
     },
     body: {
-      en: 'Two destinations at the same cost can differ on whether you can be named at birth, how many trips are needed, and whether the money is protected while you wait. Put the conditions in the same row before the totals go in.',
-      zh: '两个费用相同的目的地，可能在你能否在出生时就被确立、需要出行几次、以及等待期间资金是否受到保护上完全不同。先把条件放进同一行，再把总额放进去。',
+      en: 'Two destinations at the same cost can differ on whether you can be named at birth, how many trips are needed, and whether the money is protected while you wait. Compare the conditions one by one before you let the totals decide.',
+      zh: '两个费用相同的目的地，可能在您能否在出生时就被确立、需要出行几次、以及等待期间资金是否受到保护上完全不同。先把条件逐条比完，再来比总额。',
     },
-    link: { en: 'Score them on the same rows', zh: '让它们在同一组行上打分' },
+    link: { en: 'Compare them on the same questions', zh: '用同一组问题来比较它们' },
     href: '/tools/destination-research-checklist',
   },
   {
@@ -484,8 +484,8 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
       zh: '已经点名了目标之后，就把清单对着它逐项过一遍',
     },
     body: {
-      en: 'Take the destination you have in mind through every question that has an owner, and record who answered and when. A row you cannot get answered in writing is a finding in itself, and it is usually more informative than the answer a provider gives verbally.',
-      zh: '带你心中的那个目的地过一遍每一个有归属人的问题，并记录由谁回答、在何时回答。某一行你无法以书面形式得到答案，这本身就是结论，而且它通常比机构口头给出的答案更有信息量。',
+      en: 'Take the destination you have in mind through every question that has an owner, and record who answered and when. A question you cannot get answered in writing is a finding in itself, and it is usually more informative than the answer a provider gives verbally.',
+      zh: '带您心中的那个目的地过一遍每一个有归属人的问题，并记录由谁回答、在何时回答。某个问题您无法以书面形式得到答案，这本身就是结论，而且它通常比机构口头给出的答案更有信息量。',
     },
     link: { en: 'Open the research checklist', zh: '打开研究清单' },
     href: '/tools/destination-research-checklist',
@@ -495,11 +495,11 @@ export const ASSESSMENT_NOTES: AssessmentNote[] = [
     when: { field: 'timing', values: ['soon'] },
     title: {
       en: 'If you want to move soon, the legal opinion is the long item',
-      zh: '如果你想很快推进，法律意见才是那个耗时最长的项目',
+      zh: '如果您想很快推进，法律意见才是那个耗时最长的项目',
     },
     body: {
       en: 'Medical scheduling is usually the thing people chase first and the thing that moves fastest. A written view from a lawyer in the destination, and a second one in your own country, take longer to obtain and change what you should even be scheduling.',
-      zh: '医疗排期通常是人们最先追、也是推进最快的东西。而一份来自目的地律师的书面意见，加上另一份来自你自己国家的意见，取得起来更久，并且会改变你究竟应该安排什么。',
+      zh: '医疗排期通常是人们最先追、也是推进最快的东西。而一份来自目的地律师的书面意见，加上另一份来自您自己国家的意见，取得起来更久，并且会改变您究竟应该安排什么。',
     },
     link: { en: 'How the assessment service works', zh: '评估服务如何运作' },
     href: '/assessment',
@@ -511,14 +511,14 @@ export const ASSESSMENT_OWNERS: { who: Bilingual; owns: Bilingual }[] = [
     who: { en: 'A reproductive lawyer in the destination', zh: '目的地当地的生殖法律师' },
     owns: {
       en: 'Whether the rule covers your family, what the contract can bind, what the court will do and how long it takes.',
-      zh: '规则是否覆盖你的家庭、合同能够约束什么、法院会做什么，以及需要多长时间。',
+      zh: '规则是否覆盖您的家庭、合同能够约束什么、法院会做什么，以及需要多长时间。',
     },
   },
   {
-    who: { en: 'A lawyer where you are from or live', zh: '你来自或居住地的律师' },
+    who: { en: 'A lawyer where you are from or live', zh: '您来自或居住地的律师' },
     owns: {
       en: 'Whether your country accepts the birth result, who the legal parents are there, and what the child can enter on.',
-      zh: '你的国家是否接受这个出生结果、在那里谁是法律上的父母，以及孩子凭什么入境。',
+      zh: '您的国家是否接受这个出生结果、在那里谁是法律上的父母，以及孩子凭什么入境。',
     },
   },
   {
@@ -617,7 +617,7 @@ export type AssessmentChrome = {
 export const ASSESSMENT_CHROME: Record<Lang, AssessmentChrome> = {
   en: {
     eyebrow: 'Preliminary assessment',
-    heading: 'Which destinations should you research first?',
+    heading: 'What should you verify before you choose a destination?',
     intro:
       'Answer ten questions about your family, your goals and your practical conditions. The result is a roadmap of what to verify, in the order it tends to bite. It is not a legal opinion, it is not medical advice, and it will not name a country as suitable for you, because the verified material on this site describes how each legal system works rather than which family may use it.',
     privacy:
@@ -689,13 +689,13 @@ export const ASSESSMENT_CHROME: Record<Lang, AssessmentChrome> = {
 
   zh: {
     eyebrow: '初步评估',
-    heading: '你应该先研究哪些目的地？',
+    heading: '在选定目的地之前，您应当先核实什么？',
     intro:
-      '回答十个关于你的家庭、你的目标和你的现实条件的问题。结果是一份关于要核实什么的路线图，按它通常最先出问题的顺序排列。它不是法律意见，不是医疗建议，也不会点名某个国家对你合适，因为本站已核实的资料描述的是每个法律体系如何运作，而不是哪个家庭可以使用它。',
+      '回答十个关于您的家庭、您的目标和您的现实条件的问题。结果是一份关于要核实什么的路线图，按它通常最先出问题的顺序排列。它不是法律意见，不是医疗建议，也不会点名某个国家对您合适，因为本站已核实的资料描述的是每个法律体系如何运作，而不是哪个家庭可以使用它。',
     privacy:
-      '任何内容都不会被提交。你的答案保存在这个浏览器里，因此刷新页面不会丢失，清除站点数据即可删除。任何一步都不收集姓名、联系方式、身份证明、医疗记录或财务信息。',
+      '任何内容都不会被提交。您的答案保存在这个浏览器里，因此刷新页面不会丢失，清除站点数据即可删除。任何一步都不收集姓名、联系方式、身份证明、医疗记录或财务信息。',
     stepsLabel: '评估步骤',
-    lastStep: '然后是你的路线图',
+    lastStep: '然后是您的路线图',
     chooseAny: '可多选',
     optional: '可选',
     back: '上一步',
@@ -705,42 +705,42 @@ export const ASSESSMENT_CHROME: Record<Lang, AssessmentChrome> = {
     hintComplete: '{n} 项必填回答已全部完成。这些内容不会发送到任何地方。',
     hintProgress: '已回答 {filled} / {total} 项。空着的那几项可能在其他步骤里。',
     noscript:
-      '上面以一份列表展示了全部十个问题，下面每一条路线图备注也都可见。没有步骤按钮，因为不需要逐步翻页：阅读与你情况相符的备注，其余忽略即可。',
-    resultsHeading: '你的目的地研究路线图',
+      '上面以一份列表展示了全部十个问题，下面每一条路线图备注也都可见。没有步骤按钮，因为不需要逐步翻页：阅读与您情况相符的备注，其余忽略即可。',
+    resultsHeading: '您的目的地研究路线图',
     resultsModeFull: '完整列表，未经筛选',
-    resultsIntro: '这是完整的路线图。回答上面的问题之后，你得到的版本会去掉不适用于你的部分。',
+    resultsIntro: '这是完整的路线图。回答上面的问题之后，您得到的版本会去掉不适用于您的部分。',
     coreHeading: '最先要核实的三个问题',
-    notesHeading: '你的回答会改变什么',
+    notesHeading: '您的回答会改变什么',
     ownersHeading: '每个答案由谁负责',
     ownersIntro: '上面的路线图是一份研究计划。下面这些才是真正能确定其中问题的人，而本站不在其中。',
     sourceLabel: '来源：',
     checkedLabel: '核查于 {date}',
-    notesEmpty: '你的回答没有缩小这个列表，所以每一条备注都还在里面。',
+    notesEmpty: '您的回答没有缩小这个列表，所以每一条备注都还在里面。',
     copyButton: '复制路线图',
     downloadButton: '下载为文档',
     checklistLink: '逐题处理每一个问题',
     copyExplanation:
-      '复制和下载都把路线图留在你这一侧：它是在这个浏览器里整理成一个文本文件的，你可以把它发给律师，或者粘贴进笔记。使用时没有任何内容上传给我们。',
+      '复制和下载都把路线图留在您这一侧：它是在这个浏览器里整理成一个文本文件的，您可以把它发给律师，或者粘贴进笔记。使用时没有任何内容上传给我们。',
     handoffTitle: '想要同一份清单的书面简报？',
-    handoffWithEmail: '这是可选项，而且不会改变上面路线图的任何内容：你可以把自己的答案发给律师，或者发给我们，而不必重新打字。',
+    handoffWithEmail: '这是可选项，而且不会改变上面路线图的任何内容：您可以把自己的答案发给律师，或者发给我们，而不必重新打字。',
     handoffNoEmail:
-      '在这一阶段，路线图就是交付物，而且它在没有联系方式的情况下也是完整的。当你准备好把这些问题交给一个真人时，首页上的问询生成器会把同样的答案整理成一份由你自己发出的简报。',
+      '在这一阶段，路线图就是交付物，而且它在没有联系方式的情况下也是完整的。当您准备好把这些问题交给一个真人时，首页上的问询生成器会把同样的答案整理成一份由您自己发出的简报。',
     handoffBrief: '生成问询简报',
     handoffStandards: '我们如何为一条结论列出来源',
-    modeNarrowed: '已根据你的 {n} 项回答缩小',
+    modeNarrowed: '已根据您的 {n} 项回答缩小',
     summaryMatched: '下面 {n} 条备注与上面的回答相符。最先要核实的那三个问题不会改变：每一条路径都必须回答它们。',
-    summaryUnmatched: '你的回答没有缩小任何备注，所以仍然显示完整列表。最先要核实的那三个问题，无论你回答什么都适用。',
+    summaryUnmatched: '您的回答没有缩小任何备注，所以仍然显示完整列表。最先要核实的那三个问题，无论您回答什么都适用。',
     errorStepComplete: '在继续之前，请回答本步骤中每一个必填问题。',
-    errorStepOpen: '第 {num} 步仍有必填问题没有回答，现在已为你打开。',
+    errorStepOpen: '第 {num} 步仍有必填问题没有回答，现在已为您打开。',
     copied: '已复制',
     copyBlocked: '这里禁止复制。请改用下载。',
     export: {
       title: '目的地研究路线图',
       assembled: '由 SurrogacyBase 评估工具在 {date} 生成。',
       note: '这是一份研究计划，不是法律意见，也不是入围名单。',
-      answers: '你的回答',
+      answers: '您的回答',
       core: '最先要核实的三个问题',
-      changes: '你的回答会改变什么',
+      changes: '您的回答会改变什么',
       owners: '每个答案由谁负责',
       answerLine: '{question}{answer}',
       sourceLine: '来源：{label}',

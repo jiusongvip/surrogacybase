@@ -12,12 +12,12 @@ import Icon from '@/components/ui/Icon.astro';
 import NeedsInput from '@/components/ui/NeedsInput.astro';
 import AssessmentRequest from '@/components/forms/AssessmentRequest.astro';
 import { SITE } from '@/const';
-import { ASSESSMENT_PAGE } from '@/data/service-pages';
+import { ASSESSMENT_PAGE, ASSESSMENT_REVISION } from '@/data/service-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { fill } from '@/i18n/ui';
 
-const UPDATED_ON = '2026-10-14';
+const UPDATED_ON = ASSESSMENT_REVISION;
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = ASSESSMENT_PAGE[lang];

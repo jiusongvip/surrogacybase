@@ -156,7 +156,7 @@ const home = localizedPath(lang, '/');
     <div class="mt-7">
       {
         rows.length > 0 ? (
-          <JurisdictionTable rows={rows} />
+          <JurisdictionTable rows={rows} compact />
         ) : (
           <EmptyState title={copy.records.emptyTitle} body={copy.records.emptyBody} />
         )

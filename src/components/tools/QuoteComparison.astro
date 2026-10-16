@@ -11,6 +11,7 @@
  */
 import { langFromPath } from '@/i18n/paths';
 import { QUOTE_CHROME } from '@/data/tool-pages';
+import { LANG_META } from '@/i18n/config';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = QUOTE_CHROME[lang];
@@ -27,6 +28,7 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
   class="rounded-(--radius-panel) border border-line bg-surface p-5 sm:p-7"
   data-quote-tool
   data-store={storeKey}
+  data-locale={LANG_META[lang].dateLocale}
   data-copy={JSON.stringify(copy)}
 >
   <p class="text-[13px] text-muted">
@@ -36,7 +38,8 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
   <div class="mt-5 flex flex-wrap items-end gap-3">
     <div class="w-40">
       <label class="field-label" for="qc-currency">{copy.currency}</label>
-      <select id="qc-currency" class="field-input mt-1.5" data-field="currency">
+      <p class="mt-1.5 text-[13px] leading-[1.5] text-muted" id="qc-currency-note">{copy.currencyNote}</p>
+      <select id="qc-currency" class="field-input" data-field="currency" aria-describedby="qc-currency-note">
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
@@ -114,6 +117,7 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
     ];
 
     const storeKey = root.dataset.store!;
+    const locale = root.dataset.locale ?? 'en-US';
 
     const planRow = root.querySelector<HTMLElement>('[data-plan-head]')!;
     const colRow = root.querySelector<HTMLElement>('[data-col-head]')!;
@@ -191,13 +195,13 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
 
     function money(value: number): string {
       try {
-        return new Intl.NumberFormat('en', {
+        return new Intl.NumberFormat(locale, {
           style: 'currency',
           currency: state.currency,
           maximumFractionDigits: 0,
         }).format(value);
       } catch {
-        return `${state.currency} ${value.toLocaleString('en')}`;
+        return `${state.currency} ${value.toLocaleString(locale)}`;
       }
     }
 

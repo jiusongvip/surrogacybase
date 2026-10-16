@@ -291,7 +291,7 @@ export const UI: Record<Lang, {
     breadcrumbLabel: 'Breadcrumb',
     home: 'Home',
     brandAlt: 'SurrogacyBase home',
-    needsInput: 'Needs input',
+    needsInput: 'Not yet in place',
     undated: 'undated',
     notYetDated: 'Not yet dated',
     tagline: `${SITE.tagline} Independent information and decision tools. Not a clinic, not a law firm, not a surrogacy agency.`,
@@ -369,7 +369,7 @@ export const UI: Record<Lang, {
         'It lists questions and categories to work through. It does not state legal, medical or price facts, so there is nothing here to cite.',
       draftHeading: 'Still being researched',
       draftBody:
-        'Claims on this page are not yet checked against a source we can link to. It stays out of search results until that work is finished.',
+        'Claims on this page have not yet been checked against a source you can open, so they are not published as findings.',
       listedOne: '1 source listed',
       listedMany: '{n} sources listed',
       verifiedBody: 'Every factual claim below is tied to a named source with the date we last opened it.',
@@ -403,7 +403,7 @@ export const UI: Record<Lang, {
         updated: 'updated',
         emptyTitle: 'No guides published yet',
         emptyBody:
-          'The guide template and its source-tracking fields are in place. Framework guides go live one at a time, after the claims inside them have been checked.',
+          'A guide is published once every claim in it has been checked against a source you can open. They appear one at a time.',
         emptyAction: 'How we verify content',
       },
       articles: {
@@ -418,7 +418,7 @@ export const UI: Record<Lang, {
         allGuides: 'All guides',
         emptyTitle: 'No explainers published yet',
         emptyBody:
-          'The explainer system is built and the template is live. Pages appear here once each claim has a source you can open.',
+          'An explainer is published once each of its claims has a source you can open. They appear one at a time.',
         emptyAction: 'Read the research standards',
       },
       category: {
@@ -429,11 +429,11 @@ export const UI: Record<Lang, {
         introOne: '1 published explainer in this topic, each linked to the guide it supports.',
         introMany: '{n} published explainers in this topic, each linked to the guide it supports.',
         introEmpty:
-          'Nothing in this topic has cleared source verification yet, so the list stays empty instead of showing placeholder pages.',
+          'Nothing published in this topic has cleared source verification yet, so there is nothing here to read.',
         allArticles: 'All explainers',
         emptyTitle: 'Not written yet',
         emptyBody:
-          'This topic is on the research list. When a page here can cite its claims, it joins this list and the sitemap.',
+          'This topic is on the research list. A page appears here once its claims can be cited.',
         emptyAction: 'See what is published',
       },
       detail: {
@@ -495,7 +495,7 @@ export const UI: Record<Lang, {
               q: 'Does the rule name a family like yours?',
               a: 'Permission in principle is not eligibility. Where a provision says who may commission, it usually turns on marital status, a genetic link to the child, or the composition of the family. A country described as surrogacy-friendly has answered a different question from this one.',
               test:
-                'The answer is a rule when someone can point at the provision. It is practice when it comes from how many families like theirs a provider has placed.',
+                'The answer is a rule when someone can point at the provision. It is practice when it comes from how many families like yours a provider has placed.',
             },
             {
               q: 'Who is the legal parent at birth?',
@@ -660,7 +660,7 @@ export const UI: Record<Lang, {
           heading: 'No destination has been chosen for you here',
           body:
             "That is deliberate. A page that named a best country would be repeating a provider's claim without the standing to test it. What this site can do is hold each legal system to its sources and keep the comparison honest.",
-          brief: 'Build the enquiry brief',
+          brief: 'Write the enquiry out',
           service: 'What the assessment service is',
         },
         standard: {
@@ -678,7 +678,7 @@ export const UI: Record<Lang, {
         why: {
           heading: 'Why the list is short',
           body:
-            "We add a destination when we can cite the rule rather than repeat a provider's summary. Where the only material available is marketing, or a citation that does not check out when it is opened, the record says so and carries the attempt. Colombia is on that list because the court decision most provider pages cite for it, once you open it, turns out to be about something else entirely.",
+            "We add a destination when we can cite the rule rather than repeat a provider's summary. Where the only material available is marketing, or a citation that does not check out once it is opened, the record says so rather than tidying the gap. Each record below lists the questions its own sources did not settle.",
           readTitle: 'How to read a record',
           readBody:
             'Permitted in principle is not the same as workable for you. Eligibility, parentage, which court handles it and what documentation the child leaves on are separate questions, and any one of them can fail on its own.',
@@ -697,7 +697,7 @@ export const UI: Record<Lang, {
     breadcrumbLabel: '位置导航',
     home: '首页',
     brandAlt: 'SurrogacyBase 首页',
-    needsInput: '待补充',
+    needsInput: '尚未确定',
     undated: '无日期',
     notYetDated: '暂无日期',
     tagline: '让代孕决定更清楚，面向世界各地的家庭。独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。',
@@ -773,7 +773,7 @@ export const UI: Record<Lang, {
       frameworkHeading: '这一页给出的是方法，不是结论',
       frameworkBody: '它列出需要逐一处理的问题与分类。它不陈述法律、医疗或价格事实，因此这里没有需要引用的外部来源。',
       draftHeading: '仍在研究中',
-      draftBody: '这一页的结论还没有对照过我们能公开链接的来源。在完成这项工作之前，它不会出现在搜索结果里。',
+      draftBody: '这一页的结论还没有对照过您可以打开的来源，因此不作为结论发布。',
       listedOne: '已列出 1 条来源',
       listedMany: '已列出 {n} 条来源',
       verifiedBody: '下面每一条事实性结论都对应一个具名来源，并标注我们最后一次打开它的日期。',
@@ -804,19 +804,19 @@ export const UI: Record<Lang, {
         open: '打开',
         updated: '更新于',
         emptyTitle: '尚无已发布的指南',
-        emptyBody: '指南模板与它的来源追踪字段已经就绪。框架指南会在其中每一条结论核对完成后逐篇上线。',
+        emptyBody: '每一篇结论核对完成后的指南都会逐篇发布。这里暂时还没有。',
         emptyAction: '我们如何核查内容',
       },
       articles: {
         title: '专题解读',
         description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇都连接到它所支撑的指南。',
-        intro: '一篇专题解读回答一个问题，来源列在页面底部。指南承载框架；专题解读回答你在阅读指南时遇到的具体问题。',
+        intro: '一篇专题解读回答一个问题，来源列在页面底部。指南承载框架；专题解读回答您在阅读指南时遇到的具体问题。',
         mostRecent: '最新发布',
         browseByTopic: '按主题浏览',
         guidesPitch: '想要一个主题的完整论述？指南承载框架，专题解读保持窄口径。',
         allGuides: '全部指南',
         emptyTitle: '尚无已发布的专题解读',
-        emptyBody: '专题解读的系统已经建好，模板也已上线。当每一条结论都有可打开的来源时，页面才会出现在这里。',
+        emptyBody: '每一条结论都有您可以打开的来源之后，专题解读才会发布在这里。',
         emptyAction: '阅读研究标准',
       },
       category: {
@@ -825,10 +825,10 @@ export const UI: Record<Lang, {
         descriptionEmpty: '关于代孕{label}的专题解读仍在研究之中。任何一页通过来源核查之后，会立刻出现在这个列表与站点地图里。',
         introOne: '这一主题已发布 1 篇专题解读，并连接到它所支撑的指南。',
         introMany: '这一主题已发布 {n} 篇专题解读，每篇都连接到它所支撑的指南。',
-        introEmpty: '这一主题还没有内容通过来源核查，因此列表保持为空，而不是放置占位页面。',
+        introEmpty: '这一主题还没有内容通过来源核查，所以这里暂时没有条目。',
         allArticles: '全部专题解读',
         emptyTitle: '尚未撰写',
-        emptyBody: '这一主题在研究清单上。当这里的页面能够为它的结论列出来源时，它会加入这个列表和站点地图。',
+        emptyBody: '这一主题在研究清单上。当这里的页面能够为它的结论列出来源时，它就会出现在这个列表里。',
         emptyAction: '查看已发布内容',
       },
       detail: {
@@ -839,7 +839,7 @@ export const UI: Record<Lang, {
         title: '{name}代孕：法律实际写了什么',
         description: '关于{name}（{region}）代孕的四项已核实立场：法律基础、谁可以委托、付款规则与亲权，每一条都附上来源与核查日期。',
         heading: '{name}的代孕法律',
-        intro: '下面每一项立场都来自与它一同列出的来源，并在标注的日期被最后一次打开。凡是一条规则取决于你的个人情况，页面就直接说明，而不是猜测。',
+        intro: '下面每一项立场都来自与它一同列出的来源，并在标注的日期被最后一次打开。凡是一条规则取决于您的个人情况，页面就直接说明，而不是猜测。',
         checked: '立场核查于 {date}',
         insufficient: '关于{name}，我们没有找到足够的可核实公开资料，不足以把它作为一个可行目的地呈现。请把它当作一份待回答问题清单来读，并在作出任何计划之前交给当地有资格的律师。',
         positions: {
@@ -864,10 +864,10 @@ export const UI: Record<Lang, {
         description: '按资格、出生时的亲权、付款规则、费用范围与到场要求比较代孕目的地，每一条法律立场都附有来源与日期。',
         breadcrumb: '目的地',
         eyebrow: '独立的目的地研究',
-        h1: '哪些代孕目的地适合你的情况？',
-        lede: '这一页不点名最好的国家。它帮你判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖你的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及你需要到场的时候你能不能到场。',
-        notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与你是否有遗传关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于你个人情况的法律意见；一个国家允许某种安排，并不能证明你可以使用它，也不能证明你自己的国家会接受这个结果。',
-        ctaAssessment: '从你自己的情况开始',
+        h1: '哪些代孕目的地适合您的情况？',
+        lede: '这一页不点名最好的国家。它帮您判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖您的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及您需要到场的时候您能不能到场。',
+        notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有遗传关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
+        ctaAssessment: '从您自己的情况开始',
         ctaRecords: '比较已核实的记录',
         stats: {
           recorded: '已记录的目的地',
@@ -876,27 +876,27 @@ export const UI: Record<Lang, {
         },
         factors: {
           heading: '在偏好起作用之前，先由四件事决定目的地',
-          intro: '按顺序逐项处理。每一条都比阅读介绍更快地排除地点，而且每一条都有一个你可以拿去问机构、或者拿去问律师的检验方法。',
+          intro: '按顺序逐项处理。每一条都比阅读介绍更快地排除地点，而且每一条都有一个您可以拿去问机构、或者拿去问律师的检验方法。',
           items: [
             {
-              q: '规则是否点名了像你这样的家庭？',
-              a: '原则上允许并不等于你有资格。凡是一条规定写明谁可以委托，它通常取决于婚姻状况、与孩子是否有遗传关系，或者家庭的构成。一个被描述为「对代孕友好」的国家，回答的不是这个问题。',
+              q: '规则是否点名了像您这样的家庭？',
+              a: '原则上允许并不等于您有资格。凡是一条规定写明谁可以委托，它通常取决于婚姻状况、与孩子是否有遗传关系，或者家庭的构成。一个被描述为「对代孕友好」的国家，回答的不是这个问题。',
               test: '当有人能指向那条规定时，答案是规则。当答案来自某家机构已经安置过多少个类似的家庭时，那是惯例。',
             },
             {
               q: '孩子在出生时的法律父母是谁？',
-              a: '在一些体系里，意向父母在出生时就被确立；在另一些体系里，分娩的女性无论协议写了什么仍然在法律上是母亲，亲权只能在之后通过法院转移。仅此一项差别，就决定了你的规划是在产房结束，还是在产房开始。',
+              a: '在一些体系里，意向父母在出生时就被确立；在另一些体系里，分娩的女性无论协议写了什么仍然在法律上是母亲，亲权只能在之后通过法院转移。仅此一项差别，就决定了您的规划是在产房结束，还是在产房开始。',
               test: '要求给出顺序：出生当天谁是父母，之后存在哪一种申请，由谁审理，以及一项裁定实际需要多久。',
             },
             {
               q: '预算是否覆盖整个过程？',
-              a: '一个你负担不起的目的地，不是你应该研究的目的地。但真正要紧的数字是范围而不是总额：一个疗程包含哪些阶段，法律允许向代孕者支付什么，哪些费用在报价之外另行计费，以及疗程中止时有什么会退回给你。',
+              a: '一个您负担不起的目的地，不是您应该研究的目的地。但真正要紧的数字是范围而不是总额：一个疗程包含哪些阶段，法律允许向代孕者支付什么，哪些费用在报价之外另行计费，以及疗程中止时有什么会退回给您。',
               test: '两份相差百分之四十的报价可能包含同样的医疗内容。先比较条目清单，再比较头部数字。',
             },
             {
-              q: '你能在它需要的时候到场吗？',
+              q: '您能在它需要的时候到场吗？',
               a: '治疗前签署文件、出席法院、领取文件、以及分娩之后的停留，是分开的几项要求，而且它们通常由诊所惯例、登记处和法院决定，而不是由法条决定。出行限制比预算更快地缩小范围。',
-              test: '让负责每一步的人把到场时间表以书面形式交给你，并清楚说明你有几个可用的时间窗口。',
+              test: '让负责每一步的人把到场时间表以书面形式交给您，并清楚说明您有几个可用的时间窗口。',
             },
           ],
         },
@@ -905,7 +905,7 @@ export const UI: Record<Lang, {
           intro: '一条记录说明某个具体法律体系写了什么、它看起来适用于谁，以及我们最后一次阅读其背后来源的日期。打开一条记录，可以看到每一项立场与它的引用并列，以及我们未能确定的问题。',
           emptyTitle: '尚无已核实的内容',
           emptyBody: '每个目的地都要先有一份带日期的一手法律来源，才会出现在这里。把机构博客上的地点清单抄过来，是发布错误内容最快的方式。',
-          thinNote: '{names}带着标记列出，因为我们能打开的来源并不支持一个可用的结论。它们保留在页面上，是为了让你在宣传册里已经见过的名字，不至于没有任何说明就消失。',
+          thinNote: '{names}带着标记列出，因为我们能打开的来源并不支持一个可用的结论。它们保留在页面上，是为了让您在宣传册里已经见过的名字，不至于没有任何说明就消失。',
           thinJoin: '、',
           thinOne: '',
           thinMany: '',
@@ -936,7 +936,7 @@ export const UI: Record<Lang, {
             {
               name: '亲权在出生之后才转移',
               where: '英国，以及任何有类似法院路径的体系',
-              plan: '你的规划无法在分娩时收尾。之后还有一份申请、一次庭审，以及一段孩子在法律上属于别人的等待期。',
+              plan: '您的规划无法在分娩时收尾。之后还有一份申请、一次庭审，以及一段孩子在法律上属于别人的等待期。',
               points: [
                 '除非取得亲权令，代孕者在法律上仍是母亲；书面安排不具有法律约束力；并且付款限于她的合理开支。',
                 '支付超过合理开支的部分，必须先经家事法院批准才能作出亲权令；依《1985年代孕安排法》，为代孕刊登广告或者以代孕者身份刊登广告均属违法。',
@@ -946,16 +946,16 @@ export const UI: Record<Lang, {
             {
               name: '付款受限，而亲权在别处决定',
               where: '加拿大，以及任何只就金钱立法、不就出生立法的联邦体系',
-              plan: '一个国家可以合法进入，却未必是你的亲权裁定的来源地。把报销规则和省级出生规则当作两份分开的文件来读。',
+              plan: '一个国家可以合法进入，却未必是您的亲权裁定的来源地。把报销规则和省级出生规则当作两份分开的文件来读。',
               points: [
                 '依联邦法规，代孕母亲因代孕而产生的支出可以被报销。受规范约束的报销是允许的；它与被禁止的付款之间的界线，取决于某项安排的具体内容。',
                 '我们的加拿大记录没有就资格作出陈述，因为已核实的联邦来源规范的是报销而不是谁可以委托；也没有就亲权作出任何主张，因为亲权由省级与地区法律决定，而那些规则我们尚未核实。',
               ],
             },
             {
-              name: '没有全国统一规则，由你落地的那一层决定',
+              name: '没有全国统一规则，由您落地的那一层决定',
               where: '美国，以及任何由次国家法律管辖的国家',
-              plan: '国家名几乎不告诉你什么。规则由州、省或地区制定，而你居住地的承认问题，是在其上再加一整套法律体系。',
+              plan: '国家名几乎不告诉您什么。规则由州、省或地区制定，而您居住地的承认问题，是在其上再加一整套法律体系。',
               points: [
                 '各州对代孕是否允许、以及如何监管各有自己的法律；不存在联邦框架。',
                 '在我们阅读的这项调查中，有 21 个州以成文法明确允许妊娠型代孕，另有若干州既没有允许也没有禁止的成文法或公开判例。',
@@ -982,17 +982,17 @@ export const UI: Record<Lang, {
           items: [
             {
               label: '法律与亲权',
-              body: '按顺序处理可执行性、出生时的亲权、资格、可以支付什么，以及你居住地的承认问题。',
+              body: '按顺序处理可执行性、出生时的亲权、资格、可以支付什么，以及您居住地的承认问题。',
             },
             { label: '费用指南', body: '一份预算由什么构成，报价通常漏掉什么，以及钱实际是怎么流转的。' },
-            { label: '研究清单', body: '七组共三十六个问题，每行一个状态和一条备注，保存在你自己的浏览器里。' },
+            { label: '研究清单', body: '七组共三十六个问题，每行一个状态和一条备注，保存在您自己的浏览器里。' },
             { label: '报价对比', body: '把两个疗程填进同样的行里，让差别落在范围上，而不是落在头部数字上。' },
           ],
         },
         band: {
-          heading: '这里没有替你选定任何目的地',
+          heading: '这里没有替您选定任何目的地',
           body: '这是刻意的。一个点名最佳国家的页面，等于在没有任何验证资格的情况下重复机构的主张。本站能做的是把每个法律体系对着它的来源核对，并让比较保持诚实。',
-          brief: '生成问询简报',
+          brief: '把问询写出来',
           service: '评估服务是什么',
         },
         standard: {
@@ -1009,9 +1009,9 @@ export const UI: Record<Lang, {
         },
         why: {
           heading: '为什么这份名单很短',
-          body: '只有当我们能引用规则本身、而不是复述机构的概述时，我们才添加一个目的地。当可获得的材料只有营销内容，或者一条引用打开之后发现对不上时，记录就会这样写明，并保留这次核查过程。哥伦比亚就在这份名单上，因为多数机构页面为它引用的那份法院判决，打开之后你会发现它讲的完全是另一件事。',
+          body: '只有当我们能引用规则本身、而不是复述机构的概述时，我们才添加一个目的地。当可获得的材料只有营销内容，或者一条引用打开之后发现对不上时，记录会直接这样写明，而不是把空缺抹平。下面每条记录都列出自己的来源没能确定的问题。',
           readTitle: '怎么读一条记录',
-          readBody: '原则上允许，和对你可行，不是一回事。资格、亲权、由哪个法院处理、孩子凭什么文件离开，是各自独立的问题，其中任何一个单独都可能不成立。',
+          readBody: '原则上允许，和对您可行，不是一回事。资格、亲权、由哪个法院处理、孩子凭什么文件离开，是各自独立的问题，其中任何一个单独都可能不成立。',
           link: '五个法律问题',
         },
       },

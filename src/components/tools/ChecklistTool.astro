@@ -12,6 +12,7 @@
  * written into it, and an English status label on a Chinese page would be the only English on it.
  */
 import { langFromPath } from '@/i18n/paths';
+import { LANG_META } from '@/i18n/config';
 import { fill } from '@/i18n/ui';
 import { CHECKLIST_CHROME, type ChecklistChrome } from '@/data/checklists';
 
@@ -35,7 +36,8 @@ const { groups, storageKey, exportName } = Astro.props;
  * The tool is used from both locales, so the copy is resolved here rather than passed in: a prop
  * a page can hand over in the wrong language is a page that prints the wrong language.
  */
-const chrome: ChecklistChrome = CHECKLIST_CHROME[langFromPath(Astro.url.pathname)];
+const lang = langFromPath(Astro.url.pathname);
+const chrome: ChecklistChrome = CHECKLIST_CHROME[lang];
 
 const STATUSES = [
   { value: 'todo', label: chrome.statusTodo },
@@ -49,6 +51,7 @@ const rowKey = (groupId: string, itemId: string) => `${groupId}:${itemId}`;
 <div
   data-checklist={storageKey}
   data-export={exportName}
+  data-locale={LANG_META[lang].dateLocale}
   data-copy={JSON.stringify(chrome)}
 >
   <div class="flex flex-wrap items-end gap-3">
@@ -152,6 +155,7 @@ const rowKey = (groupId: string, itemId: string) => `${groupId}:${itemId}`;
 
   for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-checklist]'))) {
     const T = JSON.parse(root.dataset.copy!) as Chrome;
+    const locale = root.dataset.locale ?? 'en-US';
     const LABELS: Record<Status, string> = {
       todo: T.statusTodo,
       asked: T.statusAsked,
@@ -360,7 +364,8 @@ const rowKey = (groupId: string, itemId: string) => `${groupId}:${itemId}`;
 
       if (action === 'export') {
         const title = document.querySelector<HTMLHeadingElement>('h1')?.textContent?.trim() ?? T.fallbackTitle;
-        const lines: string[] = [`# ${title}`, '', `${T.savedLine} ${new Date().toISOString()}`];
+        const savedAt = new Date().toLocaleString(locale, { dateStyle: 'long', timeStyle: 'short' });
+        const lines: string[] = [`# ${title}`, '', `${T.savedLine} ${savedAt}`];
         for (const section of sections) {
           const heading = section.querySelector('h3')?.textContent?.trim() ?? '';
           lines.push('', `## ${heading}`);

@@ -30,7 +30,7 @@ sources:
     publisher: "Health Canada"
     publishedOn: "2019-08-30"
     verifiedOn: "2026-10-14"
-    supports: "The enumerated reimbursable surrogate expenditures, including travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance and lost work-related income, with receipts required."
+    supports: "The enumerated reimbursable surrogate expenditures, including travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance and lost work-related income, with receipts required and records kept for six years."
   - label: "Surrogacy: a factsheet"
     url: "https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/"
     publisher: "Human Fertilisation and Embryology Authority"
@@ -68,7 +68,7 @@ This is the list to work through with a quote in front of you. For each item, as
 ## Personal items that programs describe as "out of scope"
 
 11. **Your travel and stay**, including how many trips, how long you must be present, and who else comes. Transfers and birth dates are set by clinic schedules, not by your leave calendar.
-12. **The carrier's reimbursable expenses**, wherever you are. In Canada these are enumerated by the regulator: [travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) during the pre-pregnancy and post-partum period, with receipts required and records kept for five years. In the United Kingdom, payment is limited to [reasonable expenses](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and anything more must be authorised by the family court before a parental order can be made. Either way, the category is real, and in a quote it is frequently summarised as one line or omitted entirely.
+12. **The carrier's reimbursable expenses**, wherever you are. In Canada these are enumerated by the regulator: [travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) during the pre-pregnancy and post-partum period, with receipts required and records kept for six years. In the United Kingdom, payment is limited to [reasonable expenses](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and anything more must be authorised by the family court before a parental order can be made. Either way, the category is real, and in a quote it is frequently summarised as one line or omitted entirely.
 
 ## What one provider's own itemisation looks like
 

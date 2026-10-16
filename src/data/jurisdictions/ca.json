@@ -3,9 +3,9 @@
   "name": "Canada",
   "region": "North America",
   "basis": "assisted-reproduction-law",
-  "eligibility": "The federal sources verified for this page govern reimbursement rather than who may commission a surrogacy, so no eligibility statement is made here.",
-  "paymentModel": "Reimbursement only. Under the Assisted Human Reproduction Act regulations, expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed. Regulated reimbursement is permitted; paying a person to act as a surrogate is not. Health Canada's guidance enumerates reimbursable costs, requires receipts, and requires records to be kept for five years.",
-  "parentage": "Parentage after birth is a matter of provincial and territorial law. The federal sources checked here do not set it, and this page makes no claim about it.",
+  "eligibility": "No eligibility rule is set by the federal sources available here; they govern reimbursement rather than who may commission a surrogacy. Confirm your own position with a lawyer in the relevant province or territory.",
+  "paymentModel": "Reimbursement only. Under the Assisted Human Reproduction Act regulations, expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed. Regulated reimbursement is permitted; paying a person to act as a surrogate is not. Health Canada's guidance enumerates reimbursable costs, requires receipts, and requires records to be kept for six years.",
+  "parentage": "Parentage after birth is a matter of provincial and territorial law. The federal sources available here do not set it, and nothing more is claimed about it here.",
   "statusVerifiedOn": "2026-10-14",
   "insufficientData": false,
   "facts": [
@@ -21,7 +21,7 @@
       }
     },
     {
-      "claim": "Reimbursable surrogate costs enumerated by the regulator include travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income during the pre-pregnancy and post-partum period, with receipts required and records kept for five years.",
+      "claim": "Reimbursable surrogate costs enumerated by the regulator include travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income during the pre-pregnancy and post-partum period, with receipts required and records kept for six years.",
       "source": {
         "label": "Reimbursement of expenditures incurred by a surrogate applicant or a surrogate in relation to her surrogacy (consultation document)",
         "url": "https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html",
@@ -33,8 +33,8 @@
     }
   ],
   "openQuestions": [
-    "Which province or territory you give birth in or take the child home to changes the parentage answer. Provincial rules were not verified for this page.",
+    "Which province or territory you give birth in or take the child home to changes the parentage answer. No provincial rule has been verified here, so that answer needs confirming with a lawyer in the relevant province or territory.",
     "The line between permitted reimbursement and a prohibited payment turns on the specifics of an arrangement. That is a question for a Canadian lawyer, not something a reimbursement list settles.",
-    "Whether a child born abroad through surrogacy can be registered or enter Canada involves federal and provincial rules beyond the sources recorded here."
+    "Whether a child born abroad through surrogacy can be registered or enter Canada involves federal and provincial rules beyond what is verified here."
   ]
 }
