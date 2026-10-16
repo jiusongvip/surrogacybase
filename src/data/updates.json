@@ -83,7 +83,7 @@
     "date": "2026-10-14",
     "kind": "published",
     "path": "/articles/why-no-average-surrogacy-cost-exists",
-    "title": "Article: why no average cost exists",
+    "title": "Explainer: why no average cost exists",
     "change": "First publication.",
     "reason": "Explains what registry data does and does not cover, so readers can judge any cost figure they meet elsewhere."
   },
@@ -91,7 +91,7 @@
     "date": "2026-10-14",
     "kind": "published",
     "path": "/articles/surrogacy-costs-that-sit-outside-a-quote",
-    "title": "Article: costs outside a quote",
+    "title": "Explainer: costs outside a quote",
     "change": "First publication.",
     "reason": "The exclusions list is the practical gap between a quoted fee and a real budget."
   },
@@ -99,7 +99,7 @@
     "date": "2026-10-14",
     "kind": "published",
     "path": "/articles/surrogacy-escrow-accounts-and-payment-stages",
-    "title": "Article: escrow and payment stages",
+    "title": "Explainer: escrow and payment stages",
     "change": "First publication.",
     "reason": "Escrow timing decides exposure earlier than the headline fee does."
   },
@@ -107,7 +107,7 @@
     "date": "2026-10-14",
     "kind": "published",
     "path": "/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination",
-    "title": "Article: comparing destinations",
+    "title": "Explainer: comparing destinations",
     "change": "First publication, marked as framework evidence because it asserts no external facts.",
     "reason": "Gives readers a source hierarchy to apply, which is the difference between comparing and being sold to."
   },
@@ -315,7 +315,7 @@
     "date": "2026-10-15",
     "kind": "published",
     "path": null,
-    "title": "Four new articles fill the two categories that were empty",
+    "title": "Four new explainers fill the two categories that were empty",
     "change": "Added a process article on the six month limit inside a United Kingdom parental order, a process article on what the 40,177 transfer study measures and what it does not, a preparation article on getting a birth certificate accepted by another country's authorities, and a preparation article on the five documents that should exist before a first transfer. Each carries its Chinese mirror, so the site builds seventy five pages rather than sixty seven, and the two category pages that printed an empty state now print a list.",
     "reason": "The article index promised five categories and four pages existed in three of them. Trimming the promise was the cheaper fix and the wrong one, because process and preparation are where a decision actually gets made, and a research site that only covers cost and destinations is describing the quote rather than the choice. So the gap was filled from sources instead of narrowed. Nothing went in that could not be traced to a page which opened: a statutory section and one consular procedure page were both dropped when they refused to load, and the transfer article reports no number of attempts per person because the study publishes none."
   },
@@ -334,5 +334,21 @@
     "title": "The homepage services cards no longer sell document review",
     "change": "The card that read 'What to verify in a provider or a contract' is gone. In its place the services row is destination research, costs and budget planning, one-to-one consultation, and the question list for the meetings you already have. The consultation card and the section button both go to /assessment, where the enquiry composes in the reader's own browser. The assessment page still states the limit in its own place: the output is a structured written read of the documents you hold, each gap named with the party who has to close it, and 'What an assessment never does' records that we do not perform the verification.",
     "reason": "A limitation belongs on the page that describes the service, not on a homepage card whose job is to make someone want to talk to us. Selling a review of contracts or a check on a provider was already off the table, since neither needs our reading skills but a licence and the ability to act in a jurisdiction; what is left to offer is the conversation that turns a pile of documents into a list of questions with names against them."
+  },
+  {
+    "date": "2026-10-16",
+    "kind": "decision",
+    "path": null,
+    "title": "The primary nav points at the explainer index instead of the home page",
+    "change": "The first header item is now the explainer index. The wordmark keeps the home page, so no route lost its only entry point and none gained a second one.",
+    "reason": "Home is the page a reader is already standing on, so that slot described the navigation instead of offering a destination. The index of narrow, sourced answers was the one first-run route the header never carried."
+  },
+  {
+    "date": "2026-10-16",
+    "kind": "decision",
+    "path": null,
+    "title": "The narrow-evidence content type is renamed from articles to explainers",
+    "change": "Every reader-facing word for this content type now reads Explainers, in both languages: the header and footer links, the badge on a card, the index and category headings with their descriptions, the breadcrumb, the related-content counts on a guide, the homepage reading row, the 404 links, and the line in the research standards that names what those standards apply to. The four publication records that opened with the old prefix were retitled with the new one. Unchanged are the /articles URLs, the content collection, its type field, the related references inside a page's frontmatter and the schema.org type, none of which a reader sees.",
+    "reason": "Article is the word provider marketing already uses for a page of unsourced copy, so the label invited readers to file these pages in the category where they are hardest to tell apart. Explainer states what a page does: one question, the sources beneath it, the date those sources were opened. The site has no live host, no inbound link and no indexed page yet, so the display wording could be moved now without a redirect, while the internal names were left alone rather than churned across the codebase for a word no reader reads."
   }
 ]

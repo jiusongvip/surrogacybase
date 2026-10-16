@@ -270,23 +270,23 @@ export const HOME_READING: Record<Lang, {
   emptyAction: string;
 }> = {
   en: {
-    eyebrow: 'Guides and articles',
+    eyebrow: 'Guides and explainers',
     heading: 'Answers to your key questions',
     intro: 'The pieces readers open before a first conversation: how to read a quote, what to ask a provider, and what parentage and nationality actually turn on.',
-    viewAll: 'View all articles',
+    viewAll: 'View all explainers',
     readMore: 'Read more',
     emptyTitle: 'Nothing is published here yet',
     emptyBody: 'This section lists only what is live. A piece appears here once its sources have been checked and it can be read.',
     emptyAction: 'Read the publication record',
   },
   zh: {
-    eyebrow: '指南与文章',
+    eyebrow: '指南与专题解读',
     heading: '你那几个关键问题的答案',
     intro: '这些是读者在第一次开口谈之前会先打开的内容：怎么读一份报价、该问服务方什么，以及亲权与国籍究竟取决于什么。',
-    viewAll: '查看全部文章',
+    viewAll: '查看全部专题解读',
     readMore: '阅读全文',
     emptyTitle: '这里还没有已发布的内容',
-    emptyBody: '这一节只列出已经上线的内容。一篇文章在来源核查完成、确实可以阅读之后，才会出现在这里。',
+    emptyBody: '这一节只列出已经上线的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
     emptyAction: '查看发布记录',
   },
 };

@@ -106,7 +106,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     title: 'Editorial policy',
     description:
       'The standards SurrogacyBase applies before a claim is published: evidence levels, source records, jurisdiction scoping, number handling, corrections and commercial disclosure.',
-    eyebrow: 'Standards applied to every guide, article and destination page',
+    eyebrow: 'Standards applied to every guide, explainer and destination page',
     h1: 'How we research',
     intro:
       'Most search results about surrogacy are written by the parties selling it. A source that is also a sales channel is not neutral, so the difference here has to be the bar a claim clears before it appears. That bar is written down so you can hold us to it.',
@@ -202,7 +202,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     title: '编辑方针',
     description:
       'SurrogacyBase 在发表一条说法之前适用的标准：证据等级、来源记录、法域限定、数字处理、更正流程与商业披露。',
-    eyebrow: '以下标准适用于每一篇指南、每一篇文章和每一个目的地页面',
+    eyebrow: '以下标准适用于每一篇指南、每一篇专题解读和每一个目的地页面',
     h1: '我们如何做研究',
     intro:
       '关于代孕的搜索结果，大多数出自出售这项服务的一方之手。一个既是信息来源又是销售渠道的主体并不中立，所以这里的差别必须体现在一条说法发表之前要跨过的门槛上。这道门槛写在下面，你可以据此问责我们。',
@@ -436,7 +436,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     terms: [
       {
         h: 'This is published information, not advice given to you',
-        body: 'Guides, articles and destination pages describe what a source states and where it applies. They are not legal advice, medical advice, psychological advice, or financial advice, and reading one does not create a client, patient or professional relationship with anyone. Whether a rule reaches your situation depends on your jurisdiction, your facts, and the qualified professional you engage.',
+        body: 'Guides, explainers and destination pages describe what a source states and where it applies. They are not legal advice, medical advice, psychological advice, or financial advice, and reading one does not create a client, patient or professional relationship with anyone. Whether a rule reaches your situation depends on your jurisdiction, your facts, and the qualified professional you engage.',
       },
       {
         h: 'Do not act on a page without checking the living source',
@@ -486,7 +486,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     terms: [
       {
         h: '这是发布出来的信息，不是给你的建议',
-        body: '指南、文章与目的地页面描述某个来源说了什么、它适用于哪里。它们不是法律建议、医学建议、心理建议或财务建议，阅读其中任何一篇都不与任何人建立委托、医患或专业关系。一条规则是否触及你的情况，取决于你的法域、你的事实，以及你委托的那位合格专业人士。',
+        body: '指南、专题解读与目的地页面描述某个来源说了什么、它适用于哪里。它们不是法律建议、医学建议、心理建议或财务建议，阅读其中任何一篇都不与任何人建立委托、医患或专业关系。一条规则是否触及你的情况，取决于你的法域、你的事实，以及你委托的那位合格专业人士。',
       },
       {
         h: '不核实活的来源，就不要据一个页面行事',
