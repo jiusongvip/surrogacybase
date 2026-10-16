@@ -1,0 +1,52 @@
+---
+/**
+ * Tells the reader how much of this page is backed by a source they can open.
+ * `framework` pages teach a method and assert no external facts, so they say so.
+ */
+import { langFromPath } from '@/i18n/paths';
+import { UI, fill } from '@/i18n/ui';
+
+type Props = {
+  evidence: 'verified' | 'framework' | 'draft';
+  sourceCount: number;
+  reviewDueOn?: string;
+};
+
+const { evidence, sourceCount, reviewDueOn } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].evidence;
+
+const note =
+  evidence === 'framework'
+    ? {
+        heading: copy.frameworkHeading,
+        body: copy.frameworkBody,
+        tone: 'info' as const,
+      }
+    : evidence === 'draft'
+      ? {
+          heading: copy.draftHeading,
+          body: copy.draftBody,
+          tone: 'flag' as const,
+        }
+      : {
+          heading: fill(sourceCount === 1 ? copy.listedOne : copy.listedMany, { n: sourceCount }),
+          body: copy.verifiedBody,
+          tone: 'info' as const,
+        };
+---
+
+<aside
+  class:list={[
+    'mt-8 rounded-(--radius) border px-5 py-4 text-[14px] leading-relaxed',
+    note.tone === 'flag'
+      ? 'border-flag/35 bg-flag-tint text-flag'
+      : 'border-line bg-surface-2 text-muted',
+  ]}
+>
+  <p class="font-semibold text-text">{note.heading}</p>
+  <p class="mt-1">{note.body}</p>
+  {reviewDueOn && (
+    <p class="mt-2 tnum">{fill(copy.nextDue, { date: reviewDueOn })}</p>
+  )}
+</aside>

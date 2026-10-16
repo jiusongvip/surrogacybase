@@ -1,0 +1,28 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath } from '@/i18n/paths';
+import { HOME_BY_LANG } from '@/i18n/routes';
+import { UI } from '@/i18n/ui';
+
+type Crumb = { label: string; href?: string };
+type Props = { crumbs: Crumb[] };
+const { crumbs } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang];
+---
+
+<nav aria-label={copy.breadcrumbLabel} class="shell pt-6">
+  <ol class="flex flex-wrap items-center gap-2 text-[14px] text-muted">
+    <li>
+      <a href={HOME_BY_LANG[lang]} class="hover:text-accent">{copy.home}</a>
+    </li>
+    {crumbs.map((c) => (
+      <li class="flex items-center gap-2">
+        <Icon name="chevron-right" size={14} class="text-line-strong" />
+        {c.href
+          ? <a href={c.href} class="hover:text-accent">{c.label}</a>
+          : <span class="text-text">{c.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

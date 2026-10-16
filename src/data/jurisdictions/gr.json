@@ -1,0 +1,29 @@
+{
+  "code": "gr",
+  "name": "Greece",
+  "region": "Southern Europe",
+  "basis": "assisted-reproduction-law",
+  "eligibility": "One law firm's account states that judicial permission is required before embryo transfer to another woman, that a medical indication is required, that the carrying woman may not provide the ova, and that residency in Greece is required of the applicant or the carrier. This is a commercial source and is recorded as such, not as a verified statutory position.",
+  "paymentModel": "The same source states that payment for services and any kind of financial benefit is strictly prohibited.",
+  "parentage": "Not verified. No statutory text was retrievable for this page.",
+  "statusVerifiedOn": "2026-10-14",
+  "insufficientData": true,
+  "facts": [
+    {
+      "claim": "Gestation by another woman requires prior judicial permission and a medical indication, the carrying woman may not provide the ova, and financial benefit to her is prohibited.",
+      "source": {
+        "label": "Surrogacy proceedings in Greece (law firm page)",
+        "url": "https://www.law-services.gr/surrogacy-proceedings-in-greece/",
+        "publisher": "Amoiridis Law Services",
+        "publishedOn": "2020-04-01",
+        "verifiedOn": "2026-10-14",
+        "supports": "A law firm's practice page. It is internally inconsistent: it cites Law 3089/2002, where the assisted reproduction statute is normally given as Law 3087/2002. Recorded because it is the only openable account found, and flagged because the statute number it names is wrong."
+      }
+    }
+  ],
+  "openQuestions": [
+    "The Greek statute itself was not read for this page. Until the numbered law and its amendments are confirmed, nothing on this page should be relied on.",
+    "The Council of Europe country report for Greece returned 403 and the academic and university sources attempted failed to load.",
+    "Whether a Greek court order or birth registration is recognised in your home country is a separate question this page does not address."
+  ]
+}

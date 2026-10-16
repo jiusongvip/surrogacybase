@@ -1,0 +1,47 @@
+---
+/*
+ * Icon paths come from @tabler/icons (MIT), vendored in src/lib/icons.json.
+ * Decorative by default: pass a label to make an icon the accessible name.
+ */
+import icons from '@/lib/icons.json';
+import type { IconName } from '@/lib/icons';
+
+type Props = {
+  name: IconName;
+  size?: number;
+  label?: string;
+  class?: string;
+};
+
+const { name, size = 16, label, class: className } = Astro.props;
+const nodes = icons.icons[name];
+// The vendored node list is [tag, attrs] pairs, which Astro cannot render as a typed
+// dynamic element, so each pair is emitted as markup from trusted local data.
+const shapes = nodes
+  .map((pair) => {
+    const [tag, attrs] = pair as [string, Record<string, string>];
+    const a = Object.entries(attrs)
+      .map(([k, v]) => `${k}="${v.replaceAll('"', '&quot;')}"`)
+      .join(' ');
+    return `<${tag}${a ? ` ${a}` : ''} />`;
+  })
+  .join('');
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  role={label ? 'img' : undefined}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {label && <title>{label}</title>}
+  <g set:html={shapes} />
+</svg>

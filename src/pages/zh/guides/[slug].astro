@@ -1,0 +1,13 @@
+---
+import GuideDetail from '@/components/pages/GuideDetail.astro';
+import { getGuides } from '@/lib/content';
+
+export async function getStaticPaths() {
+  const guides = await getGuides('zh');
+  return guides.map((entry) => ({ props: { entry }, params: { slug: entry.id.split('/').pop() as string } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<GuideDetail entry={entry} />

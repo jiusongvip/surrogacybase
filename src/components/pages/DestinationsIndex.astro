@@ -1,0 +1,334 @@
+---
+/*
+ * The destinations index, built as a decision page rather than a country list.
+ *
+ * The brief for this page is explicit about what it must not be: an article about which
+ * countries allow surrogacy, or a shortlist with a winner. What a reader has to be able to do
+ * here is work out which destinations are worth research time and which to drop first, from
+ * four things: whether the rule names a family like theirs, who is a legal parent at birth,
+ * whether the budget covers the whole process, and whether they can attend in person.
+ *
+ * The country cells below are only filled from the records in src/data/jurisdictions, each of
+ * which carries an openable source and the date it was read. That is why the comparison is
+ * presented as the ten columns a comparison needs, with five destinations published against
+ * the subset of those columns we could actually source. Nothing here is marked open, safe or
+ * best from prior knowledge or from a provider's summary.
+ *
+ * The wording is in src/i18n/ui.ts and the markup is here, so one route file per language can
+ * build the same argument. The counts in the dictionary are tuple lengths, which is what keeps
+ * a translation from quietly dropping a factor, a column or a standard.
+ *
+ * No photography. The subject is a legal comparison, and a stock family photograph would be
+ * the first thing that makes it look like the agency marketing this page exists to escape.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import JurisdictionTable from '@/components/destinations/JurisdictionTable.astro';
+import DestinationAssessment from '@/components/tools/DestinationAssessment.astro';
+import Icon from '@/components/ui/Icon.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { UI, fill } from '@/i18n/ui';
+import { formatDate } from '@/lib/dates';
+import { getJurisdictions } from '@/lib/jurisdictions';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].pages.destinations;
+
+const rows = await getJurisdictions(lang);
+const verified = rows.filter((r) => !r.data.insufficientData).length;
+const thin = rows.filter((r) => r.data.insufficientData);
+const lastChecked = rows.length > 0 ? rows.map((r) => r.data.statusVerifiedOn).sort().pop() : undefined;
+
+/**
+ * Three shapes a legal system can have. Each statement in the dictionary is quoted from a
+ * record that carries its own source, so the citation is attached to the sentence rather than
+ * to the page, and the index below is the only place that pairs the two.
+ */
+const SHAPE_RECORDS = ['gb', 'ca', 'us'] as const;
+const SHAPE_FACTS: number[][] = [
+  [0, 1, 2],
+  [0, 1],
+  [0, 1, 2],
+];
+
+const models = copy.models.items.map((m, i) => {
+  const record = rows.find((r) => r.data.code === SHAPE_RECORDS[i]);
+  if (!record) throw new Error(`The legal-shapes section cites ${SHAPE_RECORDS[i]}, which is not a published record.`);
+  return {
+    ...m,
+    cited: m.points.map((text, j) => {
+      const fact = record.data.facts[SHAPE_FACTS[i][j]];
+      if (!fact) throw new Error(`${SHAPE_RECORDS[i]} has no fact ${SHAPE_FACTS[i][j]} to cite for this sentence.`);
+      return { text, cite: fact.source };
+    }),
+  };
+});
+
+const NEXT_HREFS = [
+  '/guides/surrogacy-legal-considerations',
+  '/guides/surrogacy-cost',
+  '/tools/destination-research-checklist',
+  '/tools/agency-quote-comparison',
+];
+
+const flaggedNames = thin.map((r) => r.data.name).join(copy.records.thinJoin);
+const flaggedVerb = thin.length === 1 ? copy.records.thinOne : copy.records.thinMany;
+const home = localizedPath(lang, '/');
+
+/* The browser title is capped at 62 half-width units by scripts/audit-dist.mjs, which is where
+ * Google truncates. The brief's title ran to 77 with the site suffix, so "Eligibility" is the
+ * word that goes; it stays in the H1 and the description. "and" rather than "&", because the
+ * audit counts the raw entity as five characters. */
+---
+
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description}>
+  <Breadcrumbs crumbs={[{ label: copy.breadcrumb }]} />
+
+  <header class="shell py-10 sm:py-14">
+    <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent">{copy.eyebrow}</p>
+    <h1 class="mt-4 text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06] text-balance">
+      {copy.h1}
+    </h1>
+    <p class="mt-4 max-w-[64ch] text-[17px] leading-[1.7] text-muted">
+      {copy.lede}
+    </p>
+    <p class="mt-4 max-w-[64ch] border-l-2 border-accent pl-5 text-[15px] leading-[1.7] text-muted">
+      {copy.notice}
+    </p>
+
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href="#assessment" class="btn-primary">
+        {copy.ctaAssessment}
+        <Icon name="arrow-down-right" size={16} />
+      </a>
+      <a href="#records" class="btn-ghost">{copy.ctaRecords}</a>
+    </div>
+
+    <dl class="mt-8 grid gap-x-10 gap-y-3 border-t border-line pt-5 text-[15px] sm:grid-cols-3">
+      <div>
+        <dt class="text-muted">{copy.stats.recorded}</dt>
+        <dd class="tnum mt-0.5 text-[22px] font-medium">{rows.length}</dd>
+      </div>
+      <div>
+        <dt class="text-muted">{copy.stats.sourced}</dt>
+        <dd class="tnum mt-0.5 text-[22px] font-medium">{verified}</dd>
+      </div>
+      <div>
+        <dt class="text-muted">{copy.stats.lastCheck}</dt>
+        <dd class="tnum mt-0.5 text-[22px] font-medium">{formatDate(lastChecked, lang)}</dd>
+      </div>
+    </dl>
+  </header>
+
+  <section class="shell pb-14" id="factors">
+    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.factors.heading}</h2>
+    <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
+      {copy.factors.intro}
+    </p>
+
+    <ol class="mt-8 border-t border-line">
+      {
+        copy.factors.items.map((f, i) => (
+          <li class="grid gap-3 border-b border-line py-7 sm:grid-cols-[76px_minmax(0,1fr)_minmax(0,0.9fr)] sm:gap-6">
+            <span class="tnum text-[13px] font-semibold text-accent">{String(i + 1).padStart(2, '0')}</span>
+            <div class="min-w-0">
+              <h3 class="text-[19px] leading-snug">{f.q}</h3>
+              <p class="mt-2 max-w-[58ch] text-[15px] leading-[1.7] text-muted">{f.a}</p>
+            </div>
+            <p class="text-[14px] leading-[1.7] text-muted sm:border-l sm:border-line sm:pl-6">{f.test}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="shell pb-16" id="assessment">
+    <DestinationAssessment />
+  </section>
+
+  <section class="shell pb-16" id="records">
+    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.records.heading}</h2>
+    <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
+      {copy.records.intro}
+    </p>
+
+    <div class="mt-7">
+      {
+        rows.length > 0 ? (
+          <JurisdictionTable rows={rows} />
+        ) : (
+          <EmptyState title={copy.records.emptyTitle} body={copy.records.emptyBody} />
+        )
+      }
+    </div>
+
+    {
+      thin.length > 0 && (
+        <p class="mt-5 max-w-[64ch] text-[14px] leading-[1.7] text-flag">
+          {fill(copy.records.thinNote, { names: flaggedNames, verb: flaggedVerb })}
+        </p>
+      )
+    }
+  </section>
+
+  <section class="shell pb-16" id="dimensions">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+      <div>
+        <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.dimensions.heading}</h2>
+        <p class="mt-3 text-[16px] leading-[1.7] text-muted">
+          {copy.dimensions.paraA}
+        </p>
+        <p class="mt-4 text-[15px] leading-[1.7] text-muted">
+          {copy.dimensions.paraB}
+        </p>
+        <a href={localizedPath(lang, '/editorial-policy')} class="textlink mt-6">
+          {copy.dimensions.link}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      <ol class="border-t border-line">
+        {
+          copy.dimensions.items.map((d, i) => (
+            <li class="grid grid-cols-[34px_minmax(0,1fr)] gap-3 border-b border-line py-4">
+              <span class="tnum text-[13px] font-semibold text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <div class="min-w-0">
+                <h3 class="text-[16px] leading-snug font-medium">{d.q}</h3>
+                <p class="mt-1 text-[15px] leading-[1.6] text-muted">{d.ask}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="shell pb-16" id="models">
+    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.models.heading}</h2>
+    <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
+      {copy.models.intro}
+    </p>
+
+    <div class="mt-8 grid gap-6 xl:grid-cols-3">
+      {
+        models.map((m, i) => (
+          <article class="card p-6">
+            <p class="tnum text-[13px] font-semibold tracking-[0.14em] text-accent">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 text-[19px] leading-snug">{m.name}</h3>
+            <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{m.where}</p>
+            <p class="mt-4 text-[15px] leading-[1.7] text-text">{m.plan}</p>
+            <ul class="mt-5 space-y-4 border-t border-line pt-5">
+              {m.cited.map((p) => (
+                <li>
+                  <p class="text-[15px] leading-[1.65]">{p.text}</p>
+                  <p class="mt-1.5 text-[13px] leading-relaxed text-muted">
+                    <a href={p.cite.url} rel="noopener noreferrer" target="_blank" class="link-underlined text-[13px]">
+                      {p.cite.publisher}
+                    </a>
+                    <span class="tnum ml-1.5">
+                      {fill(copy.models.cite, {
+                        published: formatDate(p.cite.publishedOn, lang),
+                        verified: formatDate(p.cite.verifiedOn, lang),
+                      })}
+                    </span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="shell pb-16" id="questions">
+    <div class="card bg-surface-2 p-6 sm:p-8">
+      <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.questions.heading}</h2>
+      <p class="mt-3 max-w-[62ch] text-[16px] leading-[1.7] text-muted">
+        {copy.questions.intro}
+      </p>
+      <ol class="mt-6 space-y-3">
+        {
+          copy.questions.items.map((q, i) => (
+            <li class="flex gap-4">
+              <span class="tnum shrink-0 text-[13px] font-semibold text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <p class="text-[16px] leading-[1.65]">{q}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-6 text-[15px] leading-[1.7] text-muted">
+        {copy.questions.footnote}
+      </p>
+      <a href={localizedPath(lang, '/tools/destination-research-checklist')} class="btn-primary mt-5">
+        {copy.questions.cta}
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+  </section>
+
+  <section class="shell pb-16" id="next">
+    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.next.heading}</h2>
+    <ul class="mt-6 grid gap-5 sm:grid-cols-2">
+      {
+        copy.next.items.map((n, i) => (
+          <li>
+            <a href={localizedPath(lang, NEXT_HREFS[i])} class="card card-hover block h-full p-5">
+              <span class="text-[16px] font-medium">{n.label}</span>
+              <span class="mt-1.5 block text-[15px] leading-[1.6] text-muted">{n.body}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="shell pb-16">
+    <div class="band-brand rounded-(--radius) px-6 py-8 sm:px-8">
+      <h2 class="text-[clamp(1.4rem,2.6vw,1.8rem)] leading-snug">{copy.band.heading}</h2>
+      <p class="mt-3 max-w-[62ch] text-[16px] leading-[1.7] text-band-muted">
+        {copy.band.body}
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href={`${home}#assessment`} class="btn-band text-sm">
+          {copy.band.brief}
+          <Icon name="arrow-right" size={15} />
+        </a>
+        <a href={localizedPath(lang, '/assessment')} class="btn-ghost-on-band text-sm">{copy.band.service}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell pb-20">
+    <div class="grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
+      <div>
+        <h2 class="text-[20px]">{copy.standard.heading}</h2>
+        <ul class="mt-4 space-y-2.5">
+          {
+            copy.standard.items.map((s) => (
+              <li class="flex gap-3 text-[15px] leading-[1.65] text-muted">
+                <span class="mt-2 h-1 w-4 shrink-0 bg-accent" aria-hidden="true"></span>
+                <span>{s}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-[20px]">{copy.why.heading}</h2>
+        <p class="mt-3 text-[15px] leading-[1.7] text-muted">
+          {copy.why.body}
+        </p>
+        <h3 class="mt-7 text-[17px]">{copy.why.readTitle}</h3>
+        <p class="mt-2 text-[15px] leading-[1.7] text-muted">
+          {copy.why.readBody}
+        </p>
+        <a href={localizedPath(lang, '/guides/surrogacy-legal-considerations')} class="textlink mt-5">
+          {copy.why.link}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,154 @@
+---
+import PageLayout from './PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Toc from '@/components/content/Toc.astro';
+import SourceList from '@/components/content/SourceList.astro';
+import EvidenceNote from '@/components/content/EvidenceNote.astro';
+import RelatedLinks from '@/components/content/RelatedLinks.astro';
+import { SITE } from '@/const';
+import { LANG_META } from '@/i18n/config';
+import { langFromPath } from '@/i18n/paths';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { formatDate, readingTime } from '@/lib/dates';
+import { pathOf, type ContentEntry, type Heading, type RenderedContent } from '@/lib/content';
+
+type Props = {
+  entry: ContentEntry;
+  Content: RenderedContent['Content'];
+  headings: Heading[];
+  crumbs: { label: string; href?: string }[];
+  relatedGuides: ContentEntry[];
+  relatedArticles: ContentEntry[];
+  relatedTools: { label: string; href: string; note: string }[];
+};
+
+const { entry, Content, headings, crumbs, relatedGuides, relatedArticles, relatedTools } = Astro.props;
+const d = entry.data;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang];
+const categoryLabel = CATEGORY_LABELS[lang][d.category] ?? d.category;
+const minutes = readingTime(entry.body ?? '');
+const isGuide = d.type === 'guide';
+const url = new URL(pathOf(entry), Astro.site);
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': isGuide ? 'Article' : 'BlogPosting',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.publishedOn,
+    dateModified: d.updatedOn,
+    inLanguage: LANG_META[lang].htmlLang,
+    isAccessibleForFree: true,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url.href },
+    author: d.author
+      ? { '@type': 'Person', name: d.author }
+      : { '@type': 'Organization', name: SITE.name },
+    publisher: { '@id': new URL('/#organization', Astro.site).href },
+  },
+];
+---
+
+<PageLayout
+  title={d.title}
+  titleTag={d.titleTag}
+  description={d.description}
+  updatedOn={d.updatedOn}
+  noindex={d.noIndex || d.evidence === 'draft'}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <article class="shell py-10">
+    <header class="max-w-[72ch]">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
+        <span class="font-medium text-accent">{categoryLabel}</span>
+        <span class="h-px w-6 bg-line-strong" aria-hidden="true"></span>
+        <span class="text-muted">{isGuide ? copy.kinds.guide : copy.kinds.article}</span>
+      </p>
+      <h1 class="mt-4 text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.06]">{d.title}</h1>
+      <p class="mt-4 text-[19px] leading-[1.6] text-muted">{d.description}</p>
+
+      <dl class="mt-6 flex flex-wrap gap-x-8 gap-y-2 border-t border-line pt-4 text-[14px]">
+        <div class="flex gap-2">
+          <dt class="text-muted">{copy.labels.updated}</dt>
+          <dd class="tnum font-medium">{formatDate(d.updatedOn, lang)}</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-muted">{copy.labels.firstPublished}</dt>
+          <dd class="tnum font-medium">{formatDate(d.publishedOn, lang)}</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-muted">{copy.labels.readingTime}</dt>
+          <dd class="tnum font-medium">{fill(copy.time.minutes, { n: minutes })}</dd>
+        </div>
+        {d.author && (
+          <div class="flex gap-2">
+            <dt class="text-muted">{copy.labels.by}</dt>
+            <dd class="font-medium">{d.author}</dd>
+          </div>
+        )}
+      </dl>
+
+      {d.reviewer && (
+        <p class="mt-3 text-[14px] text-muted">
+          {fill(copy.content.reviewedBy, { name: d.reviewer.name, role: d.reviewer.role })}
+        </p>
+      )}
+    </header>
+
+    <EvidenceNote
+      evidence={d.evidence}
+      sourceCount={d.sources.length}
+      reviewDueOn={d.reviewDueOn}
+    />
+
+    <!-- The base track is minmax(0,1fr) rather than the implicit auto: a content table
+         has a 560px floor, and an auto track sizes to that min-content instead of letting
+         the scroll wrapper do its job. -->
+    <div class="mt-10 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
+      <div>
+        <div class="prose">
+          <Content />
+        </div>
+
+        <SourceList sources={d.sources} />
+
+        {relatedGuides.length + relatedArticles.length > 0 && (
+          <RelatedLinks
+            heading={copy.content.keepReading}
+            entries={[...relatedGuides, ...relatedArticles]}
+            note={copy.content.keepReadingNote}
+          />
+        )}
+      </div>
+
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <Toc headings={tocHeadings} />
+
+        {relatedTools.length > 0 && (
+          <section class="mt-8 border-t border-line pt-6">
+            <h2 class="text-[15px] font-semibold">{copy.content.workingList}</h2>
+            <ul class="mt-3 space-y-3">
+              {relatedTools.map((t) => (
+                <li>
+                  <a href={t.href} class="group flex items-start gap-2 text-[15px]">
+                    <span>
+                      <span class="text-accent group-hover:underline">{t.label}</span>
+                      <span class="mt-0.5 block text-[14px] text-muted">{t.note}</span>
+                    </span>
+                    <Icon name="arrow-up-right" size={16} class="mt-1 shrink-0 text-accent" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </aside>
+    </div>
+  </article>
+</PageLayout>

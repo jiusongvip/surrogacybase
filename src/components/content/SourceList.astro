@@ -1,0 +1,50 @@
+---
+import { langFromPath } from '@/i18n/paths';
+import { UI, fill } from '@/i18n/ui';
+import { formatDate } from '@/lib/dates';
+
+type Source = {
+  label: string;
+  url: string;
+  publisher: string;
+  publishedOn?: string;
+  verifiedOn: string;
+  supports: string;
+};
+
+const { sources } = Astro.props as { sources: Source[] };
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].sources;
+---
+
+{sources.length > 0 && (
+  <section id="sources" class="mt-16 border-t border-line pt-8">
+    <h2 class="text-[22px]">{copy.heading}</h2>
+    <p class="mt-2 text-[14px] text-muted">
+      {copy.note}
+    </p>
+    <ol class="mt-6 space-y-5">
+      {sources.map((s, i) => (
+        <li class="flex gap-3 text-[14px] leading-relaxed">
+          <span class="tnum mt-0.5 shrink-0 text-[13px] font-semibold text-accent">[{i + 1}]</span>
+          <div>
+            <a
+              href={s.url}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="font-medium text-text underline decoration-line-strong underline-offset-2 hover:text-accent"
+            >
+              {s.label}
+            </a>
+            <p class="mt-0.5 text-muted">
+              {s.publisher}
+              {s.publishedOn && <span>{fill(copy.published, { date: formatDate(s.publishedOn, lang) })}</span>}
+              <span>{fill(copy.checked, { date: formatDate(s.verifiedOn, lang) })}</span>
+            </p>
+            <p class="mt-1 text-muted">{fill(copy.supports, { text: s.supports })}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

@@ -1,0 +1,18 @@
+---
+type Props = {
+  title: string;
+  body: string;
+  action?: { label: string; href: string };
+};
+const { title, body, action } = Astro.props;
+---
+
+<section class="rounded-(--radius-panel) border border-dashed border-line-strong bg-surface px-6 py-10 text-center">
+  <h2 class="text-[20px]">{title}</h2>
+  <p class="mx-auto mt-2 max-w-[52ch] text-[15px] text-muted">{body}</p>
+  {action && (
+    <p class="mt-5">
+      <a href={action.href} class="link-underlined text-[15px]">{action.label}</a>
+    </p>
+  )}
+</section>

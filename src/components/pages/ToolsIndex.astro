@@ -1,0 +1,64 @@
+---
+/*
+ * The tools index, one component for both languages.
+ *
+ * The tool cards come from src/data/tools, which carries a name, a summary and a point list per
+ * language, and the surrounding sentences come from src/data/tool-pages. `live` is still a single
+ * flag on purpose: an English tool page and its Chinese twin open together, because a card that
+ * links to a page missing in one language is the failure this file exists to prevent.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { TOOLS, toolHref } from '@/data/tools';
+import { TOOLS_INDEX_PAGE } from '@/data/tool-pages';
+import { langFromPath } from '@/i18n/paths';
+import { fill } from '@/i18n/ui';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = TOOLS_INDEX_PAGE[lang];
+const live = TOOLS.filter((t) => t.live).length;
+---
+
+<PageLayout title={copy.title} description={copy.description}>
+  <Breadcrumbs crumbs={[{ label: copy.label }]} />
+
+  <header class="shell py-10">
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.title}</h1>
+    <p class="mt-3 max-w-[62ch] text-[17px] leading-relaxed text-muted">
+      {copy.intro}
+    </p>
+    <p class="mt-4 flex items-start gap-2.5 text-[15px] text-muted">
+      <Icon name="lock" size={17} class="mt-0.5 shrink-0 text-accent" />
+      <span>{fill(copy.localNote, { n: live })}</span>
+    </p>
+  </header>
+
+  <div class="shell grid gap-4 pb-16 md:grid-cols-2">
+    {TOOLS.map((tool) => (
+      <section class="card flex flex-col px-6 py-6">
+        <p class="text-[14px] text-muted">{tool.live ? copy.available : copy.building}</p>
+        <h2 class="mt-1 text-[24px] leading-snug">{tool[lang].name}</h2>
+        <p class="mt-2 text-[16px] leading-relaxed text-muted">{tool[lang].summary}</p>
+        <ul class="mt-4 space-y-2 text-[15px]">
+          {tool[lang].points.map((p) => (
+            <li class="flex gap-2.5">
+              <Icon name="check" size={16} class="mt-1 shrink-0 text-accent" />
+              <span class="text-muted">{p}</span>
+            </li>
+          ))}
+        </ul>
+        <span class="mt-auto pt-6">
+          {tool.live ? (
+            <a href={toolHref(tool.id, lang)} class="textlink">
+              {copy.open}
+              <Icon name="arrow-right" size={16} />
+            </a>
+          ) : (
+            <span class="text-[15px] text-muted">{copy.notLive}</span>
+          )}
+        </span>
+      </section>
+    ))}
+  </div>
+</PageLayout>

@@ -1,0 +1,15 @@
+---
+import ArticleDetail from '@/components/pages/ArticleDetail.astro';
+import { getArticles } from '@/lib/content';
+
+// One route file per language, and the path list is limited to this language's entries.
+// Without that filter a Chinese article would also build an English URL from its own file.
+export async function getStaticPaths() {
+  const articles = await getArticles('en');
+  return articles.map((entry) => ({ props: { entry }, params: { slug: entry.id.split('/').pop() as string } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<ArticleDetail entry={entry} />

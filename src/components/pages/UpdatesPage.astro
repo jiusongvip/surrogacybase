@@ -1,0 +1,98 @@
+---
+/*
+ * The updates log, in both languages.
+ *
+ * Dates, kinds, paths and the order of entries come from src/data/updates.json and are shared by
+ * both pages: what happened happened in one language. Only the three prose fields are translated,
+ * through the overlay keyed by each entry's English title.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { UPDATES_PAGE } from '@/data/policy-pages';
+import { formatDate } from '@/lib/dates';
+import { getUpdates, monthHeading, type Update } from '@/lib/updates';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+
+const kindClass = {
+  published: 'text-accent',
+  corrected: 'text-accent',
+  decision: 'text-muted',
+  withheld: 'text-flag',
+  removed: 'text-flag',
+} as const;
+
+type Kind = keyof typeof kindClass;
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = UPDATES_PAGE[lang];
+const items = getUpdates(lang);
+
+const grouped = items.reduce<Map<string, Update[]>>((acc, item) => {
+  const month = item.date.slice(0, 7);
+  const list = acc.get(month) ?? [];
+  list.push(item);
+  acc.set(month, list);
+  return acc;
+}, new Map());
+---
+
+<PageLayout title={copy.title} description={copy.description}>
+  <Breadcrumbs crumbs={[{ label: copy.title }]} />
+
+  <article class="shell py-10 max-w-[74ch]">
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <p class="mt-4 text-[19px] leading-[1.6] text-muted">{copy.intro}</p>
+
+    {
+      items.length === 0 ? (
+        <div class="mt-10">
+          <EmptyState
+            title={copy.emptyTitle}
+            body={copy.emptyBody}
+            action={{ label: copy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
+          />
+        </div>
+      ) : (
+        <div class="mt-10 space-y-12">
+          {[...grouped.entries()].map(([month, list]) => (
+            <section>
+              <h2 class="text-[15px] font-semibold uppercase tracking-[0.12em] text-muted">
+                {monthHeading(month, lang)}
+              </h2>
+              <ol class="mt-4 divide-y divide-line border-t border-line">
+                {list.map((item) => (
+                  <li class="py-6">
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <h3 class="text-[19px] leading-snug">{item.title}</h3>
+                      <p class="flex items-center gap-3 text-[14px]">
+                        <span class={kindClass[item.kind as Kind] ?? 'text-muted'}>
+                          {copy.kinds[item.kind as Kind] ?? item.kind}
+                        </span>
+                        <span class="tnum text-muted">{formatDate(item.date, lang)}</span>
+                      </p>
+                    </div>
+                    <p class="mt-2 text-[16px] leading-relaxed">{item.change}</p>
+                    <p class="mt-2 border-l-2 border-line-strong pl-4 text-[15px] leading-relaxed text-muted">
+                      <span class="font-semibold uppercase tracking-[0.1em] text-[13px]">
+                        {copy.reasonLabel}
+                      </span>
+                      <span class="mt-1 block">{item.reason}</span>
+                    </p>
+                    {item.path && (
+                      <a href={localizedPath(lang, item.path)} class="textlink mt-3 text-[14px]">
+                        {copy.openPage}
+                        <Icon name="arrow-right" size={15} />
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+        </div>
+      )
+    }
+  </article>
+</PageLayout>

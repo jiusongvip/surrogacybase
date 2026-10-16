@@ -1,0 +1,410 @@
+---
+/*
+ * The homepage, in both languages.
+ *
+ * The section order follows the layout the site owner defined: hero, who we are, services,
+ * destinations, reading, and the enquiry band last. Everything a reader sees comes from
+ * src/data/home.ts or from the records it links to, so a section cannot be translated in one
+ * place and left English in another.
+ *
+ * Two things the definition asks for are filled from data rather than written by hand. The
+ * country cards are the published jurisdiction records, so a card cannot appear for a country
+ * nobody has sourced; the reading cards are live content entries, so a card cannot point at an
+ * article that does not exist.
+ *
+ * This is a component rather than a page because / and /zh render the same argument twice, and
+ * a second copy of the markup is a second place for the two languages to drift apart.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ArticleCard from '@/components/content/ArticleCard.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import ConsultForm from '@/components/forms/ConsultForm.astro';
+import { SITE } from '@/const';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { fill, pick } from '@/i18n/ui';
+import { getLiveContent, resolveRefs } from '@/lib/content';
+import { getJurisdictions } from '@/lib/jurisdictions';
+import { formatDate } from '@/lib/dates';
+import {
+  HOME_ADVANTAGES,
+  HOME_BAND,
+  HOME_BAND_TRUST,
+  HOME_COUNTRY_MEDIA,
+  HOME_COUNTRIES,
+  HOME_HERO,
+  HOME_META,
+  HOME_READING,
+  HOME_READING_IMAGES,
+  HOME_SERVICES,
+  HOME_SERVICE_ITEMS,
+  HOME_WHO,
+} from '@/data/home';
+import { Image } from 'astro:assets';
+import heroTerrace from '@/assets/images/hero-terrace.jpg';
+import ctaLeaves from '@/assets/images/cta-leaves.jpg';
+
+const lang = langFromPath(Astro.url.pathname);
+const records = await getJurisdictions(lang);
+const meta = HOME_META[lang];
+const hero = HOME_HERO[lang];
+const who = HOME_WHO[lang];
+const services = HOME_SERVICES[lang];
+const countries = HOME_COUNTRIES[lang];
+const readingCopy = HOME_READING[lang];
+const band = HOME_BAND[lang];
+
+/** The mock's order, with any record that is not listed kept after it rather than dropped. */
+const COUNTRY_ORDER = ['us', 'ca', 'gb', 'co', 'gr'];
+const byOrder = (a: { data: { code: string } }, b: { data: { code: string } }) => {
+  const i = COUNTRY_ORDER.indexOf(a.data.code);
+  const j = COUNTRY_ORDER.indexOf(b.data.code);
+  return (i < 0 ? COUNTRY_ORDER.length : i) - (j < 0 ? COUNTRY_ORDER.length : j);
+};
+const cards = [...records].sort(byOrder).map((row) => {
+  const media = HOME_COUNTRY_MEDIA[row.data.code];
+  return {
+    href: `/destinations/${row.data.code}`,
+    name: row.data.name,
+    region: row.data.region,
+    incomplete: row.data.insufficientData === true,
+    checked: formatDate(row.data.statusVerifiedOn, lang),
+    src: media?.src,
+    alt: media ? pick(media.alt, lang) : '',
+  };
+});
+
+/* The four pieces a reader should get through before talking to anyone. The first four decide
+ * what the row prints, so they answer the three questions the section's own copy names: how to
+ * read a quote, what to ask a provider, and what parentage and nationality turn on. */
+const readingOrder = [
+  'surrogacy-costs-that-sit-outside-a-quote',
+  'choosing-a-surrogacy-agency',
+  'the-six-month-limit-on-a-uk-parental-order',
+  'getting-a-birth-certificate-accepted-abroad',
+  'questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
+  'surrogacy-legal-considerations',
+  'what-must-be-signed-before-the-first-transfer',
+  'what-40177-transfers-do-not-promise-you',
+];
+/* A language that cannot fill the row from the order above is topped up with its own newest
+ * pages, so the section prints fewer cards only when the site has nothing left to print. */
+const preferred = (await resolveRefs(readingOrder, lang)).slice(0, 4);
+const rest = preferred.length < 4 ? (await getLiveContent(lang)).filter((e) => !preferred.includes(e)) : [];
+const reading = [...preferred, ...rest.slice(0, 4 - preferred.length)];
+
+const eyebrow = 'text-[13px] font-semibold uppercase tracking-[0.16em] text-muted';
+const home = localizedPath(lang, '/');
+const lp = (path: string) => localizedPath(lang, path);
+---
+
+<PageLayout title={SITE.name} titleTag={meta.titleTag} description={meta.description}>
+  {/* B. Hero: the frame keeps its light; the argument is set on it in bottle green. */}
+  <section class="relative isolate overflow-hidden border-b border-line bg-paper" id="top">
+    {/*
+     * The wash is paper, not brand, and that reversal is the whole colour decision. A dark
+     * scrim has to beat the frame's brightest pixel, which over sunlit sea means 75 per cent
+     * green laid across the copy and no sea left to see. A light scrim only has to lift the
+     * frame's darkest pixel, and the darkest pixel behind the sentences is the headland, not
+     * the open water.
+     *
+     * The two colour schemes need different strengths here, and the difference is measured
+     * rather than guessed. In the light scheme the threat is a dark pixel under dark type, so
+     * the wash only has to reach 62 per cent: the heading is 36 to 64px, which WCAG treats as
+     * large text at 3:1, and the 18px body is the binding case at 4.5:1 and needs 57. In the
+     * dark scheme paper is near-black and the threat inverts to a bright pixel under light
+     * type, and the copy column's top row sits on open sky, which needs 74. So the light
+     * scheme gets a thin wash and the sea stays visible; the dark scheme keeps a heavy one,
+     * because a dark hero is meant to read dark.
+     *
+     * Below lg the copy spans the full width, so the wash would have to cover the frame
+     * entirely; there the photograph keeps its own band and the copy sits on plain paper.
+     */}
+    <Image
+      src={heroTerrace}
+      widths={[720, 1100, 1536]}
+      sizes="100vw"
+      loading="eager"
+      class="block h-[220px] w-full object-cover object-[62%_38%] sm:h-[320px] lg:absolute lg:inset-0 lg:h-full lg:object-[52%_42%]"
+      alt=""
+    />
+    <div
+      class="absolute inset-0 hidden from-paper/62 via-paper/60 via-58% to-paper/0 to-82% bg-linear-to-r lg:block dark:from-paper/86 dark:via-paper/80"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="shell relative py-10 sm:py-14 lg:py-28">
+      <div class="max-w-[560px] xl:max-w-[620px]">
+        <p class="rise text-[13px] font-semibold uppercase tracking-[0.18em] text-brand-fg">{SITE.name}</p>
+        <h1 class="rise mt-4 text-[clamp(2.3rem,5.2vw,4rem)] leading-[1.06] text-balance text-brand-fg">
+          {hero.h1}
+        </h1>
+        <p class="rise rise-1 mt-5 max-w-[58ch] text-[17px] leading-[1.65] text-text lg:text-[18px] lg:leading-[1.7]">
+          {hero.lead}
+        </p>
+        <div class="rise rise-2 mt-8 flex flex-wrap gap-3">
+          <a href={lp('/destinations')} class="btn-primary">
+            {hero.ctaPrimary}
+            <Icon name="arrow-right" size={16} />
+          </a>
+          <a href={`${home}#assessment`} class="btn-ghost">{hero.ctaSecondary}</a>
+        </div>
+      </div>
+
+      {/*
+       * The owner's note, set as a card rather than as loose type over the photograph: the
+       * frame behind it is sunlit sea, and no wash strength that keeps the sentence legible
+       * would leave the sea visible.
+       */}
+      <p
+        class="rise rise-3 mt-8 max-w-[22ch] -rotate-1 rounded-(--radius) border border-line bg-paper/92 px-4 py-3 font-display text-[17px] leading-[1.3] text-brand-fg shadow-lift lg:absolute lg:bottom-8 lg:right-6 lg:mt-0 xl:right-10"
+      >
+        {hero.note}
+      </p>
+    </div>
+  </section>
+
+  {/* C. Who we are, and the four claims a reader can go and test. */}
+  <section class="border-b border-line py-16 lg:py-24" id="who">
+    <div class="shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div>
+        <p class={eyebrow}>{who.eyebrow}</p>
+        <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {who.heading}
+        </h2>
+        <p class="mt-5 max-w-[46ch] text-[16px] leading-[1.8] text-muted">{who.para}</p>
+        <a href={lp('/about')} class="textlink mt-7">
+          {who.link}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      <div>
+        <h3 class="text-[22px]">{who.advantagesHeading}</h3>
+        <ul class="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
+          {
+            HOME_ADVANTAGES.map((a) => (
+              <li class="reveal">
+                <span class="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-accent">
+                  <Icon name={a.icon} size={19} />
+                </span>
+                <h4 class="mt-4 text-[17px] leading-snug">{pick(a.title, lang)}</h4>
+                <p class="mt-2 text-[14px] leading-[1.7] text-muted">{pick(a.body, lang)}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* D. Four kinds of help, each one a page that exists. */}
+  <section class="border-b border-line bg-surface-2 py-16 lg:py-24" id="services">
+    <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <div>
+        <p class={eyebrow}>{services.eyebrow}</p>
+        <h2 class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {services.heading}
+        </h2>
+        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{services.intro}</p>
+        <a href={lp('/assessment')} class="btn-primary mt-8">
+          {services.cta}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      <ul class="grid gap-5 sm:grid-cols-2">
+        {
+          HOME_SERVICE_ITEMS.map((s) => (
+            <li class="reveal">
+              <a href={lp(s.href)} class="card card-hover flex h-full flex-col p-6">
+                <span class="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-accent">
+                  <Icon name={s.icon} size={19} />
+                </span>
+                <h3 class="mt-5 text-[18px] leading-snug">{pick(s.title, lang)}</h3>
+                <p class="mt-2 text-[14px] leading-[1.7] text-muted">{pick(s.body, lang)}</p>
+                <span class="mt-5 flex items-center gap-2 border-t border-line pt-4 text-[14px] font-medium">
+                  {countries.learnMore}
+                  <Icon name="arrow-right" size={15} class="text-accent" />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* E. The country cards are the published records, so an unsourced country has no card. */}
+  <section class="border-b border-line py-16 lg:py-24" id="destinations">
+    <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+      <div>
+        <p class={eyebrow}>{countries.eyebrow}</p>
+        <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {countries.heading}
+        </h2>
+        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{countries.intro}</p>
+        <a href={lp('/destinations')} class="btn-ghost mt-8">
+          {countries.cta}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      {/*
+       * min-w-0 is what keeps the rail inside the page. A grid item's automatic minimum size is
+       * its content's min-content width, and five fixed cards add up to more than any viewport,
+       * so without it the scroller stretches the column and the document gains a horizontal
+       * scrollbar instead of the rail gaining one.
+       */}
+      <div class="relative min-w-0">
+        <ul
+          class="-mx-5 flex w-full max-w-full snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0"
+          data-country-rail
+        >
+          {
+            cards.map((c) => (
+              <li class="w-[248px] shrink-0 snap-start sm:w-[268px]">
+                <a href={lp(c.href)} class="card card-hover flex h-full flex-col overflow-hidden">
+                  {
+                    c.src && (
+                      <span class="block aspect-[4/3] shrink-0 overflow-hidden bg-surface-2">
+                        <Image
+                          src={c.src}
+                          widths={[400, 600]}
+                          sizes="(min-width: 1024px) 25vw, 268px"
+                          class="h-full w-full object-cover transition-transform duration-(--dur-slow) ease-(--ease)"
+                          alt={c.alt}
+                        />
+                      </span>
+                    )
+                  }
+                  <span class="flex flex-1 flex-col gap-1.5 p-5">
+                    <span class="block text-[17px] font-medium">{c.name}</span>
+                    <span class="block text-[13px] text-muted">{c.region}</span>
+                    <span class:list={['tnum block text-[13px]', c.incomplete ? 'text-flag' : 'text-muted']}>
+                      {c.incomplete ? countries.incomplete : fill(countries.checked, { date: c.checked })}
+                    </span>
+                    <span class="mt-3 flex items-center gap-2 border-t border-line pt-3.5 text-[14px] font-medium">
+                      {countries.learnMore}
+                      <Icon name="arrow-right" size={15} class="text-accent" />
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <button
+          type="button"
+          data-country-next
+          aria-label={countries.more}
+          class="absolute -top-1 right-0 hidden h-10 w-10 place-items-center rounded-full border border-line-strong bg-paper text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent lg:grid"
+        >
+          <Icon name="chevron-right" size={18} />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {/* F. Published reading only: every card is a live route, or the section says it is empty. */}
+  <section class="bg-surface-2 py-16 lg:py-24" id="reading">
+    <div class="shell">
+      <div class="grid gap-6 lg:max-w-[52ch]">
+        <div>
+          <p class={eyebrow}>{readingCopy.eyebrow}</p>
+          <h2 class="mt-4 max-w-[20ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+            {readingCopy.heading}
+          </h2>
+          <p class="mt-5 text-[16px] leading-[1.8] text-muted">{readingCopy.intro}</p>
+        </div>
+      </div>
+
+      {
+        reading.length > 0 ? (
+          <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {reading.map((entry) => {
+              const slug = entry.id.split('/').pop() as string;
+              const media = HOME_READING_IMAGES[slug];
+              return (
+                <li class="reveal h-full">
+                  <ArticleCard entry={entry} image={media && { src: media.src, alt: pick(media.alt, lang) }} />
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <div class="mt-10">
+            <EmptyState
+              title={readingCopy.emptyTitle}
+              body={readingCopy.emptyBody}
+              action={{ label: readingCopy.emptyAction, href: localizedPath(lang, '/updates') }}
+            />
+          </div>
+        )
+      }
+
+      <a href={lp('/articles')} class="btn-ghost mt-10">
+        {readingCopy.viewAll}
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+  </section>
+
+  {/* G. The enquiry. The form assembles the message; it does not pretend to deliver it. */}
+  <section class="band-brand relative isolate overflow-hidden py-16 lg:py-24" id="assessment">
+    <div
+      class="absolute inset-y-0 left-0 hidden w-[calc((100vw-1240px)/2)] overflow-hidden 2xl:block"
+      aria-hidden="true"
+    >
+      <Image
+        src={ctaLeaves}
+        widths={[200, 350, 500]}
+        sizes="350px"
+        class="h-full w-full object-cover"
+        alt=""
+      />
+    </div>
+
+    <div class="shell grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+      <div>
+        <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-band-muted">{band.eyebrow}</p>
+        <h2 class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.08] text-balance text-band" id="consult-heading">
+          {band.heading}
+        </h2>
+        <p class="mt-5 max-w-[46ch] text-[16px] leading-[1.8] text-band-muted">{band.para}</p>
+
+        <ul class="mt-9 grid gap-6 border-t border-white/15 pt-7 sm:grid-cols-3">
+          {
+            HOME_BAND_TRUST.map((t) => (
+              <li>
+                <span class="flex items-center gap-2 text-band">
+                  <Icon name={t.icon} size={17} />
+                  {pick(t.label, lang)}
+                </span>
+                <p class="mt-1.5 max-w-[24ch] text-[13px] leading-[1.6] text-band-muted">{pick(t.body, lang)}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="shadow-lift">
+        <ConsultForm />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  const rail = document.querySelector<HTMLElement>('[data-country-rail]');
+  const next = document.querySelector<HTMLButtonElement>('[data-country-next]');
+  if (rail && next) {
+    next.addEventListener('click', () => {
+      const step = rail.firstElementChild?.clientWidth ?? rail.clientWidth * 0.8;
+      const last = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 8;
+      rail.scrollTo({ left: last ? 0 : rail.scrollLeft + step + 20, behavior: 'smooth' });
+    });
+  }
+</script>

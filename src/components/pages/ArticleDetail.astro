@@ -1,0 +1,44 @@
+---
+import ContentLayout from '@/layouts/ContentLayout.astro';
+import { CATEGORY_HREF, type CategoryKey } from '@/const';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { CATEGORY_LABELS, UI } from '@/i18n/ui';
+import { renderContent, resolveRefs, toolLinksFor, type ContentEntry } from '@/lib/content';
+
+type Props = { entry: ContentEntry };
+
+const { entry } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].pages;
+const { Content, headings } = await renderContent(entry);
+const [relatedGuides, relatedArticles] = await Promise.all([
+  resolveRefs(entry.data.relatedGuides, lang),
+  resolveRefs(entry.data.relatedArticles, lang),
+]);
+
+const toolLinks = toolLinksFor(entry.data.relatedTools, lang);
+if (entry.data.category === 'destinations') {
+  toolLinks.push({
+    label: copy.detail.destinationConditions,
+    href: localizedPath(lang, '/destinations'),
+    note: copy.detail.destinationConditionsNote,
+  });
+}
+
+const categoryLabel = CATEGORY_LABELS[lang][entry.data.category] ?? entry.data.category;
+const crumbs = [
+  { label: copy.articles.title, href: localizedPath(lang, '/articles') },
+  { label: categoryLabel, href: localizedPath(lang, CATEGORY_HREF[entry.data.category as CategoryKey]) },
+  { label: entry.data.title },
+];
+---
+
+<ContentLayout
+  entry={entry}
+  Content={Content}
+  headings={headings}
+  crumbs={crumbs}
+  relatedGuides={relatedGuides}
+  relatedArticles={relatedArticles}
+  relatedTools={toolLinks}
+/>

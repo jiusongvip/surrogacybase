@@ -1,0 +1,103 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { formatShortDate } from '@/lib/dates';
+import { getArticles, getGuides, pathOf, refKeyOf, type ContentEntry } from '@/lib/content';
+
+/*
+ * One component, two languages: the route file that mounts it only decides which entries it
+ * hands over. The wording comes from the dictionary rather than the markup, because a guide
+ * listing assembled from English headings on a Chinese URL would be exactly the mistake the
+ * rest of this site goes out of its way to avoid.
+ */
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].pages.guides;
+const labels = CATEGORY_LABELS[lang];
+
+const [guides, articles] = await Promise.all([getGuides(lang), getArticles(lang)]);
+
+const ordered = [...guides].sort((a, b) => a.data.title.localeCompare(b.data.title, lang === 'en' ? 'en' : 'zh-Hans'));
+const supporters = (guide: ContentEntry) => {
+  const key = refKeyOf(guide);
+  return articles.filter((a) => a.data.relatedGuides.includes(key) || a.data.category === guide.data.category);
+};
+const [lead, ...rest] = ordered;
+---
+
+<PageLayout title={copy.title} description={copy.description}>
+  <Breadcrumbs crumbs={[{ label: copy.title }]} />
+
+  <header class="shell py-10">
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.title}</h1>
+    <p class="mt-3 max-w-[58ch] text-[17px] leading-relaxed text-muted">
+      {copy.intro}
+    </p>
+  </header>
+
+  <div class="shell pb-16">
+    {
+      lead ? (
+        <a
+          href={pathOf(lead)}
+          class="block rounded-(--radius) bg-sand px-6 py-9 transition-[box-shadow] duration-(--dur) hover:shadow-card sm:px-10 sm:py-12"
+        >
+          <p class="text-[14px] text-muted">
+            {labels[lead.data.category] ?? lead.data.category}
+            <span class="tnum"> · {copy.updated} {formatShortDate(lead.data.updatedOn, lang)}</span>
+          </p>
+          <h2 class="mt-3 max-w-[22ch] text-[clamp(1.9rem,3.4vw,2.7rem)] leading-[1.08]">{lead.data.title}</h2>
+          <p class="mt-3 max-w-[60ch] text-[17px] leading-relaxed text-brand-fg">{lead.data.description}</p>
+          <span class="textlink mt-6">
+            {copy.readGuide}
+            <Icon name="arrow-right" size={16} />
+          </span>
+        </a>
+      ) : (
+        <EmptyState
+          title={copy.emptyTitle}
+          body={copy.emptyBody}
+          action={{ label: copy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
+        />
+      )
+    }
+
+    {
+      rest.length > 0 && (
+        <ul class="mt-10">
+          {rest.map((guide, i) => {
+            const supports = supporters(guide);
+            return (
+              <li class:list={[i === 0 ? '' : 'border-t border-line']}>
+                <a
+                  href={pathOf(guide)}
+                  class="group grid gap-2 py-6 sm:grid-cols-[minmax(0,1fr)_220px] sm:items-start sm:gap-8"
+                >
+                  <span>
+                    <span class="block text-[14px] text-muted">
+                      {labels[guide.data.category] ?? guide.data.category}
+                    </span>
+                    <h2 class="mt-1 text-[25px] leading-snug group-hover:text-accent">{guide.data.title}</h2>
+                    <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{guide.data.description}</p>
+                  </span>
+                  <span class="flex items-center justify-between gap-4 text-[15px] sm:flex-col sm:items-end sm:gap-3">
+                    <span class="tnum text-muted">
+                      {fill(supports.length === 1 ? copy.relatedOne : copy.relatedMany, { n: supports.length })}
+                    </span>
+                    <span class="flex items-center gap-2 text-accent">
+                      {copy.open}
+                      <Icon name="arrow-up-right" size={16} />
+                    </span>
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </div>
+</PageLayout>

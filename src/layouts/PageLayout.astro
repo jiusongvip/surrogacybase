@@ -1,0 +1,15 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+
+type Props = Omit<Parameters<typeof BaseLayout>[0], 'title'> & { title: string };
+
+const { title, description, ...rest } = Astro.props as Props;
+---
+
+<BaseLayout title={title} description={description} {...rest}>
+  <SiteHeader slot="header" />
+  <slot />
+  <SiteFooter slot="footer" />
+</BaseLayout>

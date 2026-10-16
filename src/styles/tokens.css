@@ -1,0 +1,130 @@
+/* SurrogacyBase design tokens
+ * Editorial direction: bottle green on warm paper, rust as the single accent.
+ * One light theme with an automatic dark variant under the same semantic names.
+ * Components consume semantic tokens only, never raw hex.
+ */
+
+:root {
+  --paper: #f7f5ef;
+  --surface: #fffefa;
+  /* Pale sage, not warm beige: the approved mock keeps the page in one paper tone and
+   * breaks the decision-path band with a cool grey-green. */
+  --surface-2: #e7e9e3;
+  --line: #ddd8cc;
+  --line-strong: #c1bbaa;
+  /* Decorative rules can be quiet; a control's boundary must reach 3:1 (WCAG 1.4.11). */
+  --line-control: #7f8a7e;
+
+  --text: #152b23;
+  /* Deepened from #54655c because secondary copy on the sand band measured 4.41:1. A
+   * token that clears 4.5 on four backgrounds is worth one shade darker. */
+  --text-muted: #506055;
+  --text-inverse: #f7f5ef;
+
+  /* Two brand greens, because they do opposite jobs. --brand-ink fills a band;
+   * --brand-fg has to stay readable as type or a border on the page itself.
+   * A single dark token cannot do both: in the dark scheme the band is dark
+   * while the foreground must be light. */
+  --brand-ink: #0f4234;
+  --brand-fg: #0f4234;
+  /* Type that sits on the green bands stays light in both colour schemes. */
+  --band-text: #f1ede3;
+  --band-muted: #aec6b8;
+
+  /* #bd755c is too light to carry text on paper, so links use a deeper rust. Deeper
+   * still than the first fix: the accent also has to carry text on the surface-2 and sand
+   * bands, where #a45c43 measured 4.17:1 and 3.57:1. */
+  --accent: #8d4b37;
+  --accent-hover: #7a4030;
+  --accent-on: #fffefa;
+  --accent-tint: #f0e2d9;
+
+  --sand: #e4d8c8;
+
+  /* functional status, used only inside tools and source banners */
+  --flag: #7d5201;
+  --flag-tint: #f6ecd8;
+
+  --radius: 2px;
+  --shadow-tint: 15 66 52;
+  --dur: 220ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0b1613;
+    --surface: #111f1a;
+    --surface-2: #182a23;
+    --line: #243a30;
+    --line-strong: #3a5548;
+    --line-control: #74907f;
+
+    --text: #eae7dd;
+    --text-muted: #a2b3aa;
+    --text-inverse: #0b1613;
+
+    /* The band stays dark; the foreground flips to a light pine so buttons and
+     * body copy keep 4.5:1 against a dark page. */
+    --brand-ink: #143a2e;
+    --brand-fg: #8fc2ad;
+    --band-text: #ece7dc;
+    --band-muted: #a2bab0;
+
+    --accent: #d08a6d;
+    --accent-hover: #e3a586;
+    --accent-on: #0b1613;
+    --accent-tint: #2a2119;
+
+    --sand: #1e2b24;
+
+    --flag: #dda75f;
+    --flag-tint: #2b2114;
+
+    --shadow-tint: 0 0 0;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-control: var(--line-control);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-inverse: var(--text-inverse);
+  --color-brand: var(--brand-ink);
+  --color-brand-fg: var(--brand-fg);
+  --color-band: var(--band-text);
+  --color-band-muted: var(--band-muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-on: var(--accent-on);
+  --color-accent-tint: var(--accent-tint);
+  --color-sand: var(--sand);
+  --color-flag: var(--flag);
+  --color-flag-tint: var(--flag-tint);
+
+  /*
+   * Neither Latin face carries Han glyphs, so the Chinese pages would fall back to whatever
+   * the operating system decides, which on Windows means a bitmap-era serif for headings.
+   * Naming the system Chinese faces first keeps Han in a modern gothic on every platform, in
+   * both stacks: a Chinese heading is set in the same family as Chinese body copy, and the
+   * Latin brand name inside it still gets Newsreader or Geist.
+   */
+  --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC', serif;
+  --font-sans: 'Geist Variable', 'Geist', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Source Han Sans SC', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: var(--radius);
+  --radius-panel: var(--radius);
+
+  --shadow-card: 0 1px 2px rgb(var(--shadow-tint) / 0.06),
+    0 10px 28px -16px rgb(var(--shadow-tint) / 0.18);
+  --shadow-lift: 0 2px 4px rgb(var(--shadow-tint) / 0.08),
+    0 20px 44px -20px rgb(var(--shadow-tint) / 0.24);
+}

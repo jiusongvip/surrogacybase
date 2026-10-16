@@ -1,0 +1,122 @@
+---
+/*
+ * The document shell.
+ *
+ * Everything the two languages must not disagree about lives here: the canonical is the page
+ * in its own language, the alternates name the twin, and the pair is emitted only when the
+ * twin actually exists (src/i18n/routes.ts). A hreflang that points at a 404 tells the index
+ * that two different documents are the same page, which is worse than saying nothing.
+ */
+import '@/styles/global.css';
+import { SITE } from '@/const';
+import { DEFAULT_LANG, LANG_META, type Lang } from '@/i18n/config';
+import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
+import { twinFor } from '@/i18n/routes';
+import { UI } from '@/i18n/ui';
+
+type Props = {
+  title: string;
+  description: string;
+  /** Overrides the browser and search-result title only; the H1 stays the full one. */
+  titleTag?: string;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  updatedOn?: string;
+  jsonLd?: Record<string, unknown>[];
+};
+
+const {
+  title,
+  titleTag,
+  description,
+  noindex = false,
+  ogType = 'website',
+  ogImage = SITE.ogImage,
+  updatedOn,
+  jsonLd = [],
+} = Astro.props;
+
+/*
+ * The language is read from the URL instead of passed in, because every route that exists in
+ * Chinese sits under /zh, and a prop a page can forget is a page that renders Chinese text
+ * inside English metadata.
+ */
+const lang = langFromPath(Astro.url.pathname);
+const meta = LANG_META[lang];
+const base = stripLocale(Astro.url.pathname);
+const ownPath = localizedPath(lang, base);
+const canonical = new URL(ownPath, Astro.site);
+const twins = twinFor(lang, ownPath);
+const alternates: [string, string][] = [
+  [lang, ownPath],
+  ...Object.entries(twins),
+];
+const pageTitle = title === SITE.name ? title : `${title} | ${SITE.titleSuffix}`;
+const docTitle = titleTag ? `${titleTag} | ${SITE.titleSuffix}` : pageTitle;
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': new URL('/#organization', Astro.site).href,
+  name: SITE.name,
+  url: Astro.site!.href,
+  description: SITE.description,
+};
+---
+
+<!doctype html>
+<html lang={meta.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{docTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f5ef" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1920" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+
+    {
+      alternates.length > 1 && (
+        <>
+          {alternates.map(([code, path]) => (
+            <link rel="alternate" hreflang={LANG_META[code as Lang].htmlLang} href={new URL(path, Astro.site)} />
+          ))}
+          <link rel="alternate" hreflang="x-default" href={new URL(localizedPath(DEFAULT_LANG, base), Astro.site)} />
+        </>
+      )
+    }
+
+    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content={meta.ogLocale} />
+    {updatedOn && <meta property="article:modified_time" content={updatedOn} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    {jsonLd.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-dvh flex-col bg-paper text-text antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-(--radius) focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
+    >
+      {UI[lang].skipLink}
+    </a>
+    <slot name="header" />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

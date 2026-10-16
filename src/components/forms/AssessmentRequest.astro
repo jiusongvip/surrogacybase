@@ -1,0 +1,316 @@
+---
+/*
+ * The intake for an assessment enquiry.
+ *
+ * The site is a static build with no server, so this form cannot accept a submission.
+ * It does the part a server would have done nowhere else: it composes the enquiry into
+ * a written brief you read before sending, then hands it to your own mail client, your
+ * clipboard or a downloaded file. Nothing is transmitted by pressing a button here, and
+ * the page says so instead of confirming a message that never left your browser.
+ *
+ * The draft is stored in this browser only, so a half-written enquiry survives a reload;
+ * clearing site data removes it. No identity documents, medical records, embryo or donor
+ * data and no payment details are collected, because none are needed to ask the question.
+ *
+ * The wording comes from src/data/intake.ts. The script needs some of it at runtime to
+ * assemble the message, so the chrome is serialized into the DOM and the bundle stays one
+ * file for both languages. The option labels are not duplicated there: the script reads the
+ * selected option's own text, so a label can only ever be the one the page is showing.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import NeedsInput from '@/components/ui/NeedsInput.astro';
+import { SITE } from '@/const';
+import { INTAKE_CHROME, INTAKE_HOLDERS, INTAKE_STAGES } from '@/data/intake';
+import { langFromPath } from '@/i18n/paths';
+import { fill, pick } from '@/i18n/ui';
+
+const inbox = SITE.contactEmail;
+const lang = langFromPath(Astro.url.pathname);
+const copy = INTAKE_CHROME[lang];
+const stages = INTAKE_STAGES.map((s) => ({ value: s.value, label: pick(s.label, lang) }));
+const holders = INTAKE_HOLDERS.map((h) => ({ value: h.value, label: pick(h.label, lang) }));
+const excludedLine = fill(copy.doNotInclude, { list: copy.excluded.join(copy.excludedJoin) });
+---
+
+<div class="card p-6 sm:p-7" data-intake={inbox} data-copy={JSON.stringify(copy)}>
+  <h3 class="text-[19px] leading-snug">{copy.title}</h3>
+  <p class="mt-2 text-[15px] leading-[1.7] text-muted">{copy.intro}</p>
+
+  <div class="mt-6 grid gap-5">
+    <div>
+      <label class="field-label" for="eq-stage">{copy.stageLabel}</label>
+      <select class="field-input mt-1.5" id="eq-stage" data-field="stage">
+        {stages.map((s) => <option value={s.value}>{s.label}</option>)}
+      </select>
+    </div>
+
+    <div>
+      <label class="field-label" for="eq-places">
+        {copy.placesLabel}
+        <span class="font-normal text-muted">{copy.optional}</span>
+      </label>
+      <input
+        class="field-input mt-1.5"
+        id="eq-places"
+        data-field="places"
+        type="text"
+        autocomplete="off"
+        maxlength="120"
+        placeholder={copy.placesPlaceholder}
+      />
+    </div>
+
+    <div>
+      <label class="field-label" for="eq-holder">
+        {copy.holderLabel}
+        <span class="font-normal text-muted">{copy.optional}</span>
+      </label>
+      <select class="field-input mt-1.5" id="eq-holder" data-field="holder">
+        {holders.map((h) => <option value={h.value}>{h.label}</option>)}
+      </select>
+      <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{copy.holderHint}</p>
+    </div>
+
+    <div>
+      <label class="field-label" for="eq-question">{copy.questionLabel}</label>
+      <textarea
+        class="field-input mt-1.5 min-h-[132px]"
+        id="eq-question"
+        data-field="question"
+        rows="5"
+        maxlength="1200"
+        aria-describedby="eq-question-help"
+        placeholder={copy.questionPlaceholder}></textarea
+      >
+      <p class="mt-1.5 text-[14px] leading-relaxed text-muted" id="eq-question-help">
+        {copy.questionHelp}
+      </p>
+    </div>
+
+    <div>
+      <label class="field-label" for="eq-reply">
+        {copy.replyLabel}
+        <span class="font-normal text-muted">{copy.replyNote}</span>
+      </label>
+      <input
+        class="field-input mt-1.5"
+        id="eq-reply"
+        data-field="reply"
+        type="email"
+        autocomplete="email"
+        maxlength="120"
+        aria-describedby="eq-reply-help"
+        placeholder={copy.replyPlaceholder}
+      />
+      <p class="mt-1.5 text-[14px] leading-relaxed text-muted" id="eq-reply-help">{copy.replyHelp}</p>
+    </div>
+
+    <p class="text-[13px] leading-relaxed text-flag" role="note">{excludedLine}</p>
+
+    <div class="flex flex-wrap items-center gap-3">
+      {
+        inbox
+          ? (
+              <a class="btn-primary" data-send href={`mailto:${inbox}`}>
+                {copy.sendMail}
+                <Icon name="arrow-up-right" size={16} />
+              </a>
+            )
+          : null
+      }
+      <button type="button" class:list={[inbox ? 'btn-ghost' : 'btn-primary']} data-action="copy">
+        {copy.copy}
+      </button>
+      <button type="button" class="btn-ghost" data-action="download">{copy.download}</button>
+    </div>
+
+    <p class="text-[14px] leading-relaxed text-muted" role="status" aria-live="polite" data-status>
+      {copy.statusIdle}
+    </p>
+
+    {
+      !inbox && (
+        <NeedsInput label={copy.needsLabel} why={copy.needsWhy} />
+      )
+    }
+
+    <div class="border-t border-line pt-4">
+      <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{copy.previewHeading}</p>
+      <pre
+        class="mt-2 overflow-x-auto rounded-(--radius) border border-line bg-surface-2 p-4 text-[13px] leading-[1.6] whitespace-pre-wrap text-text"
+        data-preview
+      ></pre>
+    </div>
+  </div>
+</div>
+
+<script>
+  import type { IntakeChrome } from '@/data/intake';
+
+  type Fields = { stage: string; places: string; holder: string; question: string; reply: string };
+  type Chrome = IntakeChrome;
+
+  const KEY = 'surrogacybase.assessment-enquiry.v1';
+  const ADDRESS = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  /** Same token syntax as src/i18n/ui.ts, kept local because a bundle cannot import it. */
+  function fill(template: string, vars: Record<string, string>): string {
+    return template.replace(/\{(\w+)\}/g, (match, key: string) => (key in vars ? vars[key] : match));
+  }
+
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-intake]'))) {
+    const T = JSON.parse(root.dataset.copy!) as Chrome;
+    const inbox = root.getAttribute('data-intake') ?? '';
+    const status = root.querySelector<HTMLElement>('[data-status]')!;
+    const preview = root.querySelector<HTMLPreElement>('[data-preview]')!;
+    const send = root.querySelector<HTMLAnchorElement>('[data-send]');
+    const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-field]'));
+
+    const box = (name: keyof Fields) =>
+      root.querySelector<HTMLInputElement | HTMLSelectElement>(`[data-field="${name}"]`);
+
+    const select = (name: 'stage' | 'holder') =>
+      root.querySelector<HTMLSelectElement>(`[data-field="${name}"]`);
+
+    const EMPTY: Fields = { stage: 'research', places: '', holder: 'agency', question: '', reply: '' };
+
+    const read = (): Fields => {
+      const out = { ...EMPTY };
+      for (const el of inputs) out[el.getAttribute('data-field') as keyof Fields] = el.value;
+      return out;
+    };
+
+    /**
+     * The selected option's own text, which is the label the reader saw and can therefore
+     * check. A code-to-label table in here would be a second copy of the wording, and the
+     * message could end up in a language the page is not written in.
+     */
+    const labelOf = (name: 'stage' | 'holder') => {
+      const el = select(name);
+      return el && el.selectedIndex > -1 ? el.options[el.selectedIndex].text : (el?.value ?? '');
+    };
+
+    /**
+     * One text for every exit: the preview, the mail body, the clipboard and the file all
+     * show exactly what the receiver gets, including the reply address. The fallback for a
+     * blocked clipboard tells the reader to copy this text by hand, so anything the preview
+     * leaves out would be an enquiry nobody can answer.
+     */
+    function compose(v: Fields): string {
+      const lines = [fill(T.lineStage, { value: labelOf('stage') })];
+      if (v.places.trim()) lines.push(fill(T.lineInview, { value: v.places.trim() }));
+      if (v.holder !== 'none') lines.push(fill(T.lineHolder, { value: labelOf('holder') }));
+      lines.push(fill(T.lineQuestion, { value: v.question.trim() }));
+      if (v.reply.trim()) lines.push(fill(T.lineReply, { value: v.reply.trim() }));
+      lines.push('', T.lineFooter);
+      return lines.join('\n');
+    }
+
+    /**
+     * The two actions that block are the ones a reader can mistake for an accident. A
+     * mail app that opens with no question in it wastes their hour, so the check runs
+     * before any of the three exits, and says which field is short rather than beeping.
+     */
+    function ready(): boolean {
+      const v = read();
+      if (!v.question.trim()) {
+        status.textContent = T.needQuestion;
+        box('question')?.focus();
+        return false;
+      }
+      if (!ADDRESS.test(v.reply.trim())) {
+        status.textContent = T.needReply;
+        box('reply')?.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function save(v: Fields) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(v));
+      } catch {
+        /* storage blocked: the enquiry still works for this page view */
+      }
+    }
+
+    function load(): Fields | null {
+      try {
+        const raw = localStorage.getItem(KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw) as Partial<Fields>;
+        const out = { ...EMPTY };
+        for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+          if (typeof parsed[name] === 'string') out[name] = parsed[name] as string;
+        }
+        return out;
+      } catch {
+        return null;
+      }
+    }
+
+    function repaint() {
+      const v = read();
+      preview.textContent = compose(v);
+      if (send && inbox) {
+        const subject = v.question.trim().slice(0, 70) || T.subjectFallback;
+        send.href = `mailto:${inbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(compose(v))}`;
+      }
+    }
+
+    for (const el of inputs) {
+      el.addEventListener('input', () => {
+        save(read());
+        repaint();
+      });
+      el.addEventListener('change', () => {
+        save(read());
+        repaint();
+      });
+    }
+
+    root.addEventListener('click', async (event) => {
+      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-send], [data-action]');
+      if (!trigger) return;
+      if (trigger.hasAttribute('data-send') && !ready()) {
+        event.preventDefault();
+        return;
+      }
+      if (trigger.getAttribute('data-action') === 'copy') {
+        if (!ready()) return;
+        const text = compose(read());
+        let ok = false;
+        try {
+          await navigator.clipboard.writeText(text);
+          ok = true;
+        } catch {
+          /* clipboard blocked: the preview above is the manual fallback */
+        }
+        status.textContent = ok ? T.copied : T.clipboardBlocked;
+        return;
+      }
+      if (trigger.getAttribute('data-action') === 'download') {
+        if (!ready()) return;
+        const blob = new Blob([`# ${T.exportHeading}\n\n${compose(read())}\n`], {
+          type: 'text/markdown',
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = T.filename;
+        a.click();
+        URL.revokeObjectURL(url);
+        status.textContent = fill(T.downloaded, { file: T.filename });
+      }
+    });
+
+    const saved = load();
+    if (saved) {
+      for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+        const el = box(name);
+        if (el) el.value = saved[name];
+      }
+    }
+    repaint();
+  }
+</script>

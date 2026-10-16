@@ -1,0 +1,369 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/newsreader/wght.css';
+@import '@fontsource-variable/newsreader/wght-italic.css';
+@import '@fontsource-variable/geist/wght.css';
+@import './tokens.css';
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01' on, 'cv01' on;
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  /*
+   * The negative tracking above is what stops a Latin display heading from looking loose;
+   * Han characters are already full-width squares, so the same -0.015em crowds them against
+   * each other. The Chinese pages set their headings at the typeface's own spacing.
+   */
+  html:lang(zh) :is(h1, h2, h3, h4) {
+    letter-spacing: normal;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--accent-tint);
+    color: var(--text);
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+}
+
+/* Tailwind v4 can only @apply a real utility, so anything reused below is
+ * declared with @utility rather than inside a layer. */
+
+/* Numbers stay aligned in tables, tools and metadata strips. */
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility link-underlined {
+  @apply text-accent underline decoration-line-strong decoration-1 underline-offset-[3px] transition-colors duration-(--dur) hover:decoration-accent;
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8;
+  }
+
+  .rule {
+    @apply border-t border-line;
+  }
+
+  /* Primary is green on paper, paper on green. Never a rust-filled button. The hover
+   * swaps the label to the token paired with the rust fill, because bottle green band
+   * text on rust measures 2.26:1 in the dark scheme. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) bg-brand px-5 py-3 text-[15px] font-medium text-band transition-[background-color,color,transform] duration-(--dur) ease-(--ease) hover:bg-accent hover:text-accent-on active:scale-[0.99];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) border border-brand-fg/35 bg-transparent px-5 py-3 text-[15px] font-medium text-brand-fg transition-[background-color,border-color,color] duration-(--dur) ease-(--ease) hover:border-brand-fg hover:bg-surface-2 active:scale-[0.99];
+  }
+
+  .btn-ghost-on-band {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) border border-band/35 bg-transparent px-5 py-3 text-[15px] font-medium text-band transition-[background-color,border-color] duration-(--dur) ease-(--ease) hover:border-band hover:bg-brand/60 active:scale-[0.99];
+  }
+
+  /* A solid action that has to sit on a brand band, where btn-primary would vanish
+   * into the fill. The pair flips with the colour scheme, so the label stays dark on
+   * light in both. */
+  .btn-band {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) bg-band px-5 py-3 text-[15px] font-medium text-brand transition-[background-color,transform] duration-(--dur) ease-(--ease) hover:bg-band/88 active:scale-[0.99];
+  }
+
+  .textlink {
+    @apply inline-flex items-center gap-2 whitespace-nowrap border-b border-line-strong pb-1.5 text-[15px] font-medium text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent;
+  }
+
+  .card {
+    @apply rounded-(--radius) border border-line bg-surface transition-[border-color,box-shadow,transform] duration-(--dur) ease-(--ease);
+  }
+
+  .card-hover:hover {
+    @apply border-line-strong shadow-card;
+    transform: translateY(-2px);
+  }
+
+  .field-label {
+    @apply block text-[14px] font-medium text-text;
+  }
+
+  .field-input {
+    @apply w-full rounded-(--radius) border border-line-control bg-surface px-3 py-2.5 text-[15px] text-text transition-[border-color,box-shadow] duration-(--dur) placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25;
+  }
+
+  /* Full-bleed colour bands. The page stays one theme; bands are the same
+   * bottle green at different depths, never a mid-page inversion. */
+  .band-brand {
+    @apply bg-brand text-band;
+  }
+
+  .band-sand {
+    @apply bg-sand text-text;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Prose: article and guide bodies.
+ * ------------------------------------------------------------------------- */
+.prose {
+  @apply text-[17px] leading-[1.72];
+  max-width: 68ch;
+}
+
+.prose > * + * {
+  @apply mt-5;
+}
+
+.prose h2 {
+  @apply mt-12 text-[26px] leading-[1.25];
+  scroll-margin-top: 96px;
+}
+
+.prose h3 {
+  @apply mt-8 text-[20px] leading-[1.3];
+  scroll-margin-top: 96px;
+}
+
+.prose p {
+  @apply text-text;
+}
+
+.prose a {
+  @apply link-underlined;
+}
+
+.prose ul,
+.prose ol {
+  @apply mt-4 space-y-2 pl-5;
+}
+
+.prose ul {
+  list-style: none;
+  @apply pl-0 space-y-2.5;
+}
+
+.prose ul > li {
+  @apply relative pl-6;
+}
+
+.prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.prose ol {
+  list-style: decimal;
+  @apply pl-5;
+}
+
+.prose ol > li::marker {
+  @apply text-muted tnum;
+}
+
+.prose li > ul,
+.prose li > ol {
+  @apply mt-2;
+}
+
+.prose strong {
+  @apply font-semibold;
+}
+
+.prose blockquote {
+  @apply mt-8 border-l-2 border-accent bg-surface-2 px-5 py-4 text-[16px] italic;
+}
+
+.prose blockquote p {
+  @apply m-0;
+}
+
+/* Every content table is wrapped by rehypeTableScroll. Without it a wide table
+ * stretches the grid track and the whole page scrolls sideways; with it only the
+ * table does. relative keeps absolutely positioned descendants (sr-only labels)
+ * inside the scroll box instead of widening the document.
+ * The layered backgrounds are the scroll affordance: the two opaque covers ride the
+ * content (local) and hide the two edge shadows (scroll) whenever that edge is reached,
+ * so nothing darkens the table when it already fits. */
+.table-scroll {
+  @apply relative mt-8 w-full overflow-x-auto pb-1;
+  background:
+    linear-gradient(to right, var(--paper) 40%, rgb(var(--shadow-tint) / 0)) left / 40px 100%,
+    linear-gradient(to left, var(--paper) 40%, rgb(var(--shadow-tint) / 0)) right / 40px 100%,
+    radial-gradient(farthest-side at 0 50%, rgb(var(--shadow-tint) / 0.2), rgb(var(--shadow-tint) / 0)) left / 14px 100%,
+    radial-gradient(farthest-side at 100% 50%, rgb(var(--shadow-tint) / 0.2), rgb(var(--shadow-tint) / 0)) right / 14px 100%;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.prose table {
+  @apply w-full border-collapse text-left text-[15px];
+}
+
+/* Three columns of prose at 90px each is unreadable, so past two columns the table
+ * keeps a workable width and the wrapper handles the overflow. */
+.prose table:has(td:nth-child(3)) {
+  @apply min-w-[560px];
+}
+
+.prose caption {
+  @apply pb-3 text-left text-[14px] text-muted;
+}
+
+.prose th {
+  @apply border-b border-line-strong pb-2 text-left align-bottom font-semibold;
+}
+
+.prose td {
+  @apply border-b border-line py-3 pr-6 align-top text-text;
+}
+
+.prose hr {
+  @apply mt-10 border-t border-line;
+}
+
+.prose sup {
+  @apply text-[12px];
+}
+
+.prose sup a {
+  @apply text-accent font-medium no-underline;
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion. Load reveal + scroll reveal, both CSS only, both reduced-motion safe.
+ * ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise var(--dur-slow) var(--ease) both;
+  }
+
+  .rise-1 {
+    animation-delay: 40ms;
+  }
+  .rise-2 {
+    animation-delay: 110ms;
+  }
+  .rise-3 {
+    animation-delay: 180ms;
+  }
+  .rise-4 {
+    animation-delay: 250ms;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal both linear;
+      animation-timeline: view();
+      animation-range: entry 4% cover 22%;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  .progress-bar {
+    transform-origin: left center;
+    animation: shrink linear both;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes shrink {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Hover lifts and colour transitions are motion too. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .card-hover:hover,
+  .btn-primary:active,
+  .btn-ghost:active {
+    transform: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

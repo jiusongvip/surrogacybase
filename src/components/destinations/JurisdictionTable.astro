@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { BASIS_LABELS, UI } from '@/i18n/ui';
+
+type Props = {
+  rows: CollectionEntry<'jurisdictions'>[];
+  compact?: boolean;
+};
+
+const { rows, compact = false } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].table;
+const basis = BASIS_LABELS[lang];
+
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full min-w-[640px] border-collapse text-left text-[15px]">
+    <caption class="sr-only">
+      {copy.caption}
+    </caption>
+    <thead>
+      <tr>
+        <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.destination}</th>
+        <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.legalBasis}</th>
+        {!compact && <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.payment}</th>}
+        <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.checked}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td class="border-b border-line py-3 pr-4 align-top">
+            <a href={localizedPath(lang, `/destinations/${row.data.code}`)} class="font-medium text-text underline decoration-line-strong underline-offset-2 hover:text-accent">
+              {row.data.name}
+            </a>
+            <span class="block text-[13px] text-muted">{row.data.region}</span>
+          </td>
+          <td class="border-b border-line py-3 pr-4 align-top text-muted">
+            {basis[row.data.basis] ?? row.data.basis}
+            {row.data.insufficientData && (
+              <span class="mt-1 block text-[13px] text-flag">
+                {copy.insufficient}
+              </span>
+            )}
+          </td>
+          {!compact && (
+            <td class="border-b border-line py-3 pr-4 align-top text-muted">
+              {row.data.paymentModel}
+            </td>
+          )}
+          <td class="border-b border-line py-3 pr-4 align-top tnum text-[13px] text-muted">
+            {row.data.statusVerifiedOn}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+---
+import JurisdictionDetail from '@/components/pages/JurisdictionDetail.astro';
+import { getCollection } from 'astro:content';
+
+// Astro hoists getStaticPaths out of module scope, so it may only use imports.
+export async function getStaticPaths() {
+  const rows = await getCollection('jurisdictions', (e) => e.data.published);
+  return rows.map((entry) => ({ params: { code: entry.data.code }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<JurisdictionDetail entry={entry} />

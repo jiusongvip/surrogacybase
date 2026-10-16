@@ -1,0 +1,338 @@
+[
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/editorial-policy",
+    "title": "Editorial policy",
+    "change": "First publication of the standards, evidence levels and source record fields the site applies.",
+    "reason": "The rules had to exist and be written down before any claim was published under them."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/privacy",
+    "title": "Privacy",
+    "change": "First publication, describing the build as it stands: no analytics, no cookies, tool data held only in your browser.",
+    "reason": "A policy written for the software that exists, rather than for a planned one."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "withheld",
+    "path": null,
+    "title": "Colombia destination page",
+    "change": "Not created. A destination page for Colombia is planned but has no publishable source yet.",
+    "reason": "The citation repeated across provider sites is wrong. Colombia's Constitutional Court ruling on a surrogacy arrangement is T-968 of 2009, not 2014; the court's T-968/2014 document concerns disability rating. The 2009 decision is a tutela about custody and contact for twins, and states there is no express prohibition. That is narrower than the way it is usually described, and the full text needs reading before anything is written from it."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "withheld",
+    "path": null,
+    "title": "India, Ukraine and Portugal destination pages",
+    "change": "Not created.",
+    "reason": "India: the ICMR page listing the 2021 Acts and Rules is reachable, but the substantive provisions could not be retrieved from any official source, so eligibility details, insurance amounts and offence sections are unpublishable. Ukraine and Portugal: every statutory text attempted either failed to load or resolved to an agency marketing page. No page is better than a page built on a broker's summary."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "decision",
+    "path": "/guides/surrogacy-cost",
+    "title": "Cost figures across the site",
+    "change": "US cost figures are published only as attributed, dated, self-reported ranges from named providers, and no average is presented as a fact.",
+    "reason": "No independent, audited or government cost dataset exists for surrogacy in the United States. Every usable figure traces to a provider's own page or to an academic sentence citing one."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "decision",
+    "path": "/destinations",
+    "title": "Registry statistics",
+    "change": "No official registry statistic about surrogacy programs, matching, payments or outcomes is cited anywhere on the site.",
+    "reason": "US assisted reproduction surveillance counts treatment cycles. There is no national registry of surrogacy agreements, compensation or program outcomes, so a claim of that kind would have no source to point at."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/guides/surrogacy-cost",
+    "title": "Cost guide",
+    "change": "First publication: cost components, common exclusions, escrow and refund mechanics, and the published cost figures labelled by source type.",
+    "reason": "The pillar for the cost cluster, and the page every cost article links back to."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/guides/surrogacy-process",
+    "title": "Process guide",
+    "change": "First publication: nine stages, who is accountable at each, and what intended parents are expected to prepare.",
+    "reason": "Establishes the framework the destination and agency guides depend on, using FIGO's 2025 position statement as the standard."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/guides/choosing-a-surrogacy-agency",
+    "title": "Agency guide",
+    "change": "First publication: what an agency fee covers, documents to request before a deposit, and questions grouped by which professional answers them.",
+    "reason": "Written around credentials rather than praise, including the distinction between charity registration and regulation."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/guides/surrogacy-legal-considerations",
+    "title": "Legal considerations guide",
+    "change": "First publication: enforceability, parentage, eligibility and payment separated into four questions, plus recognition where you live.",
+    "reason": "Most destination advice collapses these four into whether a country 'allows surrogacy', which is where plans fail."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/articles/why-no-average-surrogacy-cost-exists",
+    "title": "Article: why no average cost exists",
+    "change": "First publication.",
+    "reason": "Explains what registry data does and does not cover, so readers can judge any cost figure they meet elsewhere."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/articles/surrogacy-costs-that-sit-outside-a-quote",
+    "title": "Article: costs outside a quote",
+    "change": "First publication.",
+    "reason": "The exclusions list is the practical gap between a quoted fee and a real budget."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/articles/surrogacy-escrow-accounts-and-payment-stages",
+    "title": "Article: escrow and payment stages",
+    "change": "First publication.",
+    "reason": "Escrow timing decides exposure earlier than the headline fee does."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination",
+    "title": "Article: comparing destinations",
+    "change": "First publication, marked as framework evidence because it asserts no external facts.",
+    "reason": "Gives readers a source hierarchy to apply, which is the difference between comparing and being sold to."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/destinations",
+    "title": "Destination pages for five jurisdictions",
+    "change": "United States, United Kingdom and Canada published with sourced positions. Colombia and Greece published but marked as insufficient.",
+    "reason": "Colombia and Greece are shown as researched and thin rather than hidden, because the Colombia citation problem and the wrong Greek statute number are themselves useful information."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/guides/gamete-and-surrogate-options",
+    "title": "Guide: gamete and surrogate options",
+    "change": "First publication, as framework evidence. Whose egg, whose sperm and who carries the pregnancy are separated into three decisions, with what each adds to the question list and the order in which they constrain the destination and the budget.",
+    "reason": "This was the only one of the six questions on the homepage with no page answering it. Nothing here could be cited to a source worth relying on, so the page teaches the questions and names who owes each answer instead of asserting rules."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/tools/destination-research-checklist",
+    "title": "Destination research checklist",
+    "change": "First publication. Thirty-three questions across eligibility, parentage, nationality, medical scope, money, presence and disputes, with a status and a named source for each answer, exportable as a document.",
+    "reason": "Every guide and article previously pointed its next step at the one tool that existed, which made the next step a formality rather than an answer. Questions only, no statements about what any country requires."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/tools/agency-question-checklist",
+    "title": "Agency question checklist",
+    "change": "First publication. Questions to put to an agency in writing before signing, grouped by fee scope, money and exit, the surrogate's own position, medical limits, legal work, failure, and claims you can check.",
+    "reason": "A written answer can be read again against a contract; a spoken one cannot. Nothing is submitted, and no agency is named or rated."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": null,
+    "title": "Invisible text in the dark colour scheme",
+    "change": "Body copy on the guides index and the quote tool page, and every ghost button label site-wide, rendered in the brand ink token at 1.20:1 against the dark page. The brand colour is now two tokens: one that fills a band, one that stays readable on the page. Thirty measured pairs across both schemes now sit at 4.5:1 or better for text and 3:1 or better for control boundaries.",
+    "reason": "A single dark brand token cannot do both jobs, because the band stays dark in the dark scheme while the foreground has to become light. Replacing the navy with bottle green exposed the assumption; the defect predates the change."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "decision",
+    "path": "/assessment",
+    "title": "No consultation service is offered",
+    "change": "The header action, the content-page sidebar and the homepage close now point at the tools. /assessment keeps its statement of scope and boundaries and moves to the footer, labelled as a page about a service that is not open.",
+    "reason": "The site is being built as research and tooling only. A primary button implying an intake channel that does not exist is the kind of confident wording this site exists to distrust."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": null,
+    "title": "Content tables pushed the whole page sideways on phones",
+    "change": "Three guides rendered wider than the viewport, so the page scrolled horizontally instead of the table. Every table in the content now sits inside its own scroll container, the article column's minimum width is zero rather than the table's, the quote tool's scroll box now contains its hidden caption, and the home page's primary action was renamed because its unbreakable label was what set the column's floor.",
+    "reason": "A wide comparison table is how this site normally shows a difference, so on a phone the layout had to choose between unreadable columns and dragging the entire page along. Measured at 320, 375 and 1440 across all thirty-three built routes, which is where it was found: no page had been checked at a narrow width before."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": null,
+    "title": "The checklist export used a separator the rest of the site forbids",
+    "change": "Statuses and answers in the downloaded document were joined by an em dash. The line now reads: Question (Confirmed: who answered it, and when).",
+    "reason": "The exported document is the thing a reader takes to a lawyer, and this site generates it, so a typographic rule that stops at the HTML is not a rule. It survived because it lives in a script rather than a page; the built-output check now reads scripts as well."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "decision",
+    "path": "/",
+    "title": "Supersedes: no consultation service is offered",
+    "change": "The homepage was rebuilt as a decision-support landing page whose conversion action is an assessment enquiry, so the site does have an intake channel now and the entry above is reversed. What has not changed is the boundary the reversal was written to protect: /assessment still states the scope, still refuses legal conclusions and medical opinions, and still lists what has not been settled about the service. Nav was re-pointed at the four blocking topics and the articles index, and /privacy now describes the enquiry form as built rather than as a possibility.",
+    "reason": "The operator intends to answer enquiries, which is a different business fact from the one recorded above, and the earlier entry was written against a research-only plan. Reversing a decision in place would have left the site's own record describing a plan the site no longer follows, so both entries stand and the newer one names the older one."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "published",
+    "path": "/#assessment",
+    "title": "Enquiry form that sends nothing",
+    "change": "Five fields, none of them an identifier: where you are in the process, what is in view, who holds the document now, the question, and a reply address. The composed message is shown on the page before it goes anywhere, and the three exits are your own mail app, the clipboard or a downloaded file. The draft is kept in this browser so it survives a reload. The mail exit only appears once SITE.contactEmail names a real inbox; until then the page says the address is missing instead of opening an empty compose window.",
+    "reason": "A static build has no endpoint, and a form that reports success after posting to nothing is precisely the confident wording this site exists to distrust. So the form does the composition a server would have done and leaves the sending to the reader, which also keeps an enquiry from sitting on a third-party form service that would hold fertility and family details."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "decision",
+    "path": "/",
+    "title": "Home page rebuilt around the decision, with an enquiry at the end",
+    "change": "The home page now runs in one order: the four questions that block a decision, where you are starting from, the six links to verify before choosing, cost and contract against information standards as two separate panels, then the reading and the enquiry form. Every module links only to a route that is built and live; a concern whose sources are unfinished renders its withheld state instead of a dead link.",
+    "reason": "The page has to carry a reader from a question to a verifiable answer, so the sections follow the order in which the questions actually constrain each other rather than the order in which content was written."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": "/",
+    "title": "Hero text on a photograph that was brighter than the scrim assumed",
+    "change": "The opening image measures a mean luminance of 0.38 in its left half, where the headline sits, and its brightest pixels are near white. One directional scrim left the small helper text and the secondary line at 3.3:1 on a phone, where the cover crop puts the bright middle of the frame behind the whole column. The hero now carries a second overlay (65% below lg, 25% above it), and the muted band colour is no longer used for small text over the frame. Measured worst case: 8.23:1 for body text against the brightest pixels in the frame.",
+    "reason": "A translucent scrim cannot guarantee a contrast ratio because it multiplies against whatever the image happens to be. The frame was measured and the overlays were sized from that, not from how dark the thumbnail looked."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": "/",
+    "title": "Secondary text on the sand band sat under 4.5:1",
+    "change": "The measured pair was 4.41:1 in the light scheme. The secondary text token moves from #54655c to #506055, which puts it at 4.75:1 on sand, 6.12:1 on paper, 6.62:1 on surface and 5.55:1 on surface 2. Nineteen pairs in both colour schemes are now measured by a script rather than held in memory.",
+    "reason": "The sand band gained body copy in this revision, and a token that clears four backgrounds by one pair less than it should is a defect the new section exposed rather than introduced."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": "/",
+    "title": "Three action labels set a floor the page could not shrink past",
+    "change": "Buttons and text links never wrap, so \"Read the cost and contract guide\", \"Open the verification checklists\" and \"Learn about the assessment service\" forced the document to scroll sideways by 61px at 320px, 6px at 375px and 17px at 768px. The labels are now shorter and the panels are measured at five widths with horizontal overflow reported as zero.",
+    "reason": "A label is the widest thing in its column, so wording is a layout constraint. The overflow was found by measuring the built page at each width, not the source."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": "/#assessment",
+    "title": "The enquiry the reader copies by hand had no reply address in it",
+    "change": "The on-page preview composed four lines and left the reply address out, while the clipboard and file exits added it. A reader whose browser refuses clipboard access is told to select the preview and copy it themselves, which produced an enquiry nobody could answer. One composed text is now used by the preview, the mail body, the clipboard and the file, and the address appears whenever it is filled in.",
+    "reason": "Four exits that render the same message differently means three of them are describing a document the reader never sees. Verified by driving the form in a browser, including the blocked and the failing clipboard path."
+  },
+  {
+    "date": "2026-10-14",
+    "kind": "corrected",
+    "path": null,
+    "title": "The accent colour could not carry text on the two tinted bands",
+    "change": "Rust is used for links, card labels and hover states, and it was only ever measured against paper and surface. On the surface-2 band it measured 4.17:1 and on the sand band 3.57:1, both under the 4.5:1 a link needs. The accent deepens from #a45c43 to #8d4b37, which reaches 5.47:1 and 4.68:1 while keeping the same hue. Two hover states were also re-paired: a primary button now swaps its label to the token that belongs with the rust fill (band text on rust was 2.26:1 in the dark scheme), and footer links hover by underline instead of by colour, because rust on the green band was 2.50:1. Twenty-two pairs per scheme are now measured by script, including both tinted bands.",
+    "reason": "A colour chosen for a page background has to be tested against every background the components actually render it on. The tinted bands were added later than the token, and the earlier contrast pass counted pairs rather than surfaces."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "corrected",
+    "path": "/",
+    "title": "The hero scrim was the wrong colour, not the wrong strength",
+    "change": "The previous entry left the hero under 80 per cent bottle green, and the arithmetic behind it stands: a dark wash over sunlit sea has to beat the frame's brightest pixel, and that pixel is nearly white. What was wrong is the colour it was beating. The page this site was approved against is bright, with the photograph reading as weather and light and the type set in brand green on top of it. So the wash is paper now instead of brand, and the copy uses brand-fg and text instead of the band tokens. A light wash has the opposite worst case: it only has to lift the frame's darkest pixel. Paper at 86 per cent on the left edge, 78 per cent where the copy column ends and nothing by 82 per cent of the width clears it with room to spare. Against a black pixel the heading measures 6.18:1 and the body copy 8.15:1 at the right edge of the column; in the dark scheme the same wash is tested against the frame's brightest pixel and reaches 4.92:1 and 7.97:1. Text-muted is deliberately absent from the hero, because it needs 86 per cent paper across the whole column to hold 4.5:1, which is the opaque panel arriving again by a longer route. Below the desktop breakpoint nothing changed: the photograph keeps its own band and the copy sits on plain paper.",
+    "reason": "A scrim is chosen for a photograph and for a colour scheme at the same time, and fixing only the first of those produces a treatment that measures well and looks like nothing that was designed. The honest version of the last entry is the one that says the constraint pointed at the wrong variable."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": "/",
+    "title": "The homepage palette collapsed to one paper tone with one cool band",
+    "change": "Three surfaces were competing on a single page: the warm paper of the body, a beige surface-2, and a sand band behind the verification panels. The approved page keeps everything in one paper tone and breaks the rhythm once, with a cool grey-green, before the bottle green call to action. --surface-2 moves from #eeeade to #e7e9e3, which is a desaturated sage rather than a warm beige, and the verification band drops its sand fill for plain paper with rules above and below. The sand token stays: it is still what the region comparison tables and the source banners are built on.",
+    "reason": "Beige on beige reads as a printing error rather than as a band, and the only way to tell the two apart at a glance is for one of them to be cool. Nothing about the contrast pairs changed, because surface-2 and sand are tested against text and accent separately."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": "/",
+    "title": "The homepage photographs are supplied rather than generated",
+    "change": "Fourteen photographs replace the generated still lifes on the hero, the four concern entries, the three stage entries, both verification panels and the four featured articles. Every card that previously carried an icon alone now carries an image band above its text. The featured reading list changed with it: two of the four slots now hold the legal-considerations and agency-choosing guides, because those are the two whose subjects the supplied photographs actually depict, and the escrow article is still linked from the contract panel below. One supplied image, the decorative leaf strip beside the assessment band, sits in the margin outside the 1240px column and therefore only renders from 1536px up.",
+    "reason": "A photograph of a harbour is not interchangeable with a photograph of a passport, and the earlier rule against people in the imagery was mine rather than the brief's. Where an image and its slot disagreed, the slot moved."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": "/",
+    "title": "The hero photograph now carries a person, and the wash was rebuilt around it",
+    "change": "The supplied photograph that sits behind the opening argument replaces the earlier people-free frame. It is a sunlit coast with a figure in the right third, so two things had to change together. The crop moved to object-[52% 42%] from lg and object-[62% 38%] below it, which keeps the open water under the copy column and the figure clear of it. And the wash is no longer a single strength: the light scheme runs paper at 62 per cent to 60 per cent at 58 of the row and falls to nothing by 82 per cent, while the dark scheme runs 86 to 80. Below lg the wash is off entirely and the photograph keeps its own band, because the copy spans the full width there and a wash would have to cover the frame.",
+    "reason": "The rule against people in the imagery was my own addition, not the brief. Once a bright sea sits behind the type, a dark scrim has to beat the brightest pixel, which costs 75 per cent coverage and no visible sea at all; a light scrim only has to lift the darkest pixel behind the sentences, which is the headland. The two strengths are measured per scheme and per foreground, and tokens-check.mjs now asserts the four cases rather than trusting the earlier single figure."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "published",
+    "path": "/destinations",
+    "title": "The destination assessment, ten questions that produce a research roadmap",
+    "change": "The destination page now opens its own module instead of pointing at a contact form. Three steps, ten questions, nine of them required: family situation and legal identity, what you are trying to settle, then practical conditions. Nationality, residence and marital status are asked as three separate questions because they answer three different legal tests and none of them substitutes for another. The genetic question is optional and asks for a plan rather than a diagnosis. The budget question asks how you relate to cost and never for an amount, an income or a proof of funds. Nothing asks for a name, contact details, documents or medical records. The result is a roadmap: the three questions every route has to answer, then up to eighteen notes that narrow against your answers, each with the live page to open next, and the four parties who own each kind of answer. The page will not name a country as suitable, because the verified material here describes how a legal system works rather than which family may use it. Three of the notes quote a legal statement, and each carries its publisher and the date we read it. The source is the American Society for Reproductive Medicine state survey for the United States restriction, the Human Fertilisation and Embryology Act route as recorded for the United Kingdom, and the Assisted Human Reproduction Act regulations for the Canadian expense reimbursement.",
+    "reason": "A form that ends in \"thanks, we will be in touch\" tells the reader nothing and costs them the reason to come back. The version worth building answers the question the reader actually asked, then hands the rest to the people who can settle it. Enquiry stays available as a next step, not as the outcome."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "corrected",
+    "path": "/destinations",
+    "title": "The assessment promised ten questions and rendered three",
+    "change": "The steps were hidden with the hidden attribute in the markup, which meant a browser running no scripts saw step one and a paragraph claiming all ten questions were on the page. The server now renders every step open, and a small inline script that runs before the first paint marks the module as stepped and opens only the first step; the fold is a property of that marker rather than of the content, so removing the marker leaves everything visible. A stylesheet inside a noscript element was the first attempt and cannot work: Tailwind preflight emits [hidden] with display none and !important inside a cascade layer, and a layered important declaration outranks an unlayered one, so no noscript rule can undo it. The roadmap section keeps the same shape: without scripts every one of the eighteen notes is printed and the copy and download controls stay hidden, which is a superset of what the scripted version shows.",
+    "reason": "The claim in the component header was written before the markup contradicted it. A reader with scripts disabled is not an error state to be apologised to, and this site states plainly that its tools hold data in the browser, which is only credible if the page still works without them."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": "/",
+    "title": "The site is bilingual by structure, and no page announces it until the mirror exists",
+    "change": "A Chinese version of the whole site is being built alongside the English one rather than replacing it. Every English page keeps the URL it already had and the wording it already carried; the Chinese pages will sit under /zh with their own titles, dates, reading times, table headings and tool labels. To make that possible, the words that used to be typed inside the header, the footer, the article cards, the contents list, the source list, the evidence note, the breadcrumbs and the jurisdiction table moved into one dictionary keyed by language, and each of those components now reads its language from the address it is being rendered at instead of being told which language to be. The two directions that follow from this are the visible ones. A language switch appears in the header only on a page whose translation has been built, and an hreflang pair is emitted only for that same page, so today the English site carries neither: the registry of translated paths is deliberately empty while the mirror is being written. The build check now fails if the registry lists a page that was not built, if a /zh page exists that the registry does not list, or if the registry is opened while any page of the mirror is still unfinished. Comparing the built site before and after this change, all 34 pages differ only in two typographic normalizations (a wrapped sentence joined into one text node, and the copyright entity rendered as its character), with no difference in any title, meta tag or element.",
+    "reason": "An hreflang that points at a page which does not exist tells the index that two different documents are the same page, which is worse than saying nothing, and a half-translated mirror is the same mistake made visible to a reader. Both are avoided by making the switch and the pair depend on the translated page actually being built. Deriving the language from the address rather than a prop is the same reasoning one layer down: a prop is something a future page can forget to pass, and forgetting it would render Chinese body text inside English metadata."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": "/",
+    "title": "The homepage follows the layout its owner defined",
+    "change": "The page was rebuilt to the section order set out in the owner's mock: a hero with two calls to action, who we are against four advantages, four service cards, a row of country cards, the guides and articles, and a dark green enquiry band holding a five field form. The header now reads Home, Destinations, Services, Guides and About us, with a consultation button at the end. Three things in the mock were not adopted. A card for Georgia has no sourced record, so the row carries the five countries that do, each showing the date its sources were last opened or the words sources incomplete. A stated response time is a commitment this site cannot keep yet, because no enquiry address is registered, so the third line under the heading states what the form demonstrably does instead. A submit button that reports success would be a lie in a static build with no server, so the button assembles the enquiry on screen, the reader reads it, and it leaves through their own mail app, clipboard or a downloaded file. Three sections that were on the previous version are gone from the homepage: the four blocking questions, the six step research order, and the panel that separated cost from contract from liability. Their pages are unchanged and still linked from the cards above. The structured enquiry tool moved to /assessment, where the service it feeds is described.",
+    "reason": "The owner defined the page, so the page follows the definition rather than the earlier layout. What did not move is the rule that a claim on this site is only made where it can be checked: the layout is a decision about how the site reads, and the sourcing rule is the thing the site is for. Where the two met, the mock kept everything except the three items that would have printed a fact the record does not hold."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "published",
+    "path": null,
+    "title": "The Chinese mirror is open on all thirty-three pages",
+    "change": "Every page that has a Chinese version now declares the pair in its head, carries a link in the header to the same page in the other language, and appears in the sitemap beside its twin. The registry that gates all three moved its thirty-three paths from pending to listed in one edit, once the last Chinese page built. One page is deliberately outside the mirror: the error page stays English only, because a static host serves a single error document for every missing address and cannot know which language to answer in.",
+    "reason": "The switch was withheld while any page was untranslated, and not for tidiness. A language link that lands on a missing page is worse than no language link, and an hreflang pointing at nothing tells Google that two documents are one. So the promise is made by one file, and that file can only be opened when every path in it exists."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "published",
+    "path": null,
+    "title": "Four new articles fill the two categories that were empty",
+    "change": "Added a process article on the six month limit inside a United Kingdom parental order, a process article on what the 40,177 transfer study measures and what it does not, a preparation article on getting a birth certificate accepted by another country's authorities, and a preparation article on the five documents that should exist before a first transfer. Each carries its Chinese mirror, so the site builds seventy five pages rather than sixty seven, and the two category pages that printed an empty state now print a list.",
+    "reason": "The article index promised five categories and four pages existed in three of them. Trimming the promise was the cheaper fix and the wrong one, because process and preparation are where a decision actually gets made, and a research site that only covers cost and destinations is describing the quote rather than the choice. So the gap was filled from sources instead of narrowed. Nothing went in that could not be traced to a page which opened: a statutory section and one consular procedure page were both dropped when they refused to load, and the transfer article reports no number of attempts per person because the study publishes none."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": null,
+    "title": "The homepage reading row now answers the three questions it names",
+    "change": "The four cards on the homepage are now the article on cost lines outside a quote, the guide on choosing an agency, the article on the six month limit inside a United Kingdom parental order, and the article on getting a birth certificate accepted abroad. Those are the four that answer what the section's own sentence promises. Any card a language cannot fill is filled from that language's newest published pages, and the fallback wording no longer describes a pile of withheld material.",
+    "reason": "The section said it held the answers to how to read a quote, what to ask a provider, and what parentage and nationality turn on, while the cards under it were chosen before two of those questions had a page of their own. A row of cards that does not match the sentence above it reads as a template, and a reader who has just been promised an answer should not be shown a note about what is missing."
+  },
+  {
+    "date": "2026-10-15",
+    "kind": "decision",
+    "path": null,
+    "title": "The homepage services cards no longer sell document review",
+    "change": "The card that read 'What to verify in a provider or a contract' is gone. In its place the services row is destination research, costs and budget planning, one-to-one consultation, and the question list for the meetings you already have. The consultation card and the section button both go to /assessment, where the enquiry composes in the reader's own browser. The assessment page still states the limit in its own place: the output is a structured written read of the documents you hold, each gap named with the party who has to close it, and 'What an assessment never does' records that we do not perform the verification.",
+    "reason": "A limitation belongs on the page that describes the service, not on a homepage card whose job is to make someone want to talk to us. Selling a review of contracts or a check on a provider was already off the table, since neither needs our reading skills but a licence and the ability to act in a jurisdiction; what is left to offer is the conversation that turns a pile of documents into a list of questions with names against them."
+  }
+]

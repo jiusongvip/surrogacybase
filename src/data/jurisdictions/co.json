@@ -1,0 +1,41 @@
+{
+  "code": "co",
+  "name": "Colombia",
+  "region": "South America",
+  "basis": "case-law",
+  "eligibility": "Not established by the sources verified here. The decision we could read is a constitutional protection action about a specific family, not a scheme setting out who may commission a surrogacy.",
+  "paymentModel": "Not verified. Nothing in the sources recorded for this page states what may be paid or how payments are regulated, so this page makes no claim about it.",
+  "parentage": "The 2009 decision concerns custody and mother-child contact for twins born through a surrogacy arrangement. It is not a parentage framework, and it has been described as one far more often than its text supports.",
+  "statusVerifiedOn": "2026-10-14",
+  "insufficientData": true,
+  "facts": [
+    {
+      "claim": "Colombian law contains no express prohibition of surrogacy arrangements.",
+      "source": {
+        "label": "Sentencia T-968 de 2009",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2009/t-968-09.htm",
+        "publisher": "Corte Constitucional de Colombia (M.P. Maria Victoria Calle Correa)",
+        "publishedOn": "2009-12-18",
+        "verifiedOn": "2026-10-14",
+        "supports": "The court's own published decision, dated 18 December 2009. Its holding is that there is no express prohibition and it resolves a tutela about custody and contact; it does not create a regulatory framework and does not make arrangements enforceable."
+      }
+    },
+    {
+      "claim": "A commercial legal account states that the regulating decree for surrogacy had not been approved by the Colombian Congress.",
+      "source": {
+        "label": "What is surrogate motherhood in Colombia? (law firm blog)",
+        "url": "https://www.affirmalaw.com/blog/what-is-surrogate-motherhood-in-colombia/",
+        "publisher": "Affirma Law (AGT Abogados S.A.S.)",
+        "publishedOn": "2020-12-15",
+        "verifiedOn": "2026-10-14",
+        "supports": "A law firm's own blog, and a weak source recorded as such. It is included because it identifies a pending-decree question to check, not because it settles it. Nothing on this page relies on it as an established fact."
+      }
+    }
+  ],
+  "openQuestions": [
+    "The citation repeated across provider websites is wrong. Surrogacy is associated with Sentencia T-968 of 2009; the court's T-968/2014 document concerns disability and incapacity rating. Any page you read that cites T-968/2014 for surrogacy has copied a source that did not check it.",
+    "Whether an implementing decree has since been issued was not verifiable with the material we could open.",
+    "What a Colombian birth registration or court order means for the child's entry into your own country is entirely outside what these sources address.",
+    "This page is marked as insufficient because the only substantive documents we could open are a single tutela and a commercial blog. That is not enough to describe a destination, and it is published to say so rather than to fill a gap."
+  ]
+}

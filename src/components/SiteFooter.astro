@@ -1,0 +1,49 @@
+---
+import { SITE } from '@/const';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { UI, fill } from '@/i18n/ui';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang];
+const year = new Date().getFullYear();
+const copyright = fill(copy.copyright, { year, site: SITE.name });
+---
+
+<footer class="mt-24 border-t border-line bg-brand text-band">
+  <div class="shell py-14">
+    <div class="grid gap-10 md:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))]">
+      <div>
+        <p class="font-display text-[22px] leading-tight">{SITE.name}</p>
+        <p class="mt-3 max-w-[34ch] text-[15px] leading-relaxed text-band-muted">{copy.tagline}</p>
+      </div>
+
+      {copy.footerGroups.map((group) => (
+        <nav aria-label={group.heading}>
+          <h2 class="text-[13px] font-semibold tracking-wide text-band-muted">{group.heading}</h2>
+          <ul class="mt-4 space-y-2.5">
+            {group.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[15px] text-band decoration-band/50 underline-offset-4 transition-[text-decoration-color] duration-(--dur) hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 border-t border-white/15 pt-6 text-[13px] text-band-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>{copyright}</p>
+      <p>
+        {copy.disclaimerPre}<a href={localizedPath(lang, '/terms')} class="underline underline-offset-2 hover:text-band">{copy.disclaimerTerms}</a>{copy.disclaimerMid}<a
+          href={localizedPath(lang, '/editorial-policy')}
+          class="underline underline-offset-2 hover:text-band"
+        >{copy.disclaimerStandards}</a>{copy.disclaimerEnd}
+      </p>
+    </div>
+  </div>
+</footer>

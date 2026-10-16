@@ -1,0 +1,92 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import { CATEGORY_KEYS, CATEGORY_HREF } from '@/const';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { formatShortDate, readingTime } from '@/lib/dates';
+import { pathOf, getArticles } from '@/lib/content';
+
+const lang = langFromPath(Astro.url.pathname);
+const ui = UI[lang];
+const copy = ui.pages.articles;
+const labels = CATEGORY_LABELS[lang];
+
+const articles = await getArticles(lang);
+const sorted = [...articles].sort((a, b) => b.data.publishedOn.localeCompare(a.data.publishedOn));
+const latest = sorted.slice(0, 5);
+const counts = Object.fromEntries(
+  CATEGORY_KEYS.map((key) => [key, articles.filter((a) => a.data.category === key).length]),
+);
+---
+
+<PageLayout title={copy.title} description={copy.description}>
+  <Breadcrumbs crumbs={[{ label: copy.title }]} />
+
+  <header class="shell py-10">
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.title}</h1>
+    <p class="mt-3 max-w-[58ch] text-[17px] leading-relaxed text-muted">
+      {copy.intro}
+    </p>
+  </header>
+
+  <div class="shell grid gap-12 pb-16 lg:grid-cols-[minmax(0,1fr)_300px]">
+    <section aria-labelledby="latest-h">
+      <h2 id="latest-h" class="text-[15px] font-semibold text-muted">{copy.mostRecent}</h2>
+      {
+        latest.length > 0 ? (
+          <ul class="mt-5">
+            {latest.map((e, i) => (
+              <li class:list={[i > 0 ? 'border-t border-line' : '']}>
+                <a href={pathOf(e)} class="group flex flex-wrap items-baseline gap-x-5 gap-y-1 py-5">
+                  <h3 class="text-[22px] leading-snug text-text group-hover:text-accent">{e.data.title}</h3>
+                  <p class="text-[14px] text-muted">
+                    {labels[e.data.category]}
+                    <span class="tnum"> · {formatShortDate(e.data.publishedOn, lang)}</span>
+                    <span class="tnum"> · {fill(ui.time.minutes, { n: readingTime(e.body ?? '') })}</span>
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="mt-5">
+            <EmptyState
+              title={copy.emptyTitle}
+              body={copy.emptyBody}
+              action={{ label: copy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
+            />
+          </div>
+        )
+      }
+    </section>
+
+    <aside class="lg:sticky lg:top-24 lg:self-start">
+      <h2 class="text-[15px] font-semibold text-muted">{copy.browseByTopic}</h2>
+      <ul class="mt-4">
+        {CATEGORY_KEYS.map((key, i) => (
+          <li class:list={[i > 0 ? 'border-t border-line' : '']}>
+            <a
+              href={localizedPath(lang, CATEGORY_HREF[key])}
+              class="group flex items-center justify-between gap-4 py-3 text-[16px]"
+            >
+              <span class="text-text group-hover:text-accent">{labels[key]}</span>
+              <span class="flex items-center gap-2">
+                <span class="tnum text-[14px] text-muted">{counts[key]}</span>
+                <Icon name="chevron-right" size={15} class="text-line-strong group-hover:text-accent" />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-5 text-[14px] leading-relaxed text-muted">
+        {copy.guidesPitch}
+        <a href={localizedPath(lang, '/guides')} class="link-underlined">
+          {copy.allGuides}
+        </a>
+      </p>
+    </aside>
+  </div>
+</PageLayout>

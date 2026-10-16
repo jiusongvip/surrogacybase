@@ -1,0 +1,125 @@
+---
+/*
+ * One jurisdiction record. The markup is here rather than in the route file because both
+ * language routes build the same page from the same record, and only the wording around it
+ * differs. Provenance is never taken from the dictionary: the source url, publisher and dates
+ * come from src/data/jurisdictions, and scripts/audit-zh.mjs checks the Chinese record against it.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import type { CollectionEntry } from 'astro:content';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
+import { formatDate } from '@/lib/dates';
+import { localize } from '@/lib/jurisdictions';
+
+type Props = { entry: CollectionEntry<'jurisdictions'> };
+
+const { entry } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].pages.jurisdiction;
+const d = localize(entry.data, lang);
+
+const positions = [
+  { label: copy.positions.legalBasis, value: BASIS_LABELS[lang][d.basis] ?? d.basis },
+  { label: copy.positions.whoMayCommission, value: d.eligibility },
+  { label: copy.positions.payment, value: d.paymentModel },
+  { label: copy.positions.parentage, value: d.parentage },
+];
+---
+
+<PageLayout
+  title={fill(copy.title, { name: d.name })}
+  description={fill(copy.description, { name: d.name, region: d.region })}
+>
+  <Breadcrumbs
+    crumbs={[{ label: copy.breadcrumb, href: localizedPath(lang, '/destinations') }, { label: d.name }]}
+  />
+
+  <article class="shell py-10">
+    <header class="max-w-[72ch]">
+      <p class="text-[14px] text-muted">{d.region}</p>
+      <h1 class="mt-2 text-[clamp(2rem,4.2vw,3rem)] leading-[1.06]">{fill(copy.heading, { name: d.name })}</h1>
+      <p class="mt-4 text-[17px] leading-relaxed text-muted">
+        {copy.intro}
+      </p>
+      <p class="mt-4 tnum text-[14px] text-muted">
+        {fill(copy.checked, { date: formatDate(d.statusVerifiedOn, lang) })}
+      </p>
+    </header>
+
+    {d.insufficientData && (
+      <aside class="mt-8 flex items-start gap-3 rounded-(--radius) border border-flag/35 bg-flag-tint px-5 py-4 text-[15px] text-flag">
+        <Icon name="alert-triangle" size={18} class="mt-0.5 shrink-0" />
+        <p>
+          {fill(copy.insufficient, { name: d.name })}
+        </p>
+      </aside>
+    )}
+
+    <section class="mt-10 grid gap-x-10 gap-y-6 border-t border-line pt-8 sm:grid-cols-2">
+      {positions.map((p) => (
+        <div>
+          <h2 class="text-[14px] font-semibold text-muted">{p.label}</h2>
+          <p class="mt-1.5 text-[17px] leading-relaxed">{p.value}</p>
+        </div>
+      ))}
+    </section>
+
+    {d.facts.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-[22px]">{copy.restsTitle}</h2>
+        <ul class="mt-5 space-y-6">
+          {d.facts.map((fact) => (
+            <li class="border-l-2 border-accent pl-5">
+              <p class="text-[17px] leading-relaxed">{fact.claim}</p>
+              <p class="mt-2 text-[14px] text-muted">
+                <a
+                  href={fact.source.url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  class="link-underlined"
+                >
+                  {fact.source.label}
+                </a>
+                <span> · {fact.source.publisher}</span>
+                <span class="tnum">{fill(copy.citeChecked, { date: formatDate(fact.source.verifiedOn, lang) })}</span>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {d.openQuestions.length > 0 && (
+      <section class="mt-12 border-t border-line pt-8">
+        <h2 class="text-[22px]">{copy.openTitle}</h2>
+        <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">
+          {fill(copy.openIntro, { name: d.name })}
+        </p>
+        <ul class="mt-5 grid gap-3">
+          {d.openQuestions.map((q) => (
+            <li class="flex gap-3 text-[16px] leading-relaxed">
+              <Icon name="chevron-right" size={16} class="mt-1.5 shrink-0 text-accent" />
+              <span>{q}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="mt-12 flex flex-wrap items-start justify-between gap-6 border-t border-line pt-8">
+      <div class="max-w-[52ch]">
+        <h2 class="text-[20px]">{copy.compareTitle}</h2>
+        <p class="mt-2 text-[16px] leading-relaxed text-muted">
+          {copy.compareBody}
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href={localizedPath(lang, '/guides/surrogacy-legal-considerations')} class="btn-ghost">{copy.legalFramework}</a>
+        <a href={localizedPath(lang, '/tools/destination-research-checklist')} class="btn-primary">{copy.openChecklist}</a>
+      </div>
+    </section>
+  </article>
+</PageLayout>

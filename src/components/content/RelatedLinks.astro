@@ -1,0 +1,37 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath } from '@/i18n/paths';
+import { UI } from '@/i18n/ui';
+import { pathOf, type ContentEntry } from '@/lib/content';
+
+type Props = {
+  heading: string;
+  entries: ContentEntry[];
+  note?: string;
+};
+
+const { heading, entries, note } = Astro.props;
+const kinds = UI[langFromPath(Astro.url.pathname)].kinds;
+---
+
+{entries.length > 0 && (
+  <section class="mt-14 border-t border-line pt-8" aria-labelledby="related-h">
+    <h2 id="related-h" class="text-[22px]">{heading}</h2>
+    {note && <p class="mt-1.5 text-[15px] text-muted">{note}</p>}
+    <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+      {entries.map((e) => (
+        <li>
+          <a href={pathOf(e)} class="card card-hover flex h-full items-start justify-between gap-4 px-4 py-4">
+            <span>
+              <span class="block text-[16px] font-medium">{e.data.title}</span>
+              <span class="mt-1 block text-[14px] text-muted">
+                {e.data.type === 'guide' ? kinds.guide : kinds.article}
+              </span>
+            </span>
+            <Icon name="arrow-up-right" size={18} class="mt-1 shrink-0 text-accent" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

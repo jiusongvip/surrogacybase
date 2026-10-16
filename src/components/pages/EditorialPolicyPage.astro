@@ -1,0 +1,132 @@
+---
+/*
+ * The editorial policy, in both languages.
+ *
+ * This is the page the rest of the site can be held to, so the Chinese one states the same rules
+ * and the same six source fields. The field names stay in Latin script on both pages because they
+ * are keys in a file, not prose.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import NeedsInput from '@/components/ui/NeedsInput.astro';
+import { EDITORIAL_PAGE } from '@/data/policy-pages';
+import { formatDate } from '@/lib/dates';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { fill } from '@/i18n/ui';
+
+const UPDATED_ON = '2026-10-14';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = EDITORIAL_PAGE[lang];
+---
+
+<PageLayout title={copy.title} description={copy.description} updatedOn={UPDATED_ON}>
+  <Breadcrumbs crumbs={[{ label: copy.title }]} />
+
+  <article class="shell py-10 max-w-[74ch]">
+    <p class="flex items-center gap-2 text-[14px] text-muted">
+      <Icon name="check" size={16} class="text-accent" />
+      {copy.eyebrow}
+    </p>
+    <h1 class="mt-4 text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <p class="mt-4 text-[19px] leading-[1.6] text-muted">{copy.intro}</p>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.levelsHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.levelsIntro}</p>
+      <dl class="mt-6 grid gap-5">
+        {
+          copy.levels.map((l) => (
+            <div class="border-l-2 border-accent pl-5">
+              <dt class="text-[17px] font-semibold">{l.name}</dt>
+              <dd class="mt-1.5 text-[16px] leading-relaxed text-muted">{l.body}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.sourceHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.sourceIntro}</p>
+      <table class="mt-6 w-full border-collapse text-[15px]">
+        <caption class="pb-3 text-left text-[14px] text-muted">{copy.sourceCaption}</caption>
+        <tbody>
+          {
+            copy.sourceFields.map(([name, note]) => (
+              <tr>
+                <th
+                  scope="row"
+                  class="w-[130px] border-b border-line py-3 pr-6 text-left align-top font-semibold"
+                >
+                  <code class="font-mono text-[14px] text-accent">{name}</code>
+                </th>
+                <td class="border-b border-line py-3 align-top text-muted">{note}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <p class="mt-6 text-[16px] leading-relaxed text-muted">{copy.methodBody}</p>
+      <p class="mt-6 text-[16px] leading-relaxed text-muted">
+        {copy.supportsLead}
+        <code class="font-mono text-[14px]">supports</code>
+        {copy.supportsTail}
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.rulesHeading}</h2>
+      <div class="mt-6 grid gap-8">
+        {
+          copy.rules.map((r) => (
+            <div>
+              <h3 class="text-[17px] font-semibold">{r.h}</h3>
+              <p class="mt-2 text-[16px] leading-relaxed text-muted">{r.p}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.correctionsHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">
+        {copy.updatesBefore}
+        <a href={localizedPath(lang, '/updates')} class="link-underlined">{copy.updatesLink}</a>
+        {copy.updatesAfter}
+      </p>
+      <p class="mt-4 text-[16px] leading-relaxed text-muted">{copy.correctionsBody}</p>
+      <p class="mt-4 text-[16px]">
+        <NeedsInput label={copy.correctionsNeeds.label} why={copy.correctionsNeeds.why} />
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.moneyHeading}</h2>
+      <ul class="mt-4 space-y-3 text-[16px] leading-relaxed text-muted">
+        {
+          copy.commercial.map((c) => (
+            <li class="flex gap-3">
+              <Icon name="check" size={16} class="mt-1 shrink-0 text-accent" />
+              <span>{c}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6">
+        <NeedsInput label={copy.moneyNeeds.label} why={copy.moneyNeeds.why} />
+      </p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.imageryHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.imageryBody}</p>
+    </section>
+
+    <p class="mt-12 border-t border-line pt-6 text-[14px] text-muted">
+      {fill(copy.revised, { date: formatDate(UPDATED_ON, lang) })}
+    </p>
+  </article>
+</PageLayout>

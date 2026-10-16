@@ -1,0 +1,32 @@
+---
+import ContentLayout from '@/layouts/ContentLayout.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { UI } from '@/i18n/ui';
+import { renderContent, resolveRefs, toolLinksFor, type ContentEntry } from '@/lib/content';
+
+type Props = { entry: ContentEntry };
+
+/* The body, sources and related links all come from the entry itself, so the only thing the
+ * two language routes decide is which entries they hand over. */
+const { entry } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const { Content, headings } = await renderContent(entry);
+const [relatedGuides, relatedArticles] = await Promise.all([
+  resolveRefs(entry.data.relatedGuides, lang),
+  resolveRefs(entry.data.relatedArticles, lang),
+]);
+
+const toolLinks = toolLinksFor(entry.data.relatedTools, lang);
+
+const crumbs = [{ label: UI[lang].pages.guides.title, href: localizedPath(lang, '/guides') }, { label: entry.data.title }];
+---
+
+<ContentLayout
+  entry={entry}
+  Content={Content}
+  headings={headings}
+  crumbs={crumbs}
+  relatedGuides={relatedGuides}
+  relatedArticles={relatedArticles}
+  relatedTools={toolLinks}
+/>

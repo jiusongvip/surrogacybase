@@ -1,0 +1,22 @@
+---
+import JurisdictionDetail from '@/components/pages/JurisdictionDetail.astro';
+import { getCollection } from 'astro:content';
+import { hasChineseRecord } from '@/lib/jurisdictions';
+
+/*
+ * A Chinese record is a separate file (src/data/jurisdictions-zh.json), so a destination whose
+ * wording has not been written yet is not built at all rather than built half-translated. The
+ * source, publisher and dates always come from the English record; localize() fails the build if
+ * the two files disagree about which facts exist.
+ */
+export async function getStaticPaths() {
+  const rows = await getCollection('jurisdictions', (e) => e.data.published);
+  return rows
+    .filter((entry) => hasChineseRecord(entry.data.code))
+    .map((entry) => ({ params: { code: entry.data.code }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<JurisdictionDetail entry={entry} />

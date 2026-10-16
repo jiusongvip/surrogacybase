@@ -1,0 +1,134 @@
+---
+import { SITE } from '@/const';
+import { LANG_META, type Lang } from '@/i18n/config';
+import { langFromPath } from '@/i18n/paths';
+import { HOME_BY_LANG, twinFor } from '@/i18n/routes';
+import { UI } from '@/i18n/ui';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang];
+const current = Astro.url.pathname;
+const isActive = (href: string) => current === href || current.startsWith(`${href}/`);
+
+/*
+ * The switch is a plain link to the same page in the other language. A dropdown would need
+ * script to be useful, and this site's promise is that its pages work before any script runs.
+ * It appears only when the twin is listed in src/i18n/routes.ts.
+ *
+ * Below sm the button carries the other language's own name and drops the word that labels it.
+ * That word is what pushes the header row past a 320px viewport, and the mobile drawer below
+ * already spells the same link out in full.
+ */
+const twins = twinFor(lang, current);
+const otherLang = (Object.keys(twins) as Lang[])[0];
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-sm">
+  <div class="shell flex h-16 items-center justify-between gap-6">
+    <a href={HOME_BY_LANG[lang]} class="flex items-baseline gap-2 text-text hover:text-accent">
+      <span class="font-display text-[21px] leading-none tracking-tight">{SITE.name}</span>
+    </a>
+
+    <nav aria-label={copy.primaryNavLabel} class="hidden items-center gap-1 lg:flex">
+      {copy.nav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'rounded-(--radius) px-3 py-2 text-[15px] transition-colors duration-(--dur) hover:text-accent',
+            isActive(item.href) ? 'text-accent' : 'text-muted',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      {
+        otherLang && (
+          <a
+            href={twins[otherLang]!}
+            hreflang={LANG_META[otherLang].htmlLang}
+            class="inline-flex h-10 items-center gap-1.5 rounded-(--radius) border border-line-strong px-3 text-[14px] text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent"
+          >
+            <span class="hidden text-muted sm:inline">{copy.languageLabel}</span>
+            {LANG_META[otherLang].selfName}
+          </a>
+        )
+      }
+      <a href={copy.cta.href} class="btn-primary hidden text-sm sm:inline-flex">
+        {copy.cta.label}
+      </a>
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-(--radius) border border-line-strong text-text lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-nav-toggle
+      >
+        <span class="sr-only">{copy.openNav}</span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" class="stroke-current" stroke-width="1.5">
+          <path d="M2 5h14M2 9h14M2 13h14" fill="none" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav
+    id="mobile-nav"
+    aria-label={copy.primaryNavLabel}
+    class="hidden border-t border-line bg-surface px-5 pb-5 pt-2 lg:hidden"
+    data-nav-panel
+  >
+    <ul class="flex flex-col">
+      {copy.nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              'block border-b border-line py-3.5 text-[17px]',
+              isActive(item.href) ? 'text-accent' : 'text-text',
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      {
+        otherLang && (
+          <li>
+            <a
+              href={twins[otherLang]!}
+              hreflang={LANG_META[otherLang].htmlLang}
+              class="block border-b border-line py-3.5 text-[17px] text-muted"
+            >
+              {copy.languageLabel}: {LANG_META[otherLang].selfName}
+            </a>
+          </li>
+        )
+      }
+      <li>
+        <a href={copy.cta.href} class="btn-primary mt-4 w-full">{copy.cta.label}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-nav-panel]');
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('hidden', open);
+    });
+    panel.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.classList.add('hidden');
+      }
+    });
+  }
+</script>

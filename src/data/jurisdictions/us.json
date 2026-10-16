@@ -1,0 +1,63 @@
+{
+  "code": "us",
+  "name": "United States",
+  "region": "North America",
+  "basis": "mixed-patchwork",
+  "eligibility": "There is no federal surrogacy law. Each state sets its own rules, and they differ enough that a state has to be examined on its own. ASRM's survey of state law lists gestational surrogacy as expressly permitted by statute in California, Colorado, Connecticut, Florida, Idaho, Illinois, Iowa, Massachusetts, Michigan, Nevada, New Hampshire, New Jersey, New York, Oklahoma, Rhode Island, Texas, Utah, Vermont, Virginia, Washington and West Virginia, and records other states as having no statutes or published case law either permitting or prohibiting it.",
+  "paymentModel": "Not a single national rule. Compensation is governed state by state, and the sources checked here do not support one statement about what may be paid across the country.",
+  "parentage": "Parentage is decided under state law and state court practice, not federally. A US order is also a separate question from whether another country will recognise it.",
+  "statusVerifiedOn": "2026-10-14",
+  "insufficientData": false,
+  "facts": [
+    {
+      "claim": "Each state has its own laws about whether surrogacy is permitted and how it is regulated; there is no federal framework.",
+      "source": {
+        "label": "US Surrogacy Laws (resource page)",
+        "url": "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/",
+        "publisher": "National Center for Lesbian Rights",
+        "publishedOn": "2021-11-23",
+        "verifiedOn": "2026-10-14",
+        "supports": "The page states the principle that each state decides. It links out to a map rather than listing states, so it is used here only for the no-federal-framework point."
+      }
+    },
+    {
+      "claim": "Gestational surrogacy is expressly permitted by statute in the 21 states listed above, while several states have no statutes or published case law specifically permitting or prohibiting it.",
+      "source": {
+        "label": "Surrogacy by State (legal survey)",
+        "url": "https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1",
+        "publisher": "American Society for Reproductive Medicine, Legal Professional Group",
+        "publishedOn": "2026-02-01",
+        "verifiedOn": "2026-10-14",
+        "supports": "The survey describes itself as a general overview of state laws and practice. It is a professional-body overview rather than statute text, so each state entry needs checking against the law itself before it is relied on."
+      }
+    },
+    {
+      "claim": "In Indiana and Nebraska gestational carrier contracts are unenforceable and against public policy, and Arizona residents are prohibited from entering into gestational carrier contracts.",
+      "source": {
+        "label": "Legal and regulatory considerations for gestational surrogacy in the United States",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/",
+        "publisher": "Journal of Assisted Reproduction and Genetics 41(11):3013-3037, Herweck, Manvelyan et al.",
+        "publishedOn": "2024-10-23",
+        "verifiedOn": "2026-10-14",
+        "supports": "Peer-reviewed review article. It states that in the US each state determines its surrogacy law, producing mixed regulation across the country."
+      }
+    },
+    {
+      "claim": "Louisiana restricts surrogacy agreements to married heterosexual genetic intended parents, and Arizona contracts are described as statutorily unenforceable.",
+      "source": {
+        "label": "Surrogacy by State (legal survey)",
+        "url": "https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1",
+        "publisher": "American Society for Reproductive Medicine, Legal Professional Group",
+        "publishedOn": "2026-02-01",
+        "verifiedOn": "2026-10-14",
+        "supports": "State entries in the professional survey. Restrictions of this kind are exactly the detail to confirm with a lawyer admitted in that state."
+      }
+    }
+  ],
+  "openQuestions": [
+    "No statute text was verified for this page. The state legislature and code publisher sites attempted (California, Michigan, Nevada, Illinois, and two code publishers) returned 403 or failed to load, so this site quotes no section numbers.",
+    "The ASRM survey's bare address redirects to a login. The recorded link is the publicly loading form of the same page and has to be re-opened at each review.",
+    "Whether a US parentage order, birth certificate or passport application will be recognised where you live is a separate question, and nothing on this page answers it.",
+    "Cost and clinic data for the United States come from providers or from registry surveillance of treatment cycles. There is no public registry of surrogacy agreements, payments or program outcomes."
+  ]
+}
