@@ -38,6 +38,8 @@ export const UI: Record<Lang, {
   languageLabel: string;
   breadcrumbLabel: string;
   home: string;
+  /** The alt text for the brand mark, which is a link to the home page in both languages. */
+  brandAlt: string;
   needsInput: string;
   undated: string;
   notYetDated: string;
@@ -285,6 +287,7 @@ export const UI: Record<Lang, {
     languageLabel: 'Language',
     breadcrumbLabel: 'Breadcrumb',
     home: 'Home',
+    brandAlt: 'SurrogacyBase home',
     needsInput: 'Needs input',
     undated: 'undated',
     notYetDated: 'Not yet dated',
@@ -689,6 +692,7 @@ export const UI: Record<Lang, {
     languageLabel: '语言',
     breadcrumbLabel: '位置导航',
     home: '首页',
+    brandAlt: 'SurrogacyBase 首页',
     needsInput: '待补充',
     undated: '无日期',
     notYetDated: '暂无日期',

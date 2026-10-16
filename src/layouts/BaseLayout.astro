@@ -60,6 +60,7 @@ const orgLd = {
   '@id': new URL('/#organization', Astro.site).href,
   name: SITE.name,
   url: Astro.site!.href,
+  logo: new URL('/logo.png', Astro.site).href,
   description: SITE.description,
 };
 ---
@@ -88,7 +89,8 @@ const orgLd = {
       )
     }
 
-    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <meta property="og:type" content={ogType} />

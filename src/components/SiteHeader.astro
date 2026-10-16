@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoMark from '@/assets/images/logo.png';
 import { SITE } from '@/const';
 import { LANG_META, type Lang } from '@/i18n/config';
 import { langFromPath } from '@/i18n/paths';
@@ -25,7 +27,17 @@ const otherLang = (Object.keys(twins) as Lang[])[0];
 
 <header class="sticky top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-sm">
   <div class="shell flex h-16 items-center justify-between gap-6">
-    <a href={HOME_BY_LANG[lang]} class="flex items-baseline gap-2 text-text hover:text-accent">
+    <a href={HOME_BY_LANG[lang]} class="flex items-center gap-2.5 text-text hover:text-accent">
+      <Image
+        src={logoMark}
+        widths={[32, 64]}
+        sizes="32px"
+        width={32}
+        height={32}
+        loading="eager"
+        class="h-8 w-8 shrink-0"
+        alt={copy.brandAlt}
+      />
       <span class="font-display text-[21px] leading-none tracking-tight">{SITE.name}</span>
     </a>
 
