@@ -3,11 +3,11 @@
   "name": "Colombia",
   "region": "South America",
   "basis": "case-law",
-  "eligibility": "Not established by the sources verified here. The decision we could read is a constitutional protection action about a specific family, not a scheme setting out who may commission a surrogacy.",
-  "paymentModel": "Not verified. Nothing in the sources recorded for this page states what may be paid or how payments are regulated, so this page makes no claim about it.",
-  "parentage": "The 2009 decision concerns custody and mother-child contact for twins born through a surrogacy arrangement. It is not a parentage framework, and it has been described as one far more often than its text supports.",
-  "statusVerifiedOn": "2026-10-14",
-  "insufficientData": true,
+  "eligibility": "No statute sets out who may commission a surrogacy. What the sources here establish is the case law: the Constitutional Court has twice sat in review of cases arising from arrangements already made, and in the 2024 review it held that children born through surrogacy have the same rights as all children and may not be discriminated against for the method of their birth. The same decision left the question of whether to prohibit, freely permit or restrict arrangements to Congress. What applies to a given family is therefore decided through constitutional protection actions, case by case, not against a published eligibility scheme.",
+  "paymentModel": "No rule to quote. The 2024 review decision names payment to the gestational carrier as a risk factor - it states that where she receives remuneration, the risk of children being sold increases - and the arrangement in the case it reviewed described itself as altruistic collaboration. The court ordered the Ministry of Justice to draft a law and reaffirmed its 2022 order that Congress regulate the subject comprehensively. So payments sit in a gap the courts have flagged, not under a rule.",
+  "parentage": "Litigated, not administered. The 2009 decision provider websites cite resolved custody and mother-child contact for twins; it never allocated legal parentage. In 2024 the court urged Congress to legislate on the civil-registration effects of children born in Colombia through surrogacy, specifically that the woman who lent her womb not be registered as the biological mother, and ordered the child-welfare institute, the migration authority and the national registry to adopt protective measures within six months. The tutela in that very case was denied. Parentage still has to be won, family by family.",
+  "statusVerifiedOn": "2026-10-16",
+  "insufficientData": false,
   "facts": [
     {
       "claim": "Colombian law contains no express prohibition of surrogacy arrangements.",
@@ -21,21 +21,31 @@
       }
     },
     {
-      "claim": "A commercial legal account states that the regulating decree for surrogacy had not been approved by the Colombian Congress.",
+      "claim": "The Constitutional Court extended maternity leave to the genetic father of a child born through a surrogacy arrangement, and stated that surrogacy needs exhaustive regulation, noting that at least sixteen bills had been introduced since 1998 without one being enacted.",
       "source": {
-        "label": "What is surrogate motherhood in Colombia? (law firm blog)",
-        "url": "https://www.affirmalaw.com/blog/what-is-surrogate-motherhood-in-colombia/",
-        "publisher": "Affirma Law (AGT Abogados S.A.S.)",
-        "publishedOn": "2020-12-15",
-        "verifiedOn": "2026-10-14",
-        "supports": "A law firm's own blog, and a weak source recorded as such. It is included because it identifies a pending-decree question to check, not because it settles it. Nothing on this page relies on it as an established fact."
+        "label": "Sentencia T-275 de 2022",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2022/t-275-22.htm",
+        "publisher": "Corte Constitucional de Colombia (M.P. Cristina Pardo Schlesinger, Sala Séptima de Revisión)",
+        "publishedOn": "2022-08-01",
+        "verifiedOn": "2026-10-16",
+        "supports": "The court's own published decision, dated 1 August 2022. The holding is one father's leave entitlement against his health insurer; the regulation statements are the court's account of the state of Colombian law, not a rule it created."
+      }
+    },
+    {
+      "claim": "Sitting in review, the court held that children born through surrogacy have the same rights as all children and may not be discriminated against for the method of their birth; reaffirmed the exhorto of T-275/2022 that Congress regulate surrogacy comprehensively, defining whether to prohibit it, permit it freely or limit it to specific circumstances; urged the Ministry of Justice to introduce a bill covering the civil-registration effects for children born in Colombia by this method, so that the woman who lends her womb is not registered as the biological mother; and ordered the child-welfare institute, the migration authority and the national registry of civil status to adopt protective measures within six months.",
+      "source": {
+        "label": "Sentencia T-127 de 2024",
+        "url": "https://www.corteconstitucional.gov.co/relatoria/2024/t-127-24.htm",
+        "publisher": "Corte Constitucional de Colombia (M.P. Jorge Enrique Ibáñez Najar)",
+        "publishedOn": "2024-04-18",
+        "verifiedOn": "2026-10-16",
+        "supports": "The court's own published decision, dated 18 April 2024. The underlying tutela was confirmed as denied, so the decision states what the court considers the rights of these children require of the state; it is not an enforceable parentage framework."
       }
     }
   ],
   "openQuestions": [
     "The citation repeated across provider websites is wrong. Surrogacy is associated with Sentencia T-968 of 2009; the court's T-968/2014 document concerns disability and incapacity rating. Any page you read that cites T-968/2014 for surrogacy has copied a source that did not check it.",
-    "Whether an implementing decree has since been issued was not verifiable with the material we could open.",
-    "What a Colombian birth registration or court order means for the child's entry into your own country is entirely outside what these sources address.",
-    "This page is marked as insufficient because the only substantive documents we could open are a single tutela and a commercial blog. That is not enough to describe a destination, and it is published to say so rather than to fill a gap."
+    "Whether Congress or the Ministry of Justice has produced any legislation after the April 2024 exhortations could not be verified with the material opened for this page. The newest decision recorded here is dated 18 April 2024.",
+    "What a Colombian birth registration or court order means for the child's entry into your own country is entirely outside what these sources address."
   ]
 }

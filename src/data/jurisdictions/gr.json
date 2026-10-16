@@ -3,27 +3,49 @@
   "name": "Greece",
   "region": "Southern Europe",
   "basis": "assisted-reproduction-law",
-  "eligibility": "One law firm's account states that judicial permission is required before embryo transfer to another woman, that a medical indication is required, that the carrying woman may not provide the ova, and that residency in Greece is required of the applicant or the carrier. This is a commercial source and is recorded as such, not as a verified statutory position.",
-  "paymentModel": "The same source states that payment for services and any kind of financial benefit is strictly prohibited.",
-  "parentage": "Not verified. No statutory text was retrievable for this page.",
-  "statusVerifiedOn": "2026-10-14",
-  "insufficientData": true,
+  "eligibility": "Surrogacy is permitted only under a prior court decision (Civil Code article 1458, applied through article 13 of Law 3305/2005), and only for a woman who is unable to carry a pregnancy for medical reasons: the statute defines the arrangement as one woman carrying and giving birth after in-vitro fertilisation and transfer using an ovum foreign to her, on behalf of another woman who wants a child but cannot gestate. The carrying woman may not provide the ovum, and she must pass the article 4 medical examinations and a thorough psychological evaluation. Assisted reproduction itself is confined to adults, with a woman's natural reproductive capacity set by the statute at the age of fifty. Since Law 5197/2025 (16 May 2025) both the intending parents and the surrogate must hold permanent residence in Greece, which closes the route to international intended parents without Greek residence.",
+  "paymentModel": "Altruistic only, in the statute's own words: the agreement for a third woman to carry is made without any consideration whatsoever (article 13 paragraph 4). Two things are expressly not consideration: the costs required to achieve the pregnancy, to carry, to give birth and for the postnatal period, and any positive damage the carrier suffers from abstaining from work, including wages she lost for those purposes. The independent regulator sets the amounts that may be covered. Article 26 paragraph 8 punishes taking part in a surrogacy outside the legal conditions with at least two years' imprisonment and a fine of at least 1,500 euros, and applies the same penalty to anyone who announces, promotes or advertises obtaining a child through a third woman, even covertly, or provides professional intermediary services for it.",
+  "parentage": "The court decision settles who the parents are. Where the article 1458 permission has been obtained, the presumption of maternity under article 1464 paragraph 1 of the Civil Code attaches to the intending mother to whom the permission was granted, and the presumption of paternity under article 1465 paragraph 1 to her husband. Without the permission the presumption fails and the woman who gave birth - the surrogate - is the legal mother; the commentary we read treats a later adoption around that fact as a circumvention of article 1458 and therefore invalid.",
+  "statusVerifiedOn": "2026-10-16",
+  "insufficientData": false,
   "facts": [
     {
-      "claim": "Gestation by another woman requires prior judicial permission and a medical indication, the carrying woman may not provide the ova, and financial benefit to her is prohibited.",
+      "claim": "Surrogacy is defined as a woman carrying and giving birth, after in-vitro fertilisation and transfer of fertilised ova, using an ovum foreign to her, on behalf of a woman who desires a child but cannot gestate for medical reasons; it is permitted under the conditions of Civil Code article 1458 and article 8 of Law 3089/2002; the carrier undergoes the article 4 medical examinations and a thorough psychological evaluation; the agreement is made without any consideration, save that neither the costs of achieving the pregnancy, gestation, birth and the postnatal period nor the carrier's lost earnings count as consideration, and the regulator fixes the amounts that may be covered; participation in a surrogacy outside those conditions, and its public announcement or professional brokering, carry at least two years' imprisonment and a fine of at least 1,500 euros.",
       "source": {
-        "label": "Surrogacy proceedings in Greece (law firm page)",
-        "url": "https://www.law-services.gr/surrogacy-proceedings-in-greece/",
-        "publisher": "Amoiridis Law Services",
-        "publishedOn": "2020-04-01",
-        "verifiedOn": "2026-10-14",
-        "supports": "A law firm's practice page. It is internally inconsistent: it cites Law 3089/2002, where the assisted reproduction statute is normally given as Law 3087/2002. Recorded because it is the only openable account found, and flagged because the statute number it names is wrong."
+        "label": "Ν. 3305/2005, ΦΕΚ Α' 17/27.1.2005 (official gazette text)",
+        "url": "https://eopyy.gov.gr/media/kftbgr0p/9b823bef-35e9-4fa1-b1df-2b9adbc57bf5.pdf",
+        "publisher": "Ethniko Typografio (National Printing Office), as published on the site of EOPYY, the national public health organisation",
+        "publishedOn": "2005-01-27",
+        "verifiedOn": "2026-10-16",
+        "supports": "The Government Gazette text itself, read for this page: article 3 paragraph 9 is the definition, article 13 the conditions and the no-consideration rule, article 26 paragraph 8 the penal provision. It is the 2005 text; the 2025 amendment recorded below is not inside it."
+      }
+    },
+    {
+      "claim": "With the court permission article 1458 requires, the presumption of maternity (article 1464 paragraph 1) attaches to the intending mother and the presumption of paternity (article 1465 paragraph 1) to her husband; without it the woman who gave birth is the legal mother. Before May 2025, article 17 of Law 4272/2014 had required only that the applicant or the carrier hold her residence or ordinary abode in Greece.",
+      "source": {
+        "label": "Η νομοθετική προσέγγιση της παρένθετης μητρότητας (LLM thesis)",
+        "url": "https://ikee.lib.auth.gr/record/359231/files/GRI-2024-46022.pdf",
+        "publisher": "Aristotle University of Thessaloniki, IKEE thesis repository",
+        "publishedOn": "2024",
+        "verifiedOn": "2026-10-16",
+        "supports": "An academic secondary source, used because the Civil Code articles it works through are not open on an official site we could reach. It quotes the replaced article 8 text and the article-numbered statute provisions, and its account of article 13 and article 26 paragraph 8 of Law 3305/2005 matches the gazette text read directly."
+      }
+    },
+    {
+      "claim": "Law 5197/2025 (Government Gazette A' 76, 16 May 2025) amended Civil Code article 1458 and article 8 of Law 3089/2002 to require permanent residence in Greece of both the intending parents and the surrogate, and clarified that an inability to gestate arising only from being a male couple is not the medical inability the article requires.",
+      "source": {
+        "label": "Νέο Νομικό Πλαίσιο για την Παρένθετη Μητρότητα στην Ελλάδα (law firm page)",
+        "url": "https://karpouzislianou.gr/en/new-legal-framework-for-surrogacy-in-greece-2025/",
+        "publisher": "Karpouzis & Lianou law firm",
+        "publishedOn": "2025",
+        "verifiedOn": "2026-10-16",
+        "supports": "A law firm's account of the amendment, corroborated by two further practitioner pages (sioufaslaw.gr, anwaelte-schneider-stein.de) that give the same law number and gazette issue. The gazette text of Law 5197/2025 itself was not openable from this build, so the amendment's exact wording and any transitional provisions are unconfirmed."
       }
     }
   ],
   "openQuestions": [
-    "The Greek statute itself was not read for this page. Until the numbered law and its amendments are confirmed, nothing on this page should be relied on.",
-    "The Council of Europe country report for Greece returned 403 and the academic and university sources attempted failed to load.",
-    "Whether a Greek court order or birth registration is recognised in your home country is a separate question this page does not address."
+    "The gazette text of Law 5197/2025 was not read for this page. The residence requirement and the exclusion of male couples are recorded from law firm accounts, and the amendment's precise wording and transitional provisions remain unconfirmed.",
+    "The amounts the regulator has actually fixed as the ceiling on reimbursable costs and lost earnings were not found on an openable official page.",
+    "Whether a Greek court decision or birth registration is recognised in your own country is a separate question this page does not address."
   ]
 }
