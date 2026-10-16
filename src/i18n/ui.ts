@@ -36,6 +36,8 @@ export const UI: Record<Lang, {
   primaryNavLabel: string;
   openNav: string;
   languageLabel: string;
+  /** Tooltip on a greyed language entry: this page exists in no other language. */
+  languageUnavailable: string;
   breadcrumbLabel: string;
   home: string;
   /** The alt text for the brand mark, which is a link to the home page in both languages. */
@@ -285,6 +287,7 @@ export const UI: Record<Lang, {
     primaryNavLabel: 'Primary',
     openNav: 'Open navigation',
     languageLabel: 'Language',
+    languageUnavailable: 'This page is not available in this language yet',
     breadcrumbLabel: 'Breadcrumb',
     home: 'Home',
     brandAlt: 'SurrogacyBase home',
@@ -690,6 +693,7 @@ export const UI: Record<Lang, {
     primaryNavLabel: '主导航',
     openNav: '打开导航',
     languageLabel: '语言',
+    languageUnavailable: '该页面暂无此语言版本',
     breadcrumbLabel: '位置导航',
     home: '首页',
     brandAlt: 'SurrogacyBase 首页',

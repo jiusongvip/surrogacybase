@@ -45,7 +45,7 @@
   --flag: #7d5201;
   --flag-tint: #f6ecd8;
 
-  --radius: 2px;
+  --radius: 8px;
   --shadow-tint: 15 66 52;
   --dur: 220ms;
   --dur-slow: 420ms;
@@ -120,8 +120,8 @@
   --font-sans: 'Geist Variable', 'Geist', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
     'Noto Sans CJK SC', 'Source Han Sans SC', ui-sans-serif, system-ui, sans-serif;
 
-  --radius-card: var(--radius);
-  --radius-panel: var(--radius);
+  --radius-card: 12px;
+  --radius-panel: 12px;
 
   --shadow-card: 0 1px 2px rgb(var(--shadow-tint) / 0.06),
     0 10px 28px -16px rgb(var(--shadow-tint) / 0.18);

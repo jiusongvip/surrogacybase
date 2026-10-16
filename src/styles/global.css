@@ -110,7 +110,7 @@
   }
 
   .card {
-    @apply rounded-(--radius) border border-line bg-surface transition-[border-color,box-shadow,transform] duration-(--dur) ease-(--ease);
+    @apply rounded-(--radius-card) border border-line bg-surface transition-[border-color,box-shadow,transform] duration-(--dur) ease-(--ease);
   }
 
   .card-hover:hover {

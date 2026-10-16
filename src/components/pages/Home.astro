@@ -143,6 +143,9 @@ const lp = (path: string) => localizedPath(lang, path);
         <p class="rise rise-1 mt-5 max-w-[58ch] text-[17px] leading-[1.65] text-text lg:text-[18px] lg:leading-[1.7]">
           {hero.lead}
         </p>
+        <p class="rise rise-1 mt-4 max-w-[42ch] font-display text-[17px] leading-[1.5] text-brand-fg">
+          {hero.note}
+        </p>
         <div class="rise rise-2 mt-8 flex flex-wrap gap-3">
           <a href={lp('/destinations')} class="btn-primary">
             {hero.ctaPrimary}
@@ -151,17 +154,6 @@ const lp = (path: string) => localizedPath(lang, path);
           <a href={`${home}#assessment`} class="btn-ghost">{hero.ctaSecondary}</a>
         </div>
       </div>
-
-      {/*
-       * The owner's note, set as a card rather than as loose type over the photograph: the
-       * frame behind it is sunlit sea, and no wash strength that keeps the sentence legible
-       * would leave the sea visible.
-       */}
-      <p
-        class="rise rise-3 mt-8 max-w-[22ch] -rotate-1 rounded-(--radius) border border-line bg-paper/92 px-4 py-3 font-display text-[17px] leading-[1.3] text-brand-fg shadow-lift lg:absolute lg:bottom-8 lg:right-6 lg:mt-0 xl:right-10"
-      >
-        {hero.note}
-      </p>
     </div>
   </section>
 

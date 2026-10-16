@@ -2,10 +2,11 @@
 import { Image } from 'astro:assets';
 import logoMark from '@/assets/images/logo.png';
 import { SITE } from '@/const';
-import { LANG_META, type Lang } from '@/i18n/config';
-import { langFromPath } from '@/i18n/paths';
-import { HOME_BY_LANG, twinFor } from '@/i18n/routes';
+import { LANG_META, LOCALES, type Lang } from '@/i18n/config';
+import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
+import { HOME_BY_LANG, isTranslated } from '@/i18n/routes';
 import { UI } from '@/i18n/ui';
+import Icon from '@/components/ui/Icon.astro';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang];
@@ -13,16 +14,21 @@ const current = Astro.url.pathname;
 const isActive = (href: string) => current === href || current.startsWith(`${href}/`);
 
 /*
- * The switch is a plain link to the same page in the other language. A dropdown would need
- * script to be useful, and this site's promise is that its pages work before any script runs.
- * It appears only when the twin is listed in src/i18n/routes.ts.
+ * The switch is a dropdown listing every locale, the pattern the site owner pointed at on the
+ * sister site: the current language is marked in place, a language with no version of this page
+ * is printed greyed rather than linking to a 404, and the openable twins are plain links.
  *
- * Below sm the button carries the other language's own name and drops the word that labels it.
- * That word is what pushes the header row past a 320px viewport, and the mobile drawer below
- * already spells the same link out in full.
+ * The menu ships open in the HTML and the script closes it on load, so a reader without script
+ * still gets every language link, just always visible. That keeps the site's promise that its
+ * pages work before any script runs; the script only buys back the vertical space.
  */
-const twins = twinFor(lang, current);
-const otherLang = (Object.keys(twins) as Lang[])[0];
+const base = stripLocale(current);
+const pathsByLang = Object.fromEntries(LOCALES.map((locale) => [locale, localizedPath(locale, base)])) as Record<Lang, string>;
+for (const locale of LOCALES) {
+  if (locale !== lang && !isTranslated(base)) pathsByLang[locale] = '';
+}
+pathsByLang[lang] = current;
+const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]);
 ---
 
 <header class="sticky top-0 z-40 border-b border-line bg-paper/92 backdrop-blur-sm">
@@ -58,15 +64,55 @@ const otherLang = (Object.keys(twins) as Lang[])[0];
 
     <div class="flex items-center gap-3">
       {
-        otherLang && (
-          <a
-            href={twins[otherLang]!}
-            hreflang={LANG_META[otherLang].htmlLang}
-            class="inline-flex h-10 items-center gap-1.5 rounded-(--radius) border border-line-strong px-3 text-[14px] text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent"
-          >
-            <span class="hidden text-muted sm:inline">{copy.languageLabel}</span>
-            {LANG_META[otherLang].selfName}
-          </a>
+        hasOther && (
+          <div class="lang-switcher relative">
+            <button
+              type="button"
+              class="inline-flex h-10 items-center gap-1.5 rounded-(--radius) border border-line-strong bg-surface px-3 text-[14px] text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="lang-menu"
+              data-lang-trigger
+            >
+              <Icon name="world" size={16} class="text-muted" />
+              <span class="hidden sm:inline">{copy.languageLabel}</span>
+              {LANG_META[lang].selfName}
+              <Icon name="chevron-down" size={14} class="text-muted" />
+            </button>
+            <div
+              id="lang-menu"
+              class="absolute right-0 top-full z-50 mt-1.5 min-w-[150px] rounded-(--radius) border border-line bg-surface py-1 shadow-lift"
+              data-lang-menu
+            >
+              {LOCALES.map((locale) => {
+                const target = pathsByLang[locale];
+                const label = LANG_META[locale].selfName;
+                if (locale === lang) {
+                  return (
+                    <span class="block bg-surface-2/60 px-4 py-2 text-[14px] font-medium text-brand-fg" aria-current="true">
+                      {label}
+                    </span>
+                  );
+                }
+                if (!target) {
+                  return (
+                    <span class="block cursor-not-allowed px-4 py-2 text-[14px] text-muted/60" title={copy.languageUnavailable}>
+                      {label}
+                    </span>
+                  );
+                }
+                return (
+                  <a
+                    href={target}
+                    hreflang={LANG_META[locale].htmlLang}
+                    class="block px-4 py-2 text-[14px] text-text transition-colors duration-(--dur) hover:bg-surface-2 hover:text-accent"
+                  >
+                    {label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         )
       }
       <a href={copy.cta.href} class="btn-primary hidden text-sm sm:inline-flex">
@@ -108,17 +154,17 @@ const otherLang = (Object.keys(twins) as Lang[])[0];
         </li>
       ))}
       {
-        otherLang && (
+        LOCALES.filter((locale) => locale !== lang && pathsByLang[locale]).map((locale) => (
           <li>
             <a
-              href={twins[otherLang]!}
-              hreflang={LANG_META[otherLang].htmlLang}
+              href={pathsByLang[locale]}
+              hreflang={LANG_META[locale].htmlLang}
               class="block border-b border-line py-3.5 text-[17px] text-muted"
             >
-              {copy.languageLabel}: {LANG_META[otherLang].selfName}
+              {copy.languageLabel}: {LANG_META[locale].selfName}
             </a>
           </li>
-        )
+        ))
       }
       <li>
         <a href={copy.cta.href} class="btn-primary mt-4 w-full">{copy.cta.label}</a>
@@ -140,6 +186,37 @@ const otherLang = (Object.keys(twins) as Lang[])[0];
       if ((e.target as HTMLElement).closest('a')) {
         toggle.setAttribute('aria-expanded', 'false');
         panel.classList.add('hidden');
+      }
+    });
+  }
+
+  /* The menu is visible in the HTML and only collapses once this runs. Hiding it with a
+   * class in markup would strand every language link behind script. */
+  const langRoot = document.querySelector<HTMLElement>('.lang-switcher');
+  const langTrigger = document.querySelector<HTMLButtonElement>('[data-lang-trigger]');
+  const langMenu = document.querySelector<HTMLElement>('[data-lang-menu]');
+  if (langRoot && langTrigger && langMenu) {
+    const close = () => {
+      langMenu.hidden = true;
+      langTrigger.setAttribute('aria-expanded', 'false');
+    };
+    close();
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (langMenu.hidden) {
+        langMenu.hidden = false;
+        langTrigger.setAttribute('aria-expanded', 'true');
+      } else {
+        close();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!langRoot.contains(e.target as Node)) close();
+    });
+    langRoot.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        close();
+        langTrigger.focus();
       }
     });
   }

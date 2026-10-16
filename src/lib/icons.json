@@ -57,6 +57,15 @@
     }
    ]
   ],
+  "chevron-down": [
+   [
+    "path",
+    {
+     "d": "M9 6l6 6l-6 6",
+     "transform": "rotate(90 12 12)"
+    }
+   ]
+  ],
   "alert-triangle": [
    [
     "path",

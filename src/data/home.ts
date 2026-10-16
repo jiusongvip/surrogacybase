@@ -51,7 +51,7 @@ export const HOME_HERO: Record<Lang, {
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
-  /** The note beside the photograph. It is the owner's line, not a claim about outcomes. */
+  /** The owner's line, set under the lead in the copy column. It is not a claim about outcomes. */
   note: string;
 }> = {
   en: {
