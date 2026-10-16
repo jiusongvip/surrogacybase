@@ -49,7 +49,7 @@ The study's own figures are per transfer, and they are worth having in front of 
 1. **62.4 percent clinical pregnancy per transfer.** The paper defines a clinical pregnancy as an intrauterine pregnancy that can be identified, which is a different thing from a baby going home.
 2. **47.9 percent live birth per transfer.** Fewer than half of the transfers in that cohort ended in a live birth, which is the arithmetic reason a plan that funds one transfer is a plan that assumes a coin fall.
 3. **28.9 percent multiple births among those live births.** Roughly one live birth in three in the cohort was a multiple birth, and a twin or higher order pregnancy is a cost and a medical risk that no quoted package prices in advance.
-4. **32 percent of those transfers were for intended parents living outside the United States.** For a reader arranging care in the US from another country, that is not a trivia item. It means a large share of the cohort is travelling into the treatment rather than living beside it, which is exactly the situation in which scheduling and cost assumptions fail.
+4. **32 percent of those transfers were for intended parents living outside the United States.** If you are arranging care in the US from another country, that is not a trivia item. It means a large share of the cohort is travelling into the treatment rather than living beside it, which is exactly the situation in which scheduling and cost assumptions fail.
 
 What the study does not report is how many transfers it took per person. There is no mean or median number of transfers performed in the published figures, so nobody can convert that 47.9 percent into a number of attempts, and a provider who quotes you one is working from their own files rather than from this data.
 

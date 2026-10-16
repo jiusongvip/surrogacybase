@@ -92,4 +92,4 @@ Take these to a United Kingdom family lawyer, in writing, before a clinic does a
 
 Question five is where most cross border plans lose months, and it is almost never in the scope of a program description. The [agency question checklist](/tools/agency-question-checklist) has a place to record who answered each of these and when, which is the only form in which the answer is useful to you later.
 
-This page describes the published rules and the state of the reform record. It is not legal advice, it is not a prediction about an application, and it is written for a reader planning under United Kingdom law rather than for anyone's specific case.
+This page describes the published rules and the state of the reform record. It is not legal advice, it is not a prediction about an application, and it is written for someone planning under United Kingdom law rather than for anyone's specific case.

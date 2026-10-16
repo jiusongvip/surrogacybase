@@ -101,7 +101,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'Named before launch, because a site that asks readers to trust it should say whose name is on it.',
+      'Named before launch, because a site that asks for trust should say whose name is on it.',
     whoNeeds: [
       {
         label: 'Operating entity or individual',
@@ -149,7 +149,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
     ],
     whoHeading: '背后是谁',
-    whoBody: '上线之前会写明，因为一个要求读者信任的站点，应当说出上面署的是谁的名字。',
+    whoBody: '上线之前会写明，因为一个要求别人信任的站点，应当说出上面署的是谁的名字。',
     whoNeeds: [
       { label: '运营主体或个人', why: '页脚、条款与隐私政策都要求写明' },
       { label: '登记或注册信息，如果有的话' },

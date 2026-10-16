@@ -271,8 +271,8 @@ export const HOME_READING: Record<Lang, {
 }> = {
   en: {
     eyebrow: 'Guides and explainers',
-    heading: 'Answers to your key questions',
-    intro: 'The pieces readers open before a first conversation: how to read a quote, what to ask a provider, and what parentage and nationality actually turn on.',
+    heading: 'Before you talk to anyone, these are the questions',
+    intro: 'Three things usually have to be settled before a first conversation means anything: how to read a quote, what to ask a provider, and what parentage and nationality actually turn on.',
     viewAll: 'View all explainers',
     readMore: 'Read more',
     emptyTitle: 'Nothing is published here yet',
@@ -281,8 +281,8 @@ export const HOME_READING: Record<Lang, {
   },
   zh: {
     eyebrow: '指南与专题解读',
-    heading: '你那几个关键问题的答案',
-    intro: '这些是读者在第一次开口谈之前会先打开的内容：怎么读一份报价、该问服务方什么，以及亲权与国籍究竟取决于什么。',
+    heading: '开口谈之前，先弄清这几个问题',
+    intro: '第一次开口谈之前，通常要先弄清三件事：怎么读一份报价、该问服务方什么，以及亲权与国籍究竟取决于什么。',
     viewAll: '查看全部专题解读',
     readMore: '阅读全文',
     emptyTitle: '这里还没有已发布的内容',

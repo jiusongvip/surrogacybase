@@ -418,7 +418,7 @@ export const UI: Record<Lang, {
         allGuides: 'All guides',
         emptyTitle: 'No explainers published yet',
         emptyBody:
-          'The explainer system is built and the template is live. Pages appear here once each claim has a source a reader can open.',
+          'The explainer system is built and the template is live. Pages appear here once each claim has a source you can open.',
         emptyAction: 'Read the research standards',
       },
       category: {
@@ -636,7 +636,7 @@ export const UI: Record<Lang, {
           cta: 'Open the full checklist',
         },
         next: {
-          heading: 'Where readers go after this page',
+          heading: 'Where to go after this page',
           items: [
             {
               label: 'Law and parentage',
@@ -700,7 +700,7 @@ export const UI: Record<Lang, {
     needsInput: '待补充',
     undated: '无日期',
     notYetDated: '暂无日期',
-    tagline: '让代孕决定更清楚，面向全球读者。独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。',
+    tagline: '让代孕决定更清楚，面向世界各地的家庭。独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。',
     copyright: '© {year} {site}。内容为信息参考，不构成法律或医疗意见。',
     disclaimerPre: '完整的免责声明见我们的',
     disclaimerTerms: '服务条款',
@@ -816,7 +816,7 @@ export const UI: Record<Lang, {
         guidesPitch: '想要一个主题的完整论述？指南承载框架，专题解读保持窄口径。',
         allGuides: '全部指南',
         emptyTitle: '尚无已发布的专题解读',
-        emptyBody: '专题解读的系统已经建好，模板也已上线。当每一条结论都有读者可以打开的来源时，页面才会出现在这里。',
+        emptyBody: '专题解读的系统已经建好，模板也已上线。当每一条结论都有可打开的来源时，页面才会出现在这里。',
         emptyAction: '阅读研究标准',
       },
       category: {
@@ -978,7 +978,7 @@ export const UI: Record<Lang, {
           cta: '打开完整清单',
         },
         next: {
-          heading: '读者在这一页之后会去哪里',
+          heading: '看完这一页之后可以去哪里',
           items: [
             {
               label: '法律与亲权',

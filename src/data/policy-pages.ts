@@ -132,12 +132,12 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'A citation is only useful if you can re-check it. Each source under a page carries six fields.',
     sourceCaption: 'Recorded for every source on a verified page, including destination facts.',
     sourceFields: [
-      ['label', 'What the reader sees in the citation.'],
+      ['label', 'What you see in the citation.'],
       ['url', 'A link that opens. A source behind a login is marked as such.'],
       ['publisher', 'The organisation accountable for the statement, not the website that reposted it.'],
       ['publishedOn', 'When the publisher says the document was written or last revised.'],
       ['verifiedOn', 'The date a person opened the URL and read it. This is what ages.'],
-      ['supports', 'The specific claim the document backs, so a reader can check whether it actually does.'],
+      ['supports', 'The specific claim the document backs, so you can check whether it actually does.'],
     ],
     methodBody:
       'How the check is done, stated plainly: each cited address is opened and read against the sentence it is attached to, using automated research tooling under editorial review, and the date of that check is recorded. Where a page could not be opened, or opened only behind a login, that is noted rather than worked around. No citation is added to make a page look researched.',
@@ -227,12 +227,12 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     sourceIntro: '引证只有在你能重新核查它时才有用。每个页面下的每一条来源都带六个字段。',
     sourceCaption: '已核实页面上的每一条来源都要记录，目的地的具体事实同样如此。',
     sourceFields: [
-      ['label', '读者在引证里看到的那行文字。'],
+      ['label', '您在引证里看到的那行文字。'],
       ['url', '一个能打开的链接。需要登录才能看到的来源会照此标注。'],
       ['publisher', '对这条陈述负责的组织，而不是转载它的网站。'],
       ['publishedOn', '出版方自己说明这份文件写成或最后修订的时间。'],
       ['verifiedOn', '有人打开这个网址并读过它的日期。会过期的正是这一项。'],
-      ['supports', '这份文件具体支持的那条说法，以便读者核对它是否真的支持。'],
+      ['supports', '这份文件具体支持的那条说法，以便您核对它是否真的支持。'],
     ],
     methodBody:
       '核查是怎么做的，直说：每一个被引用的地址都会被打开，并与它挂着的那句话逐句对照，使用自动化研究工具并在编辑审校之下完成，核查的日期会被记录。打不开、或者只能在登录后打开的页面，会照实写明，而不会绕过去。没有任何引证是为了让页面看起来做过研究而添加的。',

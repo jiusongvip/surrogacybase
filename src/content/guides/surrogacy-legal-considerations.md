@@ -70,7 +70,7 @@ sources:
     supports: "That Colombian law contains no express prohibition of surrogacy arrangements, in a decision about custody and contact for children born through an arrangement."
 ---
 
-Most bad advice about surrogacy law comes from collapsing four separate questions into one. Someone says a country "allows surrogacy", and a reader hears that their plan will work there.
+Most bad advice about surrogacy law comes from collapsing four separate questions into one. Someone says a country "allows surrogacy", and you hear that your plan will work there.
 
 The four questions are distinct, they have different answers, and each one can independently end a plan:
 

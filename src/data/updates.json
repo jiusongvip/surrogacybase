@@ -366,5 +366,13 @@
     "title": "Header and hero polish: language dropdown, softer corners, the owner note inside the copy column",
     "change": "The header language switch is now a dropdown listing both locales, with the current one marked in place and a language without this page shown greyed rather than linked. Every corner on the site moved from 2px to 8px, and cards and panels to 12px. The owner's line in the hero, previously a rotated bordered card floating over the photograph at the bottom right, is now a single display line inside the copy column under the opening paragraph.",
     "reason": "The site owner reviewed the home page and found the boxed note abrupt against a sunlit photograph, and the square corners unfinished next to the round icon frames the site already uses. The dropdown follows the switcher on the owner's sister site. It ships open in the HTML and collapses only once script runs, so no language link is ever hidden behind script, which keeps the promise that pages work before anything loads."
+  },
+  {
+    "date": "2026-10-16",
+    "kind": "corrected",
+    "path": "/",
+    "title": "Copy that described the reader in the third person now speaks to the visitor",
+    "change": "The home reading section, which opened with a line about what readers read before a first conversation, now states the three questions the section answers, and its heading was rewritten the same way. The remaining third-person references became direct address: an explainer's closing note, a guide's line about what a sentence about a permissive country is actually heard as, the empty state on the explainer index, the next-steps block on the assessment page, the footer of the generated roadmap, and two field descriptions on the research standards page. The Chinese tagline now addresses families rather than readers.",
+    "reason": "Pages that talk about the reader in the third person read as internal editorial notes published by mistake, and the site owner flagged one on the home page. The distinction kept while fixing this: the changelog is a record written about the site, so it continues to describe readers in the third person, and only copy standing in for a sentence spoken to the visitor was changed."
   }
 ]

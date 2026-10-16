@@ -65,7 +65,7 @@ Three consequences follow, and they are the reason this list is worth working th
 
 ## What the professional bodies treat as mandatory
 
-The obstetric federations' position is the least marketing-shaped material on this subject, and the parts of it that matter to a reader preparing are these.
+The obstetric federations' position is the least marketing-shaped material on this subject, and the parts of it that matter when you are preparing are these.
 
 - Counselling must be independent, which means not provided by the party with an interest in the arrangement continuing.
 - Screening is a process rather than a single questionnaire, and it is expected to continue through the pregnancy and after the birth.

@@ -681,7 +681,7 @@ export const ASSESSMENT_CHROME: Record<Lang, AssessmentChrome> = {
       ownerLine: '{who}: {owns}',
       valueJoin: ', ',
       footer:
-        'Generated in the browser by SurrogacyBase. These answers were entered by the reader and nothing was sent to a server.',
+        'Generated in the browser by SurrogacyBase. You entered these answers, and nothing was sent to a server.',
       filename: 'surrogacy-destination-roadmap.md',
       dateLocale: 'en-US',
     },
@@ -747,7 +747,7 @@ export const ASSESSMENT_CHROME: Record<Lang, AssessmentChrome> = {
       nextLine: '下一步：{label}',
       ownerLine: '{who}：{owns}',
       valueJoin: '、',
-      footer: '本文件由 SurrogacyBase 在浏览器中生成。这些答案由读者本人填写，没有任何内容被发送到服务器。',
+      footer: '本文件由 SurrogacyBase 在浏览器中生成。这些答案由您本人填写，没有任何内容被发送到服务器。',
       filename: 'surrogacy-destination-roadmap-zh.md',
       dateLocale: 'zh-CN',
     },
