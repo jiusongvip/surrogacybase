@@ -297,7 +297,7 @@ export const UI: Record<Lang, {
     disclaimerEnd: '.',
     siteDescription: SITE.description,
     nav: [
-      { label: 'Home', href: '/' },
+      { label: 'Articles', href: '/articles' },
       { label: 'Destinations', href: '/destinations' },
       { label: 'Services', href: '/assessment' },
       { label: 'Guides', href: '/guides' },
@@ -701,7 +701,7 @@ export const UI: Record<Lang, {
     disclaimerEnd: '。',
     siteDescription: '跨境代孕的独立指引：比较目的地，把费用拆成条目，厘清亲权与国籍，在付款之前核对报价。',
     nav: [
-      { label: '首页', href: '/zh' },
+      { label: '文章', href: '/zh/articles' },
       { label: '目的地', href: '/zh/destinations' },
       { label: '服务', href: '/zh/assessment' },
       { label: '指南', href: '/zh/guides' },
