@@ -86,7 +86,7 @@ export const CHECKLISTS: Checklist[] = [
       zh: {
         title: '目的地研究清单',
         description:
-          '入围名单上每一个国家都需要有人回答的问题：资格、亲权、国籍、医疗范围、资金、实地停留，以及争议的处理途径。',
+          '每一个候选目的地都需要有人回答的问题：资格、亲权、国籍、医疗范围、资金、实地停留，以及争议的处理途径。',
         h1: '目的地研究清单',
         ledeBefore: '一个国家不是一个决定。它是一组问题，必须由能够回答的人，针对',
         ledeEm: '您自己',
@@ -130,7 +130,7 @@ export const CHECKLISTS: Checklist[] = [
             id: 'genetic',
             question: {
               en: 'Is a genetic link to at least one intended parent required, and what changes if it is?',
-              zh: '是否要求与至少一位意向父母存在遗传联系？如果有这一要求，会有什么变化？',
+              zh: '是否要求与至少一位意向父母存在基因联系？如果有这一要求，会有什么变化？',
             },
           },
           {
@@ -302,7 +302,7 @@ export const CHECKLISTS: Checklist[] = [
             id: 'escrow',
             question: {
               en: 'Is an escrow or managed account used, who administers it, and what do they charge?',
-              zh: '是否使用第三方监管或代管账户？由谁管理？收取多少费用？',
+              zh: '是否使用第三方资金托管账户？由谁管理？收取多少费用？',
             },
           },
           {

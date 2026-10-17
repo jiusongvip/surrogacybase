@@ -183,7 +183,7 @@ export const HOME_SERVICE_ITEMS: { icon: IconName; title: Bilingual; body: Bilin
     title: { en: 'Questions for the meetings you already have', zh: '已有的会面前该问什么' },
     body: {
       en: 'The list that decides how an hour gets spent: which question belongs to a lawyer in that jurisdiction, which to the clinic, which to the agency, which to an escrow provider.',
-      zh: '决定一个小时怎么花的那份清单：哪个问题属于当地的律师，哪个属于诊所，哪个属于机构，哪个属于资金监管方。',
+      zh: '决定一个小时怎么花的那份清单：哪个问题属于当地的律师，哪个属于诊所，哪个属于机构，哪个属于托管机构。',
     },
     href: '/tools/agency-question-checklist',
   },

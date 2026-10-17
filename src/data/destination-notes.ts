@@ -39,7 +39,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     },
     body: {
       en: 'Where a rule names a couple, a single parent can fall outside it however the destination is described in a brochure. One United States state in the survey we checked writes the restriction the other way and adds two more tests: its route is confined to married, heterosexual intended parents who are genetic to the child.',
-      zh: '如果一条规则点名的是伴侣，那么无论宣传册如何描述这个目的地，单身父母都可能落在规则之外。在我们核查的这项调查中，有一个美国州份把限制写成了相反的方向，并且额外增加两项检验：它的路径仅限于已婚的、异性恋的、且与孩子有遗传联系的意向父母。',
+      zh: '如果一条规则点名的是伴侣，那么无论宣传册如何描述这个目的地，单身父母都可能落在规则之外。在我们核查的这项调查中，有一个美国州份把限制写成了相反的方向，并且额外增加两项检验：它的路径仅限于已婚的、异性恋的、且与孩子有基因联系的意向父母。',
     },
     link: { en: 'Read the United States record', zh: '阅读美国记录' },
     href: '/destinations/us',
@@ -53,7 +53,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     },
     body: {
       en: 'Some systems name one intended parent at birth and require a second route for the other, and some write their rule around a heterosexual couple. The restriction we found in one United States state is exactly that: married, heterosexual intended parents, genetic to the child. Ask who is a parent at birth, then ask what the second parent has to do.',
-      zh: '有些体系在出生时只确立一位意向父母，另一位需要另一条路径；有些体系把规则写在异性恋伴侣之上。我们在一个美国州份发现的限制正是如此：已婚、异性恋、并与孩子有遗传联系的意向父母。先问出生时谁是父母，再问第二位父母需要做什么。',
+      zh: '有些体系在出生时只确立一位意向父母，另一位需要另一条路径；有些体系把规则写在异性恋伴侣之上。我们在一个美国州份发现的限制正是如此：已婚、异性恋、并与孩子有基因联系的意向父母。先问出生时谁是父母，再问第二位父母需要做什么。',
     },
     link: { en: 'Read the United States record', zh: '阅读美国记录' },
     href: '/destinations/us',
@@ -82,7 +82,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       en: 'The destination decides what happens at birth. The country whose passport the child will claim, or the country you will return to, decides whether that birth result is accepted there. Those are two legal systems and two lawyers.',
       zh: '目的地决定出生时发生什么。孩子将要申领护照的那个国家，或者您要返回的那个国家，决定那里是否接受这个出生结果。这是两套法律体系，也是两位律师。',
     },
-    link: { en: 'What to ask before you shortlist', zh: '入围之前要问什么' },
+    link: { en: 'What to ask before you shortlist', zh: '确定候选之前要问什么' },
     href: '/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
   },
   {
@@ -93,7 +93,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     },
     body: {
       en: 'A rule about residents and a rule about citizens are not the same rule. Where you live tends to decide who will treat you and where the birth gets registered; what passport you hold tends to decide what the child can claim. Answering both with one sentence is how a shortlist goes wrong.',
-      zh: '关于居民的规则和关于公民的规则不是同一条规则。您住在哪里通常决定了由谁来处理您、出生在哪里登记；您持有什么护照通常决定了孩子可以主张什么。用一句话回答这两个问题，入围名单就是这样出错的。',
+      zh: '关于居民的规则和关于公民的规则不是同一条规则。您住在哪里通常决定了由谁来处理您、出生在哪里登记；您持有什么护照通常决定了孩子可以主张什么。用一句话回答这两个问题，候选名单就是这样出错的。',
     },
     link: { en: 'Recognition where you live', zh: '您居住地的承认问题' },
     href: '/guides/surrogacy-legal-considerations',
@@ -106,7 +106,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     },
     body: {
       en: 'Whose egg, whose sperm and who carries the pregnancy are three separate decisions, and in some places a required genetic link is written into the rule itself. Settling this before a destination is shortlisted avoids committing to a route that closes on that question.',
-      zh: '谁的卵子、谁的精子、谁来怀孕，是三个分开的决定，而在某些地方，必需的遗传联系本身就写在规则里。在确定入围目的地之前先想清楚这一点，可以避免承诺一条会在这一问上关闭的路径。',
+      zh: '谁的卵子、谁的精子、谁来怀孕，是三个分开的决定，而在某些地方，必需的基因联系本身就写在规则里。在确定候选目的地之前先想清楚这一点，可以避免承诺一条会在这一问上关闭的路径。',
     },
     link: { en: 'Gamete and surrogate options', zh: '生殖细胞与代孕者的选择' },
     href: '/guides/gamete-and-surrogate-options',
@@ -192,8 +192,8 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       zh: '您已经持有的那个数字，值得对着包含项检验一次',
     },
     body: {
-      en: 'Write the number down next to what it is stated to cover, then list what it does not. The gap between those two columns is the budget you will actually need, and it is the part a comparison of headline prices hides.',
-      zh: '把数字写下来，在旁边列出它据称覆盖的内容，然后再列出它不覆盖的内容。这两栏之间的差额才是您实际需要的预算，也正是头部价格比较会隐藏的那部分。',
+      en: 'Write the number down next to what it is stated to cover, then list what it does not. The gap between those two lists is the budget you will actually need, and it is the part a comparison of headline prices hides.',
+      zh: '把数字写下来，在旁边列出它据称覆盖的内容，然后再列出它不覆盖的内容。这两份清单之间的差额才是您实际需要的预算，也正是头部价格比较会隐藏的那部分。',
     },
     link: { en: 'What to budget for and what to verify', zh: '该为什么做预算、该核实什么' },
     href: '/guides/surrogacy-cost',
@@ -227,8 +227,8 @@ export const DESTINATION_NOTES: DestinationNote[] = [
   {
     id: 'stage-comparing',
     title: {
-      en: 'Comparing places on price alone compares them on the wrong column',
-      zh: '只按价格比较地点，比较的是错误的那一列',
+      en: 'Price alone is the wrong basis for comparing destinations',
+      zh: '只按价格比较目的地，比的是错的依据',
     },
     body: {
       en: 'Two destinations at the same cost can differ on whether you can be named at birth, how many trips are needed, and whether the money is protected while you wait. Compare the conditions one by one before you let the totals decide.',
@@ -387,7 +387,7 @@ export const DESTINATION_NOTES_CHROME: Record<Lang, DestinationNotesChrome> = {
     export: {
       title: '目的地研究备注',
       assembled: '由 SurrogacyBase 目的地页面在 {date} 导出。',
-      note: '这是一份研究计划，不是法律意见，也不是入围名单。',
+      note: '这是一份研究计划，不是法律意见，也不是候选名单。',
       sourceLine: '来源：{label}',
       nextLine: '下一步：{label}',
       ownerLine: '{who}：{owns}',

@@ -48,12 +48,12 @@ sources:
     publisher: "Journal of Assisted Reproduction and Genetics"
     publishedOn: "2022-12-01"
     verifiedOn: "2026-10-14"
-    supports: "美国的辅助生殖登记数据覆盖 90% 以上的辅助生殖诊所，记录的是治疗周期，其中没有代孕协议、补偿或项目结局字段。"
+    supports: "美国的辅助生殖登记数据覆盖 90% 以上的辅助生殖诊所，记录的是治疗周期，不包括代孕协议、补偿或项目结局。"
 ---
 
 人们问的问题是这家机构是否可信。更有用的问题是：什么才能告诉您它可信，因为代孕网站要求您依赖的那些信号，大多是网站自己控制的。
 
-先从一个让人不舒服的结构性事实出发。在多数目的地，没有任何监管机构在核查一家机构是否有能力。存在监管的地方，它通常挂在别的东西上：诊所、实验室、托管公司或律师。在英国，[依 1985 年《代孕安排法》，为代孕刊登广告或以代孕者身份刊登广告均属违法](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，而名字出现在辅助生殖监管范围内的 HFEA 发放牌照的对象是治疗诊所。这个领域的支持组织被 HFEA 列为信息来源，它们也可能登记在[公开的慈善登记册](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884)上，但登记记录的是一个组织自述的宗旨。它不是提供代孕服务的执照，也不意味着有人评估过它做得多好。
+先从一个让人不舒服的结构性事实出发。在多数目的地，没有任何监管机构在核查一家机构是否有能力。存在监管的地方，它通常挂在别的东西上：诊所、实验室、托管机构或律师。在英国，[依 1985 年《代孕安排法》，为代孕刊登广告或以代孕者身份刊登广告均属违法](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，而名字出现在辅助生殖监管范围内的 HFEA 发放牌照的对象是治疗诊所。这个领域的支持组织被 HFEA 列为信息来源，它们也可能登记在[公开的慈善登记册](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884)上，但登记记录的是一个组织自述的宗旨。它不是提供代孕服务的执照，也不意味着有人评估过它做得多好。
 
 这个区别就是评估服务方整套纪律的核心：去问某一项资质实际证明了什么。
 

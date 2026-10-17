@@ -3,8 +3,8 @@
  * The editorial policy, in both languages.
  *
  * This is the page the rest of the site can be held to, so the Chinese one states the same rules
- * and the same six source fields. The field names stay in Latin script on both pages because they
- * are keys in a file, not prose.
+ * and the same six parts of a source record. The key each part is stored under stays off the page,
+ * because a reader needs what it is for, not the name it has in a file.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
@@ -58,9 +58,9 @@ const copy = EDITORIAL_PAGE[lang];
               <tr>
                 <th
                   scope="row"
-                  class="w-[130px] border-b border-line py-3 pr-6 text-left align-top font-semibold"
+                  class="w-[150px] border-b border-line py-3 pr-6 text-left align-top font-semibold"
                 >
-                  <code class="font-mono text-[14px] text-accent">{name}</code>
+                  <span class="text-accent">{name}</span>
                 </th>
                 <td class="border-b border-line py-3 align-top text-muted">{note}</td>
               </tr>
@@ -70,9 +70,7 @@ const copy = EDITORIAL_PAGE[lang];
       </table>
       <p class="mt-6 text-[16px] leading-relaxed text-muted">{copy.methodBody}</p>
       <p class="mt-6 text-[16px] leading-relaxed text-muted">
-        {copy.supportsLead}
-        <code class="font-mono text-[14px]">supports</code>
-        {copy.supportsTail}
+        {copy.supportsNote}
       </p>
     </section>
 

@@ -25,12 +25,10 @@ export type EditorialPage = {
   sourceHeading: string;
   sourceIntro: string;
   sourceCaption: string;
-  /** The field name stays Latin script on both pages: it is a key in a file, not prose. */
+  /** Named the way a reader names them, not by the key each one is stored under. */
   sourceFields: [string, string][];
   methodBody: string;
-  /** Split around the <code>supports</code> field name; the spaces either side are English-only. */
-  supportsLead: string;
-  supportsTail: string;
+  supportsNote: string;
   rulesHeading: string;
   rules: { h: string; p: string }[];
   correctionsHeading: string;
@@ -132,21 +130,20 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     sourceHeading: 'What a source record contains',
     sourceIntro:
-      'A citation is only useful if you can re-check it. Each source under a page carries six fields.',
+      'A citation is only useful if you can re-check it. Each source under a page carries six pieces of information.',
     sourceCaption: 'Recorded for every source on a verified page, including destination facts.',
     sourceFields: [
-      ['label', 'What you see in the citation.'],
-      ['url', 'A link that opens. A source behind a login is marked as such.'],
-      ['publisher', 'The organisation accountable for the statement, not the website that reposted it.'],
-      ['publishedOn', 'When the publisher says the document was written or last revised.'],
-      ['verifiedOn', 'The date a person opened the URL and read it. This is what ages.'],
-      ['supports', 'The specific claim the document backs, so you can check whether it actually does.'],
+      ['The citation line', 'What you see in the citation.'],
+      ['Link', 'An address that opens. A source behind a login is marked as such.'],
+      ['Publisher', 'The organisation accountable for the statement, not the website that reposted it.'],
+      ['Published on', 'When the publisher says the document was written or last revised.'],
+      ['Checked on', 'The date a person opened the link and read it. This is what ages.'],
+      ['What it supports', 'The specific claim the document backs, so you can check whether it actually does.'],
     ],
     methodBody:
       'How the check is done, stated plainly: each cited address is opened and read against the sentence it is attached to, using automated research tooling under editorial review, and the date of that check is recorded. Where a page could not be opened, or opened only behind a login, that is noted rather than worked around. No citation is added to make a page look researched.',
-    supportsLead: 'The ',
-    supportsTail:
-      ' field exists because citations age separately from pages. A document can still open and still say something, while no longer supporting the sentence it was attached to. Checking that pair is what a review does; re-reading the page alone is not enough.',
+    supportsNote:
+      'The last of these carries the most weight on its own, because a citation ages separately from the page using it. A document can still open and still say something while no longer supporting the sentence it was attached to. Checking that pairing is what a review does; re-reading the page alone is not enough.',
     rulesHeading: 'The rules that change what gets published',
     rules: [
       {
@@ -227,21 +224,20 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
     ],
     sourceHeading: '一条来源记录包含什么',
-    sourceIntro: '引证只有在您能重新核查它时才有用。每个页面下的每一条来源都带六个字段。',
+    sourceIntro: '引证只有在您能重新核查它时才有用。每个页面下的每一条来源都带六项内容。',
     sourceCaption: '已核实页面上的每一条来源都要记录，目的地的具体事实同样如此。',
     sourceFields: [
-      ['label', '您在引证里看到的那行文字。'],
-      ['url', '一个能打开的链接。需要登录才能看到的来源会照此标注。'],
-      ['publisher', '对这条陈述负责的组织，而不是转载它的网站。'],
-      ['publishedOn', '出版方自己说明这份文件写成或最后修订的时间。'],
-      ['verifiedOn', '有人打开这个网址并读过它的日期。会过期的正是这一项。'],
-      ['supports', '这份文件具体支持的那条说法，以便您核对它是否真的支持。'],
+      ['引证里的那行文字', '您在引证里看到的就是这一项。'],
+      ['链接', '一个打得开的地址。需要登录才能看到的来源会照此标注。'],
+      ['发布方', '对这条陈述负责的组织，而不是转载它的网站。'],
+      ['发布日期', '发布方自己说明这份文件写成或最后修订的时间。'],
+      ['核查日期', '有人打开这个链接并读过它的日期。会过期的正是这一项。'],
+      ['它支持的说法', '这份文件具体支持的那条说法，以便您核对它是否真的支持。'],
     ],
     methodBody:
       '核查是怎么做的，直说：每一个被引用的地址都会被打开，并与它挂着的那句话逐句对照，使用自动化研究工具并在编辑审校之下完成，核查的日期会被记录。打不开、或者只能在登录后打开的页面，会照实写明，而不会绕过去。没有任何引证是为了让页面看起来做过研究而添加的。',
-    supportsLead: '这个 ',
-    supportsTail:
-      ' 字段之所以存在，是因为引证的过期与页面的过期是两条独立的时间线。一份文件可以仍然打得开、仍然在说些什么，却已经不再支持当初挂在它旁边的句子。核对这一对关系才是审校要做的事，只重读页面本身并不够。',
+    supportsNote:
+      '这六项里最要紧的是最后一项，因为引证的过期与页面的过期是两条独立的时间线。一份文件可以仍然打得开、仍然在说些什么，却已经不再支持当初挂在它旁边的句子。核对这一对关系才是审校要做的事，只重读页面本身并不够。',
     rulesHeading: '会改变发表结果的几条规则',
     rules: [
       {
@@ -250,7 +246,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: '法域是说法的一部分',
-        p: '在某个州、省或国家成立的规则，绝不写成好像在其他地方也成立。目的地页面把每一句话限定在它来源的那个法律体系内，意向父母的准入条件也只写到有来源的材料所覆盖的范围。这个站点上没有任何内容是关于您自身情况的法律意见。',
+        p: '在某个州、省或国家成立的规则，绝不写成好像在其他地方也成立。目的地页面把每一句话限定在它来源的那个法律体系内，意向父母的准入条件也只写到有来源的材料所覆盖的范围。本站没有任何内容是关于您自身情况的法律意见。',
       },
       {
         h: '我们不从某个法律体系推算到您个人',
@@ -279,8 +275,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供发送更正的地址' },
     moneyHeading: '独立性与金钱',
     commercial: [
-      '站点由谁运营，写在关于页上。',
-      '在站点以独立自居期间，不接受付费排位、转介费与赞助。如果将来引入任何商业关系，本页与受影响的页面会在这项安排开始之前披露它。',
+      '本站由谁运营，写在关于页上。',
+      '本站以独立自居期间，不接受付费排位、转介费与赞助。如果将来引入任何商业关系，本页与受影响的页面会在这项安排开始之前披露它。',
       '服务方不会付费换取被收录，被收录也不构成背书。',
       '来自具名一方的更正与其他任何人的更正走同样的流程。',
     ],
@@ -337,9 +333,9 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     ],
     avoidedTail:
       "When links leave this site, the destination's own policy applies. Citations point at official registers, courts, agencies and clinics, and those pages can set cookies we do not control.",
-    strictHeading: 'Why this site is stricter about your data than most',
+    strictHeading: 'Why this site keeps your data to a minimum',
     strictBody:
-      'Surrogacy questions sit close to medical, family and identity information, and an enquiry can expose a person before they have decided anything. So the design choice is to avoid collecting it in the first place rather than to promise careful handling afterwards. Tools work without an email address; nothing is gated behind a signup; and the site does not ask why you are here.',
+      'Surrogacy questions sit close to medical, family and identity information, and an enquiry can expose you before you have decided anything. So the design choice is to avoid collecting it in the first place rather than to promise careful handling afterwards. Tools work without an email address; nothing is gated behind a signup; and this site does not ask why you are here.',
     contactHeading: 'If you contact us',
     contact: [
       'A request for an assessment should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
@@ -377,7 +373,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
     shortHeading: '简短版',
     shortBody:
-      '阅读这个站点，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您决定发给我们的那部分。',
+      '阅读本站，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您决定发给我们的那部分。',
     storedHeading: '存了什么，存在哪里',
     stored: [
       {
@@ -405,10 +401,10 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '不出售、不出租、不分享任何关于您的东西，因为根本没有关于您的东西被存储。',
     ],
     avoidedTail:
-      '当链接离开本站时，适用目标站点自己的政策。引证指向官方登记机构、法院、代孕机构与诊所，而那些页面可以设置我们无法控制的 cookie。',
-    strictHeading: '为什么这个站点对您的数据比多数站点更严格',
+      '当链接离开本站时，适用目标网站自己的政策。引证指向官方登记机构、法院、代孕机构与诊所，而那些页面可以设置我们无法控制的 cookie。',
+    strictHeading: '本站为什么尽量不收集您的数据',
     strictBody:
-      '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在一个人都还没有作出任何决定之前就把他暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；站点也不问您来这里是为了什么。',
+      '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在您还没有作出任何决定之前就把您的身份暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；本站也不问您来这里是为了什么。',
     contactHeading: '如果您联系我们',
     contact: [
       '一次评估的请求只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
@@ -418,7 +414,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     unsettledHeading: '尚未确定，而您应该知道',
     unsettledIntro: '有两件事本页现在还无法诚实告诉您：本站由谁运营，以及它托管在哪里、由谁托管。这两项确定之前，上面的隐私承诺建立在不完整的答案之上。',
     unsettledNeeds: [
-      { label: '站点由谁运营、在哪个国家', why: '一份隐私政策必须点名对您数据负责的那个组织，以及管辖它的法律' },
+      { label: '本站由谁运营、在哪个国家', why: '一份隐私政策必须点名对您数据负责的那个组织，以及管辖它的法律' },
       { label: '托管服务商，以及它所适用的服务器日志保留策略', why: '由谁托管本站、访问日志保留多久，决定了哪些数据会离开您的浏览器' },
     ],
     rightsBody:
@@ -556,7 +552,7 @@ export const UPDATES_PAGE: Record<Lang, UpdatesPage> = {
       '一份带日期的日志：SurrogacyBase 上改了什么、因缺少可靠来源而扣下了什么，以及原因。每一条都写明它的理由。',
     h1: '更新记录',
     intro:
-      '内容站点的变更日志通常只记录加了什么。这一份还记录拒绝了什么：那些做过研究、最终却被扣下的页面，因为唯一可得的来源是出售这项服务的一方。',
+      '内容网站的变更日志通常只记录加了什么。这一份还记录拒绝了什么：那些做过研究、最终却被扣下的页面，因为唯一可得的来源是出售这项服务的一方。',
     kinds: {
       published: '已发表',
       corrected: '已更正',

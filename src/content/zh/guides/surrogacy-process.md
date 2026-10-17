@@ -43,7 +43,7 @@ sources:
     publisher: "Journal of Assisted Reproduction and Genetics"
     publishedOn: "2022-12-01"
     verifiedOn: "2026-10-14"
-    supports: "SART CORS 收录的辅助生殖周期数据覆盖美国提供辅助生殖技术的诊所的 90% 以上，其中不包含代孕协议、补偿或项目结局字段。"
+    supports: "SART CORS 收录的辅助生殖周期数据覆盖美国提供辅助生殖技术的诊所的 90% 以上，其中不记录代孕协议、补偿或项目结局。"
   - label: "代孕（治疗信息）"
     url: "https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/"
     publisher: "英国人类受精与胚胎学管理局（HFEA）"
@@ -117,7 +117,7 @@ sources:
 | 机构或项目方 | 匹配、协调、个案管理 | 法律意见，或您与诊所之间的关系 |
 | 您的律师 | 协议、该辖区的亲权路径、文件 | 医疗决定 |
 | 代孕者自己的律师 | 她对协议的理解与她的保护 | 您的利益 |
-| 托管账户管理人 | 按约定条款持有并释放资金 | 判断一笔付款是否公平 |
+| 托管机构 | 按约定条款持有并释放资金 | 判断一笔付款是否公平 |
 | 咨询师或心理师 | 每一方的筛查与持续支持 | 匹配或法律工作 |
 | 登记机构、法院或领事馆 | 登记、命令、旅行文件 | 您如何走到这一步 |
 

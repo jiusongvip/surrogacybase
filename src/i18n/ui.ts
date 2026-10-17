@@ -185,7 +185,7 @@ export const UI: Record<Lang, {
     };
     /**
      * The destinations index. The counts below are tuple lengths on purpose: this page's four
-     * factors, ten columns, three legal shapes, five questions, four next steps and seven
+     * factors, ten items, three legal shapes, five questions, four next steps and seven
      * standards are the structure of the argument, and a language that drops one of them is not
      * a shorter translation but a different page. The compiler fails the build on the mismatch,
      * so the shape cannot drift between the two dictionaries.
@@ -531,11 +531,11 @@ export const UI: Record<Lang, {
           thinMany: 'are',
         },
         dimensions: {
-          heading: 'The ten columns a comparison needs',
+          heading: 'The ten things a destination comparison has to cover',
           paraA:
-            'A spreadsheet with one row per country and one column for price is the usual artefact of this research, and it hides the three columns that decide whether a destination works at all. These are the ten we hold a destination to.',
+            'Most families end up with a table of countries and one figure for price, and that figure hides the three things which decide whether a destination works at all. These are the ten we hold every destination to.',
           paraB:
-            'We publish a cell only when there is a source behind it, which is why the records above carry a subset of these columns and list the rest as open questions. An empty cell is a finding, not a gap in the layout.',
+            'A position is published only where there is a source behind it, which is why the records above carry some of these ten and list the rest as open questions. A gap you can see on a record is a finding in itself, not a formatting accident.',
           link: 'How a claim gets sourced here',
           items: [
             {
@@ -621,7 +621,7 @@ export const UI: Record<Lang, {
           ],
         },
         questions: {
-          heading: 'Five questions to answer before a shortlist',
+          heading: 'Five questions to answer before you shortlist a destination',
           intro:
             'If a destination cannot answer these in writing, it is not ready to be compared with another one.',
           items: [
@@ -636,7 +636,7 @@ export const UI: Record<Lang, {
           cta: 'Open the full checklist',
         },
         next: {
-          heading: 'Where to go after this page',
+          heading: 'Where to go next',
           items: [
             {
               label: 'Law and parentage',
@@ -866,7 +866,7 @@ export const UI: Record<Lang, {
         eyebrow: '独立的目的地研究',
         h1: '哪些代孕目的地适合您的情况？',
         lede: '这一页不点名最好的国家。它帮您判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖您的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及您需要到场的时候您能不能到场。',
-        notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有遗传关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
+        notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有基因关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
         ctaNotes: '先核实什么',
         ctaRecords: '比较已核实的记录',
         stats: {
@@ -880,7 +880,7 @@ export const UI: Record<Lang, {
           items: [
             {
               q: '规则是否点名了像您这样的家庭？',
-              a: '原则上允许并不等于您有资格。凡是一条规定写明谁可以委托，它通常取决于婚姻状况、与孩子是否有遗传关系，或者家庭的构成。一个被描述为「对代孕友好」的国家，回答的不是这个问题。',
+              a: '原则上允许并不等于您有资格。凡是一条规定写明谁可以委托，它通常取决于婚姻状况、与孩子是否有基因关系，或者家庭的构成。一个被描述为「对代孕友好」的国家，回答的不是这个问题。',
               test: '当有人能指向那条规定时，答案是规则。当答案来自某家机构已经安置过多少个类似的家庭时，那是惯例。',
             },
             {
@@ -911,13 +911,13 @@ export const UI: Record<Lang, {
           thinMany: '',
         },
         dimensions: {
-          heading: '一项比较所需要的十列',
-          paraA: '每个国家一行、价格一列的表格，是这类研究最常见的产物，而它恰好隐藏了那三列真正决定一个目的地是否可行的内容。下面是我们要求一个目的地逐项应答的十列。',
-          paraB: '只有在某一列背后有来源时我们才发布它，所以上面的记录只承载这十列中的一部分，其余的列为待回答的问题。空着的单元格本身就是一个结论，不是版面上的空缺。',
+          heading: '比较一个目的地，必须覆盖的十项内容',
+          paraA: '多数家庭最后拿到的是一张国家对照表，加上一列价格，而那个价格恰好隐藏了真正决定一个目的地是否可行的那三项内容。下面这十项，是我们要求每个目的地逐项应答的。',
+          paraB: '只有在某一项背后有来源时我们才发布结论，所以上面的记录只承载这十项中的一部分，其余的以未回答的问题列出。您在一条记录上看得见的空缺，本身就是一个结论，不是排版上的意外。',
           link: '本站如何为一条结论列出来源',
           items: [
             { q: '当地法律框架', ask: '成文法、法院判决、一部辅助生殖法，还是各州各异的拼贴？' },
-            { q: '谁可以委托', ask: '规则点名了哪些意向父母，以及是否要求遗传联系。' },
+            { q: '谁可以委托', ask: '规则点名了哪些意向父母，以及是否要求基因联系。' },
             { q: '国籍与居住', ask: '规则触及的是公民、居民，还是任何前往当地的人。' },
             { q: '出生时的法律亲权', ask: '在任何裁定存在之前，法律把谁视为母亲、把谁视为父亲。' },
             { q: '出生之后的程序', ask: '申请、受理它的法院或登记机关，以及实际所需的时间。' },
@@ -958,14 +958,14 @@ export const UI: Record<Lang, {
               plan: '国家名几乎不告诉您什么。规则由州、省或地区制定，而您居住地的承认问题，是在其上再加一整套法律体系。',
               points: [
                 '各州对代孕是否允许、以及如何监管各有自己的法律；不存在联邦框架。',
-                '在我们阅读的这项调查中，有 21 个州以成文法明确允许妊娠型代孕，另有若干州既没有允许也没有禁止的成文法或公开判例。',
+                '在我们阅读的这项调查中，有 21 个州以成文法明确允许妊娠代孕，另有若干州既没有允许也没有禁止的成文法或公开判例。',
                 '在印第安纳州和内布拉斯加州，妊娠代孕合同不可强制执行并且违背公共政策；亚利桑那州居民则被禁止订立此类合同。',
               ],
             },
           ],
         },
         questions: {
-          heading: '进入入围名单之前要回答的五个问题',
+          heading: '确定候选目的地之前要回答的五个问题',
           intro: '如果一个目的地无法以书面形式回答这几个问题，它就还没有准备好与另一个目的地放在一起比较。',
           items: [
             '哪一条规定写明此处谁可以委托，它发表在哪里？',
@@ -978,7 +978,7 @@ export const UI: Record<Lang, {
           cta: '打开完整清单',
         },
         next: {
-          heading: '看完这一页之后可以去哪里',
+          heading: '接下来去哪里',
           items: [
             {
               label: '法律与亲权',

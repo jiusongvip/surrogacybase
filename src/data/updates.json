@@ -518,5 +518,21 @@
     "title": "Every sentence about the tools now matches what they do",
     "change": "The tools index, the two checklist cards, the closing lines of the checklists themselves, the guide and explainer endings that told you to write your answers into a checklist, and the privacy wording around all of it have been rewritten. What the site now describes is one workspace that keeps its rows in this browser, two question lists that download, and one enquiry form.",
     "reason": "Changing what a tool does is only finished when every sentence pointing at it says the same thing. Otherwise the site’s own description is the part that misleads, and it is the part you read before deciding whether to open the tool at all."
-  }
+  },
+    {
+      "date": "2026-10-17",
+      "kind": "corrected",
+      "path": "/destinations",
+      "title": "The destinations page describes your comparison, not the table behind it",
+      "change": "Three headings named the research file instead of the research: it asked for \"the ten columns a comparison needs\", for questions to be answered \"before a shortlist\", and for \"where to go after this page\". They now read \"the ten things a destination comparison has to cover\", \"five questions to answer before you shortlist a destination\", and \"where to go next\", and the two paragraphs underneath no longer describe empty cells in a table this page never shows. The same check ran across the site in both languages. One wording now covers each idea that was written two ways: a candidate destination, a genetic link, an escrow account, a gestational arrangement, and this site talking about itself.",
+      "reason": "A heading that names columns you have never been shown makes the page sound as if it is addressing whoever maintains it. The shape of the data behind a page is not one of the things you are comparing, so it does not belong in the words read before a comparison is made."
+    },
+    {
+      "date": "2026-10-17",
+      "kind": "corrected",
+      "path": "/editorial-policy",
+      "title": "A source record is described by what each part does, not by its key",
+      "change": "The table under \"What a source record contains\" printed the six names the data is stored under, in a monospace font, and the sentence after it opened with the word \"field\" used in its programming sense. Both languages now list the same six parts as the citation line, the link, the publisher, when it was published, when it was checked, and what it supports, and the closing sentence reads as a sentence.",
+      "reason": "This page states the standard a source has to meet, so it is the page most likely to be read by a lawyer or a regulator, and the one where the difference between a document and a database is least excusable. Storage keys belong in the file; what belongs on the page is what each part is for and why it can go stale."
+    }
 ]
