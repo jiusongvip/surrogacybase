@@ -32,14 +32,14 @@
       }
     },
     {
-      "claim": "As of May 2026, Ukraine's parliament was considering banning surrogacy for foreigners, whom officials in the reporting described as roughly 95 per cent of the intended parents using the country's programmes, and a health ministry official was quoted supporting the move. The reporting describes the route as still open to foreign intended parents at that date.",
+      "claim": "As of May 2026, Ukraine's parliament was considering banning surrogacy for foreigners, whom officials in the reporting described as roughly 95 per cent of the intended parents using the country's programmes, and a health ministry official was quoted supporting the move. The reporting describes the route as still open to foreign intended parents at that date. The same report records one couple who used a Kyiv agency as having paid around 65,000 pounds, which it converts to 87,770 US dollars, and states that a woman carrying for that agency expected 12,500 pounds, or 17,000 US dollars, which it notes is roughly double the average salary in Ukraine.",
       "source": {
         "label": "Ukraine is a global surrogacy hub, but that could be about to change",
         "url": "https://www.bbc.com/news/articles/clyp4kp687go",
         "publisher": "BBC News",
         "publishedOn": "2026-05-07",
         "verifiedOn": "2026-10-17",
-        "supports": "Reporting on the policy direction and on the share of foreign intended parents as stated by the officials quoted in it. That share is not an independently counted figure, and it is reproduced here as what the article reports rather than as a verified statistic."
+        "supports": "Reporting on the policy direction and on the share of foreign intended parents as stated by the officials quoted in it. That share is not an independently counted figure, and it is reproduced here as what the article reports rather than as a verified statistic. The two amounts quoted here are what one named family paid and what one named woman was due to receive, not a survey of programme prices, and they are the report's own conversions of sterling amounts."
       }
     }
   ],
@@ -48,5 +48,25 @@
     "Ministry of Health order 383 of 6 March 2024 amends the assisted-reproduction instruction; its existence and date were confirmed but the changes it made could not be read, so the current procedural detail is unconfirmed.",
     "The committee stage, the transitional rules and the likely fate of bill 15507 are unknown. A change of that kind would end access for foreign couples without any change to what a clinic or an agency is offering today, which is why this record dates the status it describes.",
     "The operational effect of the war on a programme, including clinic locations, travel and the closing of airspace, was not documented in any source we could open, so nothing here describes what taking a pregnancy to birth in Ukraine currently involves."
+  ],
+  "costs": [
+    {
+      "item": "total",
+      "currency": "USD",
+      "shape": "single",
+      "low": 87770,
+      "high": null,
+      "asOf": "2026",
+      "fact": 2
+    },
+    {
+      "item": "carrier",
+      "currency": "USD",
+      "shape": "single",
+      "low": 17000,
+      "high": null,
+      "asOf": "2026",
+      "fact": 2
+    }
   ]
 }

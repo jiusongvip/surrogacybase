@@ -13,12 +13,14 @@ import { langFromPath, localizedPath } from '@/i18n/paths';
 import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
 import { formatDate } from '@/lib/dates';
 import { localize } from '@/lib/jurisdictions';
+import { costText } from '@/lib/costs';
 
 type Props = { entry: CollectionEntry<'jurisdictions'> };
 
 const { entry } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.jurisdiction;
+const costsCopy = UI[lang].costs;
 const d = localize(entry.data, lang);
 
 const positions = [
@@ -65,6 +67,50 @@ const positions = [
           <p class="mt-1.5 text-[17px] leading-relaxed">{p.value}</p>
         </div>
       ))}
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-[22px]">{costsCopy.heading}</h2>
+      <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{costsCopy.intro}</p>
+
+      {
+        d.costs.length > 0 ? (
+          <div class="mt-6 overflow-x-auto">
+            <table class="w-full min-w-[640px] border-collapse text-left text-[15px]">
+              <caption class="sr-only">{costsCopy.heading}</caption>
+              <thead>
+                <tr>
+                  <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{costsCopy.columns.item}</th>
+                  <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{costsCopy.columns.figure}</th>
+                  <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{costsCopy.columns.source}</th>
+                  <th class="border-b border-line-strong pb-2 font-semibold">{costsCopy.asOfYear}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {d.costs.map((figure) => (
+                  <tr>
+                    <td class="border-b border-line py-3 pr-4 align-top">{costsCopy.items[figure.item]}</td>
+                    <td class="border-b border-line py-3 pr-4 align-top tnum">{costText(figure, lang)}</td>
+                    <td class="border-b border-line py-3 pr-4 align-top text-muted">
+                      <a href={d.facts[figure.fact].source.url} rel="noopener noreferrer" target="_blank" class="link-underlined">
+                        {d.facts[figure.fact].source.label}
+                      </a>
+                      <span class="tnum block text-[13px]">
+                        {fill(copy.citeChecked, { date: formatDate(d.facts[figure.fact].source.verifiedOn, lang) })}
+                      </span>
+                    </td>
+                    <td class="border-b border-line py-3 align-top tnum text-[13px] text-muted">
+                      {fill(costsCopy.asOf, { year: figure.asOf })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p class="mt-4 max-w-[62ch] text-[16px] leading-relaxed">{costsCopy.none}</p>
+        )
+      }
     </section>
 
     {d.facts.length > 0 && (

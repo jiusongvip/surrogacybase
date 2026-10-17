@@ -6,18 +6,18 @@
   "eligibility": "No eligibility criteria are stated by the sources available here; they describe the route to parenthood rather than who may use it. Who can apply for a parental order, and on what conditions, is set out in the legislation and needs confirming with a lawyer in the relevant part of the UK.",
   "paymentModel": "Intended parents may reimburse the surrogate's reasonable expenses. Paying anything more than reasonable expenses must be authorised by the family court before a parental order can be made. Advertising for, or as, a surrogate is illegal under the Surrogacy Arrangements Act 1985. A report by Surrogacy UK, cited by HFEA, records surrogates as typically reimbursed 10,000 to 15,000 pounds.",
   "parentage": "The surrogate is the legal mother at birth unless a parental order is obtained. A written arrangement is not legally binding, and the Law Commission's reform proposals keep arrangements unenforceable. Intended parents have to wait until the child is born and then apply to court, a process the Commission describes as typically taking six months to a year.",
-  "statusVerifiedOn": "2026-10-14",
+  "statusVerifiedOn": "2026-10-17",
   "insufficientData": false,
   "facts": [
     {
-      "claim": "A written surrogacy arrangement can be made but is not legally binding, the surrogate is the legal mother unless a parental order is obtained, and payment is limited to the surrogate's reasonable expenses.",
+      "claim": "A written surrogacy arrangement can be made but is not legally binding, the surrogate is the legal mother unless a parental order is obtained, and payment is limited to the surrogate's reasonable expenses. The same page illustrates reasonable expenses with maternity clothes, travel and loss of earnings, and records surrogates as typically receiving 10,000 to 15,000 pounds according to a report by Surrogacy UK.",
       "source": {
         "label": "Surrogacy (treatment information)",
         "url": "https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/",
         "publisher": "Human Fertilisation and Embryology Authority",
         "publishedOn": "2016-04-08",
-        "verifiedOn": "2026-10-14",
-        "supports": "Regulator page. Note its publication date: it was written in 2016 and is used here for the basic legal structure, which is set by statute rather than by this page."
+        "verifiedOn": "2026-10-17",
+        "supports": "Regulator page. Note its publication date: it was written in 2016 and is used here for the basic legal structure, which is set by statute rather than by this page. The amount is quoted from the page as published, and the page attributes it to a Surrogacy UK report rather than to an official dataset."
       }
     },
     {
@@ -58,5 +58,16 @@
     "The Law Commission's draft Bill has not been enacted. The government's position as recorded on the project page is that reform is not currently prioritised, which may have changed since the April 2025 letter.",
     "Whether your existing arrangement or a foreign order would be recognised in the UK is a separate legal question that is not answered here.",
     "No UK total-cost figure was verified. The only sourced number is the reimbursement range for expenses above, which comes from an organisation's report rather than an official dataset."
+  ],
+  "costs": [
+    {
+      "item": "carrier",
+      "currency": "GBP",
+      "shape": "range",
+      "low": 10000,
+      "high": 15000,
+      "asOf": "2016",
+      "fact": 0
+    }
   ]
 }

@@ -6,7 +6,7 @@
   "eligibility": "No statute sets out who may commission a surrogacy. What the sources here establish is the case law: the Constitutional Court has twice sat in review of cases arising from arrangements already made, and in the 2024 review it held that children born through surrogacy have the same rights as all children and may not be discriminated against for the method of their birth. The same decision left the question of whether to prohibit, freely permit or restrict arrangements to Congress. What applies to a given family is therefore decided through constitutional protection actions, case by case, not against a published eligibility scheme.",
   "paymentModel": "No rule to quote. The 2024 review decision names payment to the gestational carrier as a risk factor - it states that where she receives remuneration, the risk of children being sold increases - and the arrangement in the case it reviewed described itself as altruistic collaboration. The court ordered the Ministry of Justice to draft a law and reaffirmed its 2022 order that Congress regulate the subject comprehensively. So payments sit in a gap the courts have flagged, not under a rule.",
   "parentage": "Litigated, not administered. The 2009 decision provider websites cite resolved custody and mother-child contact for twins; it never allocated legal parentage. In 2024 the court urged Congress to legislate on the civil-registration effects of children born in Colombia through surrogacy, specifically that the woman who lent her womb not be registered as the biological mother, and ordered the child-welfare institute, the migration authority and the national registry to adopt protective measures within six months. The tutela in that very case was denied. Parentage still has to be won, family by family.",
-  "statusVerifiedOn": "2026-10-16",
+  "statusVerifiedOn": "2026-10-17",
   "insufficientData": false,
   "facts": [
     {
@@ -41,11 +41,42 @@
         "verifiedOn": "2026-10-16",
         "supports": "The court's own published decision, dated 18 April 2024. The underlying tutela was confirmed as denied, so the decision states what the court considers the rights of these children require of the state; it is not an enforceable parentage framework."
       }
+    },
+    {
+      "claim": "A report on the Colombian market states that a package arranged through a Colombian agency comes to around 65,000 US dollars, and records what two of the women it spoke to asked for being the one who carries: one named 20 million pesos, which the report converts to about 4,000 dollars, and later a total of 40 million pesos, and the other 20 million pesos plus one million pesos a month for nine months, which the reporter calculates as 32 million pesos. At the report's own conversion those asks span roughly 4,000 to 8,000 dollars.",
+      "source": {
+        "label": "El mercado de los vientres de alquiler en Colombia: un bebé a 4.000 dólares",
+        "url": "https://elpais.com/america-colombia/2023-01-03/el-mercado-de-los-vientres-de-alquiler-en-colombia-un-bebe-a-4000-dolares.html",
+        "publisher": "El País, reported by Lucía Franco",
+        "publishedOn": "2023-01-03",
+        "verifiedOn": "2026-10-17",
+        "supports": "Reported journalism read from the published page on the date shown. The agency figure is a price a reporter was told, and the carrier span is the distance between what two named individuals asked for, converted at the report's own peso-to-dollar rate; neither is a survey of prices."
+      }
     }
   ],
   "openQuestions": [
     "The citation repeated across provider websites is wrong. Surrogacy is associated with Sentencia T-968 of 2009; the court's T-968/2014 document concerns disability and incapacity rating. Any page you read that cites T-968/2014 for surrogacy has copied a source that did not check it.",
     "Whether Congress or the Ministry of Justice has produced any legislation after the April 2024 exhortations could not be verified. The newest decision available here is dated 18 April 2024.",
     "What a Colombian birth registration or court order means for the child's entry into your own country is entirely outside what these sources address."
+  ],
+  "costs": [
+    {
+      "item": "total",
+      "currency": "USD",
+      "shape": "single",
+      "low": 65000,
+      "high": null,
+      "asOf": "2023",
+      "fact": 3
+    },
+    {
+      "item": "carrier",
+      "currency": "USD",
+      "shape": "range",
+      "low": 4000,
+      "high": 8000,
+      "asOf": "2023",
+      "fact": 3
+    }
   ]
 }

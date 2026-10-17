@@ -105,6 +105,36 @@ export const UI: Record<Lang, {
     checked: string;
     insufficient: string;
   };
+  /**
+   * The words printed around a cost figure. The number, its currency and its year are data in
+   * src/data/jurisdictions, identical in both languages, so only these labels are translated.
+   */
+  costs: {
+    heading: string;
+    intro: string;
+    none: string;
+    table: string;
+    tableNone: string;
+    columns: { item: string; figure: string; source: string };
+    /** The column head over the year a source's own numbers describe. */
+    asOfYear: string;
+    asOf: string;
+    items: {
+      medical: string;
+      legal: string;
+      recruiting: string;
+      carrier: string;
+      total: string;
+    };
+    /** {c} is the currency, {a} the lower figure and {b} the upper one. */
+    shapes: {
+      range: string;
+      ceiling: string;
+      floor: string;
+      single: string;
+    };
+    currency: Record<'USD' | 'GBP' | 'EUR' | 'CAD' | 'COP', string>;
+  };
   content: {
     keepReading: string;
     keepReadingNote: string;
@@ -386,6 +416,32 @@ export const UI: Record<Lang, {
       payment: 'Payment',
       checked: 'Checked',
       insufficient: 'Not enough verified material to recommend it',
+    },
+    costs: {
+      heading: 'Cost figures published for this destination',
+      intro:
+        "Each number below is one a named source published, in that source's own currency, for the year stated. It is a published figure with a citation rather than a quote, and the source that printed it is linked from the row.",
+      none:
+        'No cost figure is published here. The payment position above says what may be paid under the rules of this destination, and the questions below say what no source settled.',
+      table: 'Cost figures',
+      tableNone: 'None published',
+      columns: { item: 'What the line covers', figure: 'Figure', source: 'Published by' },
+      asOfYear: 'Year the figures describe',
+      asOf: '{year} figures',
+      items: {
+        medical: 'Medical treatment',
+        legal: 'Legal work',
+        recruiting: 'Recruiting a carrier',
+        carrier: 'Paid to the carrier',
+        total: 'Whole program',
+      },
+      shapes: {
+        range: '{c}{a} to {b}',
+        ceiling: '{c} up to {b}',
+        floor: '{c}{a} or more',
+        single: '{c}{a}',
+      },
+      currency: { USD: 'US$', GBP: '£', EUR: '€', CAD: 'C$', COP: 'COL$' },
     },
     content: {
       keepReading: 'Keep reading',
@@ -792,6 +848,32 @@ export const UI: Record<Lang, {
       payment: '费用模式',
       checked: '核查日期',
       insufficient: '可核实的材料不足，无法作为目的地推荐',
+    },
+    costs: {
+      heading: '本目的地已发布的费用数字',
+      intro:
+        '下面每一个数字都由某个具名来源发布，沿用该来源自己的币种，并注明这些数字描述的是哪一年。它是有引证的已发布数字，不是一份报价；发布它的那份来源就在这一行里链接出来。',
+      none:
+        '这里没有发布任何数字。上面的付款立场写明了这个目的地的规则允许支付什么，下面的问题写明了哪些内容没有来源能够回答。',
+      table: '费用数字',
+      tableNone: '未发布',
+      columns: { item: '这一行覆盖什么', figure: '数字', source: '发布方' },
+      asOfYear: '数字对应的年份',
+      asOf: '{year} 年的数字',
+      items: {
+        medical: '医疗环节',
+        legal: '法律环节',
+        recruiting: '招募代孕者',
+        carrier: '支付给代孕者',
+        total: '整个流程',
+      },
+      shapes: {
+        range: '{c} {a} 至 {b}',
+        ceiling: '{c}不超过 {b}',
+        floor: '{c} {a} 以上',
+        single: '{c} {a}',
+      },
+      currency: { USD: '美元', GBP: '英镑', EUR: '欧元', CAD: '加元', COP: '哥伦比亚比索' },
     },
     content: {
       keepReading: '继续阅读',

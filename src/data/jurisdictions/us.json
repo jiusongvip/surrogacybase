@@ -6,7 +6,7 @@
   "eligibility": "There is no federal surrogacy law. Each state sets its own rules, and they differ enough that a state has to be examined on its own. ASRM's survey of state law lists gestational surrogacy as expressly permitted by statute in California, Colorado, Connecticut, Florida, Idaho, Illinois, Iowa, Massachusetts, Michigan, Nevada, New Hampshire, New Jersey, New York, Oklahoma, Rhode Island, Texas, Utah, Vermont, Virginia, Washington and West Virginia, and records other states as having no statutes or published case law either permitting or prohibiting it.",
   "paymentModel": "Not a single national rule. Compensation is governed state by state, and no statement about what may be paid across the whole country is supported by the sources available here.",
   "parentage": "Parentage is decided under state law and state court practice, not federally. A US order is also a separate question from whether another country will recognise it.",
-  "statusVerifiedOn": "2026-10-14",
+  "statusVerifiedOn": "2026-10-17",
   "insufficientData": false,
   "facts": [
     {
@@ -52,6 +52,17 @@
         "verifiedOn": "2026-10-14",
         "supports": "State entries in the professional survey. Restrictions of this kind are exactly the detail to confirm with a lawyer admitted in that state."
       }
+    },
+    {
+      "claim": "A peer-reviewed overview reports, citing Tsai and colleagues (Obstetrics & Gynecology, 2020), that in the United States a programme usually includes 20,000 to 80,000 US dollars of medical expenses, 3,000 to 15,000 dollars of legal support and 6,000 to 54,000 dollars for surrogacy recruiting programmes; that a gestational carrier usually receives 20,000 to 55,000 dollars per pregnancy; and that a complete process may cost as much as 200,000 dollars.",
+      "source": {
+        "label": "Commercial Surrogacy: An Overview (review article)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9800153/",
+        "publisher": "RBGO Gynecology & Obstetrics 44(12):1141, Brandão and Garrido",
+        "publishedOn": "2022-12-29",
+        "verifiedOn": "2026-10-17",
+        "supports": "The cost sentences were read from the published page on the date shown. They are cited from another article rather than measured by this one, and both authors work for a fertility clinic group, so the figures are practitioner literature quoting a 2020 paper, not a survey of invoices."
+      }
     }
   ],
   "openQuestions": [
@@ -59,5 +70,52 @@
     "The ASRM survey's bare address sits behind a login; the link cited here is the publicly readable copy of the same page.",
     "Whether a US parentage order, birth certificate or passport application will be recognised where you live is a separate question, and nothing here answers it.",
     "Cost and clinic data for the United States come from providers or from registry surveillance of treatment cycles. There is no public registry of surrogacy agreements, payments or program outcomes."
+  ],
+  "costs": [
+    {
+      "item": "medical",
+      "currency": "USD",
+      "shape": "range",
+      "low": 20000,
+      "high": 80000,
+      "asOf": "2020",
+      "fact": 4
+    },
+    {
+      "item": "legal",
+      "currency": "USD",
+      "shape": "range",
+      "low": 3000,
+      "high": 15000,
+      "asOf": "2020",
+      "fact": 4
+    },
+    {
+      "item": "recruiting",
+      "currency": "USD",
+      "shape": "range",
+      "low": 6000,
+      "high": 54000,
+      "asOf": "2020",
+      "fact": 4
+    },
+    {
+      "item": "carrier",
+      "currency": "USD",
+      "shape": "range",
+      "low": 20000,
+      "high": 55000,
+      "asOf": "2020",
+      "fact": 4
+    },
+    {
+      "item": "total",
+      "currency": "USD",
+      "shape": "ceiling",
+      "low": null,
+      "high": 200000,
+      "asOf": "2020",
+      "fact": 4
+    }
   ]
 }

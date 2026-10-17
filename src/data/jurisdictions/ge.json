@@ -30,11 +30,42 @@
         "verifiedOn": "2026-10-17",
         "supports": "Reporting on the announcement, the content of the drafts and the projected commencement date. The fact that the bill was never adopted comes from the practitioner page above, dated three years later; whether the bill was formally withdrawn or simply lapsed was not confirmed in a parliamentary register, so this record states non-adoption and nothing stronger."
       }
+    },
+    {
+      "claim": "Research published in 2026 by three academics who worked with women in Georgia's surrogacy sector reports that in the year before it was written, surrogacy in Georgia cost approximately 55,000 to 85,000 US dollars, and that the women who carried were typically paid around 20,000 US dollars in instalments.",
+      "source": {
+        "label": "I didn't come here to get rich: new research on the lives of Ukrainian women in Georgia's surrogacy boom",
+        "url": "https://theconversation.com/i-didnt-come-here-to-get-rich-new-research-on-the-lives-of-ukrainian-women-in-georgias-surrogacy-boom-276173",
+        "publisher": "The Conversation, written by Oleinikova, Badashvili and Vlasenko",
+        "publishedOn": "2026-03-26",
+        "verifiedOn": "2026-10-17",
+        "supports": "An article written by the researchers themselves and published in The Conversation, read from the published page on the date shown. The amounts are what their fieldwork and the market they describe report, stated as approximate; no Georgian state source prices these arrangements."
+      }
     }
   ],
   "openQuestions": [
     "The consolidated official text of Health Care Law article 143 and of the Ministry of Health orders was never opened here, so the article numbers, and the exact wording of the rule that keeps the carrier and the donor off the birth entry, rest on one law firm's account.",
     "Whether the 2023 bill was formally withdrawn or merely lapsed is unconfirmed, which means a future attempt to close the route to foreigners would not be foreshadowed by anything in the published record.",
     "Whether a Georgian birth entry naming the intended parents is accepted by the country the family lives in, and which document the child travels on, are separate questions, and nothing in this record speaks to either."
+  ],
+  "costs": [
+    {
+      "item": "total",
+      "currency": "USD",
+      "shape": "range",
+      "low": 55000,
+      "high": 85000,
+      "asOf": "2026",
+      "fact": 2
+    },
+    {
+      "item": "carrier",
+      "currency": "USD",
+      "shape": "single",
+      "low": 20000,
+      "high": null,
+      "asOf": "2026",
+      "fact": 2
+    }
   ]
 }
