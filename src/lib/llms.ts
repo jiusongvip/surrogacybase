@@ -13,16 +13,30 @@
 import { ABOUT_PAGE, ASSESSMENT_PAGE } from '@/data/service-pages';
 import { EDITORIAL_PAGE, UPDATES_PAGE } from '@/data/policy-pages';
 import { SITE } from '@/const';
-import { TOOLS, toolHref } from '@/data/tools';
+import { TOOLS } from '@/data/tools';
 import type { Lang } from '@/i18n/config';
 import { localizedPath } from '@/i18n/paths';
 import { UI, fill } from '@/i18n/ui';
-import { getLiveContent, pathOf } from '@/lib/content';
+import { getLiveContent, pathOf, type ContentEntry } from '@/lib/content';
 import { getJurisdictions } from '@/lib/jurisdictions';
 
-/** One bullet: the page's own title, its own summary, at its own URL. */
-function entry(site: URL, lang: Lang, path: string, title: string, description: string) {
-  return `- [${title}](${new URL(localizedPath(lang, path), site).href}): ${description}`;
+/**
+ * One bullet: the page's own title, its own summary, at its own URL.
+ *
+ * A content entry's path already carries its language, because the entry's id is the folder it
+ * lives in; a hand-written route is locale-free and needs the prefix adding. Applying the prefix
+ * to both is how /zh/zh/guides gets published.
+ */
+function bullet(title: string, description: string, url: URL) {
+  return `- [${title}](${url.href}): ${description}`;
+}
+
+function page(site: URL, lang: Lang, path: string, title: string, description: string) {
+  return bullet(title, description, new URL(localizedPath(lang, path), site));
+}
+
+function piece(site: URL, entry: ContentEntry) {
+  return bullet(entry.data.title, entry.data.description, new URL(pathOf(entry), site));
 }
 
 function heading(lang: Lang, en: string, zh: string) {
@@ -52,23 +66,17 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     '',
     heading(lang, 'Guides', '指南'),
     '',
-    ...guides.map((e) => entry(site, lang, pathOf(e), e.data.title, e.data.description)),
+    ...guides.map((e) => piece(site, e)),
     '',
     heading(lang, 'Explainers', '专题解读'),
     '',
-    ...explainers.map((e) => entry(site, lang, pathOf(e), e.data.title, e.data.description)),
+    ...explainers.map((e) => piece(site, e)),
     '',
     heading(lang, 'Destinations', '目的地'),
     '',
-    entry(
-      site,
-      lang,
-      '/destinations',
-      copy.pages.destinations.title,
-      copy.pages.destinations.description,
-    ),
+    page(site, lang, '/destinations', copy.pages.destinations.title, copy.pages.destinations.description),
     ...jurisdictions.map((j) =>
-      entry(
+      page(
         site,
         lang,
         `/destinations/${j.data.code}`,
@@ -79,14 +87,14 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     '',
     heading(lang, 'Tools', '工具'),
     '',
-    ...tools.map((t) => entry(site, lang, `/tools/${t.id}`, t[lang].name, t[lang].summary)),
+    ...tools.map((t) => page(site, lang, `/tools/${t.id}`, t[lang].name, t[lang].summary)),
     '',
     heading(lang, 'How this site is run', '本站如何运作'),
     '',
-    entry(site, lang, '/about', ABOUT_PAGE[lang].title, ABOUT_PAGE[lang].description),
-    entry(site, lang, '/editorial-policy', EDITORIAL_PAGE[lang].title, EDITORIAL_PAGE[lang].description),
-    entry(site, lang, '/updates', UPDATES_PAGE[lang].title, UPDATES_PAGE[lang].description),
-    entry(site, lang, '/assessment', ASSESSMENT_PAGE[lang].title, ASSESSMENT_PAGE[lang].description),
+    page(site, lang, '/about', ABOUT_PAGE[lang].title, ABOUT_PAGE[lang].description),
+    page(site, lang, '/editorial-policy', EDITORIAL_PAGE[lang].title, EDITORIAL_PAGE[lang].description),
+    page(site, lang, '/updates', UPDATES_PAGE[lang].title, UPDATES_PAGE[lang].description),
+    page(site, lang, '/assessment', ASSESSMENT_PAGE[lang].title, ASSESSMENT_PAGE[lang].description),
     '',
   ].join('\n');
 }

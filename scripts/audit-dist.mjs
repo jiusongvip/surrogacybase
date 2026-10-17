@@ -156,6 +156,24 @@ for (const loc of sitemap.match(/<loc>([^<]+)<\/loc>/g) ?? []) {
   if (!routes.has(path)) problems.push(`sitemap: ${path} is not built`);
 }
 
+/* llms.txt is a promise to a machine reader that a document is here. A bullet pointing at a
+ * page that was never built, or at the wrong language of a page, is the one failure mode this
+ * file can have, and the build is exactly what proves it either way. */
+for (const name of ['llms.txt', 'zh/llms.txt']) {
+  const text = readFileSync(join(dist, name), 'utf8');
+  const wantZh = name.startsWith('zh/');
+  for (const href of text.match(/\]\((https?:[^)]+)\)/g) ?? []) {
+    const url = new URL(href.slice(2, -1));
+    if (url.origin !== new URL('https://surrogacybase.com').origin) {
+      problems.push(`${name}: ${url.href} is not this site`);
+      continue;
+    }
+    const path = url.pathname.replace(/\/$/, '') || '/';
+    if (!routes.has(path)) problems.push(`${name}: ${path} is not built`);
+    if (wantZh !== path.startsWith('/zh')) problems.push(`${name}: ${path} is the wrong language`);
+  }
+}
+
 if (problems.length) {
   console.error(`${problems.length} problem(s):`);
   for (const p of problems) console.error(' - ' + p);
