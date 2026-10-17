@@ -331,6 +331,7 @@ export const UI: Record<Lang, {
           { label: 'Destinations', href: '/destinations' },
           { label: 'Tools', href: '/tools' },
           { label: 'Updates', href: '/updates' },
+          { label: 'New pages by RSS', href: '/rss.xml' },
         ],
       },
       {
@@ -738,6 +739,7 @@ export const UI: Record<Lang, {
           { label: '目的地', href: '/zh/destinations' },
           { label: '工具', href: '/zh/tools' },
           { label: '更新记录', href: '/zh/updates' },
+          { label: 'RSS 订阅', href: '/zh/rss.xml' },
         ],
       },
       {
