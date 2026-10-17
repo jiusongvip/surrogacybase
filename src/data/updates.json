@@ -454,5 +454,21 @@
     "title": "The tool index describes the checklists as they are built",
     "change": "The agency question checklist card listed five groups, including two that do not exist in the tool. It now names the seven it actually has, and the destination checklist card lists all seven areas that checklist covers instead of six.",
     "reason": "A card that previews how a page is built is a promise that page has to keep."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": null,
+    "title": "The homepage speaks to you instead of naming its audience",
+    "change": "The opening line, the one-line description under it and the paragraph headed Who we are all named the people this site is for in the third person: intended parents around the world. They now say what you can do here. The one-line description exists once in each language, and the footer and the about page both read that copy.",
+    "reason": "A line that names its audience is written for whoever is sizing the site up as a product. The family who opened the homepage is that audience, so the sentence was describing them to themselves."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "corrected",
+    "path": "/editorial-policy",
+    "title": "The imagery paragraph on the editorial policy addresses you now",
+    "change": "Its closing sentence said a borrowed stock image leaves the reader looking at a face that belongs to nobody in the story. It now says you. The revision date shown on that page moved to the day this changed.",
+    "reason": "That paragraph explains a choice made for the person reading it, so the third person turned the one sentence talking to you into an observation about someone else."
   }
 ]

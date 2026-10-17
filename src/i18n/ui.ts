@@ -700,7 +700,7 @@ export const UI: Record<Lang, {
     needsInput: '尚未确定',
     undated: '无日期',
     notYetDated: '暂无日期',
-    tagline: '让代孕决定更清楚，面向世界各地的家庭。独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。',
+    tagline: `${SITE.taglineZh}独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。`,
     copyright: '© {year} {site}。内容为信息参考，不构成法律或医疗意见。',
     disclaimerPre: '完整的免责声明见我们的',
     disclaimerTerms: '服务条款',

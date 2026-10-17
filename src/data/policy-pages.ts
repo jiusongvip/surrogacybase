@@ -102,7 +102,7 @@ export type UpdatesPage = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const EDITORIAL_REVISION = '2026-10-16';
+export const EDITORIAL_REVISION = '2026-10-17';
 
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
@@ -198,7 +198,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     },
     imageryHeading: 'Imagery',
     imageryBody:
-      'Illustration on this site is generated, not photographed from anyone’s situation. It shows documents and desk objects, travel and coastal scenes, and occasionally people seen from behind. No picture here is documentary photography, no real surrogate, intended parent or child appears in one, and none is stock photography of an unidentified person. The choice is deliberate: on this subject a family photograph either stages something that did not happen or uses a real family’s circumstances to sell something to a stranger, and a borrowed stock image leaves the reader looking at a face that belongs to nobody in the story.',
+      'Illustration on this site is generated, not photographed from anyone’s situation. It shows documents and desk objects, travel and coastal scenes, and occasionally people seen from behind. No picture here is documentary photography, no real surrogate, intended parent or child appears in one, and none is stock photography of an unidentified person. The choice is deliberate: on this subject a family photograph either stages something that did not happen or uses a real family’s circumstances to sell something to a stranger, and a borrowed stock image leaves you looking at a face that belongs to nobody in the story.',
     revised: 'Policy last revised {date}.',
   },
   zh: {
@@ -290,7 +290,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     },
     imageryHeading: '配图',
     imageryBody:
-      '本站的插图是生成的，不是对任何家庭真实处境的拍摄。画面内容是文件与桌上的物件、旅途与海滨的场景，偶尔也有几个人朝海走去的背影。这里没有一张是纪实摄影，没有任何一张里出现真实的代孕者、意向父母或孩子，也没有一张是身份不明的图库照片。这个选择是刻意的：在代孕这个话题上，一张家庭照片要么摆拍出一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西；而借来的一张图库照片，只会让读者盯着一张不属于这个故事里任何人的脸。',
+      '本站的插图是生成的，不是对任何家庭真实处境的拍摄。画面内容是文件与桌上的物件、旅途与海滨的场景，偶尔也有几个人朝海走去的背影。这里没有一张是纪实摄影，没有任何一张里出现真实的代孕者、意向父母或孩子，也没有一张是身份不明的图库照片。这个选择是刻意的：在代孕这个话题上，一张家庭照片要么摆拍出一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西；而借来的一张图库照片，只会让您盯着一张不属于这个故事里任何人的脸。',
     revised: '方针最近修订于 {date}。',
   },
 };

@@ -3,7 +3,9 @@ export const SITE = {
   titleSuffix: 'SurrogacyBase',
   description:
     'Independent guidance for cross-border surrogacy: compare destinations, break costs into items, settle parentage, and verify a quote before money moves.',
-  tagline: 'Making surrogacy decisions clearer, worldwide.',
+  tagline: 'Clearer surrogacy decisions, in whichever country you are considering.',
+  /** The same line in Chinese. Both locales keep exactly one copy of it. */
+  taglineZh: '无论您正在考虑哪个国家，都把代孕的决定逐条弄清楚。',
   locale: 'en',
   ogImage: '/og/default.jpg',
   /**

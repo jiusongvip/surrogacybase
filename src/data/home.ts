@@ -56,14 +56,14 @@ export const HOME_HERO: Record<Lang, {
 }> = {
   en: {
     h1: 'Trusted guidance for your surrogacy journey',
-    lead: 'We help intended parents around the world understand their options, compare destinations and costs, and prepare for the legal, medical and practical questions before moving forward.',
+    lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
     ctaPrimary: 'Explore destinations',
     ctaSecondary: 'Get personalized guidance',
     note: 'More clarity for your family’s future',
   },
   zh: {
     h1: '为您的代孕之旅提供可靠指引',
-    lead: '我们帮助世界各地的委托父母弄清自己有哪些选择，比较目的地与费用，并在往前走之前，先把法律、医疗和实操上的问题准备好。',
+    lead: '弄清您实际有哪些选择，把目的地和费用放在一起比较，并在往前走之前，把法律、医疗和实操上的问题逐个问清楚。',
     ctaPrimary: '查看目的地',
     ctaSecondary: '获取个性化指引',
     note: '为您一家人的未来，多一分清楚',
@@ -80,14 +80,14 @@ export const HOME_WHO: Record<Lang, {
   en: {
     eyebrow: 'Who we are',
     heading: 'Independent information for cross-border surrogacy',
-    para: 'SurrogacyBase is an independent resource for cross-border surrogacy. It exists so that intended parents can work out what applies to them: which places allow the arrangement at all, what a quote actually covers, and which questions only a professional in that jurisdiction can settle.',
+    para: 'SurrogacyBase is an independent resource for cross-border surrogacy. It exists so you can work out what applies to your own situation: which places allow the arrangement at all, what a quote actually covers, and which questions only a professional in that jurisdiction can settle.',
     link: 'Learn more about us',
     advantagesHeading: 'Our advantages',
   },
   zh: {
     eyebrow: '我们是谁',
     heading: '跨境代孕的独立信息资源',
-    para: 'SurrogacyBase 是一个关于跨境代孕的独立资源。它存在的目的，是让委托父母能够弄清哪些内容适用于自己：哪些地方根本允许这种安排、一份报价实际覆盖什么，以及哪些问题只有该法域的专业人士才能确定。',
+    para: 'SurrogacyBase 是一个关于跨境代孕的独立资源。它存在的目的，是让您能弄清哪些内容适用于自己的情况：哪些地方根本允许这种安排、一份报价实际覆盖什么，以及哪些问题只有该法域的专业人士才能确定。',
     link: '进一步了解我们',
     advantagesHeading: '我们的优势',
   },
