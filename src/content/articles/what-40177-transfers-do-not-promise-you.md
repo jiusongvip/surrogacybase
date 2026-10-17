@@ -65,7 +65,7 @@ So the honest sentence is that published registry data can tell you roughly how 
 
 ## The five questions a rate should be tested against
 
-Put these to a clinic or an agency in writing, and record the answer against the name that gave it. The [question checklist](/tools/agency-question-checklist) exists for that purpose, because an answer you cannot attribute is an answer you cannot rely on later.
+Put these to a clinic or an agency in writing, and record the answer against the name that gave it. The [question checklist](/tools/agency-question-checklist) downloads as a file for that purpose, because an answer you cannot attribute is an answer you cannot rely on later.
 
 1. Is the figure you are quoting per transfer, per cycle, per retrieval, or per intended parent who started with you?
 2. Over what period, and does it include the cycles that produced no transferable embryo?

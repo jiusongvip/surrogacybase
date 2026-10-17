@@ -75,7 +75,7 @@ None of that is a medical opinion about your situation. It is the standard a pro
 
 ## Five questions to put to each document
 
-Ask them of the party who will be named in the paperwork, in writing, and record the answer in the [question checklist](/tools/agency-question-checklist).
+Ask them of the party who will be named in the paperwork, in writing, and keep each answer beside its question in the [question checklist](/tools/agency-question-checklist) you download.
 
 1. Which single document contains the complete financial agreement, and can I have it before I sign anything else?
 2. For every amount in it: what event triggers the payment, what date does it fall due, and what refunds if the event never happens?

@@ -1,20 +1,21 @@
 ---
 /*
- * A working checklist: fixed questions rendered in HTML, with a status and a note
- * per line kept in this browser only.
+ * The checklist as a reading list, plus one button.
  *
- * The questions are server-rendered on purpose. A reader with JavaScript disabled
- * still gets the list, can print it and fill it in by hand; the script only adds
- * saving, progress and export. Nothing is submitted anywhere.
+ * Every question sits on the page in the language the page is written in, grouped by who usually
+ * owns the answer. The status dropdown and the note field that used to sit beside each question are
+ * gone: sixty-six controls stood between a visitor and the questions, and a draft kept in a browser
+ * is a worse place for those answers than a file. The download writes the same questions with an
+ * empty box beside each, so the ticking off happens in any editor, or in the hands of the
+ * professional being asked. Nothing on this page collects, stores or sends anything.
  *
- * Every word the component itself prints comes from the dictionary the page hands in, because
- * the script below is one bundle shared by both languages: Chinese status labels cannot be
- * written into it, and an English status label on a Chinese page would be the only English on it.
+ * The questions are server-rendered, so the page reads and prints the same with JavaScript
+ * switched off, and the exported file can only ever say what the screen shows.
  */
-import { langFromPath } from '@/i18n/paths';
+import Icon from '@/components/ui/Icon.astro';
 import { LANG_META } from '@/i18n/config';
-import { fill } from '@/i18n/ui';
-import { CHECKLIST_CHROME, type ChecklistChrome } from '@/data/checklists';
+import { langFromPath } from '@/i18n/paths';
+import { CHECKLIST_CHROME } from '@/data/checklists';
 
 type Props = {
   /** Resolved for this page's language by the page that mounts the tool. */
@@ -24,371 +25,86 @@ type Props = {
     hint?: string;
     items: { id: string; question: string }[];
   }[];
-  /** Namespaced per locale, so a Chinese session cannot overwrite an English draft. */
-  storageKey: string;
   /** Stamped with the locale, so an exported file says which language it was written in. */
   exportName: string;
 };
 
-const { groups, storageKey, exportName } = Astro.props;
+const { groups, exportName } = Astro.props;
 
 /*
  * The tool is used from both locales, so the copy is resolved here rather than passed in: a prop
  * a page can hand over in the wrong language is a page that prints the wrong language.
  */
 const lang = langFromPath(Astro.url.pathname);
-const chrome: ChecklistChrome = CHECKLIST_CHROME[lang];
-
-const STATUSES = [
-  { value: 'todo', label: chrome.statusTodo },
-  { value: 'asked', label: chrome.statusAsked },
-  { value: 'confirmed', label: chrome.statusConfirmed },
-] as const;
-
-const rowKey = (groupId: string, itemId: string) => `${groupId}:${itemId}`;
+const chrome = CHECKLIST_CHROME[lang];
 ---
 
-<div
-  data-checklist={storageKey}
-  data-export={exportName}
-  data-locale={LANG_META[lang].dateLocale}
-  data-copy={JSON.stringify(chrome)}
->
+<div data-checklist data-export={exportName} data-locale={LANG_META[lang].dateLocale} data-copy={JSON.stringify(chrome)}>
   <div class="flex flex-wrap items-end gap-3">
-    <button type="button" class="btn-ghost text-sm" data-action="export">{chrome.exportButton}</button>
-    <button type="button" class="btn-ghost text-sm" data-action="reset">{chrome.resetButton}</button>
+    <button type="button" class="btn-ghost text-sm" data-action="export">
+      <Icon name="download" size={15} />
+      {chrome.exportButton}
+    </button>
   </div>
-
-  <p
-    class="mt-5 text-[14px] text-muted"
-    role="status"
-    data-progress
-  >
-    {chrome.idle}
-  </p>
+  <p class="mt-3 max-w-[68ch] text-[14px] leading-relaxed text-muted">{chrome.exportNote}</p>
 
   {
     groups.map((group) => (
       <section class="mt-10" data-group={group.id}>
-        <h3 class="text-[19px] leading-snug">{group.title}</h3>
-        {group.hint ? <p class="mt-1.5 text-[14px] leading-relaxed text-muted">{group.hint}</p> : null}
+        <h2 class="text-[19px] leading-snug">{group.title}</h2>
+        {group.hint ? <p class="mt-1.5 text-[14px] leading-relaxed text-muted" data-group-hint>{group.hint}</p> : null}
 
         <ul class="mt-4 border-t border-line">
-          {group.items.map((item) => {
-            const key = rowKey(group.id, item.id);
-            return (
-              <li class="grid gap-2.5 border-b border-line py-3.5 sm:grid-cols-[minmax(0,1.4fr)_168px_minmax(0,1fr)] sm:items-start" data-row={key}>
-                <p class="text-[15px] leading-[1.6]" data-question>
-                  {item.question}
-                </p>
-                <label class="sr-only" for={`st-${key}`}>
-                  {fill(chrome.srStatus, { q: item.question })}
-                </label>
-                <select id={`st-${key}`} class="field-input text-[14px]" data-status={key}>
-                  {STATUSES.map((s) => (
-                    <option value={s.value}>{s.label}</option>
-                  ))}
-                </select>
-                <div>
-                  <label class="sr-only" for={`nt-${key}`}>
-                    {fill(chrome.srAnswer, { q: item.question })}
-                  </label>
-                  <input id={`nt-${key}`} class="field-input text-[14px]" data-note={key} placeholder={chrome.answerPlaceholder} />
-                  <p class="mt-1.5 hidden text-[13px] text-flag" data-needs-owner>
-                    {chrome.needsOwner}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
+          {group.items.map((item) => (
+            <li class="flex gap-3 border-b border-line py-3.5">
+              <span class="mt-1 h-[15px] w-[15px] shrink-0 rounded-[3px] border border-line-control" aria-hidden="true"></span>
+              <p class="text-[15px] leading-[1.6]" data-question>
+                {item.question}
+              </p>
+            </li>
+          ))}
         </ul>
-
-        <button type="button" class="mt-3 text-[14px] text-brand-fg underline underline-offset-2 hover:text-accent" data-action="add" data-group-add={group.id}>
-          {chrome.addOwn}
-        </button>
       </section>
     ))
   }
-
-  <noscript>
-    <p class="mt-8 rounded-(--radius) border border-flag/35 bg-flag-tint px-4 py-3 text-[14px] text-flag">
-      {chrome.noscript}
-    </p>
-  </noscript>
 </div>
 
 <script>
-  import { fill } from '@/i18n/ui';
-
-  type Status = 'todo' | 'asked' | 'confirmed';
-  type Entry = { status: Status; note: string };
-  type Custom = { id: string; label: string };
-  type State = { entries: Record<string, Entry>; custom: Record<string, Custom[]> };
-
-  type Chrome = {
-    statusTodo: string;
-    statusAsked: string;
-    statusConfirmed: string;
-    srStatus: string;
-    srAnswer: string;
-    answerPlaceholder: string;
-    needsOwner: string;
-    exportButton: string;
-    resetButton: string;
-    idle: string;
-    progressOf: string;
-    progressAsked: string;
-    progressUnnamed: string;
-    progressEnd: string;
-    addOwn: string;
-    addPrompt: string;
-    removeOne: string;
-    resetConfirm: string;
-    noscript: string;
-    fallbackTitle: string;
-    savedLine: string;
-    answerJoin: string;
-    exportFooter: string;
-  };
-
-  const STATUSES: Status[] = ['todo', 'asked', 'confirmed'];
-
   for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-checklist]'))) {
-    const T = JSON.parse(root.dataset.copy!) as Chrome;
+    /* One bundle serves both languages, so the wording comes off the page rather than the dictionary. */
+    const T = JSON.parse(root.dataset.copy!);
     const locale = root.dataset.locale ?? 'en-US';
-    const LABELS: Record<Status, string> = {
-      todo: T.statusTodo,
-      asked: T.statusAsked,
-      confirmed: T.statusConfirmed,
-    };
-    const key = root.getAttribute('data-checklist')!;
-    const exportName = root.getAttribute('data-export') ?? 'checklist.md';
-    const progress = root.querySelector<HTMLElement>('[data-progress]')!;
-    const sections = Array.from(root.querySelectorAll<HTMLElement>('[data-group]'));
+    const fileName = root.dataset.export ?? 'checklist.md';
 
-    let state: State = load();
+    const text = (el: Element | null | undefined) => el?.textContent?.trim() ?? '';
 
-    function load(): State {
-      try {
-        const raw = localStorage.getItem(key);
-        if (!raw) return { entries: {}, custom: {} };
-        const parsed = JSON.parse(raw) as Partial<State>;
-        const entries: Record<string, Entry> = {};
-        for (const [row, value] of Object.entries(parsed.entries ?? {})) {
-          if (!value || typeof value !== 'object') continue;
-          const v = value as Partial<Entry>;
-          entries[row] = {
-            status: typeof v.status === 'string' && STATUSES.includes(v.status) ? v.status : 'todo',
-            note: typeof v.note === 'string' ? v.note : '',
-          };
+    /** Re-reads the rendered page, so the file cannot drift from what the screen shows. */
+    function asMarkdown(): string {
+      const title = document.querySelector<HTMLElement>('h1')?.textContent?.trim() || T.fallbackTitle;
+      const savedAt = new Date().toLocaleString(locale, { dateStyle: 'long', timeStyle: 'short' });
+      const lines: string[] = [`# ${title}`, '', `${T.savedLine} ${savedAt}`, '', T.fileHint];
+      for (const section of Array.from(root.querySelectorAll<HTMLElement>('[data-group]'))) {
+        lines.push('', `## ${text(section.querySelector('h2'))}`);
+        const hint = section.querySelector<HTMLElement>('[data-group-hint]');
+        if (hint) lines.push('', `_${text(hint)}_`);
+        for (const item of Array.from(section.querySelectorAll<HTMLElement>('[data-question]'))) {
+          lines.push('', `- [ ] ${text(item)}`);
         }
-        const custom: Record<string, Custom[]> = {};
-        for (const [group, list] of Object.entries(parsed.custom ?? {})) {
-          if (!Array.isArray(list)) continue;
-          custom[group] = list
-            .filter((c) => c && typeof c.id === 'string' && typeof c.label === 'string')
-            .map((c) => ({ id: c.id, label: c.label }));
-        }
-        return { entries, custom };
-      } catch {
-        return { entries: {}, custom: {} };
       }
+      lines.push('', T.exportFooter);
+      return lines.join('\n');
     }
-
-    function save() {
-      try {
-        localStorage.setItem(key, JSON.stringify(state));
-      } catch {
-        /* storage blocked (private mode): the list still works for this session */
-      }
-    }
-
-    function entry(row: string): Entry {
-      if (!state.entries[row]) state.entries[row] = { status: 'todo', note: '' };
-      return state.entries[row];
-    }
-
-    /** Static rows already exist in the HTML; custom rows are built here. */
-    function buildRow(group: string, item: Custom) {
-      const row = document.createElement('li');
-      row.className =
-        'grid gap-2.5 border-b border-line py-3.5 sm:grid-cols-[minmax(0,1.4fr)_168px_minmax(0,1fr)] sm:items-start';
-      const id = `${group}-${item.id}`;
-      row.setAttribute('data-row', id);
-      row.setAttribute('data-custom', '');
-
-      const question = document.createElement('p');
-      question.className = 'text-[15px] leading-[1.6]';
-      question.setAttribute('data-question', '');
-      question.textContent = item.label;
-
-      const remove = document.createElement('button');
-      remove.type = 'button';
-      remove.className = 'mt-1 block text-[13px] text-muted underline underline-offset-2 hover:text-accent';
-      remove.setAttribute('data-action', 'remove-custom');
-      remove.setAttribute('data-group', group);
-      remove.setAttribute('data-item', item.id);
-      remove.textContent = T.removeOne;
-      question.append(remove);
-
-      const select = document.createElement('select');
-      select.className = 'field-input text-[14px]';
-      select.id = `st-${id}`;
-      select.setAttribute('data-status', id);
-      select.setAttribute('aria-label', fill(T.srStatus, { q: item.label }));
-      for (const status of STATUSES) {
-        const option = document.createElement('option');
-        option.value = status;
-        option.textContent = LABELS[status];
-        select.append(option);
-      }
-
-      const wrap = document.createElement('div');
-      const input = document.createElement('input');
-      input.className = 'field-input text-[14px]';
-      input.id = `nt-${id}`;
-      input.setAttribute('data-note', id);
-      input.setAttribute('aria-label', fill(T.srAnswer, { q: item.label }));
-      input.placeholder = T.answerPlaceholder;
-      const warn = document.createElement('p');
-      warn.className = 'mt-1.5 hidden text-[13px] text-flag';
-      warn.setAttribute('data-needs-owner', '');
-      warn.textContent = T.needsOwner;
-      wrap.append(input, warn);
-
-      row.append(question, select, wrap);
-      return row;
-    }
-
-    function hydrate() {
-      for (const row of Array.from(root.querySelectorAll<HTMLElement>('[data-row]'))) {
-        const id = row.getAttribute('data-row')!;
-        const e = entry(id);
-        const select = row.querySelector<HTMLSelectElement>('[data-status]')!;
-        const note = row.querySelector<HTMLInputElement>('[data-note]')!;
-        select.value = e.status;
-        note.value = e.note;
-      }
-      for (const section of sections) {
-        const group = section.getAttribute('data-group')!;
-        const list = section.querySelector<HTMLElement>('ul')!;
-        for (const item of state.custom[group] ?? []) list.append(buildRow(group, item));
-      }
-    }
-
-    function repaint() {
-      let confirmed = 0;
-      let asked = 0;
-      let total = 0;
-      let unnamed = 0;
-      for (const row of Array.from(root.querySelectorAll<HTMLElement>('[data-row]'))) {
-        const id = row.getAttribute('data-row')!;
-        const e = entry(id);
-        total += 1;
-        if (e.status === 'confirmed') confirmed += 1;
-        if (e.status === 'asked') asked += 1;
-        const flag = e.status === 'confirmed' && e.note.trim() === '';
-        if (flag) unnamed += 1;
-        row.querySelector<HTMLElement>('[data-needs-owner]')!.classList.toggle('hidden', !flag);
-        row.querySelector<HTMLSelectElement>('[data-status]')!.classList.toggle('border-flag', flag);
-      }
-      progress.textContent =
-        total === 0
-          ? T.idle
-          : fill(T.progressOf, { confirmed, total }) +
-            (asked ? fill(T.progressAsked, { n: asked }) : '') +
-            (unnamed ? fill(T.progressUnnamed, { n: unnamed }) : '') +
-            T.progressEnd;
-    }
-
-    root.addEventListener('change', (event) => {
-      const target = event.target as HTMLElement;
-      const select = target.closest<HTMLSelectElement>('[data-status]');
-      if (select) {
-        const row = select.getAttribute('data-status')!;
-        const value = select.value as Status;
-        if (STATUSES.includes(value)) entry(row).status = value;
-        save();
-        repaint();
-      }
-    });
-
-    root.addEventListener('input', (event) => {
-      const input = (event.target as HTMLElement).closest<HTMLInputElement>('[data-note]');
-      if (input) {
-        entry(input.getAttribute('data-note')!).note = input.value;
-        save();
-        repaint();
-      }
-    });
 
     root.addEventListener('click', (event) => {
       const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action]');
-      if (!trigger) return;
-      const action = trigger.getAttribute('data-action');
-
-      if (action === 'add') {
-        const group = trigger.getAttribute('data-group-add')!;
-        const section = sections.find((s) => s.getAttribute('data-group') === group)!;
-        const list = section.querySelector<HTMLElement>('ul')!;
-        const label = window.prompt(T.addPrompt);
-        if (!label || !label.trim()) return;
-        const item = { id: Math.random().toString(36).slice(2, 7), label: label.trim() };
-        state.custom[group] = [...(state.custom[group] ?? []), item];
-        list.append(buildRow(group, item));
-        save();
-        repaint();
-      }
-
-      if (action === 'remove-custom') {
-        const group = trigger.getAttribute('data-group')!;
-        const id = trigger.getAttribute('data-item')!;
-        state.custom[group] = (state.custom[group] ?? []).filter((c) => c.id !== id);
-        trigger.closest('[data-row]')?.remove();
-        delete state.entries[`${group}-${id}`];
-        save();
-        repaint();
-      }
-
-      if (action === 'reset') {
-        if (!window.confirm(T.resetConfirm)) return;
-        state = { entries: {}, custom: {} };
-        for (const row of Array.from(root.querySelectorAll<HTMLElement>('[data-custom]'))) row.remove();
-        for (const row of Array.from(root.querySelectorAll<HTMLElement>('[data-row]'))) {
-          row.querySelector<HTMLSelectElement>('[data-status]')!.value = 'todo';
-          row.querySelector<HTMLInputElement>('[data-note]')!.value = '';
-        }
-        save();
-        repaint();
-      }
-
-      if (action === 'export') {
-        const title = document.querySelector<HTMLHeadingElement>('h1')?.textContent?.trim() ?? T.fallbackTitle;
-        const savedAt = new Date().toLocaleString(locale, { dateStyle: 'long', timeStyle: 'short' });
-        const lines: string[] = [`# ${title}`, '', `${T.savedLine} ${savedAt}`];
-        for (const section of sections) {
-          const heading = section.querySelector('h3')?.textContent?.trim() ?? '';
-          lines.push('', `## ${heading}`);
-          for (const row of Array.from(section.querySelectorAll<HTMLElement>('[data-row]'))) {
-            const id = row.getAttribute('data-row')!;
-            const e = entry(id);
-            const question = row.querySelector<HTMLElement>('[data-question]')!.textContent!.trim();
-            const answer = e.note.trim() === '' ? '' : `${T.answerJoin}${e.note.trim()}`;
-            lines.push(`- [${e.status === 'confirmed' ? 'x' : ' '}] ${question} (_${LABELS[e.status]}_${answer})`);
-          }
-        }
-        lines.push('', T.exportFooter);
-        const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = exportName;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
+      if (!trigger || trigger.dataset.action !== 'export') return;
+      const blob = new Blob([asMarkdown()], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      URL.revokeObjectURL(url);
     });
-
-    hydrate();
-    repaint();
   }
 </script>

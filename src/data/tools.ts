@@ -60,22 +60,22 @@ export const TOOLS: Tool[] = [
     en: {
       name: 'Destination research checklist',
       summary:
-        'Work through eligibility, parentage, nationality, medical scope, money, presence and dispute routes for each country on your shortlist, and keep a note of who has to confirm each question.',
-      linkNote: 'Record who answered what, for which destination.',
+        'The questions that settle a destination: eligibility, parentage, nationality, medical scope, money, who has to attend in person, and what happens in a dispute. Take them to a professional and write the answers in the document you download.',
+      linkNote: 'Thirty-three questions in seven groups, as a document.',
       points: [
-        'Every fixed question gets its own answer, and you can add questions of your own',
-        'Mark each question not asked yet, asked with no answer yet, or confirmed, and name who confirmed it',
-        'Download the answered checklist as a document you can hand to a lawyer',
+        'Seven groups, from who may commission through to what happens when two professionals disagree',
+        'Download as a Markdown document with an empty box beside every question',
+        'Write the answer, the name and the date beside a question once a professional has given it about your own facts',
       ],
     },
     zh: {
       name: '目的地研究清单',
-      summary: '针对入围的每一个国家，逐项处理资格、亲权、国籍、医疗范围、资金、实地停留与争议处理，并记下每个问题需要由谁来确认。',
-      linkNote: '记录谁在哪个目的地回答了什么。',
+      summary: '决定一个目的地的那组问题：资格、亲权、国籍、医疗范围、资金、谁必须本人到场，以及发生争议时怎么办。把它们交给专业人士，答案写进您下载的那份文档。',
+      linkNote: '三十三个问题，分七组，成为一份文档。',
       points: [
-        '每个固定问题都要单独回答，您也可以自行添加问题',
-        '把每个问题标注为尚未询问、已询问但没有答复，或已确认，并写明确认人',
-        '把填好的清单下载成可以交给律师的文件',
+        '七组问题，从谁可以委托，一直到两位专业人士意见不合时会怎样',
+        '下载为 Markdown 文档，每个问题前面都留着一个空的方框',
+        '一旦某位专业人士针对您自身的情况作出了回答，就在它旁边写下答案、名字和日期',
       ],
     },
   },
@@ -85,22 +85,22 @@ export const TOOLS: Tool[] = [
     en: {
       name: 'Agency question checklist',
       summary:
-        'The questions to put to an agency in writing before you sign, with each answer recorded against the date it arrived and the name that gave it.',
-      linkNote: 'Put the questions in writing before you sign.',
+        'The questions to put to an agency in writing before you sign, about the fee, the money, the surrogate’s position, the medical program, the legal work, a failed cycle, and the claims you can check.',
+      linkNote: 'Thirty-one questions to send before you sign.',
       points: [
         'Grouped by what is being decided: the fee, money, the surrogate’s position, medical, legal, failure, verifiable claims',
-        'Answers recorded beside the question, not in a separate notebook',
-        'Shows which questions are still unanswered in the downloaded file',
+        'Paste the document into an email so each answer arrives beside its own question',
+        'Keep the file, and mark beside each answer the date it arrived and the name that gave it',
       ],
     },
     zh: {
       name: '机构提问清单',
-      summary: '签约之前需要书面提交给机构的问题，每条回答都记录收到的日期和给出回答的人。',
-      linkNote: '签约前把问题写成文字提出。',
+      summary: '签约之前需要书面提交给机构的问题，涉及费用、资金、代孕者的处境、医疗方案、法律工作、周期失败，以及可以去核实的说法。',
+      linkNote: '三十一个问题，签约前发出去。',
       points: [
         '按待决事项分成七组：费用买到什么、资金、代孕者的处境、医疗、法律工作、周期失败、可以去核实的说法',
-        '回答记在问题旁边，而不是另外的笔记本里',
-        '下载的文件里列出仍然没有答复的问题',
+        '把这份文档粘贴进邮件，每一条回答就都落在它自己的问题旁边',
+        '把文件留存，在每条回答旁边标下它到达的日期和给出回答的人',
       ],
     },
   },

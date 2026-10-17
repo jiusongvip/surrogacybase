@@ -24,7 +24,7 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import JurisdictionTable from '@/components/destinations/JurisdictionTable.astro';
-import DestinationAssessment from '@/components/tools/DestinationAssessment.astro';
+import DestinationNotes from '@/components/tools/DestinationNotes.astro';
 import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { langFromPath, localizedPath } from '@/i18n/paths';
@@ -98,8 +98,8 @@ const home = localizedPath(lang, '/');
     </p>
 
     <div class="mt-7 flex flex-wrap gap-3">
-      <a href="#assessment" class="btn-primary">
-        {copy.ctaAssessment}
+      <a href="#notes" class="btn-primary">
+        {copy.ctaNotes}
         <Icon name="arrow-down-right" size={16} />
       </a>
       <a href="#records" class="btn-ghost">{copy.ctaRecords}</a>
@@ -143,8 +143,8 @@ const home = localizedPath(lang, '/');
     </ol>
   </section>
 
-  <section class="shell pb-16" id="assessment">
-    <DestinationAssessment />
+  <section class="shell pb-16" id="notes">
+    <DestinationNotes />
   </section>
 
   <section class="shell pb-16" id="records">

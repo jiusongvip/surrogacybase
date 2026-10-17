@@ -84,7 +84,7 @@ The cost is also not in the quote. [One of the twelve cost categories that sit o
 
 ## What to ask, and in what order
 
-Write the answers into the [destination research checklist](/tools/destination-research-checklist) next to the name of the office that gave them, since a verbal answer from an agency about what a registry requires is a prediction about somebody else's desk.
+Download the [destination research checklist](/tools/destination-research-checklist) and write each answer beside its question, next to the name of the office that gave it, since a verbal answer from an agency about what a registry requires is a prediction about somebody else's desk.
 
 1. Which authority in this country issues the apostille for this particular document, and what is its published turnaround?
 2. How many certified copies will the receiving authority want, and does any of them need the full record rather than the extract?

@@ -76,7 +76,7 @@ Questions worth asking, and the party that normally owns each one:
   your money and your timeline.
 
 The last two are the ones that cost the most to leave unasked, and they are also the ones most often
-answered verbally and never written down. Put them in the [agency question checklist](/tools/agency-question-checklist)
+answered verbally and never written down. Send them from the [agency question checklist](/tools/agency-question-checklist)
 and require the answer in writing.
 
 ## The carrier has a position of her own

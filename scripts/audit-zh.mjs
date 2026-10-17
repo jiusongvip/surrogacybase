@@ -271,7 +271,7 @@ const pairFiles = [
   'src/data/intake.ts',
   'src/data/tools.ts',
   'src/data/checklists.ts',
-  'src/data/destination-assessment.ts',
+  'src/data/destination-notes.ts',
 ];
 const proseFiles = [
   ...pairFiles,

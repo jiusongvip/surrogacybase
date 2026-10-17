@@ -9,7 +9,7 @@
  * drift apart.
  *
  * Three things are deliberately not bilingual here:
- *   - `id` values and the storage key, which are data and are read back by the saved draft.
+ *   - `id` values, which are data rather than wording.
  *   - The export filename, which the page stamps with the locale so a Chinese document does not
  *     arrive with an English name on it.
  *   - The hrefs, written without a language prefix and localized on render.
@@ -44,8 +44,7 @@ export type ChecklistPageCopy = {
 
 export type Checklist = {
   id: string;
-  /** The English storage key; the Chinese page appends its own locale rather than sharing it. */
-  storageKey: string;
+
   /** The export filename without its locale stamp or extension. */
   stem: string;
   /** The two links are buttons or text links per page, and the second is primary on neither. */
@@ -62,7 +61,6 @@ export type Checklist = {
 export const CHECKLISTS: Checklist[] = [
   {
     id: 'destination-research-checklist',
-    storageKey: 'surrogacybase.destination-checklist.v1',
     stem: 'surrogacy-destination-research',
     cta: 'text',
     hrefs: ['/destinations', '/guides/surrogacy-legal-considerations'],
@@ -77,11 +75,11 @@ export const CHECKLISTS: Checklist[] = [
         ledeEm: 'your',
         ledeAfter:
           ' situation by a person who can answer them. This list is those questions, grouped by who usually owns the answer.',
-        note: 'Work through it once per destination. Nothing is uploaded: your progress and notes stay in this browser, and the downloaded file is a document you keep.',
+        note: 'Work through it once per destination. This page collects nothing: the questions are the page, and the file you download is a document you keep.',
         closing: {
           heading: 'What this list will not do for you',
           body:
-            'It does not state what any country requires. A question marked Confirmed means a named professional answered it for your facts, and the note beside it should say who. When a question is still marked Not asked yet, that is the honest reading of where your research is, and the downloaded file keeps it visible instead of tidying it away.',
+            'It does not state what any country requires, and it holds no answers. An answer is one named professional saying something about your own facts, in writing. That sentence belongs beside the question in the file you download, with the date it arrived, and the list stays honest about the questions still without one.',
         },
         links: ['Read the sourced destination record', 'The four legal questions to settle first'],
       },
@@ -93,11 +91,11 @@ export const CHECKLISTS: Checklist[] = [
         ledeBefore: '一个国家不是一个决定。它是一组问题，必须由能够回答的人，针对',
         ledeEm: '您自己',
         ledeAfter: '的情况逐条回答。这份清单就是那些问题，按通常由谁负责回答来分组。',
-        note: '每个目的地都做一遍。不会上传任何东西：您的进度与备注只留在这个浏览器里，下载的文件由您自己保存。',
+        note: '每个目的地都用这一份。这个页面不收集任何东西：问题就是这份页面本身，而您下载到的文件由您自己保存。',
         closing: {
           heading: '这份清单不会替您做什么',
           body:
-            '它不说明任何国家的要求。一个标注为已确认的问题，只意味着某位具名的专业人士针对您的情况回答了它，旁边的备注应当写明是谁。一个问题仍然标着尚未询问，那就是您的研究进度诚实的读数，下载的文件会把它留着，而不是整理掉。',
+            '它不说明任何国家的要求，里面也没有答案。答案是一位具名的专业人士针对您自身的情况写下的那句话。那句话应当落在您下载的文件里，写在对应问题的旁边，并记下它收到的日期；而那些仍然没有答案的问题，这份清单会照实留着。',
         },
         links: ['阅读有来源的目的地记录', '最先要确定的四个法律问题'],
       },
@@ -110,8 +108,8 @@ export const CHECKLISTS: Checklist[] = [
           zh: '谁可以委托，以及我们是否在其中',
         },
         hint: {
-          en: 'Confirmed means one named professional has answered it for your own facts, in writing.',
-          zh: '已确认，指的是一位具名专业人士已经针对您自身的情况，以书面形式回答了它。',
+          en: 'A line counts as answered when one named professional has said it about your own facts, in writing.',
+          zh: '一条问题算作有了答案，是在一位具名的专业人士针对您自身的情况以书面形式说过之后。',
         },
         items: [
           {
@@ -282,8 +280,8 @@ export const CHECKLISTS: Checklist[] = [
         id: 'money',
         title: { en: 'Money, stages and what comes back', zh: '资金、阶段与可退回的部分' },
         hint: {
-          en: 'The comparison tool is where you put the numbers in; this is where you record who said what.',
-          zh: '把数字放进去的是对比工具；这里记录的是谁说了什么。',
+          en: 'The numbers go into the comparison tool. What belongs beside each question here is a name and a date.',
+          zh: '数字填进对比工具。这里每个问题旁边该留下的，是一个名字和一个日期。',
         },
         items: [
           {
@@ -398,7 +396,6 @@ export const CHECKLISTS: Checklist[] = [
   },
   {
     id: 'agency-question-checklist',
-    storageKey: 'surrogacybase.agency-checklist.v1',
     stem: 'surrogacy-agency-questions',
     cta: 'button',
     hrefs: ['/tools/agency-quote-comparison', '/guides/choosing-a-surrogacy-agency'],
@@ -412,7 +409,7 @@ export const CHECKLISTS: Checklist[] = [
         ledeEm: '',
         ledeAfter:
           'Two firms can quote the same total and be selling different things. What makes the difference visible is an answer you can read again, in writing, beside the date it arrived and the name that gave it.',
-        note: 'Send nothing you would not want kept. This list runs in your browser, records nothing on a server, and does not contact anyone on your behalf.',
+        note: 'This page collects nothing and contacts no one for you. Download the list, put it to a firm in your own words, and keep what comes back in that file.',
         closing: {
           heading: 'Then put the answers next to the numbers',
           body:
@@ -429,7 +426,7 @@ export const CHECKLISTS: Checklist[] = [
         ledeEm: '',
         ledeAfter:
           '两家机构可以报出同一个总额，卖的却是不同的东西。让差别显现出来的，是一份您可以再读一遍的书面回答，旁边写着它收到的日期和给出回答的人。',
-        note: '不要写下您不希望被留存的内容。这份清单在您的浏览器里运行，不在服务器上记录任何东西，也不会代您联系任何人。',
+        note: '这个页面不收集任何内容，也不会代您联系任何人。把清单下载下来，用您自己的话提给机构，再把对方的答复留在那份文件里。',
         closing: {
           heading: '然后把答案放在数字旁边',
           body:
@@ -715,92 +712,39 @@ export const CHECKLISTS: Checklist[] = [
 ];
 
 /**
- * The parts of the checklist a reader presses rather than reads. They live here instead of in the
+ * The one line the checklist tool prints that is not a question. It lives here rather than in the
  * component because the component's script is one bundle shared by both languages, so the Chinese
  * page has to hand its own words to it through the DOM.
  */
 export type ChecklistChrome = {
-  statusTodo: string;
-  statusAsked: string;
-  statusConfirmed: string;
-  /** {q} is the question. Screen readers get these; the page never prints them. */
-  srStatus: string;
-  srAnswer: string;
-  answerPlaceholder: string;
-  needsOwner: string;
   exportButton: string;
-  resetButton: string;
-  idle: string;
-  /** Assembled in that order, with the middle two only when their count is above zero. */
-  progressOf: string;
-  progressAsked: string;
-  progressUnnamed: string;
-  progressEnd: string;
-  addOwn: string;
-  addPrompt: string;
-  removeOne: string;
-  resetConfirm: string;
-  noscript: string;
+  /** Says what the file holds and what this page does not do with it. */
+  exportNote: string;
+  /** Printed at the head of the exported document, where the boxes are explained. */
+  fileHint: string;
   fallbackTitle: string;
   savedLine: string;
-  /** Joins the note to its question in the exported document. */
-  answerJoin: string;
   exportFooter: string;
 };
 
 export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
   en: {
-    statusTodo: 'Not asked yet',
-    statusAsked: 'Asked, no answer yet',
-    statusConfirmed: 'Confirmed',
-    srStatus: 'Status for: {q}',
-    srAnswer: 'Answer and who gave it, for: {q}',
-    answerPlaceholder: 'Answer, and who confirmed it',
-    needsOwner: 'Marked confirmed with no name beside it.',
     exportButton: 'Download as a document',
-    resetButton: 'Clear this list',
-    idle: 'Nothing here is submitted. Your progress and notes are stored in this browser only.',
-    progressOf: '{confirmed} of {total} confirmed',
-    progressAsked: ', {n} asked without an answer',
-    progressUnnamed: ', {n} confirmed without a name',
-    progressEnd: '. Stored in this browser only.',
-    addOwn: 'Add a question of your own',
-    addPrompt: 'The question you need answered',
-    removeOne: 'Remove this question',
-    resetConfirm: 'Clear your progress and notes in this list?',
-    noscript:
-      'This list works without JavaScript: every question above is on the page and prints as it is. To save your progress or download the file, the browser needs to run scripts.',
+    exportNote:
+      'The file holds every question above with an empty box beside it, in the language this page is written in. Nothing here is collected, saved on a server, or sent anywhere.',
+    fileHint:
+      'Tick a box once a named professional has answered that question for your own situation, and write the name and the date beside it.',
     fallbackTitle: 'Checklist',
     savedLine: 'Saved',
-    answerJoin: ': ',
     exportFooter:
-      'Generated by SurrogacyBase. You entered the progress and notes above in your own browser; nothing was sent to a server.',
+      'Written to the file by SurrogacyBase, from the questions on the page. Nothing on the page is collected, and nothing was sent to a server.',
   },
   zh: {
-    statusTodo: '尚未询问',
-    statusAsked: '已询问，尚无答复',
-    statusConfirmed: '已确认',
-    srStatus: '该问题的状态：{q}',
-    srAnswer: '该问题的回答以及由谁给出：{q}',
-    answerPlaceholder: '回答，以及由谁确认',
-    needsOwner: '标注为已确认，但旁边没有写下名字。',
     exportButton: '下载为文档',
-    resetButton: '清空这份清单',
-    idle: '这里没有任何内容会被提交。您的进度与备注只保存在这个浏览器里。',
-    progressOf: '共 {total} 个问题，其中 {confirmed} 个已确认',
-    progressAsked: '，{n} 个已询问但没有答复',
-    progressUnnamed: '，{n} 个确认时没有写名字',
-    progressEnd: '。内容只保存在这个浏览器里。',
-    addOwn: '添加您自己的问题',
-    addPrompt: '您需要有人回答的那个问题',
-    removeOne: '移除这个问题',
-    resetConfirm: '要清空这份清单里的进度和备注吗？',
-    noscript:
-      '这份清单在没有 JavaScript 时同样可用：上面的每一个问题都在页面里，并按原样打印。保存进度与下载文件需要一个能运行脚本的浏览器。',
+    exportNote: '下载到的文件会带上上面每一个问题，每个问题前面留一个空的选择框，语言与本页一致。这里不会收集任何内容，没有保存在服务器上的东西，也不会发出任何东西。',
+    fileHint: '当一位具名的专业人士针对您自身的情况回答了某个问题，就勾上它前面的方框，并在旁边写下这个名字和日期。',
     fallbackTitle: '清单',
     savedLine: '保存于',
-    answerJoin: '：',
-    exportFooter:
-      '由 SurrogacyBase 生成。上面的进度与备注是您在自己的浏览器里填写的；没有任何内容被发送到服务器。',
+    exportFooter: '本文件由 SurrogacyBase 依据页面上的问题写就。页面上不收集任何内容，也没有任何东西被发送到服务器。',
   },
 };

@@ -45,11 +45,11 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: 'Tools',
     label: 'Tools',
     description:
-      'Decision tools for intended parents: compare agency quotes line by line, work through a destination, and put questions to an agency in writing. Everything runs in your browser, with no account and no upload.',
+      'Decision tools for intended parents: compare agency quotes line by line, take a destination apart question by question, and put your questions to an agency in writing. The quote workspace keeps its entries in this browser; the two checklists download as documents. No account, no upload.',
     intro:
       'A guide tells you what to check. These are where you actually check it, on your own numbers and your own documents, and leave with a file you can hand to someone else.',
     localNote:
-      '{n} tools here, all of them local. Nothing is submitted anywhere; your entries live in this browser and can be cleared at any time.',
+      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote workspace keeps its entries in this browser, where you can clear them at any time, and the two checklists leave the page as documents you fill in yourself.',
     available: 'Available now',
     building: 'Being built',
     open: 'Open the tool',
@@ -59,10 +59,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: '工具',
     label: '工具',
     description:
-      '给意向父母的决策工具：逐项对比机构报价、把一个目的地研究透、把问题书面提交给机构。全部在您的浏览器里运行，不需要账户，也不上传任何东西。',
+      '给意向父母的决策工具：逐项对比机构报价、把一个目的地逐题拆开、把您的问题书面提交给机构。报价工作区把内容保存在这个浏览器里；两份清单下载为文档。不需要账户，也不上传任何东西。',
     intro:
       '指南告诉您该核查什么。而这些页面是您真正动手核查的地方：用您自己的数字和您自己的文件，离开时带走一份可以交给别人的文件。',
-    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交；您的填写内容保存在这个浏览器里，随时可以清空。',
+    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价工作区把您填的内容存在这个浏览器里，随时可以清空；两份清单则下载成由您自己填写的文档。',
     available: '现在可用',
     building: '正在建设',
     open: '打开工具',

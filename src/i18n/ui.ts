@@ -204,7 +204,7 @@ export const UI: Record<Lang, {
       h1: string;
       lede: string;
       notice: string;
-      ctaAssessment: string;
+      ctaNotes: string;
       ctaRecords: string;
       stats: { recorded: string; sourced: string; lastCheck: string };
       factors: {
@@ -479,7 +479,7 @@ export const UI: Record<Lang, {
         lede: 'This page does not name a best country. It helps you decide which places are worth research time and which to exclude first, from four things: whether the rule covers your family, who is a legal parent at birth, whether the money covers the whole process, and whether you can be there when it is needed.',
         notice:
           'Surrogacy law differs between countries, and inside federal countries between states and provinces. It also differs by marital status, by whether a child is genetically yours, and by nationality and residence, and those three are separate tests rather than one. Nothing below is legal advice about your situation, and a country that permits an arrangement does not establish that you may use it or that your own country will accept the result.',
-        ctaAssessment: 'Start from your own situation',
+        ctaNotes: 'What to verify first',
         ctaRecords: 'Compare the verified records',
         stats: {
           recorded: 'Destinations recorded',
@@ -632,7 +632,7 @@ export const UI: Record<Lang, {
             'Which stages require me in person, and what happens if I cannot attend one of them?',
           ],
           footnote:
-            'The full version holds thirty-six questions across seven groups, records who answered each one, and marks a line confirmed when there is a name beside it.',
+            'The full checklist holds thirty-three questions across seven groups. Download it, and write the name and the date beside a question once a professional has answered it for your own facts.',
           cta: 'Open the full checklist',
         },
         next: {
@@ -648,7 +648,7 @@ export const UI: Record<Lang, {
             },
             {
               label: 'Research checklist',
-              body: 'Thirty-six questions across seven groups, with a status and a note per line, saved in this browser.',
+              body: 'Thirty-three questions across seven groups, each with an empty box beside it in the file you download.',
             },
             {
               label: 'Quote comparison',
@@ -855,7 +855,7 @@ export const UI: Record<Lang, {
         compareTitle: '要比较的地点不止一个？',
         compareBody: '只有当每个目的地都按同一组问题来读，比较才有意义：资格、亲权、付款规则，以及计划改变时会怎样。',
         legalFramework: '法律框架',
-        openChecklist: '完成核查清单',
+        openChecklist: '逐条过一遍核查清单',
         breadcrumb: '目的地',
       },
       destinations: {
@@ -867,7 +867,7 @@ export const UI: Record<Lang, {
         h1: '哪些代孕目的地适合您的情况？',
         lede: '这一页不点名最好的国家。它帮您判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖您的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及您需要到场的时候您能不能到场。',
         notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有遗传关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
-        ctaAssessment: '从您自己的情况开始',
+        ctaNotes: '先核实什么',
         ctaRecords: '比较已核实的记录',
         stats: {
           recorded: '已记录的目的地',
@@ -974,7 +974,7 @@ export const UI: Record<Lang, {
             '可以向代孕者支付什么，是否有事项需要法院或监管机构批准？',
             '哪些阶段必须我本人到场，如果我无法出席其中一项会怎样？',
           ],
-          footnote: '完整版本共有七组三十六个问题，逐行记录由谁回答，并在有具体人名时把该行标为已确认。',
+          footnote: '完整的清单共有七组三十三个问题。把它下载下来；一旦某位专业人士针对您自身的情况回答了某个问题，就在它旁边写下名字和日期。',
           cta: '打开完整清单',
         },
         next: {
@@ -985,7 +985,7 @@ export const UI: Record<Lang, {
               body: '按顺序处理可执行性、出生时的亲权、资格、可以支付什么，以及您居住地的承认问题。',
             },
             { label: '费用指南', body: '一份预算由什么构成，报价通常漏掉什么，以及钱实际是怎么流转的。' },
-            { label: '研究清单', body: '七组共三十六个问题，每行一个状态和一条备注，保存在您自己的浏览器里。' },
+            { label: '研究清单', body: '七组共三十三个问题，下载的文件里每个问题前面都留着一个空的方框。' },
             { label: '报价对比', body: '把两个疗程填进同样的行里，让差别落在范围上，而不是落在头部数字上。' },
           ],
         },

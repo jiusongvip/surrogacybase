@@ -1,35 +1,31 @@
 ---
 /*
- * The homepage enquiry.
+ * The homepage enquiry, and the only form on this site that collects anything.
  *
- * It has the five fields the layout calls for, and it cannot submit them: this is a static
- * build with no server, so there is nowhere for a POST to go. What happens when the button is
- * pressed is therefore the honest version of a submission. The enquiry is assembled on screen,
- * the reader reads it, and it leaves through their own mail app, clipboard or a downloaded
- * file. The status line says which of those just happened instead of confirming a message that
- * never went anywhere.
+ * Three fields: where the reply goes, what you want worked out, and a name if you want the
+ * reply addressed to someone. The form cannot submit them: this is a static build with no
+ * server, so there is nowhere for a POST to go. What happens when the button is pressed is
+ * therefore the honest version of a submission. The enquiry is assembled on screen, you read
+ * it, and it leaves through your own mail app, clipboard or a downloaded file. The status line
+ * says which of those just happened instead of confirming a message that never went anywhere.
  *
  * The draft is stored in this browser so a half-written enquiry survives a reload. No identity
  * document, medical record or payment detail is asked for, because none of them is needed to
- * open a conversation, and the budget field takes a band rather than a figure.
+ * open a conversation.
  *
  * The wording lives in src/data/intake.ts. The script needs some of it at runtime to assemble
  * the message, so the chrome is serialized into the DOM and the bundle stays one file for both
- * languages. Option labels are read back off the selected option, so a message can only ever
- * carry the words the page is showing.
+ * languages.
  */
 import Icon from '@/components/ui/Icon.astro';
 import NeedsInput from '@/components/ui/NeedsInput.astro';
 import { SITE } from '@/const';
-import { CONSULT_BUDGETS, CONSULT_CHROME, CONSULT_INTERESTS } from '@/data/intake';
+import { CONSULT_CHROME } from '@/data/intake';
 import { langFromPath } from '@/i18n/paths';
-import { pick } from '@/i18n/ui';
 
 const inbox = SITE.contactEmail;
 const lang = langFromPath(Astro.url.pathname);
 const copy = CONSULT_CHROME[lang];
-const interests = CONSULT_INTERESTS.map((o) => ({ value: o.value, label: pick(o.label, lang) }));
-const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.label, lang) }));
 ---
 
 <div
@@ -41,7 +37,7 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
     <div>
       <label class="field-label" for="cq-name">
         {copy.nameLabel}
-        <span class="text-flag" aria-hidden="true">{copy.required}</span>
+        <span class="font-normal text-muted">{copy.optional}</span>
       </label>
       <input
         class="field-input mt-1.5"
@@ -50,7 +46,6 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
         type="text"
         autocomplete="name"
         maxlength="80"
-        required
         placeholder={copy.namePlaceholder}
       />
     </div>
@@ -72,33 +67,10 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
       />
     </div>
 
-    <div>
-      <label class="field-label" for="cq-interest">
-        {copy.interestLabel}
-        <span class="text-flag" aria-hidden="true">{copy.required}</span>
-      </label>
-      <select class="field-input mt-1.5" id="cq-interest" data-field="interest" required>
-        <option value="">{copy.selectPlaceholder}</option>
-        {interests.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
-    </div>
-
-    <div>
-      <label class="field-label" for="cq-budget">
-        {copy.budgetLabel}
-        <span class="text-flag" aria-hidden="true">{copy.required}</span>
-      </label>
-      <select class="field-input mt-1.5" id="cq-budget" data-field="budget" required>
-        <option value="">{copy.selectPlaceholder}</option>
-        {budgets.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
-      <p class="mt-1.5 text-[13px] leading-relaxed text-muted">{copy.budgetHint}</p>
-    </div>
-
     <div class="sm:col-span-2">
       <label class="field-label" for="cq-message">
         {copy.messageLabel}
-        <span class="font-normal text-muted">{copy.optional}</span>
+        <span class="text-flag" aria-hidden="true">{copy.required}</span>
       </label>
       <textarea
         class="field-input mt-1.5 min-h-[112px]"
@@ -106,6 +78,7 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
         data-field="message"
         rows="4"
         maxlength="1200"
+        required
         placeholder={copy.messagePlaceholder}></textarea>
     </div>
   </div>
@@ -146,7 +119,7 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
 <script>
   import type { ConsultChrome } from '@/data/intake';
 
-  type Fields = { name: string; email: string; interest: string; budget: string; message: string };
+  type Fields = { name: string; email: string; message: string };
   type Chrome = ConsultChrome;
 
   const KEY = 'surrogacybase.consult.v1';
@@ -164,11 +137,11 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
     const result = root.querySelector<HTMLElement>('[data-result]')!;
     const preview = root.querySelector<HTMLPreElement>('[data-preview]')!;
     const send = root.querySelector<HTMLAnchorElement>('[data-send]');
-    const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[data-field]'));
+    const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-field]'));
 
     const box = (name: keyof Fields) => root.querySelector<HTMLElement>(`[data-field="${name}"]`) as HTMLInputElement | null;
 
-    const EMPTY: Fields = { name: '', email: '', interest: '', budget: '', message: '' };
+    const EMPTY: Fields = { name: '', email: '', message: '' };
 
     const read = (): Fields => {
       const out = { ...EMPTY };
@@ -176,27 +149,12 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
       return out;
     };
 
-    /**
-     * The selected option's own text, which is the label the reader saw. A code-to-label table
-     * in here would be a second copy of the wording, and the message could end up in a language
-     * the page is not written in.
-     */
-    const labelOf = (name: 'interest' | 'budget') => {
-      const el = root.querySelector<HTMLSelectElement>(`[data-field="${name}"]`);
-      return el && el.selectedIndex > 0 ? el.options[el.selectedIndex].text : '';
-    };
-
     /** One text for every exit: the preview, the mail body, the clipboard and the file. */
     function compose(v: Fields): string {
-      const lines = [fill(T.lineName, { value: v.name.trim() })];
+      const lines: string[] = [];
+      if (v.name.trim()) lines.push(fill(T.lineName, { value: v.name.trim() }));
       lines.push(fill(T.lineEmail, { value: v.email.trim() }));
-      lines.push(fill(T.lineInterest, { value: labelOf('interest') }));
-      lines.push(fill(T.lineBudget, { value: labelOf('budget') }));
-      lines.push(
-        v.message.trim()
-          ? fill(T.lineMessage, { value: v.message.trim() })
-          : T.lineNoMessage
-      );
+      lines.push(fill(T.lineMessage, { value: v.message.trim() }));
       lines.push('', T.lineFooter);
       return lines.join('\n');
     }
@@ -204,21 +162,17 @@ const budgets = CONSULT_BUDGETS.map((o) => ({ value: o.value, label: pick(o.labe
     /** The first thing wrong, named rather than beeped at. */
     function problem(): string | null {
       const v = read();
-      if (!v.name.trim()) return T.needName;
       if (!v.email.trim()) return T.needEmail;
       if (!ADDRESS.test(v.email.trim())) return T.badEmail;
-      if (!v.interest) return T.needInterest;
-      if (!v.budget) return T.needBudget;
+      if (!v.message.trim()) return T.needMessage;
       return null;
     }
 
     function focusProblem() {
       const v = read();
       const order: [keyof Fields, boolean][] = [
-        ['name', !v.name.trim()],
         ['email', !v.email.trim() || !ADDRESS.test(v.email.trim())],
-        ['interest', !v.interest],
-        ['budget', !v.budget],
+        ['message', !v.message.trim()],
       ];
       const hit = order.find(([, bad]) => bad);
       if (hit) box(hit[0])?.focus();

@@ -476,7 +476,7 @@
     "kind": "decision",
     "path": "/assessment",
     "title": "One enquiry form, not two ways to answer questions",
-    "change": "The assessment service page carried its own five-field form beside the button that leads to the homepage enquiry. The extra one is gone. The homepage form is now the only place on this site that asks anything of you, and every other exit leads to it. The tools keep saving to your own browser as before, and their exits stay copy, download and your own mail app.",
+    "change": "The assessment service page carried its own form beside the button that leads to the homepage enquiry. The extra one is gone. The homepage form is now the only place on this site that asks anything of you, and every other exit leads to it. The quote comparison keeps saving to your own browser as before, and every tool exit stays copy, download and your own mail app.",
     "reason": "Two forms for one act asked two different sets of questions, so the choice in front of you was about which form to fill rather than about what you needed answered."
   },
   {
@@ -484,7 +484,39 @@
     "kind": "corrected",
     "path": "/privacy",
     "title": "The privacy page describes the form that is actually on the site",
-    "change": "Its enquiry-form entry listed the fields of the form that has just been removed, including the line that no name is asked for. It now lists the five fields of the homepage form, says that only the last of them is optional, and says plainly that a name and a reply address are collected there.",
+    "change": "Its enquiry-form entry listed the fields of the form that has just been removed, including the line that no name is asked for. It now lists what the homepage form actually asks, says which one of those is optional, and says plainly that a name and a reply address are collected there when you give them.",
     "reason": "The page that tells you what gets collected has to match the boxes that are really on the site, or it is misleading in exactly the section written to prevent that."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": "/#assessment",
+    "title": "The enquiry form asks three things, not five",
+    "change": "The two opening menus are gone: the one that asked which stage you are at, and the one that asked for a budget band. The form now asks for a reply address, the question you want worked out, and a name to be addressed by, which is the only optional field. The mail draft and the file it composes carry the same three.",
+    "reason": "Those two menus sorted an enquiry into a folder. They asked you to summarise your own situation before you had asked anything, and a cross-border plan rarely sits inside one band. What a reply needs is the question, so the form asks for the question."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": "/destinations",
+    "title": "The destination questions are a section of the page, not a quiz",
+    "change": "The ten-question flow under the destination table is gone, and what it produced is printed there instead: the notes on what to verify first, each one sourced and each one naming who settles it, beside the four parties those answers belong to. Copy and download are kept, and the file they write is assembled from those notes on the page.",
+    "reason": "Answering ten questions before reading anything is work done for the site rather than for your decision, and the summary it produced was the same set of notes the page could show you directly, with their sources attached."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": "/tools/destination-research-checklist",
+    "title": "The two checklists are question lists you download",
+    "change": "The status menu, the answer box and the progress line beside every question are gone from both checklists, along with the buttons that added questions of your own. Each page prints its questions in seven groups, thirty-three on the destination list and thirty-one on the agency one, with one download button above them. The file arrives with an empty box beside every question.",
+    "reason": "The length of the list was the argument for a checklist and then the argument against finishing one. Reading a question and downloading it costs nothing; setting a status and writing a note beside sixty-four lines is a second piece of work, and the same record kept in the downloaded file is the one a lawyer can be handed."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "corrected",
+    "path": "/tools",
+    "title": "Every sentence about the tools now matches what they do",
+    "change": "The tools index, the two checklist cards, the closing lines of the checklists themselves, the guide and explainer endings that told you to write your answers into a checklist, and the privacy wording around all of it have been rewritten. What the site now describes is one workspace that keeps its rows in this browser, two question lists that download, and one enquiry form.",
+    "reason": "Changing what a tool does is only finished when every sentence pointing at it says the same thing. Otherwise the site’s own description is the part that misleads, and it is the part you read before deciding whether to open the tool at all."
   }
 ]

@@ -34,12 +34,7 @@ const groups = entry.groups.map((g) => ({
   items: g.items.map((i) => ({ id: i.id, question: pick(i.question, lang) })),
 }));
 
-/*
- * The draft is stored per locale, because a saved answer is a sentence in one language: an English
- * note pulled onto the Chinese page would read as a mistake rather than as a draft. The export
- * carries the same stamp, so the file a reader hands over says which language it was written in.
- */
-const storageKey = lang === 'en' ? entry.storageKey : `${entry.storageKey}.${lang}`;
+/* The export carries the locale in its name, so a document says which language it was written in. */
 const exportName = lang === 'en' ? `${entry.stem}.md` : `${entry.stem}-${lang}.md`;
 const hrefs = entry.hrefs.map((h) => localizedPath(lang, h));
 ---
@@ -63,7 +58,7 @@ const hrefs = entry.hrefs.map((h) => localizedPath(lang, h));
   </header>
 
   <div class="shell pb-16 max-w-[1100px]">
-    <ChecklistTool {groups} storageKey={storageKey} exportName={exportName} />
+    <ChecklistTool {groups} exportName={exportName} />
 
     <section class="mt-14 border-t border-line pt-8">
       <h2 class="text-[22px]">{copy.closing.heading}</h2>

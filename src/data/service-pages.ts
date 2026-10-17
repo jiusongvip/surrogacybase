@@ -250,7 +250,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     ],
     startHeading: 'Start with the question you already have',
     startBody:
-      'The enquiry form asks five things: your name, the address to reply to, which of these areas your question sits in, the budget band you are planning around, and the question itself in your words. It is the one form on this site, and it composes in your browser before handing the text to your mail app, your clipboard or a file, so nothing sits in a queue you cannot see.',
+      'The enquiry form asks three things: the address to reply to, the question itself in your words, and a name if you want the reply addressed to someone. It is the one form on this site, and it composes in your browser before handing the text to your mail app, your clipboard or a file, so nothing sits in a queue you cannot see.',
     startPrimary: 'Write an enquiry',
     startSecondary: 'Read how an enquiry is handled',
     diyHeading: 'Do the useful part yourself now',
@@ -330,7 +330,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     ],
     startHeading: '从您已经有的那个问题开始',
     startBody:
-      '问询表单只问五件事：您的姓名、回复到哪个邮箱、您的问题属于哪一项、您自己规划的预算区间，以及用您自己的话写下的问题。它是本站唯一的表单，会先在您的浏览器里把这段文字组装好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
+      '问询表单只问三件事：回复到哪个邮箱、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。它是本站唯一的表单，会先在您的浏览器里把这段文字组装好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
     startPrimary: '写一份问询',
     startSecondary: '阅读问询会如何被处理',
     diyHeading: '现在自己动手完成有用的那部分',

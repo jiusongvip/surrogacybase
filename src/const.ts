@@ -13,9 +13,9 @@ export const SITE = {
    * a real inbox: the intake form then composes the brief and offers copy or download,
    * and publishes no send button at all rather than one that goes nowhere.
    *
-   * One line lights up two surfaces, because both read this value: the homepage enquiry
-   * form, which is the only intake on the site, and the wording of the destination
-   * assessment's closing step.
+   * One line lights up the only intake on the site: the homepage enquiry form shows its
+   * send button when there is an address behind it, and offers copy and download when
+   * there is not.
    */
   contactEmail: '' as string,
 } as const;

@@ -321,7 +321,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: 'The enquiry form',
-        body: 'It is the only form on this site, and it asks five things: your name, the email address to reply to, which area your question falls in, the budget band you are planning around, and a line about your situation or question. Only the last of those is optional, and the budget takes a band rather than a figure. Nothing asks for an identity document, a date of birth or a medical record, and there is nowhere in the form to attach a file. The site has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
+        body: 'It is the only form on this site, and it asks three things: the email address to reply to, your question in your own words, and a name if you want the reply addressed to someone. Only the name is optional. Nothing asks for an identity document, a date of birth, a budget figure or a medical record, and there is nowhere in the form to attach a file. The site has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
       },
       {
         h: 'Information you send us directly',
@@ -390,7 +390,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: '问询表单',
-        body: '它是本站唯一的一个表单，只要五件事：您的姓名、回复用的邮箱地址、您的问题属于哪一项、您自己规划的预算区间，以及一句话说明您的处境或问题。其中只有最后一项是选填，而预算只接受区间，不填具体数字。没有任何一格要身份证件、出生日期或病历，表单里也没有附上文件的位置。本站没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询组装好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
+        body: '它是本站唯一的一个表单，只要三件事：回复用的邮箱地址、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。其中只有称呼是选填。没有任何一格要身份证件、出生日期、预算数字或病历，表单里也没有附上文件的位置。本站没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询组装好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
       },
       {
         h: '您直接发给我们的信息',
