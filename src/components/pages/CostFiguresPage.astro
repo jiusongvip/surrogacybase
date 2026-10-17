@@ -1,0 +1,165 @@
+---
+/*
+ * Every published cost figure, under the line it covers.
+ *
+ * A destination page shows the one figure that stands out for that place. This page runs the same
+ * records the other way round: each figure sits under the line it covers, so whole-program numbers,
+ * medical costs and what is paid to a carrier can each be read across destinations and across the
+ * sources that wrote them. Nothing is entered, stored or sent, and nothing is calculated either. The
+ * amounts, currencies, years and citations all come from src/data/jurisdictions, so a figure cannot
+ * reach this page without the source that published it, and a line with one figure behind it says so.
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import type { CollectionEntry } from 'astro:content';
+import { COST_TOOL_PAGE, TOOLS_INDEX_PAGE } from '@/data/tool-pages';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { UI, fill } from '@/i18n/ui';
+import { costText, type CostFigure } from '@/lib/costs';
+import { formatDate } from '@/lib/dates';
+import { getJurisdictions } from '@/lib/jurisdictions';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = COST_TOOL_PAGE[lang];
+const costsCopy = UI[lang].costs;
+const citeChecked = UI[lang].pages.jurisdiction.citeChecked;
+
+type Jurisdiction = CollectionEntry<'jurisdictions'>['data'];
+type Source = Jurisdiction['facts'][number]['source'];
+type Row = CostFigure & { name: string; region: string; href: string; source: Source };
+
+const records: Jurisdiction[] = (await getJurisdictions(lang)).map((entry) => entry.data);
+
+/** The whole program first, then the lines a program is built from. */
+const LINES = ['total', 'medical', 'legal', 'recruiting', 'carrier'] as const;
+
+const groups = LINES.map((line) => {
+  const rows: Row[] = [];
+  for (const record of records) {
+    for (const figure of record.costs) {
+      if (figure.item !== line) continue;
+      rows.push({
+        ...figure,
+        name: record.name,
+        region: record.region,
+        href: localizedPath(lang, `/destinations/${record.code}`),
+        source: record.facts[figure.fact].source,
+      });
+    }
+  }
+  /* Every row from one source means there is nothing published to read a figure against. */
+  return { line, label: costsCopy.items[line], rows, alone: new Set(rows.map((r) => r.source.url)).size === 1 };
+});
+
+const silent = records.filter((record) => record.costs.length === 0);
+---
+
+<PageLayout title={copy.title} description={copy.description}>
+  <Breadcrumbs
+    crumbs={[{ label: TOOLS_INDEX_PAGE[lang].label, href: localizedPath(lang, '/tools') }, { label: copy.h1 }]}
+  />
+
+  <header class="shell py-10 max-w-[74ch]">
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <p class="mt-4 text-[18px] leading-[1.65] text-muted">{copy.lede}</p>
+    <p class="mt-4 flex items-start gap-2.5 text-[15px] leading-relaxed text-muted">
+      <Icon name="file-text" size={17} class="mt-0.5 shrink-0 text-accent" />
+      <span>{copy.note}</span>
+    </p>
+  </header>
+
+  <section class="shell pb-2 max-w-[1100px]">
+    <h2 class="text-[22px]">{copy.groupsHeading}</h2>
+    <p class="mt-2 max-w-[68ch] text-[16px] leading-relaxed text-muted">{copy.groupsIntro}</p>
+  </section>
+
+  {
+    groups.map((group) => (
+      <section class="shell pb-12 max-w-[1100px]" id={group.line}>
+        <h2 class="text-[19px] leading-snug">{group.label}</h2>
+
+        {
+          group.rows.length === 0 ? (
+            <p class="mt-3 text-[15px] leading-relaxed text-muted">{copy.noFigure}</p>
+          ) : (
+            <>
+              <div class="mt-4 overflow-x-auto">
+                <table class="w-full min-w-[640px] border-collapse text-left text-[15px]">
+                  <caption class="sr-only">{group.label}</caption>
+                  <thead>
+                    <tr>
+                      <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.destinationHead}</th>
+                      <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{costsCopy.columns.figure}</th>
+                      <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{costsCopy.columns.source}</th>
+                      <th class="border-b border-line-strong pb-2 font-semibold">{costsCopy.asOfYear}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {group.rows.map((row) => (
+                      <tr>
+                        <td class="border-b border-line py-3 pr-4 align-top">
+                          <a href={row.href} class="link-underlined">{row.name}</a>
+                          <span class="block text-[13px] text-muted">{row.region}</span>
+                        </td>
+                        <td class="border-b border-line py-3 pr-4 align-top tnum">{costText(row, lang)}</td>
+                        <td class="border-b border-line py-3 pr-4 align-top text-muted">
+                          <a href={row.source.url} rel="noopener noreferrer" target="_blank" class="link-underlined">
+                            {row.source.label}
+                          </a>
+                          <span class="tnum block text-[13px]">
+                            {fill(citeChecked, { date: formatDate(row.source.verifiedOn, lang) })}
+                          </span>
+                        </td>
+                        <td class="border-b border-line py-3 align-top tnum text-[13px] text-muted">
+                          {fill(costsCopy.asOf, { year: row.asOf })}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {group.alone && <p class="mt-3 max-w-[68ch] text-[14px] leading-relaxed text-muted">{copy.singleSource}</p>}
+            </>
+          )
+        }
+      </section>
+    ))
+  }
+
+  {
+    silent.length > 0 && (
+      <section class="shell pb-12 max-w-[1100px]">
+        <h2 class="text-[19px] leading-snug">{copy.emptyHeading}</h2>
+        <p class="mt-2 max-w-[68ch] text-[16px] leading-relaxed text-muted">{copy.emptyBody}</p>
+        <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+          {silent.map((record) => (
+            <li>
+              <a href={localizedPath(lang, `/destinations/${record.code}`)} class="link-underlined">
+                {record.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="shell pb-16 max-w-[74ch]">
+    <h2 class="text-[22px]">{copy.closing.heading}</h2>
+    <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.closing.body}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href={localizedPath(lang, '/guides/surrogacy-cost')} class="btn-primary">
+        {copy.closing.links[0]}
+        <Icon name="arrow-right" size={16} />
+      </a>
+      <a href={localizedPath(lang, '/articles/why-no-average-surrogacy-cost-exists')} class="textlink">
+        {copy.closing.links[1]}
+        <Icon name="arrow-right" size={16} />
+      </a>
+      <a href={localizedPath(lang, '/tools/agency-quote-comparison')} class="btn-ghost">
+        {copy.closing.links[2]}
+      </a>
+    </div>
+  </section>
+</PageLayout>

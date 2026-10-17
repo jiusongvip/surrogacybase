@@ -11,7 +11,7 @@ jurisdictions: ["us", "gb"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-cost"]
 relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
-relatedTools: ["tools/agency-quote-comparison"]
+relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
 sources:
   - label: "Average cost of surrogacy in the United States (clinic blog)"
     url: "https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states"
@@ -85,8 +85,9 @@ Averaging across that distribution produces a number that describes no actual pr
 2. **Take the exclusions seriously.** The items outside a quote usually determine the final total. See [the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote).
 3. **Price the risk you carry.** How many transfer attempts you will fund, and what you will do if it does not work, changes your number more than the market average does.
 4. **Ask for the escrow schedule.** When the money must be in an account, and what happens to it, is more predictive of your exposure than the headline fee. See [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).
-5. **Label every figure you write down** with who published it, when, and whether they sell the service. If you cannot label it, do not put it in the budget.
+5. **Label every figure you write down** with who published it, when, and whether they sell the service. If you cannot label it, do not put it in the budget. The [published cost figures](/tools/cost-figures) page lists the numbers that arrive with that labelling already attached: each row names the source that published it and the year those figures describe.
 
 That is more work than reading a headline number, and it is the only version that survives contact with an actual invoice.
 
 This page is information about how surrogacy cost data is produced. It is not financial advice, and no figure here is a quote for your situation.
+

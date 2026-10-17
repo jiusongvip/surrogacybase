@@ -11,7 +11,7 @@ jurisdictions: ["us", "ca"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
 relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/why-no-average-surrogacy-cost-exists"]
-relatedTools: ["tools/agency-quote-comparison"]
+relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -85,3 +85,4 @@ Then take the rows still marked needs checking into the [agency checklist](/guid
 That is the whole method. The gap between a quoted number and a real budget is not closed by finding a better average. It is closed by listing what the quote did not mention.
 
 This page is general information about cost structure. It is not a quote, an estimate for your situation, or legal or financial advice.
+

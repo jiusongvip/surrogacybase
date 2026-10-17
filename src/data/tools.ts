@@ -55,6 +55,28 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    id: 'cost-figures',
+    live: true,
+    en: {
+      name: 'Published cost figures',
+      summary:
+        'Every cost figure this site publishes, under the line it covers rather than the country it belongs to, so whole-program numbers sit together and what is paid to a carrier sits together. Each row keeps the source that printed it and the year those figures describe.',
+      linkNote: 'The figures sources have published, line by line, each with its citation.',
+      points: [
+        'A destination with no published figure says so instead of showing an estimate',
+        'Every row links to the source that printed the number and states the year it describes',
+        'No average, no currency conversion, and no figure worked out here',
+      ],
+    },
+    zh: {
+      name: '已发布的费用数字',
+      summary:
+        '把本站发布的每一个费用数字放在它覆盖的那一行下面，而不是放在它所属的国家下面：整个流程的数字聚在一起，支付给代孕者的数字也聚在一起。每一行都保留发布它的那份来源，以及这些数字对应的年份。',
+      linkNote: '各个来源发布过的数字，逐条列出，每一条都带着引用出处。',
+      points: ['没有发布数字的目的地会直接说明，而不是摆出一个估算', '每一行都链接到发布这个数字的来源，并写明它对应的年份', '不做平均值，不做货币换算，这里也不算出任何数字'],
+    },
+  },
+  {
     id: 'destination-research-checklist',
     live: true,
     en: {
@@ -105,3 +127,4 @@ export const TOOLS: Tool[] = [
     },
   },
 ];
+

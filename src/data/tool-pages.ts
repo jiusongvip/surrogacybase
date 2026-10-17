@@ -1,7 +1,7 @@
 /*
- * The wording of the four tool pages, in both languages.
+ * The wording of the five tool pages, in both languages.
  *
- * The tools index, the quote comparison and the breadcrumb label live here rather than in the
+ * The tools index, the quote comparison, the cost figures page and the breadcrumb label live here rather than in the
  * route files, because one route now serves both languages and a page assembled from English
  * headings on a Chinese URL is the exact failure the rest of this site is built to prevent.
  *
@@ -45,11 +45,11 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: 'Tools',
     label: 'Tools',
     description:
-      'Decision tools for intended parents: compare agency quotes line by line, take a destination apart question by question, and put your questions to an agency in writing. The quote workspace keeps its entries in this browser; the two checklists download as documents. No account, no upload.',
+      'Decision tools for intended parents: compare agency quotes line by line, take a destination apart question by question, put your questions to an agency in writing, and read the cost figures that sources have published. The quote workspace keeps its entries in this browser; the two checklists download as documents. No account, no upload.',
     intro:
       'A guide tells you what to check. These are where you actually check it, on your own numbers and your own documents, and leave with a file you can hand to someone else.',
     localNote:
-      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote workspace keeps its entries in this browser, where you can clear them at any time, and the two checklists leave the page as documents you fill in yourself.',
+      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote workspace keeps its entries in this browser, where you can clear them at any time, the two checklists leave the page as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
     available: 'Available now',
     building: 'Being built',
     open: 'Open the tool',
@@ -59,10 +59,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: '工具',
     label: '工具',
     description:
-      '给意向父母的决策工具：逐项对比机构报价、把一个目的地逐题拆开、把您的问题书面提交给机构。报价工作区把内容保存在这个浏览器里；两份清单下载为文档。不需要账户，也不上传任何东西。',
+      '给意向父母的决策工具：逐项对比机构报价、把一个目的地逐题拆开、把您的问题书面提交给机构，并阅读各个来源已经发布的费用数字。报价工作区把内容保存在这个浏览器里；两份清单下载为文档。不需要账户，也不上传任何东西。',
     intro:
       '指南告诉您该核查什么。而这些页面是您真正动手核查的地方：用您自己的数字和您自己的文件，离开时带走一份可以交给别人的文件。',
-    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价工作区把您填的内容存在这个浏览器里，随时可以清空；两份清单则下载成由您自己填写的文档。',
+    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价工作区把您填的内容存在这个浏览器里，随时可以清空；两份清单则下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
     available: '现在可用',
     building: '正在建设',
     open: '打开工具',
@@ -312,3 +312,75 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
     bandQuestions: '签约前先提问',
   },
 };
+
+/**
+ * The cost figures page. The amounts, currencies and years are data in src/data/jurisdictions and are
+ * identical in both languages, and the labels a destination page already prints beside a figure (the line
+ * names, the column heads, the year, the date a source was read) come from UI[lang], so what is written
+ * here is only the wording this page has no twin for.
+ */
+export type CostToolPage = {
+  title: string;
+  description: string;
+  h1: string;
+  lede: string;
+  /** The line beside the document icon: what this page adds to a figure, which is nothing. */
+  note: string;
+  groupsHeading: string;
+  groupsIntro: string;
+  /** The one column head a destination page has no reason to carry. */
+  destinationHead: string;
+  /** Under a line whose every figure came from one source. */
+  singleSource: string;
+  /** Under a line no source has put a figure on. */
+  noFigure: string;
+  emptyHeading: string;
+  emptyBody: string;
+  closing: { heading: string; body: string; links: [string, string, string] };
+};
+
+export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
+  en: {
+    title: 'Published cost figures',
+    description:
+      'Every cost figure this site publishes, grouped by the line it covers rather than by country, each with its source and the year it describes.',
+    h1: 'Published cost figures',
+    lede: 'A destination page shows the one figure that stands out for that place. Here every published figure sits under the line it covers, so whole-program numbers, medical costs and what is paid to a carrier can each be read across destinations and across the sources that wrote them.',
+    note: 'No figure here was worked out by us. Each one was published by a named source, in the currency that source wrote it in, for the year the row states.',
+    groupsHeading: 'Every published figure, by the line it covers',
+    groupsIntro:
+      'These are the lines a quote is usually built from. A figure sits under the line it covers, so one line can be read across destinations and across the sources that wrote about them.',
+    destinationHead: 'Destination',
+    singleSource: 'Only one source published a figure for this line, so there is no second published figure to read it against.',
+    noFigure: 'No source has published a figure for this line.',
+    emptyHeading: 'Where no figure is published',
+    emptyBody:
+      'These destinations publish no cost figure. Their pages state what may be paid there under the local rules, and that is as far as the published record currently goes.',
+    closing: {
+      heading: 'What a published figure is for',
+      body: 'A figure from a source is a reference point rather than a budget. Find the line in your own quote that matches one of these rows, ask the provider what its own figure covers that the published one does not, and write the answer beside the question with the name and the date that gave it.',
+      links: ['How to read a surrogacy cost', 'Why no average exists', 'Compare two quotes'],
+    },
+  },
+  zh: {
+    title: '已发布的费用数字',
+    description: '把本站发布的每一个费用数字按它覆盖的条目来分组，而不是按国家；每个数字都带着发布它的那份来源，以及这些数字所对应的年份。',
+    h1: '已发布的费用数字',
+    lede: '目的地页面只给出对那里而言最显眼的一个数字。在这个页面上，每个已发布的数字都落在它自己覆盖的那一行下面：整个流程的数字、医疗成本、支付给代孕者的数字各自放在一起，可以跨目的地、跨写出它们的各个来源来读。',
+    note: '这里的数字没有一个是我们算出来的。每一个都由某个具名来源发布，沿用那个来源写下的货币，并对应这一行标明的年份。',
+    groupsHeading: '每一个已发布的数字，按它覆盖的条目排列',
+    groupsIntro: '这些条目正是一份报价通常搭起来的方式。一个数字落在它覆盖的那一行下面，于是同一行可以跨目的地、跨写出它的各个来源来读。',
+    destinationHead: '目的地',
+    singleSource: '这一行只有一个来源发布过数字，所以没有第二个已发布的数字可以与它对照。',
+    noFigure: '还没有任何来源为这一行发布过数字。',
+    emptyHeading: '没有发布数字的地方',
+    emptyBody: '下面这些目的地没有发布任何数字。它们的页面写明了在当地规则之下可以支付什么，而已发布的记录目前能走到的也就是这里。',
+    closing: {
+      heading: '一个已发布的数字能用来做什么',
+      body: '来自某个来源的数字是一个参照点，不是一份预算。在您自己的报价里找出与这些行对得上的那一条，问清对方报的范围与这个已发布的数字之间差在哪里，并把回答写在问题旁边，附上给出回答的人名和日期。',
+      links: ['怎么读一份代孕费用', '为什么不存在平均费用', '对比两份报价'],
+    },
+  },
+};
+
+

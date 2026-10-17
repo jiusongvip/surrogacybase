@@ -12,7 +12,7 @@ jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
 relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
-relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -139,6 +139,8 @@ A peer-reviewed review article puts it more carefully: the cost of having a baby
 
 What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/articles/why-no-average-surrogacy-cost-exists).
 
+Every figure this site publishes, including the ones above, is laid out line by line with its source on [the published cost figures page](/tools/cost-figures).
+
 ## What to verify before you pay anything
 
 Work through this list against documents rather than conversations. If an answer only exists verbally, it is not yet an answer.
@@ -155,3 +157,4 @@ Work through this list against documents rather than conversations. If an answer
 - [ ] A contingency reserve you have decided on, sized against the exclusions rather than the brochure.
 
 Nothing on this page is legal, medical or financial advice. Cost structure and payment mechanics are set by documents specific to your arrangement, and the totals depend on your jurisdiction, your medical path, and the providers you engage. Where this page states a rule, it names the source and the date it was checked. Where a figure or rule is not among those sources, the honest answer is to verify it with a named professional rather than to assume one.
+

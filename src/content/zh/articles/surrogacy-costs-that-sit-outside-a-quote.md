@@ -11,7 +11,7 @@ jurisdictions: ["us", "ca"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
 relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/why-no-average-surrogacy-cost-exists"]
-relatedTools: ["tools/agency-quote-comparison"]
+relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -85,3 +85,4 @@ sources:
 这就是全部方法。报价数字与真实预算之间的差距，不是靠找到一个更好的平均值来补上的，而是靠把报价没有提到的东西列出来。
 
 这一页是关于成本结构的一般信息。它不是报价，不是针对您的情况的估算，也不是法律或财务建议。
+

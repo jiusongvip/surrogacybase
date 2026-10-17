@@ -12,7 +12,7 @@ jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
 relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
-relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -139,6 +139,8 @@ sources:
 
 这些数字都不是：对您将付多少的测量，也不是真实项目之间的平均值。原因写在[为什么不存在代孕平均费用](/zh/articles/why-no-average-surrogacy-cost-exists)里。
 
+本站发布的每一个数字，包括上面这些，都在[已发布的费用数字](/zh/tools/cost-figures)页面上逐条列出，并带着各自的来源。
+
 ## 付款之前要核实什么
 
 请对着文件而不是谈话来走完这份清单。如果一个答案只存在于口头，它就还不是答案。
@@ -155,3 +157,4 @@ sources:
 - [ ] 一笔您自己决定过的应急储备，其规模按排除项来定，而不是按宣传手册来定。
 
 本页内容不构成法律、医疗或财务建议。成本结构与付款机制由针对您的安排的具体文件决定，总额取决于您的辖区、您的医疗路径以及您聘用的服务方。这一页凡是陈述规则的地方，都注明了来源与核实的日期。凡这些来源给不出某个数字或规则时，诚实的做法是向具名的专业人士核实，而不是自行假设一个。
+

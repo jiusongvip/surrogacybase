@@ -566,5 +566,14 @@
     "title": "Cost figures now sit on the destination records",
     "change": "Nine destination records carry a cost section, and five of them publish a number: the United States has its medical, legal, recruiting, carrier and whole-program figures, Ukraine and Georgia a total and a carrier payment each, Colombia a reported package price and the span two carriers asked for, and the United Kingdom the reimbursement range its regulator quotes. Four records show no figure. Each published number names the page that printed it, the currency it was printed in, the year its own figures describe, and whether it is a span, a ceiling or a single amount, and the sentence it came from stays on the same page as its citation. A new column on the comparison table carries the whole-program number where one exists and the carrier number otherwise, so a row cannot show a number without the source behind it being one click away.",
     "reason": "A destination you cannot afford is not a destination to research, and the only reason a reader accepts a price from the people selling it is that nothing else publishes one. Numbers with a named publisher, a date and a stated shape are what a comparison needs; an average of them would not be, and this site still does not print one."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "published",
+    "path": "/tools/cost-figures",
+    "title": "Published cost figures, grouped by the line they cover",
+    "change": "The destination records now print on a second axis. A new page under the tools groups every published figure by the line it covers rather than by the destination it belongs to, so the four whole-program numbers sit in one table and the five figures for what is paid to a carrier sit in another, and each row keeps the source that printed it, the year those figures describe and the date that source was read. A line only one source has published a figure for says so beneath its table, and a destination that publishes no figure is listed under its own heading rather than left blank. The cost guide, the article on why no average exists and the explainer on costs outside a quote now lead here.",
+    "reason": "Two figures that cover different things are not two answers to one question, and a destination page cannot show the same line from two places side by side. Grouping by the line is the one arrangement of these figures that lets a comparison be made without inventing a number to compare, and it is the arrangement that shows how often there is nothing published to compare."
   }
 ]
+

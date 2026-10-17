@@ -11,7 +11,7 @@ jurisdictions: ["us", "gb"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-cost"]
 relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
-relatedTools: ["tools/agency-quote-comparison"]
+relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
 sources:
   - label: "美国代孕平均费用（诊所博客）"
     url: "https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states"
@@ -85,8 +85,9 @@ sources:
 2. **认真对待排除项**：报价之外的那些项目通常决定了最终总额。参见[报价之外的那些成本](/zh/articles/surrogacy-costs-that-sit-outside-a-quote)。
 3. **为您承担的风险定价**：您愿意为几次移植尝试付费、如果不成您打算怎么办，这两件事对您数字的影响超过市场平均值。
 4. **索要托管时间表**：钱必须在何时进入账户、之后会发生什么，比门面费用更能预测您的风险敞口。参见[托管账户与付款阶段](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)。
-5. **给您写下的每一个数字加标签**：谁发布的、什么时候发布的、对方是否出售这项服务。如果您无法标注这些，就不要把它放进预算。
+5. **给您写下的每一个数字加标签**：谁发布的、什么时候发布的、对方是否出售这项服务。如果您无法标注这些，就不要把它放进预算。 那些本来就带着这类标注的数字，列在[已发布的费用数字](/zh/tools/cost-figures)页面上：每一行都写明发布它的来源，以及这些数字对应的年份。
 
 这比读一个门面数字更费工，而它是唯一一份在与真实发票相遇之后仍然成立的版本。
 
 这一页是关于代孕成本数据如何被生产出来的信息。它不是财务建议，这里的任何数字都不是针对您的情况的报价。
+
