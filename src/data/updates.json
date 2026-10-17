@@ -519,20 +519,36 @@
     "change": "The tools index, the two checklist cards, the closing lines of the checklists themselves, the guide and explainer endings that told you to write your answers into a checklist, and the privacy wording around all of it have been rewritten. What the site now describes is one workspace that keeps its rows in this browser, two question lists that download, and one enquiry form.",
     "reason": "Changing what a tool does is only finished when every sentence pointing at it says the same thing. Otherwise the site’s own description is the part that misleads, and it is the part you read before deciding whether to open the tool at all."
   },
-    {
-      "date": "2026-10-17",
-      "kind": "corrected",
-      "path": "/destinations",
-      "title": "The destinations page describes your comparison, not the table behind it",
-      "change": "Three headings named the research file instead of the research: it asked for \"the ten columns a comparison needs\", for questions to be answered \"before a shortlist\", and for \"where to go after this page\". They now read \"the ten things a destination comparison has to cover\", \"five questions to answer before you shortlist a destination\", and \"where to go next\", and the two paragraphs underneath no longer describe empty cells in a table this page never shows. The same check ran across the site in both languages. One wording now covers each idea that was written two ways: a candidate destination, a genetic link, an escrow account, a gestational arrangement, and this site talking about itself.",
-      "reason": "A heading that names columns you have never been shown makes the page sound as if it is addressing whoever maintains it. The shape of the data behind a page is not one of the things you are comparing, so it does not belong in the words read before a comparison is made."
-    },
-    {
-      "date": "2026-10-17",
-      "kind": "corrected",
-      "path": "/editorial-policy",
-      "title": "A source record is described by what each part does, not by its key",
-      "change": "The table under \"What a source record contains\" printed the six names the data is stored under, in a monospace font, and the sentence after it opened with the word \"field\" used in its programming sense. Both languages now list the same six parts as the citation line, the link, the publisher, when it was published, when it was checked, and what it supports, and the closing sentence reads as a sentence.",
-      "reason": "This page states the standard a source has to meet, so it is the page most likely to be read by a lawyer or a regulator, and the one where the difference between a document and a database is least excusable. Storage keys belong in the file; what belongs on the page is what each part is for and why it can go stale."
-    }
+  {
+    "date": "2026-10-17",
+    "kind": "corrected",
+    "path": "/destinations",
+    "title": "The destinations page describes your comparison, not the table behind it",
+    "change": "Three headings named the research file instead of the research: it asked for \"the ten columns a comparison needs\", for questions to be answered \"before a shortlist\", and for \"where to go after this page\". They now read \"the ten things a destination comparison has to cover\", \"five questions to answer before you shortlist a destination\", and \"where to go next\", and the two paragraphs underneath no longer describe empty cells in a table this page never shows. The same check ran across the site in both languages. One wording now covers each idea that was written two ways: a candidate destination, a genetic link, an escrow account, a gestational arrangement, and this site talking about itself.",
+    "reason": "A heading that names columns you have never been shown makes the page sound as if it is addressing whoever maintains it. The shape of the data behind a page is not one of the things you are comparing, so it does not belong in the words read before a comparison is made."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "corrected",
+    "path": "/editorial-policy",
+    "title": "A source record is described by what each part does, not by its key",
+    "change": "The table under \"What a source record contains\" printed the six names the data is stored under, in a monospace font, and the sentence after it opened with the word \"field\" used in its programming sense. Both languages now list the same six parts as the citation line, the link, the publisher, when it was published, when it was checked, and what it supports, and the closing sentence reads as a sentence.",
+    "reason": "This page states the standard a source has to meet, so it is the page most likely to be read by a lawyer or a regulator, and the one where the difference between a document and a database is least excusable. Storage keys belong in the file; what belongs on the page is what each part is for and why it can go stale."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "published",
+    "path": "/guides/bringing-your-child-home",
+    "title": "A guide to bringing your child home after the birth",
+    "change": "First published: the three documents a child has to hold at once, why the parentage order is a court step that arrives after the birth, where a genetic link is demanded and where a gestational one is accepted, the settled-abroad test that decides whether a consulate issues a travel document or asks for a visa, the two articles of the Nationality Law that leave a child with no election at eighteen, and what a local registration office asks for.",
+    "reason": "This is the stretch of an arrangement that no quote covers and no provider decides, and it is the stretch where families discover they are short of time. Two of the official sources behind it refused automated retrieval, so they are marked in the source list as read from archived copies."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "published",
+    "path": null,
+    "title": "The site publishes a contents list, a feed, and dated sitemap entries",
+    "change": "A list of every page in each language for a machine reader, an RSS feed of guides and explainers for each language with a link to it in the footer, a last-modified date for each sitemap entry taken from the date the sources behind that page were opened, and breadcrumb markup on every page. All four are generated from the records the pages already render from, so no claim is written a second time.",
+    "reason": "A reader who wants to keep up with the site should be able to subscribe rather than remember, and an index should be able to see which pages were checked when instead of inferring it from a URL."
+  }
 ]

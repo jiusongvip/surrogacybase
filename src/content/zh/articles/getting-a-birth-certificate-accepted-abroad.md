@@ -9,7 +9,7 @@ updatedOn: "2026-10-15"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
+relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/bringing-your-child-home"]
 relatedArticles: ["articles/the-six-month-limit-on-a-uk-parental-order", "articles/surrogacy-costs-that-sit-outside-a-quote"]
 relatedTools: ["tools/destination-research-checklist"]
 sources:
