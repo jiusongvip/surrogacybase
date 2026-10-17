@@ -7,13 +7,15 @@ export const SITE = {
   /** The same line in Chinese. Both locales keep exactly one copy of it. */
   taglineZh: '无论您正在考虑哪个国家，都把代孕的决定逐条弄清楚。',
   /**
-   * The signature these pages publish under, chosen by the people who write them.
+   * The signature these pages publish under, in both languages: a team the operator says
+   * includes members with clinical backgrounds, and whose clinical members do the review.
    *
-   * A team name is not a registered entity. What it is in law, where it is registered, the
-   * address a correction reaches, and any named individual behind a guide all remain unpublished,
-   * and the about page keeps listing them as missing rather than settled.
+   * A team name is not a registered entity. What it is in law and where it is registered, the
+   * address a correction reaches, and the names and credentials of the individuals inside the
+   * team all remain unpublished, and the about page keeps listing them as missing rather than
+   * settled.
    */
-  team: 'Sourceline',
+  team: 'SurrogacyBase Medical Editorial Team',
   locale: 'en',
   ogImage: '/og/default.jpg',
   /**

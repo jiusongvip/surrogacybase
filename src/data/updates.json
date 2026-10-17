@@ -580,7 +580,7 @@
     "kind": "decision",
     "path": "/about",
     "title": "These pages now publish under a team signature",
-    "change": "The about page, the footer on every page, the terms of use and the copy written for machine readers all carry one signature now: Sourceline. The structured data behind every guide and article names the same signature as its author.",
-    "reason": "A site that asks a reader to weigh what it publishes has to put a name on the work. A team signature is the most that can honestly be claimed before a registered entity, a correction inbox and named individuals exist, and those three stay listed on the about page as still missing rather than written up as settled."
+    "change": "The about page, the footer on every page, the terms of use and the copy written for machine readers now carry one signature: SurrogacyBase Medical Editorial Team. Every guide and article shows that signature as its author line and adds a review line naming the team's clinical members, and the structured data behind each page records the same team as author and reviewer.",
+    "reason": "A site that asks a reader to weigh what it publishes has to put a name on the work and say who checked it. The names and credentials of the individuals inside the team, the registered entity behind the name, and the address a correction reaches all stay listed on the about page as still missing rather than written up as settled."
   }]
 

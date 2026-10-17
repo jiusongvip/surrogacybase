@@ -143,6 +143,8 @@ export const UI: Record<Lang, {
     keepReadingNote: string;
     workingList: string;
     reviewedBy: string;
+    /** What the team's own clinical members check. */
+    reviewedByTeam: string;
   };
   /**
    * The wording of the guide and article listing pages, which used to live inside the route
@@ -334,7 +336,7 @@ export const UI: Record<Lang, {
     notYetDated: 'Not yet dated',
     tagline: `${SITE.tagline} Independent information and decision tools. Not a clinic, not a law firm, not a surrogacy agency.`,
     copyright: '© {year} {site}. Informational content, not legal or medical advice.',
-    bylinePre: 'Written and maintained by ',
+    bylinePre: 'Written and maintained by the ',
     bylinePost: '.',
     disclaimerPre: 'The full disclaimer is in our ',
     disclaimerTerms: 'terms',
@@ -456,6 +458,7 @@ export const UI: Record<Lang, {
       keepReadingNote: 'Chosen because they answer the question this page could not.',
       workingList: 'Turn this into a working list',
       reviewedBy: 'Reviewed by {name}, {role}.',
+      reviewedByTeam: 'Reviewed by the {team}, whose members include clinicians.',
     },
     pages: {
       guides: {
@@ -892,6 +895,7 @@ export const UI: Record<Lang, {
       keepReadingNote: '入选理由：它们回答了这一页没有回答的问题。',
       workingList: '把这一页变成一份可执行的清单',
       reviewedBy: '由 {name}（{role}）审阅。',
+      reviewedByTeam: '由 {team} 审阅，这个团队中有临床背景的成员。',
     },
     pages: {
       guides: {

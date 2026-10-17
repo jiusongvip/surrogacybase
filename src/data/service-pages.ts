@@ -101,13 +101,13 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}. What {team} is in law, and where it is registered, is not stated yet.',
+      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}, and the review the byline claims is done by clinical members of that team. What {team} is in law, and where it is registered, is not stated yet, and neither are the names or the credentials of the people who wrote and checked a page.',
     whoNeeds: [
       { label: 'Registration or incorporation details, if any' },
       { label: 'Contact email for corrections' },
       {
-        label: 'Named author for each guide',
-        why: 'the guides carry no named author you could hold responsible for the text',
+        label: 'Member names and roles, and the credentials of its clinical members',
+        why: 'the byline names a team, so you cannot yet check who wrote a page, who reviewed it, or what training they have',
       },
     ],
     correctionsHeading: 'Corrections',
@@ -145,11 +145,11 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
     ],
     whoHeading: '背后是谁',
-    whoBody: '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字。{team} 在法律上是什么、注册在哪里，本站还没有写明。',
+    whoBody: '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字，而署名里的那句审阅，由这个团队中有临床背景的成员完成。{team} 在法律上是什么、注册在哪里，本站还没有写明；写下某一页、审下某一页的人叫什么、受过什么训练，同样没有写明。',
     whoNeeds: [
       { label: '登记或注册信息，如果有的话' },
       { label: '用于接收更正的邮箱地址' },
-      { label: '每篇指南署名的作者', why: '指南上没有一位您可以据以问责的具名作者' },
+      { label: '成员姓名与各自的角色，以及临床成员的资质', why: '署名只到团队这一层，您还无法核对某一页是谁写的、谁审的，以及他们受过什么训练' },
     ],
     correctionsHeading: '更正',
     correctionsBody:
