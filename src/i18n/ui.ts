@@ -254,6 +254,9 @@ export const UI: Record<Lang, {
         intro: string;
         emptyTitle: string;
         emptyBody: string;
+        /** The line under the comparison table: the same figures, grouped another way. */
+        costNote: string;
+        costLink: string;
         /** {names} is the flagged destinations joined with {join}; {verb} is one or many. */
         thinNote: string;
         thinJoin: string;
@@ -584,6 +587,8 @@ export const UI: Record<Lang, {
           emptyTitle: 'Nothing verified yet',
           emptyBody:
             "Each destination needs a primary legal source with a date before it appears here. A list of places copied from agency blogs would be the fastest way to publish something wrong.",
+          costNote: 'One number per destination is what the column above can show. ',
+          costLink: 'Read every published figure by the line it covers',
           thinNote:
             '{names} {verb} listed with a flag because the sources we could open do not support a usable position. They stay on the page so that a name you have already seen in a brochure is not missing without explanation.',
           thinJoin: ' and ',
@@ -993,6 +998,8 @@ export const UI: Record<Lang, {
           intro: '一条记录说明某个具体法律体系写了什么、它看起来适用于谁，以及我们最后一次阅读其背后来源的日期。打开一条记录，可以看到每一项立场与它的引用并列，以及我们未能确定的问题。',
           emptyTitle: '尚无已核实的内容',
           emptyBody: '每个目的地都要先有一份带日期的一手法律来源，才会出现在这里。把机构博客上的地点清单抄过来，是发布错误内容最快的方式。',
+          costNote: '上面这一列每个目的地只能显示一个数字。',
+          costLink: '按每个数字覆盖的那一行去读全部已发布的数字',
           thinNote: '{names}带着标记列出，因为我们能打开的来源并不支持一个可用的结论。它们保留在页面上，是为了让您在宣传册里已经见过的名字，不至于没有任何说明就消失。',
           thinJoin: '、',
           thinOne: '',
@@ -1144,3 +1151,4 @@ export function fill(template: string, vars: Record<string, string | number>): s
     key in vars ? String(vars[key]) : match,
   );
 }
+

@@ -170,6 +170,12 @@ const home = localizedPath(lang, '/');
         </p>
       )
     }
+    <p class="mt-6 max-w-[64ch] text-[15px] leading-[1.7] text-muted">
+      {copy.records.costNote}<a href={localizedPath(lang, '/tools/cost-figures')} class="textlink">
+        {copy.records.costLink}
+        <Icon name="arrow-right" size={15} />
+      </a>
+    </p>
   </section>
 
   <section class="shell pb-16" id="dimensions">
@@ -332,3 +338,4 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 </PageLayout>
+
