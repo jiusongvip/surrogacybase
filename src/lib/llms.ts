@@ -57,8 +57,8 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     `> ${copy.siteDescription}`,
     '',
     lang === 'en'
-      ? 'Independent information site. Not a clinic, not a law firm, not a surrogacy agency. No provider pays for a place here and no provider is listed. Every factual claim names its source, its publisher and the date it was last opened, and corrections are published.'
-      : '独立信息站点。不是诊所，不是律师事务所，也不是代孕机构。没有机构为位置付费，本站也不列机构名单。每条事实都写明来源、发布方与最近一次打开核查的日期，更正记录公开。',
+      ? `Independent information site, published under the signature ${SITE.team}. Not a clinic, not a law firm, not a surrogacy agency. No provider pays for a place here and no provider is listed. Every factual claim names its source, its publisher and the date it was last opened, and corrections are published.`
+      : `以 ${SITE.team} 的署名发布的独立信息站点。不是诊所，不是律师事务所，也不是代孕机构。没有机构为位置付费，本站也不列机构名单。每条事实都写明来源、发布方与最近一次打开核查的日期，更正记录公开。`,
     '',
     lang === 'en'
       ? 'Published in English and Simplified Chinese. Every page listed here has a Chinese twin at the same path under /zh, and /zh/llms.txt lists that half.'

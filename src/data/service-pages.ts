@@ -101,12 +101,8 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'A site that asks for trust should say whose name stands behind it. That name is not here yet.',
+      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}. What {team} is in law, and where it is registered, is not stated yet.',
     whoNeeds: [
-      {
-        label: 'Operating entity or individual',
-        why: 'you have no way yet to see who stands behind this site or who to hold responsible for what it publishes',
-      },
       { label: 'Registration or incorporation details, if any' },
       { label: 'Contact email for corrections' },
       {
@@ -149,9 +145,8 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
     ],
     whoHeading: '背后是谁',
-    whoBody: '一个要求别人信任的网站，应当说出背后署的是谁的名字。这个名字目前还没有。',
+    whoBody: '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字。{team} 在法律上是什么、注册在哪里，本站还没有写明。',
     whoNeeds: [
-      { label: '运营主体或个人', why: '您现在还无法看到本站背后是谁，也无从知道该由谁对它发布的内容负责' },
       { label: '登记或注册信息，如果有的话' },
       { label: '用于接收更正的邮箱地址' },
       { label: '每篇指南署名的作者', why: '指南上没有一位您可以据以问责的具名作者' },

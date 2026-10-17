@@ -574,6 +574,13 @@
     "title": "Published cost figures, grouped by the line they cover",
     "change": "The destination records now print on a second axis. A new page under the tools groups every published figure by the line it covers rather than by the destination it belongs to, so the four whole-program numbers sit in one table and the five figures for what is paid to a carrier sit in another, and each row keeps the source that printed it, the year those figures describe and the date that source was read. A line only one source has published a figure for says so beneath its table, and a destination that publishes no figure is listed under its own heading rather than left blank. The cost guide, the article on why no average exists and the explainer on costs outside a quote now lead here.",
     "reason": "Two figures that cover different things are not two answers to one question, and a destination page cannot show the same line from two places side by side. Grouping by the line is the one arrangement of these figures that lets a comparison be made without inventing a number to compare, and it is the arrangement that shows how often there is nothing published to compare."
-  }
-]
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": "/about",
+    "title": "These pages now publish under a team signature",
+    "change": "The about page, the footer on every page, the terms of use and the copy written for machine readers all carry one signature now: Sourceline. The structured data behind every guide and article names the same signature as its author.",
+    "reason": "A site that asks a reader to weigh what it publishes has to put a name on the work. A team signature is the most that can honestly be claimed before a registered entity, a correction inbox and named individuals exist, and those three stay listed on the about page as still missing rather than written up as settled."
+  }]
 

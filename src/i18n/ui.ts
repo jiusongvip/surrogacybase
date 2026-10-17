@@ -48,6 +48,9 @@ export const UI: Record<Lang, {
   tagline: string;
   /** {year} and {site} are filled in by the footer. */
   copyright: string;
+  /** Wraps the team signature link in the footer so both locales keep one sentence. */
+  bylinePre: string;
+  bylinePost: string;
   /**
    * The closing sentence, cut around its two links. Each piece carries its own spacing,
    * because English needs a space before "and" and Chinese needs none, and that belongs to
@@ -331,6 +334,8 @@ export const UI: Record<Lang, {
     notYetDated: 'Not yet dated',
     tagline: `${SITE.tagline} Independent information and decision tools. Not a clinic, not a law firm, not a surrogacy agency.`,
     copyright: '© {year} {site}. Informational content, not legal or medical advice.',
+    bylinePre: 'Written and maintained by ',
+    bylinePost: '.',
     disclaimerPre: 'The full disclaimer is in our ',
     disclaimerTerms: 'terms',
     disclaimerMid: ' and ',
@@ -767,6 +772,8 @@ export const UI: Record<Lang, {
     notYetDated: '暂无日期',
     tagline: `${SITE.taglineZh}独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。`,
     copyright: '© {year} {site}。内容为信息参考，不构成法律或医疗意见。',
+    bylinePre: '本站由 ',
+    bylinePost: ' 编写与维护。',
     disclaimerPre: '完整的免责声明见我们的',
     disclaimerTerms: '服务条款',
     disclaimerMid: '与',

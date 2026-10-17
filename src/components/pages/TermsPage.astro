@@ -8,6 +8,7 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import NeedsInput from '@/components/ui/NeedsInput.astro';
+import { SITE } from '@/const';
 import { TERMS_PAGE, TERMS_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath } from '@/i18n/paths';
@@ -46,7 +47,7 @@ const copy = TERMS_PAGE[lang];
 
     <section class="mt-12 border-t border-line pt-8">
       <h2 class="text-[22px]">{copy.openHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.openIntro}</p>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{fill(copy.openIntro, { team: SITE.team })}</p>
       <ul class="mt-4 space-y-3 text-[16px]">
         {
           copy.openNeeds.map((n) => (

@@ -184,7 +184,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     },
     moneyHeading: 'Independence and money',
     commercial: [
-      'Who operates the site is stated on the About page.',
+      'The name these pages are published under, and what has not been stated yet, are on the About page.',
       'Paid placements, referral fees and sponsorships are not accepted while the site presents itself as independent. If any commercial relationship is introduced, this page and the affected pages disclose it before the arrangement starts.',
       'Providers are not paid to be included, and inclusion is not an endorsement.',
       'Corrections from a named party are handled the same way as corrections from anyone else.',
@@ -275,7 +275,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供发送更正的地址' },
     moneyHeading: '独立性与金钱',
     commercial: [
-      '本站由谁运营，写在关于页上。',
+      '这些页面以什么名字发布，以及哪些内容尚未写明，都写在关于页上。',
       '本站以独立自居期间，不接受付费排位、转介费与赞助。如果将来引入任何商业关系，本页与受影响的页面会在这项安排开始之前披露它。',
       '服务方不会付费换取被收录，被收录也不构成背书。',
       '来自具名一方的更正与其他任何人的更正走同样的流程。',
@@ -466,7 +466,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     ],
     openHeading: 'Open questions this page cannot close yet',
     openIntro:
-      'No organisation is named yet as the operator of this site, so these terms do not bind you or anyone else to anything.',
+      'These pages are signed {team}, but no registered entity has been named as the operator of this site, so these terms do not bind you or anyone else to anything.',
     openNeeds: [
       {
         label: 'Operating entity, country and governing law',
@@ -516,7 +516,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     ],
     openHeading: '本页现在还无法收口的开放问题',
     openIntro:
-      '目前还没有任何机构被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
+      '这些页面的署名是 {team}，但还没有任何注册主体被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
     openNeeds: [
       { label: '运营主体、国家与适用法', why: '哪一家法院、哪一套消费者保护规则适用，取决于这一项' },
       { label: '评估服务是否为有偿委托，以及委托范围', why: '一项收费服务需要它自己的供给、退款与限度条款' },

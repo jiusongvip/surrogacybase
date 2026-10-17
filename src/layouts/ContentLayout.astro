@@ -46,7 +46,7 @@ const jsonLd = [
     mainEntityOfPage: { '@type': 'WebPage', '@id': url.href },
     author: d.author
       ? { '@type': 'Person', name: d.author }
-      : { '@type': 'Organization', name: SITE.name },
+      : { '@type': 'Organization', name: SITE.team },
     publisher: { '@id': new URL('/#organization', Astro.site).href },
   },
 ];

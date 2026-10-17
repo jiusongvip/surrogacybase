@@ -6,6 +6,14 @@ export const SITE = {
   tagline: 'Clearer surrogacy decisions, in whichever country you are considering.',
   /** The same line in Chinese. Both locales keep exactly one copy of it. */
   taglineZh: '无论您正在考虑哪个国家，都把代孕的决定逐条弄清楚。',
+  /**
+   * The signature these pages publish under, chosen by the people who write them.
+   *
+   * A team name is not a registered entity. What it is in law, where it is registered, the
+   * address a correction reaches, and any named individual behind a guide all remain unpublished,
+   * and the about page keeps listing them as missing rather than settled.
+   */
+  team: 'Sourceline',
   locale: 'en',
   ogImage: '/og/default.jpg',
   /**
