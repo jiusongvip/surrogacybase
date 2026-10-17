@@ -550,5 +550,13 @@
     "title": "The site publishes a contents list, a feed, and dated sitemap entries",
     "change": "A list of every page in each language for a machine reader, an RSS feed of guides and explainers for each language with a link to it in the footer, a last-modified date for each sitemap entry taken from the date the sources behind that page were opened, and breadcrumb markup on every page. All four are generated from the records the pages already render from, so no claim is written a second time.",
     "reason": "A reader who wants to keep up with the site should be able to subscribe rather than remember, and an index should be able to see which pages were checked when instead of inferring it from a URL."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "published",
+    "path": "/destinations",
+    "title": "Destination pages for four more jurisdictions",
+    "change": "Four records join the five already published, covering destinations this market returns to constantly. Georgia is published with a sourced position: the statute opens a surrogacy contract to a man and a woman who are married, or have lived together, for at least a year, draws no distinction between citizens and foreigners, and stays silent on payment rather than permitting it. Ukraine is published with a sourced position as well, and that includes the bill registered in August 2026 which would bar foreign customers if it were ever enacted; it is a proposal, not yet law. Kazakhstan is published as closed to international intended parents, on the family law amendment signed in July 2026. Kyrgyzstan is published and marked as incomplete, because the articles that would set the terms of a surrogacy agreement could not be opened, so that record states what the statute names and goes no further. Where an official text was not readable, the sources on each record say what they are and why they were used instead.",
+    "reason": "The destinations an agent sells hardest are the ones you most need a sourced answer about, and a page that stays quiet on four of them looks exactly like a page that checked them and found nothing to write. Saying which of the four was read, and how far that reading went, is the part that is useful to you."
   }
 ]

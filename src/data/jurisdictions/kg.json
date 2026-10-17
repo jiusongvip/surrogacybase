@@ -1,0 +1,52 @@
+{
+  "code": "kg",
+  "name": "Kyrgyzstan",
+  "region": "Central Asia",
+  "basis": "no-specific-statute",
+  "eligibility": "This record is published as incomplete, because the provisions that would decide eligibility could not be read. What is established is that a Kyrgyz statute exists and names the arrangement: law No. 14 of 12 January 2024 on the protection of public health defines a surrogacy agreement in its article 3 as an agreement between the person or persons interested in having the child and the woman who agreed to carry. Whether that law restricts by marital status, by citizenship or by medical indication, and what the implementing procedure requires, could not be established: the substantive articles sat behind a subscription in the official-text database, and the page of the implementing by-law in the Ministry of Justice register rendered its title only. Accounts that describe unusually wide access, open regardless of marital status or medical indication, trace to organisations that arrange surrogacy, and an independent report instead states that the country has no formal surrogacy legal framework. Those two claims cannot both be relied on, and this page does not pick one.",
+  "paymentModel": "Not established from any source we could open. The only descriptions of compensation, care costs and nutrition expenses coming with the contract are published by businesses that arrange these programmes, and no state text setting out whether payment to the carrier is lawful commercial remuneration or reimbursement of expenses was readable here. Treat any Kyrgyz price list as a commercial statement.",
+  "parentage": "Independent reporting states that the woman who gave birth may be named on the birth certificate, and that in some cases other women have been listed on birth certificates to avoid scrutiny by officials. If that is right, parentage is not settled by the arrangement the way a United States judgment or a Ukrainian registration entry settles it, and the document the child holds may not name the people raising the child. The reporting also notes that Australia does not necessarily recognise an international birth certificate or a court order. No Kyrgyz register entry, court decision or consular notice establishing how foreign intended parents are recorded was found.",
+  "statusVerifiedOn": "2026-10-17",
+  "insufficientData": true,
+  "facts": [
+    {
+      "claim": "Law No. 14 of the Kyrgyz Republic, dated 12 January 2024, on the protection of public health, defines in article 3, item 16, an agreement of surrogacy as an agreement between the person or persons interested in having a child and the woman who agreed to carry it. The substantive articles governing the procedure were not readable in the copy opened.",
+      "source": {
+        "label": "Law of the Kyrgyz Republic on the protection of public health (No. 14 of 12 January 2024)",
+        "url": "https://cis-legislation.com/document.fwx?rgn=156571",
+        "publisher": "CIS legislation database, a reproduction of official texts of Commonwealth of Independent States states",
+        "publishedOn": "2024-01-12",
+        "verifiedOn": "2026-10-17",
+        "supports": "The database identifies the instrument by number and date and shows the definitions article; the full text is behind a subscription, so the article that would set eligibility and procedure was never read. That is the reason this record is published as incomplete rather than as a description of Kyrgyz rules."
+      }
+    },
+    {
+      "claim": "A Kyrgyz implementing act on the procedure and conditions for using the surrogacy procedure is recorded in the Ministry of Justice's legal information system, in an edition dated 14 October 2024. Its operative provisions were not readable when the page was opened.",
+      "source": {
+        "label": "Порядок и условия использования процедуры суррогатного материнства (register entry)",
+        "url": "https://cbd.minjust.gov.kg/50-568/edition/18312/ru",
+        "publisher": "Ministry of Justice of the Kyrgyz Republic, legal information system",
+        "publishedOn": "2024-10-14",
+        "verifiedOn": "2026-10-17",
+        "supports": "The state register establishes that an implementing act exists and is current at that edition date. The page returned its title and reference but not its body, so nothing in this record describes what the act requires."
+      }
+    },
+    {
+      "claim": "Independent reporting states that Kyrgyzstan has no formal surrogacy legal framework, that the surrogate may be named on the child's birth certificate, and that other women have been listed on birth certificates to avoid scrutiny by officials. It adds that Australia does not necessarily recognise an international birth certificate or court order, and that in August 2025 Australia's travel advisory told travellers to exercise a high degree of precaution because of unrest.",
+      "source": {
+        "label": "Surrogacy in Kyrgyzstan",
+        "url": "https://sarahjefford.com/surrogacy-in-kyrgyzstan/",
+        "publisher": "Sarah Jefford, independent journalist and author",
+        "publishedOn": "2025-08-22",
+        "verifiedOn": "2026-10-17",
+        "supports": "An independent account rather than a state source, published 22 August 2025 and later modified, used because no official text or court record describing Kyrgyz registration practice was reachable. Its statements about birth certificates are reporting of what families have encountered, not a rule we could confirm in law."
+      }
+    }
+  ],
+  "openQuestions": [
+    "What article 57 of the January 2024 health law and the October 2024 implementing act actually require: neither text was readable here, so eligibility, payment and the registration route under Kyrgyz law are all unknown to us.",
+    "Whether the intended parents or the woman who gave birth is the legal mother at birth, and whether foreign intended parents reliably obtain a birth certificate and then a travel document or passport for the child.",
+    "Whether payment to the carrier is lawful commercial remuneration or reimbursement of expenses, and on what terms; the only accounts found come from organisations that arrange these programmes.",
+    "Whether the January 2024 law restricts access to foreigners, and whether any court decision has applied it to an international arrangement."
+  ]
+}

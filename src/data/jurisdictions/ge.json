@@ -1,0 +1,40 @@
+{
+  "code": "ge",
+  "name": "Georgia",
+  "region": "Caucasus",
+  "basis": "assisted-reproduction-law",
+  "eligibility": "A surrogacy contract is open to a couple consisting of a man and a woman who have been married, or have lived together, for at least one year; single people and same-sex couples cannot be parties to it. Citizenship is not one of the conditions: Georgian law does not distinguish between Georgian citizens and foreigners, which is why Georgia has been used by international intended parents. The rules sit inside the health-care and patient-rights legislation and a set of Ministry of Health orders rather than in a dedicated surrogacy act, so this page describes the framework as a practitioner who reads those instruments reports it, and names what we could not verify underneath.",
+  "paymentModel": "The statute is silent rather than permissive: it neither expressly permits nor prohibits paying the woman who carries, and compensated arrangements have operated in Georgia for years on that silence. No published ceiling, no list of reimbursable items and no regulatory figure for Georgia was found in the material read for this page, so nothing here is a Georgian price, and a figure quoted to you by a clinic or an agency is not something Georgian law has set.",
+  "parentage": "Registration is administrative rather than judicial. The intended parents are recorded as the child's parents, and the woman who carried the pregnancy and any donor are not entered as parents; the practitioner account read here describes the rule as a prohibition on naming them, not as a discretion the registry weighs. There is no equivalent of a United States pre-birth order, because no court order is the step that establishes parentage. What a Georgian birth entry is worth once the family reaches another country is a separate question this record does not answer.",
+  "statusVerifiedOn": "2026-10-17",
+  "insufficientData": false,
+  "facts": [
+    {
+      "claim": "Surrogacy in Georgia is governed by article 143 of the Law of Georgia on Health Care together with the Law on Patient Rights and Ministry of Health orders; a contract requires a man and a woman married or cohabiting for at least one year, and single people and same-sex couples cannot be parties; the law does not distinguish Georgian citizens from foreigners; it neither expressly permits nor prohibits paying the carrier; the intended parents are registered as the child's parents and the surrogate and any donor can never be named.",
+      "source": {
+        "label": "Surrogacy law in Georgia (practitioner page)",
+        "url": "https://www.llclaw.ge/en/news/surrogacy-law-georgia",
+        "publisher": "LCL Law, a Georgian law firm",
+        "publishedOn": "2026-10-10",
+        "verifiedOn": "2026-10-17",
+        "supports": "A law firm's reading of four instruments, used because the state gazette carrier for the Health Care Law and the Ministry of Health orders could not be opened from this build, so the article numbers rest on this account alone. The firm markets its own services, so its statement of what the law permits is used for the legal frame and never for a price, a success rate or an outcome."
+      }
+    },
+    {
+      "claim": "A government bill introduced in 2023 to ban surrogacy for foreigners has not been adopted. The drafts would have confined surrogacy and IVF to Georgian citizens on an altruistic basis, were announced by the prime minister on 12 June 2023, and were projected to take effect on 1 January 2024; commentators described the existing framework as vague. No further action was recorded after the announcement.",
+      "source": {
+        "label": "Georgia Aims To Ban Booming Surrogacy Business For Foreigners",
+        "url": "https://www.rferl.org/a/georgia-surrogacy-babies-foreigners-legislation/32464403.html",
+        "publisher": "RFE/RL",
+        "publishedOn": "2023-06-18",
+        "verifiedOn": "2026-10-17",
+        "supports": "Reporting on the announcement, the content of the drafts and the projected commencement date. The fact that the bill was never adopted comes from the practitioner page above, dated three years later; whether the bill was formally withdrawn or simply lapsed was not confirmed in a parliamentary register, so this record states non-adoption and nothing stronger."
+      }
+    }
+  ],
+  "openQuestions": [
+    "The consolidated official text of Health Care Law article 143 and of the Ministry of Health orders was never opened here, so the article numbers, and the exact wording of the rule that keeps the carrier and the donor off the birth entry, rest on one law firm's account.",
+    "Whether the 2023 bill was formally withdrawn or merely lapsed is unconfirmed, which means a future attempt to close the route to foreigners would not be foreshadowed by anything in the published record.",
+    "Whether a Georgian birth entry naming the intended parents is accepted by the country the family lives in, and which document the child travels on, are separate questions, and nothing in this record speaks to either."
+  ]
+}

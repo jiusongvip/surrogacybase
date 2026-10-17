@@ -1,0 +1,52 @@
+{
+  "code": "ua",
+  "name": "Ukraine",
+  "region": "Eastern Europe",
+  "basis": "assisted-reproduction-law",
+  "eligibility": "Surrogacy is applied to a married couple only: the account of the rule in Ukraine's free secondary legal aid system states that single men, single women and same-sex couples have no right to take part in a surrogacy programme, and that the procedure is available to married couples without children. Foreign citizens may commission one. Only gestational surrogacy is contemplated, and the arrangement is made on a commercial basis under a contract between the married couple and the woman carrying. The status of this route is the part a family has to watch: a bill registered in parliament in August 2026 would remove foreign intended parents altogether, and it has not been adopted, so the rule that applies today is the permissive one and the risk is legislative rather than settled.",
+  "paymentModel": "Commercial, on the basis of a contract between the married couple and the carrier. The legal-aid account records no limit on surrogacy-related payments, including the carrier's remuneration and additional expenses, and disputes over unpaid compensation are described there as a known category of case. No government figure, tariff or cap was found in the material read, so nothing on this page is a Ukrainian price, and a published clinic total is a commercial statement rather than something Ukrainian law sets.",
+  "parentage": "The intended spouses are entered on the birth record directly, at birth, without a court order. The registration step is documentary: the couple's application, the certificate establishing the genetic kinship of the father or the mother with the child, and the carrier's consent to the spouses being recorded as the parents, with her signature on that consent notarised. There is no pre-birth order because registration, not adjudication, is the mechanism that fixes parentage. Whether the resulting Ukrainian birth entry is accepted in the country the family lives in is a separate question this record does not answer.",
+  "statusVerifiedOn": "2026-10-17",
+  "insufficientData": false,
+  "facts": [
+    {
+      "claim": "Surrogacy in Ukraine is available only to a married couple, and single men, single women and same-sex couples have no right to take part in a programme; it is used on a commercial basis under an agreement between the married couple and the carrier, with no stated limit on payments; the spouses are recorded as the parents on the strength of their application, a certificate of genetic kinship of a parent with the child, and the carrier's consent to that entry with her signature notarised.",
+      "source": {
+        "label": "Сурогатне материнство (legal aid knowledge base entry)",
+        "url": "https://legalaid.wiki/index.php/%D0%A1%D1%83%D1%80%D0%BE%D0%B3%D0%B0%D1%82%D0%BD%D0%B5_%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%BE",
+        "publisher": "Ukrainian free secondary legal aid system",
+        "publishedOn": "2025-06-18",
+        "verifiedOn": "2026-10-17",
+        "supports": "The legal-aid system's own statement of the rule, last edited 18 June 2025. It is a secondary source: the text of article 123 of the Family Code and the Ministry of Health instruction on assisted reproductive technology were not reachable from this build, so the article numbers and the documentary detail rest on this summary rather than on the instruments themselves."
+      }
+    },
+    {
+      "claim": "Bill 15507, registered in the Verkhovna Rada on 13 August 2026, would ban surrogacy for foreigners and stateless persons except where one of the spouses is a Ukrainian citizen, and would require the intended parents to have permanently resided in Ukraine for at least three years before entering into the agreement. It is a registered proposal, not enacted law.",
+      "source": {
+        "label": "Parliament proposes changes to Ukraine's surrogacy rules",
+        "url": "https://www.ukrinform.net/rubric-society/4153973-parliament-proposes-changes-to-ukraines-surrogacy-rules.html",
+        "publisher": "Ukrinform, the Ukrainian national news agency",
+        "publishedOn": "2026-08-13",
+        "verifiedOn": "2026-10-17",
+        "supports": "A state news agency report of the bill's registration and of its two main restrictions. The bill text itself was not read, so its transitional provisions, its committee stage and the treatment of domestic single patients are unconfirmed, and this record states only that a numbered bill exists and has not been adopted."
+      }
+    },
+    {
+      "claim": "As of May 2026, Ukraine's parliament was considering banning surrogacy for foreigners, whom officials in the reporting described as roughly 95 per cent of the intended parents using the country's programmes, and a health ministry official was quoted supporting the move. The reporting describes the route as still open to foreign intended parents at that date.",
+      "source": {
+        "label": "Ukraine is a global surrogacy hub, but that could be about to change",
+        "url": "https://www.bbc.com/news/articles/clyp4kp687go",
+        "publisher": "BBC News",
+        "publishedOn": "2026-05-07",
+        "verifiedOn": "2026-10-17",
+        "supports": "Reporting on the policy direction and on the share of foreign intended parents as stated by the officials quoted in it. That share is not an independently counted figure, and it is reproduced here as what the article reports rather than as a verified statistic."
+      }
+    }
+  ],
+  "openQuestions": [
+    "The verbatim text of Family Code article 123 and of the Ministry of Health instruction on assisted reproductive technology was not reachable here, so the exact certificate that establishes the genetic link, and whether any family status other than marriage qualifies, rest on a legal-aid summary.",
+    "Ministry of Health order 383 of 6 March 2024 amends the assisted-reproduction instruction; its existence and date were confirmed but the changes it made could not be read, so the current procedural detail is unconfirmed.",
+    "The committee stage, the transitional rules and the likely fate of bill 15507 are unknown. A change of that kind would end access for foreign couples without any change to what a clinic or an agency is offering today, which is why this record dates the status it describes.",
+    "The operational effect of the war on a programme, including clinic locations, travel and the closing of airspace, was not documented in any source we could open, so nothing here describes what taking a pregnancy to birth in Ukraine currently involves."
+  ]
+}
