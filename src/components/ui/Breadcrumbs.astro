@@ -9,9 +9,32 @@ type Props = { crumbs: Crumb[] };
 const { crumbs } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang];
+
+/*
+ * The same list the reader sees, emitted as BreadcrumbList. It is built here rather than in the
+ * page shell because the trail already lives in these props: a second copy in the metadata would
+ * be a second place to keep it true, and the two would drift.
+ *
+ * Every entry but the last names a URL; the last is the page itself, so it repeats the canonical.
+ */
+const trail = [{ label: copy.home, href: HOME_BY_LANG[lang] }, ...crumbs];
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${new URL(Astro.url.pathname, Astro.site).href}#breadcrumb`,
+  itemListElement: trail.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    item: c.href
+      ? new URL(c.href, Astro.site).href
+      : new URL(Astro.url.pathname, Astro.site).href,
+  })),
+};
 ---
 
 <nav aria-label={copy.breadcrumbLabel} class="shell pt-6">
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
   <ol class="flex flex-wrap items-center gap-2 text-[14px] text-muted">
     <li>
       <a href={HOME_BY_LANG[lang]} class="hover:text-accent">{copy.home}</a>
