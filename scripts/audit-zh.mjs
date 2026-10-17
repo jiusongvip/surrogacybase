@@ -29,7 +29,10 @@ function walk(dir, out = []) {
 const FRONTMATTER = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
 
 function parse(file) {
-  const raw = readFileSync(file, 'utf8');
+  /* Windows checkouts hand back CRLF line endings, and every pattern below is written against
+   * LF. Read as-is, a perfectly well-formed file reports "no frontmatter", which buries the real
+   * findings under a page of false ones. Normalising here costs nothing: the script only reads. */
+  const raw = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
   const m = raw.match(FRONTMATTER);
   if (!m) problems.push(`${relative(root, file)}: no frontmatter`);
   return { file, fm: m?.[1] ?? '', body: m?.[2] ?? '', raw };

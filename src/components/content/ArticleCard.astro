@@ -9,12 +9,19 @@ import { pathOf, type ContentEntry } from '@/lib/content';
 type Props = {
   entry: ContentEntry;
   featured?: boolean;
+  /**
+   * The heading level the title is written at. Cards sit under a section heading on most pages,
+   * which makes them third level; on a topic page they are the only list on the document, and a
+   * heading that skips past the second level reads to an outline parser as a page missing a part.
+   */
+  heading?: 2 | 3;
   /* Optional: a card whose piece has no photograph of its own stays text-only rather
    * than borrowing one that depicts something else. */
   image?: { src: ImageMetadata; alt: string };
 };
 
-const { entry, featured = false, image } = Astro.props;
+const { entry, featured = false, heading = 3, image } = Astro.props;
+const Heading = `h${heading}` as 'h2' | 'h3';
 const { title, description, category, type, updatedOn } = entry.data;
 const href = pathOf(entry);
 const minutes = type === 'article' ? readingTime(entry.body ?? '') : 0;
@@ -44,7 +51,7 @@ const label = CATEGORY_LABELS[lang][category] ?? category;
         {label}
         <span class="text-muted"> · {type === 'guide' ? copy.kinds.guide : copy.kinds.article}</span>
       </p>
-      <h3 class:list={[featured ? 'mt-2 text-[27px]' : 'mt-2 text-[21px]']}>{title}</h3>
+      <Heading class:list={[featured ? 'mt-2 text-[27px]' : 'mt-2 text-[21px]']}>{title}</Heading>
       <p class="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-muted">{description}</p>
       <p class="mt-4 tnum text-[13px] text-muted">
         {copy.labels.updated} {formatShortDate(updatedOn, lang)}
