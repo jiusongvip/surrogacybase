@@ -296,7 +296,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const PRIVACY_REVISION = '2026-10-16';
+export const PRIVACY_REVISION = '2026-10-17';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
@@ -320,8 +320,8 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
         body: 'Everything you type is saved only in your own browser and read back from there. This site has no server that could receive it, so nothing the tool holds is sent to us or to anyone else. Clearing site data for this domain removes it permanently, and exporting gives you the only other copy.',
       },
       {
-        h: 'The assessment enquiry form',
-        body: 'It asks for five things: where you are in the process, which countries or programs are in view, who holds the documents you have now, the question you need answered, and the address to reply to. Two of those are optional. No name, no date of birth, no situation details, and no documents. This page has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
+        h: 'The enquiry form',
+        body: 'It is the only form on this site, and it asks five things: your name, the email address to reply to, which area your question falls in, the budget band you are planning around, and a line about your situation or question. Only the last of those is optional, and the budget takes a band rather than a figure. Nothing asks for an identity document, a date of birth or a medical record, and there is nowhere in the form to attach a file. The site has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
       },
       {
         h: 'Information you send us directly',
@@ -389,8 +389,8 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
         body: '您键入的一切都只保存在您自己的浏览器里，并从那里读回。本站没有能够接收它的服务器，所以这个工具持有的任何内容都不会发给我们或任何其他人。清除这个域名的站点数据会永久移除它，而导出得到的那份是唯一的另一份副本。',
       },
       {
-        h: '评估问询表单',
-        body: '它只要五件事：您在流程的哪一步、视野里有哪些国家或方案、您现在手里的文件由谁持有、您需要被回答的那个问题，以及回复寄往哪个地址。其中两项是可选的。不要姓名、不要出生日期、不要处境细节、也不要文件。这个页面没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询写好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
+        h: '问询表单',
+        body: '它是本站唯一的一个表单，只要五件事：您的姓名、回复用的邮箱地址、您的问题属于哪一项、您自己规划的预算区间，以及一句话说明您的处境或问题。其中只有最后一项是选填，而预算只接受区间，不填具体数字。没有任何一格要身份证件、出生日期或病历，表单里也没有附上文件的位置。本站没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询组装好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
       },
       {
         h: '您直接发给我们的信息',

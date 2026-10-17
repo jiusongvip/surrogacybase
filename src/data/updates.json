@@ -470,5 +470,21 @@
     "title": "The imagery paragraph on the editorial policy addresses you now",
     "change": "Its closing sentence said a borrowed stock image leaves the reader looking at a face that belongs to nobody in the story. It now says you. The revision date shown on that page moved to the day this changed.",
     "reason": "That paragraph explains a choice made for the person reading it, so the third person turned the one sentence talking to you into an observation about someone else."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "decision",
+    "path": "/assessment",
+    "title": "One enquiry form, not two ways to answer questions",
+    "change": "The assessment service page carried its own five-field form beside the button that leads to the homepage enquiry. The extra one is gone. The homepage form is now the only place on this site that asks anything of you, and every other exit leads to it. The tools keep saving to your own browser as before, and their exits stay copy, download and your own mail app.",
+    "reason": "Two forms for one act asked two different sets of questions, so the choice in front of you was about which form to fill rather than about what you needed answered."
+  },
+  {
+    "date": "2026-10-17",
+    "kind": "corrected",
+    "path": "/privacy",
+    "title": "The privacy page describes the form that is actually on the site",
+    "change": "Its enquiry-form entry listed the fields of the form that has just been removed, including the line that no name is asked for. It now lists the five fields of the homepage form, says that only the last of them is optional, and says plainly that a name and a reply address are collected there.",
+    "reason": "The page that tells you what gets collected has to match the boxes that are really on the site, or it is misleading in exactly the section written to prevent that."
   }
 ]

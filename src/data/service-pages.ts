@@ -164,7 +164,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const ASSESSMENT_REVISION = '2026-10-16';
+export const ASSESSMENT_REVISION = '2026-10-17';
 
 export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
   en: {
@@ -172,7 +172,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     description:
       'One-to-one consultation on the documents and options you already hold: a structured written read that names each gap and the professional who has to close it.',
     statusNote:
-      'The form below writes your enquiry out ready to send. Who reads it, on what scope and at what price is not settled yet, so none of it is promised here.',
+      'The enquiry form writes your question out ready to send. Who reads it, on what scope and at what price is not settled yet, so none of it is promised here.',
     h1: 'What an assessment is, and what it is not',
     intro:
       'Reading gets you to a point where your own documents are the question. An assessment is the service for that point: not advice, not a match, not a rating of a provider. It is a structured read of what you already hold, in which each gap is written down together with the party who has to close it. The verification itself belongs to a lawyer, a clinic or an escrow provider, and is not something we do on your behalf.',
@@ -250,7 +250,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     ],
     startHeading: 'Start with the question you already have',
     startBody:
-      'The enquiry form writes the question out in the shape an assessment answers: where you are, what is in view, who holds the document now, and the one thing it fails to state. It composes that in your browser and hands it to your mail app, your clipboard or a file, so nothing sits in a queue you cannot see.',
+      'The enquiry form asks five things: your name, the address to reply to, which of these areas your question sits in, the budget band you are planning around, and the question itself in your words. It is the one form on this site, and it composes in your browser before handing the text to your mail app, your clipboard or a file, so nothing sits in a queue you cannot see.',
     startPrimary: 'Write an enquiry',
     startSecondary: 'Read how an enquiry is handled',
     diyHeading: 'Do the useful part yourself now',
@@ -264,7 +264,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     title: '评估服务说明',
     description:
       '一对一咨询：把您已经持有的文件和选项做一次有结构的书面梳理，指出缺口，以及每一个问题必须由谁来回答。',
-    statusNote: '下面的表单会把您的问询写成可以发送的文字。由谁来读、范围多大、费用多少都还没有确定，所以这些都不在这里承诺。',
+    statusNote: '问询表单会把您的问询写成可以发送的文字。由谁来读、范围多大、费用多少都还没有确定，所以这些都不在这里承诺。',
     h1: '评估是什么，以及它不是什么',
     intro:
       '阅读会把您带到一个地步：您自己的文件成了问题所在。评估就是为这个地步准备的服务。它不是建议，不是匹配，也不是对某个服务方的评级。它是对已经在您手里的东西做一次有结构的梳理，并把每一个缺口都写明该由谁来补上。核实属于律师、诊所或资金监管方，不由我们代您完成。',
@@ -330,7 +330,7 @@ export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
     ],
     startHeading: '从您已经有的那个问题开始',
     startBody:
-      '问询表单会把您的问题写成评估能够回答的形状：您处在哪一步、视野里有什么、文件现在在谁手里，以及它唯一没有说明的那件事。它在您自己的浏览器里把这段文字组织好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
+      '问询表单只问五件事：您的姓名、回复到哪个邮箱、您的问题属于哪一项、您自己规划的预算区间，以及用您自己的话写下的问题。它是本站唯一的表单，会先在您的浏览器里把这段文字组装好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
     startPrimary: '写一份问询',
     startSecondary: '阅读问询会如何被处理',
     diyHeading: '现在自己动手完成有用的那部分',
