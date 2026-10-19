@@ -43,7 +43,12 @@ const content = defineCollection({
           credentialUrl: z.url().optional(),
         })
         .optional(),
-      /** Jurisdiction codes from src/data/jurisdictions, when the page is scoped. */
+      /**
+       * The destination records this page is scoped against: the legal systems whose records it
+       * draws on, not every system it happens to mention. A page can follow a child's paperwork
+       * into a country this site has no record for, and this field is not the place that claims
+       * otherwise.
+       */
       jurisdictions: z.array(z.string()).default([]),
       sources: z.array(source).default([]),
       relatedGuides: z.array(z.string()).default([]),

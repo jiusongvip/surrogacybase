@@ -6,7 +6,7 @@ type: guide
 category: process
 published: true
 publishedOn: "2026-10-17"
-updatedOn: "2026-10-17"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-17"
 jurisdictions: ["us", "gb"]
 evidence: verified
@@ -93,6 +93,8 @@ sources:
 The medical part of a program ends at a birth. The part that decides whether your family travels home together starts there, and it belongs to institutions nobody in your arrangement employs: a court in the state of birth, a civil registry, a consulate, a passport office, and, for a child who will grow up in China, a local public security sub-office. None of them is a party to your contract, and none of them works to a schedule anyone selling you a program can influence.
 
 This page follows that chain in the order it has to be done. Two of its links have pages of their own and are not repeated here: [how an apostille works and who issues one](/articles/getting-a-birth-certificate-accepted-abroad), and [the six-month limit on a UK parental order](/articles/the-six-month-limit-on-a-uk-parental-order).
+
+One point of scope before the chain begins. China appears on this page as the country a family returns to, not as a place to arrange a birth: the administrative measures cited below set penalties for the institutions that carry out surrogacy there, so this site publishes no destination record for China. The United States and the United Kingdom appear because their courts, registries and consulates issue the documents a child needs, and each of them has a record on the destinations page.
 
 ## Three documents, three different authorities
 

@@ -94,13 +94,15 @@ export type UpdatesPage = {
   /** {n} numbers the outcome for a screen reader. */
   reasonLabel: string;
   openPage: string;
+  /** {title} is the later entry's own title, {date} is its date. */
+  supersededBy: string;
   emptyTitle: string;
   emptyBody: string;
   emptyAction: string;
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const EDITORIAL_REVISION = '2026-10-17';
+export const EDITORIAL_REVISION = '2026-10-19';
 
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
@@ -163,8 +165,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
         p: 'Providers are not ranked, scored or shortlisted, because a defensible ranking would need audited data on programs, payments and outcomes that does not exist publicly. Where an official body names organisations, we report that naming and what it does and does not mean.',
       },
       {
-        h: 'No invented expertise',
-        p: 'Bylines name real people who accept responsibility for the text, or they are absent. Reviewer credits are never added to borrow trust. An empty author slot is marked as unfinished rather than filled with a plausible credential.',
+        h: 'What the signature claims, and what it does not',
+        p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that the team reviewing them includes members with clinical backgrounds. That is the whole of the claim: no individual is named as an author or a reviewer anywhere on the site, and no credential is quoted. The About page lists the names and qualifications behind the signature as not yet published. Until they are, the review line is a claim you cannot match to a person, and it is presented here as exactly that rather than as a credential. Reviewer credits are still never added to borrow trust.',
       },
       {
         h: 'Silence is a valid editorial decision',
@@ -257,8 +259,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
         p: '服务方不被排名、打分或列入优选名单，因为一个站得住的排名需要关于方案、付款与结果的经审计数据，而这些数据并不公开存在。当某个官方机构点名列出组织时，我们报告那次点名，以及它意味着什么、不意味着什么。',
       },
       {
-        h: '不编造专业身份',
-        p: '作者栏要么署名真人并由其接受对文本负责，要么空缺。审阅人署名从不为了借用信任而添加。空缺的作者位置被标为未完成，而不是用一个看起来合理的资历填上。',
+        h: '署名声称了什么，没有声称什么',
+        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明审阅它们的团队中有具备临床背景的成员。声称的全部内容到此为止：站内不以任何个人名义署名作者或审阅人，也不引用任何资历。关于页把署名背后的姓名与资历列为尚未发布。在这些信息公布之前，审阅行是一条您无法对应到具体个人的声称，本页就按这样陈述它，而不是把它当作资历。审阅人署名仍然从不为了借用信任而添加。',
       },
       {
         h: '不写，本身就是一种有效的编辑决定',
@@ -542,6 +544,7 @@ export const UPDATES_PAGE: Record<Lang, UpdatesPage> = {
     },
     reasonLabel: 'Why',
     openPage: 'Open the page',
+    supersededBy: 'Superseded by the entry “{title}”, logged {date}.',
     emptyTitle: 'Nothing logged yet',
     emptyBody: 'Entries appear when a page is published, corrected, withheld or removed.',
     emptyAction: 'Read the editorial policy',
@@ -562,6 +565,7 @@ export const UPDATES_PAGE: Record<Lang, UpdatesPage> = {
     },
     reasonLabel: '原因',
     openPage: '打开该页面',
+    supersededBy: '已被{date}的记录「{title}」取代。',
     emptyTitle: '还没有记录',
     emptyBody: '当一个页面被发表、更正、扣下或撤下时，条目会出现在这里。',
     emptyAction: '阅读编辑方针',

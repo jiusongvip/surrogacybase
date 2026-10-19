@@ -20,6 +20,7 @@
     "kind": "withheld",
     "path": null,
     "title": "No Colombia destination page yet",
+    "supersededBy": "Colombia and Greece records completed",
     "change": "Not created. A destination page for Colombia is planned, but no source behind the usual claims is sound enough to publish.",
     "reason": "The citation repeated across provider sites is wrong. Colombia's Constitutional Court ruling on a surrogacy arrangement is T-968 of 2009, not 2014; the court's T-968/2014 document is about disability rating. The 2009 decision is a tutela about custody and contact for twins, and it says only that there is no express prohibition, which is narrower than the way it is usually described. The full text needs reading before anything is written from it."
   },
@@ -28,6 +29,7 @@
     "kind": "withheld",
     "path": null,
     "title": "No India, Ukraine or Portugal destination pages yet",
+    "supersededBy": "Destination pages for four more jurisdictions",
     "change": "Not created.",
     "reason": "India: the ICMR page listing the 2021 Acts and Rules is reachable, but its substantive provisions could not be retrieved from any official source, so eligibility details, insurance amounts and offence sections cannot be published. Ukraine and Portugal: every statutory text we tried either failed to load or turned out to be an agency's marketing page. A page resting on a broker's summary is no better than no page at all."
   },
@@ -582,5 +584,37 @@
     "title": "These pages now publish under a team signature",
     "change": "The about page, the footer on every page, the terms of use and the copy written for machine readers now carry one signature: SurrogacyBase Medical Editorial Team. Every guide and article shows that signature as its author line and adds a review line naming the team's clinical members, and the structured data behind each page records the same team as author and reviewer.",
     "reason": "A site that asks a reader to weigh what it publishes has to put a name on the work and say who checked it. The names and credentials of the individuals inside the team, the registered entity behind the name, and the address a correction reaches all stay listed on the about page as still missing rather than written up as settled."
-  }]
-
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/updates",
+    "title": "Two entries in this log now say which entry replaced them",
+    "change": "The two 14 October entries that recorded a Colombia page as not created, and Ukraine among them, each carry a line pointing at the later entry that published those pages. The older wording stands as it was written, because what was decided on that date is part of the record; the pointer is what stops a reader taking a 14 October status as today.",
+    "reason": "A log read from the top can leave a statement about what does not exist standing after the thing has been published, and the first reader to repeat that statement back to you may be a machine."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/editorial-policy",
+    "title": "The editorial policy states what its own signature claims",
+    "change": "The rule about authorship now describes the signature these pages carry: a team name, with the statement that the team reviewing them includes members with clinical backgrounds. It says plainly that no individual is named as an author or a reviewer anywhere, that no credential is quoted, and that until those names are published the review line is a claim you cannot match to a person.",
+    "reason": "A byline a reader cannot check belongs described as that on the page which sets the standards, rather than left standing there to look like a credential."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/guides/bringing-your-child-home",
+    "title": "The guide about bringing a child home names the systems it scopes to",
+    "change": "The page opens by saying what China is doing inside it: the country a family returns to rather than a place to arrange a birth, and the reason no destination record for it is published here. The United States and the United Kingdom are named as the systems whose records the page draws on.",
+    "reason": "This page leans on Chinese nationality law and consular practice more than on any other source, and a reader weighing it against the destination list should not have to work out unaided that no China record exists."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "decision",
+    "path": "/about",
+    "title": "The About page gives its questions as questions",
+    "change": "The four questions on the About page, and the answer printed under each, are now recorded in a form a machine reader takes as a question with its answer rather than as loose text.",
+    "reason": "These are the questions a person asks before deciding whether to trust this site, and the page already answers them, so an assistant replying on its behalf has no reason to paraphrase."
+  }
+]

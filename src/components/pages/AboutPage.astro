@@ -16,9 +16,26 @@ import { fill } from '@/i18n/ui';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = ABOUT_PAGE[lang];
+
+/*
+ * The four questions are the page's own visible text, so the markup restates them rather than
+ * adding a set of questions written for a search result. A machine reader gets the same answers
+ * a visitor reads.
+ */
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: copy.statements.map((s) => ({
+      '@type': 'Question',
+      name: s.q,
+      acceptedAnswer: { '@type': 'Answer', text: s.a },
+    })),
+  },
+];
 ---
 
-<PageLayout title={copy.title} description={copy.description}>
+<PageLayout title={copy.title} description={copy.description} jsonLd={jsonLd}>
   <Breadcrumbs crumbs={[{ label: copy.title }]} />
 
   <article class="shell py-10 max-w-[74ch]">
