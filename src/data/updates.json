@@ -665,4 +665,28 @@
     "change": "The record carries a fifth source: the guidance the Department of Health and Social Care published on 3 October 2025 for intended parents and surrogates in England and Wales. It states that intended parents may be a heterosexual or same-sex couple in a marriage, a civil partnership or living together, or an individual regardless of relationship status, and that at least one applicant has to be genetically related to the child. The eligibility line now gives that in place of the summary it carried before, and the record is dated 19 October 2026.",
     "reason": "The four sources already on the record describe what an arrangement can bind and what may lawfully be paid. None of them stated who may apply, so the United Kingdom row in the admission matrix had nothing to cite and the page would have had to leave blank a question the government’s own guidance answers."
   }
-]
+,
+  {
+    "date": "2026-10-19",
+    "kind": "decision",
+    "path": "/assessment",
+    "title": "The assessment page now builds the document it used to describe",
+    "change": "The page no longer describes an assessment performed for you. It makes one: pick the destinations, and the brief is assembled in your browser out of their own records, giving the legal instrument each position rests on, which family types a listed source settles, what may lawfully be paid, who the child’s legal parent is at birth, every published figure with the source that printed it and the year those numbers describe, and the questions those sources left open. Copy it or download it. Nothing is collected, nothing is stored, and no part of it waits for anyone to read it. The tool is now listed on the tools index at the address it has always had.",
+    "reason": "The page described a service with no name, no price and no scope behind it. The document is the thing this site can actually hand over, and it is made from sources its own pages already carry."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": null,
+    "title": "The places that called this a service now call it a tool",
+    "change": "Four places called it a service. The navigation read Services and Get a consultation, a homepage card was titled One-to-one consultation with an intro promising one conversation about the documents in front of you, the enquiry band was headed Get personalized guidance, and the terms page listed whether the assessment service is paid among the questions this site has not settled. Those words are gone. The same places now read build a brief and write your enquiry; the terms page dropped the paid engagement question, because there is no engagement here to price; and the open item on the editorial page is now where an enquiry is received rather than who performs an assessment.",
+    "reason": "A label that promises a person at the other end is a claim this site cannot keep while no address for receiving enquiries has been published."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/#assessment",
+    "title": "The enquiry status line no longer says the message reached us",
+    "change": "Under the button on the homepage enquiry form, the line shown when nothing has been sent said that a copied or downloaded enquiry will reach us the same way, and the Chinese said it lands in our hands. The same line also repeated that no address for receiving enquiries is registered, which the notice above the form already states. It now says only what just happened: nothing has been sent, because this site has no server, and the message on your screen is the enquiry, to copy or download and send yourself.",
+    "reason": "Confirming a delivery that cannot happen turns a visitor into someone waiting for a reply that was never coming."
+  }]

@@ -1,74 +1,67 @@
 ---
 /*
- * The assessment's own page, in both languages.
+ * The brief, and how to use it.
  *
- * What the service is, what it refuses to do, and which parts of it are still undecided. The last
- * of those is the reason the wording lives in a dictionary: an English page that admits a gap and a
- * Chinese page that quietly papers over it would be two different services.
+ * This page used to describe an assessment performed for the reader, with no name, no price and no
+ * address behind it. The useful half of that description was the document it promised, so the
+ * document is now the product: assembled here from the destination records, and handed over by
+ * clipboard or file for the reader to address to whoever has to answer it.
+ *
+ * Every sentence is in src/data/service-pages.ts in both languages, because a page that admits a
+ * limitation in English and papers over it in Chinese would be two different offers.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
-import NeedsInput from '@/components/ui/NeedsInput.astro';
+import BriefBuilder from '@/components/tools/BriefBuilder.astro';
 import { ASSESSMENT_PAGE, ASSESSMENT_REVISION } from '@/data/service-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { fill } from '@/i18n/ui';
 
-const UPDATED_ON = ASSESSMENT_REVISION;
-
 const lang = langFromPath(Astro.url.pathname);
 const copy = ASSESSMENT_PAGE[lang];
+
+/** The three pages that hold the rest of a question list, in the order copy.sendItems names them. */
+const SEND_HREFS = [
+  '/tools/agency-question-checklist',
+  '/tools/destination-research-checklist',
+  '/articles/what-must-be-signed-before-the-first-transfer',
+];
+if (SEND_HREFS.length !== copy.sendItems.length) {
+  throw new Error('/assessment names ' + copy.sendItems.length + ' destinations for the brief but has ' + SEND_HREFS.length + ' addresses.');
+}
+
+const home = localizedPath(lang, '/');
 ---
 
-<PageLayout title={copy.title} description={copy.description} updatedOn={UPDATED_ON}>
+<PageLayout title={copy.title} description={copy.description} updatedOn={ASSESSMENT_REVISION}>
   <Breadcrumbs crumbs={[{ label: copy.title }]} />
 
   <article class="shell py-10 max-w-[74ch]">
-    <p class="flex flex-wrap items-center gap-2 text-[14px] text-muted">
-      <Icon name="clock" size={16} class="text-flag" />
-      {copy.statusNote}
-    </p>
-    <h1 class="mt-4 text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
     <p class="mt-4 text-[19px] leading-[1.6] text-muted">{copy.intro}</p>
 
     <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.forHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.forBody}</p>
-    </section>
-
-    <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.bringHeading}</h2>
+      <h2 class="text-[22px]">{copy.partsHeading}</h2>
       <ul class="mt-4 space-y-3 text-[16px] leading-relaxed text-muted">
         {
-          copy.brings.map((b) => (
+          copy.parts.map((line) => (
             <li class="flex gap-3">
               <Icon name="check" size={16} class="mt-1.5 shrink-0 text-accent" />
-              <span>{b}</span>
+              <span>{line}</span>
             </li>
           ))
         }
       </ul>
-      <p class="mt-6 text-[16px] leading-relaxed">
-        {copy.bringBefore}
-        <a href={localizedPath(lang, '/privacy')} class="link-underlined">{copy.bringLink}</a>
-        {copy.bringAfter}
-      </p>
     </section>
 
-    <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.receiveHeading}</h2>
-      <dl class="mt-5 grid gap-6">
-        {
-          copy.receives.map((r, i) => (
-            <div class="border-l-2 border-accent pl-5">
-              <dt class="sr-only">{fill(copy.outcome, { n: i + 1 })}</dt>
-              <dd class="text-[16px] leading-relaxed text-muted">{r}</dd>
-            </div>
-          ))
-        }
-      </dl>
-      <p class="mt-6 text-[16px] leading-relaxed text-muted">{copy.receiveBody}</p>
+    <section class="mt-12 border-t border-line pt-8" id="brief">
+      <h2 class="text-[22px]">{copy.toolHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.toolIntro}</p>
+      <div class="mt-7">
+        <BriefBuilder />
+      </div>
     </section>
 
     <section class="mt-12 border-t border-line pt-8">
@@ -85,48 +78,36 @@ const copy = ASSESSMENT_PAGE[lang];
       </div>
     </section>
 
-    <section class="mt-12 border border-dashed border-line-strong bg-surface p-6">
-      <h2 class="text-[22px]">{copy.settledHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.settledBody}</p>
-      <ul class="mt-5 space-y-3 text-[16px]">
+    <section class="mt-12 border-t border-line pt-8">
+      <h2 class="text-[22px]">{copy.sendHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.sendBody}</p>
+      <ul class="mt-5 space-y-3">
         {
-          copy.settledNeeds.map((n) => (
+          copy.sendItems.map((label, i) => (
             <li>
-              <NeedsInput label={n.label} why={n.why} />
+              <a href={localizedPath(lang, SEND_HREFS[i])} class="textlink text-[16px]">
+                {label}
+                <Icon name="arrow-right" size={16} />
+              </a>
             </li>
           ))
         }
       </ul>
     </section>
 
-    <section class="mt-12 border-t border-line pt-8" id="brief">
-      <h2 class="text-[22px]">{copy.startHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.startBody}</p>
-      <div class="mt-5 flex flex-wrap gap-3">
-        <a href={localizedPath(lang, '/#assessment')} class="btn-primary">
-          {copy.startPrimary}
-          <Icon name="arrow-right" size={16} />
-        </a>
-        <a href={localizedPath(lang, '/privacy')} class="btn-ghost">{copy.startSecondary}</a>
-      </div>
-    </section>
-
     <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.diyHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.diyBody}</p>
+      <h2 class="text-[22px]">{copy.askHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.askBody}</p>
       <div class="mt-5 flex flex-wrap gap-3">
-        <a href={localizedPath(lang, '/tools/agency-quote-comparison')} class="btn-primary">
-          {copy.diyPrimary}
-          <Icon name="arrow-right" size={16} />
-        </a>
-        <a href={localizedPath(lang, '/guides/choosing-a-surrogacy-agency')} class="btn-ghost">
-          {copy.diySecondary}
+        <a href={`${home}#assessment`} class="btn-primary">{copy.askPrimary}</a>
+        <a href={localizedPath(lang, '/privacy')} class="btn-ghost">
+          {copy.askSecondary}
         </a>
       </div>
     </section>
 
     <p class="mt-12 border-t border-line pt-6 text-[14px] text-muted">
-      {fill(copy.revised, { date: formatDate(UPDATED_ON, lang) })}
+      {fill(copy.revised, { date: formatDate(ASSESSMENT_REVISION, lang) })}
     </p>
   </article>
 </PageLayout>

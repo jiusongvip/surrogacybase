@@ -58,14 +58,14 @@ export const HOME_HERO: Record<Lang, {
     h1: 'Trusted guidance for your surrogacy journey',
     lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
     ctaPrimary: 'Explore destinations',
-    ctaSecondary: 'Get personalized guidance',
+    ctaSecondary: 'Write your enquiry',
     note: 'More clarity for your family’s future',
   },
   zh: {
     h1: '为您的代孕之旅提供可靠指引',
     lead: '弄清您实际有哪些选择，把目的地和费用放在一起比较，并在往前走之前，把法律、医疗和实操上的问题逐个问清楚。',
     ctaPrimary: '查看目的地',
-    ctaSecondary: '获取个性化指引',
+    ctaSecondary: '写下您的问询',
     note: '为您一家人的未来，多一分清楚',
   },
 };
@@ -136,16 +136,17 @@ export const HOME_SERVICES: Record<Lang, {
   cta: string;
 }> = {
   en: {
-    eyebrow: 'Our services',
-    heading: 'How we can help',
-    intro: 'Four kinds of help, all of them on the decision rather than on the sale: which destination applies to you, what the whole thing costs, one conversation about the documents in front of you, and what to ask the people you will meet.',
-    cta: 'Explore our services',
+    eyebrow: 'What you can do here',
+    heading: 'Four kinds of help, all of them on the decision',
+    intro:
+      'None of it depends on anyone here working on your behalf: which destination applies, what the whole thing costs, a brief you assemble out of the records in front of you, and what to ask the people you will meet.',
+    cta: 'Build a brief from the records',
   },
   zh: {
-    eyebrow: '我们的服务',
-    heading: '我们能帮上什么',
-    intro: '四种帮助，全都落在决定本身上而不是落在成交上：哪个目的地适用于您、整件事要花多少、就您面前的文件谈一次，以及见到那些人时该问什么。',
-    cta: '了解我们的服务',
+    eyebrow: '您在这里能做什么',
+    heading: '四种帮助，全都落在决定本身之上',
+    intro: '它们都不需要这里有任何人替您办事：哪个目的地适用、整件事要花多少、用您面前的这些记录自己做一份简报，以及见到那些人时该问什么。',
+    cta: '用这些记录做一份简报',
   },
 };
 
@@ -170,11 +171,11 @@ export const HOME_SERVICE_ITEMS: { icon: IconName; title: Bilingual; body: Bilin
     href: '/guides/surrogacy-cost',
   },
   {
-    icon: 'route',
-    title: { en: 'One-to-one consultation', zh: '一对一咨询' },
+    icon: 'file-text',
+    title: { en: 'A brief you build yourself', zh: '自己动手做的一份简报' },
     body: {
-      en: 'Bring your documents and the question you actually came with: which countries have a route that can be documented here, what parentage and nationality turn on, and which parts only a lawyer can settle.',
-      zh: '带着您的文件，带着您真正来问的那个问题：哪些国家在这里有可核查的路径、亲权与国籍取决于什么、以及哪几部分只有律师能定。',
+      en: 'Pick the destinations in view and take the document with them: which countries have a route that can be documented here, what parentage and nationality turn on, and which parts only a lawyer can settle.',
+      zh: '选出您正在考虑的目的地，带着这份文档走：哪些国家在这里有可核查的路径、亲权与国籍取决于什么、以及哪几部分只有律师能定。',
     },
     href: '/assessment',
   },
@@ -334,14 +335,15 @@ export const HOME_BAND: Record<Lang, {
   para: string;
 }> = {
   en: {
-    eyebrow: 'Get personalized guidance',
+    eyebrow: 'Write your enquiry',
     heading: 'Not sure where to start?',
-    para: 'Write out the priorities and the questions you already have. The enquiry this form composes sets out what has to be checked, which of those checks decide the route, and what the next step is from where you are standing.',
+    para:
+      'Write out the priorities and the questions you already have. The form puts them into one message on your screen, word for word, so what you send says what you actually need checked.',
   },
   zh: {
-    eyebrow: '获取个性化指引',
+    eyebrow: '写下您的问询',
     heading: '不确定该从哪里开始？',
-    para: '把您已经在意的优先级和您手上已有的问题写下来。这份表单组装出的问询会列出哪些内容需要核查、这些核查里有几项决定路径，以及以您此刻的位置来看下一步是什么。',
+    para: '把您已经在意的优先级和您手上已有的问题写下来。表单会把它们逐字组装成屏幕上的一封正文，让您发出去的东西说清楚您真正需要核查的是什么。',
   },
 };
 

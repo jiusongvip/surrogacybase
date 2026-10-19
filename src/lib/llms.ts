@@ -10,10 +10,10 @@
  * The links are absolute on purpose. A relative path is resolved against whatever the reader
  * assumed about the origin, and a model that guesses will cite a page it never reached.
  */
-import { ABOUT_PAGE, ASSESSMENT_PAGE } from '@/data/service-pages';
+import { ABOUT_PAGE } from '@/data/service-pages';
 import { EDITORIAL_PAGE, UPDATES_PAGE } from '@/data/policy-pages';
 import { SITE } from '@/const';
-import { TOOLS } from '@/data/tools';
+import { TOOLS, toolPath } from '@/data/tools';
 import type { Lang } from '@/i18n/config';
 import { localizedPath } from '@/i18n/paths';
 import { UI, fill } from '@/i18n/ui';
@@ -87,14 +87,13 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     '',
     heading(lang, 'Tools', '工具'),
     '',
-    ...tools.map((t) => page(site, lang, `/tools/${t.id}`, t[lang].name, t[lang].summary)),
+    ...tools.map((t) => page(site, lang, toolPath(t), t[lang].name, t[lang].summary)),
     '',
     heading(lang, 'How this site is run', '本站如何运作'),
     '',
     page(site, lang, '/about', ABOUT_PAGE[lang].title, ABOUT_PAGE[lang].description),
     page(site, lang, '/editorial-policy', EDITORIAL_PAGE[lang].title, EDITORIAL_PAGE[lang].description),
     page(site, lang, '/updates', UPDATES_PAGE[lang].title, UPDATES_PAGE[lang].description),
-    page(site, lang, '/assessment', ASSESSMENT_PAGE[lang].title, ASSESSMENT_PAGE[lang].description),
     '',
   ].join('\n');
 }

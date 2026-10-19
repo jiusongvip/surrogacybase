@@ -86,7 +86,7 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     submittedWithMail:
       'Your mail app has opened with the enquiry written below. Nothing is sent until you press send there.',
     submittedWithoutMail:
-      'Nothing has been sent, because this site has no server and no enquiry address is listed yet. Copy the message above or download it, and it will reach us the same way.',
+      'Nothing has been sent, because this site has no server. The message above is your enquiry: copy it or download it, and send it yourself.',
   },
   zh: {
     nameLabel: '您的称呼',
@@ -119,6 +119,6 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     clipboardBlocked: '您的浏览器没有把剪贴板权限交给这个页面。请在上面选中正文后手动复制，或者下载为文件。',
     downloaded: '已下载为 {file}。草稿仍然留在这个浏览器里。',
     submittedWithMail: '您的邮件应用已经打开，里面写好了下面这份问询。在您于那里按下发送之前，什么都没有被发出。',
-    submittedWithoutMail: '目前什么都没有发出，因为本站没有服务器，而且尚未登记问询地址。复制上面的正文或把它下载下来，同样能交到我们手里。',
+    submittedWithoutMail: '目前什么都没有发出，因为本站没有服务器。上面这份正文就是您的问询：复制它或把它下载下来，由您自己发出去。',
   },
 };

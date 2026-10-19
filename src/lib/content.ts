@@ -98,7 +98,7 @@ export function toolLinksFor(refs: string[], lang: Lang = 'en') {
   return refs
     .map((ref) => TOOLS.find((t) => t.id === ref.replace(/^tools\//, '')))
     .filter((t): t is (typeof TOOLS)[number] => t !== undefined && t.live)
-    .map((t) => ({ label: t[lang].name, href: toolHref(t.id, lang), note: t[lang].linkNote }));
+    .map((t) => ({ label: t[lang].name, href: toolHref(t, lang), note: t[lang].linkNote }));
 }
 
 /**

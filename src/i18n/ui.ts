@@ -375,11 +375,11 @@ export const UI: Record<Lang, {
     nav: [
       { label: 'Explainers', href: '/articles' },
       { label: 'Destinations', href: '/destinations' },
-      { label: 'Services', href: '/assessment' },
+      { label: 'Build a brief', href: '/assessment' },
       { label: 'Guides', href: '/guides' },
       { label: 'About us', href: '/about' },
     ],
-    cta: { label: 'Get a consultation', href: '/#assessment' },
+    cta: { label: 'Write your enquiry', href: '/#assessment' },
     footerGroups: [
       {
         heading: 'Guides',
@@ -406,7 +406,7 @@ export const UI: Record<Lang, {
         links: [
           { label: 'How we research', href: '/editorial-policy' },
           { label: 'About the site', href: '/about' },
-          { label: 'Assessment service', href: '/assessment' },
+          { label: 'Build your own brief', href: '/assessment' },
           { label: 'Contact', href: '/about#contact' },
         ],
       },
@@ -794,7 +794,7 @@ export const UI: Record<Lang, {
           body:
             "That is deliberate. A page that named a best country would be repeating a provider's claim without the standing to test it. What this site can do is hold each legal system to its sources and keep the comparison honest.",
           brief: 'Write the enquiry out',
-          service: 'What the assessment service is',
+          service: 'How the brief works',
         },
         standard: {
           heading: 'What every destination record on this site has to carry',
@@ -847,11 +847,11 @@ export const UI: Record<Lang, {
     nav: [
       { label: '专题解读', href: '/zh/articles' },
       { label: '目的地', href: '/zh/destinations' },
-      { label: '服务', href: '/zh/assessment' },
+      { label: '自制简报', href: '/zh/assessment' },
       { label: '指南', href: '/zh/guides' },
       { label: '关于我们', href: '/zh/about' },
     ],
-    cta: { label: '获取咨询', href: '/zh#assessment' },
+    cta: { label: '写下您的问询', href: '/zh#assessment' },
     footerGroups: [
       {
         heading: '指南',
@@ -878,7 +878,7 @@ export const UI: Record<Lang, {
         links: [
           { label: '我们如何做研究', href: '/zh/editorial-policy' },
           { label: '关于本站', href: '/zh/about' },
-          { label: '评估服务说明', href: '/zh/assessment' },
+          { label: '自己动手做简报', href: '/zh/assessment' },
           { label: '联系我们', href: '/zh/about#contact' },
         ],
       },
@@ -1190,7 +1190,7 @@ export const UI: Record<Lang, {
           heading: '这里没有替您选定任何目的地',
           body: '这是刻意的。一个点名最佳国家的页面，等于在没有任何验证资格的情况下重复机构的主张。本站能做的是把每个法律体系对着它的来源核对，并让比较保持诚实。',
           brief: '把问询写出来',
-          service: '评估服务是什么',
+          service: '这份简报怎么用',
         },
         standard: {
           heading: '本站每一条目的地记录都必须具备的内容',

@@ -26,13 +26,44 @@ export type ToolText = {
 export type Tool = {
   id: string;
   live: boolean;
+  /**
+   * Where the tool actually lives, when the route is not `/tools/<id>`. The brief builder is
+   * reached at /assessment, a route three changelog entries already carry; registering it here as
+   * well is what keeps it from being advertised on the tools index and missing from a guide sidebar.
+   */
+  path?: string;
   en: ToolText;
   zh: ToolText;
 };
 
-export const toolHref = (id: string, lang: Lang) => localizedPath(lang, `/tools/${id}`);
+export const toolPath = (tool: Tool) => tool.path ?? `/tools/${tool.id}`;
+
+export const toolHref = (tool: Tool, lang: Lang) => localizedPath(lang, toolPath(tool));
 
 export const TOOLS: Tool[] = [
+  {
+    id: 'destination-brief',
+    live: true,
+    path: '/assessment',
+    en: {
+      name: 'Destination brief',
+      summary:
+        'Choose the destinations you are weighing and take away one document assembled from their records here: the legal instrument each position rests on, who may commission, what may lawfully be paid, who the child’s legal parent is at birth, every published figure with the source that printed it, and the questions those sources did not settle.',
+      linkNote: 'Build one document out of the destination records, in your browser.',
+      points: [
+        'One block per destination, in the order the page prints them',
+        'Every position and every figure carries the source it came from',
+        'Copy it or download it; the brief asks for no personal information and keeps nothing',
+      ],
+    },
+    zh: {
+      name: '目的地简报',
+      summary:
+        '选出您正在权衡的目的地，带走一份由它们的记录组装成的文档：每一项立场落在哪份法律文件上、谁可以委托、依法能支付什么、孩子出生时的法律父母是谁、每个已发布的数字连同印出它的那个来源，以及那些来源没有确定的问题。',
+      linkNote: '用目的地记录做出一份文档，在您的浏览器里完成。',
+      points: ['每个目的地一个内容块，按页面印出的顺序排列', '每一条立场、每一个数字都带着它出自哪个来源', '复制或下载它；这份简报不向您索取任何个人信息，也不留存任何东西'],
+    },
+  },
   {
     id: 'agency-quote-comparison',
     live: true,

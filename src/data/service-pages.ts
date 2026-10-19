@@ -35,36 +35,23 @@ export type AboutPage = {
 export type AssessmentPage = {
   title: string;
   description: string;
-  /** The line that admits which parts of the service are not settled. */
-  statusNote: string;
   h1: string;
   intro: string;
-  forHeading: string;
-  forBody: string;
-  bringHeading: string;
-  brings: string[];
-  /** Split around the link to the privacy page. */
-  bringBefore: string;
-  bringLink: string;
-  bringAfter: string;
-  receiveHeading: string;
-  receives: string[];
-  /** {n} numbers each outcome for a screen reader. */
-  outcome: string;
-  receiveBody: string;
+  partsHeading: string;
+  /** What one destination block carries, in the order the block prints it. */
+  parts: string[];
+  toolHeading: string;
+  toolIntro: string;
   neverHeading: string;
   never: { h: string; p: string }[];
-  settledHeading: string;
-  settledBody: string;
-  settledNeeds: NeedsItem[];
-  startHeading: string;
-  startBody: string;
-  startPrimary: string;
-  startSecondary: string;
-  diyHeading: string;
-  diyBody: string;
-  diyPrimary: string;
-  diySecondary: string;
+  sendHeading: string;
+  sendBody: string;
+  /** Labels for the three pages that hold the rest of the question list; hrefs live in the component. */
+  sendItems: string[];
+  askHeading: string;
+  askBody: string;
+  askPrimary: string;
+  askSecondary: string;
   /** {date} is the revision date, formatted for the page language. */
   revised: string;
 };
@@ -73,7 +60,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
   en: {
     title: 'About',
     description:
-      "Who runs SurrogacyBase, what the site does and does not do, how information is sourced, and how to send a correction.",
+      "Who runs SurrogacyBase, what the site does and does not do, how information is sourced, and how a correction is handled.",
     h1: 'About {name}',
     tagline: SITE.tagline,
     body: [
@@ -112,13 +99,13 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     correctionsHeading: 'Corrections',
     correctionsBody:
-      'If a source on a page no longer supports the claim next to it, that is a defect and we want to know. Send the page address and the claim, and the entry is either fixed or the claim is removed while the check is pending.',
+      'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. The one thing missing here is an address to send it to, which is the gap below.',
     correctionsNeeds: { label: 'Correction inbox', why: 'there is no address published yet for you to send a correction to' },
   },
   zh: {
     title: '关于我们',
     description:
-      'SurrogacyBase 由谁运营、本站做什么与不做什么、信息如何取得来源，以及如何向我们提交更正。',
+      'SurrogacyBase 由谁运营、本站做什么与不做什么、信息如何取得来源，以及一条更正会怎样处理。',
     h1: '关于 {name}',
     tagline: SITE.taglineZh,
     body: [
@@ -153,186 +140,119 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     correctionsHeading: '更正',
     correctionsBody:
-      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是缺陷，我们希望知道。把页面地址和那条说法发给我们，我们会要么改正这一条，要么在核查期间先把说法撤下。',
+      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。这里还缺的只有一件：可以寄送的收件地址，也就是下面列出的那项缺口。',
     correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供您发送更正的地址' },
   },
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const ASSESSMENT_REVISION = '2026-10-17';
+export const ASSESSMENT_REVISION = '2026-10-19';
 
 export const ASSESSMENT_PAGE: Record<Lang, AssessmentPage> = {
   en: {
-    title: 'Assessment',
+    title: 'Build the brief yourself',
     description:
-      'One-to-one consultation on the documents and options you already hold: a structured written read that names each gap and the professional who has to close it.',
-    statusNote:
-      'The enquiry form writes your question out ready to send. Who reads it, on what scope and at what price is not settled yet, so none of it is promised here.',
-    h1: 'What an assessment is, and what it is not',
+      'A written brief assembled from the sourced destination records on this site: who may commission, what may lawfully be paid, parentage at birth, published figures, and the questions no source settles.',
+    h1: 'This assessment is a document you build yourself',
     intro:
-      'Reading gets you to a point where your own documents are the question. An assessment is the service for that point: not advice, not a match, not a rating of a provider. It is a structured read of what you already hold, in which each gap is written down together with the party who has to close it. The verification itself belongs to a lawyer, a clinic or an escrow provider, and is not something we do on your behalf.',
-    forHeading: 'Who this is for',
-    forBody:
-      'Not for someone starting from zero. If you do not know what the stages are or what a quote contains, the guides answer that for free. This is for the stage after that, when a document is in front of you and the uncertainty is about what it leaves out. Legal exposure is one of those uncertainties: which countries have a route that can be documented here, what parentage and nationality turn on, and which of those questions belong to a lawyer rather than to a website.',
-    bringHeading: 'What you bring',
-    brings: [
-      'A quote, proposal or contract you have received, and want set against a checklist of what should be in it.',
-      'Two options that appear to cost different amounts, where you need to know whether the scope is even comparable.',
-      'A shortlist of destinations where you want the sourced position, the open questions, and what a local lawyer would have to confirm for your facts.',
-      'A question list for a meeting you already have scheduled, so the hour is spent on the things that matter.',
+      'A professional answers faster when the question arrives written down, sourced, and addressed to them. That document is what this page makes, in your browser, out of the records this site already publishes. It is not a service we perform, and nothing here is queued waiting for someone to read it.',
+    partsHeading: 'What one destination block carries',
+    parts: [
+      'Which legal instrument the position rests on, named the way the record names it.',
+      'Who may commission there: every family type a source listed on that page speaks about, and the types none of them settles.',
+      'What may lawfully be paid, and what has to be authorised before a court will move parentage.',
+      'Who the child’s legal parent is at birth.',
+      'Every cost figure a named source published for it, in that source’s own currency, for the year those numbers describe.',
+      'The questions its sources did not settle, which are the questions to put to a lawyer.',
     ],
-    bringBefore:
-      'Send only what is needed to ask the question. Names of other individuals, medical records and payment details are not required for a quote to be read against a checklist, and ',
-    bringLink: 'how anything you send is handled',
-    bringAfter: ' is stated before you send it.',
-    receiveHeading: 'What you receive',
-    outcome: 'Outcome {n}',
-    receives: [
-      'A written map of what your documents answer, what they do not answer, and what they answer inconsistently.',
-      'The specific exclusions and contingent costs in a quote, named as items to confirm rather than as a total.',
-      'Questions addressed to the right party: which of these belong to a lawyer in a given jurisdiction, which to the clinic, which to the agency, which to an escrow provider.',
-      'A comparison view you can read out loud in a meeting, with the source of each item next to it.',
-    ],
-    receiveBody:
-      'The output is a document you keep and can hand to a lawyer. It does not depend on continuing with us, and it does not include a recommendation to engage any particular provider.',
-    neverHeading: 'What an assessment never does',
+    toolHeading: 'Pick the destinations, then take the brief',
+    toolIntro:
+      'The file is assembled from the blocks printed below, in that order. It carries no personal information, asks for none, and keeps nothing: this site has no server, so the copy button and the download are the only exits.',
+    neverHeading: 'What this brief never is',
     never: [
       {
-        h: 'We do not give you a legal conclusion',
-        p: 'Parentage, citizenship, enforceability and eligibility are decided by legal systems and professionals who can act in them. An assessment identifies the question and who can answer it. It does not answer it for you.',
+        h: 'Not legal advice',
+        p: 'Parentage, citizenship, enforceability and eligibility are decided by legal systems and by professionals with standing in them. A block states what a source says and where its limits are. It decides nothing about your own facts.',
       },
       {
-        h: 'We do not perform the verification',
-        p: 'A document can be read against a checklist, and each gap in it written out with the party who has to close it. Whether a provider is licensed, whether a clause will hold, whether a figure on a page is honest: those are checked by someone who has standing to check them. We give you the list of checks and the order they have to happen in, not the results.',
+        h: 'Not a verification',
+        p: 'Whether a provider is licensed, whether a clause will hold, whether a figure on a quote is honest: those are checked by someone able to check them. The brief hands over the list of checks and the order they have to happen in, not the results.',
       },
       {
-        h: 'We do not give medical opinions',
-        p: 'Nothing here interprets a scan, a protocol, a success rate quoted by a clinic, or your chances. Those are conversations with your own clinician.',
+        h: 'Not a medical opinion',
+        p: 'Nothing here interprets a scan, a protocol, a success rate quoted by a clinic, or your chances.',
       },
       {
-        h: 'We do not guarantee outcomes or promise a path',
-        p: 'No likelihood statements, no timelines presented as certain, no assurance that a program will work or that a child will be recognised as yours in the way you need.',
-      },
-      {
-        h: 'We do not match, screen or supply surrogates',
-        p: 'We are not an agency, we do not hold candidate lists, and we do not take money toward a match. If a service on this site were ever referral-based, that would be disclosed on the page where it applies.',
-      },
-      {
-        h: 'We do not tell you which provider to choose',
-        p: 'An assessment can show you what a document fails to state. It does not certify a business, and it is not a rating.',
+        h: 'Not a rating',
+        p: 'No provider is recommended, ranked or certified, and none paid to appear. The figures on a block are what a named source printed, not what this site thinks a program should cost.',
       },
     ],
-    settledHeading: 'What is settled, and what is not',
-    settledBody:
-      'The scope above is what can be stated honestly today. A service page that promises a price, a person, or a contact route that does not exist would only mislead you, so what is still missing is set out plainly below.',
-    settledNeeds: [
-      {
-        label: 'Who performs an assessment',
-        why: 'without a named person behind it there is nothing to book',
-      },
-      {
-        label: 'Scope and price of each engagement',
-        why: 'what is included, how long it takes, what happens if it cannot be answered',
-      },
-      {
-        label: 'The address an enquiry is delivered to',
-        why: 'this site has published no address for an enquiry to be delivered to yet',
-      },
-      {
-        label: 'Any commercial relationship with providers',
-        why: 'you cannot yet be told whether a provider named here might one day pay for a referral',
-      },
+    sendHeading: 'Where the brief goes next',
+    sendBody:
+      'Each block ends with the open questions for its own destination, which is the part a lawyer can act on the same day. These are the pages on this site that carry the rest of a question list.',
+    sendItems: [
+      'The questions to put to an agency in writing',
+      'The questions that settle a destination',
+      'What has to be signed before the first transfer',
     ],
-    startHeading: 'Start with the question you already have',
-    startBody:
-      'The enquiry form asks three things: the address to reply to, the question itself in your words, and a name if you want the reply addressed to someone. It is the one form on this site, and it composes in your browser before handing the text to your mail app, your clipboard or a file, so nothing sits in a queue you cannot see.',
-    startPrimary: 'Write an enquiry',
-    startSecondary: 'Read how an enquiry is handled',
-    diyHeading: 'Do the useful part yourself now',
-    diyBody:
-      'The work an assessment does is largely the work the free tools already structure. If you put your quotes into the comparison tool, the gaps are visible without paying anyone.',
-    diyPrimary: 'Compare two quotes',
-    diySecondary: 'Read what a contract should state',
+    askHeading: 'Asking us something',
+    askBody:
+      'The enquiry form on the homepage is the only form on this site. It writes your question out from what you type, shows it to you, and then leaves it with your clipboard, your mail app or a file. No address for receiving enquiries has been published yet, so an enquiry goes out from you rather than arriving here.',
+    askPrimary: 'Open the enquiry form',
+    askSecondary: 'Read how anything you send is handled',
     revised: 'Last revised {date}.',
   },
   zh: {
-    title: '评估服务说明',
+    title: '自己动手做这份简报',
     description:
-      '一对一咨询：把您已经持有的文件和选项做一次有结构的书面梳理，指出缺口，以及每一个问题必须由谁来回答。',
-    statusNote: '问询表单会把您的问询写成可以发送的文字。由谁来读、范围多大、费用多少都还没有确定，所以这些都不在这里承诺。',
-    h1: '评估是什么，以及它不是什么',
+      '由本站有来源的目的地记录组装成一份书面简报：谁可以委托、依法能支付什么、出生时的亲权、已发布的费用数字，以及没有来源确定的那些问题。',
+    h1: '这份评估是您自己做出来的一份文档',
     intro:
-      '阅读会把您带到一个地步：您自己的文件成了问题所在。评估就是为这个地步准备的服务。它不是建议，不是匹配，也不是对某个服务方的评级。它是对已经在您手里的东西做一次有结构的梳理，并把每一个缺口都写明该由谁来补上。核实属于律师、诊所或托管机构，不由我们代您完成。',
-    forHeading: '这项服务面向谁',
-    forBody:
-      '不面向从零开始的人。如果您还不清楚流程有哪些阶段、一份报价里应当有什么，指南会免费回答这些。这一项服务针对的是那之后的阶段：文件已经摆在您面前，不确定的地方在于它没有说什么。法律风险也属于这类不确定：哪些国家在这里有可核查的路径、亲权与孩子的国籍取决于什么，以及其中哪些问题属于律师，而不是属于一个网站。',
-    bringHeading: '您会带着什么来',
-    brings: [
-      '一份您收到的报价、方案书或合同，希望对照一份「应当包含什么」的清单来读。',
-      '两个看起来金额不同的选项，您需要知道它们的范围是否根本可以比较。',
-      '一份候选目的地清单，您想要其中有来源的立场、尚未解决的问题，以及就您的情况而言本地律师必须确认什么。',
-      '一次已经约好的会面所需的问题清单，让那一个小时花在真正要紧的事情上。',
+      '当一个问题已经被写下、带上来源、并且点名交给该回答它的人时，专业人士回答得要快得多。这一页替您做的就是这份文档，在您的浏览器里完成，用的全是本站已经发布的记录。它不是我们代为执行的服务，这里也没有任何东西在排队等人来读。',
+    partsHeading: '一个目的地的内容块里有什么',
+    parts: [
+      '这个立场落在哪一份法律文件上，按那份记录自己的叫法写出来。',
+      '那里谁可以委托：该页面列出的每个来源分别谈到的家庭类型，以及没有任何来源能够确定的类型。',
+      '依法可以支付什么，以及法院在把亲权移走之前必须先授权什么。',
+      '孩子在出生时的法律父母是谁。',
+      '某个具名来源为它发布过的每一个费用数字，沿用那个来源自己的币种，并写明这些数字对应的年份。',
+      '那份记录的来源没有确定的问题，而这些才是要交给律师的问题。',
     ],
-    bringBefore:
-      '只发送提出这个问题所必需的内容。把一份报价对照清单来读，不需要其他人的姓名、病历或付款信息，而',
-    bringLink: '您发送的任何内容会如何被处理',
-    bringAfter: '在您发送之前就已经写明在这里。',
-    receiveHeading: '您会收到什么',
-    outcome: '第 {n} 项产出',
-    receives: [
-      '一份书面地图：您的文件回答了哪些内容、没有回答哪些内容，以及在哪些地方自相矛盾。',
-      '报价里具体的排除项与或有成本，逐条列为需要确认的项，而不是汇成一个总数。',
-      '指向正确一方的问题：其中哪些属于某个法域的律师，哪些属于诊所，哪些属于机构，哪些属于托管机构。',
-      '一份可以在会议上当场读出来的对比视图，每一项旁边都放着它的来源。',
-    ],
-    receiveBody:
-      '产出是一份由您保存、可以交给律师的文件。它不以继续与我们合作为前提，也不包含委托某个特定服务方的建议。',
-    neverHeading: '评估永远不会做的事',
+    toolHeading: '选出目的地，然后把简报带走',
+    toolIntro:
+      '这份文件由下面各块内容按出现顺序组装而成。它不含任何个人信息，也不向您索取任何信息，更不留存任何东西：本站没有服务器，所以复制按钮和下载就是仅有的两个出口。',
+    neverHeading: '这份简报永远不会是什么',
     never: [
       {
-        h: '我们不给您法律结论',
-        p: '亲权、国籍、可执行资格与准入条件，由法律体系以及能在其中行事的专业人士决定。评估负责找出问题，以及谁能回答它。它不替您回答。',
+        h: '不是法律意见',
+        p: '亲权、国籍、协议能否强制执行、谁有资格委托，都由法律体系以及在其中有执业资格的专业人士判定。一个内容块只说明某个来源写了什么、它的边界在哪里，不就您自身的情况作出任何判定。',
       },
       {
-        h: '我们不代您做核实',
-        p: '一份文件可以对照清单来读，其中每一个缺口都能写明它该由谁来补。某家服务方是否持有资质、某一条款是否站得住、纸面上的数字是否诚实，这些要由有资格核实它们的人去查。我们给您的是核查清单，以及它必须发生的顺序，不是核查结果。',
+        h: '不是核查',
+        p: '一家服务方是否有牌照、某一条款站不站得住、报价上的一个数字是否诚实，这些都由有权核查的人来查。这份简报交出的是核查清单以及它们必须发生的顺序，不是核查结果。',
       },
       {
-        h: '我们不给医学意见',
-        p: '这里不解读任何检查影像、治疗方案、诊所报出的成功率，也不判断您的机会。这些是与您自己的临床医生进行的对话。',
+        h: '不是医学意见',
+        p: '这里不解读任何影像、任何方案、任何一家诊所报出的成功率，也不谈您的机会。',
       },
       {
-        h: '我们不保证结果，也不承诺路径',
-        p: '没有可能性陈述，没有当作确定来呈现的时间表，也没有某个方案会成功、或者孩子一定会以您需要的方式被认定为您的人的保证。',
-      },
-      {
-        h: '我们不匹配、不筛查、不提供代孕者',
-        p: '我们不是机构，不持有人选名单，也不朝匹配方向收取费用。如果本站的某项服务将来涉及转介，它会在实际发生的那个页面上披露。',
-      },
-      {
-        h: '我们不告诉您该选哪家服务方',
-        p: '评估可以让您看见一份文件没有说什么。它不为一家企业作担保，也不构成评级。',
+        h: '不是评级',
+        p: '没有任何服务方在这里被推荐、排名或认证，也没有人为出现付费。内容块上的数字是某个具名来源印出来的，不是本站认为一个流程应当花多少。',
       },
     ],
-    settledHeading: '已确定的，与尚未确定的',
-    settledBody:
-      '上面的范围是现在能够诚实说明的部分。一个服务页面如果承诺一个并不存在的价格、人物或联络途径，只会把您引向一个落空的结果，所以还缺少的部分会在下方如实列出。',
-    settledNeeds: [
-      { label: '由谁来执行一次评估', why: '需要一个有具名背景的人，否则就没有可以预约的对象' },
-      { label: '每次委托的范围与价格', why: '包含什么、需要多久、如果无法给出答案会怎样' },
-      { label: '问询最终送达的地址', why: '本站尚未公布一个可供问询送达的地址' },
-      { label: '与服务方之间的任何商业关系', why: '您还无法得知，这里点名的一家公司将来是否可能为转介付费' },
+    sendHeading: '这份简报接下来交给谁',
+    sendBody:
+      '每个内容块都以它那一个目的地尚未解决的问题收尾，而那正是律师当天就能着手的部分。本站还有几页承载着问题清单的其余部分。',
+    sendItems: [
+      '需要书面提交给机构的那些问题',
+      '决定一个目的地的那些问题',
+      '首次移植之前必须签署的内容',
     ],
-    startHeading: '从您已经有的那个问题开始',
-    startBody:
-      '问询表单只问三件事：回复到哪个邮箱、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。它是本站唯一的表单，会先在您的浏览器里把这段文字组装好，再交给您的邮件应用、剪贴板或一个文件，因此不会有任何东西滞留在您看不见的队列里。',
-    startPrimary: '写一份问询',
-    startSecondary: '阅读问询会如何被处理',
-    diyHeading: '现在自己动手完成有用的那部分',
-    diyBody:
-      '评估所做的工作，很大程度上就是免费工具已经结构化的那件工作。如果您把报价放进对比工具，缺口不需要付钱给任何人都能看见。',
-    diyPrimary: '对比两份报价',
-    diySecondary: '阅读合同应当写明什么',
-    revised: '最近修订于 {date}。',
+    askHeading: '要问我们什么',
+    askBody:
+      '首页上的问询表单是本站唯一的表单。它用您填写的内容把问询写出来，先给您看，然后交给您的剪贴板、您的邮件应用或一个文件。本站还没有公布接收问询的地址，所以问询是从您那里发出去，而不是发到我们这里。',
+    askPrimary: '打开问询表单',
+    askSecondary: '阅读您发出去的东西会怎样处理',
+    revised: '最后修订于 {date}。',
   },
 };

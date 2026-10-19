@@ -50,7 +50,7 @@ const live = TOOLS.filter((t) => t.live).length;
         </ul>
         <span class="mt-auto pt-6">
           {tool.live ? (
-            <a href={toolHref(tool.id, lang)} class="textlink">
+            <a href={toolHref(tool, lang)} class="textlink">
               {copy.open}
               <Icon name="arrow-right" size={16} />
             </a>

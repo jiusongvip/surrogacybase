@@ -19,8 +19,8 @@ export const SITE = {
   locale: 'en',
   ogImage: '/og/default.jpg',
   /**
-   * Where an assessment enquiry is addressed. Left empty until the operator supplies
-   * a real inbox: the intake form then composes the brief and offers copy or download,
+   * Where an enquiry is addressed. Left empty until the operator supplies
+   * a real inbox: the intake form then composes the enquiry on screen and offers copy or download,
    * and publishes no send button at all rather than one that goes nowhere.
    *
    * One line lights up the only intake on the site: the homepage enquiry form shows its

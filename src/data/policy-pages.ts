@@ -192,8 +192,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'Corrections from a named party are handled the same way as corrections from anyone else.',
     ],
     moneyNeeds: {
-      label: 'Whether the assessment service is paid, and by whom it is performed',
-      why: 'whether you would pay, and who reads your enquiry, are still open',
+      label: 'Where an enquiry is received, and who reads it',
+      why: 'no address for receiving enquiries has been published yet, so an enquiry travels from your own mail app',
     },
     imageryHeading: 'Imagery',
     imageryBody:
@@ -283,8 +283,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       '来自具名一方的更正与其他任何人的更正走同样的流程。',
     ],
     moneyNeeds: {
-      label: '评估服务是否收费，以及由谁执行',
-      why: '您是否需要付费、由谁阅读您的问询，都还没有确定',
+      label: '问询由谁接收、由谁阅读',
+      why: '本站还没有公布接收问询的地址，所以问询要从您自己的邮件应用发出去',
     },
     imageryHeading: '配图',
     imageryBody:
@@ -340,7 +340,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       'Surrogacy questions sit close to medical, family and identity information, and an enquiry can expose you before you have decided anything. So the design choice is to avoid collecting it in the first place rather than to promise careful handling afterwards. Tools work without an email address; nothing is gated behind a signup; and this site does not ask why you are here.',
     contactHeading: 'If you contact us',
     contact: [
-      'A request for an assessment should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
+      'An enquiry should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
       'The enquiry form collects none of that material and has no way to: there is nowhere in it to attach a file. Where an enquiry is delivered, who reads it, and how long it is kept are set out on this page before any address to send it to appears on the site.',
       'Documents about other people belong to those people. Do not send a surrogate’s, a clinic’s or another intended parent’s material without their agreement.',
     ],
@@ -409,7 +409,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在您还没有作出任何决定之前就把您的身份暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；本站也不问您来这里是为了什么。',
     contactHeading: '如果您联系我们',
     contact: [
-      '一次评估的请求只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
+      '一次问询只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
       '问询表单不收集那些材料，也没有收集它们的途径：里面没有任何可以附上文件的位置。一次问询会送达哪里、由谁阅读、保留多久，会在本站出现可供发送的收件地址之前，先写在本页上。',
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
@@ -474,10 +474,6 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
         label: 'Operating entity, country and governing law',
         why: 'which courts and which consumer-protection rules apply depends on this',
       },
-      {
-        label: 'Whether the assessment service is a paid engagement, and on what scope',
-        why: 'a paid service needs its own terms of supply, refunds and limits',
-      },
     ],
     revised: 'Terms last revised {date}. Changes apply from the date shown, not retroactively.',
   },
@@ -519,10 +515,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     openHeading: '本页现在还无法收口的开放问题',
     openIntro:
       '这些页面的署名是 {team}，但还没有任何注册主体被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
-    openNeeds: [
-      { label: '运营主体、国家与适用法', why: '哪一家法院、哪一套消费者保护规则适用，取决于这一项' },
-      { label: '评估服务是否为有偿委托，以及委托范围', why: '一项收费服务需要它自己的供给、退款与限度条款' },
-    ],
+    openNeeds: [{ label: '运营主体、国家与适用法', why: '哪一家法院、哪一套消费者保护规则适用，取决于这一项' }],
     revised: '条款最近修订于 {date}。变更从所显示的日期起适用，不溯及既往。',
   },
 };
