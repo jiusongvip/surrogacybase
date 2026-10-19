@@ -26,10 +26,15 @@ export type AboutPage = {
   statements: { q: string; a: string }[];
   whoHeading: string;
   whoBody: string;
-  whoNeeds: NeedsItem[];
   correctionsHeading: string;
   correctionsBody: string;
-  correctionsNeeds: NeedsItem;
+  /**
+   * The register. Every other page that used to carry its own gap notice points here instead, so a
+   * missing address is stated once, with what it blocks, rather than six times in six wordings.
+   */
+  openHeading: string;
+  openIntro: string;
+  openNeeds: NeedsItem[];
 };
 
 export type AssessmentPage = {
@@ -88,19 +93,39 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}, and the review the byline claims is done by clinical members of that team. What {team} is in law, and where it is registered, is not stated yet, and neither are the names or the credentials of the people who wrote and checked a page.',
-    whoNeeds: [
-      { label: 'Registration or incorporation details, if any' },
-      { label: 'Contact email for corrections' },
+      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}, and the review the byline claims is done by clinical members of that team. What {team} is in law, and where it is registered, is not stated yet, and neither are the names or the credentials of the people who wrote and checked a page. The register at the bottom of this page lists what is still missing, and what each missing piece blocks.',
+    correctionsHeading: 'Corrections',
+    correctionsBody:
+      'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. The one thing missing here is an address to send it to, which is the gap below.',
+    openHeading: 'What this site has not settled',
+    openIntro:
+      'Everything this page cannot answer yet is on this list, with what each missing piece blocks. A gap stays here until the thing behind it exists, and closing one is recorded on the updates page.',
+    openNeeds: [
+      {
+        label: 'An address for receiving enquiries',
+        why: 'the form on the homepage has nowhere to send to, so an enquiry leaves from your own mail app, clipboard or file',
+      },
+      {
+        label: 'An address for corrections',
+        why: 'a correction has nowhere to arrive, which is the one part of the process above that is not in place',
+      },
+      {
+        label: 'A route for a data request',
+        why: 'until there is an address to write to, you cannot ask what is held about you, change it, or ask for it to be gone',
+      },
+      {
+        label: 'Who operates this site, and its registration or incorporation if it has any',
+        why: 'which law governs, which court answers, and who is answerable for a page all turn on this, and a privacy policy has to name it',
+      },
+      {
+        label: 'The hosting provider, and how long its server logs are kept',
+        why: 'who hosts the site and what it records about a visit decides what leaves your browser',
+      },
       {
         label: 'Member names and roles, and the credentials of its clinical members',
         why: 'the byline names a team, so you cannot yet check who wrote a page, who reviewed it, or what training they have',
       },
     ],
-    correctionsHeading: 'Corrections',
-    correctionsBody:
-      'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. The one thing missing here is an address to send it to, which is the gap below.',
-    correctionsNeeds: { label: 'Correction inbox', why: 'there is no address published yet for you to send a correction to' },
   },
   zh: {
     title: '关于我们',
@@ -132,16 +157,40 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
     ],
     whoHeading: '背后是谁',
-    whoBody: '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字，而署名里的那句审阅，由这个团队中有临床背景的成员完成。{team} 在法律上是什么、注册在哪里，本站还没有写明；写下某一页、审下某一页的人叫什么、受过什么训练，同样没有写明。',
-    whoNeeds: [
-      { label: '登记或注册信息，如果有的话' },
-      { label: '用于接收更正的邮箱地址' },
-      { label: '成员姓名与各自的角色，以及临床成员的资质', why: '署名只到团队这一层，您还无法核对某一页是谁写的、谁审的，以及他们受过什么训练' },
-    ],
+    whoBody:
+      '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字，而署名里的那句审阅，由这个团队中有临床背景的成员完成。{team} 在法律上是什么、注册在哪里，本站还没有写明；写下某一页、审下某一页的人叫什么、受过什么训练，同样没有写明。本页末尾的那份清单列出了还缺什么，以及每一项缺口各自挡住的是什么。',
     correctionsHeading: '更正',
     correctionsBody:
-      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。这里还缺的只有一件：可以寄送的收件地址，也就是下面列出的那项缺口。',
-    correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供您发送更正的地址' },
+      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。这里还缺的只有一件：可以寄送的收件地址，也就是下面那份清单里的一项。',
+    openHeading: '本站还没有确定的事项',
+    openIntro:
+      '这一页还回答不了的东西都列在这份清单上，并且写明每一项缺口各自挡住什么。缺口会一直留在这里，直到它背后那件事真的存在；补齐一项，更新记录页就记下一次。',
+    openNeeds: [
+      {
+        label: '接收问询的地址',
+        why: '首页的表单没有地方可以投递，所以问询要从您自己的邮件应用、剪贴板或一个文件离开',
+      },
+      {
+        label: '接收更正的地址',
+        why: '一条更正现在无处可到，上面那套流程里只有这一环还没有落实',
+      },
+      {
+        label: '提交数据请求的渠道',
+        why: '在有可以写信的地址之前，您无法询问这里存有您的什么、要求改正，或者要求删除',
+      },
+      {
+        label: '本站由谁运营，以及它有没有登记或注册信息',
+        why: '适用哪一套法律、由哪家法院管辖、一页内容由谁负责，全都取决于这一项，而隐私政策必须把它写明',
+      },
+      {
+        label: '托管方，以及它的服务器日志保存多久',
+        why: '网站由谁托管、它记录一次访问的哪些内容，决定了有什么会离开您的浏览器',
+      },
+      {
+        label: '成员姓名与各自的角色，以及临床成员的资质',
+        why: '署名只到团队这一层，您还无法核对某一页是谁写的、谁审的，以及他们受过什么训练',
+      },
+    ],
   },
 };
 

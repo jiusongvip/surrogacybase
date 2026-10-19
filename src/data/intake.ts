@@ -29,8 +29,6 @@ export type ConsultChrome = {
   download: string;
   sendMail: string;
   statusIdle: string;
-  needsLabel: string;
-  needsWhy: string;
   lineName: string;
   lineEmail: string;
   lineMessage: string;
@@ -66,9 +64,6 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     sendMail: 'Open in my mail app',
     statusIdle:
       'Nothing is sent when you press this button, because this site has no server. It writes your enquiry below from what you entered, so you read it before it goes anywhere.',
-    needsLabel: 'the address enquiries are sent to',
-    needsWhy:
-      'No address for receiving enquiries has been published yet. Copy the enquiry below or download it, and send it yourself.',
     lineName: 'Name: {value}',
     lineEmail: 'Reply to: {value}',
     lineMessage: 'What I want worked out: {value}',
@@ -103,8 +98,6 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     download: '下载为文件',
     sendMail: '在我的邮件应用中打开',
     statusIdle: '按下这个按钮不会发出任何东西，因为本站没有服务器。它会先用您填的内容在下面组装好问询，让您在看过之后再决定它去哪里。',
-    needsLabel: '问询的收件地址',
-    needsWhy: '本站还没有公布接收问询的地址。请复制下面的问询或把它下载下来，自己发出去。',
     lineName: '称呼：{value}',
     lineEmail: '回复至：{value}',
     lineMessage: '想要理清的：{value}',

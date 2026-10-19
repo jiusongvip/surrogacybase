@@ -11,7 +11,6 @@
  * anchor text is not.
  */
 import type { Lang } from '@/i18n/config';
-import type { NeedsItem } from '@/data/service-pages';
 
 export type EditorialPage = {
   title: string;
@@ -37,10 +36,8 @@ export type EditorialPage = {
   updatesBefore: string;
   updatesLink: string;
   updatesAfter: string;
-  correctionsNeeds: NeedsItem;
   moneyHeading: string;
   commercial: string[];
-  moneyNeeds: NeedsItem;
   imageryHeading: string;
   imageryBody: string;
   revised: string;
@@ -64,9 +61,7 @@ export type PrivacyPage = {
   contact: string[];
   unsettledHeading: string;
   unsettledIntro: string;
-  unsettledNeeds: NeedsItem[];
   rightsBody: string;
-  requestNeeds: NeedsItem;
   revised: string;
 };
 
@@ -80,7 +75,6 @@ export type TermsPage = {
   terms: { h: string; body: string }[];
   openHeading: string;
   openIntro: string;
-  openNeeds: NeedsItem[];
   revised: string;
 };
 
@@ -180,10 +174,6 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'A page shows the date it was first published and the date of its last substantive change. Refreshing the modification date without changing the content is not an update and does not happen here. Each page also carries a date by which its sources must be re-checked, and the ',
     updatesLink: 'updates log',
     updatesAfter: ' records what actually changed and why.',
-    correctionsNeeds: {
-      label: 'Correction inbox address',
-      why: 'no address to send a correction to is published here yet',
-    },
     moneyHeading: 'Independence and money',
     commercial: [
       'The name these pages are published under, and what has not been stated yet, are on the About page.',
@@ -191,10 +181,6 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'Providers are not paid to be included, and inclusion is not an endorsement.',
       'Corrections from a named party are handled the same way as corrections from anyone else.',
     ],
-    moneyNeeds: {
-      label: 'Where an enquiry is received, and who reads it',
-      why: 'no address for receiving enquiries has been published yet, so an enquiry travels from your own mail app',
-    },
     imageryHeading: 'Imagery',
     imageryBody:
       'Illustration on this site is generated, not photographed from anyone’s situation. It shows documents and desk objects, travel and coastal scenes, and occasionally people seen from behind. No picture here is documentary photography, no real surrogate, intended parent or child appears in one, and none is stock photography of an unidentified person. The choice is deliberate: on this subject a family photograph either stages something that did not happen or uses a real family’s circumstances to sell something to a stranger, and a borrowed stock image leaves you looking at a face that belongs to nobody in the story.',
@@ -274,7 +260,6 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期，而',
     updatesLink: '更新日志',
     updatesAfter: '记录实际改了什么以及为什么改。',
-    correctionsNeeds: { label: '更正收件地址', why: '本站尚未公布可供发送更正的地址' },
     moneyHeading: '独立性与金钱',
     commercial: [
       '这些页面以什么名字发布，以及哪些内容尚未写明，都写在关于页上。',
@@ -282,10 +267,6 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       '服务方不会付费换取被收录，被收录也不构成背书。',
       '来自具名一方的更正与其他任何人的更正走同样的流程。',
     ],
-    moneyNeeds: {
-      label: '问询由谁接收、由谁阅读',
-      why: '本站还没有公布接收问询的地址，所以问询要从您自己的邮件应用发出去',
-    },
     imageryHeading: '配图',
     imageryBody:
       '本站的插图是生成的，不是对任何家庭真实处境的拍摄。画面内容是文件与桌上的物件、旅途与海滨的场景，偶尔也有几个人朝海走去的背影。这里没有一张是纪实摄影，没有任何一张里出现真实的代孕者、意向父母或孩子，也没有一张是身份不明的图库照片。这个选择是刻意的：在代孕这个话题上，一张家庭照片要么摆拍出一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西；而借来的一张图库照片，只会让您盯着一张不属于这个故事里任何人的脸。',
@@ -346,23 +327,9 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     ],
     unsettledHeading: 'Not yet settled, and you should know',
     unsettledIntro:
-      'Two things this page still cannot tell you honestly: who operates this site, and how and where it is hosted. Until both are settled, the privacy promises above rest on incomplete answers.',
-    unsettledNeeds: [
-      {
-        label: 'Who operates the site and in which country',
-        why: 'a privacy policy has to name the organisation answerable for your data and the law that governs it',
-      },
-      {
-        label: 'The hosting provider and any server log retention it applies',
-        why: 'who hosts the site and how long it keeps access logs decide what data leaves your browser',
-      },
-    ],
+      'What a privacy page in this position would normally answer about the people behind it is not settled here yet. Until those answers exist, the wording above describes a build that collects almost nothing; it does not describe who is answerable if any of it is wrong.',
     rightsBody:
       "Subject to applicable law, you can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. If you use the tool, deletion is in your hands already: clear this site's data in your browser settings.",
-    requestNeeds: {
-      label: 'Where to send a data request',
-      why: 'until there is an address to write to, you cannot ask us what we hold, to change it, or to delete it',
-    },
     revised:
       'Privacy policy last revised {date}. Material changes get a dated note here, not a silent rewrite.',
   },
@@ -414,14 +381,9 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
     unsettledHeading: '尚未确定，而您应该知道',
-    unsettledIntro: '有两件事本页现在还无法诚实告诉您：本站由谁运营，以及它托管在哪里、由谁托管。这两项确定之前，上面的隐私承诺建立在不完整的答案之上。',
-    unsettledNeeds: [
-      { label: '本站由谁运营、在哪个国家', why: '一份隐私政策必须点名对您数据负责的那个组织，以及管辖它的法律' },
-      { label: '托管服务商，以及它所适用的服务器日志保留策略', why: '由谁托管本站、访问日志保留多久，决定了哪些数据会离开您的浏览器' },
-    ],
+    unsettledIntro: '这一类隐私页面通常要回答的问题里，涉及本站背后是谁的那部分，这里还没有确定。在那些答案存在之前，上面的说法描述的是一个几乎不收集任何东西的站点，它并没有说明一旦其中某处出错该由谁负责。',
     rightsBody:
       '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
-    requestNeeds: { label: '数据请求寄往何处', why: '在有可写的地址之前，您无法要求我们说明持有什么、改正它，或删除它' },
     revised: '隐私政策最近修订于 {date}。实质性变更会在本页留下一条带日期的说明，而不是悄悄改写。',
   },
 };
@@ -466,15 +428,9 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
         body: 'The site is provided as it stands, without warranty that it is complete, current or suitable for your case. To the extent permitted by applicable law, the operator is not liable for decisions taken on the strength of it. That sentence does not reduce any statutory rights you have, and it does not excuse us from correcting a claim we got wrong.',
       },
     ],
-    openHeading: 'Open questions this page cannot close yet',
+    openHeading: 'Why these terms bind nothing yet',
     openIntro:
       'These pages are signed {team}, but no registered entity has been named as the operator of this site, so these terms do not bind you or anyone else to anything.',
-    openNeeds: [
-      {
-        label: 'Operating entity, country and governing law',
-        why: 'which courts and which consumer-protection rules apply depends on this',
-      },
-    ],
     revised: 'Terms last revised {date}. Changes apply from the date shown, not retroactively.',
   },
   zh: {
@@ -512,10 +468,9 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
         body: '本站按其现状提供，不担保它完整、最新或适合您的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。这句话不削减您依法享有的任何权利，也不能免除我们改正一条写错了的说法的义务。',
       },
     ],
-    openHeading: '本页现在还无法收口的开放问题',
+    openHeading: '这些条款为什么还约束不了任何人',
     openIntro:
       '这些页面的署名是 {team}，但还没有任何注册主体被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
-    openNeeds: [{ label: '运营主体、国家与适用法', why: '哪一家法院、哪一套消费者保护规则适用，取决于这一项' }],
     revised: '条款最近修订于 {date}。变更从所显示的日期起适用，不溯及既往。',
   },
 };

@@ -67,23 +67,25 @@ const jsonLd = [
     <section class="mt-12 border-t border-line pt-8">
       <h2 class="text-[22px]">{copy.whoHeading}</h2>
       <p class="mt-3 text-[16px] leading-relaxed text-muted">{fill(copy.whoBody, { team: SITE.team })}</p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8" id="contact">
+      <h2 class="text-[22px]">{copy.correctionsHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.correctionsBody}</p>
+    </section>
+
+    <section class="mt-12 border-t border-line pt-8" id="open-questions">
+      <h2 class="text-[22px]">{copy.openHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.openIntro}</p>
       <ul class="mt-4 space-y-3 text-[16px]">
         {
-          copy.whoNeeds.map((n) => (
+          copy.openNeeds.map((n) => (
             <li>
               <NeedsInput label={n.label} why={n.why} />
             </li>
           ))
         }
       </ul>
-    </section>
-
-    <section class="mt-12 border-t border-line pt-8" id="contact">
-      <h2 class="text-[22px]">{copy.correctionsHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.correctionsBody}</p>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">
-        <NeedsInput label={copy.correctionsNeeds.label} why={copy.correctionsNeeds.why} />
-      </p>
     </section>
   </article>
 </PageLayout>

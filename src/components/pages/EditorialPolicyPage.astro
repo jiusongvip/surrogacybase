@@ -4,12 +4,13 @@
  *
  * This is the page the rest of the site can be held to, so the Chinese one states the same rules
  * and the same six parts of a source record. The key each part is stored under stays off the page,
- * because a reader needs what it is for, not the name it has in a file.
+ * because a reader needs what it is for, not the name it has in a file. The corrections chain has
+ * one link missing, and that gap is named once, in the register on the About page, not here.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
-import NeedsInput from '@/components/ui/NeedsInput.astro';
+import OpenQuestionsNote from '@/components/ui/OpenQuestionsNote.astro';
 import { EDITORIAL_PAGE, EDITORIAL_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath, localizedPath } from '@/i18n/paths';
@@ -96,9 +97,7 @@ const copy = EDITORIAL_PAGE[lang];
         {copy.updatesAfter}
       </p>
       <p class="mt-4 text-[16px] leading-relaxed text-muted">{copy.correctionsBody}</p>
-      <p class="mt-4 text-[16px]">
-        <NeedsInput label={copy.correctionsNeeds.label} why={copy.correctionsNeeds.why} />
-      </p>
+      <OpenQuestionsNote />
     </section>
 
     <section class="mt-12 border-t border-line pt-8">
@@ -113,9 +112,6 @@ const copy = EDITORIAL_PAGE[lang];
           ))
         }
       </ul>
-      <p class="mt-6">
-        <NeedsInput label={copy.moneyNeeds.label} why={copy.moneyNeeds.why} />
-      </p>
     </section>
 
     <section class="mt-12 border-t border-line pt-8">

@@ -689,4 +689,13 @@
     "title": "The enquiry status line no longer says the message reached us",
     "change": "Under the button on the homepage enquiry form, the line shown when nothing has been sent said that a copied or downloaded enquiry will reach us the same way, and the Chinese said it lands in our hands. The same line also repeated that no address for receiving enquiries is registered, which the notice above the form already states. It now says only what just happened: nothing has been sent, because this site has no server, and the message on your screen is the enquiry, to copy or download and send yourself.",
     "reason": "Confirming a delivery that cannot happen turns a visitor into someone waiting for a reply that was never coming."
-  }]
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "decision",
+    "path": "/about",
+    "title": "The gaps this site has not settled now live in one list",
+    "change": "Privacy, terms, the editorial policy and the enquiry form each carried their own notice of what is missing, so the same two or three gaps were written out five different ways across the site, and again in Chinese. Those items are now named once, in a register at the bottom of the About page: the address enquiries reach, the address corrections reach, the route for a data request, who operates this site and its registration, the hosting provider and how long its logs are kept, and the names and credentials behind the byline. The other pages keep what is specific to them and carry one line pointing at that list.",
+    "reason": "Five wordings of one gap are five claims to keep true, and a notice that has to be re-typed on every page reads as a site left unfinished rather than a gap disclosed."
+  }
+]
