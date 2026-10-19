@@ -24,6 +24,7 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import JurisdictionTable from '@/components/destinations/JurisdictionTable.astro';
+import AdmissionTable from '@/components/destinations/AdmissionTable.astro';
 import DestinationNotes from '@/components/tools/DestinationNotes.astro';
 import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
@@ -34,6 +35,7 @@ import { getJurisdictions } from '@/lib/jurisdictions';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.destinations;
+const admitsCopy = UI[lang].admits;
 
 const rows = await getJurisdictions(lang);
 const verified = rows.filter((r) => !r.data.insufficientData).length;
@@ -176,6 +178,23 @@ const home = localizedPath(lang, '/');
         <Icon name="arrow-right" size={15} />
       </a>
     </p>
+  </section>
+
+  <section class="shell pb-16" id="admission">
+    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{admitsCopy.matrix.heading}</h2>
+    <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
+      {admitsCopy.matrix.intro}
+    </p>
+
+    <div class="mt-7">
+      {
+        rows.length > 0 ? (
+          <AdmissionTable rows={rows} />
+        ) : (
+          <EmptyState title={copy.records.emptyTitle} body={copy.records.emptyBody} />
+        )
+      }
+    </div>
   </section>
 
   <section class="shell pb-16" id="dimensions">

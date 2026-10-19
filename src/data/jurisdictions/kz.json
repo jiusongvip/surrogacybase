@@ -4,6 +4,29 @@
   "region": "Central Asia",
   "basis": "restricted",
   "eligibility": "Closed to international intended parents. A law dated 14 July 2026, No. 350-VIII ZRK, amended the Code on Marriage (Matrimony) and the Family so that only citizens of the Republic of Kazakhstan who are married may be customers of a surrogacy service: the amended article 54 carries that condition in those words, and articles 1 and 57 now define the customer as a citizen who is married. The instrument took effect on 26 July 2026. Foreigners, stateless persons, single women and single men, and unmarried couples are therefore outside the rule, whatever a clinic or an agency may still advertise. Whether agreements made or children conceived before that date were given transitional cover is not established in the sources read, which makes this the record to open if a proposal puts Kazakhstan in front of you now.",
+  "admits": [
+    {
+      "family": "married",
+      "status": "conditional",
+      "note": "citizen-only",
+      "fact": 0
+    },
+    {
+      "family": "cohabiting",
+      "status": "closed",
+      "fact": 0
+    },
+    {
+      "family": "single",
+      "status": "closed",
+      "fact": 0
+    },
+    {
+      "family": "international",
+      "status": "closed",
+      "fact": 2
+    }
+  ],
   "paymentModel": "The amended text speaks of customers of a surrogacy service, which keeps a paid model for the married citizens it allows, and it requires them to bear the material costs of the carrier's medical examinations. No tariff, cap or wider remuneration rule was readable in the sources opened, so this record states the shape of the model and no figure. Any Kazakh price presented to a foreign family is describing a route the law now closes to them.",
   "parentage": "Not established from the sources read, and this record does not assert it. The material opened contains the eligibility provisions and an amendment to the Code on People's Health and the Healthcare System that replaces the assisted-reproduction terminology with extracorporeal fertilisation and transfer and inserts an exclusion reading except for surrogacy. The birth-registration consequences of those changes were not readable, and the state register page for the law itself returned not found when opened, so nothing here states who is named on a Kazakh birth certificate after July 2026.",
   "statusVerifiedOn": "2026-10-17",

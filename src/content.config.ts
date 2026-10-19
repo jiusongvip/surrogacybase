@@ -71,6 +71,21 @@ const content = defineCollection({
     }),
 });
 
+/**
+ * Which family a system lets commission a child, and how far the sources behind this record can
+ * say so. The three codes are keys, not prose: src/i18n/ui.ts prints the words in both languages,
+ * and `fact` names the index of the sourced fact that establishes it, so an admission can never be
+ * shown without the document behind it. A family type this record does not carry is printed as not
+ * established rather than assumed, which is the whole point of the field.
+ */
+const admitsRow = z.object({
+  family: z.enum(['married', 'cohabiting', 'single', 'maleCouple', 'femaleCouple', 'international']),
+  status: z.enum(['open', 'closed', 'conditional']),
+  /** A qualification the source itself carries, again a key rather than prose. */
+  note: z.enum(['cohabit-one-year', 'citizen-only', 'bill-pending', 'residence-required', 'genetic-link']).optional(),
+  fact: z.number().int().min(0),
+});
+
 const jurisdictionFact = z.object({
   claim: z.string(),
   source,
@@ -129,6 +144,8 @@ const jurisdictions = defineCollection({
       ]),
       /** Who may commission, as far as the sourced material allows us to say. */
       eligibility: z.string(),
+      /** The same statement broken into the family types a reader compares themselves against. */
+      admits: z.array(admitsRow).default([]),
       paymentModel: z.string(),
       parentage: z.string(),
       statusVerifiedOn: z.string(),
@@ -146,6 +163,20 @@ const jurisdictions = defineCollection({
             code: 'custom',
             message: `${record.code}: a ${figure.item} figure names fact ${figure.fact}, and this record has ${record.facts.length}`,
           });
+        }
+      }
+      for (const row of record.admits) {
+        if (row.fact >= record.facts.length) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `${record.code}: the ${row.family} admission names fact ${row.fact}, and this record has ${record.facts.length}`,
+          });
+        }
+      }
+      const families = record.admits.map((row) => row.family);
+      for (const family of families) {
+        if (families.filter((f) => f === family).length > 1) {
+          ctx.addIssue({ code: 'custom', message: `${record.code}: ${family} is admitted twice, with no reason given` });
         }
       }
     }),

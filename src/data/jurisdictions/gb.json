@@ -3,10 +3,42 @@
   "name": "United Kingdom",
   "region": "Northern Europe",
   "basis": "assisted-reproduction-law",
-  "eligibility": "No eligibility criteria are stated by the sources available here; they describe the route to parenthood rather than who may use it. Who can apply for a parental order, and on what conditions, is set out in the legislation and needs confirming with a lawyer in the relevant part of the UK.",
+  "eligibility": "A government guidance page on the legal process describes who may use the route: intended parents may be a different-sex or a same-sex couple, married, in a civil partnership or living together, or an individual regardless of relationship status, and a parental order application requires at least one applicant to be genetically related to the child. What that page does not settle is the money question, or how a court weighs an application once it is filed; the facts below keep those separate. Domicile in the United Kingdom is treated on this site as its own question, and the guide about bringing a child home names the source that raises it.",
+  "admits": [
+    {
+      "family": "married",
+      "status": "open",
+      "note": "genetic-link",
+      "fact": 4
+    },
+    {
+      "family": "cohabiting",
+      "status": "open",
+      "note": "genetic-link",
+      "fact": 4
+    },
+    {
+      "family": "single",
+      "status": "open",
+      "note": "genetic-link",
+      "fact": 4
+    },
+    {
+      "family": "maleCouple",
+      "status": "open",
+      "note": "genetic-link",
+      "fact": 4
+    },
+    {
+      "family": "femaleCouple",
+      "status": "open",
+      "note": "genetic-link",
+      "fact": 4
+    }
+  ],
   "paymentModel": "Intended parents may reimburse the surrogate's reasonable expenses. Paying anything more than reasonable expenses must be authorised by the family court before a parental order can be made. Advertising for, or as, a surrogate is illegal under the Surrogacy Arrangements Act 1985. A report by Surrogacy UK, cited by HFEA, records surrogates as typically reimbursed 10,000 to 15,000 pounds.",
   "parentage": "The surrogate is the legal mother at birth unless a parental order is obtained. A written arrangement is not legally binding, and the Law Commission's reform proposals keep arrangements unenforceable. Intended parents have to wait until the child is born and then apply to court, a process the Commission describes as typically taking six months to a year.",
-  "statusVerifiedOn": "2026-10-17",
+  "statusVerifiedOn": "2026-10-19",
   "insufficientData": false,
   "facts": [
     {
@@ -50,6 +82,17 @@
         "publisher": "Charity Commission for England and Wales",
         "verifiedOn": "2026-10-14",
         "supports": "Public register entry, with financial year data to 31 December 2025. Registration records the organisation's purposes. It does not mean the organisation is regulated for surrogacy activity, and HFEA supervision covers licensed treatment clinics, not surrogacy support organisations."
+      }
+    },
+    {
+      "claim": "The guidance describes intended parents as couples or individuals who cannot have a child themselves, and states that they \"may be heterosexual or same-sex couples in a marriage, civil partnership or living together/co-habiting, or individuals regardless of their relationship status\". It states that to apply for a parental order at least one of the intended parents in a couple must be genetically related to the child, and that an individual may apply as long as they are genetically related to the child. It records that legislation relating to surrogacy is UK-wide while the court systems in Scotland and Northern Ireland differ, and the page is marked as applying to England and Wales.",
+      "source": {
+        "label": "The surrogacy pathway: surrogacy and the legal process for intended parents and surrogates in England and Wales",
+        "url": "https://www.gov.uk/government/publications/having-a-child-through-surrogacy/the-surrogacy-pathway-surrogacy-and-the-legal-process-for-intended-parents-and-surrogates-in-england-and-wales",
+        "publisher": "Department of Health and Social Care",
+        "publishedOn": "2025-10-03",
+        "verifiedOn": "2026-10-19",
+        "supports": "Official guidance, last updated 3 October 2025 and marked as applying to England and Wales. It is the source here for who may hold an arrangement and for the genetic condition on a parental order application. It is guidance rather than the statute, so the conditions it lists should be checked against the Human Fertilisation and Embryology Act 2008 by a lawyer when an application is being planned."
       }
     }
   ],

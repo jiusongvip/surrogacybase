@@ -109,6 +109,33 @@ export const UI: Record<Lang, {
     insufficient: string;
   };
   /**
+   * The words printed around an admission row. Which family, which status and which qualification
+   * are codes in src/data/jurisdictions, identical in both languages, so only these labels move.
+   */
+  admits: {
+    heading: string;
+    intro: string;
+    /** {families} lists the types no source on the page settles. */
+    notEstablished: string;
+    /** Printed whole in place of the rows when a record carries none. */
+    noneForRecord: string;
+    /** The separator used when those types are named in one sentence. */
+    join: string;
+    family: {
+      married: string;
+      cohabiting: string;
+      single: string;
+      maleCouple: string;
+      femaleCouple: string;
+      international: string;
+    };
+    status: { open: string; closed: string; conditional: string };
+    /** The short text a matrix cell carries, with `none` for a type no source settles. */
+    cell: { open: string; closed: string; conditional: string; none: string };
+    note: Record<'cohabit-one-year' | 'citizen-only' | 'bill-pending' | 'residence-required' | 'genetic-link', string>;
+    matrix: { heading: string; intro: string; caption: string; destination: string };
+  };
+  /**
    * The words printed around a cost figure. The number, its currency and its year are data in
    * src/data/jurisdictions, identical in both languages, so only these labels are translated.
    */
@@ -426,6 +453,39 @@ export const UI: Record<Lang, {
       payment: 'Payment',
       checked: 'Checked',
       insufficient: 'Not enough verified material to recommend it',
+    },
+    admits: {
+      heading: 'Which families this route is open to',
+      intro:
+        'These rows come from the same record as the legal position above. A type appears only where a source listed on this page states it, and the row names that source; where the page can say less, the row says less.',
+      notEstablished: 'No source listed on this page settles the position for: {families}.',
+      noneForRecord:
+        'Which family types this route is open to is not settled by any source listed on this page, so no answer is claimed here for any of them.',
+      join: ', ',
+      family: {
+        married: 'A married couple',
+        cohabiting: 'A couple living together',
+        single: 'A single person',
+        maleCouple: 'Two men as intended parents',
+        femaleCouple: 'Two women as intended parents',
+        international: 'Intended parents living abroad',
+      },
+      status: { open: 'Open', closed: 'Not open', conditional: 'Open on conditions' },
+      cell: { open: 'Open', closed: 'Not open', conditional: 'On conditions', none: 'Not established' },
+      note: {
+        'cohabit-one-year': 'The same rule reaches a man and a woman who have lived together for at least one year.',
+        'citizen-only': 'Marriage is not enough by itself: the rule names Kazakh citizenship as well.',
+        'bill-pending': 'A bill registered in August 2026 would remove foreign intended parents from this route. It has not been adopted.',
+        'residence-required': 'Both the intending parents and the woman carrying must hold permanent residence in Greece.',
+        'genetic-link': 'At least one applicant has to be genetically related to the child.',
+      },
+      matrix: {
+        heading: 'Who each destination admits',
+        intro:
+          'Read across a row for one destination, or down a column for one kind of family. A blank answer is not a refusal: it is this site saying that the sources behind that record do not settle the question, and the destination page names what they do settle.',
+        caption: 'Which family types each destination admits, limited to what the sources listed here establish',
+        destination: 'Destination',
+      },
     },
     costs: {
       heading: 'Cost figures published for this destination',
@@ -863,6 +923,37 @@ export const UI: Record<Lang, {
       payment: '费用模式',
       checked: '核查日期',
       insufficient: '可核实的材料不足，无法作为目的地推荐',
+    },
+    admits: {
+      heading: '这条路径向哪些家庭开放',
+      intro: '这些条目与上面的法律立场出自同一份记录。只有本页列出的来源明确说明时才会印出某一类家庭，条目同时点名那个来源；来源只能说少一点的地方，条目也就只说少一点。',
+      notEstablished: '本页列出的来源没有就以下类型给出结论：{families}。',
+      noneForRecord:
+        '这条路径向哪些家庭类型开放，本页列出的来源都还没有定论，因此这里不为其中任何一类给出答案。',
+      join: '、',
+      family: {
+        married: '已婚伴侣',
+        cohabiting: '共同生活的伴侣',
+        single: '单身个人',
+        maleCouple: '两位男性作为意向父母',
+        femaleCouple: '两位女性作为意向父母',
+        international: '居住在国外的意向父母',
+      },
+      status: { open: '开放', closed: '不开放', conditional: '有条件开放' },
+      cell: { open: '开放', closed: '不开放', conditional: '有条件', none: '未有结论' },
+      note: {
+        'cohabit-one-year': '同一条规则也覆盖共同生活至少一年的男女。',
+        'citizen-only': '仅有婚姻并不足够：这条规则同时写明哈萨克斯坦国籍。',
+        'bill-pending': '2026 年 8 月提交的一份法案会把外国意向父母从这条路径上移除，它尚未通过。',
+        'residence-required': '意向父母双方与分娩的女性都必须持有希腊的永久居留。',
+        'genetic-link': '至少一位申请人必须与孩子存在基因关系。',
+      },
+      matrix: {
+        heading: '各个目的地允许哪些家庭',
+        intro: '横着读一行，看一个目的地；竖着读一列，看一类家庭。空着的回答不是拒绝：它表示这份记录背后的来源没有确定这个问题，而目的地页面会写明这些来源确实确定了什么。',
+        caption: '各目的地允许的家庭类型，以这里列出的来源所能确定为限',
+        destination: '目的地',
+      },
     },
     costs: {
       heading: '本目的地已发布的费用数字',

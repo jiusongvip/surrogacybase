@@ -14,6 +14,7 @@ import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
 import { formatDate } from '@/lib/dates';
 import { localize } from '@/lib/jurisdictions';
 import { costText } from '@/lib/costs';
+import { ADMISSION_FAMILIES, admissionFor, familyLabel, unadmitted } from '@/lib/admits';
 
 type Props = { entry: CollectionEntry<'jurisdictions'> };
 
@@ -21,7 +22,39 @@ const { entry } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.jurisdiction;
 const costsCopy = UI[lang].costs;
+const admitsCopy = UI[lang].admits;
 const d = localize(entry.data, lang);
+
+/**
+ * The record's admission rows, gathered by what a reader has to weigh: same status, same
+ * qualification, same source. Family types that share all three are one line, so the sentence that
+ * qualifies them is printed once and cited once rather than once per type.
+ */
+type AdmissionGroup = {
+  status: (typeof d.admits)[number]['status'];
+  note: (typeof d.admits)[number]['note'];
+  families: string[];
+  source: (typeof d.facts)[number]['source'];
+};
+const groups: AdmissionGroup[] = [];
+for (const family of ADMISSION_FAMILIES) {
+  const row = admissionFor(d.admits, family);
+  if (!row) continue;
+  const fact = d.facts[row.fact];
+  if (!fact) throw new Error(`${d.code} admits row names fact ${row.fact}, which the record does not carry.`);
+  const existing = groups.find(
+    (g) => g.status === row.status && g.note === row.note && g.source.url === fact.source.url,
+  );
+  if (existing) existing.families.push(familyLabel(family, lang));
+  else
+    groups.push({
+      status: row.status,
+      note: row.note,
+      families: [familyLabel(family, lang)],
+      source: fact.source,
+    });
+}
+const unsettled = unadmitted(d.admits);
 
 const positions = [
   { label: copy.positions.legalBasis, value: BASIS_LABELS[lang][d.basis] ?? d.basis },
@@ -68,6 +101,57 @@ const positions = [
         </div>
       ))}
     </section>
+
+    {
+      groups.length > 0 ? (
+        <section class="mt-12">
+          <h2 class="text-[22px]">{admitsCopy.heading}</h2>
+          <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{admitsCopy.intro}</p>
+
+          <ul class="mt-6 space-y-4">
+            {groups.map((g) => (
+              <li class="grid gap-x-6 gap-y-1 border-t border-line pt-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+                <p class="text-[17px] leading-relaxed font-medium">{g.families.join(admitsCopy.join)}</p>
+                <div>
+                  <p class:text-flag={g.status === 'closed'} class="text-[17px] leading-relaxed">
+                    {admitsCopy.status[g.status]}
+                    {g.note !== undefined && (
+                      <span class="mt-1 block text-[15px] leading-[1.65] text-muted">
+                        {admitsCopy.note[g.note]}
+                      </span>
+                    )}
+                  </p>
+                  <p class="mt-1 text-[13px] text-muted">
+                    <a href={g.source.url} rel="noopener noreferrer" target="_blank" class="link-underlined">
+                      {g.source.label}
+                    </a>
+                    <span class="tnum block">
+                      {fill(copy.citeChecked, { date: formatDate(g.source.verifiedOn, lang) })}
+                    </span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {
+            unsettled.length > 0 && (
+              <p class="mt-6 max-w-[62ch] text-[14px] leading-[1.7] text-flag">
+                {fill(admitsCopy.notEstablished, {
+                  families: unsettled
+                    .map((family) => familyLabel(family, lang))
+                    .join(admitsCopy.join),
+                })}
+              </p>
+            )
+          }
+        </section>
+      ) : (
+        <aside class="mt-12 rounded-(--radius) border border-line px-5 py-4 text-[15px] leading-[1.7] text-muted">
+          {admitsCopy.noneForRecord}
+        </aside>
+      )
+    }
 
     <section class="mt-12">
       <h2 class="text-[22px]">{costsCopy.heading}</h2>

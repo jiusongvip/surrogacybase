@@ -1,0 +1,71 @@
+---
+/*
+ * Which family types each destination admits, as one row per record.
+ *
+ * A cell is printed only from the record's own admission rows, so a column a destination does not
+ * carry reads as unsettled rather than as a refusal. That distinction is the content of the table:
+ * the sites this comparison is written against sell wide access where the sources here establish
+ * nothing, so the empty cells are the finding.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { UI } from '@/i18n/ui';
+import { ADMISSION_FAMILIES, admissionFor, familyLabel } from '@/lib/admits';
+
+type Props = { rows: CollectionEntry<'jurisdictions'>[] };
+
+const { rows } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].admits;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full min-w-[860px] border-collapse text-left text-[15px]">
+    <caption class="sr-only">
+      {copy.matrix.caption}
+    </caption>
+    <thead>
+      <tr>
+        <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{copy.matrix.destination}</th>
+        {
+          ADMISSION_FAMILIES.map((family) => (
+            <th class="border-b border-line-strong pb-2 pr-4 font-semibold">{familyLabel(family, lang)}</th>
+          ))
+        }
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr>
+            <td class="border-b border-line py-3 pr-4 align-top">
+              <a
+                href={localizedPath(lang, `/destinations/${row.data.code}`)}
+                class="font-medium text-text underline decoration-line-strong underline-offset-2 hover:text-accent"
+              >
+                {row.data.name}
+              </a>
+              <span class="block text-[13px] text-muted">{row.data.region}</span>
+            </td>
+            {ADMISSION_FAMILIES.map((family) => {
+              const admission = admissionFor(row.data.admits, family);
+              if (!admission) {
+                return <td class="border-b border-line py-3 pr-4 align-top text-muted">{copy.cell.none}</td>;
+              }
+              return (
+                <td
+                  class:list={[
+                    'border-b border-line py-3 pr-4 align-top',
+                    admission.status === 'closed' ? 'text-flag' : 'text-text',
+                  ]}
+                >
+                  {copy.cell[admission.status]}
+                </td>
+              );
+            })}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

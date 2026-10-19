@@ -4,6 +4,39 @@
   "region": "Caucasus",
   "basis": "assisted-reproduction-law",
   "eligibility": "A surrogacy contract is open to a couple consisting of a man and a woman who have been married, or have lived together, for at least one year; single people and same-sex couples cannot be parties to it. Citizenship is not one of the conditions: Georgian law does not distinguish between Georgian citizens and foreigners, which is why Georgia has been used by international intended parents. The rules sit inside the health-care and patient-rights legislation and a set of Ministry of Health orders rather than in a dedicated surrogacy act, so this page describes the framework as a practitioner who reads those instruments reports it, and names what we could not verify underneath.",
+  "admits": [
+    {
+      "family": "married",
+      "status": "open",
+      "fact": 0
+    },
+    {
+      "family": "cohabiting",
+      "status": "open",
+      "note": "cohabit-one-year",
+      "fact": 0
+    },
+    {
+      "family": "single",
+      "status": "closed",
+      "fact": 0
+    },
+    {
+      "family": "maleCouple",
+      "status": "closed",
+      "fact": 0
+    },
+    {
+      "family": "femaleCouple",
+      "status": "closed",
+      "fact": 0
+    },
+    {
+      "family": "international",
+      "status": "open",
+      "fact": 0
+    }
+  ],
   "paymentModel": "The statute is silent rather than permissive: it neither expressly permits nor prohibits paying the woman who carries, and compensated arrangements have operated in Georgia for years on that silence. No published ceiling, no list of reimbursable items and no regulatory figure for Georgia was found in the material read for this page, so nothing here is a Georgian price, and a figure quoted to you by a clinic or an agency is not something Georgian law has set.",
   "parentage": "Registration is administrative rather than judicial. The intended parents are recorded as the child's parents, and the woman who carried the pregnancy and any donor are not entered as parents; the practitioner account read here describes the rule as a prohibition on naming them, not as a discretion the registry weighs. There is no equivalent of a United States pre-birth order, because no court order is the step that establishes parentage. What a Georgian birth entry is worth once the family reaches another country is a separate question this record does not answer.",
   "statusVerifiedOn": "2026-10-17",

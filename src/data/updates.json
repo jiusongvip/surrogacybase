@@ -648,5 +648,21 @@
     "title": "The apostille article asks a different question about the file",
     "change": "Its fifth question used to be who holds the documents during all this and how you get them back, in words shared with the guide about bringing a child home. It now asks what each authority in this chain keeps, and what the next counter will accept while the previous one still holds something, which is the question this page is able to answer. The version about who carries the papers across a whole journey is left to the guide, and linked.",
     "reason": "A verification chain hands your file to several offices in sequence, and the failure specific to this page is a document arriving at a counter in the wrong form rather than a document that has gone missing."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "published",
+    "path": "/destinations",
+    "title": "The comparison shows which family types each route admits",
+    "change": "Every destination record can now carry an admission row, and the destinations index prints the rows as one matrix: six kinds of family along the top, each destination down the side, and a cell that says only what a source on that record states. A destination page gives the same rows as sentences, each naming the source that states it and the date that source was read, the qualification attached to it, and the family types no source settles. Five records carry rows: Georgia, Ukraine, Kazakhstan, Greece and the United Kingdom. The four that carry none say so in a single line rather than leaving a table of blanks.",
+    "reason": "Which family a rule reaches is the first question a comparison has to answer, and the sites this one is written against answer it for families their own sources do not name. A matrix with room for a blank answer is the form that keeps an unsettled question unsettled instead of guessing it, and it is also the form that shows how deep each destination has actually been researched."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/destinations/gb",
+    "title": "The United Kingdom record gains the government pathway guidance",
+    "change": "The record carries a fifth source: the guidance the Department of Health and Social Care published on 3 October 2025 for intended parents and surrogates in England and Wales. It states that intended parents may be a heterosexual or same-sex couple in a marriage, a civil partnership or living together, or an individual regardless of relationship status, and that at least one applicant has to be genetically related to the child. The eligibility line now gives that in place of the summary it carried before, and the record is dated 19 October 2026.",
+    "reason": "The four sources already on the record describe what an arrangement can bind and what may lawfully be paid. None of them stated who may apply, so the United Kingdom row in the admission matrix had nothing to cite and the page would have had to leave blank a question the government’s own guidance answers."
   }
 ]
