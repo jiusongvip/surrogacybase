@@ -6,7 +6,7 @@ type: guide
 category: agencies
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
@@ -72,7 +72,7 @@ sources:
 
 请在支付任何定金之前索取这些文件，并把它们当作文件来读，而不是当作善意的证据。
 
-- **代孕协议草案。** [专业指引](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/)的要求是：每一项安排都应以包含意向父母与代孕者之间完整财务约定的书面协议正式确立。一家机构如果无法让您看到它的协议通常覆盖什么，那就是在文件还不存在时要求您承诺。
+- **代孕协议草案。** [专业指引](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/)把钱放在这份文件里面，而不是放在它旁边：正式确立这一安排的协议，应当承载它整个财务部分。一家机构如果无法让您看到它的协议通常覆盖什么，那就是在文件还不存在时要求您承诺。
 - **带退款表的费用清单。** 不是一句「退款视个案情况考虑」。
 - **托管安排。** 谁持有账户、谁注资、每笔支出由谁授权。
 - **代孕者获得独立法律建议与咨询的安排。** 各方都应有[分别的法律代理](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/)，而[双方的独立咨询是 FIGO 设定的标准](https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/)。问由谁提供、由谁付费。

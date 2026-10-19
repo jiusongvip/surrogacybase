@@ -68,7 +68,7 @@ sources:
 ## 项目方称之为「超出范围」的个人开支
 
 11. **您的交通与住宿**，包括要出行几次、必须停留多久、还有谁同行。移植与分娩的日期由诊所日程决定，不由您的休假安排决定。
-12. **代孕者可报销的开支**，无论您在哪里。在加拿大，监管机构把这些项目逐项列出，[那份清单](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)从交通、托育、咨询一直排到药物、分娩、保险，以及怀孕前后损失的收入，并要求提供票据、记录保存六年。在英国，付款以[合理开支](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)为限，超出部分必须在作出亲权令之前获得家事法院授权。无论哪种情形，这一类开支都是真实存在的，而在报价里它常被并成一行，或者整体省略。
+12. **代孕者可报销的开支**，无论您在哪里。在加拿大，监管机构把这些项目逐项列出，[那份清单](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)从交通、托育、咨询一直排到药物、分娩、保险，以及怀孕前后损失的收入，并要求提供票据、记录保存六年。在英国，合法能支付的是代孕者的[开支](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，超出这条线的任何部分都要先由法官授权，法院才会移交孩子的父母身份。无论哪种情形，这一类开支都是真实存在的，而在报价里它常被并成一行，或者整体省略。
 
 ## 一家服务方的拆法说明了区间有多宽
 

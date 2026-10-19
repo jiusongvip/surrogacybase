@@ -6,7 +6,7 @@ type: guide
 category: process
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
@@ -62,7 +62,7 @@ A surrogacy journey is usually described as if it were one decision. It is close
 
 This page sets out the stages as they generally run, who is involved in each, and what you are expected to have ready. It is a map of the process, not a recommendation that you follow it in this order or at all: the sequence varies by destination, by clinic, and by whether you need donor eggs or sperm.
 
-One structural point first. In [the position statement published in 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/), the International Federation of Gynaecology and Obstetrics supports gestational surrogacy arrangements, where the woman carrying the child is not genetically related to it, and discourages arrangements in which a woman agrees in advance to surrender a child she is genetically related to. FIGO also states that both the surrogate and the intended parents must receive independent and comprehensive counselling, and that psychological screening and ongoing counselling should be mandatory. Those two ideas, gestational arrangements and independent support for each side, are the framework a well-run program follows.
+One structural point first. In [the position statement published in 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/), the International Federation of Gynaecology and Obstetrics supports gestational surrogacy arrangements, where the woman carrying the child is not genetically related to it, and discourages arrangements in which a woman agrees in advance to surrender a child she is genetically related to. FIGO also sets requirements about the support each side has to be given, and the screening stage below quotes the sentence it uses for them. Those two ideas, gestational arrangements and independent support for each side, are the framework a well-run program follows.
 
 ## The stages
 
@@ -88,9 +88,9 @@ Matching is where an agency's stated service and its actual service are most oft
 
 ### 5. The agreement, and the money behind it
 
-Before treatment, the arrangement is documented. [Professional guidance from the bar association of adoption and assisted reproduction attorneys](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) is direct that every arrangement should be formalised by a written agreement, that the agreement should contain the complete financial agreement between the intended parents and the surrogate, and that escrow is typically funded before the first embryo transfer.
+Before treatment, the arrangement is documented, and the document is expected to carry the money rather than point at it: the [bar association for adoption and assisted reproduction attorneys](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) puts the whole financial side of the arrangement inside the signed agreement instead of leaving it to be agreed afterwards. What that does to your exposure, including the funding date that catches people out, is worked through on the page about [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).
 
-Academic review of US practice also notes that [separate legal representation for each party is recommended and sometimes mandated](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/). Independent legal advice for the carrier is not a formality you are paying for on your behalf; it is the protection that makes the arrangement sound.
+Academic review of US practice says the comparable thing about lawyers: each side is expected to have [its own counsel](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/), and in some states that is a requirement rather than a recommendation. Independent legal advice for the carrier is not a formality you are paying for on your behalf; it is the protection that makes the arrangement sound.
 
 ### 6. Medical treatment and transfer
 
@@ -102,11 +102,11 @@ Prenatal care runs through the carrier's obstetric provider. Your involvement, w
 
 ### 8. Birth and parentage
 
-The parentage route determines what happens in the delivery room and after it. In the United Kingdom, for example, the [surrogate is the legal mother at birth](https://www.hfea.gov.uk/treatments/explore-all-treatments/surrogacy/) unless a parental order is obtained, and the [Law Commission's report](https://lawcom.gov.uk/project/surrogacy/) describes intended parents as having to wait until the child is born and then apply to court, a process it says typically takes six months to a year. Other systems have pre-birth orders. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
+The parentage route determines what happens in the delivery room and after it. The [legal considerations guide](/guides/surrogacy-legal-considerations) holds the rule that surprises families most, and the [UK article](/articles/the-six-month-limit-on-a-uk-parental-order) the clock attached to it. The short version for this stage: in the United Kingdom the woman who gives birth is the child's legal mother until a court hands that status somewhere else, so the application follows the birth rather than preceding it, and the wait reported there runs from six months to a year. Other systems issue an order before the birth. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
 
 ### 9. Bringing the child home
 
-Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Cross-border intended parents are not a rare edge case: of [40,177 embryo transfers to a gestational carrier in the US from 2014 to 2020, 32 percent were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
+Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Cross-border intended parents are not a rare edge case: of [the 40,177 gestational carrier transfers recorded in the US between 2014 and 2020, 32 percent belonged to intended parents living abroad](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
 
 ## Who is involved, and what each one is accountable for
 

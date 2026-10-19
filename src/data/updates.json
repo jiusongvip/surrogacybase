@@ -632,5 +632,21 @@
     "title": "The article about costs outside a quote keeps only its own evidence",
     "change": "The Canada entry now names the range of categories the official list runs through rather than repeating that list item by item. The section that read one provider split has become a single paragraph that links to the cost guide and no longer restates the three ranges the guide publishes.",
     "reason": "What this article contributes is the set of lines a quote omits. Repeating the guide’s ranges made the two pages compete for one query and crowded out the twelve items that are the article’s own evidence."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": null,
+    "title": "Pages stop quoting each other’s sentences",
+    "change": "Every content page was measured against every other one for stretches of ten words or more written identically. Each pair that shared one has been rewritten on the side that was repeating, so a rule stated on one page is now stated there and linked from the others. The escrow explainer owns the sentences about what the written agreement has to contain and when funding happens. The legal considerations guide owns the rule that the birth mother remains the legal mother in the United Kingdom until a court moves that status. The UK article owns the family court authorisation of expenses above a reasonable line, and the study of 40,177 transfers owns the registry figures. Nine guides and articles changed wording in this pass, and the process guide gained links to the pages it had been restating.",
+    "reason": "When two of our pages say one thing in one set of words, a search engine has two candidates to show and splits the attention a single page would have gathered, and a reader who follows the link finds sentences they have already read. Where the same fact genuinely belongs on several pages, the page that owns it now carries the citation and the others carry a link to it."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/articles/getting-a-birth-certificate-accepted-abroad",
+    "title": "The apostille article asks a different question about the file",
+    "change": "Its fifth question used to be who holds the documents during all this and how you get them back, in words shared with the guide about bringing a child home. It now asks what each authority in this chain keeps, and what the next counter will accept while the previous one still holds something, which is the question this page is able to answer. The version about who carries the papers across a whole journey is left to the guide, and linked.",
+    "reason": "A verification chain hands your file to several offices in sequence, and the failure specific to this page is a document arriving at a counter in the wrong form rather than a document that has gone missing."
   }
 ]

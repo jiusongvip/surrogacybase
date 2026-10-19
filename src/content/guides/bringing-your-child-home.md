@@ -102,7 +102,7 @@ A child born through an arrangement usually has to hold three things at once bef
 
 - A record of the birth, issued by the authority in the place where the baby was born.
 - A decision on who the child's legal parents are, issued by a court or registry in a system that will recognise it.
-- An identity document that lets the child cross a border and enter the country the family is going to.
+- A travel document the child can cross a border on, which some authority has agreed to issue.
 
 Each comes from a different institution with its own turnaround, and the order is not negotiable: the second usually needs the first, and the third needs both.
 

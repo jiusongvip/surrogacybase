@@ -5,7 +5,7 @@ type: article
 category: preparation
 published: true
 publishedOn: "2026-10-15"
-updatedOn: "2026-10-15"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
@@ -90,8 +90,8 @@ Download the [destination research checklist](/tools/destination-research-checkl
 2. How many certified copies will the receiving authority want, and does any of them need the full record rather than the extract?
 3. Which translator does the receiving authority accept, and must the translator's signature be certified as well?
 4. Does anything in the chain have to happen inside a court deadline, and what happens if it does not?
-5. Who holds the documents while this is happening, and how do you get them back?
+5. What does each authority in this chain keep, and what will the next one accept while it holds it?
 
-Question five is not administrative. The people who physically hold a birth certificate, a court order and a passport application during a cross border process are usually a lawyer, an agency or a courier, and a plan that has not said which is a plan with the child's papers somewhere in a trunk.
+That fifth question is worth putting in writing before anything is handed over, because each authority in the chain keeps a different piece of the file. The certificate attaches to the document you sent rather than to a copy of it; a translation is usually made from a certified copy; and an application may be filed on a copy instead of the register entry itself. What the next counter will accept, in what form, and while the previous one still holds something, is for that counter to answer. Who carries the papers across a whole journey belongs to a longer page: [bringing your child home](/guides/bringing-your-child-home).
 
 This page describes published procedures and the dates published instruments took effect. It is not advice about a particular document, and it does not predict what any registry, court or consulate will accept.

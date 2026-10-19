@@ -5,7 +5,7 @@ type: article
 category: process
 published: true
 publishedOn: "2026-10-15"
-updatedOn: "2026-10-15"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us"]
 evidence: verified
@@ -29,7 +29,7 @@ sources:
 
 A number of transfers is not a number of babies. That sounds obvious, and it is the distinction that most of the figures quoted at you during a surrogacy search quietly breaks.
 
-The largest published study of gestational carrier transfers in the United States analysed [40,177 transfers performed between 2014 and 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/), drawn from the Society for Assisted Reproduction Clinic Outcome Reporting System. It is a useful document precisely because of what it does not do: it does not promise you anything, and it does not measure the thing a journey is actually made of.
+The largest published study of gestational carrier transfers in the United States analysed [40,177 transfers performed between 2014 and 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/), and its figures come from SART CORS, the reporting system the professional society for United States fertility clinics maintains. It is a useful document precisely because of what it does not do: it does not promise you anything, and it does not measure the thing a journey is actually made of.
 
 ## What a rate is a rate of
 

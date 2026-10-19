@@ -6,7 +6,7 @@ type: guide
 category: agencies
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
@@ -72,7 +72,7 @@ Then ask what the agency does **not** do. In a well-run program the answers are:
 
 Request these before any deposit, and read them as documents rather than as evidence of goodwill.
 
-- **The draft surrogacy agreement.** [Professional guidance](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) is that every arrangement should be formalised by a written agreement containing the complete financial agreement between intended parents and the surrogate. An agency that cannot show you what its agreements generally cover is asking you to commit before the document exists.
+- **The draft surrogacy agreement.** [Professional guidance](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) puts the money inside that document rather than beside it: the agreement which formalises the arrangement is expected to carry its whole financial side. An agency that cannot show you what its agreements generally cover is asking you to commit before the document exists.
 - **The fee schedule with a refund table.** Not a sentence saying refunds are considered case by case.
 - **The escrow arrangement.** Who holds it, what funds it, who authorises releases.
 - **The carrier's independent legal advice and counselling arrangements.** Each party should have [separate legal representation](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/), and [independent counselling for both sides is the standard FIGO sets](https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/). Ask who provides it and who pays.

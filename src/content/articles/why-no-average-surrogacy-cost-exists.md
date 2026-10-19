@@ -5,7 +5,7 @@ type: article
 category: cost
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb"]
 evidence: verified
@@ -73,7 +73,7 @@ A surrogacy total is not one price with variation around it. It is the sum of in
 
 - A package that covers one transfer and a package that covers three are different products with the same name.
 - Whether a donor egg is needed changes the medical line more than any fee negotiation.
-- Legal costs depend on the state and on whether a pre-birth order is available.
+- Legal costs move with the state, and with whether that state will make the order before the birth.
 - Neonatal care for a premature infant is a hospital bill, not a surrogacy fee.
 - Refund terms decide how much of a paid fee you keep when a program stops.
 
@@ -83,7 +83,7 @@ Averaging across that distribution produces a number that describes no actual pr
 
 1. **Build the budget from components.** A list of payees, each with a named biller, is a budget. One borrowed number is a hope. The [cost guide](/guides/surrogacy-cost) sets out the components and the contingent items.
 2. **Take the exclusions seriously.** The items outside a quote usually determine the final total. See [the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote).
-3. **Price the risk you carry.** How many transfer attempts you will fund, and what you will do if it does not work, changes your number more than the market average does.
+3. **Price the risk you carry.** How many attempts you agree to fund, and what happens to the plan if none of them produces a child, moves your number further than any market average can.
 4. **Ask for the escrow schedule.** When the money must be in an account, and what happens to it, is more predictive of your exposure than the headline fee. See [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).
 5. **Label every figure you write down** with who published it, when, and whether they sell the service. If you cannot label it, do not put it in the budget. The [published cost figures](/tools/cost-figures) page lists the numbers that arrive with that labelling already attached: each row names the source that published it and the year those figures describe.
 

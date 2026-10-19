@@ -5,7 +5,7 @@ type: article
 category: preparation
 published: true
 publishedOn: "2026-10-15"
-updatedOn: "2026-10-15"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "gb"]
 evidence: verified
@@ -60,8 +60,8 @@ Published analysis of United States practice records that in some jurisdictions 
 Three consequences follow, and they are the reason this list is worth working through before money moves.
 
 - A document that cannot be enforced still functions as evidence. What was agreed, what was disclosed, and what was paid will be reconstructed from the paperwork, so the quality of the paperwork protects you even where the contract does not.
-- The parentage question is decided by a court applying its own test, not by the agreement. In the United Kingdom the surrogate is the legal mother at birth, and her spouse or partner is automatically the second legal parent, until a parental order is made.
-- Payment terms are not neutral. Where the rule is that only reasonable expenses may be paid, and anything more must be authorised by the family court before an order can be made, an aggressive compensation structure is not merely expensive. It can sit inside the application that decides whether you become the child's legal parents.
+- The parentage question is decided by a court applying its own test, not by the agreement. The article on [the six-month limit](/articles/the-six-month-limit-on-a-uk-parental-order) gives the rule with its source: the woman who gives birth is the legal mother, and where she has a spouse or civil partner that person is the second legal parent, until a court order displaces both.
+- Payment terms are not neutral. Where the lawful ceiling is a carrier's reasonable expenses and anything above it waits on a judge, an aggressive compensation structure is not merely expensive. It can sit inside the application that decides whether you become the child's legal parents.
 
 ## What the professional bodies treat as mandatory
 

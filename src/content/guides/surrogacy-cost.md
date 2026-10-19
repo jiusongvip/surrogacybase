@@ -134,5 +134,5 @@ Work through this list against documents rather than conversations. If an answer
 - [ ] The documentation needed to bring the child home, and who is responsible for obtaining it.
 - [ ] A contingency reserve you have decided on, sized against the exclusions rather than the brochure.
 
-Nothing on this page is legal, medical or financial advice. Cost structure and payment mechanics are set by documents specific to your arrangement, and the totals depend on your jurisdiction, your medical path, and the providers you engage. Where this page states a rule, it names the source and the date it was checked. Where a figure or rule is not among those sources, the honest answer is to verify it with a named professional rather than to assume one.
+Nothing on this page is legal, medical or financial advice. Cost structure and payment mechanics are set by documents specific to your arrangement, and the totals depend on your jurisdiction, your medical path, and the providers you engage. Every rule quoted above arrives with the document behind it and the date that document was read. Where a figure or rule is not among those sources, the honest answer is to verify it with a named professional rather than to assume one.
 
