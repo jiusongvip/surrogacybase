@@ -5,7 +5,7 @@ type: article
 category: cost
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "ca"]
 evidence: verified
@@ -68,13 +68,11 @@ This is the list to work through with a quote in front of you. For each item, as
 ## Personal items that programs describe as "out of scope"
 
 11. **Your travel and stay**, including how many trips, how long you must be present, and who else comes. Transfers and birth dates are set by clinic schedules, not by your leave calendar.
-12. **The carrier's reimbursable expenses**, wherever you are. In Canada these are enumerated by the regulator: [travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) during the pre-pregnancy and post-partum period, with receipts required and records kept for six years. In the United Kingdom, payment is limited to [reasonable expenses](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and anything more must be authorised by the family court before a parental order can be made. Either way, the category is real, and in a quote it is frequently summarised as one line or omitted entirely.
+12. **The carrier's reimbursable expenses**, wherever you are. In Canada the regulator enumerates them, and [the list](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) runs from travel, childcare and counselling through medications, delivery, insurance and the income lost around the pregnancy, with receipts required and records kept for six years. In the United Kingdom, payment is limited to [reasonable expenses](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and anything more must be authorised by the family court before a parental order can be made. Either way, the category is real, and in a quote it is frequently summarised as one line or omitted entirely.
 
-## What one provider's own itemisation looks like
+## What one provider's split says about the width of a band
 
-A US clinic's published page itemises an agency fee of 35,000 to 55,000 dollars, base compensation of 35,000 to 60,000 dollars, and legal costs of 10,000 to 25,000 dollars ([Illume Fertility, published 2025-02-14, updated 2025-08-08](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states)).
-
-Those numbers are a provider's own, with no disclosed methodology, and they are quoted here as an example of how a fee gets split rather than as a benchmark. Note the width of the ranges: the top of one band and the bottom of another differ by more than most of the items on the list above.
+[The cost guide](/guides/surrogacy-cost) quotes one clinic's own division of a total into an agency fee, a base compensation range and a legal cost range ([Illume Fertility](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states)). Those are the provider's numbers with no disclosed methodology, and they are worth reading here for their width rather than their level: the top of one band and the bottom of the next together exceed most of the items on the list above.
 
 ## How to work through this without losing the thread
 

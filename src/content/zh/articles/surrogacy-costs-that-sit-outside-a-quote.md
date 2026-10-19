@@ -5,7 +5,7 @@ type: article
 category: cost
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "ca"]
 evidence: verified
@@ -68,13 +68,11 @@ sources:
 ## 项目方称之为「超出范围」的个人开支
 
 11. **您的交通与住宿**，包括要出行几次、必须停留多久、还有谁同行。移植与分娩的日期由诊所日程决定，不由您的休假安排决定。
-12. **代孕者可报销的开支**，无论您在哪里。在加拿大，这些项目由监管机构逐项列出：[交通、托育、咨询、法律费用、药物、孕妇装、产前课程、分娩、保险，以及孕前与产后期间因怀孕损失的工作收入](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)，需要票据，记录须保存六年。在英国，付款以[合理开支](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)为限，超出部分必须在作出亲权令之前获得家事法院授权。无论哪种情形，这一类开支都是真实存在的，而在报价里它常被并成一行，或者整体省略。
+12. **代孕者可报销的开支**，无论您在哪里。在加拿大，监管机构把这些项目逐项列出，[那份清单](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)从交通、托育、咨询一直排到药物、分娩、保险，以及怀孕前后损失的收入，并要求提供票据、记录保存六年。在英国，付款以[合理开支](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)为限，超出部分必须在作出亲权令之前获得家事法院授权。无论哪种情形，这一类开支都是真实存在的，而在报价里它常被并成一行，或者整体省略。
 
-## 一家服务方自己的分项长什么样
+## 一家服务方的拆法说明了区间有多宽
 
-一家美国诊所公布的页面把机构费列为 35,000 至 55,000 美元，基础补偿列为 35,000 至 60,000 美元，法律费用列为 10,000 至 25,000 美元（[Illume Fertility，发布于 2025-02-14，更新于 2025-08-08](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states)）。
-
-这些数字是服务方自己的，没有披露方法。这里引用它们是为了说明一项费用会被怎样拆开，而不是把它们当作基准。注意各区间的宽度：一个区间的上限与另一个区间的下限之差，比上面清单里大多数项目都要大。
+[费用指南](/zh/guides/surrogacy-cost)引用了一家诊所对自己总数的拆法：机构费、基础补偿、法律费用各成一个区间（[Illume Fertility](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states)）。这些是服务方自己的数字，没有披露方法，这里值得读的是它们的宽度而不是数值本身：一个区间的上限与下一个区间的下限相加，就超过上面清单里的大多数项目。
 
 ## 怎样走完这份清单而不失去线索
 

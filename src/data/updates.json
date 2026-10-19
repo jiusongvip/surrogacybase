@@ -616,5 +616,21 @@
     "title": "The About page gives its questions as questions",
     "change": "The four questions on the About page, and the answer printed under each, are now recorded in a form a machine reader takes as a question with its answer rather than as loose text.",
     "reason": "These are the questions a person asks before deciding whether to trust this site, and the page already answers them, so an assistant replying on its behalf has no reason to paraphrase."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/guides/surrogacy-cost",
+    "title": "The cost guide hands the two lists it duplicated to the pages that own them",
+    "change": "The section about how the money moves is now two paragraphs: they name the clause-level questions an escrow account raises and send you to the explainer that works through them one at a time, instead of listing four bullet points and four numbered questions that re-asked what that page already answers. The section about what a quote usually leaves out is now prose naming the same categories with the line-item article linked beside it. The sentences carrying the United States figure, the academic survey figure and the United Kingdom figure were rewritten so that no wording is shared with the pages those figures appear on.",
+    "reason": "A reader who opens the guide and then follows it to one of those pages should find the second page telling them more, not the same sentences again. Where two pages of ours said one thing in one set of words, a search engine is free to show either, which divides the attention a single page would have gathered."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "corrected",
+    "path": "/articles/surrogacy-costs-that-sit-outside-a-quote",
+    "title": "The article about costs outside a quote keeps only its own evidence",
+    "change": "The Canada entry now names the range of categories the official list runs through rather than repeating that list item by item. The section that read one provider split has become a single paragraph that links to the cost guide and no longer restates the three ranges the guide publishes.",
+    "reason": "What this article contributes is the set of lines a quote omits. Repeating the guide’s ranges made the two pages compete for one query and crowded out the twelve items that are the article’s own evidence."
   }
 ]

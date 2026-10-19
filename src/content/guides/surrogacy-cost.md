@@ -6,7 +6,7 @@ type: guide
 category: cost
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
@@ -62,28 +62,18 @@ A surrogacy program is not one bill. It is several independent payees, on differ
 | Legal fees | Drafting and negotiating the arrangement, parentage proceedings, separate counsel for each party | Lawyers, court filing fees | The state or country, how many parties need independent advice, and whether a pre-birth order is available |
 | Escrow administration | Holding and disbursing funds on the agreed schedule | Escrow provider | Monthly fees, minimum balance, and who authorises each release |
 | Contingency reserve | Loss, cycle failure, extended neonatal care, pregnancy complications | You | Whether the reserve is your own decision or someone else's requirement |
-| Travel and stay | Trips for transfers, appointments, birth, and document appointments | Airlines, hotels, employers, family logistics | Whether you can travel, how long you must be present, and who else comes with you |
+| Travel and stay | Trips for transfers, appointments, birth, and document appointments | Airlines, hotels, employers, family logistics | Whether you can travel, how long the stay has to run, and who goes with you |
 | Documentation afterwards | Birth registration, passports, citizenship or naturalisation steps, translation and apostille | Registries, consulates, translators | Whether your home country recognises the order made abroad |
 
 Two of these rows are the ones people underestimate. The contingency reserve is the cost that turns a budget into a guess. The documentation row is the one that appears after the birth, when the money set aside for it has already gone into the medical line.
 
-For a legal parentage route in the United States, the [professional guidance on financial terms](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) is blunt that these are separate documents and separate conversations: every arrangement should be formalised by a written agreement, and that agreement should contain the complete financial agreement between the intended parents and the surrogate.
+For a legal parentage route in the United States, the [professional guidance on financial terms](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) is blunt that these are separate documents and separate conversations: whatever the intended parents and the carrier agree about money has to be written into the signed agreement in full, rather than left in an invoice or a message thread.
 
 ## What a quote usually leaves out
 
-A quote is usually a package description, not a ledger. The items below sit outside most packages and inside most final totals. Treat each as a question to ask rather than a number to assume.
+A quote is usually a package description, not a ledger, and the distance between a quoted number and a paid one is made of items nobody labels as surrogacy: a second transfer attempt, medication and monitoring billed by the clinic rather than the program, insurance for the carrier, an independent lawyer for her ([the academic review of US practice](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) records that separate representation is recommended and, sometimes, mandated), court and filing costs, neonatal care that runs past the discharge date, whatever is still owed when a pregnancy ends early, the trip itself, and the documents that have to exist before anyone flies home.
 
-- **More than one transfer attempt.** A package that covers one transfer tells you nothing about the price of the second.
-- **Medication and monitoring that is billed by the clinic rather than the program.** Same line name, different payee.
-- **Insurance for the carrier**, including whether a life insurance policy is required and who pays the premium.
-- **Independent legal advice for the carrier.** Academic review of US practice notes that separate representation for each party is recommended and [sometimes mandated](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/).
-- **Court and filing costs** for the parentage order, and what happens if a judge requires more hearings.
-- **Extended neonatal care.** A hospital bill for a premature infant is not a surrogacy line item, and it is not covered by most things called a package.
-- **Pregnancy loss and repeat cycles.** What you owe when a pregnancy ends early, and what you owe to start again, are contract questions, not medical ones.
-- **Your travel.** Dates are set by clinic schedules, not by your leave calendar.
-- **Getting home.** Document appointments, translations, apostilles, and a consulate visit after birth.
-
-The [quote comparison tool](/tools/agency-quote-comparison) exists for exactly this list. Put every item into a row, mark each one included, excluded, or needs checking, and leave unconfirmed amounts blank on purpose. The tool excludes them from the total so a number never looks finished when it is not.
+[The explainer on the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time, and ends by showing how to turn each one into a written question addressed to a named party. The [quote comparison tool](/tools/agency-quote-comparison) exists for exactly that list. Put every item into a row, mark each one included, excluded, or needs checking, and leave unconfirmed amounts blank on purpose. The tool excludes them from the total so a number never looks finished when it is not.
 
 ## Why two agencies quote the same program differently
 
@@ -98,21 +88,9 @@ There is a fifth reason, and it is the least comfortable one: quoted fees vary b
 
 ## How the money actually moves
 
-The mechanism to understand is an escrow account, because it decides when you are exposed. The [professional guidance](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) sets out the standard structure:
+The mechanism to understand is an escrow account, because it decides when you are exposed. Two propositions from the [professional guidance](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) set the timing: the account is typically funded before the first embryo transfer rather than before the birth, and the written agreement is what states how much money it has to hold.
 
-- The escrow account is typically funded **before the first embryo transfer**, not before the birth.
-- The written agreement tells the parties **how much money should be in escrow**.
-- The escrow should be **neutral**: an account that discharges payments on the agreed schedule rather than holding money for one party's benefit.
-- The financial agreement belongs **inside** the surrogacy agreement, rather than in an invoice you receive afterwards.
-
-Four questions follow directly from that structure, and they are worth putting to the agency, the lawyer and the escrow provider in writing:
-
-1. What amount must be in escrow, and by what date?
-2. Who authorises each disbursement, and what happens if you disagree with one?
-3. What happens to money still in escrow if the pregnancy ends, before or after viability?
-4. Who pays the administration fee, and does it continue if the program pauses?
-
-Ask the same four questions of every quote. You will find that not every provider can answer all four, and that is information in itself.
+When that money is released, whether the account is genuinely neutral, and what happens to a balance if a pregnancy ends are clause-level questions, and the explainer on [surrogacy escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages) works through them one at a time, including the questions to put to the agency, your lawyer and the escrow provider. Read that page before you read a quote. A quote can state a correct total and still answer none of those questions.
 
 ## Payment schedules and refund terms
 
@@ -129,11 +107,11 @@ Concretely, check:
 
 Here is what can honestly be said about the totals.
 
-**United States.** A fertility clinic's own page, published in February 2025 and updated in August 2025, states that the [average cost of surrogacy in the US in 2025 ranges from 100,000 to 140,000 US dollars](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states), and can rise to 250,000 dollars or more. The same page itemises an agency fee of 35,000 to 55,000 dollars, base compensation of 35,000 to 60,000 dollars, and legal costs of 10,000 to 25,000 dollars. No methodology is disclosed. It is a provider's marketing page, and it is quoted here as that.
+**United States.** The figures this market repeats most often are a fertility clinic's own: [an average of 100,000 to 140,000 US dollars for surrogacy in 2025](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states), rising to 250,000 dollars or more. The same page itemises an agency fee of 35,000 to 55,000 dollars, base compensation of 35,000 to 60,000 dollars, and legal costs of 10,000 to 25,000 dollars. No methodology is disclosed. It is a provider's marketing page, and it is quoted here as that.
 
-A peer-reviewed review article puts it more carefully: the cost of having a baby via a gestational carrier in the US [surpassed 100,000 dollars in 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/). That is an academic citation of other sources rather than an original dataset, which is roughly the state of the evidence.
+A peer-reviewed review article states it as a threshold rather than a range: [US costs via a gestational carrier passed 100,000 dollars in 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/). That is an academic citation of other people's sources rather than an original dataset, which is roughly the state of the evidence.
 
-**United Kingdom.** The regulator's factsheet reports that surrogates are typically reimbursed [10,000 to 15,000 pounds](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), citing a report by the organisation Surrogacy UK. This is an expenses reimbursement range, not a program cost, and there is no verified UK total-cost figure for anyone to plan against. Paying more than reasonable expenses requires family court authorisation before a parental order can be made, so the number that matters legally is not the total but what the court will accept as expenses.
+**United Kingdom.** The regulator's factsheet puts the usual reimbursement at [10,000 to 15,000 pounds](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), a figure it takes from a report by Surrogacy UK. That is an expenses range rather than a program cost, and no verified UK total exists to plan against. Anything above reasonable expenses needs family court authorisation before a parental order can be made, so the number the law cares about is the expenses line rather than the sum.
 
 **Canada.** Canadian law governs what may be reimbursed rather than what things cost. [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates reimbursable expenditures, including travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income during the pre-pregnancy and post-partum period. Receipts are required and records must be kept for six years.
 
