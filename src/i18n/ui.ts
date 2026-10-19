@@ -524,7 +524,7 @@ export const UI: Record<Lang, {
     },
     content: {
       keepReading: 'Keep reading',
-      keepReadingNote: 'Chosen because they answer the question this page could not.',
+      keepReadingNote: 'This block runs both ways: every page in it either points at this one or is pointed at by it.',
       workingList: 'Turn this into a working list',
       reviewedBy: 'Reviewed by {name}, {role}.',
       reviewedByTeam: 'Reviewed by the {team}, whose members include clinicians.',
@@ -996,7 +996,7 @@ export const UI: Record<Lang, {
     },
     content: {
       keepReading: '继续阅读',
-      keepReadingNote: '入选理由：它们回答了这一页没有回答的问题。',
+      keepReadingNote: '这份链接是双向的：列在这里的每个页面，要么指向本页，要么被本页指向。',
       workingList: '把这一页变成一份可执行的清单',
       reviewedBy: '由 {name}（{role}）审阅。',
       reviewedByTeam: '由 {team} 审阅，这个团队中有临床背景的成员。',

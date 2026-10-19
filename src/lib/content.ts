@@ -90,6 +90,37 @@ export async function resolveRefs(refs: string[], lang: Lang = 'en'): Promise<Co
 }
 
 /**
+ * A related link is a claim that the other page is worth the reader's next minute, and a claim
+ * that only one page makes is a claim the destination page has never agreed to. So frontmatter
+ * keeps the deliberate half, what a page chooses to point at, and the pages pointing *here* are
+ * inverted at render. A hub that ten articles name cannot then be the one page that never names
+ * any of them back.
+ *
+ * The declared links stay first and in the order they were written, because those are the ones
+ * someone chose; the returned ones follow, ordered by path so the list cannot shift between
+ * builds.
+ */
+export async function relatedFor(
+  entry: ContentEntry,
+  lang: Lang = 'en'
+): Promise<{ guides: ContentEntry[]; articles: ContentEntry[] }> {
+  const guides = await resolveRefs(entry.data.relatedGuides, lang);
+  const articles = await resolveRefs(entry.data.relatedArticles, lang);
+  const chosen = [...guides, ...articles];
+  const others = (await getLiveContent(lang)).filter((e) => e.id !== entry.id);
+  const returned: ContentEntry[] = [];
+  for (const other of others) {
+    const refs = await resolveRefs([...other.data.relatedGuides, ...other.data.relatedArticles], lang);
+    if (refs.some((r) => r.id === entry.id) && !chosen.some((c) => c.id === other.id)) returned.push(other);
+  }
+  returned.sort((a, b) => a.id.localeCompare(b.id));
+  return {
+    guides: [...guides, ...returned.filter((e) => e.data.type === 'guide')],
+    articles: [...articles, ...returned.filter((e) => e.data.type === 'article')],
+  };
+}
+
+/**
  * A piece of content declares which tools answer its next step, and this turns those
  * ids into links. Anything naming a tool that is not live drops out, so a guide can
  * promise a checklist only once the checklist exists.

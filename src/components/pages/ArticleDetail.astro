@@ -3,7 +3,7 @@ import ContentLayout from '@/layouts/ContentLayout.astro';
 import { CATEGORY_HREF, type CategoryKey } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { CATEGORY_LABELS, UI } from '@/i18n/ui';
-import { renderContent, resolveRefs, toolLinksFor, type ContentEntry } from '@/lib/content';
+import { renderContent, relatedFor, toolLinksFor, type ContentEntry } from '@/lib/content';
 
 type Props = { entry: ContentEntry };
 
@@ -11,10 +11,7 @@ const { entry } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages;
 const { Content, headings } = await renderContent(entry);
-const [relatedGuides, relatedArticles] = await Promise.all([
-  resolveRefs(entry.data.relatedGuides, lang),
-  resolveRefs(entry.data.relatedArticles, lang),
-]);
+const { guides: relatedGuides, articles: relatedArticles } = await relatedFor(entry, lang);
 
 const toolLinks = toolLinksFor(entry.data.relatedTools, lang);
 if (entry.data.category === 'destinations') {

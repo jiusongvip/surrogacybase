@@ -697,5 +697,13 @@
     "title": "The gaps this site has not settled now live in one list",
     "change": "Privacy, terms, the editorial policy and the enquiry form each carried their own notice of what is missing, so the same two or three gaps were written out five different ways across the site, and again in Chinese. Those items are now named once, in a register at the bottom of the About page: the address enquiries reach, the address corrections reach, the route for a data request, who operates this site and its registration, the hosting provider and how long its logs are kept, and the names and credentials behind the byline. The other pages keep what is specific to them and carry one line pointing at that list.",
     "reason": "Five wordings of one gap are five claims to keep true, and a notice that has to be re-typed on every page reads as a site left unfinished rather than a gap disclosed."
+  },
+  {
+    "date": "2026-10-19",
+    "kind": "decision",
+    "path": null,
+    "title": "Related links now run in both directions",
+    "change": "A page could name another as worth reading without the other ever naming it back. Across the fourteen guides and articles, 27 of those links ran one way; the process guide alone was pointed at by ten pages and pointed back at five of them. A page now lists the pages it names plus the pages that name it, and the line above that block says the list runs both ways.",
+    "reason": "A reader who follows a keep-reading link arrives somewhere that does not treat the two pages as related, and the block then promises a pairing only one half of the site believes."
   }
 ]
