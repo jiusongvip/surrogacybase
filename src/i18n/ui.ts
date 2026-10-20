@@ -67,8 +67,6 @@ export const UI: Record<Lang, {
   disclaimerStandards: string;
   disclaimerEnd: string;
   siteDescription: string;
-  /** The name the syndication feed signs itself with, in its own language. */
-  feedTitle: string;
   nav: NavItem[];
   cta: NavItem;
   footerGroups: FooterGroup[];
@@ -380,7 +378,6 @@ export const UI: Record<Lang, {
     disclaimerStandards: 'research standards',
     disclaimerEnd: '.',
     siteDescription: SITE.description,
-    feedTitle: 'SurrogacyBase guides and explainers',
     nav: [
       { label: 'Explainers', href: '/articles' },
       { label: 'Destinations', href: '/destinations' },
@@ -406,8 +403,6 @@ export const UI: Record<Lang, {
           { label: 'Explainers', href: '/articles' },
           { label: 'Destinations', href: '/destinations' },
           { label: 'Tools', href: '/tools' },
-          { label: 'Updates', href: '/updates' },
-          { label: 'New pages by RSS', href: '/rss.xml' },
         ],
       },
       {
@@ -854,7 +849,6 @@ export const UI: Record<Lang, {
     disclaimerStandards: '研究标准',
     disclaimerEnd: '。',
     siteDescription: '跨境代孕的独立指引：比较目的地，把费用拆成条目，厘清亲权与国籍，在付款之前核对报价。',
-    feedTitle: 'SurrogacyBase 指南与专题解读',
     nav: [
       { label: '专题解读', href: '/zh/articles' },
       { label: '目的地', href: '/zh/destinations' },
@@ -880,8 +874,6 @@ export const UI: Record<Lang, {
           { label: '专题解读', href: '/zh/articles' },
           { label: '目的地', href: '/zh/destinations' },
           { label: '工具', href: '/zh/tools' },
-          { label: '更新记录', href: '/zh/updates' },
-          { label: 'RSS 订阅', href: '/zh/rss.xml' },
         ],
       },
       {

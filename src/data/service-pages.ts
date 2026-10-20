@@ -75,7 +75,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. The one thing missing here is an address to send it to, which is the gap below.',
     openHeading: 'What this site has not settled',
     openIntro:
-      'Everything this page cannot answer yet is on this list, with what each missing piece blocks. A gap stays here until the thing behind it exists, and closing one is recorded on the updates page.',
+      'Everything this page cannot answer yet is on this list, with what each missing piece blocks. A gap stays here until the thing behind it exists.',
     openNeeds: [
       {
         label: 'An address for receiving enquiries',
@@ -140,7 +140,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。这里还缺的只有一件：可以寄送的收件地址，也就是下面那份清单里的一项。',
     openHeading: '本站还没有确定的事项',
     openIntro:
-      '这一页还回答不了的东西都列在这份清单上，并且写明每一项缺口各自挡住什么。缺口会一直留在这里，直到它背后那件事真的存在；补齐一项，更新记录页就记下一次。',
+      '这一页还回答不了的东西都列在这份清单上，并且写明每一项缺口各自挡住什么。缺口会一直留在这里，直到它背后那件事真的存在。',
     openNeeds: [
       {
         label: '接收问询的地址',

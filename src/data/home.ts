@@ -269,7 +269,7 @@ export const HOME_READING: Record<Lang, {
     readMore: 'Read more',
     emptyTitle: 'Nothing is published here yet',
     emptyBody: 'This section lists only what is live. A piece appears here once its sources have been checked and it can be read.',
-    emptyAction: 'Read the publication record',
+    emptyAction: 'Read the publication standards',
   },
   zh: {
     eyebrow: '指南与专题解读',
@@ -279,7 +279,7 @@ export const HOME_READING: Record<Lang, {
     readMore: '阅读全文',
     emptyTitle: '这里还没有已发布的内容',
     emptyBody: '这一节只列出已经发布的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
-    emptyAction: '查看发布记录',
+    emptyAction: '阅读发布标准',
   },
 };
 

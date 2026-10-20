@@ -4,7 +4,7 @@ import { PREFIX, type Lang } from '@/i18n/config';
 
 export type ContentEntry = CollectionEntry<'content'>;
 
-/** A draft or unpublished page never enters listings, feeds, links or the sitemap. */
+/** A draft or unpublished page never enters listings, links or the sitemap. */
 export function isLive(entry: ContentEntry): boolean {
   return entry.data.published && entry.data.evidence !== 'draft';
 }

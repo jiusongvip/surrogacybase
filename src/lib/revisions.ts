@@ -2,13 +2,13 @@
  * The date a page was last revised, for the sitemap's <lastmod>.
  *
  * A lastmod that is guessed is worse than no lastmod: a crawler that stops trusting the
- * value ignores it site-wide. So this derives the date from the three places the site
- * already records one, and a page with no record there gets no lastmod at all rather than
- * the build date.
+ * value ignores it site-wide. So this derives the date from the three places the site already
+ * records one, and a page with no record there gets no lastmod at all rather than the build
+ * date.
  *
  *   - guide and article frontmatter, where updatedOn is what the page itself prints;
  *   - a jurisdiction record's statusVerifiedOn, the date its legal position was re-checked;
- *   - the public changelog, whose entries name the page each change touched.
+ *   - a policy page's revision stamp, the date printed beside its own wording.
  *
  * The Chinese page of a pair carries the same date, because a revision here is one event
  * written into both languages, and the two files are checked against each other at build.
@@ -21,7 +21,14 @@ import { join } from 'node:path';
 
 const CONTENT = 'src/content';
 const JURISDICTIONS = 'src/data/jurisdictions';
-const UPDATES = 'src/data/updates.json';
+const POLICIES = 'src/data/policy-pages.ts';
+
+/** Where each revision stamp printed by a policy page belongs in the sitemap. */
+const POLICY_ROUTES: Record<string, string> = {
+  EDITORIAL: '/editorial-policy',
+  PRIVACY: '/privacy',
+  TERMS: '/terms',
+};
 
 /** locale-free path -> ISO date, newest record wins. */
 export type Revisions = Map<string, string>;
@@ -75,18 +82,11 @@ export function collectRevisions(cwd = process.cwd()): Revisions {
     newer(revisions, `/destinations/${record.code}`, record.statusVerifiedOn);
   }
 
-  for (const entry of JSON.parse(readFileSync(join(cwd, UPDATES), 'utf8')) as {
-    date: string;
-    kind: string;
-    path: string;
-  }[]) {
-    /* A withheld entry records a decision not to publish something, so it is not a revision
-     * of the page named beside it. Anchors are stripped: the sitemap lists documents, and an
-     * entry with no path at all describes the site rather than one page of it. */
-    if (entry.kind === 'withheld' || !entry.path) continue;
-    const path = entry.path.split('#')[0];
-    if (!path) continue;
-    newer(revisions, path, entry.date);
+  if (existsSync(join(cwd, POLICIES))) {
+    const source = readFileSync(join(cwd, POLICIES), 'utf8');
+    for (const [name, path] of Object.entries(POLICY_ROUTES)) {
+      newer(revisions, path, source.match(new RegExp(`export const ${name}_REVISION = '([\\d-]+)'`))?.[1]);
+    }
   }
 
   return revisions;

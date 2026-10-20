@@ -1,6 +1,5 @@
 /*
- * The four pages that state how the site works on paper: editorial policy, privacy, terms, and the
- * updates log around them.
+ * The three pages that state how the site works on paper: editorial policy, privacy and terms.
  *
  * These are the pages a lawyer or a regulator would read first, so the Chinese halves carry the same
  * commitments sentence for sentence. Nothing here softens a promise for the second language: a
@@ -32,10 +31,7 @@ export type EditorialPage = {
   rules: { h: string; p: string }[];
   correctionsHeading: string;
   correctionsBody: string;
-  /** Split around the link to the updates log. */
-  updatesBefore: string;
-  updatesLink: string;
-  updatesAfter: string;
+  datesBody: string;
   moneyHeading: string;
   commercial: string[];
   imageryHeading: string;
@@ -78,25 +74,8 @@ export type TermsPage = {
   revised: string;
 };
 
-export type UpdatesPage = {
-  title: string;
-  description: string;
-  h1: string;
-  intro: string;
-  /** The five log kinds, printed as the label beside each entry. */
-  kinds: Record<'published' | 'corrected' | 'decision' | 'withheld' | 'removed', string>;
-  /** {n} numbers the outcome for a screen reader. */
-  reasonLabel: string;
-  openPage: string;
-  /** {title} is the later entry's own title, {date} is its date. */
-  supersededBy: string;
-  emptyTitle: string;
-  emptyBody: string;
-  emptyAction: string;
-};
-
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const EDITORIAL_REVISION = '2026-10-19';
+export const EDITORIAL_REVISION = '2026-10-20';
 
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
@@ -169,11 +148,9 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     correctionsHeading: 'Updates, dates and corrections',
     correctionsBody:
-      'If you find a claim that its own source no longer supports, tell us. The fix is either to correct the claim or to remove it while the check is pending, and the removal is logged.',
-    updatesBefore:
-      'A page shows the date it was first published and the date of its last substantive change. Refreshing the modification date without changing the content is not an update and does not happen here. Each page also carries a date by which its sources must be re-checked, and the ',
-    updatesLink: 'updates log',
-    updatesAfter: ' records what actually changed and why.',
+      'If you find a claim that its own source no longer supports, tell us. The fix is either to correct the claim or to remove it while the check is pending.',
+    datesBody:
+      'A page shows the date it was first published and the date of its last substantive change. Refreshing the modification date without changing the content is not an update and does not happen here. Each page also carries a date by which its sources must be re-checked.',
     moneyHeading: 'Independence and money',
     commercial: [
       'The name these pages are published under, and what has not been stated yet, are on the About page.',
@@ -255,11 +232,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     correctionsHeading: '更新、日期与更正',
     correctionsBody:
-      '如果您发现某条说法连它自己的来源都不再支持，请告诉我们。处理方式要么是改正这条说法，要么是在核查期间先把它撤下，而撤下这件事会被记录。',
-    updatesBefore:
-      '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期，而',
-    updatesLink: '更新日志',
-    updatesAfter: '记录实际改了什么以及为什么改。',
+      '如果您发现某条说法连它自己的来源都不再支持，请告诉我们。处理方式要么是改正这条说法，要么是在核查期间先把它撤下。',
+    datesBody: '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期。',
     moneyHeading: '独立性与金钱',
     commercial: [
       '这些页面以什么名字发布，以及哪些内容尚未写明，都写在关于页上。',
@@ -472,50 +446,5 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     openIntro:
       '这些页面的署名是 {team}，但还没有任何注册主体被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
     revised: '条款最近修订于 {date}。变更从所显示的日期起适用，不溯及既往。',
-  },
-};
-
-export const UPDATES_PAGE: Record<Lang, UpdatesPage> = {
-  en: {
-    title: 'Updates',
-    description:
-      'A dated log of what changed on SurrogacyBase, what was withheld for lack of a reliable source, and why. Every entry names the reason.',
-    h1: 'Updates',
-    intro:
-      'A change log for a content site usually records what was added. This one also records what was refused: pages that were researched and then withheld because the only available source was a party selling the service.',
-    kinds: {
-      published: 'Published',
-      corrected: 'Corrected',
-      decision: 'Editorial decision',
-      withheld: 'Withheld',
-      removed: 'Removed',
-    },
-    reasonLabel: 'Why',
-    openPage: 'Open the page',
-    supersededBy: 'Superseded by the entry “{title}”, logged {date}.',
-    emptyTitle: 'Nothing logged yet',
-    emptyBody: 'Entries appear when a page is published, corrected, withheld or removed.',
-    emptyAction: 'Read the editorial policy',
-  },
-  zh: {
-    title: '更新记录',
-    description:
-      '一份带日期的日志：SurrogacyBase 上改了什么、因缺少可靠来源而扣下了什么，以及原因。每一条都写明它的理由。',
-    h1: '更新记录',
-    intro:
-      '内容网站的变更日志通常只记录加了什么。这一份还记录拒绝了什么：那些做过研究、最终却被扣下的页面，因为唯一可得的来源是出售这项服务的一方。',
-    kinds: {
-      published: '已发表',
-      corrected: '已更正',
-      decision: '编辑决定',
-      withheld: '暂扣未发',
-      removed: '已撤下',
-    },
-    reasonLabel: '原因',
-    openPage: '打开该页面',
-    supersededBy: '已被{date}的记录「{title}」取代。',
-    emptyTitle: '还没有记录',
-    emptyBody: '当一个页面被发表、更正、扣下或撤下时，条目会出现在这里。',
-    emptyAction: '阅读编辑方针',
   },
 };

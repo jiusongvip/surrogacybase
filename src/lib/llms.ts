@@ -11,7 +11,7 @@
  * assumed about the origin, and a model that guesses will cite a page it never reached.
  */
 import { ABOUT_PAGE } from '@/data/service-pages';
-import { EDITORIAL_PAGE, UPDATES_PAGE } from '@/data/policy-pages';
+import { EDITORIAL_PAGE } from '@/data/policy-pages';
 import { SITE } from '@/const';
 import { TOOLS, toolPath } from '@/data/tools';
 import type { Lang } from '@/i18n/config';
@@ -93,7 +93,6 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     '',
     page(site, lang, '/about', ABOUT_PAGE[lang].title, ABOUT_PAGE[lang].description),
     page(site, lang, '/editorial-policy', EDITORIAL_PAGE[lang].title, EDITORIAL_PAGE[lang].description),
-    page(site, lang, '/updates', UPDATES_PAGE[lang].title, UPDATES_PAGE[lang].description),
     '',
   ].join('\n');
 }

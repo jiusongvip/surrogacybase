@@ -236,33 +236,6 @@ for (const file of readdirSync(join(dataDir, 'jurisdictions'))) {
 if (recordsRead === 0) problems.push('jurisdictions: not one record was read, so the source files changed shape');
 
 /*
- * The updates log works the same way, but keyed by each entry's English title rather than by a code:
- * an entry can be appended in the middle of the log, and a positional overlay would then translate
- * every entry by one without any count disagreeing.
- */
-const logEn = JSON.parse(readFileSync(join(dataDir, 'updates.json'), 'utf8'));
-const { _comment: logNote, ...logZh } = JSON.parse(readFileSync(join(dataDir, 'updates-zh.json'), 'utf8'));
-for (const item of logEn) {
-  const zh = logZh[item.title];
-  if (!zh) {
-    untranslatedRecords.push(`updates: ${item.title}`);
-    continue;
-  }
-  const tag = `updates-zh.json: ${item.title}`;
-  for (const key of ['title', 'change', 'reason']) {
-    const value = String(zh[key] ?? '');
-    if (!HAN_RE.test(value) && !CARRIED_OVER.has(asName(value))) problems.push(`${tag}: ${key} was left untranslated`);
-    typography(`${tag} ${key}`, value);
-  }
-}
-for (const key of Object.keys(logZh)) {
-  if (!logEn.some((item) => item.title === key)) {
-    problems.push(`updates-zh.json: wording for "${key}" but no such entry in updates.json`);
-  }
-}
-if (logEn.length === 0) problems.push('updates: not one entry was read, so the log changed shape');
-
-/*
  * The dictionaries that hold prose as `{ en: '...', zh: '...' }` pairs. Record<Lang, X> blocks
  * are not scanned for parity here because the compiler already demands every key of every
  * locale; what still needs a check is the wording inside them, so they join the sweep below.

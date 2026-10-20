@@ -6,8 +6,7 @@ import { localizedPath } from '@/i18n/paths';
  *
  * The homepage, the tools index and the content related-links all read this, so a
  * tool cannot be advertised in one place and missing in another. `live: false` means
- * the page does not exist yet: the entry stays visible and unlinked, which is the
- * same rule the updates log applies to withheld pages.
+ * the page does not exist yet: the entry stays visible and unlinked.
  *
  * The wording is per language because a Chinese guide's sidebar has to name the same tool in
  * Chinese, and the URL differs by prefix. `live` stays a single flag: the English and Chinese
