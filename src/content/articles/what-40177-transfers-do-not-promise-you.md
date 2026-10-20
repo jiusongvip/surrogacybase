@@ -73,7 +73,7 @@ Put these to a clinic or an agency in writing, and record the answer against the
 4. What is your multiple birth rate, and what do you tell patients about the cost and risk of a twin pregnancy?
 5. For intended parents living outside the United States, how many trips does your own data show, and what happens to the count when a transfer is postponed?
 
-Question five is the one that turns a clinical statistic into a budget. The [quote comparison tool](/tools/agency-quote-comparison) is where the answer should be written down, next to the price of a second transfer and a frozen thaw cycle, which is the part of this subject a rate never mentions and a total always contains.
+Question five is the one that turns a clinical statistic into a budget. The [quote comparison tool](/tools/agency-quote-comparison) is where the answer belongs, against the clinic and medication cost, which is the part of this subject a rate never mentions and a total always contains.
 
 ## What this does not mean
 

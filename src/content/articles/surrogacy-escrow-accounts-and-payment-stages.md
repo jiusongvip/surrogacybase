@@ -71,6 +71,6 @@ Typical milestones to check against: signing the agreement, funding escrow, star
 
 Escrow protects the movement of money. It does not decide enforceability, parentage, or whether the arrangement holds if someone withdraws. And nothing about a well-run escrow tells you whether the program behind it is well run; that is the [document review in the agency guide](/guides/choosing-a-surrogacy-agency).
 
-If you have two proposals in front of you, put both schedules into the [comparison tool](/tools/agency-quote-comparison) as separate rows, with amounts left blank wherever a quote does not state one. The number you are comparing has to be the number you can name a payee for.
+If you have two proposals in front of you, the [comparison tool](/tools/agency-quote-comparison) sets both against the same nine costs, with amounts left blank wherever a quote does not state one. The number you are comparing has to be the number you can name a payee for.
 
 This page describes how these arrangements are generally structured, based on professional guidance and its date. It is not legal or financial advice, and the terms that govern you are in your own agreement.

@@ -70,19 +70,19 @@ export const TOOLS: Tool[] = [
     en: {
       name: 'Agency quote comparison',
       summary:
-        'Set two or three quotes against the same line items, mark each one as included, not included or needs checking, and see what the totals still leave unanswered.',
-      linkNote: 'Compare two quotes line by line, in your browser.',
+        'The nine costs a quote is usually built from are already printed as the table. Type what each quote states beside them, mark each included, not included or needs checking, and see what the totals still leave unanswered.',
+      linkNote: 'Compare two quotes across the same nine costs, in your browser.',
       points: [
-        'You add the line items yourself, one for each cost',
+        'The nine costs are printed for you, so the table is ready before you type',
         'Amounts that are not confirmed stay out of the totals',
-        'Save, download, and start over without an account',
+        'Download it as one document, or clear the amounts and start again: nothing is kept once the tab closes',
       ],
     },
     zh: {
       name: '机构报价对比',
-      summary: '把两三份报价对在同一组条目上，逐条标注为包含、不包含或待核查，看看合计仍然没有回答什么。',
-      linkNote: '在您的浏览器里逐项对比两份报价。',
-      points: ['条目由您自己添加，每项成本一条', '未经确认的金额不计入合计', '保存、下载、重新开始，无需账户'],
+      summary: '一份报价通常由九项成本搭成，这张表格已经把它们印好了。在每份报价旁填入它写明的金额，标注为包含、不包含或待核查，看看合计仍然没有回答什么。',
+      linkNote: '在您的浏览器里，让两份报价落在同样的九项成本上对比。',
+      points: ['九项成本已经印好，您不必先搭表格', '未经确认的金额不计入合计', '下载成一份文档，或清空金额重新开始；关掉标签页后这里不保留任何东西'],
     },
   },
   {

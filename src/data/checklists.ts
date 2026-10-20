@@ -413,7 +413,7 @@ export const CHECKLISTS: Checklist[] = [
         closing: {
           heading: 'Then put the answers next to the numbers',
           body:
-            'Once the answers are in, the quote becomes comparable rather than merely readable. The comparison tool sets two or three quotes against the same line items and keeps unconfirmed amounts out of the totals, so a total never looks finished when it is not.',
+            'Once the answers are in, the quote becomes comparable rather than merely readable. The comparison tool sets two quotes against the same nine costs and keeps unconfirmed amounts out of the totals, so a total never looks finished when it is not.',
         },
         links: ['Compare the quotes', 'What a contract should state'],
       },
@@ -430,7 +430,7 @@ export const CHECKLISTS: Checklist[] = [
         closing: {
           heading: '然后把答案放在数字旁边',
           body:
-            '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两三份报价对在同一组条目上，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
+            '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两份报价对在同一组九项成本上，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
         },
         links: ['对比这些报价', '合同应当写明什么'],
       },

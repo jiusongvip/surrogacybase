@@ -1,5 +1,21 @@
 [
   {
+    "date": "2026-10-20",
+    "kind": "decision",
+    "path": "/tools",
+    "title": "Tools now sit in the header, and each one opens on its answer",
+    "change": "The header carries Tools beside the explainers, the destinations, the guides and About us, and every tool puts its questions or its figures on the screen at once: the two checklists read as a document you download, and the quote comparison prints the nine costs a quote is usually built from, so what is left to do is type what each quote states.",
+    "reason": "You came to read something you can use, not to work through a setup. Each page now shows the questions and the numbers first and leaves one button to take them away with you."
+  },
+  {
+    "date": "2026-10-20",
+    "kind": "decision",
+    "path": "/tools/agency-quote-comparison",
+    "title": "The quote comparison holds your amounts only while the page is open",
+    "change": "The comparison keeps what you type for as long as the tab is open, and the document you download is the only copy. It prints the nine costs a quote is built from rather than asking you to add items or name columns, and the privacy page describes exactly that.",
+    "reason": "One screen of typing does not need a filing system. What you take away is a document you can hand to a lawyer or an agency, and nothing about it stays behind in your browser."
+  },
+  {
     "date": "2026-10-14",
     "kind": "published",
     "path": "/editorial-policy",

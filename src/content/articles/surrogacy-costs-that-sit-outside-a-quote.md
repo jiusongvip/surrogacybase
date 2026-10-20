@@ -76,9 +76,9 @@ This is the list to work through with a quote in front of you. For each item, as
 
 ## How to work through this without losing the thread
 
-Put the quote into the [comparison tool](/tools/agency-quote-comparison) as one row per item on this list. Set the scope to included, excluded, or needs checking. Leave the amount blank when the quote does not state it, and keep it marked as needs checking: unconfirmed amounts stay out of the total, which is the point. A total that quietly assumes nothing is missing is the least useful number you can produce.
+Enter the quote into the [comparison tool](/tools/agency-quote-comparison), which sets two quotes against the nine costs a package usually names. What sits on this list outside those nine becomes the written question that follows. Set the scope to included, excluded, or needs checking. Leave the amount blank when the quote does not state it, and keep it marked as needs checking: unconfirmed amounts stay out of the total, which is the point. A total that quietly assumes nothing is missing is the least useful number you can produce.
 
-Then take the rows still marked needs checking into the [agency checklist](/guides/choosing-a-surrogacy-agency) and turn each into a written question for a named party: agency, lawyer, clinic or escrow provider.
+Then take the items still marked needs checking into the [agency checklist](/guides/choosing-a-surrogacy-agency) and turn each into a written question for a named party: agency, lawyer, clinic or escrow provider.
 
 That is the whole method. The gap between a quoted number and a real budget is not closed by finding a better average. It is closed by listing what the quote did not mention.
 

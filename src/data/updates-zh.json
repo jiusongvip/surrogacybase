@@ -1,5 +1,16 @@
 {
   "_comment": "Chinese wording for the updates log, keyed by the English title of each entry. Dates, kinds, page paths and the existence of an entry belong to src/data/updates.json and are never repeated here; a key missing from this file is reported as a hard error when the site is made. The key is a title rather than a position so that appending an entry anywhere in the log cannot silently shift every translation by one.",
+
+    "Tools now sit in the header, and each one opens on its answer": {
+      "title": "工具进了顶部导航，每个工具一打开就是答案",
+      "change": "顶部导航把「工具」排在专题解读、目的地、指南和关于我们旁边。每个工具都把问题或数字直接印在页面上：两份清单就是一份可以下载的文档，报价对比则先把一份报价通常由以搭成的九项成本列出来，您要填的只是每份报价写明的金额。",
+      "reason": "您来这一页是要读能用的东西，不是要走一遍准备工作。页面先给出问题和数字，只留一个按钮把它们带走。"
+    },
+    "The quote comparison holds your amounts only while the page is open": {
+      "title": "报价对比只在页面开着的时候记住您的金额",
+      "change": "这份对比在您开着标签页的时候记住您填的内容，您下载的那份文档就是唯一的副本。它把一份报价通常包含的九项成本直接列出，不再要求您添加条目或给每份报价命名，隐私页也照此写明。",
+      "reason": "一屏的填写不需要一套档案系统。您带走的是能交给律师或机构的文档，浏览器里不会留下任何痕迹。"
+    },
   "The editorial policy is now public": {
     "title": "编辑方针现已公开",
     "change": "首次发布：本站每一条说法背后所依据的标准、我们接受的证据等级，以及所记录的来源细节。",

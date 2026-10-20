@@ -281,7 +281,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
     title: 'Privacy',
     description:
-      'What SurrogacyBase stores and does not store: pages that set no cookies, a quote tool that keeps its data only in your browser, and how any information you send us is handled.',
+      'What SurrogacyBase stores and does not store: pages that set no cookies, a quote tool that keeps nothing at all, and how any information you send us is handled.',
     h1: 'Privacy',
     intro:
       'This page describes what actually happens when you read this site and use its tools. It promises only what the site really does, which is why it is shorter than most privacy policies.',
@@ -296,7 +296,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: 'The quote comparison tool',
-        body: 'Everything you type is saved only in your own browser and read back from there. This site has no server that could receive it, so nothing the tool holds is sent to us or to anyone else. Clearing site data for this domain removes it permanently, and exporting gives you the only other copy.',
+        body: 'Every cost is printed on the page; you type two columns of amounts into it. Nothing you type leaves that tab and nothing is written down: there is no storage behind this tool, so closing the page discards the amounts, and the document you download is the only copy that exists.',
       },
       {
         h: 'The enquiry form',
@@ -336,7 +336,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   zh: {
     title: '隐私',
     description:
-      'SurrogacyBase 存了什么、没存什么：不设置 cookie 的页面、把数据只留在您浏览器里的报价工具，以及您主动发给我们的信息如何被处理。',
+      'SurrogacyBase 存了什么、没存什么：不设置 cookie 的页面、什么都不留存的报价工具，以及您主动发给我们的信息如何被处理。',
     h1: '隐私',
     intro:
       '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
@@ -351,7 +351,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: '报价对比工具',
-        body: '您键入的一切都只保存在您自己的浏览器里，并从那里读回。本站没有能够接收它的服务器，所以这个工具持有的任何内容都不会发给我们或任何其他人。清除这个域名的站点数据会永久移除它，而导出得到的那份是唯一的另一份副本。',
+        body: '表格上的成本已经印在页面里，您要键入的只是两列金额。您键入的内容不会离开这个标签页，也没有被写下来：这个工具背后没有任何存储，关掉页面这些金额就消失了，而您下载的那份文档就是它唯一的副本。',
       },
       {
         h: '问询表单',

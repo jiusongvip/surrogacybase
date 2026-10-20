@@ -120,6 +120,6 @@ None of these is proof of a bad provider. Each is a reason to slow down and get 
 
 There is no list of recommended agencies here, and no ranking. A defensible ranking would need audited data on how many programs each provider ran, what they charged, what happened when they failed, and how carriers were treated. [Registry surveillance in the United States records treatment cycles](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/) and does not record agreements, compensation or program outcomes. Nobody counts what a ranking would have to be built from.
 
-So the deliverable is a method: documents, questions, and a named professional for each question. If you want the two quotes you are holding laid out against each other on exactly these axes, use the [comparison tool](/tools/agency-quote-comparison), which keeps everything in your own browser.
+So the deliverable is a method: documents, questions, and a named professional for each question. If you want the two quotes you are holding laid out against each other on exactly these axes, use the [comparison tool](/tools/agency-quote-comparison), which prints the common costs for you and keeps nothing once the tab closes.
 
 This page is information about how to evaluate a provider. It is not advice about any specific agency, and it is not a legal opinion about any agreement.

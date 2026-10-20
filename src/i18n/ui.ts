@@ -384,7 +384,7 @@ export const UI: Record<Lang, {
     nav: [
       { label: 'Explainers', href: '/articles' },
       { label: 'Destinations', href: '/destinations' },
-      { label: 'Build a brief', href: '/assessment' },
+      { label: 'Tools', href: '/tools' },
       { label: 'Guides', href: '/guides' },
       { label: 'About us', href: '/about' },
     ],
@@ -860,7 +860,7 @@ export const UI: Record<Lang, {
     nav: [
       { label: '专题解读', href: '/zh/articles' },
       { label: '目的地', href: '/zh/destinations' },
-      { label: '自制简报', href: '/zh/assessment' },
+      { label: '工具', href: '/zh/tools' },
       { label: '指南', href: '/zh/guides' },
       { label: '关于我们', href: '/zh/about' },
     ],

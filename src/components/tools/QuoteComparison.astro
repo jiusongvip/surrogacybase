@@ -1,9 +1,15 @@
 ---
 /*
- * Agency quote comparison.
- * Deliberately browser-only: state lives in localStorage, nothing is submitted
- * anywhere. A quote is commercially sensitive information and this tool has no
- * reason to hold it.
+ * Agency quote comparison, kept as light as the page allows.
+ *
+ * The rows are printed by the server: the common costs a surrogacy quote is built from are known
+ * in advance, so a visitor meets a filled-out table instead of an empty grid and an
+ * "add line item" button. What is left to do is type two columns of amounts and set each scope.
+ * Nothing is collected and nothing is kept: there is no browser storage behind this tool, closing
+ * the page discards what was typed, and the download is the only copy that leaves.
+ *
+ * The scope options distinguish "not included" from "needs checking" on purpose: a quote that
+ * excludes an item and one that fails to mention it are different facts about the same provider.
  *
  * The copy is serialized into the DOM by the page rather than written into the script below,
  * because one bundle serves both languages and a status label left in English would sit inside
@@ -15,19 +21,16 @@ import { LANG_META } from '@/i18n/config';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = QUOTE_CHROME[lang];
-
-/*
- * The English key is the one the tool already used, so a quote someone is partway through
- * entering survives the change; the Chinese draft gets its own slot rather than overwriting it,
- * because an English line-item name pulled onto a Chinese row reads as a mistake, not as a draft.
- */
-const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogacybase.quote-comparison.v1.${lang}`;
+const plans = [
+  { id: 'a', letter: 'A' },
+  { id: 'b', letter: 'B' },
+] as const;
+const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
 ---
 
 <div
   class="rounded-(--radius-panel) border border-line bg-surface p-5 sm:p-7"
   data-quote-tool
-  data-store={storeKey}
   data-locale={LANG_META[lang].dateLocale}
   data-copy={JSON.stringify(copy)}
 >
@@ -40,24 +43,17 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
       <label class="field-label" for="qc-currency">{copy.currency}</label>
       <p class="mt-1.5 text-[13px] leading-[1.5] text-muted" id="qc-currency-note">{copy.currencyNote}</p>
       <select id="qc-currency" class="field-input" data-field="currency" aria-describedby="qc-currency-note">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="AUD">AUD</option>
-        <option value="CAD">CAD</option>
-        <option value="THB">THB</option>
-        <option value="INR">INR</option>
-        <option value="UAH">UAH</option>
-        <option value="COP">COP</option>
+        {
+          copy.currencies.map((code) => (
+            <option value={code} selected={code === 'USD'}>
+              {code}
+            </option>
+          ))
+        }
       </select>
     </div>
-    <button type="button" class="btn-ghost text-sm" data-action="add-item">{copy.addItem}</button>
-    <button type="button" class="btn-ghost text-sm" data-action="add-plan" data-add-plan>
-      {copy.addQuote}
-    </button>
-    <button type="button" class="btn-ghost text-sm" data-action="example">{copy.loadExample}</button>
-    <button type="button" class="btn-ghost text-sm" data-action="clear">{copy.clearAll}</button>
     <button type="button" class="btn-ghost text-sm" data-action="download">{copy.download}</button>
+    <button type="button" class="btn-ghost text-sm" data-action="reset">{copy.reset}</button>
   </div>
 
   <!-- relative: the sr-only caption is absolutely positioned, and without a
@@ -68,14 +64,88 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
         {copy.caption}
       </caption>
       <thead>
-        <tr data-plan-head></tr>
-        <tr data-col-head></tr>
+        <tr>
+          <th scope="col" class="w-[34%] border-b border-line-strong pb-2 pr-4 text-[13px] font-semibold text-muted">
+            {copy.lineItem}
+          </th>
+          {
+            plans.map((plan) => (
+              <>
+                <th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[110px]">
+                  {copy.amount}
+                </th>
+                <th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[130px]">
+                  {name(plan.letter)}
+                </th>
+              </>
+            ))
+          }
+        </tr>
       </thead>
-      <tbody data-items></tbody>
+      <tbody>
+        {
+          copy.items.map((label, index) => (
+            <tr>
+              <th scope="row" class="border-b border-line py-2.5 pr-3 text-left font-normal align-top">
+                {label}
+              </th>
+              {
+                plans.map((plan) => (
+                  <>
+                    <td class="border-b border-line py-2.5 pr-2 align-top">
+                      <label class="sr-only" for={`qc-${index}-${plan.id}-amount`}>
+                        {copy.srAmount.replace('{item}', label).replace('{plan}', name(plan.letter))}
+                      </label>
+                      <input
+                        id={`qc-${index}-${plan.id}-amount`}
+                        class="field-input tnum text-[14px]"
+                        type="text"
+                        inputmode="decimal"
+                        data-cell={`${index}:${plan.letter}`}
+                        placeholder="0"
+                      />
+                    </td>
+                    <td class="border-b border-line py-2.5 pr-3 align-top">
+                      <label class="sr-only" for={`qc-${index}-${plan.id}-status`}>
+                        {copy.srScope.replace('{item}', label).replace('{plan}', name(plan.letter))}
+                      </label>
+                      <select
+                        id={`qc-${index}-${plan.id}-status`}
+                        class="field-input text-[14px]"
+                        data-status={`${index}:${plan.letter}`}
+                      >
+                        <option value="verify" selected>
+                          {copy.statusVerify}
+                        </option>
+                        <option value="in">{copy.statusIn}</option>
+                        <option value="out">{copy.statusOut}</option>
+                      </select>
+                    </td>
+                  </>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
     </table>
   </div>
 
-  <div class="mt-6 grid gap-4 sm:grid-cols-2" data-totals></div>
+  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+    {
+      plans.map((plan) => (
+        <div class="rounded-(--radius) border border-line bg-surface-2 px-4 py-3.5">
+          <p class="text-[13px] font-medium text-muted" data-plan-label={plan.letter}>{name(plan.letter)}</p>
+          <p class="mt-1 tnum text-[24px] leading-none" data-total={plan.letter}>&nbsp;</p>
+          <p class="mt-2 grid gap-0.5 text-[13px] text-muted">
+            <span data-pending={plan.letter}></span>
+            <span data-excluded={plan.letter}></span>
+            <span data-invalid={plan.letter} class="text-flag" hidden></span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
 
   <section class="mt-6 rounded-(--radius) border border-flag/35 bg-flag-tint px-5 py-4" data-diff hidden>
     <p class="text-[13px] font-semibold tracking-wide text-flag">{copy.diffHeading}</p>
@@ -85,15 +155,7 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
     </p>
   </section>
 
-  <p class="mt-5 text-[14px] leading-relaxed text-muted">
-    {copy.footerA}<span class="font-medium text-text">{copy.statusVerify}</span>{copy.footerB}
-  </p>
-
-  <noscript>
-    <p class="mt-4 rounded-(--radius) border border-flag/35 bg-flag-tint px-4 py-3 text-[14px] text-flag">
-      {copy.noscript}
-    </p>
-  </noscript>
+  <p class="mt-5 text-[14px] leading-relaxed text-muted">{copy.footer}</p>
 </div>
 
 <script>
@@ -102,98 +164,26 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
 
   type Status = 'in' | 'out' | 'verify';
 
-  type Cell = { amount: string; status: Status };
-  type Item = { id: string; label: string };
-  type Plan = { id: string; name: string; cells: Record<string, Cell> };
-  type State = { currency: string; items: Item[]; plans: Plan[] };
-
-  const root = document.querySelector<HTMLElement>('[data-quote-tool]');
-  if (root) {
+  for (const node of Array.from(document.querySelectorAll<HTMLElement>('[data-quote-tool]'))) {
+    const root = node;
     const T = JSON.parse(root.dataset.copy!) as QuoteChrome;
-    const STATUSES: { value: Status; label: string }[] = [
-      { value: 'in', label: T.statusIn },
-      { value: 'out', label: T.statusOut },
-      { value: 'verify', label: T.statusVerify },
-    ];
-
-    const storeKey = root.dataset.store!;
     const locale = root.dataset.locale ?? 'en-US';
+    const letters = ['A', 'B'] as const;
+    const itemCount = root.querySelectorAll<HTMLInputElement>('[data-cell$=":A"]').length;
 
-    const planRow = root.querySelector<HTMLElement>('[data-plan-head]')!;
-    const colRow = root.querySelector<HTMLElement>('[data-col-head]')!;
-    const itemsBody = root.querySelector<HTMLElement>('[data-items]')!;
-    const totalsBox = root.querySelector<HTMLElement>('[data-totals]')!;
-    const diffBox = root.querySelector<HTMLElement>('[data-diff]')!;
-    const diffValue = root.querySelector<HTMLElement>('[data-diff-value]')!;
-    const currencyInput = root.querySelector<HTMLSelectElement>('[data-field="currency"]')!;
-    const addPlanButton = root.querySelector<HTMLButtonElement>('[data-add-plan]')!;
-
-    const newId = (prefix: string) => `${prefix}${Math.random().toString(36).slice(2, 7)}`;
-    const letter = (index: number) => ['A', 'B', 'C'][index] ?? String(index + 1);
-    const defaultName = (index: number) => fill(T.quoteName, { letter: letter(index) });
-    /** The letter only repeats when the quote was renamed, so the two never read alike. */
-    const labelFor = (plan: Plan, index: number) =>
-      plan.name === defaultName(index) ? plan.name : `${defaultName(index)} · ${plan.name}`;
-
-    const emptyState = (): State => ({
+    const state: { currency: string; cells: Record<string, { amount: string; status: Status }> } = {
       currency: 'USD',
-      items: [],
-      plans: [
-        { id: 'p1', name: defaultName(0), cells: {} },
-        { id: 'p2', name: defaultName(1), cells: {} },
-      ],
-    });
+      cells: {},
+    };
+    const cell = (key: string) => (state.cells[key] ??= { amount: '', status: 'verify' });
 
-    let state: State = load();
-    let showingExample = false;
-
-    function load(): State {
-      try {
-        const raw = localStorage.getItem(storeKey);
-        if (!raw) return emptyState();
-        const parsed = JSON.parse(raw) as Partial<State>;
-        if (!Array.isArray(parsed.plans) || !Array.isArray(parsed.items)) return emptyState();
-        const base = emptyState();
-        return {
-          currency: typeof parsed.currency === 'string' ? parsed.currency : base.currency,
-          items: parsed.items
-            .filter((i) => i && typeof i.id === 'string')
-            .map((i) => ({ id: i.id, label: typeof i.label === 'string' ? i.label : '' })),
-          plans: parsed.plans
-            .filter((p) => p && typeof p.id === 'string')
-            .slice(0, 3)
-            .map((p) => ({
-              id: p.id,
-              name: typeof p.name === 'string' ? p.name : T.quoteWord,
-              cells: p.cells && typeof p.cells === 'object' ? (p.cells as Record<string, Cell>) : {},
-            })),
-        };
-      } catch {
-        return emptyState();
-      }
-    }
-
-    function save() {
-      try {
-        localStorage.setItem(storeKey, JSON.stringify(state));
-      } catch {
-        /* storage blocked (private mode): the tool still works for this session */
-      }
-    }
-
-    function cell(item: Item, plan: Plan): Cell {
-      if (!plan.cells[item.id]) plan.cells[item.id] = { amount: '', status: 'verify' };
-      return plan.cells[item.id];
-    }
-
-    function parseAmount(raw: string): number | null {
+    const parseAmount = (raw: string): number | null => {
       const cleaned = raw.replace(/[\s,]/g, '');
-      if (cleaned === '') return null;
-      if (!/^\d+(\.\d{1,2})?$/.test(cleaned)) return null;
+      if (cleaned === '' || !/^\d+(\.\d{1,2})?$/.test(cleaned)) return null;
       return Number(cleaned);
-    }
+    };
 
-    function money(value: number): string {
+    const money = (value: number): string => {
       try {
         return new Intl.NumberFormat(locale, {
           style: 'currency',
@@ -203,24 +193,22 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
       } catch {
         return `${state.currency} ${value.toLocaleString(locale)}`;
       }
-    }
+    };
 
-    function planTotals(plan: Plan) {
+    const plural = (n: number) => (n === 1 ? T.oneS : T.pluralS);
+
+    function totalsFor(letter: string) {
       let included = 0;
       let pending = 0;
       let excluded = 0;
       let invalid = 0;
-      for (const item of state.items) {
-        const c = plan.cells[item.id];
-        if (!c) {
-          pending += 1;
-          continue;
-        }
+      for (let index = 0; index < itemCount; index += 1) {
+        const c = cell(`${index}:${letter}`);
         if (c.status === 'in') {
           const n = parseAmount(c.amount);
-          if (n === null && c.amount.trim() !== '') invalid += 1;
           if (n !== null) included += n;
           else pending += 1;
+          if (c.amount.trim() !== '' && n === null) invalid += 1;
         } else if (c.status === 'out') {
           excluded += 1;
         } else {
@@ -230,229 +218,98 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
       return { included, pending, excluded, invalid };
     }
 
-    /** English adds an s to a count of more than one; Chinese writes the counter and adds nothing. */
-    const plural = (n: number) => (n === 1 ? T.oneS : T.pluralS);
-
-    function render() {
-      planRow.innerHTML =
-        `<th scope="col" class="w-[34%] border-b border-line-strong pb-1 pr-4"></th>` +
-        state.plans
-          .map(
-            (plan, index) => `<th scope="col" colspan="2" class="border-b border-line-strong px-2 pb-1 align-bottom min-w-[190px]">
-              <span class="block text-[12px] font-medium text-muted">${defaultName(index)}</span>
-              <label class="sr-only" for="qc-name-${plan.id}">${fill(T.srName, { letter: letter(index) })}</label>
-              <input id="qc-name-${plan.id}" class="field-input mt-1 text-[14px]" data-plan-name="${plan.id}" value="${escapeAttr(plan.name)}" placeholder="${defaultName(index)}" />
-              ${state.plans.length > 2
-                ? `<button type="button" class="mt-1 text-[12px] text-muted underline underline-offset-2 hover:text-accent" data-action="remove-plan" data-plan="${plan.id}">${T.removeQuote}</button>`
-                : ''}
-            </th>`,
-          )
-          .join('');
-
-      colRow.innerHTML =
-        `<th scope="col" class="w-[34%] border-b border-line-strong pb-2 pr-4 text-[13px] font-semibold text-muted">${T.lineItem}</th>` +
-        state.plans
-          .map(
-            (plan) => `<th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[110px]">${T.amount}</th>
-            <th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[130px]" data-plan-included="${plan.id}">${escapeAttr(fill(T.includedIn, { name: plan.name || T.includedFallback }))}</th>`,
-          )
-          .join('');
-
-      if (state.items.length === 0) {
-        itemsBody.innerHTML = `<tr><td colspan="${1 + state.plans.length * 2}">
-          <div class="py-10 text-center">
-            <p class="text-[15px] font-medium">${T.emptyTitle}</p>
-            <p class="mx-auto mt-1.5 max-w-[46ch] text-[14px] text-muted">
-              ${T.emptyBody}
-            </p>
-          </div>
-        </td></tr>`;
-      } else {
-        itemsBody.innerHTML = state.items
-          .map((item) => {
-            const cells = state.plans
-              .map((plan) => {
-                const c = cell(item, plan);
-                const options = STATUSES.map(
-                  (s) =>
-                    `<option value="${s.value}"${s.value === c.status ? ' selected' : ''}>${s.label}</option>`,
-                ).join('');
-                const bad = c.status === 'in' && c.amount.trim() !== '' && parseAmount(c.amount) === null;
-                const label = item.label || T.noItem;
-                const planLabel = plan.name || T.noPlan;
-                return `<td class="border-b border-line py-2.5 pr-2 align-top">
-                    <label class="sr-only" for="qc-${item.id}-${plan.id}-amount">${escapeAttr(fill(T.srAmount, { item: label, plan: planLabel }))}</label>
-                    <input id="qc-${item.id}-${plan.id}-amount" class="field-input tnum text-[14px]${bad ? ' border-flag' : ''}" type="text" inputmode="decimal" data-cell="${item.id}:${plan.id}" value="${escapeAttr(c.amount)}" placeholder="0" aria-invalid="${bad ? 'true' : 'false'}" />
-                  </td>
-                  <td class="border-b border-line py-2.5 pr-3 align-top">
-                    <label class="sr-only" for="qc-${item.id}-${plan.id}-status">${escapeAttr(fill(T.srScope, { item: label, plan: planLabel }))}</label>
-                    <select id="qc-${item.id}-${plan.id}-status" class="field-input text-[14px]" data-status="${item.id}:${plan.id}">${options}</select>
-                  </td>`;
-              })
-              .join('');
-            return `<tr data-row="${item.id}">
-              <th scope="row" class="border-b border-line py-2.5 pr-3 text-left font-normal align-top">
-                <input class="field-input text-[14px]" data-item-label="${item.id}" value="${escapeAttr(item.label)}" placeholder="${T.placeholderItem}" aria-label="${T.placeholderItem}" />
-                <button type="button" class="mt-1 text-[12px] text-muted underline underline-offset-2 hover:text-accent" data-action="remove-item" data-item="${item.id}">${T.remove}</button>
-              </th>
-              ${cells}
-            </tr>`;
-          })
-          .join('');
-      }
-
-      totalsBox.innerHTML = state.plans
-        .map(
-          (plan, index) => {
-            const t = planTotals(plan);
-            return `<div class="rounded-(--radius) border border-line bg-surface-2 px-4 py-3.5">
-              <p class="text-[13px] font-medium text-muted" data-plan-label="${plan.id}">${escapeAttr(labelFor(plan, index))}</p>
-              <p class="mt-1 tnum text-[24px] leading-none" data-total="${plan.id}">${money(t.included)}</p>
-              <p class="mt-2 grid gap-0.5 text-[13px] text-muted">
-                <span data-pending="${plan.id}">${fill(T.unconfirmed, { n: t.pending, s: plural(t.pending) })}</span>
-                <span data-excluded="${plan.id}">${fill(T.notIncluded, { n: t.excluded, s: plural(t.excluded) })}</span>
-                <span data-invalid="${plan.id}" class="text-flag"${t.invalid === 0 ? ' hidden' : ''}>${fill(T.unreadable, { n: t.invalid, s: plural(t.invalid) })}</span>
-              </p>
-            </div>`;
-          },
-        )
-        .join('');
-
-      addPlanButton.disabled = state.plans.length >= 3;
-      addPlanButton.classList.toggle('opacity-45', state.plans.length >= 3);
-      recompute();
-      save();
-    }
-
     function recompute() {
-      if (state.plans.length < 2) {
-        diffBox.hidden = true;
-        return;
+      for (const letter of letters) {
+        const t = totalsFor(letter);
+        root.querySelector<HTMLElement>(`[data-total="${letter}"]`)!.textContent = money(t.included);
+        root.querySelector<HTMLElement>(`[data-pending="${letter}"]`)!.textContent = fill(T.unconfirmed, { n: t.pending, s: plural(t.pending) });
+        root.querySelector<HTMLElement>(`[data-excluded="${letter}"]`)!.textContent = fill(T.notIncluded, { n: t.excluded, s: plural(t.excluded) });
+        const invalid = root.querySelector<HTMLElement>(`[data-invalid="${letter}"]`)!;
+        invalid.hidden = t.invalid === 0;
+        invalid.textContent = fill(T.unreadable, { n: t.invalid, s: plural(t.invalid) });
       }
-      const a = planTotals(state.plans[0]);
-      const b = planTotals(state.plans[1]);
-      const gap = a.included - b.included;
-      const hasNumbers = a.included > 0 || b.included > 0;
-      diffBox.hidden = !hasNumbers;
-      diffValue.textContent = `${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`;
+      const gap = totalsFor('A').included - totalsFor('B').included;
+      const hasNumbers = totalsFor('A').included > 0 || totalsFor('B').included > 0;
+      root.querySelector<HTMLElement>('[data-diff]')!.hidden = !hasNumbers;
+      root.querySelector<HTMLElement>('[data-diff-value]')!.textContent = `${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`;
     }
 
-    function escapeAttr(value: string): string {
-      return value
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+    function markInvalid(key: string) {
+      const amount = root.querySelector<HTMLInputElement>(`[data-cell="${key}"]`)!;
+      const bad =
+        cell(key).status === 'in' && amount.value.trim() !== '' && parseAmount(amount.value) === null;
+      amount.classList.toggle('border-flag', bad);
+      amount.setAttribute('aria-invalid', bad ? 'true' : 'false');
     }
 
-    /* Structural edits re-render; typing only updates state, totals and storage. */
     root.addEventListener('input', (event) => {
       const target = event.target as HTMLElement;
-      if (target.matches('[data-item-label]')) {
-        const item = state.items.find((i) => i.id === target.getAttribute('data-item-label'));
-        if (item) {
-          item.label = (target as HTMLInputElement).value;
-          save();
-        }
-        return;
-      }
-      if (target.matches('[data-plan-name]')) {
-        const plan = state.plans.find((p) => p.id === target.getAttribute('data-plan-name'));
-        if (plan) {
-          plan.name = (target as HTMLInputElement).value;
-          save();
-          recomputeTotalsText();
-        }
-        return;
-      }
-      if (target.matches('[data-cell]')) {
-        const [itemId, planId] = target.getAttribute('data-cell')!.split(':');
-        const plan = state.plans.find((p) => p.id === planId);
-        const item = state.items.find((i) => i.id === itemId);
-        if (plan && item) {
-          cell(item, plan).amount = (target as HTMLInputElement).value;
-          const bad =
-            cell(item, plan).status === 'in' &&
-            (target as HTMLInputElement).value.trim() !== '' &&
-            parseAmount((target as HTMLInputElement).value) === null;
-          target.classList.toggle('border-flag', bad);
-          target.setAttribute('aria-invalid', bad ? 'true' : 'false');
-          recomputeTotalsText();
-          save();
-        }
-      }
+      if (!target.matches('[data-cell]')) return;
+      const key = target.getAttribute('data-cell')!;
+      cell(key).amount = (target as HTMLInputElement).value;
+      markInvalid(key);
+      recompute();
     });
 
     root.addEventListener('change', (event) => {
       const target = event.target as HTMLElement;
       if (target.matches('[data-field="currency"]')) {
         state.currency = (target as HTMLSelectElement).value;
-        render();
+        recompute();
         return;
       }
       if (target.matches('[data-status]')) {
-        const [itemId, planId] = target.getAttribute('data-status')!.split(':');
-        const plan = state.plans.find((p) => p.id === planId);
-        const item = state.items.find((i) => i.id === itemId);
-        if (plan && item) {
-          cell(item, plan).status = (target as HTMLSelectElement).value as Status;
-          render();
-        }
+        const key = target.getAttribute('data-status')!;
+        cell(key).status = (target as HTMLSelectElement).value as Status;
+        markInvalid(key);
+        recompute();
       }
     });
+
+    function cellText(index: number, letter: string): string {
+      const c = cell(`${index}:${letter}`);
+      const n = parseAmount(c.amount);
+      if (c.status === 'in') return n !== null ? money(n) : c.amount.trim() === '' ? T.statusVerify : c.amount;
+      if (c.status === 'out') return c.amount.trim() === '' ? T.statusOut : `${T.statusOut} · ${c.amount}`;
+      return c.amount.trim() === '' ? T.statusVerify : `${T.statusVerify} · ${c.amount}`;
+    }
+
+    function asMarkdown(): string {
+      const savedAt = new Date().toLocaleString(locale, { dateStyle: 'long', timeStyle: 'short' });
+      const headA = fill(T.quoteName, { letter: 'A' });
+      const headB = fill(T.quoteName, { letter: 'B' });
+      const tA = totalsFor('A');
+      const tB = totalsFor('B');
+      const gap = tA.included - tB.included;
+      const lines: string[] = [
+        `# ${T.exportTool}`,
+        '',
+        `${T.savedLine} ${savedAt} · ${state.currency}`,
+        T.exportNote,
+        '',
+        `| ${T.lineItem} | ${headA} | ${headB} |`,
+        '| --- | --- | --- |',
+      ];
+      for (let index = 0; index < itemCount; index += 1) {
+        lines.push(`| ${T.items[index]} | ${cellText(index, 'A')} | ${cellText(index, 'B')} |`);
+      }
+      lines.push(
+        '',
+        `${T.totalLine}: ${money(tA.included)} · ${money(tB.included)}`,
+        `${T.diffLine}: ${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`,
+        '',
+        T.exportFooter,
+      );
+      return lines.join('\n');
+    }
 
     root.addEventListener('click', (event) => {
       const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action]');
       if (!trigger) return;
       const action = trigger.getAttribute('data-action');
 
-      if (action === 'add-item') {
-        state.items.push({ id: newId('i'), label: '' });
-        render();
-        const inputs = itemsBody.querySelectorAll<HTMLInputElement>('[data-item-label]');
-        (inputs[inputs.length - 1] as HTMLInputElement | undefined)?.focus();
-      }
-
-      if (action === 'add-plan' && state.plans.length < 3) {
-        state.plans.push({ id: newId('p'), name: defaultName(state.plans.length), cells: {} });
-        render();
-      }
-
-      if (action === 'remove-plan') {
-        const id = trigger.getAttribute('data-plan');
-        state.plans = state.plans.filter((p) => p.id !== id);
-        render();
-      }
-
-      if (action === 'remove-item') {
-        const id = trigger.getAttribute('data-item');
-        state.items = state.items.filter((i) => i.id !== id);
-        for (const plan of state.plans) delete plan.cells[id!];
-        render();
-      }
-
-      if (action === 'clear') {
-        state = emptyState();
-        showingExample = false;
-        currencyInput.value = state.currency;
-        render();
-      }
-
-      if (action === 'example') {
-        state = exampleState();
-        showingExample = true;
-        currencyInput.value = state.currency;
-        render();
-      }
-
       if (action === 'download') {
-        const payload = {
-          tool: T.exportTool,
-          note: showingExample ? T.exportExample : T.exportEntered,
-          savedAt: new Date().toISOString(),
-          state,
-        };
-        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const blob = new Blob([asMarkdown()], { type: 'text/markdown' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -460,68 +317,19 @@ const storeKey = lang === 'en' ? 'surrogacybase.quote-comparison.v1' : `surrogac
         a.click();
         URL.revokeObjectURL(url);
       }
+
+      if (action === 'reset') {
+        for (const input of root.querySelectorAll<HTMLInputElement>('[data-cell]')) {
+          input.value = '';
+          input.classList.remove('border-flag');
+          input.setAttribute('aria-invalid', 'false');
+        }
+        for (const select of root.querySelectorAll<HTMLSelectElement>('[data-status]')) select.value = 'verify';
+        state.cells = {};
+        recompute();
+      }
     });
 
-    /* Renaming must not re-render, or the input the reader is typing in is replaced. */
-    function recomputeTotalsText() {
-      state.plans.forEach((plan, index) => {
-        const t = planTotals(plan);
-        const total = totalsBox.querySelector<HTMLElement>(`[data-total="${plan.id}"]`);
-        const pending = totalsBox.querySelector<HTMLElement>(`[data-pending="${plan.id}"]`);
-        const label = totalsBox.querySelector<HTMLElement>(`[data-plan-label="${plan.id}"]`);
-        const included = root!.querySelector<HTMLElement>(`[data-plan-included="${plan.id}"]`);
-        const excluded = totalsBox.querySelector<HTMLElement>(`[data-excluded="${plan.id}"]`);
-        const invalid = totalsBox.querySelector<HTMLElement>(`[data-invalid="${plan.id}"]`);
-        if (total) total.textContent = money(t.included);
-        if (pending) pending.textContent = fill(T.unconfirmed, { n: t.pending, s: plural(t.pending) });
-        if (excluded) excluded.textContent = fill(T.notIncluded, { n: t.excluded, s: plural(t.excluded) });
-        if (invalid) {
-          invalid.hidden = t.invalid === 0;
-          invalid.textContent = fill(T.unreadable, { n: t.invalid, s: plural(t.invalid) });
-        }
-        if (label) label.textContent = labelFor(plan, index);
-        if (included) included.textContent = fill(T.includedIn, { name: plan.name || T.includedFallback });
-      });
-      recompute();
-    }
-
-    function exampleState(): State {
-      const labels = T.exampleLabels as string[];
-      const amounts: Record<number, [string, string]> = {
-        0: ['28000', '22000'],
-        1: ['60000', '55000'],
-        2: ['14000', '18000'],
-        3: ['32000', ''],
-        4: ['3500', '4000'],
-        5: ['', '8000'],
-        6: ['', ''],
-        7: ['3000', ''],
-        8: ['15000', '10000'],
-      };
-      const items = labels.map((label: string, index: number) => ({ id: `e${index}`, label }));
-      const cellsFor = (slot: 0 | 1) => {
-        const cells: Record<string, { amount: string; status: Status }> = {};
-        labels.forEach((_, index: number) => {
-          const pair = amounts[index];
-          const amount = pair ? pair[slot] : '';
-          cells[`e${index}`] = {
-            amount,
-            status: amount === '' ? 'verify' : index === 6 ? 'out' : 'in',
-          };
-        });
-        return cells;
-      };
-      return {
-        currency: 'USD',
-        items,
-        plans: [
-          { id: 'x1', name: T.exampleQuoteA, cells: cellsFor(0) },
-          { id: 'x2', name: T.exampleQuoteB, cells: cellsFor(1) },
-        ],
-      };
-    }
-
-    currencyInput.value = state.currency;
-    render();
+    recompute();
   }
 </script>
