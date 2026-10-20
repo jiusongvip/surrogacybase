@@ -9,6 +9,7 @@
  */
 import '@/styles/global.css';
 import EnquiryDialog from '@/components/forms/EnquiryDialog.astro';
+import BackToTop from '@/components/ui/BackToTop.astro';
 import { SITE } from '@/const';
 import { DEFAULT_LANG, LANG_META, type Lang } from '@/i18n/config';
 import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
@@ -121,5 +122,6 @@ const orgLd = {
     </main>
     <slot name="footer" />
     <EnquiryDialog />
+    <BackToTop lang={lang} />
   </body>
 </html>

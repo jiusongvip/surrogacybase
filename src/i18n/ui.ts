@@ -33,6 +33,8 @@ export const pick = (pair: Bilingual, lang: Lang) => pair[lang];
 
 export const UI: Record<Lang, {
   skipLink: string;
+  /** Accessible name for the floating control that returns the page to its top. */
+  backToTop: string;
   primaryNavLabel: string;
   openNav: string;
   languageLabel: string;
@@ -350,6 +352,7 @@ export const UI: Record<Lang, {
 }> = {
   en: {
     skipLink: 'Skip to content',
+    backToTop: 'Back to top',
     primaryNavLabel: 'Primary',
     openNav: 'Open navigation',
     languageLabel: 'Language',
@@ -817,6 +820,7 @@ export const UI: Record<Lang, {
 
   zh: {
     skipLink: '跳到主要内容',
+    backToTop: '返回顶部',
     primaryNavLabel: '主导航',
     openNav: '打开导航',
     languageLabel: '语言',

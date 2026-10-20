@@ -1,0 +1,85 @@
+---
+/*
+ * A floating return-to-top control. It stays out of the tab order until the page has
+ * scrolled (visibility: hidden), so a keyboard user never lands on an invisible button,
+ * and the jump itself honours prefers-reduced-motion rather than inheriting the global
+ * smooth scroll.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { UI } from '@/i18n/ui';
+import type { Lang } from '@/i18n/config';
+
+type Props = { lang: Lang };
+const { lang } = Astro.props;
+const label = UI[lang].backToTop;
+---
+
+<button type="button" class="to-top" data-to-top aria-label={label} title={label}>
+  <Icon name="arrow-up" size={20} />
+</button>
+
+<style>
+  .to-top {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: var(--radius-btn);
+    background: var(--brand);
+    color: var(--band-text);
+    box-shadow: var(--shadow-lift);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.96);
+    transition:
+      opacity var(--dur) var(--ease),
+      transform var(--dur) var(--ease),
+      visibility var(--dur),
+      background-color var(--dur) var(--ease);
+  }
+
+  .to-top[data-show] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .to-top:hover {
+    background: var(--accent);
+    color: var(--accent-on);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .to-top {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLElement>('[data-to-top]');
+  if (btn) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let shown = false;
+    const toggle = () => {
+      const should = window.scrollY > 600;
+      if (should !== shown) {
+        shown = should;
+        btn.toggleAttribute('data-show', should);
+      }
+    };
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' });
+    });
+  }
+</script>
