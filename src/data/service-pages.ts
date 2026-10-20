@@ -36,7 +36,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     tagline: SITE.tagline,
     body: [
       'SurrogacyBase publishes guides, destination pages and decision tools for people considering surrogacy. The site exists because most of what surfaces on the first results page is written by the parties selling the service. An information source should not be the same voice as a sales source, so the rule here is simple: a claim earns its place by naming where it came from.',
-      "What we publish is limited by what we can verify. When the only available account of a rule comes from a provider's own marketing, the page says so, or the page does not exist yet. That is why some sections are deliberately short.",
+      "What we publish is limited by what we can verify. When the only available account of a rule comes from a provider's own marketing, the page says so, or the page does not exist yet.",
     ],
     notHeading: 'What this site is not',
     statements: [
@@ -59,7 +59,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained by the {team}, and the clinical review behind that byline is done by the {board}. Because the work is published under a team name rather than sold under a commercial banner, the same rule holds on every page including this one: a claim stays up only while a named source supports it, and when a source no longer holds the claim, the claim comes off the page.',
+      'These pages are written and maintained by the {team}, and the clinical review in the byline is done by the {board}. The work is published under a team name, not sold under a commercial banner.',
     correctionsHeading: 'Corrections',
     correctionsBody:
       'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. Send it to {email}, the same address for a question about the site itself or about anything held about you.',
@@ -72,7 +72,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     tagline: SITE.taglineZh,
     body: [
       'SurrogacyBase 为正在考虑代孕的人发布指南、目的地页面和决策工具。本站之所以存在，是因为搜索结果第一页上的大部分内容，出自出售这项服务的一方之手。信息来源不应当与销售来源是同一种声音，所以这里的规则很简单：一条说法靠写明它来自哪里取得发表资格。',
-      '我们发布什么，受限于我们能够核实什么。当一条规则仅有的说法来自服务方自己的宣传材料时，页面会这样写明，或者这个页面根本还不存在。这就是某些部分刻意写得很短的原因。',
+      '我们发布什么，受限于我们能够核实什么。当一条规则仅有的说法来自服务方自己的宣传材料时，页面会这样写明，或者这个页面根本还不存在。',
     ],
     notHeading: '本站不是什么',
     statements: [
@@ -95,7 +95,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     ],
     whoHeading: '背后是谁',
     whoBody:
-      '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面由 {team} 编写与维护，署名里的那句临床审阅由 {board} 完成。内容以团队之名发表、而不挂在商业招牌之下出售，所以同一条规则在包括本页在内的每个页面都成立：一条说法只在有一个具名来源仍然支撑它时才留在页面上；来源不再支撑，说法就从页面上撤下。',
+      '这些页面由 {team} 编写与维护，署名中的临床审阅由 {board} 完成。内容以团队之名发表，而不是挂在商业招牌之下出售。',
     correctionsHeading: '更正',
     correctionsBody:
       '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。请把它发到 {email}，同一个地址也受理关于本站本身、以及关于这里存有您的哪些信息的请求。',
