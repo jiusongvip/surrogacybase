@@ -45,7 +45,10 @@
   --flag: #7d5201;
   --flag-tint: #f6ecd8;
 
+  /* Shape rule: interactive controls (buttons, the rail arrows) are pill; fields use
+     --radius; cards and panels use --radius-card. One documented scale, applied consistently. */
   --radius: 8px;
+  --radius-btn: 9999px;
   --shadow-tint: 15 66 52;
   --dur: 220ms;
   --dur-slow: 420ms;

@@ -46,7 +46,6 @@
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   ::selection {
@@ -87,22 +86,22 @@
    * swaps the label to the token paired with the rust fill, because bottle green band
    * text on rust measures 2.26:1 in the dark scheme. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) bg-brand px-5 py-3 text-[15px] font-medium text-band transition-[background-color,color,transform] duration-(--dur) ease-(--ease) hover:bg-accent hover:text-accent-on active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) bg-brand px-5 py-3 text-[15px] font-medium text-band transition-[background-color,color,transform] duration-(--dur) ease-(--ease) hover:bg-accent hover:text-accent-on active:scale-[0.99];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) border border-brand-fg/35 bg-transparent px-5 py-3 text-[15px] font-medium text-brand-fg transition-[background-color,border-color,color] duration-(--dur) ease-(--ease) hover:border-brand-fg hover:bg-surface-2 active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) border border-brand-fg/35 bg-transparent px-5 py-3 text-[15px] font-medium text-brand-fg transition-[background-color,border-color,color] duration-(--dur) ease-(--ease) hover:border-brand-fg hover:bg-surface-2 active:scale-[0.99];
   }
 
   .btn-ghost-on-band {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) border border-band/35 bg-transparent px-5 py-3 text-[15px] font-medium text-band transition-[background-color,border-color] duration-(--dur) ease-(--ease) hover:border-band hover:bg-brand/60 active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) border border-band/35 bg-transparent px-5 py-3 text-[15px] font-medium text-band transition-[background-color,border-color] duration-(--dur) ease-(--ease) hover:border-band hover:bg-brand/60 active:scale-[0.99];
   }
 
   /* A solid action that has to sit on a brand band, where btn-primary would vanish
    * into the fill. The pair flips with the colour scheme, so the label stays dark on
    * light in both. */
   .btn-band {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius) bg-band px-5 py-3 text-[15px] font-medium text-brand transition-[background-color,transform] duration-(--dur) ease-(--ease) hover:bg-band/88 active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) bg-band px-5 py-3 text-[15px] font-medium text-brand transition-[background-color,transform] duration-(--dur) ease-(--ease) hover:bg-band/88 active:scale-[0.99];
   }
 
   .textlink {
