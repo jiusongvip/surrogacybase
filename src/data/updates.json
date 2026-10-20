@@ -2,6 +2,14 @@
   {
     "date": "2026-10-20",
     "kind": "decision",
+    "path": null,
+    "title": "The brief builder is gone, and with it the page that hosted it",
+    "change": "The page that assembled a brief out of the destination records is removed, together with the destination picker, the copy button and the file it wrote. Each destination page still prints every line that brief was made from, with its source beside it, and the tools index now lists four tools: the quote comparison, the two checklists and the published cost figures.",
+    "reason": "Assembling a document was a second job on top of reading the records, and a destination page already says anything the brief could repeat. The shorter path is the one left here: read the record, download the questions, write each answer beside its own question."
+  },
+  {
+    "date": "2026-10-20",
+    "kind": "decision",
     "path": "/tools",
     "title": "Tools now sit in the header, and each one opens on its answer",
     "change": "The header carries Tools beside the explainers, the destinations, the guides and About us, and every tool puts its questions or its figures on the screen at once: the two checklists read as a document you download, and the quote comparison prints the nine costs a quote is usually built from, so what is left to do is type what each quote states.",
@@ -172,7 +180,7 @@
   {
     "date": "2026-10-14",
     "kind": "decision",
-    "path": "/assessment",
+    "path": null,
     "title": "No consultation service is offered",
     "change": "The header button, the sidebar on the content pages and the closing panel on the homepage now point you to the tools. The assessment page keeps what it says about its coverage and its limits, and moves to the footer, labelled as a page about a service that is not open.",
     "reason": "This site was being made as research and tools only. A prominent button that implied a way to reach us when none exists is exactly the kind of confident wording this site sets out to distrust."
@@ -436,7 +444,7 @@
   {
     "date": "2026-10-16",
     "kind": "corrected",
-    "path": "/assessment",
+    "path": null,
     "title": "The enquiry form no longer answers on your behalf",
     "change": "The stage and answer-holder menus start empty instead of arriving with an option pre-selected, the two fields that must be filled are marked as required, and copy or download no longer refuse a finished draft over the shape of the reply address; that check now runs only on the mail button. The assembled message skips the lines you left empty rather than writing blanks into it.",
     "reason": "A pre-selected option is a statement you did not make, inside a message that goes out under your name."
@@ -492,7 +500,7 @@
   {
     "date": "2026-10-17",
     "kind": "decision",
-    "path": "/assessment",
+    "path": null,
     "title": "One enquiry form, not two ways to answer questions",
     "change": "The assessment service page carried its own form beside the button that leads to the homepage enquiry. The extra one is gone. The homepage form is now the only place on this site that asks anything of you, and every other exit leads to it. The quote comparison keeps saving to your own browser as before, and every tool exit stays copy, download and your own mail app.",
     "reason": "Two forms for one act asked two different sets of questions, so the choice in front of you was about which form to fill rather than about what you needed answered."
@@ -685,7 +693,7 @@
   {
     "date": "2026-10-19",
     "kind": "decision",
-    "path": "/assessment",
+    "path": null,
     "title": "The assessment page now builds the document it used to describe",
     "change": "The page no longer describes an assessment performed for you. It makes one: pick the destinations, and the brief is assembled in your browser out of their own records, giving the legal instrument each position rests on, which family types a listed source settles, what may lawfully be paid, who the child’s legal parent is at birth, every published figure with the source that printed it and the year those numbers describe, and the questions those sources left open. Copy it or download it. Nothing is collected, nothing is stored, and no part of it waits for anyone to read it. The tool is now listed on the tools index at the address it has always had.",
     "reason": "The page described a service with no name, no price and no scope behind it. The document is the thing this site can actually hand over, and it is made from sources its own pages already carry."

@@ -260,8 +260,8 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       en: 'Medical scheduling is usually the thing people chase first and the thing that moves fastest. A written view from a lawyer in the destination, and a second one in your own country, take longer to obtain and change what you should even be scheduling.',
       zh: '医疗排期通常是人们最先追、也是推进最快的东西。而一份来自目的地律师的书面意见，加上另一份来自您自己国家的意见，取得起来更久，并且会改变您究竟应该安排什么。',
     },
-    link: { en: 'Turn these records into a brief', zh: '把这些记录做成一份简报' },
-    href: '/assessment',
+    link: { en: 'Download the questions to ask', zh: '下载要问的那些问题' },
+    href: '/tools/destination-research-checklist',
   },
 ];
 

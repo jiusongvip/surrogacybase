@@ -1,9 +1,14 @@
 {
   "_comment": "Chinese wording for the updates log, keyed by the English title of each entry. Dates, kinds, page paths and the existence of an entry belong to src/data/updates.json and are never repeated here; a key missing from this file is reported as a hard error when the site is made. The key is a title rather than a position so that appending an entry anywhere in the log cannot silently shift every translation by one.",
 
-    "Tools now sit in the header, and each one opens on its answer": {
+  "The brief builder is gone, and with it the page that hosted it": {
+    "title": "简报工具连同承载它的那一页一起删除",
+    "change": "那页用目的地记录组装简报的功能已经移除，选目的地的勾选、复制按钮、它写出的那个文件一并去掉。每个目的地页面仍然印着那份简报的全部来料，每一条都带着它的来源。工具索引现在列出四个工具：报价对比、两份清单、已发布的费用数字。",
+    "reason": "组装一份文档，是在阅读记录之外多出的一份工作；而目的地页面本身已经把简报能够重复的内容说完了。这里留下的是更短的路径：读那条记录，下载问题清单，把每一条回答写在它自己的问题旁边。"
+  },
+  "Tools now sit in the header, and each one opens on its answer": {
       "title": "工具进了顶部导航，每个工具一打开就是答案",
-      "change": "顶部导航把「工具」排在专题解读、目的地、指南和关于我们旁边。每个工具都把问题或数字直接印在页面上：两份清单就是一份可以下载的文档，报价对比则先把一份报价通常由以搭成的九项成本列出来，您要填的只是每份报价写明的金额。",
+      "change": "顶部导航把「工具」排在专题解读、目的地、指南和关于我们旁边。每个工具都把问题或数字直接印在页面上：两份清单就是一份可以下载的文档，报价对比则先把一份报价通常列出的九项成本印出来，您要填的只是每份报价写明的金额。",
       "reason": "您来这一页是要读能用的东西，不是要走一遍准备工作。页面先给出问题和数字，只留一个按钮把它们带走。"
     },
     "The quote comparison holds your amounts only while the page is open": {

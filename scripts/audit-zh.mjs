@@ -118,7 +118,7 @@ for (const enFile of walk(contentDir)) {
     /* Tools and destinations are built from data, not from a markdown file, so their
      * existence is checked against the built output by scripts/audit-dist.mjs instead. */
     const dataDriven =
-      l.startsWith('/zh/tools/') || l.startsWith('/zh/destinations') || l.startsWith('/zh/about') || l.startsWith('/zh/assessment');
+      l.startsWith('/zh/tools/') || l.startsWith('/zh/destinations') || l.startsWith('/zh/about');
     if (!dataDriven && !existsSync(target) && !existsSync(asDir)) {
       problems.push(`${tag}: link to a Chinese page that has no source file (${l})`);
     }
@@ -160,8 +160,7 @@ const missing = walk(contentDir)
 
 /*
  * The data files that fill whole pages, where there is no markdown twin to compare against: the
- * Chinese overlay for the jurisdiction records, and the bilingual dictionaries behind the tools
- * and the assessment.
+ * Chinese overlay for the jurisdiction records, and the bilingual dictionaries behind the tools.
  *
  * localize() already throws at build time when the overlay and a record disagree, but only for a
  * record that gets built. What nothing else catches is an English string pasted into a Chinese

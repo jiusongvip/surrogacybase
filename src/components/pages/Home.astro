@@ -191,7 +191,7 @@ const lp = (path: string) => localizedPath(lang, path);
     </div>
   </section>
 
-  {/* D. Four kinds of help, each one a page that exists. */}
+  {/* D. Three kinds of help, each one a page that exists. */}
   <section class="border-b border-line bg-surface-2 py-16 lg:py-24" id="services">
     <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
       <div>
@@ -200,7 +200,7 @@ const lp = (path: string) => localizedPath(lang, path);
           {services.heading}
         </h2>
         <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{services.intro}</p>
-        <a href={lp('/assessment')} class="btn-primary mt-8">
+        <a href={lp('/tools')} class="btn-primary mt-8">
           {services.cta}
           <Icon name="arrow-right" size={16} />
         </a>

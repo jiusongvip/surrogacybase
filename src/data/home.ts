@@ -137,16 +137,16 @@ export const HOME_SERVICES: Record<Lang, {
 }> = {
   en: {
     eyebrow: 'What you can do here',
-    heading: 'Four kinds of help, all of them on the decision',
+    heading: 'Three kinds of help, all of them on the decision',
     intro:
-      'None of it depends on anyone here working on your behalf: which destination applies, what the whole thing costs, a brief you assemble out of the records in front of you, and what to ask the people you will meet.',
-    cta: 'Build a brief from the records',
+      'None of it depends on anyone here working on your behalf: which destination applies, what the whole thing costs, and what to ask the people you will meet.',
+    cta: 'Open the tools',
   },
   zh: {
     eyebrow: '您在这里能做什么',
-    heading: '四种帮助，全都落在决定本身之上',
-    intro: '它们都不需要这里有任何人替您办事：哪个目的地适用、整件事要花多少、用您面前的这些记录自己做一份简报，以及见到那些人时该问什么。',
-    cta: '用这些记录做一份简报',
+    heading: '三种帮助，全都落在决定本身之上',
+    intro: '它们都不需要这里有任何人替您办事：哪个目的地适用、整件事要花多少，以及见到那些人时该问什么。',
+    cta: '打开工具',
   },
 };
 
@@ -169,15 +169,6 @@ export const HOME_SERVICE_ITEMS: { icon: IconName; title: Bilingual; body: Bilin
       zh: '把一份报价拆成条目，看清哪些费用完全在它之外，并在比较之前把两个项目放到同一个口径上。',
     },
     href: '/guides/surrogacy-cost',
-  },
-  {
-    icon: 'file-text',
-    title: { en: 'A brief you build yourself', zh: '自己动手做的一份简报' },
-    body: {
-      en: 'Pick the destinations in view and take the document with them: which countries have a route that can be documented here, what parentage and nationality turn on, and which parts only a lawyer can settle.',
-      zh: '选出您正在考虑的目的地，带着这份文档走：哪些国家在这里有可核查的路径、亲权与国籍取决于什么、以及哪几部分只有律师能定。',
-    },
-    href: '/assessment',
   },
   {
     icon: 'list-check',

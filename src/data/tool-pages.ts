@@ -45,11 +45,11 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: 'Tools',
     label: 'Tools',
     description:
-      'Decision tools for intended parents: build a brief out of the sourced destination records, compare two agency quotes on fixed cost rows, take a destination apart question by question, put your questions to an agency in writing, and read the cost figures sources have published. Nothing is uploaded and nothing is kept after you close the page. No account.',
+      'Decision tools for intended parents: compare two agency quotes across the nine costs a quote normally names, take a destination apart question by question, put your questions to an agency in writing, and read the cost figures sources have published. Nothing is uploaded and nothing is kept after you close the page. No account.',
     intro:
       'A guide tells you what to check. These are where you actually do it, on your own numbers and your own documents, and what you leave with is something you can show someone: a filled-in document, or a figure with its source attached.',
     localNote:
-      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote comparison holds nothing once you close the tab, the brief and the two checklists leave the page as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote comparison holds nothing once you close the tab, the two checklists leave the page as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
     available: 'Available now',
     building: 'Being built',
     open: 'Open the tool',
@@ -59,10 +59,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     title: '工具',
     label: '工具',
     description:
-      '给意向父母的决策工具：用有出处的目的地记录做一份简报、在固定的成本行上对比两份机构报价、把一个目的地逐题拆开、把您的问题书面提交给机构，并阅读各个来源已经发布的费用数字。没有任何内容会被上传，关掉页面后也不保留任何东西。不需要账户。',
+      '给意向父母的决策工具：让两份机构报价落在代孕报价通常列出的九项成本上逐一对比、把一个目的地逐题拆开、把您的问题书面提交给机构，并阅读各个来源已经发布的费用数字。没有任何内容会被上传，关掉页面后也不保留任何东西。不需要账户。',
     intro:
       '指南告诉您该核查什么。而这些页面才是您真正动手的地方：用您自己的数字和您自己的文件。您带走的东西都拿得给别人看：一份填好的文档，或者一个带着来源的数字。',
-    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价对比在您关掉标签页后不保留任何东西；简报和两份清单都下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
+    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价对比在您关掉标签页后不保留任何东西；两份清单都下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
     available: '现在可用',
     building: '正在建设',
     open: '打开工具',

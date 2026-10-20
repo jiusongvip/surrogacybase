@@ -345,7 +345,7 @@ export const UI: Record<Lang, {
           { label: string; body: string },
         ];
       };
-      band: { heading: string; body: string; brief: string; service: string };
+      band: { heading: string; body: string; enquiry: string };
       standard: {
         heading: string;
         items: [string, string, string, string, string, string, string];
@@ -415,7 +415,6 @@ export const UI: Record<Lang, {
         links: [
           { label: 'How we research', href: '/editorial-policy' },
           { label: 'About the site', href: '/about' },
-          { label: 'Build your own brief', href: '/assessment' },
           { label: 'Contact', href: '/about#contact' },
         ],
       },
@@ -802,8 +801,7 @@ export const UI: Record<Lang, {
           heading: 'No destination has been chosen for you here',
           body:
             "That is deliberate. A page that named a best country would be repeating a provider's claim without the standing to test it. What this site can do is hold each legal system to its sources and keep the comparison honest.",
-          brief: 'Write the enquiry out',
-          service: 'How the brief works',
+          enquiry: 'Write the enquiry out',
         },
         standard: {
           heading: 'What every destination record on this site has to carry',
@@ -891,7 +889,6 @@ export const UI: Record<Lang, {
         links: [
           { label: '我们如何做研究', href: '/zh/editorial-policy' },
           { label: '关于本站', href: '/zh/about' },
-          { label: '自己动手做简报', href: '/zh/assessment' },
           { label: '联系我们', href: '/zh/about#contact' },
         ],
       },
@@ -1202,8 +1199,7 @@ export const UI: Record<Lang, {
         band: {
           heading: '这里没有替您选定任何目的地',
           body: '这是刻意的。一个点名最佳国家的页面，等于在没有任何验证资格的情况下重复机构的主张。本站能做的是把每个法律体系对着它的来源核对，并让比较保持诚实。',
-          brief: '把问询写出来',
-          service: '这份简报怎么用',
+          enquiry: '把问询写出来',
         },
         standard: {
           heading: '本站每一条目的地记录都必须具备的内容',
