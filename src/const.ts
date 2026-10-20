@@ -7,27 +7,23 @@ export const SITE = {
   /** The same line in Chinese. Both locales keep exactly one copy of it. */
   taglineZh: '无论您正在考虑哪个国家，都把代孕的决定逐条弄清楚。',
   /**
-   * The signature these pages publish under, in both languages: a team the operator says
-   * includes members with clinical backgrounds, and whose clinical members do the review.
+   * The two names these pages publish under, in both languages: a team that writes and maintains
+   * them, and a board that carries the clinical review the byline claims. Both stay a single Latin
+   * string shared by the English and Chinese sides.
    *
-   * A team name is not a registered entity. What it is in law and where it is registered, the
-   * address a correction reaches, and the names and credentials of the individuals inside the
-   * team all remain unpublished, and the about page keeps listing them as missing rather than
-   * settled.
+   * A team name is not a registered entity. The operator publishes no registered company name and
+   * no jurisdiction, by choice, and the site does not claim either.
    */
   team: 'SurrogacyBase Medical Editorial Team',
+  board: 'SurrogacyBase Medical Advisory Board',
   locale: 'en',
   ogImage: '/og/default.jpg',
   /**
-   * Where an enquiry is addressed. Left empty until the operator supplies
-   * a real inbox: the intake form then composes the enquiry on screen and offers copy or download,
-   * and publishes no send button at all rather than one that goes nowhere.
-   *
-   * One line lights up the only intake on the site: the homepage enquiry form shows its
-   * send button when there is an address behind it, and offers copy and download when
-   * there is not.
+   * Where an enquiry, a correction or a data request is addressed. The intake form lights up its
+   * send button when there is an address behind it, and offers only copy and download when there
+   * is not.
    */
-  contactEmail: '' as string,
+  contactEmail: 'hello@surrogacybase.com' as string,
 } as const;
 
 /**

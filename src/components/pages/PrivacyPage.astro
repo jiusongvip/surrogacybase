@@ -3,14 +3,12 @@
  * The privacy page, in both languages.
  *
  * It describes the build, so the Chinese text has to describe the same build: the same absence of
- * cookies, the same local-storage tool, the same enquiry form with no endpoint behind it. What is not
- * settled yet is not listed here in its own words: one register on the About page holds it, and this
- * page points there, so a gap cannot be described one way in English and another way in Chinese.
+ * cookies, the same local-storage tool, the same enquiry form with no endpoint behind it.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
-import OpenQuestionsNote from '@/components/ui/OpenQuestionsNote.astro';
+import { SITE } from '@/const';
 import { PRIVACY_PAGE, PRIVACY_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
 import { langFromPath } from '@/i18n/paths';
@@ -72,16 +70,19 @@ const copy = PRIVACY_PAGE[lang];
       <h2 class="text-[22px]">{copy.contactHeading}</h2>
       <ul class="mt-4 space-y-3 text-[16px] leading-relaxed text-muted">
         {
-          copy.contact.map((s) => <li class="border-l-2 border-accent pl-5">{s}</li>)
+          copy.contact.map((s) => (
+            <li class="border-l-2 border-accent pl-5">{fill(s, { email: SITE.contactEmail })}</li>
+          ))
         }
       </ul>
     </section>
 
     <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.unsettledHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{copy.unsettledIntro}</p>
+      <h2 class="text-[22px]">{copy.operatorHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">
+        {fill(copy.operatorIntro, { team: SITE.team, board: SITE.board, email: SITE.contactEmail })}
+      </p>
       <p class="mt-6 text-[16px] leading-relaxed">{copy.rightsBody}</p>
-      <OpenQuestionsNote />
     </section>
 
     <p class="mt-12 border-t border-line pt-6 text-[14px] text-muted">

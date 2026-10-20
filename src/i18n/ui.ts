@@ -42,12 +42,6 @@ export const UI: Record<Lang, {
   home: string;
   /** The alt text for the brand mark, which is a link to the home page in both languages. */
   brandAlt: string;
-  needsInput: string;
-  /**
-   * The one sentence that points at the register of things the site has not settled. Every page that
-   * used to carry its own gap notice says this instead, so a gap is stated once rather than five times.
-   */
-  openQuestions: { body: string; link: string };
   undated: string;
   notYetDated: string;
   tagline: string;
@@ -363,11 +357,6 @@ export const UI: Record<Lang, {
     breadcrumbLabel: 'Breadcrumb',
     home: 'Home',
     brandAlt: 'SurrogacyBase home',
-    needsInput: 'Not yet in place',
-    openQuestions: {
-      body: 'What this site has not settled is written down in one register, on the About page.',
-      link: 'Read what is still open',
-    },
     undated: 'undated',
     notYetDated: 'Not yet dated',
     tagline: `${SITE.tagline} Independent information and decision tools. Not a clinic, not a law firm, not a surrogacy agency.`,
@@ -835,11 +824,6 @@ export const UI: Record<Lang, {
     breadcrumbLabel: '位置导航',
     home: '首页',
     brandAlt: 'SurrogacyBase 首页',
-    needsInput: '尚未确定',
-    openQuestions: {
-      body: '本站还没有确定的事项，集中写在一份清单上，就在「关于我们」这一页里。',
-      link: '查看这些事项',
-    },
     undated: '无日期',
     notYetDated: '暂无日期',
     tagline: `${SITE.taglineZh}独立的信息与决策工具。不是诊所，不是律师事务所，也不是代孕机构。`,

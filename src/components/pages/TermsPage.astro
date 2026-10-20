@@ -3,12 +3,10 @@
  * The terms of use, in both languages.
  *
  * Terms are the wording a reader would quote back, so the mirror carries all six boundaries and the
- * same statement of why none of them bind anything yet. The gap behind that statement is not
- * restated here as its own list: it lives in the register on the About page.
+ * same statement of who publishes them.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
-import OpenQuestionsNote from '@/components/ui/OpenQuestionsNote.astro';
 import { SITE } from '@/const';
 import { TERMS_PAGE, TERMS_REVISION } from '@/data/policy-pages';
 import { formatDate } from '@/lib/dates';
@@ -47,9 +45,10 @@ const copy = TERMS_PAGE[lang];
     </section>
 
     <section class="mt-12 border-t border-line pt-8">
-      <h2 class="text-[22px]">{copy.openHeading}</h2>
-      <p class="mt-3 text-[16px] leading-relaxed text-muted">{fill(copy.openIntro, { team: SITE.team })}</p>
-      <OpenQuestionsNote />
+      <h2 class="text-[22px]">{copy.sourceHeading}</h2>
+      <p class="mt-3 text-[16px] leading-relaxed text-muted">
+        {fill(copy.sourceIntro, { team: SITE.team, board: SITE.board, email: SITE.contactEmail })}
+      </p>
     </section>
 
     <p class="mt-12 border-t border-line pt-6 text-[14px] text-muted">

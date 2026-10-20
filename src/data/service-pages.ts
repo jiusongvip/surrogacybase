@@ -12,9 +12,6 @@
 import { SITE } from '@/const';
 import type { Lang } from '@/i18n/config';
 
-/** One flagged gap: the thing that is missing, and why it matters that it is missing. */
-export type NeedsItem = { label: string; why?: string };
-
 export type AboutPage = {
   title: string;
   description: string;
@@ -28,13 +25,6 @@ export type AboutPage = {
   whoBody: string;
   correctionsHeading: string;
   correctionsBody: string;
-  /**
-   * The register. Every other page that used to carry its own gap notice points here instead, so a
-   * missing address is stated once, with what it blocks, rather than six times in six wordings.
-   */
-  openHeading: string;
-  openIntro: string;
-  openNeeds: NeedsItem[];
 };
 
 export const ABOUT_PAGE: Record<Lang, AboutPage> = {
@@ -64,44 +54,15 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: 'How does the site make money?',
-        a: 'No commercial model is in place yet, so there is nothing to disclose. If a paid relationship exists, it will be labelled on the page where it applies.',
+        a: 'SurrogacyBase is published by its editorial team and reviewed by its advisory board. No provider pays to appear, and no destination is ranked for revenue. If a commercial relationship ever reaches a page, that page labels it before the arrangement starts.',
       },
     ],
     whoHeading: 'Who is behind it',
     whoBody:
-      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained under the name {team}, and the review the byline claims is done by clinical members of that team. What {team} is in law, and where it is registered, is not stated yet, and neither are the names or the credentials of the people who wrote and checked a page. The register at the bottom of this page lists what is still missing, and what each missing piece blocks.',
+      'A site that asks for trust should say whose name stands behind it. These pages are written and maintained by the {team}, and the clinical review behind that byline is done by the {board}. Because the work is published under a team name rather than sold under a commercial banner, the same rule holds on every page including this one: a claim stays up only while a named source supports it, and when a source no longer holds the claim, the claim comes off the page.',
     correctionsHeading: 'Corrections',
     correctionsBody:
-      'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. The one thing missing here is an address to send it to, which is the gap below.',
-    openHeading: 'What this site has not settled',
-    openIntro:
-      'Everything this page cannot answer yet is on this list, with what each missing piece blocks. A gap stays here until the thing behind it exists.',
-    openNeeds: [
-      {
-        label: 'An address for receiving enquiries',
-        why: 'the enquiry form has nowhere to send to, so an enquiry leaves from your own mail app, clipboard or file',
-      },
-      {
-        label: 'An address for corrections',
-        why: 'a correction has nowhere to arrive, which is the one part of the process above that is not in place',
-      },
-      {
-        label: 'A route for a data request',
-        why: 'until there is an address to write to, you cannot ask what is held about you, change it, or ask for it to be gone',
-      },
-      {
-        label: 'Who operates this site, and its registration or incorporation if it has any',
-        why: 'which law governs, which court answers, and who is answerable for a page all turn on this, and a privacy policy has to name it',
-      },
-      {
-        label: 'The hosting provider, and how long its server logs are kept',
-        why: 'who hosts the site and what it records about a visit decides what leaves your browser',
-      },
-      {
-        label: 'Member names and roles, and the credentials of its clinical members',
-        why: 'the byline names a team, so you cannot yet check who wrote a page, who reviewed it, or what training they have',
-      },
-    ],
+      'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. Send it to {email}, the same address for a question about the site itself or about anything held about you.',
   },
   zh: {
     title: '关于我们',
@@ -129,43 +90,14 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: '本站靠什么盈利？',
-        a: '目前还没有任何商业模式，所以没有可披露的内容。如果将来存在收费关系，它会在关系实际发生的那个页面上标注出来。',
+        a: 'SurrogacyBase 由编辑团队发布、由医学顾问委员会审阅。没有服务方付费出现，也没有目的地因营收被排名。若某个页面真的出现商业关系，那会在这项安排开始前于该页标注出来。',
       },
     ],
     whoHeading: '背后是谁',
     whoBody:
-      '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面的编写与维护，署的是 {team} 这个名字，而署名里的那句审阅，由这个团队中有临床背景的成员完成。{team} 在法律上是什么、注册在哪里，本站还没有写明；写下某一页、审下某一页的人叫什么、受过什么训练，同样没有写明。本页末尾的那份清单列出了还缺什么，以及每一项缺口各自挡住的是什么。',
+      '一个要求别人信任的网站，应当说出背后署的是谁的名字。这些页面由 {team} 编写与维护，署名里的那句临床审阅由 {board} 完成。内容以团队之名发表、而不挂在商业招牌之下出售，所以同一条规则在包括本页在内的每个页面都成立：一条说法只在有一个具名来源仍然支撑它时才留在页面上；来源不再支撑，说法就从页面上撤下。',
     correctionsHeading: '更正',
     correctionsBody:
-      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。这里还缺的只有一件：可以寄送的收件地址，也就是下面那份清单里的一项。',
-    openHeading: '本站还没有确定的事项',
-    openIntro:
-      '这一页还回答不了的东西都列在这份清单上，并且写明每一项缺口各自挡住什么。缺口会一直留在这里，直到它背后那件事真的存在。',
-    openNeeds: [
-      {
-        label: '接收问询的地址',
-        why: '问询表单没有地方可以投递，所以问询要从您自己的邮件应用、剪贴板或一个文件离开',
-      },
-      {
-        label: '接收更正的地址',
-        why: '一条更正现在无处可到，上面那套流程里只有这一环还没有落实',
-      },
-      {
-        label: '提交数据请求的渠道',
-        why: '在有可以写信的地址之前，您无法询问这里存有您的什么、要求改正，或者要求删除',
-      },
-      {
-        label: '本站由谁运营，以及它有没有登记或注册信息',
-        why: '适用哪一套法律、由哪家法院管辖、一页内容由谁负责，全都取决于这一项，而隐私政策必须把它写明',
-      },
-      {
-        label: '托管方，以及它的服务器日志保存多久',
-        why: '网站由谁托管、它记录一次访问的哪些内容，决定了有什么会离开您的浏览器',
-      },
-      {
-        label: '成员姓名与各自的角色，以及临床成员的资质',
-        why: '署名只到团队这一层，您还无法核对某一页是谁写的、谁审的，以及他们受过什么训练',
-      },
-    ],
+      '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。请把它发到 {email}，同一个地址也受理关于本站本身、以及关于这里存有您的哪些信息的请求。',
   },
 };

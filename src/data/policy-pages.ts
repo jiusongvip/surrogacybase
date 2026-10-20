@@ -55,8 +55,8 @@ export type PrivacyPage = {
   strictBody: string;
   contactHeading: string;
   contact: string[];
-  unsettledHeading: string;
-  unsettledIntro: string;
+  operatorHeading: string;
+  operatorIntro: string;
   rightsBody: string;
   revised: string;
 };
@@ -69,8 +69,8 @@ export type TermsPage = {
   acceptance: string;
   boundaryHeading: string;
   terms: { h: string; body: string }[];
-  openHeading: string;
-  openIntro: string;
+  sourceHeading: string;
+  sourceIntro: string;
   revised: string;
 };
 
@@ -139,7 +139,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: 'What the signature claims, and what it does not',
-        p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that the team reviewing them includes members with clinical backgrounds. That is the whole of the claim: no individual is named as an author or a reviewer anywhere on the site, and no credential is quoted. The About page lists the names and qualifications behind the signature as not yet published. Until they are, the review line is a claim you cannot match to a person, and it is presented here as exactly that rather than as a credential. Reviewer credits are still never added to borrow trust.',
+        p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that a medical advisory board carries the clinical review. That is the whole of the claim: no individual is named as an author or a reviewer anywhere on the site, and no credential is quoted. The review stands at team level, so it is offered as a process you can hold the team to, not as an endorsement from a named clinician. Reviewer credits are never added just to borrow trust.',
       },
       {
         h: 'Silence is a valid editorial decision',
@@ -153,7 +153,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'A page shows the date it was first published and the date of its last substantive change. Refreshing the modification date without changing the content is not an update and does not happen here. Each page also carries a date by which its sources must be re-checked.',
     moneyHeading: 'Independence and money',
     commercial: [
-      'The name these pages are published under, and what has not been stated yet, are on the About page.',
+      'These pages are published by the editorial team and reviewed by the medical advisory board, both named on the About page.',
       'Paid placements, referral fees and sponsorships are not accepted while the site presents itself as independent. If any commercial relationship is introduced, this page and the affected pages disclose it before the arrangement starts.',
       'Providers are not paid to be included, and inclusion is not an endorsement.',
       'Corrections from a named party are handled the same way as corrections from anyone else.',
@@ -223,7 +223,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: '署名声称了什么，没有声称什么',
-        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明审阅它们的团队中有具备临床背景的成员。声称的全部内容到此为止：站内不以任何个人名义署名作者或审阅人，也不引用任何资历。关于页把署名背后的姓名与资历列为尚未发布。在这些信息公布之前，审阅行是一条您无法对应到具体个人的声称，本页就按这样陈述它，而不是把它当作资历。审阅人署名仍然从不为了借用信任而添加。',
+        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明临床审阅由一个医学顾问委员会承担。声称的全部内容到此为止：站内不以任何个人名义署名作者或审阅人，也不引用任何资历。审阅停在团队这一层，所以它是一条您可以据以问责团队的过程，而不是某位具名临床人员的个人背书。审阅人署名从不为了借用信任而添加。',
       },
       {
         h: '不写，本身就是一种有效的编辑决定',
@@ -236,7 +236,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     datesBody: '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期。',
     moneyHeading: '独立性与金钱',
     commercial: [
-      '这些页面以什么名字发布，以及哪些内容尚未写明，都写在关于页上。',
+      '这些页面由编辑团队发布、由医学顾问委员会审阅，两者的名称都写在关于页上。',
       '本站以独立自居期间，不接受付费排位、转介费与赞助。如果将来引入任何商业关系，本页与受影响的页面会在这项安排开始之前披露它。',
       '服务方不会付费换取被收录，被收录也不构成背书。',
       '来自具名一方的更正与其他任何人的更正走同样的流程。',
@@ -249,7 +249,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const PRIVACY_REVISION = '2026-10-17';
+export const PRIVACY_REVISION = '2026-10-20';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
@@ -296,12 +296,12 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: 'If you contact us',
     contact: [
       'An enquiry should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
-      'The enquiry form collects none of that material and has no way to: there is nowhere in it to attach a file. Where an enquiry is delivered, who reads it, and how long it is kept are set out on this page before any address to send it to appears on the site.',
+      'The enquiry form collects none of that material and has no way to: there is nowhere in it to attach a file. The site runs with no server, so the form builds your enquiry in your browser and hands it to your own mail app addressed to {email}; where it is delivered and how long it is kept follow from that.',
       'Documents about other people belong to those people. Do not send a surrogate’s, a clinic’s or another intended parent’s material without their agreement.',
     ],
-    unsettledHeading: 'Not yet settled, and you should know',
-    unsettledIntro:
-      'What a privacy page in this position would normally answer about the people behind it is not settled here yet. Until those answers exist, the wording above describes a build that collects almost nothing; it does not describe who is answerable if any of it is wrong.',
+    operatorHeading: 'Who runs this site',
+    operatorIntro:
+      'SurrogacyBase is published by the {team}, and the clinical review behind each byline is done by the {board}. Enquiries, corrections and any request about information you send reach one address, {email}. The site stores nothing about you until you choose to write to it.',
     rightsBody:
       "Subject to applicable law, you can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. If you use the tool, deletion is in your hands already: clear this site's data in your browser settings.",
     revised:
@@ -351,11 +351,11 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: '如果您联系我们',
     contact: [
       '一次问询只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
-      '问询表单不收集那些材料，也没有收集它们的途径：里面没有任何可以附上文件的位置。一次问询会送达哪里、由谁阅读、保留多久，会在本站出现可供发送的收件地址之前，先写在本页上。',
+      '问询表单不收集那些材料，也没有收集它们的途径：里面没有任何可以附上文件的位置。本站没有服务器，所以表单会在您的浏览器里把问询组装好，交给您的邮件应用并寄往 {email}；它会送达哪里、保留多久，都由这一点决定。',
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
-    unsettledHeading: '尚未确定，而您应该知道',
-    unsettledIntro: '这一类隐私页面通常要回答的问题里，涉及本站背后是谁的那部分，这里还没有确定。在那些答案存在之前，上面的说法描述的是一个几乎不收集任何东西的站点，它并没有说明一旦其中某处出错该由谁负责。',
+    operatorHeading: '本站由谁运营',
+    operatorIntro: 'SurrogacyBase 由 {team} 发布，署名里的临床审阅由 {board} 完成。问询、更正，以及关于您发来的任何信息的请求，都寄往同一个地址：{email}。在您主动写信过来之前，本站不存储任何关于您的信息。',
     rightsBody:
       '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
     revised: '隐私政策最近修订于 {date}。实质性变更会在本页留下一条带日期的说明，而不是悄悄改写。',
@@ -363,7 +363,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const TERMS_REVISION = '2026-10-16';
+export const TERMS_REVISION = '2026-10-20';
 
 export const TERMS_PAGE: Record<Lang, TermsPage> = {
   en: {
@@ -402,9 +402,9 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
         body: 'The site is provided as it stands, without warranty that it is complete, current or suitable for your case. To the extent permitted by applicable law, the operator is not liable for decisions taken on the strength of it. That sentence does not reduce any statutory rights you have, and it does not excuse us from correcting a claim we got wrong.',
       },
     ],
-    openHeading: 'Why these terms bind nothing yet',
-    openIntro:
-      'These pages are signed {team}, but no registered entity has been named as the operator of this site, so these terms do not bind you or anyone else to anything.',
+    sourceHeading: 'Who these terms come from',
+    sourceIntro:
+      'These terms are published by the {team}, reviewed by the {board}, and reachable at {email}. They govern how this material may be used. They are not advice, and every factual claim on the site answers to the dated source beside it.',
     revised: 'Terms last revised {date}. Changes apply from the date shown, not retroactively.',
   },
   zh: {
@@ -442,9 +442,9 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
         body: '本站按其现状提供，不担保它完整、最新或适合您的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。这句话不削减您依法享有的任何权利，也不能免除我们改正一条写错了的说法的义务。',
       },
     ],
-    openHeading: '这些条款为什么还约束不了任何人',
-    openIntro:
-      '这些页面的署名是 {team}，但还没有任何注册主体被具名为本站的运营者，因此这些条款不约束您或任何其他人。',
+    sourceHeading: '这些条款出自谁',
+    sourceIntro:
+      '这些条款由 {team} 发布、由 {board} 审阅，可在 {email} 联系到。它们约束的是这份材料的使用方式。它们不是建议，而站上每一条事实性说法都对得上它旁边那个带日期的来源。',
     revised: '条款最近修订于 {date}。变更从所显示的日期起适用，不溯及既往。',
   },
 };
