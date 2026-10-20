@@ -115,7 +115,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
           </div>
         )
       }
-      <a href={copy.cta.href} class="btn-primary hidden text-sm sm:inline-flex">
+      <a href={copy.cta.href} class="btn-primary hidden text-sm sm:inline-flex" data-enquiry-cta>
         {copy.cta.label}
       </a>
       <button
@@ -167,7 +167,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
         ))
       }
       <li>
-        <a href={copy.cta.href} class="btn-primary mt-4 w-full">{copy.cta.label}</a>
+        <a href={copy.cta.href} class="btn-primary mt-4 w-full" data-enquiry-cta>{copy.cta.label}</a>
       </li>
     </ul>
   </nav>

@@ -8,6 +8,7 @@
  * that two different documents are the same page, which is worse than saying nothing.
  */
 import '@/styles/global.css';
+import EnquiryDialog from '@/components/forms/EnquiryDialog.astro';
 import { SITE } from '@/const';
 import { DEFAULT_LANG, LANG_META, type Lang } from '@/i18n/config';
 import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
@@ -119,5 +120,6 @@ const orgLd = {
       <slot />
     </main>
     <slot name="footer" />
+    <EnquiryDialog />
   </body>
 </html>

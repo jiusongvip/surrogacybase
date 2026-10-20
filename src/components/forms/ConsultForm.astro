@@ -1,6 +1,8 @@
 ---
 /*
- * The homepage enquiry, and the only form on this site that collects anything.
+ * The enquiry form: the only one on this site that collects anything. It sits in the
+ * homepage band and, through the header, in a dialog on every page, so it takes an id prefix
+ * rather than assuming it is alone on the page.
  *
  * Three fields: where the reply goes, what you want worked out, and a name if you want the
  * reply addressed to someone. The form cannot submit them: this is a static build with no
@@ -23,25 +25,33 @@ import { SITE } from '@/const';
 import { CONSULT_CHROME } from '@/data/intake';
 import { langFromPath } from '@/i18n/paths';
 
+interface Props {
+  /** Field ids are printed into the page, so the dialog copy cannot reuse the inline one's. */
+  idPrefix?: string;
+  /** The dialog already draws a panel, so the form inside it stops drawing its own. */
+  framed?: boolean;
+}
+
+const { idPrefix = 'cq', framed = true } = Astro.props;
 const inbox = SITE.contactEmail;
 const lang = langFromPath(Astro.url.pathname);
 const copy = CONSULT_CHROME[lang];
 ---
 
 <div
-  class="rounded-(--radius) border border-line bg-paper p-6 text-text shadow-lift sm:p-7"
+  class:list={[framed ? 'rounded-(--radius) border border-line bg-paper p-6 text-text shadow-lift sm:p-7' : 'text-text']}
   data-consult={inbox}
   data-copy={JSON.stringify(copy)}
 >
   <div class="grid gap-5 sm:grid-cols-2">
     <div>
-      <label class="field-label" for="cq-name">
+      <label class="field-label" for={`${idPrefix}-name`}>
         {copy.nameLabel}
         <span class="font-normal text-muted">{copy.optional}</span>
       </label>
       <input
         class="field-input mt-1.5"
-        id="cq-name"
+        id={`${idPrefix}-name`}
         data-field="name"
         type="text"
         autocomplete="name"
@@ -51,13 +61,13 @@ const copy = CONSULT_CHROME[lang];
     </div>
 
     <div>
-      <label class="field-label" for="cq-email">
+      <label class="field-label" for={`${idPrefix}-email`}>
         {copy.emailLabel}
         <span class="text-flag" aria-hidden="true">{copy.required}</span>
       </label>
       <input
         class="field-input mt-1.5"
-        id="cq-email"
+        id={`${idPrefix}-email`}
         data-field="email"
         type="email"
         autocomplete="email"
@@ -68,13 +78,13 @@ const copy = CONSULT_CHROME[lang];
     </div>
 
     <div class="sm:col-span-2">
-      <label class="field-label" for="cq-message">
+      <label class="field-label" for={`${idPrefix}-message`}>
         {copy.messageLabel}
         <span class="text-flag" aria-hidden="true">{copy.required}</span>
       </label>
       <textarea
         class="field-input mt-1.5 min-h-[112px]"
-        id="cq-message"
+        id={`${idPrefix}-message`}
         data-field="message"
         rows="4"
         maxlength="1200"
@@ -123,6 +133,7 @@ const copy = CONSULT_CHROME[lang];
   type Chrome = ConsultChrome;
 
   const KEY = 'surrogacybase.consult.v1';
+  const SYNC = 'surrogacybase:consult-draft';
   const ADDRESS = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   /** Same token syntax as src/i18n/ui.ts, kept local because a bundle cannot import it. */
@@ -214,11 +225,28 @@ const copy = CONSULT_CHROME[lang];
       el.addEventListener('input', () => {
         save(read());
         repaint();
+        announce();
       });
       el.addEventListener('change', () => {
         save(read());
         repaint();
+        announce();
       });
+    }
+
+    /* The inline form and the dialog form hold the same draft, so neither may be left showing
+     * what the other one typed. */
+    window.addEventListener(SYNC, (event) => {
+      const v = (event as CustomEvent<Fields>).detail;
+      for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+        const el = box(name);
+        if (el && el.value !== v[name] && document.activeElement !== el) el.value = v[name];
+      }
+      repaint();
+    });
+
+    function announce() {
+      window.dispatchEvent(new CustomEvent(SYNC, { detail: read() }));
     }
 
     root.addEventListener('click', async (event) => {

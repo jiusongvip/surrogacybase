@@ -69,6 +69,8 @@ export const UI: Record<Lang, {
   siteDescription: string;
   nav: NavItem[];
   cta: NavItem;
+  /** The header action, which opens the enquiry form in a dialog over the page you are on. */
+  enquiryDialog: { title: string; close: string };
   footerGroups: FooterGroup[];
   /** The two content types, spelled the way a card or a byline row shows them. */
   kinds: { guide: string; article: string };
@@ -385,7 +387,8 @@ export const UI: Record<Lang, {
       { label: 'Guides', href: '/guides' },
       { label: 'About us', href: '/about' },
     ],
-    cta: { label: 'Write your enquiry', href: '/#assessment' },
+    cta: { label: 'Contact us', href: '/#assessment' },
+    enquiryDialog: { title: 'Contact us', close: 'Close' },
     footerGroups: [
       {
         heading: 'Guides',
@@ -856,7 +859,8 @@ export const UI: Record<Lang, {
       { label: '指南', href: '/zh/guides' },
       { label: '关于我们', href: '/zh/about' },
     ],
-    cta: { label: '写下您的问询', href: '/zh#assessment' },
+    cta: { label: '联系我们', href: '/zh#assessment' },
+    enquiryDialog: { title: '联系我们', close: '关闭' },
     footerGroups: [
       {
         heading: '指南',

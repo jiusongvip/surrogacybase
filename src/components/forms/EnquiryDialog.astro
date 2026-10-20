@@ -1,0 +1,71 @@
+---
+/*
+ * The enquiry form, reachable from the header on every page.
+ *
+ * The triggers stay real links to the homepage band in the HTML, so a reader without script
+ * still gets to a working form; the script only redirects the click into this dialog. That is
+ * the same trade the language switch makes: the page works before it is enhanced.
+ *
+ * The form inside is the homepage one, with its own field ids, and the two copies share a
+ * draft rather than each keeping a separate version of what you typed.
+ */
+import ConsultForm from './ConsultForm.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { UI } from '@/i18n/ui';
+import { langFromPath } from '@/i18n/paths';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = UI[lang].enquiryDialog;
+---
+
+<dialog
+  class="enquiry-dialog m-auto w-[min(94vw,760px)] rounded-(--radius-card) border border-line bg-paper p-0 text-text shadow-lift backdrop:bg-brand/60"
+  aria-labelledby="enquiry-dialog-title"
+  data-enquiry-dialog
+>
+  <div class="flex items-center justify-between gap-6 border-b border-line px-6 py-4">
+    <h2 id="enquiry-dialog-title" class="text-[19px]">{copy.title}</h2>
+    <button
+      type="button"
+      class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-(--radius) border border-line text-muted transition-colors duration-(--dur) hover:border-line-strong hover:text-text"
+      aria-label={copy.close}
+      data-enquiry-close
+    >
+      <Icon name="x" size={18} />
+    </button>
+  </div>
+
+  <div class="max-h-[74vh] overflow-y-auto px-6 py-6">
+    <ConsultForm idPrefix="dlg" framed={false} />
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-enquiry-dialog]');
+
+  if (dialog) {
+    let opener: HTMLElement | null = null;
+
+    document.addEventListener('click', (event) => {
+      const mouse = event as MouseEvent;
+      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-enquiry-cta]');
+      if (trigger) {
+        /* A modified or middle click means "open the homepage band elsewhere", which only a
+         * real navigation can do. */
+        if (mouse.button !== 0 || mouse.metaKey || mouse.ctrlKey || mouse.shiftKey || mouse.altKey) return;
+        event.preventDefault();
+        if (!dialog.open) {
+          opener = trigger;
+          dialog.showModal();
+          dialog.querySelector<HTMLInputElement>('[data-field="name"]')?.focus();
+        }
+        return;
+      }
+      const close = (event.target as HTMLElement).closest<HTMLElement>('[data-enquiry-close]');
+      /* The dialog element is its own box, so a click landing on it is a click on the backdrop. */
+      if (close || event.target === dialog) dialog.close();
+    });
+
+    dialog.addEventListener('close', () => opener?.focus());
+  }
+</script>

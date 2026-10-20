@@ -79,7 +79,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     openNeeds: [
       {
         label: 'An address for receiving enquiries',
-        why: 'the form on the homepage has nowhere to send to, so an enquiry leaves from your own mail app, clipboard or file',
+        why: 'the enquiry form has nowhere to send to, so an enquiry leaves from your own mail app, clipboard or file',
       },
       {
         label: 'An address for corrections',
@@ -144,7 +144,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     openNeeds: [
       {
         label: '接收问询的地址',
-        why: '首页的表单没有地方可以投递，所以问询要从您自己的邮件应用、剪贴板或一个文件离开',
+        why: '问询表单没有地方可以投递，所以问询要从您自己的邮件应用、剪贴板或一个文件离开',
       },
       {
         label: '接收更正的地址',
