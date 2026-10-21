@@ -32,6 +32,9 @@ import articleParentage from '@/assets/images/article-parentage.jpg';
 import articleVerifying from '@/assets/images/article-verifying.jpg';
 import concernDocuments from '@/assets/images/concern-documents.jpg';
 import verifyContract from '@/assets/images/verify-contract.jpg';
+import stageNotebook from '@/assets/images/stage-notebook.jpg';
+import concernPresence from '@/assets/images/concern-presence.jpg';
+import stageReading from '@/assets/images/stage-reading.jpg';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
@@ -247,6 +250,27 @@ export const HOME_COUNTRY_MEDIA: Record<string, { src: ImageMetadata; alt: Bilin
     alt: {
       en: 'A coastal town built up a hillside above a harbour of small boats',
       zh: '一座海滨小镇沿山坡向上铺开，山下是停满小船的港口',
+    },
+  },
+  ua: {
+    src: stageNotebook,
+    alt: {
+      en: 'A fountain pen resting on a loose sheet of paper on top of a closed book',
+      zh: '一支钢笔放在合上的书本上的一张散页纸上',
+    },
+  },
+  ge: {
+    src: concernPresence,
+    alt: {
+      en: 'A blank month calendar laid out beside two boarding passes, a key and a luggage tag',
+      zh: '一张空白的月历与两张登机牌、一把钥匙和一只行李牌并排摆着',
+    },
+  },
+  kz: {
+    src: stageReading,
+    alt: {
+      en: 'An open book and a cup of coffee on a windowsill beside a jar of wildflowers',
+      zh: '窗台上摊着一本书、放着一杯咖啡，旁边是一只插着野花的玻璃瓶',
     },
   },
 };
