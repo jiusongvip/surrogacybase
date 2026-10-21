@@ -41,7 +41,7 @@ import {
 } from '@/data/home';
 import { contentMedia } from '@/data/content-media';
 import { Image } from 'astro:assets';
-import heroDesk from '@/assets/images/article-cost-lines.jpg';
+import heroTerrace from '@/assets/images/hero-terrace.jpg';
 import ctaLeaves from '@/assets/images/cta-leaves.jpg';
 
 const lang = langFromPath(Astro.url.pathname);
@@ -103,33 +103,33 @@ const lp = (path: string) => localizedPath(lang, path);
   <section class="relative isolate overflow-hidden border-b border-line bg-paper" id="top">
     {/*
      * The wash is paper, not brand, and that reversal is the whole colour decision. A dark
-     * scrim has to beat the frame's brightest pixel; a light scrim only has to lift its
-     * darkest. The frame here is a linen tablecloth with an open notebook in it, so the
-     * brightest pixel is the paper the pen lies on and the darkest is a flower shadow, which
-     * is a far narrower band than the sunlit water this slot used to carry.
+     * scrim has to beat the frame's brightest pixel, which over sunlit sea means 75 per cent
+     * green laid across the copy and no sea left to see. A light scrim only has to lift the
+     * frame's darkest pixel, and the darkest pixel behind the sentences is the headland, not
+     * the open water.
      *
-     * The two colour schemes need different strengths, and the two directions are opposite
-     * here to the way they ran over the last frame. In the light scheme the threat is a dark
-     * pixel under dark type, and the darkest thing now behind the sentences is a soft flower
-     * shadow, so the wash drops from 62 to 55 and the linen stays readable. In the dark scheme
-     * paper is near-black and the threat inverts to a bright pixel under light type, and this
-     * frame is bright almost everywhere the copy column falls, so the dark wash goes up to 90
-     * rather than down. Measured on the built page: the copy column averages 188 in the light
-     * scheme and 63 in the dark one.
+     * The two colour schemes need different strengths here, and the difference is measured
+     * rather than guessed. In the light scheme the threat is a dark pixel under dark type, so
+     * the wash only has to reach 62 per cent: the heading is 36 to 64px, which WCAG treats as
+     * large text at 3:1, and the 18px body is the binding case at 4.5:1 and needs 57. In the
+     * dark scheme paper is near-black and the threat inverts to a bright pixel under light
+     * type, and the copy column's top row sits on open sky, which needs 74. So the light
+     * scheme gets a thin wash and the sea stays visible; the dark scheme keeps a heavy one,
+     * because a dark hero is meant to read dark.
      *
      * Below lg the copy spans the full width, so the wash would have to cover the frame
      * entirely; there the photograph keeps its own band and the copy sits on plain paper.
      */}
     <Image
-      src={heroDesk}
+      src={heroTerrace}
       widths={[720, 1100, 1536]}
       sizes="100vw"
       loading="eager"
-      class="block h-[220px] w-full object-cover object-[58%_46%] sm:h-[320px] lg:absolute lg:inset-0 lg:h-full lg:object-[34%_58%]"
+      class="block h-[220px] w-full object-cover object-[62%_38%] sm:h-[320px] lg:absolute lg:inset-0 lg:h-full lg:object-[52%_42%]"
       alt=""
     />
     <div
-      class="absolute inset-0 hidden from-paper/55 via-paper/52 via-58% to-paper/0 to-84% bg-linear-to-r lg:block dark:from-paper/90 dark:via-paper/86"
+      class="absolute inset-0 hidden from-paper/62 via-paper/60 via-58% to-paper/0 to-82% bg-linear-to-r lg:block dark:from-paper/86 dark:via-paper/80"
       aria-hidden="true"
     >
     </div>
