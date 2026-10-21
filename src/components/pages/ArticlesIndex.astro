@@ -5,7 +5,9 @@ import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { CATEGORY_KEYS, CATEGORY_HREF } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
+import { contentMedia } from '@/data/content-media';
+import { Image } from 'astro:assets';
 import { formatShortDate, readingTime } from '@/lib/dates';
 import { pathOf, getArticles } from '@/lib/content';
 
@@ -38,18 +40,40 @@ const counts = Object.fromEntries(
       {
         latest.length > 0 ? (
           <ul class="mt-5">
-            {latest.map((e, i) => (
-              <li class:list={[i > 0 ? 'border-t border-line' : '']}>
-                <a href={pathOf(e)} class="group flex flex-wrap items-baseline gap-x-5 gap-y-1 py-5">
-                  <h3 class="text-[22px] leading-snug text-text group-hover:text-accent">{e.data.title}</h3>
-                  <p class="text-[14px] text-muted">
-                    {labels[e.data.category]}
-                    <span class="tnum"> · {formatShortDate(e.data.publishedOn, lang)}</span>
-                    <span class="tnum"> · {fill(ui.time.minutes, { n: readingTime(e.body ?? '') })}</span>
-                  </p>
-                </a>
-              </li>
-            ))}
+            {latest.map((e, i) => {
+              const media = contentMedia(e.id);
+              return (
+                <li class:list={[i > 0 ? 'border-t border-line' : '']}>
+                  <a
+                    href={pathOf(e)}
+                    class="group grid gap-x-5 gap-y-3 py-5 sm:grid-cols-[168px_minmax(0,1fr)] sm:items-center"
+                  >
+                    {
+                      media && (
+                        <span class="block aspect-[16/10] overflow-hidden rounded-(--radius) bg-surface-2">
+                          <Image
+                            src={media.src}
+                            widths={[200, 340]}
+                            sizes="(min-width: 640px) 168px, 40vw"
+                            class="h-full w-full object-cover transition-transform duration-(--dur) ease-out group-hover:scale-[1.03]"
+                            alt={pick(media.alt, lang)}
+                            loading="lazy"
+                          />
+                        </span>
+                      )
+                    }
+                    <span>
+                      <h3 class="text-[22px] leading-snug text-text group-hover:text-accent">{e.data.title}</h3>
+                      <p class="mt-1 text-[14px] text-muted">
+                        {labels[e.data.category]}
+                        <span class="tnum"> · {formatShortDate(e.data.publishedOn, lang)}</span>
+                        <span class="tnum"> · {fill(ui.time.minutes, { n: readingTime(e.body ?? '') })}</span>
+                      </p>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <div class="mt-5">

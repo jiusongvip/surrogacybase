@@ -9,7 +9,9 @@ import RelatedLinks from '@/components/content/RelatedLinks.astro';
 import { SITE } from '@/const';
 import { LANG_META } from '@/i18n/config';
 import { langFromPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
+import { contentMedia } from '@/data/content-media';
+import { Image } from 'astro:assets';
 import { formatDate, readingTime } from '@/lib/dates';
 import { pathOf, type ContentEntry, type Heading, type RenderedContent } from '@/lib/content';
 
@@ -31,6 +33,7 @@ const categoryLabel = CATEGORY_LABELS[lang][d.category] ?? d.category;
 const minutes = readingTime(entry.body ?? '');
 const isGuide = d.type === 'guide';
 const url = new URL(pathOf(entry), Astro.site);
+const media = contentMedia(entry.id);
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 
 const jsonLd = [
@@ -98,6 +101,19 @@ const jsonLd = [
           ? fill(copy.content.reviewedBy, { name: d.reviewer.name, role: d.reviewer.role })
           : fill(copy.content.reviewedByTeam, { team: SITE.team })}
       </p>
+    {
+      media && (
+        <div class="mt-8 overflow-hidden rounded-(--radius-card) bg-surface-2">
+          <Image
+            src={media.src}
+            widths={[600, 900, 1200]}
+            sizes="(min-width: 1280px) 900px, (min-width: 640px) 92vw, 100vw"
+            class="aspect-[16/9] w-full object-cover lg:aspect-[21/9]"
+            alt={pick(media.alt, lang)}
+          />
+        </div>
+      )
+    }
     </header>
 
     <EvidenceNote

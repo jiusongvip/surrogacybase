@@ -4,7 +4,9 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
+import { contentMedia } from '@/data/content-media';
+import { Image } from 'astro:assets';
 import { formatShortDate } from '@/lib/dates';
 import { getArticles, getGuides, pathOf, refKeyOf, type ContentEntry } from '@/lib/content';
 
@@ -26,6 +28,7 @@ const supporters = (guide: ContentEntry) => {
   return articles.filter((a) => a.data.relatedGuides.includes(key) || a.data.category === guide.data.category);
 };
 const [lead, ...rest] = ordered;
+const leadMedia = lead ? contentMedia(lead.id) : undefined;
 ---
 
 <PageLayout title={copy.title} description={copy.description}>
@@ -45,15 +48,35 @@ const [lead, ...rest] = ordered;
           href={pathOf(lead)}
           class="block rounded-(--radius) bg-sand px-6 py-9 transition-[box-shadow] duration-(--dur) hover:shadow-card sm:px-10 sm:py-12"
         >
-          <p class="text-[14px] text-muted">
-            {labels[lead.data.category] ?? lead.data.category}
-            <span class="tnum"> · {copy.updated} {formatShortDate(lead.data.updatedOn, lang)}</span>
-          </p>
-          <h2 class="mt-3 max-w-[22ch] text-[clamp(1.9rem,3.4vw,2.7rem)] leading-[1.08]">{lead.data.title}</h2>
-          <p class="mt-3 max-w-[60ch] text-[17px] leading-relaxed text-brand-fg">{lead.data.description}</p>
-          <span class="textlink mt-6">
-            {copy.readGuide}
-            <Icon name="arrow-right" size={16} />
+          <span class="grid gap-x-10 gap-y-7 sm:grid-cols-[minmax(0,1fr)_300px] sm:items-center">
+            <span class="block">
+              <span class="block text-[14px] text-muted">
+                {labels[lead.data.category] ?? lead.data.category}
+                <span class="tnum"> · {copy.updated} {formatShortDate(lead.data.updatedOn, lang)}</span>
+              </span>
+              <h2 class="mt-3 max-w-[22ch] text-[clamp(1.9rem,3.4vw,2.7rem)] leading-[1.08]">{lead.data.title}</h2>
+              <span class="mt-3 block max-w-[60ch] text-[17px] leading-relaxed text-brand-fg">
+                {lead.data.description}
+              </span>
+              <span class="textlink mt-6">
+                {copy.readGuide}
+                <Icon name="arrow-right" size={16} />
+              </span>
+            </span>
+            {
+              leadMedia && (
+                <span class="block overflow-hidden rounded-(--radius) aspect-[4/3] bg-surface-2">
+                  <Image
+                    src={leadMedia.src}
+                    widths={[300, 600]}
+                    sizes="(min-width: 640px) 300px, 100vw"
+                    class="h-full w-full object-cover"
+                    alt={pick(leadMedia.alt, lang)}
+                    loading="lazy"
+                  />
+                </span>
+              )
+            }
           </span>
         </a>
       ) : (
@@ -70,13 +93,28 @@ const [lead, ...rest] = ordered;
         <ul class="mt-10">
           {rest.map((guide, i) => {
             const supports = supporters(guide);
+            const media = contentMedia(guide.id);
             return (
               <li class:list={[i === 0 ? '' : 'border-t border-line']}>
                 <a
                   href={pathOf(guide)}
-                  class="group grid gap-2 py-6 sm:grid-cols-[minmax(0,1fr)_220px] sm:items-start sm:gap-8"
+                  class="group grid gap-x-8 gap-y-3 py-6 sm:grid-cols-[132px_minmax(0,1fr)_200px] sm:items-center"
                 >
-                  <span>
+                  {
+                    media && (
+                      <span class="block aspect-[4/3] overflow-hidden rounded-(--radius) bg-surface-2">
+                        <Image
+                          src={media.src}
+                          widths={[132, 264]}
+                          sizes="(min-width: 640px) 132px, 34vw"
+                          class="h-full w-full object-cover transition-transform duration-(--dur) ease-out group-hover:scale-[1.04]"
+                          alt={pick(media.alt, lang)}
+                          loading="lazy"
+                        />
+                      </span>
+                    )
+                  }
+                  <span class="block">
                     <span class="block text-[14px] text-muted">
                       {labels[guide.data.category] ?? guide.data.category}
                     </span>

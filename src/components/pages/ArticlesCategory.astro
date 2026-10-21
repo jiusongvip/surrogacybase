@@ -6,7 +6,8 @@ import ArticleCard from '@/components/content/ArticleCard.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { type CategoryKey } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
+import { contentMedia } from '@/data/content-media';
 import { type ContentEntry } from '@/lib/content';
 
 type Props = { category: CategoryKey; list: ContentEntry[] };
@@ -48,9 +49,18 @@ const introVars = { n: sorted.length };
     {
       sorted.length > 0 ? (
         <ul class="grid gap-3 sm:grid-cols-2">
-          {sorted.map((e) => (
-            <ArticleCard entry={e} heading={2} />
-          ))}
+          {sorted.map((e) => {
+            const media = contentMedia(e.id);
+            return (
+              <li>
+                <ArticleCard
+                  entry={e}
+                  heading={2}
+                  image={media && { src: media.src, alt: pick(media.alt, lang) }}
+                />
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <EmptyState

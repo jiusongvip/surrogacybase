@@ -28,14 +28,8 @@ import concernPassport from '@/assets/images/concern-passport.jpg';
 import articleDestinations from '@/assets/images/article-destinations.jpg';
 import concernDestinationTown from '@/assets/images/concern-destination-town.jpg';
 import concernDestinations from '@/assets/images/concern-destinations.jpg';
-import articleParentage from '@/assets/images/article-parentage.jpg';
-import articleVerifying from '@/assets/images/article-verifying.jpg';
-import concernDocuments from '@/assets/images/concern-documents.jpg';
-import verifyContract from '@/assets/images/verify-contract.jpg';
 import concernPresence from '@/assets/images/concern-presence.jpg';
 import heroDeskMap from '@/assets/images/hero-desk-map.jpg';
-import quotesDesk from '@/assets/images/quotes-desk.jpg';
-import costLedger from '@/assets/images/cost-ledger.jpg';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
@@ -305,46 +299,6 @@ export const HOME_READING: Record<Lang, {
     emptyTitle: '这里还没有已发布的内容',
     emptyBody: '这一节只列出已经发布的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
     emptyAction: '阅读发布标准',
-  },
-};
-
-/* Keyed by slug so a card whose piece has no photograph of its own renders text-only. */
-export const HOME_READING_IMAGES: Record<string, { src: ImageMetadata; alt: Bilingual }> = {
-  'questions-to-ask-about-surrogacy-law-before-choosing-a-destination': {
-    src: quotesDesk,
-    alt: {
-      en: 'Three open booklets printed with quotation marks beside a numbered list card, a pencil and a kraft envelope',
-      zh: '三本摊开的小册子上印着引号与横线，旁边是一张编号一到五的清单卡、一支铅笔和一只牛皮纸信封',
-    },
-  },
-  'surrogacy-costs-that-sit-outside-a-quote': {
-    src: costLedger,
-    alt: {
-      en: 'A page of handwritten columns of figures with three blank paper tags on strings and a pencil',
-      zh: '一页手写的分栏数字，旁边是三枚系着细绳的空白纸标签和一支铅笔',
-    },
-  },
-  'surrogacy-legal-considerations': {
-    src: articleParentage,
-    alt: { en: 'Three people seen from behind, walking at the edge of the sea on a flat beach', zh: '三个人的背影，在平缓的沙滩上朝海边走' },
-  },
-  'choosing-a-surrogacy-agency': {
-    src: articleVerifying,
-    alt: { en: 'A laptop open on a white desk beside printed documents', zh: '白色桌上一台打开的笔记本电脑，旁边是打印出来的文件' },
-  },
-  'the-six-month-limit-on-a-uk-parental-order': {
-    src: concernDocuments,
-    alt: {
-      en: 'Two blank forms, a brass seal and a fountain pen laid out on a pale desk beside a dark red booklet',
-      zh: '浅色桌面上摊着两份空白表格、一枚黄铜印章和一支钢笔，旁边是一本深红色的小册子',
-    },
-  },
-  'getting-a-birth-certificate-accepted-abroad': {
-    src: verifyContract,
-    alt: {
-      en: 'A single document and a pen on a white desk beside a small balance scale and a glass vase holding a leafy sprig',
-      zh: '白色桌上一份文件与一支笔，旁边是一架小小的天平，玻璃瓶里插着一枝绿叶',
-    },
   },
 };
 
