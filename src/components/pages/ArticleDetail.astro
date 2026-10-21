@@ -1,8 +1,7 @@
 ---
 import ContentLayout from '@/layouts/ContentLayout.astro';
-import { CATEGORY_HREF, type CategoryKey } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI } from '@/i18n/ui';
+import { UI } from '@/i18n/ui';
 import { renderContent, relatedFor, toolLinksFor, type ContentEntry } from '@/lib/content';
 
 type Props = { entry: ContentEntry };
@@ -22,10 +21,8 @@ if (entry.data.category === 'destinations') {
   });
 }
 
-const categoryLabel = CATEGORY_LABELS[lang][entry.data.category] ?? entry.data.category;
 const crumbs = [
   { label: copy.articles.title, href: localizedPath(lang, '/articles') },
-  { label: categoryLabel, href: localizedPath(lang, CATEGORY_HREF[entry.data.category as CategoryKey]) },
   { label: entry.data.title },
 ];
 ---

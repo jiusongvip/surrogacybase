@@ -1,8 +1,8 @@
 /*
  * One picture per published piece, keyed by slug.
  *
- * The homepage row, the article and guide listings, the category pages and the article header all
- * read from here, so a piece cannot show one photograph on its card and another once you open it.
+ * The homepage row, the article and guide listings and the article header all read from here, so a
+ * piece cannot show one photograph on its card and another once you open it.
  * A piece with no entry renders text-only rather than borrowing a picture of something else.
  */
 import type { ImageMetadata } from 'astro';

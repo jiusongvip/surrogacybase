@@ -25,19 +25,3 @@ export const SITE = {
    */
   contactEmail: 'hello@surrogacybase.com' as string,
 } as const;
-
-/**
- * The category listing pages are keyed by these codes, and the code is part of the URL, so
- * it never changes per language. The words shown beside them do, and they live in
- * src/i18n/ui.ts under CATEGORY_LABELS.
- */
-export const CATEGORY_KEYS = ['cost', 'destinations', 'agencies', 'process', 'preparation'] as const;
-export type CategoryKey = (typeof CATEGORY_KEYS)[number];
-
-export const CATEGORY_HREF: Record<CategoryKey, string> = {
-  cost: '/articles/category/cost',
-  destinations: '/articles/category/destinations',
-  agencies: '/articles/category/agencies',
-  process: '/articles/category/process',
-  preparation: '/articles/category/preparation',
-};

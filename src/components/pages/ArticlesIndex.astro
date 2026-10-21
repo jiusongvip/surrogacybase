@@ -2,26 +2,46 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
+import ArticleCard from '@/components/content/ArticleCard.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
-import { CATEGORY_KEYS, CATEGORY_HREF } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
+import { UI, fill, pick } from '@/i18n/ui';
 import { contentMedia } from '@/data/content-media';
-import { Image } from 'astro:assets';
-import { formatShortDate, readingTime } from '@/lib/dates';
-import { pathOf, getArticles } from '@/lib/content';
+import { pathOf, getArticles, resolveRefs } from '@/lib/content';
 
 const lang = langFromPath(Astro.url.pathname);
-const ui = UI[lang];
-const copy = ui.pages.articles;
-const labels = CATEGORY_LABELS[lang];
+const copy = UI[lang].pages.articles;
 
+/*
+ * Categories still label a card, but they no longer own a page. Five listings that held one or
+ * two pieces each read to a search engine as thin pages and to a reader as a detour. This page
+ * carries every explainer, and the paths below put them in the order a decision arrives.
+ */
 const articles = await getArticles(lang);
-const sorted = [...articles].sort((a, b) => b.data.publishedOn.localeCompare(a.data.publishedOn));
-const latest = sorted.slice(0, 5);
-const counts = Object.fromEntries(
-  CATEGORY_KEYS.map((key) => [key, articles.filter((a) => a.data.category === key).length]),
-);
+
+const PATH_REFS = [
+  [
+    'articles/why-no-average-surrogacy-cost-exists',
+    'articles/surrogacy-costs-that-sit-outside-a-quote',
+    'articles/surrogacy-escrow-accounts-and-payment-stages',
+  ],
+  [
+    'articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
+    'articles/getting-a-birth-certificate-accepted-abroad',
+    'articles/the-six-month-limit-on-a-uk-parental-order',
+  ],
+  [
+    'articles/what-must-be-signed-before-the-first-transfer',
+    'articles/surrogacy-escrow-accounts-and-payment-stages',
+  ],
+  ['articles/what-40177-transfers-do-not-promise-you'],
+];
+
+const paths = (
+  await Promise.all(
+    PATH_REFS.map(async (refs, i) => ({ ...copy.paths[i], entries: await resolveRefs(refs, lang) })),
+  )
+).filter((path) => path.entries.length > 0);
 ---
 
 <PageLayout title={copy.title} description={copy.description}>
@@ -29,88 +49,123 @@ const counts = Object.fromEntries(
 
   <header class="shell py-10">
     <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.title}</h1>
-    <p class="mt-3 max-w-[58ch] text-[17px] leading-relaxed text-muted">
+    <p class="mt-3 max-w-[60ch] text-[17px] leading-relaxed text-muted">
       {copy.intro}
+    </p>
+    <p class="tnum mt-3 text-[14px] text-muted">
+      {fill(articles.length === 1 ? copy.countOne : copy.countMany, { n: articles.length })}
     </p>
   </header>
 
-  <div class="shell grid gap-12 pb-16 lg:grid-cols-[minmax(0,1fr)_300px]">
-    <section aria-labelledby="latest-h">
-      <h2 id="latest-h" class="text-[15px] font-semibold text-muted">{copy.mostRecent}</h2>
-      {
-        latest.length > 0 ? (
-          <ul class="mt-5">
-            {latest.map((e, i) => {
-              const media = contentMedia(e.id);
-              return (
-                <li class:list={[i > 0 ? 'border-t border-line' : '']}>
-                  <a
-                    href={pathOf(e)}
-                    class="group grid gap-x-5 gap-y-3 py-5 sm:grid-cols-[168px_minmax(0,1fr)] sm:items-center"
-                  >
-                    {
-                      media && (
-                        <span class="block aspect-[16/10] overflow-hidden rounded-(--radius) bg-surface-2">
-                          <Image
-                            src={media.src}
-                            widths={[200, 340]}
-                            sizes="(min-width: 640px) 168px, 40vw"
-                            class="h-full w-full object-cover transition-transform duration-(--dur) ease-out group-hover:scale-[1.03]"
-                            alt={pick(media.alt, lang)}
-                            loading="lazy"
-                          />
-                        </span>
-                      )
-                    }
-                    <span>
-                      <h3 class="text-[22px] leading-snug text-text group-hover:text-accent">{e.data.title}</h3>
-                      <p class="mt-1 text-[14px] text-muted">
-                        {labels[e.data.category]}
-                        <span class="tnum"> · {formatShortDate(e.data.publishedOn, lang)}</span>
-                        <span class="tnum"> · {fill(ui.time.minutes, { n: readingTime(e.body ?? '') })}</span>
-                      </p>
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <div class="mt-5">
-            <EmptyState
-              title={copy.emptyTitle}
-              body={copy.emptyBody}
-              action={{ label: copy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
-            />
+  {
+    articles.length === 0 ? (
+      <div class="shell pb-16">
+        <EmptyState
+          title={copy.emptyTitle}
+          body={copy.emptyBody}
+          action={{ label: copy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
+        />
+      </div>
+    ) : (
+      <>
+        <section class="shell pb-16" aria-labelledby="paths-h">
+          <div class="max-w-[64ch]">
+            <h2 id="paths-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+              {copy.startHeading}
+            </h2>
+            <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.startIntro}</p>
           </div>
-        )
-      }
-    </section>
 
-    <aside class="lg:sticky lg:top-24 lg:self-start">
-      <h2 class="text-[15px] font-semibold text-muted">{copy.browseByTopic}</h2>
-      <ul class="mt-4">
-        {CATEGORY_KEYS.map((key, i) => (
-          <li class:list={[i > 0 ? 'border-t border-line' : '']}>
-            <a
-              href={localizedPath(lang, CATEGORY_HREF[key])}
-              class="group flex items-center justify-between gap-4 py-3 text-[16px]"
-            >
-              <span class="text-text group-hover:text-accent">{labels[key]}</span>
-              <span class="flex items-center gap-2">
-                <span class="tnum text-[14px] text-muted">{counts[key]}</span>
-                <Icon name="chevron-right" size={15} class="text-line-strong group-hover:text-accent" />
-              </span>
+          <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+            {paths.map((path, i) => (
+              <li class="card flex flex-col p-6">
+                <span class="tnum text-[13px] font-semibold tracking-[0.16em] text-accent">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 class="mt-2 text-[21px] leading-snug">{path.title}</h3>
+                <p class="mt-2 text-[15px] leading-[1.7] text-muted">{path.body}</p>
+                <ol class="mt-5 flex flex-col gap-1 border-t border-line pt-3">
+                  {path.entries.map((entry, j) => (
+                    <li>
+                      <a
+                        href={pathOf(entry)}
+                        class="group flex items-start gap-3 py-1.5 text-[15px] leading-snug"
+                      >
+                        <span class="tnum mt-px text-[13px] text-muted">{j + 1}</span>
+                        <span class="group-hover:text-accent">{entry.data.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="border-t border-line bg-surface-2 py-16" aria-labelledby="all-h">
+          <div class="shell">
+            <h2 id="all-h" class="text-[clamp(1.8rem,3.4vw,2.6rem)] leading-[1.1]">
+              {copy.allHeading}
+            </h2>
+            <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {articles.map((entry) => {
+                const media = contentMedia(entry.id);
+                return (
+                  <li class="h-full">
+                    <ArticleCard
+                      entry={entry}
+                      image={media && { src: media.src, alt: pick(media.alt, lang) }}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+
+        <section class="shell py-16" aria-labelledby="read-h">
+          <div class="rounded-(--radius-card) bg-sand px-6 py-10 sm:px-10 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+            <div>
+              <h2 id="read-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+                {copy.readHeading}
+              </h2>
+              <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.readIntro}</p>
+              <a href={localizedPath(lang, '/editorial-policy')} class="textlink mt-6">
+                {copy.standardsLink}
+                <Icon name="arrow-right" size={16} />
+              </a>
+            </div>
+            <ol class="mt-8 flex flex-col gap-6 lg:mt-0">
+              {copy.readPoints.map((point, i) => (
+                <li class="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-t border-line pt-5">
+                  <span class="tnum text-[14px] font-semibold text-accent">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 class="text-[17px] leading-snug">{point.title}</h3>
+                    <p class="mt-1.5 text-[15px] leading-[1.7] text-muted">{point.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section class="shell pb-20" aria-labelledby="guides-h">
+          <div class="flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-end sm:justify-between">
+            <div class="max-w-[58ch]">
+              <h2 id="guides-h" class="text-[clamp(1.5rem,2.8vw,2rem)] leading-[1.15]">
+                {copy.guidesHeading}
+              </h2>
+              <p class="mt-2 text-[16px] leading-[1.7] text-muted">{copy.guidesBody}</p>
+            </div>
+            <a href={localizedPath(lang, '/guides')} class="btn-ghost shrink-0">
+              {copy.allGuides}
+              <Icon name="arrow-right" size={16} />
             </a>
-          </li>
-        ))}
-      </ul>
-      <p class="mt-5 text-[14px] leading-relaxed text-muted">
-        {copy.guidesPitch}
-        <a href={localizedPath(lang, '/guides')} class="link-underlined">
-          {copy.allGuides}
-        </a>
-      </p>
-    </aside>
-  </div>
+          </div>
+        </section>
+      </>
+    )
+  }
 </PageLayout>

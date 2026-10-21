@@ -198,23 +198,20 @@ export const UI: Record<Lang, {
       title: string;
       description: string;
       intro: string;
-      mostRecent: string;
-      browseByTopic: string;
-      guidesPitch: string;
+      countOne: string;
+      countMany: string;
+      startHeading: string;
+      startIntro: string;
+      /** The four ways in, each paired by position with the article refs in ArticlesIndex. */
+      paths: { title: string; body: string }[];
+      allHeading: string;
+      readHeading: string;
+      readIntro: string;
+      readPoints: { title: string; body: string }[];
+      standardsLink: string;
+      guidesHeading: string;
+      guidesBody: string;
       allGuides: string;
-      emptyTitle: string;
-      emptyBody: string;
-      emptyAction: string;
-    };
-    category: {
-      /** {label} is the category word; English templates use {labelLower} where the case matters. */
-      title: string;
-      descriptionFull: string;
-      descriptionEmpty: string;
-      introOne: string;
-      introMany: string;
-      introEmpty: string;
-      allArticles: string;
       emptyTitle: string;
       emptyBody: string;
       emptyAction: string;
@@ -540,31 +537,57 @@ export const UI: Record<Lang, {
         description:
           'Explainers on surrogacy cost, destinations, agency selection, process and preparation, each answering one question for intended parents.',
         intro:
-          'One question per explainer, with the source listed at the bottom. Where a guide covers a whole decision, an explainer answers the specific question that came up while reading it.',
-        mostRecent: 'Most recent',
-        browseByTopic: 'Browse by topic',
-        guidesPitch: 'Looking for the whole topic rather than one answer? A guide works through the full decision from start to finish.',
+          'Each explainer takes one question and follows it to a source you can open. Start with the decision in front of you, or read the full list below.',
+        countOne: '1 published explainer',
+        countMany: '{n} published explainers',
+        startHeading: 'Start with the decision in front of you',
+        startIntro:
+          'You do not have to read these in order. Pick the question you need answered now, and follow the sequence below.',
+        paths: [
+          {
+            title: 'You are building a budget',
+            body: 'Find out why no average exists, what a quote leaves out, and how the money moves before you compare totals.',
+          },
+          {
+            title: 'You are choosing a destination',
+            body: 'Start with the questions a legal system has to answer, then the paperwork your child will need, then the deadline that can decide parentage.',
+          },
+          {
+            title: 'You are close to signing',
+            body: 'Check what has to be in writing before the first transfer, and what each payment stage depends on.',
+          },
+          {
+            title: 'You are reading success rates',
+            body: 'A transfer count is not a promise. See what the largest published study of US transfers counts, and what it cannot tell you.',
+          },
+        ],
+        allHeading: 'All explainers',
+        readHeading: 'How to read one',
+        readIntro:
+          'Every explainer is built to be checked, not just read. Three things are worth doing before you act on one.',
+        readPoints: [
+          {
+            title: 'Start with the question',
+            body: 'Each piece answers one question. If that is not the question you have today, another path above may fit better.',
+          },
+          {
+            title: 'Open the source, note the date',
+            body: 'Where a piece cites a source, the date it was last checked sits beside it. Open the source and see whether the answer still holds.',
+          },
+          {
+            title: 'Take your own facts to a professional',
+            body: 'An explainer sets out how a rule generally works. A lawyer or clinic can tell you what it means for your circumstances.',
+          },
+        ],
+        standardsLink: 'How sources are checked',
+        guidesHeading: 'Want the whole decision, not one answer?',
+        guidesBody:
+          'A guide works through a whole decision area from start to finish, and links to the explainers that go deeper.',
         allGuides: 'All guides',
         emptyTitle: 'No explainers published yet',
         emptyBody:
           'An explainer is published once each of its claims has a source you can open. They appear one at a time.',
         emptyAction: 'Read the research standards',
-      },
-      category: {
-        title: '{label} explainers',
-        descriptionFull:
-          'Explainers on surrogacy {labelLower} for intended parents, with the sources and verification dates behind each claim.',
-        descriptionEmpty:
-          'Explainers on surrogacy {labelLower} for intended parents. New pages appear here once every claim has a source you can open.',
-        introOne: '1 published explainer on this topic, with its sources below the text.',
-        introMany: '{n} published explainers on this topic, each with its sources below the text.',
-        introEmpty:
-          'Nothing on this topic has been published yet. Every explainer here appears only after its sources have been checked.',
-        allArticles: 'All explainers',
-        emptyTitle: 'No explainers here yet',
-        emptyBody:
-          'Every explainer is checked against sources you can open before it is published. New pages on this topic will appear here.',
-        emptyAction: 'See what is published',
       },
       detail: {
         destinationConditions: 'Destination conditions',
@@ -1000,26 +1023,54 @@ export const UI: Record<Lang, {
       articles: {
         title: '专题解读',
         description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇为意向父母回答一个问题。',
-        intro: '一篇专题解读回答一个问题，来源列在页面底部。指南把一个决定领域从头讲清；专题解读回答您阅读时遇到的具体问题。',
-        mostRecent: '最新发布',
-        browseByTopic: '按主题浏览',
-        guidesPitch: '想看清一个主题的全貌？指南把整个决定从头讲到尾，专题解读只回答其中更具体的问题。',
+        intro:
+          '每一篇专题解读只回答一个问题，并把结论追到您可以打开核对的来源。您可以从眼前的决定开始，也可以直接看下面的全部篇目。',
+        countOne: '已发布 1 篇专题解读',
+        countMany: '已发布 {n} 篇专题解读',
+        startHeading: '从眼前的决定开始',
+        startIntro: '不必从头读到尾。选一个您现在最需要回答的问题，按下面的顺序读。',
+        paths: [
+          {
+            title: '正在做预算',
+            body: '先弄清为什么不存在平均费用，再看报价漏掉了什么，最后看钱在托管里怎么走。',
+          },
+          {
+            title: '正在挑目的地',
+            body: '先看一个法律体系必须回答的问题，再看孩子出生后需要的文件，最后看可能决定亲权的期限。',
+          },
+          {
+            title: '准备签约',
+            body: '先确认第一次移植前必须有哪些书面文件，再确认每一笔钱在什么条件下支付或退回。',
+          },
+          {
+            title: '正在看成功率',
+            body: '移植数字不是承诺。看清已发表的美国最大规模研究统计的是什么，又无法告诉您什么。',
+          },
+        ],
+        allHeading: '全部专题解读',
+        readHeading: '怎么读一篇专题解读',
+        readIntro: '每一篇专题解读都经得起核查，而不只是读过去。在据此行动之前，有三件事值得做。',
+        readPoints: [
+          {
+            title: '先看它回答的问题',
+            body: '每篇只回答一个问题。如果这不是您今天要问的，上面可能有一条更适合您的阅读路径。',
+          },
+          {
+            title: '打开来源，记下日期',
+            body: '文中引用来源的地方，旁边都标着最近一次核查的日期。打开来源，看看这个答案是否仍然成立。',
+          },
+          {
+            title: '带着自己的情况去问专业人士',
+            body: '专题解读讲的是规则通常怎么运作。您的具体情况意味着什么，要由律师或诊所来判断。',
+          },
+        ],
+        standardsLink: '来源如何核查',
+        guidesHeading: '想要整个决定，而不只是一个答案？',
+        guidesBody: '指南把一个决定领域从头讲到尾，并链接到讲得更深的专题解读。',
         allGuides: '全部指南',
         emptyTitle: '尚无已发布的专题解读',
         emptyBody: '每一条结论都有您可以打开的来源之后，专题解读才会发布在这里。',
         emptyAction: '阅读研究标准',
-      },
-      category: {
-        title: '{label}专题解读',
-        descriptionFull: '关于代孕{label}的专题解读，面向意向父母，每一条结论都附有来源与核查日期。',
-        descriptionEmpty: '关于代孕{label}的专题解读，为意向父母回答具体问题。每一篇都会在来源核查完成后发布在这里。',
-        introOne: '这一主题已发布 1 篇专题解读，来源列在正文下方。',
-        introMany: '这一主题已发布 {n} 篇专题解读，每篇的来源都列在正文下方。',
-        introEmpty: '这一主题目前还没有已发布的内容。每一篇专题解读都会在来源核查完成后出现在这里。',
-        allArticles: '全部专题解读',
-        emptyTitle: '这一主题暂无已发布内容',
-        emptyBody: '每一篇专题解读都要先核对来源，确认每一条结论都能打开核对之后才会发布。',
-        emptyAction: '查看已发布内容',
       },
       detail: {
         destinationConditions: '目的地条件',
