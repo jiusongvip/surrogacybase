@@ -49,11 +49,11 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     intro:
       'A guide tells you what to check. These are where you actually do it, on your own numbers and your own documents, and what you leave with is something you can show someone: a filled-in document, or a figure with its source attached.',
     localNote:
-      '{n} tools here, all of them local. Nothing is submitted anywhere: the quote comparison holds nothing once you close the tab, the two checklists leave the page as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+      '{n} tools here, and none of them asks you to create an account or sends what you type anywhere. The quote comparison holds nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
     available: 'Available now',
-    building: 'Being built',
+    building: 'Coming soon',
     open: 'Open the tool',
-    notLive: 'Not linked yet, because an unfinished checklist is worse than none.',
+    notLive: 'This tool is not ready yet. Its link will appear here when it is.',
   },
   zh: {
     title: '工具',
@@ -62,11 +62,11 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
       '给意向父母的决策工具：让两份机构报价落在代孕报价通常列出的九项成本上逐一对比、把一个目的地逐题拆开、把您的问题书面提交给机构，并阅读各个来源已经发布的费用数字。没有任何内容会被上传，关掉页面后也不保留任何东西。不需要账户。',
     intro:
       '指南告诉您该核查什么。而这些页面才是您真正动手的地方：用您自己的数字和您自己的文件。您带走的东西都拿得给别人看：一份填好的文档，或者一个带着来源的数字。',
-    localNote: '这里有 {n} 个工具，全部在本地运行。没有任何内容会被提交：报价对比在您关掉标签页后不保留任何东西；两份清单都下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
+    localNote: '这里有 {n} 个工具，都不需要账户，也不会把您输入的内容发送到任何地方。报价对比在您关掉标签页后不保留任何东西；两份清单会下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
     available: '现在可用',
-    building: '正在建设',
+    building: '即将上线',
     open: '打开工具',
-    notLive: '尚未链接，因为一份没写完的清单比没有清单更糟。',
+    notLive: '这个工具还在准备中，上线后链接会出现在这里。',
   },
 };
 
@@ -122,11 +122,11 @@ export type QuoteChrome = {
 export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
   en: {
     stays:
-      'Nothing here is collected: no account, no upload, no server, and nothing kept after this tab closes. The download writes the table out as one Markdown document, and that file is the only copy.',
+      'Nothing here is collected: no account, no upload, and nothing kept after this tab closes. The download saves the table as a file you can keep; that file is the only copy.',
     currency: 'Currency',
     currencyNote: 'One currency for the whole table. Convert a quote stated in another before you enter it, so the columns stay comparable.',
     currencies: ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'THB', 'INR', 'UAH', 'COP'],
-    download: 'Download as a Markdown document',
+    download: 'Download this table',
     reset: 'Clear the amounts',
     caption:
       'The common costs a surrogacy quote is built from, printed as fixed items. For each quote, enter the amount it states and set whether that quote includes it.',
@@ -170,11 +170,11 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
   },
   zh: {
     stays:
-      '这里不收集任何内容：没有账户，没有上传，没有服务器，关掉这个标签页后也不保留任何东西。下载会把这张表写成一份 Markdown 文档，那个文件就是唯一的副本。',
+      '这里不收集任何内容：没有账户，没有上传，关掉这个标签页后也不保留任何东西。下载会把这张表保存成一份您可以留存的文档，那个文件就是唯一的副本。',
     currency: '货币',
     currencyNote: '整张表只用一种货币。报价若是别的货币开出的，请先换算再录入，各列才可比。',
     currencies: ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'THB', 'INR', 'UAH', 'COP'],
-    download: '下载为 Markdown 文档',
+    download: '下载这张表格',
     reset: '清空金额',
     caption: '代孕报价通常由这些成本搭成，它们已印成固定的行。请为每份报价填入它写明的金额，并标注这份报价是否包含它。',
     lineItem: '条目',

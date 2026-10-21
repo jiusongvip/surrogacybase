@@ -100,7 +100,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         name: 'Draft',
-        body: 'Written but not published. Drafts are excluded from listings, navigation, internal links and the sitemap, so an unfinished page can never be reached by accident.',
+        body: 'Written but not published. You will not encounter a draft on this site: a page appears only once it can stand at one of the two levels above.',
       },
     ],
     sourceHeading: 'What a source record contains',
@@ -185,7 +185,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         name: '草稿',
-        body: '已写完但未发表。草稿被排除在列表、导航、内部链接与站点地图之外，因此一个未完成的页面不可能被偶然访问到。',
+        body: '已写完但未发表。您不会在站内遇到草稿：一个页面只有达到上面两个等级中的一个之后才会出现。',
       },
     ],
     sourceHeading: '一条来源记录包含什么',

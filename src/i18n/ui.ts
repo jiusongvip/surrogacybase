@@ -513,7 +513,7 @@ export const UI: Record<Lang, {
     },
     content: {
       keepReading: 'Keep reading',
-      keepReadingNote: 'This block runs both ways: every page in it either points at this one or is pointed at by it.',
+      keepReadingNote: 'Each of these pages covers another part of the same decision.',
       workingList: 'Turn this into a working list',
       reviewedBy: 'Reviewed by {name}, {role}.',
       reviewedByTeam: 'Reviewed by the {team}, whose members include clinicians.',
@@ -524,7 +524,7 @@ export const UI: Record<Lang, {
         description:
           'Framework guides on surrogacy cost, process, agency selection and legal considerations, written so each claim can be traced to a source.',
         intro:
-          'A guide holds the framework for one decision area. Explainers stay narrow and link back to the guide that frames them.',
+          'A guide works through one decision area from beginning to end, so you can see how the pieces fit before you compare providers.',
         readGuide: 'Read the guide',
         relatedOne: '1 related explainer',
         relatedMany: '{n} related explainers',
@@ -538,12 +538,12 @@ export const UI: Record<Lang, {
       articles: {
         title: 'Explainers',
         description:
-          'Explainers on surrogacy cost, destinations, agency selection, process and preparation, each tied to the guide it supports.',
+          'Explainers on surrogacy cost, destinations, agency selection, process and preparation, each answering one question for intended parents.',
         intro:
-          'One question per explainer, with the source listed at the bottom. Guides hold the framework; explainers answer the specific question that came up while reading it.',
+          'One question per explainer, with the source listed at the bottom. Where a guide covers a whole decision, an explainer answers the specific question that came up while reading it.',
         mostRecent: 'Most recent',
         browseByTopic: 'Browse by topic',
-        guidesPitch: "Looking for the long version of a topic? Guides cover the framework; explainers stay narrow. ",
+        guidesPitch: 'Looking for the whole topic rather than one answer? A guide works through the full decision from start to finish.',
         allGuides: 'All guides',
         emptyTitle: 'No explainers published yet',
         emptyBody:
@@ -554,15 +554,16 @@ export const UI: Record<Lang, {
         title: '{label} explainers',
         descriptionFull:
           'Explainers on surrogacy {labelLower} for intended parents, with the sources and verification dates behind each claim.',
-        descriptionEmpty: 'Explainers on surrogacy {labelLower} are still being researched.',
-        introOne: '1 published explainer in this topic, each linked to the guide it supports.',
-        introMany: '{n} published explainers in this topic, each linked to the guide it supports.',
+        descriptionEmpty:
+          'Explainers on surrogacy {labelLower} for intended parents. New pages appear here once every claim has a source you can open.',
+        introOne: '1 published explainer on this topic, with its sources below the text.',
+        introMany: '{n} published explainers on this topic, each with its sources below the text.',
         introEmpty:
-          'Nothing published in this topic has cleared source verification yet, so there is nothing here to read.',
+          'Nothing on this topic has been published yet. Every explainer here appears only after its sources have been checked.',
         allArticles: 'All explainers',
-        emptyTitle: 'Not written yet',
+        emptyTitle: 'No explainers here yet',
         emptyBody:
-          'This topic is on the research list. A page appears here once its claims can be cited.',
+          'Every explainer is checked against sources you can open before it is published. New pages on this topic will appear here.',
         emptyAction: 'See what is published',
       },
       detail: {
@@ -977,7 +978,7 @@ export const UI: Record<Lang, {
     },
     content: {
       keepReading: '继续阅读',
-      keepReadingNote: '这份链接是双向的：列在这里的每个页面，要么指向本页，要么被本页指向。',
+      keepReadingNote: '这些页面各自讲的是同一个决定的另一部分。',
       workingList: '把这一页变成一份可执行的清单',
       reviewedBy: '由 {name}（{role}）审阅。',
       reviewedByTeam: '由 {team} 审阅，这个团队中有临床背景的成员。',
@@ -986,7 +987,7 @@ export const UI: Record<Lang, {
       guides: {
         title: '指南',
         description: '关于代孕费用、流程、机构选择与法律要点的框架性指南，每一条结论都可以追溯到来源。',
-        intro: '一篇指南承载一个决策领域的框架。专题解读保持窄口径，并回链到为它提供框架的那篇指南。',
+        intro: '每篇指南把一个决定领域从头到尾讲清楚，让您在比较服务方之前先看清各个环节如何衔接。',
         readGuide: '阅读指南',
         relatedOne: '关联专题解读 1 篇',
         relatedMany: '关联专题解读 {n} 篇',
@@ -998,11 +999,11 @@ export const UI: Record<Lang, {
       },
       articles: {
         title: '专题解读',
-        description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇都连接到它所支撑的指南。',
-        intro: '一篇专题解读回答一个问题，来源列在页面底部。指南承载框架；专题解读回答您在阅读指南时遇到的具体问题。',
+        description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇为意向父母回答一个问题。',
+        intro: '一篇专题解读回答一个问题，来源列在页面底部。指南把一个决定领域从头讲清；专题解读回答您阅读时遇到的具体问题。',
         mostRecent: '最新发布',
         browseByTopic: '按主题浏览',
-        guidesPitch: '想要一个主题的完整论述？指南承载框架，专题解读保持窄口径。',
+        guidesPitch: '想看清一个主题的全貌？指南把整个决定从头讲到尾，专题解读只回答其中更具体的问题。',
         allGuides: '全部指南',
         emptyTitle: '尚无已发布的专题解读',
         emptyBody: '每一条结论都有您可以打开的来源之后，专题解读才会发布在这里。',
@@ -1011,13 +1012,13 @@ export const UI: Record<Lang, {
       category: {
         title: '{label}专题解读',
         descriptionFull: '关于代孕{label}的专题解读，面向意向父母，每一条结论都附有来源与核查日期。',
-        descriptionEmpty: '关于代孕{label}的专题解读仍在研究之中。任何一页通过来源核查之后，会立刻出现在这个列表与站点地图里。',
-        introOne: '这一主题已发布 1 篇专题解读，并连接到它所支撑的指南。',
-        introMany: '这一主题已发布 {n} 篇专题解读，每篇都连接到它所支撑的指南。',
-        introEmpty: '这一主题还没有内容通过来源核查，所以这里暂时没有条目。',
+        descriptionEmpty: '关于代孕{label}的专题解读，为意向父母回答具体问题。每一篇都会在来源核查完成后发布在这里。',
+        introOne: '这一主题已发布 1 篇专题解读，来源列在正文下方。',
+        introMany: '这一主题已发布 {n} 篇专题解读，每篇的来源都列在正文下方。',
+        introEmpty: '这一主题目前还没有已发布的内容。每一篇专题解读都会在来源核查完成后出现在这里。',
         allArticles: '全部专题解读',
-        emptyTitle: '尚未撰写',
-        emptyBody: '这一主题在研究清单上。当这里的页面能够为它的结论列出来源时，它就会出现在这个列表里。',
+        emptyTitle: '这一主题暂无已发布内容',
+        emptyBody: '每一篇专题解读都要先核对来源，确认每一条结论都能打开核对之后才会发布。',
         emptyAction: '查看已发布内容',
       },
       detail: {

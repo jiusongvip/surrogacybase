@@ -87,7 +87,7 @@ export const TOOLS: Tool[] = [
       linkNote: 'Thirty-three questions in seven groups, as a document.',
       points: [
         'Seven groups, from who may commission through to what happens when two professionals disagree',
-        'Download as a Markdown document with an empty box beside every question',
+        'Download a document with an empty box beside every question',
         'Write the answer, the name and the date beside a question once a professional has given it about your own facts',
       ],
     },
@@ -97,7 +97,7 @@ export const TOOLS: Tool[] = [
       linkNote: '三十三个问题，分七组，成为一份文档。',
       points: [
         '七组问题，从谁可以委托，一直到两位专业人士意见不合时会怎样',
-        '下载为 Markdown 文档，每个问题前面都留着一个空的方框',
+        '下载成一份文档，每个问题前面都留着一个空的方框',
         '一旦某位专业人士针对您自身的情况作出了回答，就在它旁边写下答案、名字和日期',
       ],
     },

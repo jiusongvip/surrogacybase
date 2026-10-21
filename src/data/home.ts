@@ -287,7 +287,7 @@ export const HOME_READING: Record<Lang, {
     viewAll: 'View all explainers',
     readMore: 'Read more',
     emptyTitle: 'Nothing is published here yet',
-    emptyBody: 'This section lists only what is live. A piece appears here once its sources have been checked and it can be read.',
+    emptyBody: 'A piece appears here once its sources have been checked and it is ready to read.',
     emptyAction: 'Read the publication standards',
   },
   zh: {
