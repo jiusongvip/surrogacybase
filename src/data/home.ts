@@ -27,14 +27,15 @@ import concernFlight from '@/assets/images/concern-flight.jpg';
 import concernPassport from '@/assets/images/concern-passport.jpg';
 import articleDestinations from '@/assets/images/article-destinations.jpg';
 import concernDestinationTown from '@/assets/images/concern-destination-town.jpg';
-import articleCostLines from '@/assets/images/article-cost-lines.jpg';
+import concernDestinations from '@/assets/images/concern-destinations.jpg';
 import articleParentage from '@/assets/images/article-parentage.jpg';
 import articleVerifying from '@/assets/images/article-verifying.jpg';
 import concernDocuments from '@/assets/images/concern-documents.jpg';
 import verifyContract from '@/assets/images/verify-contract.jpg';
-import stageNotebook from '@/assets/images/stage-notebook.jpg';
 import concernPresence from '@/assets/images/concern-presence.jpg';
-import stageReading from '@/assets/images/stage-reading.jpg';
+import heroDeskMap from '@/assets/images/hero-desk-map.jpg';
+import quotesDesk from '@/assets/images/quotes-desk.jpg';
+import costLedger from '@/assets/images/cost-ledger.jpg';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
@@ -253,24 +254,24 @@ export const HOME_COUNTRY_MEDIA: Record<string, { src: ImageMetadata; alt: Bilin
     },
   },
   ua: {
-    src: stageNotebook,
-    alt: {
-      en: 'A fountain pen resting on a loose sheet of paper on top of a closed book',
-      zh: '一支钢笔放在合上的书本上的一张散页纸上',
-    },
-  },
-  ge: {
     src: concernPresence,
     alt: {
       en: 'A blank month calendar laid out beside two boarding passes, a key and a luggage tag',
       zh: '一张空白的月历与两张登机牌、一把钥匙和一只行李牌并排摆着',
     },
   },
-  kz: {
-    src: stageReading,
+  ge: {
+    src: heroDeskMap,
     alt: {
-      en: 'An open book and a cup of coffee on a windowsill beside a jar of wildflowers',
-      zh: '窗台上摊着一本书、放着一杯咖啡，旁边是一只插着野花的玻璃瓶',
+      en: 'A world map spread out with a brass compass, a green notebook, a pencil and a pair of glasses',
+      zh: '一张摊开的地图上放着黄铜指南针、一本绿色笔记本、一支铅笔和一副眼镜',
+    },
+  },
+  kz: {
+    src: concernDestinations,
+    alt: {
+      en: 'Three sailboats moored in a still bay at dusk, with low hills and a few white houses on the shore',
+      zh: '黄昏时分三艘帆船停在平静的海湾里，对岸是低矮的山丘和几栋白房子',
     },
   },
 };
@@ -310,14 +311,17 @@ export const HOME_READING: Record<Lang, {
 /* Keyed by slug so a card whose piece has no photograph of its own renders text-only. */
 export const HOME_READING_IMAGES: Record<string, { src: ImageMetadata; alt: Bilingual }> = {
   'questions-to-ask-about-surrogacy-law-before-choosing-a-destination': {
-    src: articleDestinations,
-    alt: { en: 'An old walled town running down to the sea at sunset', zh: '日落时分一座带城墙的老城一路延伸到海边' },
+    src: quotesDesk,
+    alt: {
+      en: 'Three open booklets printed with quotation marks beside a numbered list card, a pencil and a kraft envelope',
+      zh: '三本摊开的小册子上印着引号与横线，旁边是一张编号一到五的清单卡、一支铅笔和一只牛皮纸信封',
+    },
   },
   'surrogacy-costs-that-sit-outside-a-quote': {
-    src: articleCostLines,
+    src: costLedger,
     alt: {
-      en: 'An open notebook with a pen resting on the page beside small white flowers',
-      zh: '一本摊开的笔记本，页面上搁着一支笔，旁边是几朵小白花',
+      en: 'A page of handwritten columns of figures with three blank paper tags on strings and a pencil',
+      zh: '一页手写的分栏数字，旁边是三枚系着细绳的空白纸标签和一支铅笔',
     },
   },
   'surrogacy-legal-considerations': {
