@@ -3,4 +3,6 @@ dist
 .astro
 *.log
 .env
+.dev.vars
+.dev.vars.*
 .DS_Store

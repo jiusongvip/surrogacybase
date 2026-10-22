@@ -4,12 +4,12 @@
  * homepage band and, through the header, in a dialog on every page, so it takes an id prefix
  * rather than assuming it is alone on the page.
  *
- * Three fields: where the reply goes, what you want worked out, and a name if you want the
- * reply addressed to someone. The form cannot submit them: this is a static build with no
- * server, so there is nowhere for a POST to go. What happens when the button is pressed is
- * therefore the honest version of a submission. The enquiry is assembled on screen, you read
- * it, and it leaves through your own mail app, clipboard or a downloaded file. The status line
- * says which of those just happened instead of confirming a message that never went anywhere.
+ * It posts the fields to /api/enquiry, where a Cloudflare Pages Function delivers them to the
+ * site's own Feishu and WeCom inboxes. Those credentials are server-side only and are never
+ * baked into this bundle. When the endpoint is not configured, or delivery fails, the form
+ * falls back to the version this site had before it had a server: it shows the exact message in
+ * the browser and lets the reader open it in their own mail app, copy it, or download it. The
+ * status line says which of those happened rather than confirming a message that never arrived.
  *
  * The draft is stored in this browser so a half-written enquiry survives a reload. No identity
  * document, medical record or payment detail is asked for, because none of them is needed to
@@ -22,7 +22,7 @@
 import Icon from '@/components/ui/Icon.astro';
 import { SITE } from '@/const';
 import { CONSULT_CHROME } from '@/data/intake';
-import { langFromPath } from '@/i18n/paths';
+import { langFromPath, localizedPath } from '@/i18n/paths';
 
 interface Props {
   /** Field ids are printed into the page, so the dialog copy cannot reuse the inline one's. */
@@ -35,103 +35,238 @@ const { idPrefix = 'cq', framed = true } = Astro.props;
 const inbox = SITE.contactEmail;
 const lang = langFromPath(Astro.url.pathname);
 const copy = CONSULT_CHROME[lang];
+const privacyHref = localizedPath(lang, '/privacy');
+const source = idPrefix === 'dlg' ? 'dialog' : 'home';
 ---
 
 <div
   class:list={[framed ? 'rounded-(--radius) border border-line bg-paper p-6 text-text shadow-lift sm:p-7' : 'text-text']}
   data-consult={inbox}
+  data-endpoint="/api/enquiry"
+  data-source={source}
   data-copy={JSON.stringify(copy)}
 >
-  <div class="grid gap-5 sm:grid-cols-2">
-    <div>
-      <label class="field-label" for={`${idPrefix}-name`}>
-        {copy.nameLabel}
-        <span class="font-normal text-muted">{copy.optional}</span>
-      </label>
-      <input
-        class="field-input mt-1.5"
-        id={`${idPrefix}-name`}
-        data-field="name"
-        type="text"
-        autocomplete="name"
-        maxlength="80"
-        placeholder={copy.namePlaceholder}
-      />
+  <div data-form-body>
+    <div class="grid gap-5 sm:grid-cols-2">
+      <div>
+        <label class="field-label" for={`${idPrefix}-name`}>
+          {copy.nameLabel}
+          <span class="font-normal text-muted">{copy.optional}</span>
+        </label>
+        <input
+          class="field-input mt-1.5"
+          id={`${idPrefix}-name`}
+          data-field="name"
+          type="text"
+          autocomplete="name"
+          maxlength="80"
+          placeholder={copy.namePlaceholder}
+        />
+      </div>
+
+      <div>
+        <label class="field-label" for={`${idPrefix}-email`}>
+          {copy.emailLabel}
+          <span class="text-flag" aria-hidden="true">{copy.required}</span>
+        </label>
+        <input
+          class="field-input mt-1.5"
+          id={`${idPrefix}-email`}
+          data-field="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          maxlength="120"
+          aria-required="true"
+          aria-describedby={`${idPrefix}-email-error`}
+          placeholder={copy.emailPlaceholder}
+        />
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-email-error`}
+          data-error-for="email"
+          hidden
+        ></p>
+      </div>
+
+      <div>
+        <label class="field-label" for={`${idPrefix}-phone`}>
+          {copy.phoneLabel}
+          <span class="font-normal text-muted">{copy.optional}</span>
+        </label>
+        <input
+          class="field-input mt-1.5"
+          id={`${idPrefix}-phone`}
+          data-field="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          maxlength="30"
+          aria-describedby={`${idPrefix}-phone-error`}
+          placeholder={copy.phonePlaceholder}
+        />
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-phone-error`}
+          data-error-for="phone"
+          hidden
+        ></p>
+      </div>
+
+      <div>
+        <label class="field-label" for={`${idPrefix}-platform`}>
+          {copy.platformLabel}
+          <span class="font-normal text-muted">{copy.optional}</span>
+        </label>
+        <select
+          class="field-input mt-1.5"
+          id={`${idPrefix}-platform`}
+          data-field="platform"
+          aria-describedby={`${idPrefix}-platform-error`}
+        >
+          <option value="">{copy.platformNone}</option>
+          {copy.platformOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+        </select>
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-platform-error`}
+          data-error-for="platform"
+          hidden
+        ></p>
+      </div>
+
+      <div>
+        <label class="field-label" for={`${idPrefix}-handle`}>
+          {copy.handleLabel}
+          <span class="font-normal text-muted">{copy.optional}</span>
+        </label>
+        <input
+          class="field-input mt-1.5"
+          id={`${idPrefix}-handle`}
+          data-field="handle"
+          type="text"
+          autocomplete="off"
+          maxlength="80"
+          aria-describedby={`${idPrefix}-handle-error`}
+          placeholder={copy.handlePlaceholder}
+        />
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-handle-error`}
+          data-error-for="handle"
+          hidden
+        ></p>
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="field-label" for={`${idPrefix}-message`}>
+          {copy.messageLabel}
+          <span class="text-flag" aria-hidden="true">{copy.required}</span>
+        </label>
+        <textarea
+          class="field-input mt-1.5 min-h-[112px]"
+          id={`${idPrefix}-message`}
+          data-field="message"
+          rows="4"
+          maxlength="1200"
+          aria-required="true"
+          aria-describedby={`${idPrefix}-message-error`}
+          placeholder={copy.messagePlaceholder}></textarea>
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-message-error`}
+          data-error-for="message"
+          hidden
+        ></p>
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="flex items-start gap-3 text-[14px] leading-relaxed text-muted" for={`${idPrefix}-consent`}>
+          <input
+            class="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-line-control text-accent accent-accent"
+            id={`${idPrefix}-consent`}
+            data-consent
+            type="checkbox"
+            aria-required="true"
+            aria-describedby={`${idPrefix}-consent-error`}
+          />
+          <span>{copy.consentBefore}<a class="text-accent underline" href={privacyHref}>{copy.consentLink}</a>{copy.consentAfter}</span>
+        </label>
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-consent-error`}
+          data-error-for="consent"
+          hidden
+        ></p>
+      </div>
     </div>
 
-    <div>
-      <label class="field-label" for={`${idPrefix}-email`}>
-        {copy.emailLabel}
-        <span class="text-flag" aria-hidden="true">{copy.required}</span>
-      </label>
-      <input
-        class="field-input mt-1.5"
-        id={`${idPrefix}-email`}
-        data-field="email"
-        type="email"
-        autocomplete="email"
-        maxlength="120"
-        required
-        placeholder={copy.emailPlaceholder}
-      />
+    <div class="hidden" aria-hidden="true">
+      <label for={`${idPrefix}-website`}>Website</label>
+      <input id={`${idPrefix}-website`} data-field="website" type="text" tabindex="-1" autocomplete="off" />
     </div>
 
-    <div class="sm:col-span-2">
-      <label class="field-label" for={`${idPrefix}-message`}>
-        {copy.messageLabel}
-        <span class="text-flag" aria-hidden="true">{copy.required}</span>
-      </label>
-      <textarea
-        class="field-input mt-1.5 min-h-[112px]"
-        id={`${idPrefix}-message`}
-        data-field="message"
-        rows="4"
-        maxlength="1200"
-        required
-        placeholder={copy.messagePlaceholder}></textarea>
+    <button type="button" class="btn-primary mt-6 w-full" data-action="submit">
+      <span data-submit-label>{copy.submit}</span>
+      <Icon name="arrow-right" size={16} />
+    </button>
+
+    <p class="mt-3 text-[14px] leading-relaxed text-muted" role="status" aria-live="polite" data-status>
+      {copy.statusIdle}
+    </p>
+
+    <details class="mt-4 rounded-(--radius) border border-line bg-surface-2 px-4 py-3" data-preview-box>
+      <summary class="cursor-pointer text-[14px] font-medium text-muted">{copy.previewSummary}</summary>
+      <pre
+        class="mt-3 max-h-64 overflow-auto rounded-(--radius) border border-line bg-surface p-4 text-[13px] leading-[1.6] whitespace-pre-wrap text-text"
+        data-preview
+        tabindex="0"
+      ></pre>
+    </details>
+
+    <div class="mt-4 border-t border-line pt-4" data-result hidden>
+      <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{copy.previewHeading}</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {
+          inbox ? (
+            <a class="btn-primary text-sm" data-send href={`mailto:${inbox}`}>
+              {copy.sendMail}
+              <Icon name="arrow-up-right" size={16} />
+            </a>
+          ) : null
+        }
+        <button type="button" class="btn-ghost text-sm" data-action="copy">{copy.copy}</button>
+        <button type="button" class="btn-ghost text-sm" data-action="download">{copy.download}</button>
+      </div>
     </div>
   </div>
 
-  <button type="button" class="btn-primary mt-6 w-full" data-action="submit">
-    {copy.submit}
-    <Icon name="arrow-right" size={16} />
-  </button>
-
-  <p class="mt-3 text-[14px] leading-relaxed text-muted" role="status" aria-live="polite" data-status>
-    {copy.statusIdle}
-  </p>
-
-  <div class="mt-5 hidden border-t border-line pt-5" data-result>
-    <p class="text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">{copy.previewHeading}</p>
-    <pre
-      class="tnum mt-2 overflow-x-auto rounded-(--radius) border border-line bg-surface p-4 text-[13px] leading-[1.6] whitespace-pre-wrap text-text"
-      data-preview
-      tabindex="0"
-    ></pre>
-    <div class="mt-4 flex flex-wrap gap-3">
-      {
-        inbox ? (
-          <a class="btn-primary text-sm" data-send href={`mailto:${inbox}`}>
-            {copy.sendMail}
-            <Icon name="arrow-up-right" size={16} />
-          </a>
-        ) : null
-      }
-      <button type="button" class="btn-ghost text-sm" data-action="copy">{copy.copy}</button>
-      <button type="button" class="btn-ghost text-sm" data-action="download">{copy.download}</button>
-    </div>
+  <div
+    class="rounded-(--radius) border border-line bg-surface-2 p-5"
+    data-success
+    tabindex="-1"
+    hidden
+  >
+    <p class="text-[17px] font-semibold">{copy.successHeading}</p>
+    <p class="mt-2 text-[15px] leading-relaxed text-muted">{copy.successBody}</p>
+    <button type="button" class="btn-ghost mt-4 text-sm" data-action="again">{copy.sendAnother}</button>
   </div>
 </div>
 
 <script>
   import type { ConsultChrome } from '@/data/intake';
 
-  type Fields = { name: string; email: string; message: string };
+  const FIELD_NAMES = ['name', 'email', 'phone', 'platform', 'handle', 'message'] as const;
+  type FieldName = (typeof FIELD_NAMES)[number];
+  type Fields = Record<FieldName, string>;
   type Chrome = ConsultChrome;
+  type Errors = Partial<Record<FieldName | 'consent', string>>;
 
-  const KEY = 'surrogacybase.consult.v1';
+  const KEY = 'surrogacybase.consult.v2';
   const SYNC = 'surrogacybase:consult-draft';
+  const SENT = 'surrogacybase:consult-sent';
   const ADDRESS = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const PHONE = /^[+()\d\s.-]{6,30}$/;
 
   /** Same token syntax as src/i18n/ui.ts, kept local because a bundle cannot import it. */
   function fill(template: string, vars: Record<string, string>): string {
@@ -141,19 +276,29 @@ const copy = CONSULT_CHROME[lang];
   for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-consult]'))) {
     const T = JSON.parse(root.dataset.copy!) as Chrome;
     const inbox = root.getAttribute('data-consult') ?? '';
+    const endpoint = root.dataset.endpoint ?? '';
+    const sourceButton = root.dataset.source ?? '';
     const status = root.querySelector<HTMLElement>('[data-status]')!;
-    const result = root.querySelector<HTMLElement>('[data-result]')!;
+    const body = root.querySelector<HTMLElement>('[data-form-body]')!;
+    const success = root.querySelector<HTMLElement>('[data-success]')!;
+    const previewBox = root.querySelector<HTMLDetailsElement>('[data-preview-box]');
     const preview = root.querySelector<HTMLPreElement>('[data-preview]')!;
+    const result = root.querySelector<HTMLElement>('[data-result]')!;
     const send = root.querySelector<HTMLAnchorElement>('[data-send]');
-    const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-field]'));
+    const consent = root.querySelector<HTMLInputElement>('[data-consent]')!;
+    const website = root.querySelector<HTMLInputElement>('[data-field="website"]')!;
+    const submit = root.querySelector<HTMLButtonElement>('[data-action="submit"]')!;
+    const submitLabel = root.querySelector<HTMLElement>('[data-submit-label]')!;
+    const inputs = Array.from(root.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('[data-field]'));
 
-    const box = (name: keyof Fields) => root.querySelector<HTMLElement>(`[data-field="${name}"]`) as HTMLInputElement | null;
+    const box = (name: FieldName) =>
+      root.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[data-field="${name}"]`);
 
-    const EMPTY: Fields = { name: '', email: '', message: '' };
+    const EMPTY: Fields = { name: '', email: '', phone: '', platform: '', handle: '', message: '' };
 
     const read = (): Fields => {
       const out = { ...EMPTY };
-      for (const el of inputs) out[el.getAttribute('data-field') as keyof Fields] = el.value;
+      for (const name of FIELD_NAMES) out[name] = box(name)?.value ?? '';
       return out;
     };
 
@@ -162,33 +307,68 @@ const copy = CONSULT_CHROME[lang];
       const lines: string[] = [];
       if (v.name.trim()) lines.push(fill(T.lineName, { value: v.name.trim() }));
       lines.push(fill(T.lineEmail, { value: v.email.trim() }));
+      if (v.phone.trim()) lines.push(fill(T.linePhone, { value: v.phone.trim() }));
+      if (v.platform) {
+        const option = T.platformOptions.find((o) => o.value === v.platform);
+        lines.push(fill(T.linePlatform, { value: option?.label ?? v.platform }));
+      }
+      if (v.handle.trim()) lines.push(fill(T.lineHandle, { value: v.handle.trim() }));
       lines.push(fill(T.lineMessage, { value: v.message.trim() }));
-      lines.push('', T.lineFooter);
+      lines.push('', fill(T.lineSource, { value: window.location.pathname }));
+      lines.push(T.lineFooter);
       return lines.join('\n');
     }
 
-    /** The first thing wrong, named rather than beeped at. */
-    function problem(): string | null {
+    function validate(): Errors {
+      const errors: Errors = {};
       const v = read();
-      if (!v.email.trim()) return T.needEmail;
-      if (!ADDRESS.test(v.email.trim())) return T.badEmail;
-      if (!v.message.trim()) return T.needMessage;
-      return null;
+      const email = v.email.trim();
+      const phone = v.phone.trim();
+      if (!email) errors.email = T.needEmail;
+      else if (!ADDRESS.test(email)) errors.email = T.badEmail;
+      if (phone && (!PHONE.test(phone) || (phone.match(/\d/g) ?? []).length < 6)) errors.phone = T.badPhone;
+      if (v.platform && !v.handle.trim()) errors.handle = T.needHandle;
+      if (!v.platform && v.handle.trim()) errors.platform = T.needPlatform;
+      if (!v.message.trim()) errors.message = T.needMessage;
+      if (!consent.checked) errors.consent = T.needConsent;
+      return errors;
     }
 
-    function focusProblem() {
-      const v = read();
-      const order: [keyof Fields, boolean][] = [
-        ['email', !v.email.trim() || !ADDRESS.test(v.email.trim())],
-        ['message', !v.message.trim()],
-      ];
-      const hit = order.find(([, bad]) => bad);
-      if (hit) box(hit[0])?.focus();
+    function clearErrors() {
+      for (const node of Array.from(root.querySelectorAll<HTMLElement>('[data-error-for]'))) {
+        node.hidden = true;
+        node.textContent = '';
+      }
+      for (const name of FIELD_NAMES) box(name)?.removeAttribute('aria-invalid');
+      consent.removeAttribute('aria-invalid');
     }
 
-    function save(v: Fields) {
+    function paintErrors(errors: Errors) {
+      clearErrors();
+      for (const [name, message] of Object.entries(errors)) {
+        if (!message) continue;
+        const node = root.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+        if (node) {
+          node.textContent = message;
+          node.hidden = false;
+        }
+        if (name === 'consent') consent.setAttribute('aria-invalid', 'true');
+        else box(name as FieldName)?.setAttribute('aria-invalid', 'true');
+      }
+    }
+
+    function focusFirst(errors: Errors) {
+      const order: (FieldName | 'consent')[] = ['email', 'phone', 'platform', 'handle', 'message', 'consent'];
+      const hit = order.find((name) => errors[name]);
+      if (!hit) return;
+      if (hit === 'consent') consent.focus();
+      else box(hit)?.focus();
+    }
+
+    function save(v: Fields | null) {
       try {
-        localStorage.setItem(KEY, JSON.stringify(v));
+        if (v) localStorage.setItem(KEY, JSON.stringify(v));
+        else localStorage.removeItem(KEY);
       } catch {
         /* storage blocked: the enquiry still works for this page view */
       }
@@ -200,7 +380,7 @@ const copy = CONSULT_CHROME[lang];
         if (!raw) return null;
         const parsed = JSON.parse(raw) as Partial<Fields>;
         const out = { ...EMPTY };
-        for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+        for (const name of FIELD_NAMES) {
           if (typeof parsed[name] === 'string') out[name] = parsed[name] as string;
         }
         return out;
@@ -218,10 +398,63 @@ const copy = CONSULT_CHROME[lang];
       }
     }
 
+    function setBusy(busy: boolean) {
+      submit.disabled = busy;
+      submit.setAttribute('aria-busy', busy ? 'true' : 'false');
+      submitLabel.textContent = busy ? T.submitting : T.submit;
+    }
+
+    function ownerCanFocus(): boolean {
+      const dialog = root.closest('dialog');
+      const openDialog = document.querySelector('dialog[open]');
+      if (dialog) return dialog.open;
+      return !openDialog;
+    }
+
+    function showSuccess() {
+      save(null);
+      body.hidden = true;
+      success.hidden = false;
+      if (ownerCanFocus()) success.focus();
+    }
+
+    function showFallback() {
+      result.hidden = false;
+      if (previewBox) previewBox.open = true;
+      repaint();
+      status.textContent = T.fallbackStatus;
+    }
+
+    function reset() {
+      for (const name of FIELD_NAMES) {
+        const el = box(name);
+        if (el) el.value = '';
+      }
+      consent.checked = false;
+      clearErrors();
+      save(null);
+      result.hidden = true;
+      if (previewBox) previewBox.open = false;
+      success.hidden = true;
+      body.hidden = false;
+      status.textContent = T.statusIdle;
+      repaint();
+      box('name')?.focus();
+    }
+
     for (const el of inputs) {
       el.addEventListener('input', () => {
         save(read());
         repaint();
+        const name = el.getAttribute('data-field') as FieldName | 'website';
+        if (name !== 'website') {
+          const node = root.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
+          if (node) {
+            node.hidden = true;
+            node.textContent = '';
+          }
+          el.removeAttribute('aria-invalid');
+        }
         announce();
       });
       el.addEventListener('change', () => {
@@ -231,42 +464,109 @@ const copy = CONSULT_CHROME[lang];
       });
     }
 
+    consent.addEventListener('change', () => {
+      if (consent.checked) {
+        const node = root.querySelector<HTMLElement>('[data-error-for="consent"]');
+        if (node) {
+          node.hidden = true;
+          node.textContent = '';
+        }
+        consent.removeAttribute('aria-invalid');
+      }
+    });
+
     /* The inline form and the dialog form hold the same draft, so neither may be left showing
      * what the other one typed. */
     window.addEventListener(SYNC, (event) => {
       const v = (event as CustomEvent<Fields>).detail;
-      for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+      for (const name of FIELD_NAMES) {
         const el = box(name);
         if (el && el.value !== v[name] && document.activeElement !== el) el.value = v[name];
       }
       repaint();
     });
 
+    window.addEventListener(SENT, () => showSuccess());
+
     function announce() {
       window.dispatchEvent(new CustomEvent(SYNC, { detail: read() }));
     }
 
     root.addEventListener('click', async (event) => {
-      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action], [data-send]');
+      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action]');
       if (!trigger) return;
       const action = trigger.getAttribute('data-action');
 
       if (action === 'submit') {
-        const bad = problem();
-        if (bad) {
-          status.textContent = bad;
-          focusProblem();
+        const errors = validate();
+        if (Object.keys(errors).length > 0) {
+          paintErrors(errors);
+          status.textContent = T.invalidStatus;
+          focusFirst(errors);
           return;
         }
-        result.classList.remove('hidden');
-        repaint();
-        if (inbox && send) {
-          send.click();
-          status.textContent = T.submittedWithMail;
-        } else {
-          status.textContent = T.submittedWithoutMail;
-          preview.focus();
+        clearErrors();
+        setBusy(true);
+        status.textContent = T.submitting;
+        try {
+          const v = read();
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...v,
+              consent: true,
+              website: website.value,
+              sourcePage: window.location.pathname,
+              sourceTitle: document.title,
+              language: document.documentElement.lang,
+              sourceButton,
+            }),
+          });
+
+          /* A static host answers unknown paths with a 200 HTML page, so only the endpoint's own
+           * JSON confirmation may be read as delivered. */
+          const data = (await response.json().catch(() => null)) as {
+            ok?: boolean;
+            fields?: string[];
+          } | null;
+
+          if (response.ok && data?.ok === true) {
+            showSuccess();
+            window.dispatchEvent(new CustomEvent(SENT));
+            return;
+          }
+
+          if (response.status === 400) {
+            const fields = Array.isArray(data?.fields) ? data.fields : [];
+            if (fields.length > 0) {
+              const messages: Errors = {};
+              for (const field of fields) {
+                if (field === 'consent') messages.consent = T.needConsent;
+                else if (field === 'email') messages.email = T.badEmail;
+                else if (field === 'phone') messages.phone = T.badPhone;
+                else if (field === 'platform') messages.platform = T.needPlatform;
+                else if (field === 'handle') messages.handle = T.needHandle;
+                else if (field === 'message') messages.message = T.needMessage;
+              }
+              paintErrors(messages);
+              status.textContent = T.invalidStatus;
+              focusFirst(messages);
+              return;
+            }
+          }
+
+          showFallback();
+        } catch {
+          showFallback();
+        } finally {
+          setBusy(false);
         }
+        return;
+      }
+
+      if (action === 'again') {
+        reset();
         return;
       }
 
@@ -297,7 +597,7 @@ const copy = CONSULT_CHROME[lang];
 
     const saved = load();
     if (saved) {
-      for (const name of Object.keys(EMPTY) as (keyof Fields)[]) {
+      for (const name of FIELD_NAMES) {
         const el = box(name);
         if (el) el.value = saved[name];
       }

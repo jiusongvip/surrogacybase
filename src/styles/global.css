@@ -125,6 +125,10 @@
     @apply w-full rounded-(--radius) border border-line-control bg-surface px-3 py-2.5 text-[15px] text-text transition-[border-color,box-shadow] duration-(--dur) placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25;
   }
 
+  .field-input[aria-invalid='true'] {
+    @apply border-flag;
+  }
+
   /* Full-bleed colour bands. The page stays one theme; bands are the same
    * bottle green at different depths, never a mid-page inversion. */
   .band-brand {

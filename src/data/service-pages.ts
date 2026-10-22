@@ -23,6 +23,12 @@ export type AboutPage = {
   statements: { q: string; a: string }[];
   whoHeading: string;
   whoBody: string;
+  reviewHeading: string;
+  reviewBody: string;
+  reviewerReviewed: string;
+  casesHeading: string;
+  casesBody: string;
+  caseConsent: string;
   correctionsHeading: string;
   correctionsBody: string;
 };
@@ -60,6 +66,14 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     whoHeading: 'Who is behind it',
     whoBody:
       'These pages are written and maintained by the {team}, and the clinical review in the byline is done by the {board}. The work is published under a team name, not sold under a commercial banner.',
+    reviewHeading: 'Clinical review',
+    reviewBody:
+      'Every page that makes a clinical claim is reviewed by the {board}. The board checks the claim against the source cited beside it and the limits that source states; it does not sign off on a reader’s own situation. A named reviewer is listed below once they have completed a review cycle and agreed to be credited, with a link to a public credential.',
+    reviewerReviewed: 'Last review cycle completed {date}.',
+    casesHeading: 'Reader cases',
+    casesBody:
+      'A reader case is published only with written consent, after names and identifying details have been removed. We do not combine several readers into one story, and a published case links to the pages it draws on so the reasoning can be checked.',
+    caseConsent: 'Consent recorded {date}.',
     correctionsHeading: 'Corrections',
     correctionsBody:
       'If a source on a page no longer supports the claim next to it, that is a defect worth writing down: the page address, the sentence, and what the source says instead. A correction is either fixed or the claim comes off the page while the check is pending. Send it to {email}, the same address for a question about the site itself or about anything held about you.',
@@ -96,6 +110,14 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     whoHeading: '背后是谁',
     whoBody:
       '这些页面由 {team} 编写与维护，署名中的临床审阅由 {board} 完成。内容以团队之名发表，而不是挂在商业招牌之下出售。',
+    reviewHeading: '临床审阅',
+    reviewBody:
+      '每一篇涉及临床说法的页面都由 {board} 审阅。委员会核对的是说法与它引用的来源、以及来源本身写明的限度，而不是为某位读者自己的处境背书。具名审阅人在完成一轮审阅、并同意被署名之后，会连同职务与可公开核对的资历链接出现在下面。',
+    reviewerReviewed: '最近一轮审阅完成于 {date}。',
+    casesHeading: '读者案例',
+    casesBody:
+      '读者案例只在取得书面同意、并移除姓名与可识别细节之后发表。我们不会把几位读者拼成一个故事；已发表的案例会链接到它所依据的页面，让您能核对推理。',
+    caseConsent: '同意记录于 {date}。',
     correctionsHeading: '更正',
     correctionsBody:
       '如果某个页面上的来源已经不再支持它旁边的那条说法，那就是一个值得写下来的缺陷：页面地址、那句话，以及来源实际写的是什么。一条更正要么被改正，要么在核查期间先把说法从页面上撤下。请把它发到 {email}，同一个地址也受理关于本站本身、以及关于这里存有您的哪些信息的请求。',

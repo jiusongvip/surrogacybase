@@ -359,7 +359,8 @@ const lp = (path: string) => localizedPath(lang, path);
     </div>
   </section>
 
-  {/* G. The enquiry. The form assembles the message; it does not pretend to deliver it. */}
+  {/* G. The enquiry. The form delivers when the inbox is configured, and falls back to a
+      message the reader sends themselves when it is not. */}
   <section class="band-brand relative isolate overflow-hidden py-16 lg:py-24" id="assessment">
     <div
       class="absolute inset-y-0 left-0 hidden w-[calc((100vw-1240px)/2)] overflow-hidden 2xl:block"

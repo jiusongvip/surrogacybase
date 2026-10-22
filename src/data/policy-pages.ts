@@ -75,7 +75,7 @@ export type TermsPage = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const EDITORIAL_REVISION = '2026-10-20';
+export const EDITORIAL_REVISION = '2026-10-22';
 
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
@@ -139,7 +139,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: 'What the signature claims, and what it does not',
-        p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that a medical advisory board carries the clinical review. That is the whole of the claim: no individual is named as an author or a reviewer anywhere on the site, and no credential is quoted. The review stands at team level, so it is offered as a process you can hold the team to, not as an endorsement from a named clinician. Reviewer credits are never added just to borrow trust.',
+        p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that the medical advisory board carries the clinical review. Where an individual reviewer is named, the About page lists that person with their role and a public credential, and the credit is used only after they have completed a review cycle and agreed to it. The review checks what a source says and where it applies; it is not an endorsement of a reader’s own plan.',
       },
       {
         h: 'Silence is a valid editorial decision',
@@ -223,7 +223,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: '署名声称了什么，没有声称什么',
-        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明临床审阅由一个医学顾问委员会承担。声称的全部内容到此为止：站内不以任何个人名义署名作者或审阅人，也不引用任何资历。审阅停在团队这一层，所以它是一条您可以据以问责团队的过程，而不是某位具名临床人员的个人背书。审阅人署名从不为了借用信任而添加。',
+        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明临床审阅由医学顾问委员会承担。若署名为某位个人审阅人，关于页会列出其姓名、职务与一个可公开核对的资历，并且只在本人完成一轮审阅并同意之后才使用这项署名。审阅核对的是来源说了什么、适用于哪里，不是为某位读者自己的方案背书。',
       },
       {
         h: '不写，本身就是一种有效的编辑决定',
@@ -249,7 +249,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const PRIVACY_REVISION = '2026-10-20';
+export const PRIVACY_REVISION = '2026-10-22';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
@@ -261,7 +261,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       'This page describes what actually happens when you read this site and use its tools. It promises only what the site really does, which is why it is shorter than most privacy policies.',
     shortHeading: 'The short version',
     shortBody:
-      'Reading this site gives us nothing about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you decide to send us.',
+      'Reading this site gives us nothing about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you choose to send us through the enquiry form or by email.',
     storedHeading: 'What is stored, and where',
     stored: [
       {
@@ -274,7 +274,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: 'The enquiry form',
-        body: 'It is the only form on this site, and it asks three things: the email address to reply to, your question in your own words, and a name if you want the reply addressed to someone. Only the name is optional. Nothing asks for an identity document, a date of birth, a budget figure or a medical record, and there is nowhere in the form to attach a file. The site has no server that could receive your enquiry, so pressing a button sends nothing on its own: the form builds the enquiry in your browser and hands it to your own mail app, your clipboard, or a file you download, and the address you typed is written into that text so whoever receives it can answer. Until you send it, the only copy is the draft your browser keeps so a half-written enquiry is still there if you close and reopen the page. Clearing site data for this domain removes it, and deleting the file removes the rest.',
+        body: 'It is the only form on this site. It asks for the email address a reply should go to, your question in your own words, and a name if you want the reply addressed to someone. The name is optional. You may also add a phone number and a messaging app handle, but neither is needed to send an enquiry. Nothing asks for an identity document, a date of birth, a budget figure or a medical record, and there is nowhere in the form to attach a file. When you press send, the form sends those fields, the page you were on and the language you were reading to our internal enquiry inbox, which we receive through Feishu or WeCom. Those are business tools for receiving and tracking enquiries, not advertising or analytics services. If delivery is not configured or fails, the form shows the enquiry in your browser instead and offers three ways to send it: your mail app, the clipboard, or a downloaded file. A draft stays in this browser so a half-written enquiry survives a reload; clearing site data for this domain removes it.',
       },
       {
         h: 'Information you send us directly',
@@ -286,7 +286,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       'No analytics, advertising, A/B or session-recording scripts are installed.',
       'No third-party embeds, videos, maps or fonts loaded from another company on your behalf.',
       'No collection of health, fertility, pregnancy or family details as a condition of reading or using the tools.',
-      'No selling, renting or sharing of anything about you, because there is nothing about you being stored.',
+      'No selling or renting of anything about you, and no sharing beyond the business tools that receive and hold enquiries.',
     ],
     avoidedTail:
       "When links leave this site, the destination's own policy applies. Citations point at official registers, courts, agencies and clinics, and those pages can set cookies we do not control.",
@@ -296,14 +296,14 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: 'If you contact us',
     contact: [
       'An enquiry should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
-      'The enquiry form collects none of that material and has no way to: there is nowhere in it to attach a file. The site runs with no server, so the form builds your enquiry in your browser and hands it to your own mail app addressed to {email}; where it is delivered and how long it is kept follow from that.',
+      'The enquiry form asks only for what is needed to answer: an email address, your question, and optionally a name, phone number or messaging handle. It has no way to attach a file. When delivery is configured, pressing send delivers those fields to our internal inbox through Feishu or WeCom; when it is not, the form hands the enquiry to your own mail app, clipboard or a downloaded file.',
       'Documents about other people belong to those people. Do not send a surrogate’s, a clinic’s or another intended parent’s material without their agreement.',
     ],
     operatorHeading: 'Who runs this site',
     operatorIntro:
-      'SurrogacyBase is published by the {team}, and the clinical review behind each byline is done by the {board}. Enquiries, corrections and any request about information you send reach one address, {email}. The site stores nothing about you until you choose to write to it.',
+      'SurrogacyBase is published by the {team}, and the clinical review behind each byline is done by the {board}. Enquiries, corrections and any request about information you send reach one address, {email}. Enquiries submitted through the form are also held in our internal inbox through Feishu or WeCom for as long as needed to answer and record the outcome.',
     rightsBody:
-      "Subject to applicable law, you can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. If you use the tool, deletion is in your hands already: clear this site's data in your browser settings.",
+      "Subject to applicable law, you can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. If you sent an enquiry through the form, ask us to delete it from the internal inbox. If you used a tool, deletion is in your hands already: clear this site's data in your browser settings.",
     revised:
       'Privacy policy last revised {date}. Material changes get a dated note here, not a silent rewrite.',
   },
@@ -316,7 +316,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
     shortHeading: '简短版',
     shortBody:
-      '阅读本站，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您决定发给我们的那部分。',
+      '阅读本站，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您通过问询表单或电子邮件主动发给我们的那部分。',
     storedHeading: '存了什么，存在哪里',
     stored: [
       {
@@ -329,7 +329,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: '问询表单',
-        body: '它是本站唯一的一个表单，只要三件事：回复用的邮箱地址、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。其中只有称呼是选填。没有任何一格要求身份证件、出生日期、预算金额或病历，表单里也没有附上文件的位置。本站没有能够接收您问询的服务器，因此按下按钮本身不会发出任何东西：表单在您的浏览器里把问询组装好，交给您的邮件应用、剪贴板或一个您下载的文件，而您填写的地址会被写进那段文字，好让收到它的人能够回答。在您发出之前，唯一的副本就是您的浏览器保存的草稿，以便一份写了一半的问询在您关掉又重开这个页面之后仍然还在。清除这个域名的站点数据会移除它，删除那个文件会移除剩下的部分。',
+        body: '它是本站唯一的表单。它会问回复应寄往的邮箱地址、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。称呼是选填。您也可以留下电话号码和即时通讯账号，但两者都不是发送问询所必需的。没有任何一格要求身份证件、出生日期、预算金额或病历，表单里也没有附上文件的位置。当您按下发送，表单会把上述内容、您所在的页面以及您阅读的界面语言发送到我们自己的问询收件箱。这个收件箱通过飞书或企业微信接收，它们是我们接收和跟踪问询的业务工具，不是广告或分析服务。如果投递尚未配置或投递失败，表单会改为在您的浏览器里展示问询，并提供三种发送方式：邮件应用、复制或下载为文件。草稿会留在这个浏览器里，以便一份写了一半的问询在重新打开页面后仍然还在；清除这个域名的站点数据会移除它。',
       },
       {
         h: '您直接发给我们的信息',
@@ -341,7 +341,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '没有安装任何分析、广告、A/B 测试或会话录制脚本。',
       '没有任何第三方嵌入、视频、地图，也没有代您从另一家公司加载的字体。',
       '不以阅读或使用工具为条件，收集健康、生育、怀孕或家庭细节。',
-      '不出售、不出租、不分享任何关于您的东西，因为根本没有关于您的东西被存储。',
+      '不出售、不出租任何关于您的东西，也不在接收和保存问询的业务工具之外分享它们。',
     ],
     avoidedTail:
       '当链接离开本站时，适用目标网站自己的政策。引证指向官方登记机构、法院、代孕机构与诊所，而那些页面可以设置我们无法控制的 cookie。',
@@ -351,13 +351,14 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: '如果您联系我们',
     contact: [
       '一次问询只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
-      '问询表单不收集那些材料，也没有收集它们的途径：里面没有任何可以附上文件的位置。本站没有服务器，所以表单会在您的浏览器里把问询组装好，交给您的邮件应用并寄往 {email}；它会送达哪里、保留多久，都由这一点决定。',
+      '问询表单只问回答所需的内容：邮箱地址、您的问题，以及选填的称呼、电话号码或即时通讯账号。它没有附上文件的途径。投递已配置时，按下发送会把上述内容送达我们通过飞书或企业微信接收的内部收件箱；未配置时，表单会把问询交给您的邮件应用、剪贴板或一个下载的文件。',
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
     operatorHeading: '本站由谁运营',
-    operatorIntro: 'SurrogacyBase 由 {team} 发布，署名里的临床审阅由 {board} 完成。问询、更正，以及关于您发来的任何信息的请求，都寄往同一个地址：{email}。在您主动写信过来之前，本站不存储任何关于您的信息。',
+    operatorIntro:
+      'SurrogacyBase 由 {team} 发布，署名里的临床审阅由 {board} 完成。问询、更正，以及关于您发来的任何信息的请求，都寄往同一个地址：{email}。通过表单提交的问询也会保存在我们通过飞书或企业微信接收的内部收件箱里，保留到足以回答并记录结果为止。',
     rightsBody:
-      '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
+      '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您通过表单发过问询，可以要求我们从内部收件箱中删除它。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
     revised: '隐私政策最近修订于 {date}。实质性变更会在本页留下一条带日期的说明，而不会在不说明的情况下改写。',
   },
 };

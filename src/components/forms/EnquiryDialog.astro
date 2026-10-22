@@ -57,7 +57,11 @@ const copy = UI[lang].enquiryDialog;
         if (!dialog.open) {
           opener = trigger;
           dialog.showModal();
-          dialog.querySelector<HTMLInputElement>('[data-field="name"]')?.focus();
+          const target =
+            dialog.querySelector<HTMLElement>('[data-success]:not([hidden])') ??
+            dialog.querySelector<HTMLInputElement>('[data-field="name"]');
+          /* Chrome finishes its own dialog focus steps after showModal returns. */
+          requestAnimationFrame(() => target?.focus());
         }
         return;
       }

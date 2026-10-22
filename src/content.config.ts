@@ -34,8 +34,9 @@ const content = defineCollection({
       publishedOn: z.string(),
       updatedOn: z.string(),
       reviewDueOn: z.string().optional(),
-      /** Blank until a real byline exists. No invented authors or reviewers. */
+      /** Blank until a real byline exists, with the person's agreement. No invented authors. */
       author: z.string().optional(),
+      /** A clinician is named only after a review cycle and consent; see src/data/trust.ts. */
       reviewer: z
         .object({
           name: z.string(),

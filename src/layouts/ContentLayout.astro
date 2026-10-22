@@ -50,7 +50,13 @@ const jsonLd = [
     author: d.author
       ? { '@type': 'Person', name: d.author }
       : { '@type': 'Organization', name: SITE.team },
-    reviewedBy: { '@type': 'Organization', name: SITE.team },
+    reviewedBy: d.reviewer
+      ? {
+          '@type': 'Person',
+          name: d.reviewer.name,
+          ...(d.reviewer.credentialUrl ? { sameAs: d.reviewer.credentialUrl } : {}),
+        }
+      : { '@type': 'Organization', name: SITE.board },
     publisher: { '@id': new URL('/#organization', Astro.site).href },
   },
 ];
@@ -97,9 +103,23 @@ const jsonLd = [
       </dl>
 
       <p class="mt-3 text-[14px] text-muted">
-        {d.reviewer
-          ? fill(copy.content.reviewedBy, { name: d.reviewer.name, role: d.reviewer.role })
-          : fill(copy.content.reviewedByTeam, { team: SITE.team })}
+        {d.reviewer ? (
+          <>
+            {fill(copy.content.reviewedBy, { name: d.reviewer.name, role: d.reviewer.role })}
+            {d.reviewer.credentialUrl && (
+              <a
+                class="ml-1 text-accent underline"
+                href={d.reviewer.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.content.credential}
+              </a>
+            )}
+          </>
+        ) : (
+          fill(copy.content.reviewedByTeam, { board: SITE.board })
+        )}
       </p>
     {
       media && (

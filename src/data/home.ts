@@ -368,9 +368,9 @@ export const HOME_BAND: Record<Lang, {
 };
 
 /*
- * Three lines under the heading. The mock listed a turnaround here; a turnaround is a
- * commitment the site has no inbox to keep yet, so the third line states what the form
- * demonstrably does instead, which the reader can verify by pressing the button.
+ * Three lines under the heading. No turnaround is promised because none is measured. Each line
+ * describes a property of the form the reader can verify: what leaves the browser, what is not
+ * collected, and which contact details are required.
  */
 export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingual }[] = [
   {
@@ -384,11 +384,11 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
     body: { en: 'No account, no payment detail, no mailing list.', zh: '不建账号、不填付款信息、不进邮件列表。' },
   },
   {
-    icon: 'file-text',
-    label: { en: 'You see the message', zh: '您会看到正文' },
+    icon: 'route',
+    label: { en: 'You choose how to reply', zh: '您决定回复方式' },
     body: {
-      en: 'The form assembles your enquiry on screen before it goes anywhere.',
-      zh: '表单会先把您的问询在屏幕上组装出来，再决定它去哪里。',
+      en: 'An email address is required; a phone number or messaging handle is optional.',
+      zh: '邮箱地址为必填；电话或即时通讯账号为选填。',
     },
   },
 ];

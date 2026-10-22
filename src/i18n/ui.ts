@@ -171,8 +171,10 @@ export const UI: Record<Lang, {
     keepReadingNote: string;
     workingList: string;
     reviewedBy: string;
-    /** What the team's own clinical members check. */
+    /** The board that carries the clinical review when no individual is named. */
     reviewedByTeam: string;
+    /** The link text that opens a named reviewer's public credential. */
+    credential: string;
   };
   /**
    * The wording of the guide and article listing pages, which used to live inside the route
@@ -532,7 +534,8 @@ export const UI: Record<Lang, {
       keepReadingNote: 'Each of these pages covers another part of the same decision.',
       workingList: 'Turn this into a working list',
       reviewedBy: 'Reviewed by {name}, {role}.',
-      reviewedByTeam: 'Reviewed by the {team}, whose members include clinicians.',
+      reviewedByTeam: 'Reviewed by the {board}.',
+      credential: 'Public credential',
     },
     pages: {
       guides: {
@@ -1071,7 +1074,8 @@ export const UI: Record<Lang, {
       keepReadingNote: '这些页面各自讲的是同一个决定的另一部分。',
       workingList: '把这一页变成一份可执行的清单',
       reviewedBy: '由 {name}（{role}）审阅。',
-      reviewedByTeam: '由 {team} 审阅，这个团队中有临床背景的成员。',
+      reviewedByTeam: '由 {board} 审阅。',
+      credential: '公开资历',
     },
     pages: {
       guides: {
