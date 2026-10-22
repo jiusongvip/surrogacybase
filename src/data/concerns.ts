@@ -60,7 +60,7 @@ export const CONCERNS: Concern[] = [
     id: 'cost',
     label: { en: 'Cost and scope', zh: '费用与范围' },
     question: { en: 'What does this quote actually include, and what sits outside it?', zh: '这份报价实际包含什么，又有什么在它之外？' },
-    body: { en: 'Where a number comes from, which costs never appear in a quote, and how payment stages and refunds are arranged.', zh: '数字从何而来、哪些费用永远不会出现在报价里，以及付款节点与退款如何安排。' },
+    body: { en: 'Where a number comes from, which costs never appear in a quote, and how payment stages and refunds are arranged.', zh: '费用数据从何而来、哪些费用不会出现在报价中，以及付款节点与退款如何安排。' },
     action: { en: 'Break the budget down', zh: '把预算拆开' },
     href: '/guides/surrogacy-cost',
     primary: true,

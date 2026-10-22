@@ -281,7 +281,7 @@ export const CHECKLISTS: Checklist[] = [
         title: { en: 'Money, stages and what comes back', zh: '资金、阶段与可退回的部分' },
         hint: {
           en: 'The numbers go into the comparison tool. What belongs beside each question here is a name and a date.',
-          zh: '数字填进对比工具。这里每个问题旁边该留下的，是一个名字和一个日期。',
+          zh: '金额填入对比工具。这里每个问题旁边应保留的，是一个名字和一个日期。',
         },
         items: [
           {
@@ -428,7 +428,7 @@ export const CHECKLISTS: Checklist[] = [
           '两家机构可以报出同一个总额，卖的却是不同的东西。让差别显现出来的，是一份您可以再读一遍的书面回答，旁边写着它收到的日期和给出回答的人。',
         note: '这个页面不收集任何内容，也不会代您联系任何人。把清单下载下来，用您自己的话提给机构，再把对方的答复留在那份文件里。',
         closing: {
-          heading: '然后把答案放在数字旁边',
+          heading: '然后将答案记在金额旁边',
           body:
             '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两份报价对在同一组九项成本上，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
         },

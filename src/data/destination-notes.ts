@@ -127,7 +127,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
   },
   {
     id: 'cost-concern',
-    title: { en: 'Compare item lists, not headline figures', zh: '比较条目清单，而不是头部数字' },
+    title: { en: 'Compare item lists, not headline figures', zh: '比较费用条目，而不是报价总额' },
     body: {
       en: 'Two quotes that differ by forty per cent can contain the same medicine and differ on what happens after a failed transfer. What you are comparing is scope: which stages are covered, who bills outside them, and what comes back if the program stops.',
       zh: '两份相差百分之四十的报价可能包含同样的医疗内容，只是在移植失败之后如何处理上不同。您比较的是范围：覆盖哪些阶段、谁在其外另行计费，以及疗程停止时能退回什么。',
@@ -179,7 +179,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     title: { en: 'Build the cost list before the country list', zh: '先建费用清单，再建国家清单' },
     body: {
       en: 'Without an item list, every destination looks affordable and every quote looks complete. Canada shows why scope matters more than totals: paying a surrogate is prohibited, while reimbursement of her regulated expenses is permitted and documented, so the shape of the money is set by the law rather than by the market.',
-      zh: '没有条目清单时，每个目的地都显得负担得起，每份报价都显得完整。加拿大说明了为什么范围比总额更要紧：向代孕者付款是被禁止的，而对她受监管的开支的报销是允许的、有文件依据的，因此金钱的形态由法律规定，而不是由市场决定。',
+      zh: '没有条目清单时，每个目的地都显得负担得起，每份报价都显得完整。加拿大说明了为什么范围比总额更要紧：向代孕者付款是被禁止的，而对她受监管的开支的报销是允许的、有文件依据的，因此资金结构由法律规定，而不是由市场决定。',
     },
     link: { en: 'The costs a quote leaves out', zh: '报价不包含的费用' },
     href: '/articles/surrogacy-costs-that-sit-outside-a-quote',
@@ -189,11 +189,11 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     id: 'budget-set',
     title: {
       en: 'A figure you already hold is worth testing against inclusions',
-      zh: '您已经持有的那个数字，值得对着包含项检验一次',
+      zh: '您已拿到的报价总额，值得对照包含项核对一次',
     },
     body: {
       en: 'Write the number down next to what it is stated to cover, then list what it does not. The gap between those two lists is the budget you will actually need, and it is the part a comparison of headline prices hides.',
-      zh: '把数字写下来，在旁边列出它据称覆盖的内容，然后再列出它不覆盖的内容。这两份清单之间的差额才是您实际需要的预算，也正是头部价格比较会隐藏的那部分。',
+      zh: '把报价总额写下来，在旁边列出它声称覆盖的内容，再列出它不覆盖的内容。两份清单之间的差额才是您实际需要的预算，而这正是报价总额对比容易掩盖的部分。',
     },
     link: { en: 'What to budget for and what to verify', zh: '该为什么做预算、该核实什么' },
     href: '/guides/surrogacy-cost',
@@ -206,7 +206,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     },
     body: {
       en: 'A stay of weeks after the birth, or two attended visits, rules out options for people who cannot leave for long. That is a real constraint and worth stating plainly at the first conversation rather than discovering it at the fourth.',
-      zh: '出生之后停留数周，或者两次必须本人出席的到访，会让无法长时间离开的人失去一些选项。这是一个真实的约束，值得在第一次沟通时就说明白，而不是到第四次才发现。',
+      zh: '出生之后停留数周，或者两次必须本人出席的到访，会让无法长时间离开的人失去一些选项。这是一个真实的约束，值得在第一次沟通时就明确提出，而不是到第四次才发现。',
     },
     link: { en: 'Ask how long the family must stay', zh: '问清家庭必须停留多久' },
     href: '/tools/destination-research-checklist',
@@ -228,7 +228,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
     id: 'stage-comparing',
     title: {
       en: 'Price alone is the wrong basis for comparing destinations',
-      zh: '只按价格比较目的地，比的是错的依据',
+      zh: '只按价格比较目的地，会忽略更关键的条件',
     },
     body: {
       en: 'Two destinations at the same cost can differ on whether you can be named at birth, how many trips are needed, and whether the money is protected while you wait. Compare the conditions one by one before you let the totals decide.',
@@ -292,7 +292,7 @@ export const DESTINATION_OWNERS: { who: Bilingual; owns: Bilingual }[] = [
     who: { en: 'SurrogacyBase', zh: 'SurrogacyBase' },
     owns: {
       en: 'Sourced legal records, the questions to put to each of the above, and the comparison tools that keep their answers level.',
-      zh: '附有来源的法律记录、要向上面每一方提出的问题，以及让他们的回答保持可比的比较工具。',
+      zh: '附有来源的法律记录、要向上面每一方提出的问题，以及让各方的回答可以相互比较的工具。',
     },
   },
 ];

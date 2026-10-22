@@ -114,7 +114,7 @@ export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingua
     title: { en: 'Verified sources', zh: '经过核实的来源' },
     body: {
       en: 'A statement names its publisher, its date and the sentence it rests on. What could not be sourced is marked unconfirmed instead of averaged into a figure.',
-      zh: '一条表述会写明发布方、日期以及它所依据的那句原话。无法核实的内容会被标为未确认，而不是被平均成一个数字。',
+      zh: '一条表述会写明发布方、日期以及它所依据的那句原话。无法核实的内容会被标为未确认，而不是取一个平均值。',
     },
   },
   {
