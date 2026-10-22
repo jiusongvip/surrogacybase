@@ -5,7 +5,7 @@ type: article
 category: preparation
 published: true
 publishedOn: "2026-10-15"
-updatedOn: "2026-10-19"
+updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
@@ -17,7 +17,7 @@ sources:
     url: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
     publisher: "海牙国际私法会议"
     verifiedOn: "2026-10-15"
-    supports: "该公约的完整名称，以及它对英国（1965 年 1 月 24 日）、美国（1981 年 10 月 15 日）、哥伦比亚（2001 年 1 月 30 日）、格鲁吉亚（2007 年 5 月 14 日）、中国（2023 年 11 月 7 日）与加拿大（2024 年 1 月 11 日）生效的日期。"
+    supports: "该公约的完整名称，以及它对英国（1965 年 1 月 24 日）、美国（1981 年 10 月 15 日）、哥伦比亚（2001 年 1 月 30 日）、格鲁吉亚（2007 年 5 月 14 日）与加拿大（2024 年 1 月 11 日）生效的日期。"
   - label: "美利坚合众国：出具附加证明书的主管机关"
     url: "https://www.hcch.net/en/states/authorities/details3/?aid=353"
     publisher: "海牙国际私法会议"
@@ -61,8 +61,6 @@ sources:
 3. **加拿大**：自 2024 年 1 月 11 日起生效，在境外使用的加拿大文件由[加拿大全球事务部](https://international.canada.ca/en/global-affairs/services/document-authentication/updates)出具附加证明书。
 4. **哥伦比亚**：自 2001 年 1 月 30 日起生效，因此一份哥伦比亚公文书需要的是附加证明书，而不是较早的领事认证链。
 5. **格鲁吉亚**：自 2007 年 5 月 14 日起生效，这就是那里签发的户籍登记证明可以在公约体系内通行的原因。
-
-中国自 2023 年 11 月 7 日起是缔约方。对文件将呈交中国机关的家庭来说，这改变了路径：一份外国公文书现在需要在出具国办理附加证明书，而不再是以前的领事认证。但提出要求的机关仍然是决定它还需要什么的机关。
 
 ## 翻译是一项独立的要求
 

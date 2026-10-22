@@ -61,7 +61,7 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
       : `以 ${SITE.team} 的署名发布的独立信息站点。不是诊所，不是律师事务所，也不是代孕机构。没有机构为位置付费，本站也不列机构名单。每条事实都写明来源、发布方与最近一次打开核查的日期，更正记录公开。`,
     '',
     lang === 'en'
-      ? 'Published in English and Simplified Chinese. Every page listed here has a Chinese twin at the same path under /zh, and /zh/llms.txt lists that half.'
+      ? 'Published in English and under /zh. Every page listed here has a counterpart at the same path under /zh, and /zh/llms.txt lists that half.'
       : '以英文与简体中文发布。此处每一页在 /zh 下的同一路径都有对应版本，/zh/llms.txt 列出中文一侧。',
     '',
     heading(lang, 'Guides', '指南'),

@@ -5,7 +5,7 @@ type: article
 category: preparation
 published: true
 publishedOn: "2026-10-15"
-updatedOn: "2026-10-19"
+updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
@@ -17,7 +17,7 @@ sources:
     url: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
     publisher: "Hague Conference on Private International Law"
     verifiedOn: "2026-10-15"
-    supports: "The Convention's full title and the dates it entered into force for the United Kingdom (24 January 1965), the United States (15 October 1981), Colombia (30 January 2001), Georgia (14 May 2007), China (7 November 2023) and Canada (11 January 2024)."
+    supports: "The Convention's full title and the dates it entered into force for the United Kingdom (24 January 1965), the United States (15 October 1981), Colombia (30 January 2001), Georgia (14 May 2007) and Canada (11 January 2024)."
   - label: "United States of America: competent authority for issuing an apostille"
     url: "https://www.hcch.net/en/states/authorities/details3/?aid=353"
     publisher: "Hague Conference on Private International Law"
@@ -61,8 +61,6 @@ The Convention is in force in each of the five jurisdictions with a record here,
 3. **Canada.** In force since 11 January 2024, with apostilles issued by [Global Affairs Canada](https://international.canada.ca/en/global-affairs/services/document-authentication/updates) for Canadian documents used abroad.
 4. **Colombia.** In force since 30 January 2001, so a Colombian public document needs the apostille rather than the older consular chain.
 5. **Georgia.** In force since 14 May 2007, which is why a civil registration certificate issued there can travel inside the Convention system.
-
-China has been a party since 7 November 2023. For a family whose documents will be presented to a Chinese authority, that changed the route: a foreign public document now needs an apostille at origin rather than the consular legalisation that used to be required. The authority that asks for the document is still the one that decides what else it wants with it.
 
 ## Translations are a separate requirement
 
