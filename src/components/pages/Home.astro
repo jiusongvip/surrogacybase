@@ -35,8 +35,8 @@ import {
   HOME_HERO,
   HOME_META,
   HOME_READING,
-  HOME_SERVICES,
-  HOME_SERVICE_ITEMS,
+  HOME_STAGES,
+  HOME_STAGE_ITEMS,
   HOME_WHO,
 } from '@/data/home';
 import { contentMedia } from '@/data/content-media';
@@ -49,7 +49,7 @@ const records = await getJurisdictions(lang);
 const meta = HOME_META[lang];
 const hero = HOME_HERO[lang];
 const who = HOME_WHO[lang];
-const services = HOME_SERVICES[lang];
+const stages = HOME_STAGES[lang];
 const countries = HOME_COUNTRIES[lang];
 const readingCopy = HOME_READING[lang];
 const band = HOME_BAND[lang];
@@ -94,7 +94,6 @@ const rest = preferred.length < 4 ? (await getLiveContent(lang)).filter((e) => !
 const reading = [...preferred, ...rest.slice(0, 4 - preferred.length)];
 
 const eyebrow = 'text-[13px] font-semibold uppercase tracking-[0.16em] text-muted';
-const home = localizedPath(lang, '/');
 const lp = (path: string) => localizedPath(lang, path);
 ---
 
@@ -143,7 +142,7 @@ const lp = (path: string) => localizedPath(lang, path);
         <p class="rise rise-1 mt-5 max-w-[58ch] text-[17px] leading-[1.65] text-text lg:text-[18px] lg:leading-[1.7]">
           {hero.lead}
         </p>
-        <p class="rise rise-1 mt-4 max-w-[42ch] font-display text-[17px] leading-[1.5] text-brand-fg">
+        <p class="rise rise-1 mt-4 max-w-none font-display text-[17px] leading-[1.5] text-brand-fg">
           {hero.note}
         </p>
         <div class="rise rise-2 mt-8 flex flex-wrap gap-3">
@@ -151,7 +150,7 @@ const lp = (path: string) => localizedPath(lang, path);
             {hero.ctaPrimary}
             <Icon name="arrow-right" size={16} />
           </a>
-          <a href={`${home}#assessment`} class="btn-ghost" data-enquiry-cta>{hero.ctaSecondary}</a>
+          <a href={lp('/guides')} class="btn-ghost">{hero.ctaSecondary}</a>
         </div>
       </div>
     </div>
@@ -174,7 +173,7 @@ const lp = (path: string) => localizedPath(lang, path);
 
       <div>
         <h3 class="text-[22px]">{who.advantagesHeading}</h3>
-        <ul class="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 xl:grid-cols-4">
+        <ul class="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2">
           {
             HOME_ADVANTAGES.map((a) => (
               <li class="reveal">
@@ -191,36 +190,53 @@ const lp = (path: string) => localizedPath(lang, path);
     </div>
   </section>
 
-  {/* D. Three kinds of help, each one a page that exists. */}
-  <section class="border-b border-line bg-surface-2 py-16 lg:py-24" id="services">
+  {/* D. The point the reader has reached, each card pointing at pages that exist. */}
+  <section class="border-b border-line bg-surface-2 py-16 lg:py-24" id="start" aria-labelledby="start-h">
     <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
       <div>
-        <p class={eyebrow}>{services.eyebrow}</p>
-        <h2 class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {services.heading}
+        <p class={eyebrow}>{stages.eyebrow}</p>
+        <h2 id="start-h" class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {stages.heading}
         </h2>
-        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{services.intro}</p>
-        <a href={lp('/tools')} class="btn-primary mt-8">
-          {services.cta}
-          <Icon name="arrow-right" size={16} />
-        </a>
+        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{stages.intro}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={lp('/guides')} class="btn-primary">
+            {stages.ctaPrimary}
+            <Icon name="arrow-right" size={16} />
+          </a>
+          <a href={lp('/tools')} class="btn-ghost">
+            {stages.ctaSecondary}
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
       </div>
 
       <ul class="grid gap-5 sm:grid-cols-2">
         {
-          HOME_SERVICE_ITEMS.map((s) => (
+          HOME_STAGE_ITEMS.map((s) => (
             <li class="reveal">
-              <a href={lp(s.href)} class="card card-hover flex h-full flex-col p-6">
+              <div class="card flex h-full flex-col p-6">
                 <span class="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-accent">
                   <Icon name={s.icon} size={19} />
                 </span>
                 <h3 class="mt-5 text-[18px] leading-snug">{pick(s.title, lang)}</h3>
                 <p class="mt-2 text-[14px] leading-[1.7] text-muted">{pick(s.body, lang)}</p>
-                <span class="mt-5 flex items-center gap-2 border-t border-line pt-4 text-[14px] font-medium">
-                  {countries.learnMore}
-                  <Icon name="arrow-right" size={15} class="text-accent" />
-                </span>
-              </a>
+                <div class="mt-5 flex flex-col gap-2 border-t border-line pt-4">
+                  {s.links.map((link) => (
+                    <a
+                      href={lp(link.href)}
+                      class="group inline-flex items-start gap-2 text-[14px] font-medium text-accent"
+                    >
+                      <span class="group-hover:underline">{pick(link.label, lang)}</span>
+                      <Icon
+                        name="arrow-right"
+                        size={15}
+                        class="mt-0.5 shrink-0 transition-transform duration-(--dur) group-hover:translate-x-0.5"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </li>
           ))
         }

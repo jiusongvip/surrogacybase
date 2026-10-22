@@ -35,12 +35,12 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   en: {
     titleTag: 'Cross-Border Surrogacy Guides & Tools',
     description:
-      'Independent guidance for cross-border surrogacy: compare destinations, break a quote into items, settle parentage and nationality, then send the question you cannot answer.',
+      'Independent cross-border surrogacy guidance: compare destinations on the same terms, read sourced cost data, and use the tools on your own quote.',
   },
   zh: {
     titleTag: '跨境代孕指南与工具',
     description:
-      '关于跨境代孕的独立指引：比较目的地、把报价拆成条目、分清亲权与国籍，然后把您答不出来的那个问题发出去。',
+      '关于跨境代孕的独立指引：用同样的四个问题比较目的地，查看带来源和年份的费用数据，并用工具核对您自己的报价。',
   },
 };
 
@@ -49,22 +49,22 @@ export const HOME_HERO: Record<Lang, {
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
-  /** The owner's line, set under the lead in the copy column. It is not a claim about outcomes. */
+  /** A claim about how the site is funded, not about outcomes. */
   note: string;
 }> = {
   en: {
-    h1: 'Trusted guidance for your surrogacy journey',
-    lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
-    ctaPrimary: 'Explore destinations',
-    ctaSecondary: 'Contact us',
-    note: 'More clarity for your family’s future',
+    h1: 'Surrogacy, compared item by item',
+    lead: 'Compare what each destination allows, who the child’s legal parents are at birth, and what a published figure actually covers. Every claim names its source, and anything unconfirmed is marked as such.',
+    ctaPrimary: 'Compare destinations',
+    ctaSecondary: 'Start with the guides',
+    note: 'Independent information. No provider pays to appear, and no destination is ranked for revenue.',
   },
   zh: {
-    h1: '为您的代孕之旅提供可靠指引',
-    lead: '弄清您实际有哪些选择，把目的地和费用放在一起比较，并在往前走之前，把法律、医疗和实操上的问题逐个问清楚。',
-    ctaPrimary: '查看目的地',
-    ctaSecondary: '联系我们',
-    note: '为您一家人的未来，多一分清楚',
+    h1: '代孕，逐项比较',
+    lead: '比较每个目的地允许什么、孩子出生时的法律父母是谁，以及公布出来的一个金额到底覆盖哪些环节。每条说法都写明来源，无法确认的部分会直接标出。',
+    ctaPrimary: '比较目的地',
+    ctaSecondary: '从指南开始',
+    note: '独立信息。没有服务方付费出现在这里，也没有目的地因营收被排名。',
   },
 };
 
@@ -76,18 +76,18 @@ export const HOME_WHO: Record<Lang, {
   advantagesHeading: string;
 }> = {
   en: {
-    eyebrow: 'Who we are',
-    heading: 'Independent information for cross-border surrogacy',
-    para: 'SurrogacyBase is an independent resource for cross-border surrogacy. It exists so you can work out what applies to your own situation: which places allow the arrangement at all, what a quote actually covers, and which questions only a professional in that jurisdiction can settle.',
-    link: 'Learn more about us',
-    advantagesHeading: 'Our advantages',
+    eyebrow: 'Why this site exists',
+    heading: 'Independent research, written to be checked',
+    para: 'SurrogacyBase publishes guides, destination records and tools for people comparing cross-border surrogacy. It does not match surrogates, run programs or hold money. Each page separates what a source states, what it leaves unsettled, and what only a professional in that jurisdiction can answer.',
+    link: 'More about how we work',
+    advantagesHeading: 'What you can check on every page',
   },
   zh: {
-    eyebrow: '我们是谁',
-    heading: '跨境代孕的独立信息资源',
-    para: 'SurrogacyBase 是一个关于跨境代孕的独立资源。它存在的目的，是让您能弄清哪些内容适用于自己的情况：哪些地方根本允许这种安排、一份报价实际覆盖什么，以及哪些问题只有该法域的专业人士才能确定。',
+    eyebrow: '本站为什么存在',
+    heading: '每一句都能核对',
+    para: 'SurrogacyBase 为正在比较跨境代孕的人发布指南、目的地记录和工具。本站不匹配代孕者、不运营项目，也不代管资金。每一页都把三件事分开写：来源说明了什么、来源没有解决什么，以及哪些问题只有当地专业人士才能回答。',
     link: '进一步了解我们',
-    advantagesHeading: '我们的优势',
+    advantagesHeading: '每一页都可以核对什么',
   },
 };
 
@@ -95,87 +95,134 @@ export const HOME_WHO: Record<Lang, {
 export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingual }[] = [
   {
     icon: 'book',
-    title: { en: 'The decision end to end', zh: '从头到尾讲清这个决定' },
+    title: { en: 'One decision, four sides', zh: '一个决定，四个面' },
     body: {
-      en: 'Legal, medical, financial and practical sides of one decision, because a plan that answers three of them and skips the fourth is not a plan.',
-      zh: '同一个决定的法律、医疗、财务与实操四个面，因为一个回答了其中三项、跳过第四项的方案根本算不上方案。',
+      en: 'Legal, medical, financial and practical, because a plan that answers three of them is not a plan.',
+      zh: '法律、医疗、财务与实操。只回答其中三项的方案，算不上方案。',
     },
   },
   {
     icon: 'scale',
-    title: { en: 'Comparable and transparent', zh: '可比且透明' },
+    title: { en: 'The same questions everywhere', zh: '同样的问题，问每个目的地' },
     body: {
-      en: 'The same questions asked of every destination, provider and quote. Two things only sit side by side once each item means the same thing on both.',
-      zh: '对每个目的地、每家服务方、每份报价问同样的问题。只有当每一项含义相同时，两样东西才真的能并排放在一起。',
+      en: 'Eligibility, parentage, payment and cost are asked the same way of every destination, so two places can be compared on the same terms.',
+      zh: '准入、亲权、付款与费用，对每个目的地都按同样的方式提问，两个目的地才是在同样的口径上比较。',
     },
   },
   {
     icon: 'check',
-    title: { en: 'Verified sources', zh: '经过核实的来源' },
+    title: { en: 'A source and a date', zh: '来源和日期' },
     body: {
-      en: 'A statement names its publisher, its date and the sentence it rests on. What could not be sourced is marked unconfirmed instead of averaged into a figure.',
-      zh: '一条表述会写明发布方、日期以及它所依据的那句原话。无法核实的内容会被标为未确认，而不是取一个平均值。',
+      en: 'Every figure names its publisher and the year it applies to. Where no source exists, the page says so instead of estimating.',
+      zh: '每一个金额都写明公布方与对应的年份。没有来源时，页面直接说明，而不是给出估算。',
     },
   },
   {
     icon: 'arrow-up-right',
-    title: { en: 'Real support', zh: '真实的支持' },
+    title: { en: 'Tools that use your papers', zh: '工具用您自己的材料' },
     body: {
-      en: 'The enquiry is written against the situation you are actually in, rather than a general answer sent to everyone who asks.',
-      zh: '问询是按您实际所处的情况写出来的，而不是把一份通用答复发给所有提问的人。',
+      en: 'Two quote totals can be put on the same lines, or a checklist taken into a meeting. Nothing you type is uploaded.',
+      zh: '两份报价可以逐项并排，一份清单可以直接带进会面。您输入的内容不会被上传。',
     },
   },
 ];
 
-export const HOME_SERVICES: Record<Lang, {
+export const HOME_STAGES: Record<Lang, {
   eyebrow: string;
   heading: string;
   intro: string;
-  cta: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
 }> = {
   en: {
-    eyebrow: 'What you can do here',
-    heading: 'Three kinds of help, all of them on the decision',
+    eyebrow: 'Start where you are',
+    heading: 'Which step are you on?',
     intro:
-      'None of it depends on anyone here working on your behalf: which destination applies, what the whole thing costs, and what to ask the people you will meet.',
-    cta: 'Open the tools',
+      'The pages are grouped by the decision in front of you, not by the kind of page. Choose the point that sounds closest to where you are.',
+    ctaPrimary: 'Browse every guide',
+    ctaSecondary: 'Open the tools',
   },
   zh: {
-    eyebrow: '您在这里能做什么',
-    heading: '三种帮助，全都落在决定本身之上',
-    intro: '它们都不需要这里有任何人替您办事：哪个目的地适用、整件事要花多少，以及见到那些人时该问什么。',
-    cta: '打开工具',
+    eyebrow: '从您现在的处境开始',
+    heading: '您正处在哪一步？',
+    intro: '以下按您面前要做的决定来分，而不是按页面类型。选一个最接近您现在处境的位置。',
+    ctaPrimary: '浏览全部指南',
+    ctaSecondary: '打开工具',
   },
 };
 
-/* Each card is a page that exists, not a category waiting for one. */
-export const HOME_SERVICE_ITEMS: { icon: IconName; title: Bilingual; body: Bilingual; href: string }[] = [
+/* Each card points at pages that exist, and each link names the job it does. */
+export const HOME_STAGE_ITEMS: {
+  icon: IconName;
+  title: Bilingual;
+  body: Bilingual;
+  links: { label: Bilingual; href: string }[];
+}[] = [
+  {
+    icon: 'book',
+    title: { en: 'I am still working out whether this is possible', zh: '我还在确认这件事是否可行' },
+    body: {
+      en: 'Start with the process, then the four legal questions it raises. You do not need a destination yet.',
+      zh: '先看流程，再看它带出的四个法律问题。这一步还不需要选定目的地。',
+    },
+    links: [
+      { label: { en: 'Read the process guide', zh: '阅读流程指南' }, href: '/guides/surrogacy-process' },
+      {
+        label: { en: 'See the four legal questions', zh: '看四个法律问题' },
+        href: '/guides/surrogacy-legal-considerations',
+      },
+    ],
+  },
   {
     icon: 'map-pin',
-    title: { en: 'Destination research and comparison', zh: '目的地调研与比较' },
+    title: { en: 'I am comparing countries', zh: '我正在比较国家' },
     body: {
-      en: 'Eligibility, parentage at birth, costs and the practical constraints of each country that has a sourced record here.',
-      zh: '凡是这里有带出处记录的，都会写明准入条件、出生时的亲权、费用以及实操上的限制。',
+      en: 'Each destination record answers the same questions: the legal basis, who may commission, parentage at birth, and what has been published on cost.',
+      zh: '每一份目的地记录都回答同样的问题：法律依据、谁可以委托、出生时的亲权，以及已公布的费用数据。',
     },
-    href: '/destinations',
+    links: [
+      { label: { en: 'Compare destinations', zh: '比较目的地' }, href: '/destinations' },
+      {
+        label: { en: 'Open the research checklist', zh: '打开目的地研究清单' },
+        href: '/tools/destination-research-checklist',
+      },
+    ],
   },
   {
     icon: 'receipt',
-    title: { en: 'Costs and budget planning', zh: '费用与预算规划' },
+    title: { en: 'I have a quote and need to compare it', zh: '我拿到了报价，需要对比' },
     body: {
-      en: 'Break a quote into items, see what sits outside it entirely, and put two programs onto the same basis before you compare them.',
-      zh: '把一份报价拆成条目，看清哪些费用完全在它之外，并在比较之前把两个项目放到同一个口径上。',
+      en: 'Put two quotes on the same nine cost lines, then read what usually sits outside a quote before you treat either total as a budget.',
+      zh: '先把两份报价放在同样的九项费用上，再看报价之外通常还有什么，最后才把任何一个总额当成预算。',
     },
-    href: '/guides/surrogacy-cost',
+    links: [
+      {
+        label: { en: 'Compare two quotes', zh: '对比两份报价' },
+        href: '/tools/agency-quote-comparison',
+      },
+      {
+        label: { en: 'Read what sits outside a quote', zh: '看报价之外的成本' },
+        href: '/articles/surrogacy-costs-that-sit-outside-a-quote',
+      },
+    ],
   },
   {
     icon: 'list-check',
-    title: { en: 'Questions for the meetings you already have', zh: '已有的会面前该问什么' },
+    title: { en: 'I am close to signing', zh: '我准备签约了' },
     body: {
-      en: 'The list that decides how an hour gets spent: which question belongs to a lawyer in that jurisdiction, which to the clinic, which to the agency, which to an escrow provider.',
-      zh: '决定一个小时怎么花的那份清单：哪个问题属于当地的律师，哪个属于诊所，哪个属于机构，哪个属于托管机构。',
+      en: 'Take the questions that belong in writing into the meeting, and check what has to be signed before the first transfer.',
+      zh: '把该写进书面文件的问题带进会面，并核对第一次付款前必须签什么。',
     },
-    href: '/tools/agency-question-checklist',
+    links: [
+      {
+        label: { en: 'Open the agency checklist', zh: '打开机构提问清单' },
+        href: '/tools/agency-question-checklist',
+      },
+      {
+        label: { en: 'Read what must be signed', zh: '看签约前必须写清什么' },
+        href: '/articles/what-must-be-signed-before-the-first-transfer',
+      },
+    ],
   },
 ];
 
@@ -311,12 +358,12 @@ export const HOME_BAND: Record<Lang, {
     eyebrow: 'Write your enquiry',
     heading: 'Not sure where to start?',
     para:
-      'Write out the priorities and the questions you already have. The form puts them into one message on your screen, word for word, so what you send says what you actually need checked.',
+      'Write down the priorities and the questions you already have. A clear question is what makes the first reply useful, whoever you end up asking.',
   },
   zh: {
     eyebrow: '写下您的问询',
     heading: '不确定该从哪里开始？',
-    para: '把您已经在意的优先级和您手上已有的问题写下来。表单会把它们逐字组装成屏幕上的一封正文，让您发出去的东西说清楚您真正需要核查的是什么。',
+    para: '把您已经在意的优先级和手上已有的问题写下来。问题写得清楚，第一封回复才可能有用，无论您最后问的是谁。',
   },
 };
 
