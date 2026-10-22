@@ -219,23 +219,30 @@ export type QuoteChrome = {
   currencies: string[];
   download: string;
   reset: string;
-  caption: string;
+  /** Explains that typing an amount includes the line, and what a blank line means. */
+  statusHint: string;
+  addPlan: string;
+  removePlan: string;
+  /** {done} and {total}. */
+  progress: string;
   lineItem: string;
-  amount: string;
   /** {letter} is A or B. */
   quoteName: string;
   /** {item} and {plan}. */
-  srAmount: string;
   srScope: string;
   statusIn: string;
   statusOut: string;
   statusVerify: string;
+  /** Used in the file when an item is marked included but has no amount. */
+  amountMissing: string;
   /** {n} is the count, {s} the plural suffix. */
   unconfirmed: string;
   notIncluded: string;
   unreadable: string;
   pluralS: string;
   oneS: string;
+  totalLabel: string;
+  totalHint: string;
   diffHeading: string;
   diffBody: string;
   footer: string;
@@ -243,6 +250,7 @@ export type QuoteChrome = {
   savedLine: string;
   exportNote: string;
   totalLine: string;
+  totalLineOne: string;
   diffLine: string;
   exportFooter: string;
   exportFilename: string;
@@ -255,34 +263,39 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
     stays:
       'Nothing here is collected: no account, no upload, and nothing kept after this tab closes. The download saves the table as a file you can keep; that file is the only copy.',
     currency: 'Currency',
-    currencyNote: 'One currency for the whole table. Convert a quote stated in another before you enter it, so the columns stay comparable.',
+    currencyNote: 'One currency for every quote. Convert a quote stated in another before you enter it, so the totals stay comparable.',
     currencies: ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'THB', 'INR', 'UAH', 'COP'],
     download: 'Download this table',
     reset: 'Clear the amounts',
-    caption:
-      'The common costs a surrogacy quote is built from, printed as fixed items. For each quote, enter the amount it states and set whether that quote includes it.',
+    statusHint:
+      'Type an amount and that line counts as included in the total. Choose Not included where the quote excludes a line. Leave the amount blank where the quote does not mention it.',
+    addPlan: 'Add a second quote',
+    removePlan: 'Remove quote B',
+    progress: '{done} of {total} filled',
     lineItem: 'Line item',
-    amount: 'Amount',
     quoteName: 'Quote {letter}',
-    srAmount: 'Amount for {item}, {plan}',
     srScope: 'Scope for {item}, {plan}',
     statusIn: 'Included',
     statusOut: 'Not included',
-    statusVerify: 'Needs checking',
-    unconfirmed: '{n} item{s} unconfirmed',
-    notIncluded: '{n} listed as not included',
+    statusVerify: 'To check',
+    amountMissing: 'amount not stated',
+    unconfirmed: '{n} item{s} left out of the total',
+    notIncluded: '{n} marked not included',
     unreadable: '{n} item{s} not written as a plain number, without a currency symbol or a range',
     pluralS: 's',
     oneS: '',
-    diffHeading: 'Difference between the two quotes',
+    totalLabel: 'Total so far',
+    totalHint: 'Lines left blank or marked not included stay out of this total.',
+    diffHeading: 'Difference between the two totals so far',
     diffBody:
       'A gap between two totals is not a cost difference until the scope matches. Check what each quote includes, what it excludes, when payments fall due and what happens on a refund, then compare again.',
     footer:
-      'These nine costs cover what a quote usually names. Where one of them plays no role in your program, set it to Not included. Amounts left blank with Needs checking stay out of the totals on purpose, so a total never looks complete when it is not.',
+      'These nine lines cover what a quote usually names, not everything a program costs. A total can be complete on its own terms and still not be a budget.',
     exportTool: 'SurrogacyBase agency quote comparison',
     savedLine: 'Filled in on',
-    exportNote: 'Written from the table as it stands. Totals exclude items that are not marked Included.',
+    exportNote: 'Written from the quotes on screen. Totals exclude lines that are blank or marked not included.',
     totalLine: 'Totals',
+    totalLineOne: 'Total',
     diffLine: 'Difference',
     exportFooter:
       'From SurrogacyBase. A difference between two totals is not a cost difference until the scope behind each number matches.',
@@ -303,33 +316,37 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
     stays:
       '这里不收集任何内容：没有账户，没有上传，关掉这个标签页后也不保留任何东西。下载会把这张表保存成一份您可以留存的文档，那个文件就是唯一的副本。',
     currency: '货币',
-    currencyNote: '整张表只用一种货币。报价若是别的货币开出的，请先换算再录入，各列才可比。',
+    currencyNote: '每份报价都用同一种货币。报价若是别的货币开出的，请先换算再录入，合计才可比。',
     currencies: ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'THB', 'INR', 'UAH', 'COP'],
     download: '下载这张表格',
     reset: '清空金额',
-    caption: '代孕报价通常由这些成本搭成，它们已印成固定的行。请为每份报价填入它写明的金额，并标注这份报价是否包含它。',
+    statusHint: '填入金额，这一项就自动算作包含并计入合计。报价明确不包含的，改选不包含。报价没有提到的，金额留空即可。',
+    addPlan: '添加第二份报价',
+    removePlan: '移除报价 B',
+    progress: '已填 {done}/{total} 项',
     lineItem: '条目',
-    amount: '金额',
     quoteName: '报价 {letter}',
-    srAmount: '{plan}中「{item}」的金额',
     srScope: '{plan}中「{item}」的范围',
     statusIn: '包含',
     statusOut: '不包含',
     statusVerify: '待核查',
-    unconfirmed: '{n} 项尚未确认',
-    notIncluded: '{n} 项列为不包含',
+    amountMissing: '未填金额',
+    unconfirmed: '{n} 项未计入合计',
+    notIncluded: '{n} 项明确不包含',
     unreadable: '{n} 个金额要写成纯数字，不带货币符号，也不带区间',
     pluralS: '',
     oneS: '',
-    diffHeading: '两份报价之间的差额',
+    totalLabel: '当前合计',
+    totalHint: '留空或标为不包含的项目不计入这个合计。',
+    diffHeading: '两个当前合计之间的差额',
     diffBody:
       '在范围一致之前，两个总额之间的差距并不等于成本的差异。先看清每份报价包含什么、排除什么、付款何时到期、退款时怎么处理，然后再来比较。',
-    footer:
-      '这些行覆盖了报价通常会写明的项目。您的方案里确实用不到哪一行，就把它设为不包含。留空且标为待核查的金额会被有意排除在合计之外，于是一个总额永远不会在它并不完整的时候看起来完整。',
+    footer: '这九项覆盖报价通常会写明的成本，但不是一个方案的全部开销。一个总额可能在自己的范围内是完整的，却仍然算不上预算。',
     exportTool: 'SurrogacyBase 机构报价对比',
     savedLine: '填写于',
-    exportNote: '按表格当前的样子写出。合计不包含未标为包含的条目。',
+    exportNote: '按屏幕上当前的报价写出。留空或标为不包含的项目不计入合计。',
     totalLine: '合计',
+    totalLineOne: '合计',
     diffLine: '差额',
     exportFooter: '来自 SurrogacyBase。在两份报价的范围一致之前，总额之差并不等于成本差异。',
     exportFilename: 'surrogacy-quote-comparison-zh.md',
@@ -350,16 +367,16 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   en: {
     title: 'Agency quote comparison',
     description:
-      'Compare two surrogacy quotes across the same nine costs: what each one includes, what it excludes, what is still unclear, and why the gap between two totals is not yet a cost difference.',
+      'Compare one or two surrogacy quotes across the same nine costs: what each includes, what it leaves out, and why a gap between totals is not yet a cost difference.',
     h1: 'Agency quote comparison',
     intro:
-      'Two quotes rarely differ because one agency is cheaper. They differ because one quote counts things the other left out. This tool puts the same line items side by side so you can see which totals are complete and which still have costs missing.',
+      'Two quotes rarely differ because one agency is cheaper. They differ because one quote counts things the other left out. Start with the quote you have; add a second when it arrives, and read each total for what it still leaves out.',
     howToHeading: 'How to use it',
     howTo: [
-      'Copy each quote into its own column. The nine costs printed here are the ones a quote is usually built from.',
-      'Set every cost to included, not included, or needs checking. One you cannot place is information, not a failure.',
-      'A cost that plays no role in your program is marked not included, so the table says so rather than going quiet.',
-      'Only read the difference once both columns cover the same costs.',
+      'The nine costs a quote is usually built from are already printed. Type the amount the quote states beside each one; you do not need to build the table yourself.',
+      'An amount is counted as included the moment you type it. Choose Not included only where the quote explicitly excludes a line.',
+      'Leave an amount blank where the quote does not mention that line. A blank line stays out of the total, so the total never looks complete when it is not.',
+      'Add a second quote when you have one. Only read the difference once both quotes cover the same costs.',
     ],
     limitsHeading: 'What this tool will not do',
     limits: [
@@ -385,16 +402,16 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   zh: {
     title: '机构报价对比',
     description:
-      '把两份代孕报价对在同一组九项成本上对比：每份包含什么、排除什么、还有什么不确定，以及为什么两个总额之间的差额还算不上一笔成本差异。',
+      '把一份或两份代孕报价对在同一组九项成本上：各自包含什么、漏掉什么，以及为什么总额之差还算不上一笔成本差异。',
     h1: '机构报价对比',
     intro:
-      '两份报价之所以不同，很少是因为某一家机构更便宜。它们的不同在于一份报价算了另一份没算的东西。这个工具把同样的条目并排放置，让您看清哪些总额是完整的，哪些还缺着成本。',
+      '两份报价之所以不同，很少是因为某一家机构更便宜。它们的不同在于一份报价算了另一份没算的东西。先从手上这份报价开始；拿到第二份再加进来，并看清每个合计还漏了什么。',
     howToHeading: '怎么使用',
     howTo: [
-      '把每一份报价录入成单独的一列。这里印出的九项成本，正是一份报价通常由以搭成的。',
-      '把每一项设为包含、不包含或待核查。有一项放不进去，本身就是信息，不是失误。',
-      '您的方案里确实用不到的一项，就标为不包含，让表格明确说出这一点，而不是默默跳过。',
-      '只有当两列覆盖同样的项目之后，再去读那个差额。',
+      '报价通常由九项成本搭成，这张表已经把它们印好了。在每一项旁填入报价写明的金额，不必自己搭表。',
+      '填入金额的那一刻，这一项就自动算作包含。只有报价明确排除某一项时，才改选不包含。',
+      '报价没有提到某一项时，金额留空。留空的条目不计入合计，合计也就不会在不完整的时候看起来完整。',
+      '拿到第二份报价时再加进来。只有当两份报价覆盖同样的成本之后，再去读那个差额。',
     ],
     limitsHeading: '这个工具不会做什么',
     limits: [
@@ -434,6 +451,8 @@ export type CostToolPage = {
   groupsIntro: string;
   /** The one column head a destination page has no reason to carry. */
   destinationHead: string;
+  /** {date} is when the source was read; printed under the source in a table cell. */
+  sourceChecked: string;
   /** Under a line whose every figure came from one source. */
   singleSource: string;
   /** Under a line no source has put a figure on. */
@@ -455,6 +474,7 @@ export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
     groupsIntro:
       'These are the lines a quote is usually built from. A figure sits under the line it covers, so one line can be read across destinations and across the sources that wrote about them.',
     destinationHead: 'Destination',
+    sourceChecked: 'Source checked {date}',
     singleSource: 'Only one source published a figure for this line, so there is no second published figure to read it against.',
     noFigure: 'No source has published a figure for this line.',
     emptyHeading: 'Where no figure is published',
@@ -475,6 +495,7 @@ export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
     groupsHeading: '按费用条目分组',
     groupsIntro: '这些费用条目正是一份报价通常包含的内容。每项数据归在它覆盖的条目下，因此同一条目可以跨目的地、跨来源对照。',
     destinationHead: '目的地',
+    sourceChecked: '核查于 {date}',
     singleSource: '这一条目只有一个来源公布过数据，没有第二项公开数据可供对照。',
     noFigure: '目前没有来源为这一条目公布费用数据。',
     emptyHeading: '暂无已公布数据的目的地',

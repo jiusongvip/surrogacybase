@@ -720,6 +720,14 @@ export type ChecklistChrome = {
   exportButton: string;
   /** Says what the file holds and what this page does not do with it. */
   exportNote: string;
+  /** Heading over the group index, so a long list can be entered at any group. */
+  contentsHeading: string;
+  /** {groups} and {questions}. */
+  totalCount: string;
+  /** {n} is the number of questions in one group. */
+  questionCount: string;
+  /** Beside the second download button, after the last group. */
+  bottomNote: string;
   /** Printed at the head of the exported document, where the boxes are explained. */
   fileHint: string;
   fallbackTitle: string;
@@ -732,6 +740,11 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
     exportButton: 'Download as a document',
     exportNote:
       'The file holds every question above with an empty box beside it, in the language this page is written in. Nothing here is collected, saved on a server, or sent anywhere.',
+    contentsHeading: 'Contents',
+    totalCount: '{groups} groups, {questions} questions',
+    questionCount: '{n} questions',
+    bottomNote:
+      'The file holds every question on this page with an empty box beside it, in this language. Nothing is collected here.',
     fileHint:
       'Tick a box once a named professional has answered that question for your own situation, and write the name and the date beside it.',
     fallbackTitle: 'Checklist',
@@ -742,6 +755,10 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
   zh: {
     exportButton: '下载为文档',
     exportNote: '下载到的文件会带上上面每一个问题，每个问题前面留一个空的选择框，语言与本页一致。这里不会收集任何内容，没有保存在服务器上的东西，也不会发出任何东西。',
+    contentsHeading: '目录',
+    totalCount: '{groups} 组，{questions} 个问题',
+    questionCount: '{n} 个问题',
+    bottomNote: '文件里带着这一页的每个问题，每个问题旁留一个空方框，语言与本页一致。这里不会收集任何内容。',
     fileHint: '当一位具名的专业人士针对您自身的情况回答了某个问题，就勾上它前面的方框，并在旁边写下这个名字和日期。',
     fallbackTitle: '清单',
     savedLine: '保存于',

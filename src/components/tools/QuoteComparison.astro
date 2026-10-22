@@ -1,15 +1,15 @@
 ---
 /*
- * Agency quote comparison, kept as light as the page allows.
+ * Agency quote comparison, built around the quote a visitor already has.
  *
- * The rows are printed by the server: the common costs a surrogacy quote is built from are known
- * in advance, so a visitor meets a filled-out table instead of an empty grid and an
- * "add line item" button. What is left to do is type two columns of amounts and set each scope.
+ * The nine costs a quote is usually built from are printed by the server, so nobody has to build
+ * a table before entering a number. One quote is shown at first; a second panel appears only when
+ * the visitor asks for it. Typing an amount marks that line as included and brings it into the
+ * total immediately, which leaves two deliberate exceptions: a line the quote excludes is set to
+ * "not included", and a line the quote never mentions is left blank and stays out of the total.
+ *
  * Nothing is collected and nothing is kept: there is no browser storage behind this tool, closing
  * the page discards what was typed, and the download is the only copy that leaves.
- *
- * The scope options distinguish "not included" from "needs checking" on purpose: a quote that
- * excludes an item and one that fails to mention it are different facts about the same provider.
  *
  * The copy is serialized into the DOM by the page rather than written into the script below,
  * because one bundle serves both languages and a status label left in English would sit inside
@@ -56,95 +56,113 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
   </div>
   <p class="mt-2 max-w-[64ch] text-[13px] leading-[1.5] text-muted" id="qc-currency-note">{copy.currencyNote}</p>
 
-  <!-- relative: the sr-only caption is absolutely positioned, and without a
-       containing block here it lands against the document and widens the page. -->
-  <div class="relative mt-6 overflow-x-auto pb-2">
-    <table class="w-full min-w-[680px] border-collapse text-left text-[15px]">
-      <caption class="sr-only">
-        {copy.caption}
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col" class="w-[34%] border-b border-line-strong pb-2 pr-4 text-[13px] font-semibold text-muted">
-            {copy.lineItem}
-          </th>
-          {
-            plans.map((plan) => (
-              <>
-                <th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[110px]">
-                  {copy.amount}
-                </th>
-                <th scope="col" class="border-b border-line-strong px-2 pb-2 text-[13px] font-semibold text-muted min-w-[130px]">
-                  {name(plan.letter)}
-                </th>
-              </>
-            ))
-          }
-        </tr>
-      </thead>
-      <tbody>
-        {
-          copy.items.map((label, index) => (
-            <tr>
-              <th scope="row" class="border-b border-line py-2.5 pr-3 text-left font-normal align-top">
-                {label}
-              </th>
-              {
-                plans.map((plan) => (
-                  <>
-                    <td class="border-b border-line py-2.5 pr-2 align-top">
-                      <label class="sr-only" for={`qc-${index}-${plan.id}-amount`}>
-                        {copy.srAmount.replace('{item}', label).replace('{plan}', name(plan.letter))}
-                      </label>
-                      <input
-                        id={`qc-${index}-${plan.id}-amount`}
-                        class="field-input tnum text-[14px]"
-                        type="text"
-                        inputmode="decimal"
-                        data-cell={`${index}:${plan.letter}`}
-                        placeholder="0"
-                      />
-                    </td>
-                    <td class="border-b border-line py-2.5 pr-3 align-top">
-                      <label class="sr-only" for={`qc-${index}-${plan.id}-status`}>
-                        {copy.srScope.replace('{item}', label).replace('{plan}', name(plan.letter))}
-                      </label>
-                      <select
-                        id={`qc-${index}-${plan.id}-status`}
-                        class="field-input text-[14px]"
-                        data-status={`${index}:${plan.letter}`}
-                      >
-                        <option value="verify" selected>
-                          {copy.statusVerify}
-                        </option>
-                        <option value="in">{copy.statusIn}</option>
-                        <option value="out">{copy.statusOut}</option>
-                      </select>
-                    </td>
-                  </>
-                ))
-              }
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
-  </div>
+  <p
+    id="quote-status-hint"
+    class="mt-5 max-w-[68ch] border-l-2 border-accent pl-3 text-[14px] leading-relaxed"
+  >
+    {copy.statusHint}
+  </p>
 
-  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+  <noscript>
+    <style>{`
+      [data-plan="b"][hidden] { display: block !important; }
+      [data-add-wrap] { display: none !important; }
+      [data-remove-plan] { display: none !important; }
+    `}</style>
+  </noscript>
+
+  <div class="mt-6 grid items-start gap-5 lg:grid-cols-2">
     {
       plans.map((plan) => (
-        <div class="rounded-(--radius) border border-line bg-surface-2 px-4 py-3.5">
-          <p class="text-[13px] font-medium text-muted" data-plan-label={plan.letter}>{name(plan.letter)}</p>
-          <p class="mt-1 tnum text-[24px] leading-none" data-total={plan.letter}>&nbsp;</p>
-          <p class="mt-2 grid gap-0.5 text-[13px] text-muted">
-            <span data-pending={plan.letter}></span>
-            <span data-excluded={plan.letter}></span>
-            <span data-invalid={plan.letter} class="text-flag" hidden></span>
-          </p>
-        </div>
+        <section
+          class="rounded-(--radius) border border-line bg-surface-2/60"
+          data-plan={plan.id}
+          hidden={plan.id === 'b'}
+          aria-labelledby={`quote-${plan.id}`}
+        >
+          <header class="sticky top-16 z-10 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-t-(--radius) border-b border-line bg-surface-2 px-4 py-3 sm:px-5">
+            <div class="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <h2 id={`quote-${plan.id}`} class="text-[17px] font-semibold tracking-tight">
+                {name(plan.letter)}
+              </h2>
+              <span class="text-[13px] text-muted" data-progress={plan.letter}>
+                {copy.progress.replace('{done}', '0').replace('{total}', String(copy.items.length))}
+              </span>
+            </div>
+            <div class="flex items-baseline gap-x-3">
+              <span class="tnum text-[16px] font-medium" data-header-total={plan.letter}>&nbsp;</span>
+              {plan.id === 'b' && (
+                <button
+                  type="button"
+                  class="text-[13px] text-muted underline underline-offset-4 hover:text-ink"
+                  data-remove-plan
+                >
+                  {copy.removePlan}
+                </button>
+              )}
+            </div>
+          </header>
+          <ul class="px-4 sm:px-5">
+            {copy.items.map((label, index) => (
+              <li class="grid grid-cols-[minmax(0,1fr)_8.5rem] items-center gap-x-3 gap-y-2 border-b border-line py-3 last:border-b-0 sm:grid-cols-[minmax(0,1fr)_7.5rem_9rem]">
+                <label
+                  class="col-span-2 text-[14px] leading-snug sm:col-span-1"
+                  for={`qc-${index}-${plan.id}-amount`}
+                >
+                  {label}
+                  <span class="sr-only">, {name(plan.letter)}</span>
+                </label>
+                <input
+                  id={`qc-${index}-${plan.id}-amount`}
+                  class="field-input tnum w-full text-right text-[14px]"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  data-cell={`${index}:${plan.letter}`}
+                />
+                <label class="sr-only" for={`qc-${index}-${plan.id}-status`}>
+                  {copy.srScope.replace('{item}', label).replace('{plan}', name(plan.letter))}
+                </label>
+                <select
+                  id={`qc-${index}-${plan.id}-status`}
+                  class="field-input w-full text-[13px]"
+                  data-status={`${index}:${plan.letter}`}
+                  aria-describedby="quote-status-hint"
+                >
+                  <option value="verify" selected>
+                    {copy.statusVerify}
+                  </option>
+                  <option value="in">{copy.statusIn}</option>
+                  <option value="out">{copy.statusOut}</option>
+                </select>
+              </li>
+            ))}
+          </ul>
+          <footer class="border-t border-line px-4 py-3.5 sm:px-5">
+            <div class="flex items-baseline justify-between gap-3">
+              <span class="text-[13px] font-medium text-muted">{copy.totalLabel}</span>
+              <span class="tnum text-[22px] leading-none" data-total={plan.letter}>&nbsp;</span>
+            </div>
+            <p class="mt-1.5 text-[12.5px] leading-relaxed text-muted">{copy.totalHint}</p>
+            <p class="mt-2 grid gap-0.5 text-[13px] leading-relaxed text-muted">
+              <span data-pending={plan.letter}></span>
+              <span data-excluded={plan.letter}></span>
+              <span data-invalid={plan.letter} class="text-flag" hidden></span>
+            </p>
+          </footer>
+        </section>
       ))
     }
+
+    <div class="flex items-start" data-add-wrap>
+      <button
+        type="button"
+        class="w-full rounded-(--radius) border border-dashed border-line-strong px-4 py-5 text-[14px] text-muted transition-colors hover:border-accent hover:text-ink"
+        data-add-plan
+      >
+        <span aria-hidden="true">+ </span>{copy.addPlan}
+      </button>
+    </div>
   </div>
 
   <section class="mt-6 rounded-(--radius) border border-flag/35 bg-flag-tint px-5 py-4" data-diff hidden>
@@ -156,6 +174,10 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
   </section>
 
   <p class="mt-5 text-[14px] leading-relaxed text-muted">{copy.footer}</p>
+
+  <div class="mt-6 border-t border-line pt-5">
+    <button type="button" class="btn-ghost text-sm" data-action="download">{copy.download}</button>
+  </div>
 </div>
 
 <script>
@@ -175,7 +197,11 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
       currency: 'USD',
       cells: {},
     };
+    const autoStatus = new Set<string>();
     const cell = (key: string) => (state.cells[key] ??= { amount: '', status: 'verify' });
+    const panel = (letter: string) => root.querySelector<HTMLElement>(`[data-plan="${letter.toLowerCase()}"]`)!;
+    const inputFor = (key: string) => root.querySelector<HTMLInputElement>(`[data-cell="${key}"]`)!;
+    const selectFor = (key: string) => root.querySelector<HTMLSelectElement>(`[data-status="${key}"]`)!;
 
     const parseAmount = (raw: string): number | null => {
       const cleaned = raw.replace(/[\s,]/g, '');
@@ -188,7 +214,8 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
         return new Intl.NumberFormat(locale, {
           style: 'currency',
           currency: state.currency,
-          maximumFractionDigits: 0,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
         }).format(value);
       } catch {
         return `${state.currency} ${value.toLocaleString(locale)}`;
@@ -202,51 +229,109 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
       let pending = 0;
       let excluded = 0;
       let invalid = 0;
+      let filled = 0;
       for (let index = 0; index < itemCount; index += 1) {
         const c = cell(`${index}:${letter}`);
+        const hasAmount = c.amount.trim() !== '';
+        if (hasAmount || c.status === 'out') filled += 1;
+        if (c.status === 'out') {
+          excluded += 1;
+          continue;
+        }
         if (c.status === 'in') {
           const n = parseAmount(c.amount);
           if (n !== null) included += n;
-          else pending += 1;
-          if (c.amount.trim() !== '' && n === null) invalid += 1;
-        } else if (c.status === 'out') {
-          excluded += 1;
-        } else {
-          pending += 1;
+          else {
+            pending += 1;
+            if (hasAmount) invalid += 1;
+          }
+          continue;
         }
+        pending += 1;
       }
-      return { included, pending, excluded, invalid };
+      return { included, pending, excluded, invalid, filled };
     }
 
     function recompute() {
+      const totals: Record<string, ReturnType<typeof totalsFor>> = {};
       for (const letter of letters) {
         const t = totalsFor(letter);
+        totals[letter] = t;
+        root.querySelector<HTMLElement>(`[data-progress="${letter}"]`)!.textContent = fill(T.progress, {
+          done: t.filled,
+          total: itemCount,
+        });
         root.querySelector<HTMLElement>(`[data-total="${letter}"]`)!.textContent = money(t.included);
-        root.querySelector<HTMLElement>(`[data-pending="${letter}"]`)!.textContent = fill(T.unconfirmed, { n: t.pending, s: plural(t.pending) });
-        root.querySelector<HTMLElement>(`[data-excluded="${letter}"]`)!.textContent = fill(T.notIncluded, { n: t.excluded, s: plural(t.excluded) });
+        root.querySelector<HTMLElement>(`[data-header-total="${letter}"]`)!.textContent = money(t.included);
+        root.querySelector<HTMLElement>(`[data-pending="${letter}"]`)!.textContent = fill(T.unconfirmed, {
+          n: t.pending,
+          s: plural(t.pending),
+        });
+        root.querySelector<HTMLElement>(`[data-excluded="${letter}"]`)!.textContent = fill(T.notIncluded, {
+          n: t.excluded,
+          s: plural(t.excluded),
+        });
         const invalid = root.querySelector<HTMLElement>(`[data-invalid="${letter}"]`)!;
         invalid.hidden = t.invalid === 0;
         invalid.textContent = fill(T.unreadable, { n: t.invalid, s: plural(t.invalid) });
       }
-      const gap = totalsFor('A').included - totalsFor('B').included;
-      const hasNumbers = totalsFor('A').included > 0 || totalsFor('B').included > 0;
-      root.querySelector<HTMLElement>('[data-diff]')!.hidden = !hasNumbers;
-      root.querySelector<HTMLElement>('[data-diff-value]')!.textContent = `${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`;
+
+      const comparable = !panel('B').hidden && totals.A.filled > 0 && totals.B.filled > 0;
+      const diff = root.querySelector<HTMLElement>('[data-diff]')!;
+      diff.hidden = !comparable;
+      if (comparable) {
+        const gap = totals.A.included - totals.B.included;
+        root.querySelector<HTMLElement>('[data-diff-value]')!.textContent =
+          `${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`;
+      }
     }
 
     function markInvalid(key: string) {
-      const amount = root.querySelector<HTMLInputElement>(`[data-cell="${key}"]`)!;
+      const amount = inputFor(key);
       const bad =
         cell(key).status === 'in' && amount.value.trim() !== '' && parseAmount(amount.value) === null;
       amount.classList.toggle('border-flag', bad);
       amount.setAttribute('aria-invalid', bad ? 'true' : 'false');
     }
 
+    function setSecondPlanVisible(visible: boolean) {
+      panel('B').hidden = !visible;
+      root.querySelector<HTMLElement>('[data-add-wrap]')!.hidden = visible;
+      recompute();
+    }
+
+    function clearPlan(letter: string) {
+      for (let index = 0; index < itemCount; index += 1) {
+        const key = `${index}:${letter}`;
+        delete state.cells[key];
+        autoStatus.delete(key);
+        const amount = inputFor(key);
+        amount.value = '';
+        amount.classList.remove('border-flag');
+        amount.setAttribute('aria-invalid', 'false');
+        selectFor(key).value = 'verify';
+      }
+    }
+
     root.addEventListener('input', (event) => {
-      const target = event.target as HTMLElement;
+      const target = event.target as HTMLInputElement;
       if (!target.matches('[data-cell]')) return;
       const key = target.getAttribute('data-cell')!;
-      cell(key).amount = (target as HTMLInputElement).value;
+      const status = selectFor(key);
+      cell(key).amount = target.value;
+
+      if (target.value.trim() !== '') {
+        if (status.value === 'verify') {
+          status.value = 'in';
+          cell(key).status = 'in';
+          autoStatus.add(key);
+        }
+      } else if (status.value === 'in' && autoStatus.has(key)) {
+        status.value = 'verify';
+        cell(key).status = 'verify';
+        autoStatus.delete(key);
+      }
+
       markInvalid(key);
       recompute();
     });
@@ -261,6 +346,7 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
       if (target.matches('[data-status]')) {
         const key = target.getAttribute('data-status')!;
         cell(key).status = (target as HTMLSelectElement).value as Status;
+        autoStatus.delete(key);
         markInvalid(key);
         recompute();
       }
@@ -269,43 +355,69 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
     function cellText(index: number, letter: string): string {
       const c = cell(`${index}:${letter}`);
       const n = parseAmount(c.amount);
-      if (c.status === 'in') return n !== null ? money(n) : c.amount.trim() === '' ? T.statusVerify : c.amount;
-      if (c.status === 'out') return c.amount.trim() === '' ? T.statusOut : `${T.statusOut} · ${c.amount}`;
+      if (c.status === 'in') {
+        return n !== null ? money(n) : c.amount.trim() === '' ? T.amountMissing : c.amount;
+      }
+      if (c.status === 'out') {
+        return c.amount.trim() === '' ? T.statusOut : `${T.statusOut} · ${c.amount}`;
+      }
       return c.amount.trim() === '' ? T.statusVerify : `${T.statusVerify} · ${c.amount}`;
     }
 
     function asMarkdown(): string {
       const savedAt = new Date().toLocaleString(locale, { dateStyle: 'long', timeStyle: 'short' });
-      const headA = fill(T.quoteName, { letter: 'A' });
-      const headB = fill(T.quoteName, { letter: 'B' });
-      const tA = totalsFor('A');
-      const tB = totalsFor('B');
-      const gap = tA.included - tB.included;
+      const shown = letters.filter((letter) => !panel(letter).hidden);
+      const heads = shown.map((letter) => fill(T.quoteName, { letter }));
+      const totals = shown.map((letter) => totalsFor(letter));
       const lines: string[] = [
         `# ${T.exportTool}`,
         '',
         `${T.savedLine} ${savedAt} · ${state.currency}`,
         T.exportNote,
         '',
-        `| ${T.lineItem} | ${headA} | ${headB} |`,
-        '| --- | --- | --- |',
       ];
-      for (let index = 0; index < itemCount; index += 1) {
-        lines.push(`| ${T.items[index]} | ${cellText(index, 'A')} | ${cellText(index, 'B')} |`);
+
+      if (shown.length === 2) {
+        lines.push(`| ${T.lineItem} | ${heads[0]} | ${heads[1]} |`, '| --- | --- | --- |');
+      } else {
+        lines.push(`| ${T.lineItem} | ${heads[0]} |`, '| --- | --- |');
       }
-      lines.push(
-        '',
-        `${T.totalLine}: ${money(tA.included)} · ${money(tB.included)}`,
-        `${T.diffLine}: ${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`,
-        '',
-        T.exportFooter,
-      );
+      for (let index = 0; index < itemCount; index += 1) {
+        lines.push(`| ${T.items[index]} | ${shown.map((letter) => cellText(index, letter)).join(' | ')} |`);
+      }
+
+      if (shown.length === 2) {
+        const gap = totals[0].included - totals[1].included;
+        lines.push(
+          '',
+          `${T.totalLine}: ${heads[0]} ${money(totals[0].included)} · ${heads[1]} ${money(totals[1].included)}`,
+          `${T.diffLine}: ${gap < 0 ? '-' : ''}${money(Math.abs(gap))}`,
+        );
+      } else {
+        lines.push('', `${T.totalLineOne}: ${money(totals[0].included)}`);
+      }
+
+      lines.push('', T.exportFooter);
       return lines.join('\n');
     }
 
     root.addEventListener('click', (event) => {
-      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action]');
+      const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-action], [data-add-plan], [data-remove-plan]');
       if (!trigger) return;
+
+      if (trigger.matches('[data-add-plan]')) {
+        setSecondPlanVisible(true);
+        inputFor('0:B').focus();
+        return;
+      }
+
+      if (trigger.matches('[data-remove-plan]')) {
+        clearPlan('B');
+        setSecondPlanVisible(false);
+        root.querySelector<HTMLButtonElement>('[data-add-plan]')!.focus();
+        return;
+      }
+
       const action = trigger.getAttribute('data-action');
 
       if (action === 'download') {
@@ -319,14 +431,9 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
       }
 
       if (action === 'reset') {
-        for (const input of root.querySelectorAll<HTMLInputElement>('[data-cell]')) {
-          input.value = '';
-          input.classList.remove('border-flag');
-          input.setAttribute('aria-invalid', 'false');
-        }
-        for (const select of root.querySelectorAll<HTMLSelectElement>('[data-status]')) select.value = 'verify';
-        state.cells = {};
-        recompute();
+        clearPlan('A');
+        clearPlan('B');
+        setSecondPlanVisible(false);
       }
     });
 
