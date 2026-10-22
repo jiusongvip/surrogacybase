@@ -6,9 +6,11 @@ import Toc from '@/components/content/Toc.astro';
 import SourceList from '@/components/content/SourceList.astro';
 import EvidenceNote from '@/components/content/EvidenceNote.astro';
 import RelatedLinks from '@/components/content/RelatedLinks.astro';
+import NextStep from '@/components/content/NextStep.astro';
 import { SITE } from '@/const';
+import { CONTENT_NEXT } from '@/data/next-steps';
 import { LANG_META } from '@/i18n/config';
-import { langFromPath } from '@/i18n/paths';
+import { langFromPath, localizedPath } from '@/i18n/paths';
 import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
 import { contentMedia } from '@/data/content-media';
 import { Image } from 'astro:assets';
@@ -35,6 +37,7 @@ const isGuide = d.type === 'guide';
 const url = new URL(pathOf(entry), Astro.site);
 const media = contentMedia(entry.id);
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+const next = CONTENT_NEXT[lang][d.category];
 
 const jsonLd = [
   {
@@ -185,5 +188,9 @@ const jsonLd = [
         )}
       </aside>
     </div>
+
+    <section class="mt-16">
+      <NextStep secondaryHref={localizedPath(lang, next.href)} secondaryLabel={next.label} />
+    </section>
   </article>
 </PageLayout>

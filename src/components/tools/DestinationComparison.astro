@@ -1,0 +1,368 @@
+---
+/*
+ * The destination comparison board.
+ *
+ * Every column is one published jurisdiction record, repeated rather than summarised: the legal
+ * basis, who may commission, payment, parentage, the cost figures a source printed, and what the
+ * record still leaves open. Nothing is scored, ranked or filled in, and a record with no cost
+ * figure says so instead of borrowing a number from somewhere else.
+ *
+ * The board renders all published records on the server and hides the ones outside the shortlist,
+ * so the page works without JavaScript: with scripting off every record and every dimension is
+ * visible at once. The script only changes which columns are on screen, which dimension is shown,
+ * and what the downloaded file contains. Nothing is stored.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { LANG_META } from '@/i18n/config';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
+import { COMPARE_DIMENSIONS, DESTINATION_COMPARE_PAGE, type CompareDimension } from '@/data/destination-comparison';
+import { costText } from '@/lib/costs';
+import { formatDate } from '@/lib/dates';
+import { getJurisdictions } from '@/lib/jurisdictions';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = DESTINATION_COMPARE_PAGE[lang];
+const costsCopy = UI[lang].costs;
+const basisLabels = BASIS_LABELS[lang];
+
+type CompareRow = {
+  code: string;
+  name: string;
+  region: string;
+  basis: string;
+  eligibility: string;
+  payment: string;
+  parentage: string;
+  costs: { label: string; text: string; asOf: string; sourceLabel: string; sourceUrl: string }[];
+  factCount: number;
+  openQuestions: string[];
+  checked: string;
+  insufficient: boolean;
+  href: string;
+};
+
+const rows: CompareRow[] = (await getJurisdictions(lang)).map((entry) => {
+  const d = entry.data;
+  return {
+    code: d.code,
+    name: d.name,
+    region: d.region,
+    basis: basisLabels[d.basis] ?? d.basis,
+    eligibility: d.eligibility,
+    payment: d.paymentModel,
+    parentage: d.parentage,
+    costs: d.costs.map((figure) => {
+      const source = d.facts[figure.fact].source;
+      return {
+        label: costsCopy.items[figure.item],
+        text: costText(figure, lang),
+        asOf: fill(costsCopy.asOf, { year: figure.asOf }),
+        sourceLabel: source.label,
+        sourceUrl: source.url,
+      };
+    }),
+    factCount: d.facts.length,
+    openQuestions: d.openQuestions,
+    checked: fill(copy.checked, { date: formatDate(d.statusVerifiedOn, lang) }),
+    insufficient: d.insufficientData,
+    href: localizedPath(lang, `/destinations/${d.code}`),
+  };
+});
+
+/** The three a first shortlist usually starts from, kept only when the records exist. */
+const defaultCodes = ['us', 'gb', 'ca'];
+const selected = defaultCodes.filter((code) => rows.some((row) => row.code === code));
+if (selected.length === 0) selected.push(...rows.slice(0, 3).map((row) => row.code));
+
+function dimensionText(row: CompareRow, dim: CompareDimension): string {
+  switch (dim) {
+    case 'basis':
+      return row.basis;
+    case 'eligibility':
+      return row.eligibility;
+    case 'payment':
+      return row.payment;
+    case 'parentage':
+      return row.parentage;
+    default:
+      return '';
+  }
+}
+---
+
+<div
+  data-compare
+  data-copy={JSON.stringify(copy)}
+  data-locale={LANG_META[lang].dateLocale}
+  data-export={copy.exportFilename}
+>
+  <section aria-labelledby="compare-picker" data-picker>
+    <h2 id="compare-picker" class="text-[22px]">{copy.pickerHeading}</h2>
+    <p class="mt-2 max-w-[68ch] text-[16px] leading-relaxed text-muted">{copy.pickerIntro}</p>
+
+    <fieldset class="mt-5">
+      <legend class="sr-only">{copy.pickerHeading}</legend>
+      <div class="flex flex-wrap gap-2">
+        {
+          rows.map((row) => (
+            <label class="inline-flex cursor-pointer items-center gap-2 rounded-(--radius-btn) border border-line-control bg-surface px-4 py-2 text-[15px] transition-colors duration-(--dur) hover:border-line-strong has-[:checked]:border-accent has-[:checked]:bg-accent-tint">
+              <input
+                type="checkbox"
+                data-pick
+                value={row.code}
+                checked={selected.includes(row.code)}
+                class="h-4 w-4 accent-brand"
+              />
+              <span>{row.name}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+      <p class="tnum text-[14px] text-muted" data-count aria-live="polite">
+        {fill(copy.selected, { n: selected.length })}
+      </p>
+      <button type="button" class="text-[14px] text-muted underline decoration-line-strong underline-offset-[3px] hover:text-accent" data-action="clear">
+        {copy.clear}
+      </button>
+    </div>
+  </section>
+
+  <section class="mt-8" aria-labelledby="compare-board">
+    <h2 id="compare-board" class="sr-only">{copy.title}</h2>
+
+    <div class="flex flex-wrap gap-2" role="group" aria-label={copy.chooseDimension}>
+      {
+        COMPARE_DIMENSIONS.map((dim, i) => (
+          <button
+            type="button"
+            data-dimension-btn={dim}
+            aria-pressed={i === 0 ? 'true' : 'false'}
+            class="rounded-(--radius-btn) border border-line-control px-4 py-2 text-[14px] text-muted transition-colors duration-(--dur) hover:border-line-strong hover:text-text aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-accent-on"
+          >
+            {copy.dimensions[dim]}
+          </button>
+        ))
+      }
+    </div>
+    <p class="mt-2 text-[13px] text-muted">{copy.chooseDimension}</p>
+
+    <noscript>
+      <style>{`
+        [data-card][hidden], [data-dimension][hidden] { display: block !important; }
+        [data-picker], [data-download] { display: none !important; }
+      `}</style>
+    </noscript>
+
+    <div class="mt-5 overflow-x-auto pb-2" data-scroller>
+      <div class="compare-columns grid gap-4" data-columns style={`--compare-cols: ${Math.max(selected.length, 1)}`}>
+        {
+          rows.map((row) => {
+            const isSelected = selected.includes(row.code);
+            return (
+              <article class="card bg-surface p-5" data-card={row.code} hidden={!isSelected}>
+                <header class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <p class="text-[13px] text-muted" data-region>{row.region}</p>
+                    <h3 class="mt-0.5 text-[22px] leading-snug">
+                      <a href={row.href} class="hover:text-accent">{row.name}</a>
+                    </h3>
+                  </div>
+                  {row.insufficient && (
+                    <span class="shrink-0 rounded-(--radius-btn) bg-flag-tint px-2.5 py-1 text-[12px] text-flag">
+                      {copy.insufficient}
+                    </span>
+                  )}
+                </header>
+                <p class="tnum mt-2 text-[13px] text-muted">{row.checked}</p>
+
+                <div class="mt-4 border-t border-line pt-4">
+                  {COMPARE_DIMENSIONS.map((dim) => (
+                    <div data-dimension={dim} hidden={dim !== 'basis'}>
+                      <h4 class="text-[13px] font-semibold text-muted">{copy.dimensions[dim]}</h4>
+
+                      {dim === 'costs' ? (
+                        row.costs.length > 0 ? (
+                          <ul class="mt-2 divide-y divide-line">
+                            {row.costs.map((figure) => (
+                              <li class="py-3 first:pt-0 last:pb-0">
+                                <p class="text-[12px] leading-snug text-muted" data-cost-label>{figure.label}</p>
+                                <p class="tnum mt-0.5 text-[16px] leading-snug" data-cost-figure>{figure.text}</p>
+                                <p class="mt-1 text-[12px] leading-relaxed text-muted" data-cost-note>
+                                  <span data-cost-asof>{figure.asOf}</span>
+                                  <span class="block">
+                                    {copy.sourceLabel}:{' '}
+                                    <a
+                                      href={figure.sourceUrl}
+                                      rel="noopener noreferrer"
+                                      target="_blank"
+                                      class="link-underlined text-[12px]"
+                                      data-cost-source
+                                    >
+                                      {figure.sourceLabel}
+                                    </a>
+                                  </span>
+                                </p>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p class="mt-2 text-[15px] leading-[1.65] text-muted">{copy.noCost}</p>
+                        )
+                      ) : dim === 'record' ? (
+                        <div class="mt-2">
+                          <p class="text-[15px] leading-[1.65]" data-fact-count>{fill(copy.factCount, { n: row.factCount })}</p>
+                          <p class="mt-1 text-[15px] leading-[1.65]" data-open-count>
+                            {fill(copy.openCount, { n: row.openQuestions.length })}
+                          </p>
+                          <div class="mt-4 flex flex-col items-start gap-2 text-[14px]">
+                            <a href={row.href} class="link-underlined">{copy.recordLink}</a>
+                            {row.openQuestions.length > 0 && (
+                              <a href={`${row.href}#open-questions`} class="link-underlined">{copy.openLink}</a>
+                            )}
+                          </div>
+                        </div>
+                      ) : (
+                        <p class="mt-2 text-[15px] leading-[1.65]" data-value>{dimensionText(row, dim)}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <p class="mt-4 text-[15px] leading-relaxed text-muted" data-empty hidden>{copy.empty}</p>
+  </section>
+
+  <section class="mt-8 flex flex-wrap items-start justify-between gap-4 border-t border-line pt-6" data-download>
+    <p class="max-w-[64ch] text-[14px] leading-relaxed text-muted">{copy.downloadNote}</p>
+    <button type="button" class="btn-primary" data-action="download">
+      <Icon name="download" size={16} />
+      {copy.download}
+    </button>
+  </section>
+</div>
+
+<style>
+  .compare-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .compare-columns {
+      grid-template-columns: repeat(var(--compare-cols, 1), minmax(280px, 1fr));
+    }
+  }
+</style>
+
+<script>
+  for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-compare]'))) {
+    /* One bundle serves both languages, so the wording is read off the page, not compiled in. */
+    const T = JSON.parse(root.dataset.copy!);
+    const locale = root.dataset.locale ?? 'en-US';
+    const fileName = root.dataset.export ?? 'destination-comparison.md';
+
+    const picks = Array.from(root.querySelectorAll<HTMLInputElement>('[data-pick]'));
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('[data-card]'));
+    const dimensions = Array.from(root.querySelectorAll<HTMLElement>('[data-dimension]'));
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dimension-btn]'));
+    const columns = root.querySelector<HTMLElement>('[data-columns]');
+    const scroller = root.querySelector<HTMLElement>('[data-scroller]');
+    const count = root.querySelector<HTMLElement>('[data-count]');
+    const empty = root.querySelector<HTMLElement>('[data-empty]');
+
+    const text = (el: Element | null | undefined) => el?.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+    const chosen = () => picks.filter((pick) => pick.checked).map((pick) => pick.value);
+
+    function render() {
+      const codes = chosen();
+      for (const card of cards) card.hidden = !codes.includes(card.dataset.card!);
+      if (count) count.textContent = T.selected.replace('{n}', String(codes.length));
+      if (empty) empty.hidden = codes.length > 0;
+      if (scroller) scroller.hidden = codes.length === 0;
+      if (columns) columns.style.setProperty('--compare-cols', String(Math.max(codes.length, 1)));
+    }
+
+    function showDimension(dim: string) {
+      for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.dimensionBtn === dim));
+      for (const block of dimensions) block.hidden = block.dataset.dimension !== dim;
+    }
+
+    /** Reads the rendered columns, so the file cannot say more than the board does. */
+    function asMarkdown(): string {
+      const when = new Date().toLocaleDateString(locale, { dateStyle: 'long' });
+      const lines = [`# ${T.exportTitle}`, '', T.exportSaved.replace('{date}', when), '', T.exportNote];
+
+      for (const card of cards.filter((item) => !item.hidden)) {
+        lines.push('', `## ${text(card.querySelector('h3'))}`, '', text(card.querySelector('[data-region]')));
+        for (const dim of Object.keys(T.dimensions) as string[]) {
+          const block = card.querySelector<HTMLElement>(`[data-dimension="${dim}"]`);
+          if (!block) continue;
+          lines.push('', `### ${T.dimensions[dim]}`);
+
+          if (dim === 'costs') {
+            const figures = Array.from(block.querySelectorAll('li'));
+            if (figures.length === 0) lines.push('', T.noCost);
+            for (const figure of figures) {
+              const label = text(figure.querySelector('[data-cost-label]'));
+              const amount = text(figure.querySelector('[data-cost-figure]'));
+              const asOf = text(figure.querySelector('[data-cost-asof]'));
+              const source = text(figure.querySelector('[data-cost-source]'));
+              const url = figure.querySelector('a')?.getAttribute('href') ?? '';
+              lines.push('', `- ${label}: ${amount} (${asOf}; ${source}${url ? `, ${url}` : ''})`);
+            }
+          } else if (dim === 'record') {
+            lines.push('', `- ${text(block.querySelector('[data-fact-count]'))}`);
+            lines.push(`- ${text(block.querySelector('[data-open-count]'))}`);
+            for (const link of Array.from(block.querySelectorAll('a'))) {
+              const href = new URL(link.getAttribute('href')!, location.origin).href;
+              lines.push('', `- ${text(link)}: ${href}`);
+            }
+          } else {
+            lines.push('', text(block.querySelector('[data-value]')));
+          }
+        }
+      }
+
+      lines.push('', T.exportFooter);
+      return lines.join('\n');
+    }
+
+    root.addEventListener('change', (event) => {
+      if ((event.target as HTMLElement).closest('[data-pick]')) render();
+    });
+
+    root.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      const button = target.closest<HTMLButtonElement>('[data-dimension-btn]');
+      if (button) {
+        showDimension(button.dataset.dimensionBtn!);
+        return;
+      }
+
+      const action = target.closest<HTMLElement>('[data-action]')?.dataset.action;
+      if (action === 'clear') {
+        for (const pick of picks) pick.checked = false;
+        render();
+      }
+      if (action === 'download') {
+        const blob = new Blob([asMarkdown()], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    });
+
+    render();
+  }
+</script>

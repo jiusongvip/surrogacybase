@@ -56,6 +56,32 @@ export const TOOLS: Tool[] = [
     },
   },
   {
+    id: 'destination-comparison',
+    live: true,
+    en: {
+      name: 'Destination comparison',
+      summary:
+        'Put the records you are considering side by side: the legal basis, who may commission, payment, parentage at birth, the cost figures a source published, and what each record still leaves open. A gap in a record is shown as a gap, not filled.',
+      linkNote: 'Put a shortlist side by side, record against record.',
+      points: [
+        'Each column is a published record, not a summary written for this page',
+        'A gap in a record is shown as a gap instead of being filled',
+        'Download the comparison, or change the shortlist: nothing is kept after the tab closes',
+      ],
+    },
+    zh: {
+      name: '目的地对比',
+      summary:
+        '把您正在考虑的目的地记录并排放好：法律依据、谁可以委托、付款、出生时的亲权、来源公布过的费用数据，以及每份记录仍然没有回答的问题。记录里的空白会照实显示，不会被补上。',
+      linkNote: '把候选目的地并排放在一起，记录对记录。',
+      points: [
+        '每一列都是一份已发布的记录，不是为这个页面另写的摘要',
+        '记录里的空白照实显示，不会被补上',
+        '下载这份对比，或更换候选名单；关掉标签页后不保留任何内容',
+      ],
+    },
+  },
+  {
     id: 'cost-figures',
     live: true,
     en: {

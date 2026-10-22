@@ -250,6 +250,8 @@ const pairFiles = [
 ];
 const proseFiles = [
   ...pairFiles,
+  'src/data/destination-comparison.ts',
+  'src/data/next-steps.ts',
   'src/data/tool-pages.ts',
   'src/data/service-pages.ts',
   'src/data/policy-pages.ts',

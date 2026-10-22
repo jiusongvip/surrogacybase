@@ -6,13 +6,13 @@ type: guide
 category: destinations
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost"]
 relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "articles/why-no-average-surrogacy-cost-exists"]
-relatedTools: ["tools/destination-research-checklist"]
+relatedTools: ["tools/destination-research-checklist", "tools/destination-comparison"]
 sources:
   - label: "美国各州代孕法律（资料页）"
     url: "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/"
@@ -128,7 +128,7 @@ sources:
 
 ## 如何使用目的地页面
 
-[目的地页面](/zh/destinations)围绕这五个问题组织，每个论断对应一份来源，每次核查都标注日期。目前有五个法域有已发布的记录：美国、英国、加拿大、哥伦比亚与希腊。每份记录都为每个论断点明来源，并写明哪些部分仍未得到核实。对哥伦比亚来说，其依据的最新判决日期为 2024 年 4 月 18 日，此后的立法进展未能核实。对希腊来说，2025 年修正案的确切措辞与过渡条款尚未对照政府公报文本确认。
+[目的地页面](/zh/destinations)围绕这五个问题组织，每个论断对应一份来源，每次核查都标注日期。目前有八个法域有已发布的记录：美国、英国、加拿大、哥伦比亚、希腊、格鲁吉亚、哈萨克斯坦与乌克兰。每份记录都为每个论断点明来源，并写明哪些部分仍未得到核实。对哥伦比亚来说，其依据的最新判决日期为 2024 年 4 月 18 日，此后的立法进展未能核实。对希腊来说，2025 年修正案的确切措辞与过渡条款尚未对照政府公报文本确认。
 
 这带来一个您应当预期的结果。目的地清单很短，并不说明其他国家对您关闭。它只说明：那些地方的法律还没有被任何有资格的人对照其来源读过，因而无人能告诉您那里写了什么。
 

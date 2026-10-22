@@ -41,7 +41,6 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
   <div class="mt-5 flex flex-wrap items-end gap-3">
     <div class="w-40">
       <label class="field-label" for="qc-currency">{copy.currency}</label>
-      <p class="mt-1.5 text-[13px] leading-[1.5] text-muted" id="qc-currency-note">{copy.currencyNote}</p>
       <select id="qc-currency" class="field-input" data-field="currency" aria-describedby="qc-currency-note">
         {
           copy.currencies.map((code) => (
@@ -55,6 +54,7 @@ const name = (letter: string) => copy.quoteName.replace('{letter}', letter);
     <button type="button" class="btn-ghost text-sm" data-action="download">{copy.download}</button>
     <button type="button" class="btn-ghost text-sm" data-action="reset">{copy.reset}</button>
   </div>
+  <p class="mt-2 max-w-[64ch] text-[13px] leading-[1.5] text-muted" id="qc-currency-note">{copy.currencyNote}</p>
 
   <!-- relative: the sr-only caption is absolutely positioned, and without a
        containing block here it lands against the document and widens the page. -->

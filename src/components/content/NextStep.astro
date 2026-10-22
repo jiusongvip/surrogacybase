@@ -1,0 +1,39 @@
+---
+/*
+ * The closing band on content and destination pages.
+ *
+ * One action starts a conversation and one continues the research. The primary is a button that
+ * opens the site's single enquiry dialog through the global handler; the href is the no-JS
+ * fallback and lands on the homepage form. Nothing is pre-filled and nothing is sent.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { NEXT_STEP } from '@/data/next-steps';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+
+type Props = {
+  secondaryHref: string;
+  secondaryLabel: string;
+};
+
+const { secondaryHref, secondaryLabel } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+const copy = NEXT_STEP[lang];
+const home = localizedPath(lang, '/');
+---
+
+<section class="rounded-(--radius-card) bg-sand px-6 py-8 sm:px-8" aria-labelledby="next-step-h">
+  <div class="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
+    <div>
+      <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent">{copy.eyebrow}</p>
+      <h2 id="next-step-h" class="mt-2 text-[clamp(1.4rem,2.6vw,1.8rem)] leading-snug">{copy.heading}</h2>
+      <p class="mt-3 max-w-[58ch] text-[16px] leading-[1.7] text-muted">{copy.body}</p>
+    </div>
+    <div class="flex flex-wrap gap-3 lg:justify-end">
+      <a href={`${home}#assessment`} class="btn-primary" data-enquiry-cta>
+        {copy.primary}
+        <Icon name="arrow-right" size={16} />
+      </a>
+      <a href={secondaryHref} class="btn-ghost">{secondaryLabel}</a>
+    </div>
+  </div>
+</section>

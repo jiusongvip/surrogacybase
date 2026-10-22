@@ -6,13 +6,13 @@ type: guide
 category: destinations
 published: true
 publishedOn: "2026-10-14"
-updatedOn: "2026-10-14"
+updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: verified
 relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost"]
 relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "articles/why-no-average-surrogacy-cost-exists"]
-relatedTools: ["tools/destination-research-checklist"]
+relatedTools: ["tools/destination-research-checklist", "tools/destination-comparison"]
 sources:
   - label: "US Surrogacy Laws (resource page)"
     url: "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/"
@@ -128,7 +128,7 @@ Nothing on this site answers that for you, and a provider who answers it confide
 
 ## How to use the destination pages
 
-The [destination pages](/destinations) are organised around these five questions, with one claim per source and a date for every check. Five jurisdictions have a published record: the United States, the United Kingdom, Canada, Colombia and Greece. Each record names the source for every claim and states plainly what is still unverified: for Colombia, that the newest decision it rests on is dated 18 April 2024 and later legislative developments could not be confirmed; for Greece, that the 2025 amendment's exact wording and transitional provisions are not yet confirmed against the gazette text itself.
+The [destination pages](/destinations) are organised around these five questions, with one claim per source and a date for every check. Eight jurisdictions have a published record: the United States, the United Kingdom, Canada, Colombia, Greece, Georgia, Kazakhstan and Ukraine. Each record names the source for every claim and states plainly what is still unverified: for Colombia, that the newest decision it rests on is dated 18 April 2024 and later legislative developments could not be confirmed; for Greece, that the 2025 amendment's exact wording and transitional provisions are not yet confirmed against the gazette text itself.
 
 That has a consequence you should expect. A short list of destinations is not a statement that other countries are closed to you. It means the law of those places has not been read against its sources by anyone in a position to tell you what it says.
 

@@ -183,6 +183,10 @@ export const HOME_STAGE_ITEMS: {
     links: [
       { label: { en: 'Compare destinations', zh: '比较目的地' }, href: '/destinations' },
       {
+        label: { en: 'Compare a shortlist side by side', zh: '并排比较候选目的地' },
+        href: '/tools/destination-comparison',
+      },
+      {
         label: { en: 'Open the research checklist', zh: '打开目的地研究清单' },
         href: '/tools/destination-research-checklist',
       },

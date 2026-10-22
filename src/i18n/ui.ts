@@ -262,6 +262,9 @@ export const UI: Record<Lang, {
       compareBody: string;
       legalFramework: string;
       openChecklist: string;
+      compareBoard: string;
+      documentsGuide: string;
+      costFiguresLink: string;
       breadcrumb: string;
     };
     /**
@@ -287,6 +290,7 @@ export const UI: Record<Lang, {
       notice: string;
       ctaPick: string;
       ctaFactors: string;
+      ctaCompare: string;
       stats: { recorded: string; sourced: string; lastCheck: string };
       picker: {
         heading: string;
@@ -687,6 +691,9 @@ export const UI: Record<Lang, {
           'The comparison only means something when each destination is read against the same set of questions: eligibility, parentage, payment rules and what happens if the plan changes.',
         legalFramework: 'Legal framework',
         openChecklist: 'Work through the checklist',
+        compareBoard: 'Compare destinations side by side',
+        documentsGuide: 'Documents after birth',
+        costFiguresLink: 'See every published cost figure',
         breadcrumb: 'Destinations',
       },
       destinations: {
@@ -702,6 +709,7 @@ export const UI: Record<Lang, {
           'Surrogacy law differs between countries, and inside federal countries between states and provinces. It also differs by marital status, by whether a child is genetically yours, and by nationality and residence, and those three are separate tests rather than one. Nothing below is legal advice about your situation, and a country that permits an arrangement does not establish that you may use it or that your own country will accept the result.',
         ctaPick: 'Choose a destination',
         ctaFactors: 'See the four tests',
+        ctaCompare: 'Compare a shortlist',
         stats: {
           recorded: 'Destinations recorded',
           sourced: 'Backed by an openable source',
@@ -1210,6 +1218,9 @@ export const UI: Record<Lang, {
         compareBody: '只有当每个目的地都按同一组问题来读，比较才有意义：资格、亲权、付款规则，以及计划改变时会怎样。',
         legalFramework: '法律框架',
         openChecklist: '逐条过一遍核查清单',
+        compareBoard: '并排对比目的地',
+        documentsGuide: '孩子出生后的证件',
+        costFiguresLink: '查看全部已公布的费用数据',
         breadcrumb: '目的地',
       },
       destinations: {
@@ -1223,6 +1234,7 @@ export const UI: Record<Lang, {
         notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有基因关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
         ctaPick: '选择目的地',
         ctaFactors: '先看四件事',
+        ctaCompare: '并排对比候选目的地',
         stats: {
           recorded: '已记录的目的地',
           sourced: '附有可打开的来源',

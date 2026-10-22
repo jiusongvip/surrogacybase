@@ -14,6 +14,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 import { COST_TOOL_PAGE, TOOLS_INDEX_PAGE } from '@/data/tool-pages';
+import { NEXT_STEP } from '@/data/next-steps';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { UI, fill } from '@/i18n/ui';
 import { costText, type CostFigure } from '@/lib/costs';
@@ -23,6 +24,7 @@ import { getJurisdictions } from '@/lib/jurisdictions';
 const lang = langFromPath(Astro.url.pathname);
 const copy = COST_TOOL_PAGE[lang];
 const costsCopy = UI[lang].costs;
+const home = localizedPath(lang, '/');
 const citeChecked = UI[lang].pages.jurisdiction.citeChecked;
 
 type Jurisdiction = CollectionEntry<'jurisdictions'>['data'];
@@ -159,6 +161,10 @@ const silent = records.filter((record) => record.costs.length === 0);
       </a>
       <a href={localizedPath(lang, '/tools/agency-quote-comparison')} class="btn-ghost">
         {copy.closing.links[2]}
+      </a>
+      <a href={`${home}#assessment`} class="textlink" data-enquiry-cta>
+        {NEXT_STEP[lang].primary}
+        <Icon name="arrow-right" size={16} />
       </a>
     </div>
   </section>

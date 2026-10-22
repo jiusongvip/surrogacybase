@@ -8,6 +8,8 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
+import NextStep from '@/components/content/NextStep.astro';
+import { NEXT_STEP } from '@/data/next-steps';
 import type { CollectionEntry } from 'astro:content';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
@@ -195,6 +197,7 @@ const positions = [
           <p class="mt-4 max-w-[62ch] text-[16px] leading-relaxed">{costsCopy.none}</p>
         )
       }
+      <a href={localizedPath(lang, '/tools/cost-figures')} class="textlink mt-5">{copy.costFiguresLink}</a>
     </section>
 
     {d.facts.length > 0 && (
@@ -223,7 +226,7 @@ const positions = [
     )}
 
     {d.openQuestions.length > 0 && (
-      <section class="mt-12 border-t border-line pt-8">
+      <section class="mt-12 border-t border-line pt-8" id="open-questions">
         <h2 class="text-[22px]">{copy.openTitle}</h2>
         <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">
           {fill(copy.openIntro, { name: d.name })}
@@ -246,10 +249,21 @@ const positions = [
           {copy.compareBody}
         </p>
       </div>
-      <div class="flex flex-wrap gap-3">
-        <a href={localizedPath(lang, '/guides/surrogacy-legal-considerations')} class="btn-ghost">{copy.legalFramework}</a>
-        <a href={localizedPath(lang, '/tools/destination-research-checklist')} class="btn-primary">{copy.openChecklist}</a>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href={localizedPath(lang, '/tools/destination-comparison')} class="btn-primary">{copy.compareBoard}</a>
+        <a href={localizedPath(lang, '/tools/destination-research-checklist')} class="btn-ghost">{copy.openChecklist}</a>
       </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 sm:basis-full">
+        <a href={localizedPath(lang, '/guides/surrogacy-legal-considerations')} class="textlink">{copy.legalFramework}</a>
+        <a href={localizedPath(lang, '/guides/bringing-your-child-home')} class="textlink">{copy.documentsGuide}</a>
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <NextStep
+        secondaryHref={localizedPath(lang, '/guides/surrogacy-cost')}
+        secondaryLabel={NEXT_STEP[lang].costGuide}
+      />
     </section>
   </article>
 </PageLayout>

@@ -47,6 +47,10 @@ export type QuotePage = {
   howTo: [string, string, string, string];
   limitsHeading: string;
   limits: [string, string, string];
+  outsideHeading: string;
+  outsideIntro: string;
+  outsideItems: [string, string, string];
+  outsideLink: string;
   bandHeading: string;
   bandBody: string;
   bandCostGuide: string;
@@ -59,13 +63,13 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     titleTag: 'Surrogacy Tools',
     label: 'Tools',
     description:
-      'Tools for intended parents: compare agency quotes, read published cost figures, research a destination, and put questions to an agency in writing.',
+      'Tools for intended parents: compare destination records side by side, compare agency quotes, read published cost figures, research a destination and put questions to an agency in writing.',
     intro:
       'A guide tells you what to check. These are where you actually do it, on your own numbers and your own documents, and what you leave with is something you can show someone: a filled-in document, or a figure with its source attached.',
     countOne: '1 tool ready to use',
     countMany: '{n} tools ready to use',
     localNote:
-      'None of them asks you to create an account or sends what you type anywhere. The quote comparison holds nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+      'None of them asks you to create an account or sends what you type anywhere. The destination comparison and the quote comparison hold nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
     fitHeading: 'How the tools fit together',
     fitIntro:
       'None of them decides for you. They carry a decision from reading to a conversation, in three steps.',
@@ -85,6 +89,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     ],
     leavesHeading: 'What you leave with',
     leaves: [
+      {
+        title: 'A shortlist on one board',
+        body: 'The destination comparison repeats each selected record side by side, so a place that cannot answer your situation is easier to remove.',
+      },
       {
         title: 'Two quotes on the same lines',
         body: 'The quote comparison puts the common costs a quote usually names side by side and keeps unconfirmed amounts out of the total.',
@@ -127,12 +135,12 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     titleTag: '代孕工具',
     label: '工具',
     description:
-      '给意向父母的工具：对比两份机构报价、查阅已公布的费用数据、逐题研究目的地、把问题书面提交给机构。不需要账户，也不会上传您的内容。',
+      '给意向父母的工具：并排对比目的地记录、对比两份机构报价、查阅已公布的费用数据、逐题研究目的地、把问题书面提交给机构。不需要账户，也不会上传您的内容。',
     intro:
       '指南告诉您该核查什么。而这些页面才是您真正动手的地方：用您自己的报价与文件。您带走的内容都可以直接出示给他人：一份填好的文档，或一项标注来源与年份的费用数据。',
     countOne: '1 个工具可直接使用',
     countMany: '{n} 个工具可直接使用',
-    localNote: '这些工具都不需要账户，也不会把您输入的内容发送到任何地方。报价对比在您关掉标签页后不保留任何内容；两份清单会下载成由您自己填写的文档；费用数据页面只呈现各来源已经公布的数据，您无需输入任何内容。',
+    localNote: '这些工具都不需要账户，也不会把您输入的内容发送到任何地方。目的地对比和报价对比在您关掉标签页后不保留任何内容；两份清单会下载成由您自己填写的文档；费用数据页面只呈现各来源已经公布的数据，您无需输入任何内容。',
     fitHeading: '这些工具怎么接在一起',
     fitIntro: '它们都不替您做决定，而是把一项决定从阅读带到一次谈话里，分三步走。',
     fitSteps: [
@@ -151,6 +159,10 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
     ],
     leavesHeading: '您会带走什么',
     leaves: [
+      {
+        title: '一份并排的候选名单',
+        body: '目的地对比把选中的记录并排复述，回答不了您情况的地方更容易被排除。',
+      },
       {
         title: '两份报价，落在同样的条目上',
         body: '报价对比把报价通常列出的成本并排放好，并把未确认的金额排除在合计之外。',
@@ -355,6 +367,15 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
       'It does not convert currencies. Compare quotes in the currency they were issued in, or exchange rates become part of the difference.',
       'It does not store anything on a server, and it does not send your quote to anyone.',
     ],
+    outsideHeading: 'What usually sits outside the nine lines',
+    outsideIntro:
+      'A total can be complete on its own terms and still not be a budget. These are the costs that most often fall outside a package price, and each one has a payee you can name.',
+    outsideItems: [
+      'Medical scope that follows the treatment: a second transfer, donor eggs or sperm, pharmacy and monitoring, a repeated screening, prenatal care, delivery and neonatal care are often billed as they occur or by another provider.',
+      'Legal and administrative work: independent counsel for the carrier, court and filing costs, escrow administration, registration, translation and apostille each have their own payee.',
+      'Travel and reimbursable expenses: trips, length of stay, the carrier\'s reimbursable expenses and the receipts behind them sit outside a program fee, and in some countries a court must authorise anything beyond those expenses.',
+    ],
+    outsideLink: 'Read the twelve costs that sit outside a quote',
     bandHeading: 'Reading a quote is one part of the decision',
     bandBody:
       'The cost guide explains what normally sits inside a surrogacy budget and what is commonly excluded from it.',
@@ -381,6 +402,14 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
       '它不做货币换算。请按报价原本使用的货币来比较，否则汇率会变成差额的一部分。',
       '它不在服务器上存任何东西，也不会把您的报价发给任何人。',
     ],
+    outsideHeading: '通常落在这九项之外的成本',
+    outsideIntro: '一个总额可能在自己的范围内是完整的，却仍然算不上预算。下面这些成本最常落在方案报价之外，而每一项都有可以指明名称的收款方。',
+    outsideItems: [
+      '跟随治疗产生的医疗项目：第二次移植、供卵或供精、药房与监测、需要重做的筛查、孕期保健、分娩与新生儿护理，往往按实际发生结算，或由另一家机构开票。',
+      '法律与行政工作：代孕者的独立法律顾问、法院与立案费用、资金托管、登记、翻译与认证，每一项都有自己的收款方。',
+      '出行与可报销费用：行程、停留时间、代孕者的可报销费用以及背后的票据，都在方案费之外；在一些国家，超出这些费用的部分还须经法院批准。',
+    ],
+    outsideLink: '阅读报价之外的十二项成本',
     bandHeading: '读懂一份报价只是决定的一部分',
     bandBody: '费用指南解释了代孕预算里通常包含什么，以及什么通常被排除在外。',
     bandCostGuide: '费用指南',

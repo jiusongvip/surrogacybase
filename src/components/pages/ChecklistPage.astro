@@ -11,6 +11,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import ChecklistTool from '@/components/tools/ChecklistTool.astro';
 import { CHECKLISTS } from '@/data/checklists';
+import { NEXT_STEP } from '@/data/next-steps';
 import { TOOLS_INDEX_PAGE } from '@/data/tool-pages';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { pick } from '@/i18n/ui';
@@ -26,6 +27,7 @@ if (!entry) throw new Error(`Checklist "${id}" is not in src/data/checklists.`);
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = entry.page[lang];
+const home = localizedPath(lang, '/');
 
 const groups = entry.groups.map((g) => ({
   id: g.id,
@@ -74,6 +76,10 @@ const hrefs = entry.hrefs.map((h) => localizedPath(lang, h));
               {copy.links[1]}
               <Icon name="arrow-right" size={16} />
             </a>
+            <a href={`${home}#assessment`} class="textlink" data-enquiry-cta>
+              {NEXT_STEP[lang].primary}
+              <Icon name="arrow-right" size={16} />
+            </a>
           </div>
         ) : (
           <div class="mt-6 flex flex-wrap gap-3">
@@ -82,6 +88,10 @@ const hrefs = entry.hrefs.map((h) => localizedPath(lang, h));
               <Icon name="arrow-right" size={16} />
             </a>
             <a href={hrefs[1]} class="btn-ghost">{copy.links[1]}</a>
+            <a href={`${home}#assessment`} class="textlink" data-enquiry-cta>
+              {NEXT_STEP[lang].primary}
+              <Icon name="arrow-right" size={16} />
+            </a>
           </div>
         )
       }
