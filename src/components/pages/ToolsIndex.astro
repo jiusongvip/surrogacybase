@@ -12,15 +12,52 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import { TOOLS, toolHref } from '@/data/tools';
 import { TOOLS_INDEX_PAGE } from '@/data/tool-pages';
-import { langFromPath } from '@/i18n/paths';
-import { fill } from '@/i18n/ui';
+import { LANG_META } from '@/i18n/config';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { readingTime } from '@/lib/dates';
+import { pathOf, resolveRefs } from '@/lib/content';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = TOOLS_INDEX_PAGE[lang];
-const live = TOOLS.filter((t) => t.live).length;
+const guideCopy = UI[lang].pages.guides;
+const labels = CATEGORY_LABELS[lang];
+const liveTools = TOOLS.filter((t) => t.live);
+
+/* The tools are not a menu of unrelated utilities: each one moves a decision a guide has
+ * already framed into a document the reader can carry into a conversation. */
+const guideRefs = [
+  'guides/surrogacy-cost',
+  'guides/choosing-a-surrogacy-agency',
+  'guides/surrogacy-legal-considerations',
+];
+const guides = await resolveRefs(guideRefs, lang);
+
+const pageUrl = new URL(localizedPath(lang, '/tools'), Astro.site).href;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: copy.title,
+    description: copy.description,
+    url: pageUrl,
+    inLanguage: LANG_META[lang].htmlLang,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: liveTools.length,
+      itemListElement: liveTools.map((tool, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: new URL(toolHref(tool, lang), Astro.site).href,
+        name: tool[lang].name,
+        description: tool[lang].linkNote,
+      })),
+    },
+  },
+];
 ---
 
-<PageLayout title={copy.title} description={copy.description}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description} jsonLd={jsonLd}>
   <Breadcrumbs crumbs={[{ label: copy.label }]} />
 
   <header class="shell py-10">
@@ -28,9 +65,12 @@ const live = TOOLS.filter((t) => t.live).length;
     <p class="mt-3 max-w-[62ch] text-[17px] leading-relaxed text-muted">
       {copy.intro}
     </p>
+    <p class="tnum mt-3 text-[14px] text-muted">
+      {fill(liveTools.length === 1 ? copy.countOne : copy.countMany, { n: liveTools.length })}
+    </p>
     <p class="mt-4 flex items-start gap-2.5 text-[15px] text-muted">
       <Icon name="lock" size={17} class="mt-0.5 shrink-0 text-accent" />
-      <span>{fill(copy.localNote, { n: live })}</span>
+      <span>{fill(copy.localNote, { n: liveTools.length })}</span>
     </p>
   </header>
 
@@ -61,4 +101,86 @@ const live = TOOLS.filter((t) => t.live).length;
       </section>
     ))}
   </div>
+
+  <section class="shell py-16" aria-labelledby="fit-h">
+    <div class="rounded-(--radius-card) bg-sand px-6 py-10 sm:px-10">
+      <div class="max-w-[64ch]">
+        <h2 id="fit-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+          {copy.fitHeading}
+        </h2>
+        <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.fitIntro}</p>
+      </div>
+      <ol class="mt-8 grid gap-6 md:grid-cols-3">
+        {copy.fitSteps.map((step, i) => (
+          <li class="border-t border-line pt-5">
+            <span class="tnum text-[14px] font-semibold text-accent">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-2 text-[18px] leading-snug">{step.title}</h3>
+            <p class="mt-1.5 text-[15px] leading-[1.7] text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="border-y border-line bg-surface-2 py-16">
+    <div class="shell grid gap-10 lg:grid-cols-2 lg:gap-14">
+      <div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">{copy.leavesHeading}</h2>
+        <ul class="mt-6 flex flex-col gap-5">
+          {copy.leaves.map((item) => (
+            <li class="border-t border-line pt-4">
+              <h3 class="text-[17px] leading-snug">{item.title}</h3>
+              <p class="mt-1.5 text-[15px] leading-[1.7] text-muted">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">{copy.beforeHeading}</h2>
+        <ul class="mt-6 flex flex-col gap-5">
+          {copy.before.map((item) => (
+            <li class="border-t border-line pt-4">
+              <h3 class="text-[17px] leading-snug">{item.title}</h3>
+              <p class="mt-1.5 text-[15px] leading-[1.7] text-muted">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell py-16" aria-labelledby="guides-h">
+    <div class="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
+      <div>
+        <h2 id="guides-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+          {copy.guidesHeading}
+        </h2>
+        <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.guidesIntro}</p>
+        <a href={localizedPath(lang, '/guides')} class="textlink mt-5">
+          {copy.allGuides}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+      <ul>
+        {guides.map((guide, i) => (
+          <li class:list={[i > 0 ? 'border-t border-line' : '']}>
+            <a href={pathOf(guide)} class="group block py-5">
+              <span class="block text-[13px] text-muted">
+                {labels[guide.data.category] ?? guide.data.category}
+                <span class="tnum"> · {fill(UI[lang].time.minRead, { n: readingTime(guide.body ?? '') })}</span>
+              </span>
+              <h3 class="mt-1 text-[20px] leading-snug group-hover:text-accent">{guide.data.title}</h3>
+              <p class="mt-1.5 max-w-[62ch] text-[15px] leading-[1.7] text-muted">{guide.data.description}</p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[14px] font-medium text-accent">
+                {guideCopy.readGuide}
+                <Icon name="arrow-right" size={15} />
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 </PageLayout>

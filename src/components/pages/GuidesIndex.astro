@@ -3,12 +3,13 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
+import { LANG_META } from '@/i18n/config';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
 import { contentMedia } from '@/data/content-media';
 import { Image } from 'astro:assets';
-import { formatShortDate } from '@/lib/dates';
-import { getArticles, getGuides, pathOf, refKeyOf, type ContentEntry } from '@/lib/content';
+import { formatShortDate, readingTime } from '@/lib/dates';
+import { getArticles, getGuides, pathOf, refKeyOf, resolveRefs, type ContentEntry } from '@/lib/content';
 
 /*
  * One component, two languages: the route file that mounts it only decides which entries it
@@ -19,19 +20,67 @@ import { getArticles, getGuides, pathOf, refKeyOf, type ContentEntry } from '@/l
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.guides;
 const labels = CATEGORY_LABELS[lang];
+const timeLabel = UI[lang].time.minRead;
 
 const [guides, articles] = await Promise.all([getGuides(lang), getArticles(lang)]);
 
-const ordered = [...guides].sort((a, b) => a.data.title.localeCompare(b.data.title, lang === 'en' ? 'en' : 'zh-Hans'));
+/* The order is the reading order, not the alphabet: process, the legal questions it raises,
+ * money, the agency that spends it, the choices inside the program, then coming home. A guide
+ * added later and left out of this list still appears after the preferred ones. */
+const GUIDE_ORDER = [
+  'guides/surrogacy-process',
+  'guides/surrogacy-legal-considerations',
+  'guides/surrogacy-cost',
+  'guides/choosing-a-surrogacy-agency',
+  'guides/gamete-and-surrogate-options',
+  'guides/bringing-your-child-home',
+];
+const preferred = await resolveRefs(GUIDE_ORDER, lang);
+const ordered = [...preferred, ...guides.filter((g) => !preferred.some((p) => p.id === g.id))];
+
+const GUIDE_PATHS = [
+  ['guides/surrogacy-legal-considerations', 'guides/bringing-your-child-home'],
+  ['guides/surrogacy-process', 'guides/gamete-and-surrogate-options'],
+  ['guides/surrogacy-cost', 'guides/choosing-a-surrogacy-agency'],
+];
+const paths = (
+  await Promise.all(
+    GUIDE_PATHS.map(async (refs, i) => ({ ...copy.paths[i], entries: await resolveRefs(refs, lang) })),
+  )
+).filter((path) => path.entries.length > 0);
+
 const supporters = (guide: ContentEntry) => {
   const key = refKeyOf(guide);
   return articles.filter((a) => a.data.relatedGuides.includes(key) || a.data.category === guide.data.category);
 };
 const [lead, ...rest] = ordered;
 const leadMedia = lead ? contentMedia(lead.id) : undefined;
+const minutesOf = (entry: ContentEntry) => readingTime(entry.body ?? '');
+
+const pageUrl = new URL(localizedPath(lang, '/guides'), Astro.site).href;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: copy.title,
+    description: copy.description,
+    url: pageUrl,
+    inLanguage: LANG_META[lang].htmlLang,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: ordered.length,
+      itemListElement: ordered.map((entry, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: new URL(pathOf(entry), Astro.site).href,
+        name: entry.data.title,
+      })),
+    },
+  },
+];
 ---
 
-<PageLayout title={copy.title} description={copy.description}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description} jsonLd={jsonLd}>
   <Breadcrumbs crumbs={[{ label: copy.title }]} />
 
   <header class="shell py-10">
@@ -39,7 +88,52 @@ const leadMedia = lead ? contentMedia(lead.id) : undefined;
     <p class="mt-3 max-w-[58ch] text-[17px] leading-relaxed text-muted">
       {copy.intro}
     </p>
+    {
+      guides.length > 0 && (
+        <p class="tnum mt-3 text-[14px] text-muted">
+          {fill(guides.length === 1 ? copy.countOne : copy.countMany, { n: guides.length })}
+        </p>
+      )
+    }
   </header>
+
+  {
+    paths.length > 0 && (
+      <section class="shell pb-16" aria-labelledby="paths-h">
+        <div class="max-w-[64ch]">
+          <h2 id="paths-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+            {copy.startHeading}
+          </h2>
+          <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.startIntro}</p>
+        </div>
+
+        <ul class="mt-8 grid gap-4 md:grid-cols-3">
+          {paths.map((path, i) => (
+            <li class="card flex flex-col p-6">
+              <span class="tnum text-[13px] font-semibold tracking-[0.16em] text-accent">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-2 text-[21px] leading-snug">{path.title}</h3>
+              <p class="mt-2 text-[15px] leading-[1.7] text-muted">{path.body}</p>
+              <ol class="mt-5 flex flex-col gap-1 border-t border-line pt-3">
+                {path.entries.map((entry, j) => (
+                  <li>
+                    <a
+                      href={pathOf(entry)}
+                      class="group flex items-start gap-3 py-1.5 text-[15px] leading-snug"
+                    >
+                      <span class="tnum mt-px text-[13px] text-muted">{j + 1}</span>
+                      <span class="group-hover:text-accent">{entry.data.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 
   <div class="shell pb-16">
     {
@@ -53,6 +147,7 @@ const leadMedia = lead ? contentMedia(lead.id) : undefined;
               <span class="block text-[14px] text-muted">
                 {labels[lead.data.category] ?? lead.data.category}
                 <span class="tnum"> · {copy.updated} {formatShortDate(lead.data.updatedOn, lang)}</span>
+                <span class="tnum"> · {fill(timeLabel, { n: minutesOf(lead) })}</span>
               </span>
               <h2 class="mt-3 max-w-[22ch] text-[clamp(1.9rem,3.4vw,2.7rem)] leading-[1.08]">{lead.data.title}</h2>
               <span class="mt-3 block max-w-[60ch] text-[17px] leading-relaxed text-brand-fg">
@@ -117,6 +212,7 @@ const leadMedia = lead ? contentMedia(lead.id) : undefined;
                   <span class="block">
                     <span class="block text-[14px] text-muted">
                       {labels[guide.data.category] ?? guide.data.category}
+                      <span class="tnum"> · {fill(timeLabel, { n: minutesOf(guide) })}</span>
                     </span>
                     <h2 class="mt-1 text-[25px] leading-snug group-hover:text-accent">{guide.data.title}</h2>
                     <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{guide.data.description}</p>
@@ -138,4 +234,53 @@ const leadMedia = lead ? contentMedia(lead.id) : undefined;
       )
     }
   </div>
+
+  <section class="shell py-16" aria-labelledby="how-h">
+    <div class="rounded-(--radius-card) bg-sand px-6 py-10 sm:px-10 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+      <div>
+        <h2 id="how-h" class="text-[clamp(1.6rem,3vw,2.2rem)] leading-[1.12]">
+          {copy.howHeading}
+        </h2>
+        <p class="mt-3 text-[16px] leading-[1.75] text-muted">{copy.howIntro}</p>
+        <a href={localizedPath(lang, '/editorial-policy')} class="textlink mt-6">
+          {copy.standardsLink}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+      <ol class="mt-8 flex flex-col gap-6 lg:mt-0">
+        {copy.howPoints.map((point, i) => (
+          <li class="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-t border-line pt-5">
+            <span class="tnum text-[14px] font-semibold text-accent">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3 class="text-[17px] leading-snug">{point.title}</h3>
+              <p class="mt-1.5 text-[15px] leading-[1.7] text-muted">{point.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="shell pb-20">
+    <div class="grid gap-4 md:grid-cols-2">
+      <a href={localizedPath(lang, '/articles')} class="card card-hover flex flex-col p-7">
+        <h2 class="text-[clamp(1.4rem,2.5vw,1.9rem)] leading-tight">{copy.explainerHeading}</h2>
+        <p class="mt-2 text-[15px] leading-[1.7] text-muted">{copy.explainerBody}</p>
+        <span class="textlink mt-6">
+          {copy.explainerLink}
+          <Icon name="arrow-right" size={16} />
+        </span>
+      </a>
+      <a href={localizedPath(lang, '/tools')} class="card card-hover flex flex-col p-7">
+        <h2 class="text-[clamp(1.4rem,2.5vw,1.9rem)] leading-tight">{copy.toolsHeading}</h2>
+        <p class="mt-2 text-[15px] leading-[1.7] text-muted">{copy.toolsBody}</p>
+        <span class="textlink mt-6">
+          {copy.toolsLink}
+          <Icon name="arrow-right" size={16} />
+        </span>
+      </a>
+    </div>
+  </section>
 </PageLayout>

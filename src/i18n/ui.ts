@@ -182,8 +182,25 @@ export const UI: Record<Lang, {
   pages: {
     guides: {
       title: string;
+      titleTag: string;
       description: string;
       intro: string;
+      countOne: string;
+      countMany: string;
+      startHeading: string;
+      startIntro: string;
+      /** The three ways in, each paired by position with the guide refs in GuidesIndex. */
+      paths: { title: string; body: string }[];
+      howHeading: string;
+      howIntro: string;
+      howPoints: { title: string; body: string }[];
+      standardsLink: string;
+      explainerHeading: string;
+      explainerBody: string;
+      explainerLink: string;
+      toolsHeading: string;
+      toolsBody: string;
+      toolsLink: string;
       readGuide: string;
       relatedOne: string;
       relatedMany: string;
@@ -518,10 +535,56 @@ export const UI: Record<Lang, {
     pages: {
       guides: {
         title: 'Guides',
+        titleTag: 'Surrogacy Guides',
         description:
-          'Framework guides on surrogacy cost, process, agency selection and legal considerations, written so each claim can be traced to a source.',
+          'Guides on surrogacy law, process, cost, agencies and bringing a child home, each claim traceable to a source you can open.',
         intro:
           'A guide works through one decision area from beginning to end, so you can see how the pieces fit before you compare providers.',
+        countOne: '1 published guide',
+        countMany: '{n} published guides',
+        startHeading: 'Where to start',
+        startIntro:
+          'Each path groups guides in the order the questions arrive. You can also read the full list and pick by subject.',
+        paths: [
+          {
+            title: 'The law and the paperwork',
+            body: 'Start with the four questions every legal system has to answer. Then follow the documents your child needs to leave one country and enter another.',
+          },
+          {
+            title: 'The process and who carries',
+            body: 'See the stages a program runs through, then the choices about whose egg, whose sperm and who carries the pregnancy, which change what those stages ask of you.',
+          },
+          {
+            title: 'The money and the agency',
+            body: 'Build the budget, see what a quote leaves out, then check what an agency fee buys and what to put in writing before you sign.',
+          },
+        ],
+        howHeading: 'How a guide works',
+        howIntro:
+          'A guide is built to be used, not read once. Every one gives you the same three things.',
+        howPoints: [
+          {
+            title: 'A decision from end to end',
+            body: 'Each guide starts with the first choice in its area and follows it through to the document or conversation that closes it, so no step is explained without what depends on it.',
+          },
+          {
+            title: 'A source beside the claim',
+            body: 'Where a guide states a fact, the source and the date it was last opened sit beside it. You can check the answer instead of taking it on trust.',
+          },
+          {
+            title: 'A next step you can use',
+            body: 'Every guide ends with the explainers that go deeper and the tools that turn its questions into something you can fill in or hand over.',
+          },
+        ],
+        standardsLink: 'How sources are checked',
+        explainerHeading: 'One question at a time',
+        explainerBody:
+          'An explainer answers a single question inside a guide and names the source behind its answer.',
+        explainerLink: 'Read the explainers',
+        toolsHeading: 'Put a guide to work',
+        toolsBody:
+          'The tools turn the questions in these guides into a table or a document you can take to a lawyer, clinic or agency.',
+        toolsLink: 'Open the tools',
         readGuide: 'Read the guide',
         relatedOne: '1 related explainer',
         relatedMany: '{n} related explainers',
@@ -1009,8 +1072,50 @@ export const UI: Record<Lang, {
     pages: {
       guides: {
         title: '指南',
-        description: '关于代孕费用、流程、机构选择与法律要点的框架性指南，每一条结论都可以追溯到来源。',
+        titleTag: '代孕指南',
+        description: '关于代孕法律、流程、费用、机构选择与带孩子回国的指南，每一条结论都能追溯到您可以打开的来源。',
         intro: '每篇指南把一个决定领域从头到尾讲清楚，让您在比较服务方之前先看清各个环节如何衔接。',
+        countOne: '已发布 1 篇指南',
+        countMany: '已发布 {n} 篇指南',
+        startHeading: '从哪里开始',
+        startIntro: '下面的每条路径按问题出现的顺序排列指南。您也可以直接看全部篇目，按主题挑选。',
+        paths: [
+          {
+            title: '法律与文件',
+            body: '先弄清每个法律体系都必须回答的四个问题，再跟着孩子出生后需要的文件，看它如何离开一个国家、进入另一个国家。',
+          },
+          {
+            title: '流程与谁来孕育',
+            body: '先看一个方案要经过哪些阶段，再看用谁的卵子、谁的精子、由谁怀孕这三项选择，会怎样改变每个阶段对您的要求。',
+          },
+          {
+            title: '费用与机构',
+            body: '先把预算搭起来，看清报价漏掉了什么，再核查机构费买到什么，以及签约前哪些问题必须写下来。',
+          },
+        ],
+        howHeading: '一篇指南是怎么搭起来的',
+        howIntro: '指南是用起来的，不只是读一遍。每一篇都会给您三样东西。',
+        howPoints: [
+          {
+            title: '把决定从头讲到尾',
+            body: '每篇指南从所在领域的第一个选择讲起，一直讲到收尾时要用到的文件或对话，所以每讲一步，都会说清它后面接着什么。',
+          },
+          {
+            title: '结论旁边就是来源',
+            body: '指南写到事实的地方，旁边就是来源和最近一次打开核对的日期。您可以自己核对，而不必直接相信。',
+          },
+          {
+            title: '读完能接着做下一步',
+            body: '每篇指南末尾都会给出讲得更深的专题解读，以及能把问题变成表格或文档的工具。',
+          },
+        ],
+        standardsLink: '来源如何核查',
+        explainerHeading: '一次只回答一个问题',
+        explainerBody: '专题解读回答指南里的某一个具体问题，并为这个答案标明来源。',
+        explainerLink: '阅读专题解读',
+        toolsHeading: '把指南变成手上的文件',
+        toolsBody: '这些工具会把指南里的问题变成一张表或一份文档，您可以带去见律师、诊所或机构。',
+        toolsLink: '打开工具',
         readGuide: '阅读指南',
         relatedOne: '关联专题解读 1 篇',
         relatedMany: '关联专题解读 {n} 篇',

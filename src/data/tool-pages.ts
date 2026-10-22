@@ -13,12 +13,25 @@ import type { Lang } from '@/i18n/config';
 
 export type ToolsIndexPage = {
   title: string;
+  titleTag: string;
   /** The short form the breadcrumb and the tools index h1 both use. */
   label: string;
   description: string;
   intro: string;
+  countOne: string;
+  countMany: string;
   /** {n} is the count of tools on the page. */
   localNote: string;
+  fitHeading: string;
+  fitIntro: string;
+  fitSteps: { title: string; body: string }[];
+  leavesHeading: string;
+  leaves: { title: string; body: string }[];
+  beforeHeading: string;
+  before: { title: string; body: string }[];
+  guidesHeading: string;
+  guidesIntro: string;
+  allGuides: string;
   available: string;
   building: string;
   open: string;
@@ -43,13 +56,67 @@ export type QuotePage = {
 export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
   en: {
     title: 'Tools',
+    titleTag: 'Surrogacy Tools',
     label: 'Tools',
     description:
-      'Decision tools for intended parents: compare two agency quotes across the nine costs a quote normally names, take a destination apart question by question, put your questions to an agency in writing, and read the cost figures sources have published. Nothing is uploaded and nothing is kept after you close the page. No account.',
+      'Tools for intended parents: compare agency quotes, read published cost figures, research a destination, and put questions to an agency in writing.',
     intro:
       'A guide tells you what to check. These are where you actually do it, on your own numbers and your own documents, and what you leave with is something you can show someone: a filled-in document, or a figure with its source attached.',
+    countOne: '1 tool ready to use',
+    countMany: '{n} tools ready to use',
     localNote:
-      '{n} tools here, and none of them asks you to create an account or sends what you type anywhere. The quote comparison holds nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+      'None of them asks you to create an account or sends what you type anywhere. The quote comparison holds nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+    fitHeading: 'How the tools fit together',
+    fitIntro:
+      'None of them decides for you. They carry a decision from reading to a conversation, in three steps.',
+    fitSteps: [
+      {
+        title: 'Read the guide behind it',
+        body: 'Each tool asks questions a guide has already explained. Read that guide first when a term or a step is unfamiliar.',
+      },
+      {
+        title: 'Fill it with your own facts',
+        body: 'Use the quote you were sent, the destination you are considering, or the questions you need answered. The tool works on your material, not a sample.',
+      },
+      {
+        title: 'Take the file into the conversation',
+        body: 'Download the table or document and bring it to the lawyer, clinic or agency. Your notes, names and dates stay together in one file.',
+      },
+    ],
+    leavesHeading: 'What you leave with',
+    leaves: [
+      {
+        title: 'Two quotes on the same lines',
+        body: 'The quote comparison puts the common costs a quote usually names side by side and keeps unconfirmed amounts out of the total.',
+      },
+      {
+        title: 'A box beside every question',
+        body: 'Both checklists download as a document you fill in yourself, one question at a time.',
+      },
+      {
+        title: 'A figure with its source and year',
+        body: 'The cost figures page repeats only numbers a named source has published, in that source’s currency and year.',
+      },
+    ],
+    beforeHeading: 'Before you start',
+    before: [
+      {
+        title: 'Use the real document',
+        body: 'Enter the quote or contract you actually received, not a remembered total. The wording is what you are checking.',
+      },
+      {
+        title: 'Write what it says before what it means',
+        body: 'Put the provider’s words in first. The distance between their wording and your reading is the question to ask.',
+      },
+      {
+        title: 'Keep the name and the date',
+        body: 'An answer becomes checkable when you record who gave it, on what date, and for which of your questions.',
+      },
+    ],
+    guidesHeading: 'The guides behind these tools',
+    guidesIntro:
+      'Each tool belongs to a decision a guide works through from start to finish. Start with the guide when you want the reasoning before the form.',
+    allGuides: 'All guides',
     available: 'Available now',
     building: 'Coming soon',
     open: 'Open the tool',
@@ -57,12 +124,64 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
   },
   zh: {
     title: '工具',
+    titleTag: '代孕工具',
     label: '工具',
     description:
-      '给意向父母的决策工具：让两份机构报价落在代孕报价通常列出的九项成本上逐一对比、把一个目的地逐题拆开、把您的问题书面提交给机构，并阅读各个来源已经发布的费用数字。没有任何内容会被上传，关掉页面后也不保留任何东西。不需要账户。',
+      '给意向父母的工具：对比两份机构报价、查阅已发布的费用数字、逐题研究目的地、把问题书面提交给机构。不需要账户，也不会上传您的内容。',
     intro:
       '指南告诉您该核查什么。而这些页面才是您真正动手的地方：用您自己的数字和您自己的文件。您带走的东西都拿得给别人看：一份填好的文档，或者一个带着来源的数字。',
-    localNote: '这里有 {n} 个工具，都不需要账户，也不会把您输入的内容发送到任何地方。报价对比在您关掉标签页后不保留任何东西；两份清单会下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
+    countOne: '1 个工具可直接使用',
+    countMany: '{n} 个工具可直接使用',
+    localNote: '这些工具都不需要账户，也不会把您输入的内容发送到任何地方。报价对比在您关掉标签页后不保留任何东西；两份清单会下载成由您自己填写的文档；费用数字页面展示的是各个来源早已发布的数字，您什么都不必输入。',
+    fitHeading: '这些工具怎么接在一起',
+    fitIntro: '它们都不替您做决定，而是把一项决定从阅读带到一次谈话里，分三步走。',
+    fitSteps: [
+      {
+        title: '先读它背后的指南',
+        body: '每个工具问的问题，指南里都已经讲过。遇到不熟悉的词或步骤，先读那一篇。',
+      },
+      {
+        title: '用您自己的材料填写',
+        body: '用您收到的报价、您正在考虑的目的地，或您需要得到回答的问题。工具处理的是您的材料，不是示例。',
+      },
+      {
+        title: '把文件带进谈话',
+        body: '把表格或文档下载下来，带去见律师、诊所或机构。您的笔记、名字和日期都留在同一份文件里。',
+      },
+    ],
+    leavesHeading: '您会带走什么',
+    leaves: [
+      {
+        title: '两份报价，落在同样的条目上',
+        body: '报价对比把报价通常列出的成本并排放好，并把未确认的金额排除在合计之外。',
+      },
+      {
+        title: '每个问题旁边都有一个方框',
+        body: '两份清单都会下载成由您自己填写的文档，一次回答一个问题。',
+      },
+      {
+        title: '一个带着来源和年份的数字',
+        body: '费用数字页面只重复具名来源发布过的数字，沿用那份来源的货币和年份。',
+      },
+    ],
+    beforeHeading: '开始之前',
+    before: [
+      {
+        title: '用真实的那份文件',
+        body: '录入您实际收到的报价或合同，而不是记忆中的总额。您要核查的是它的措辞。',
+      },
+      {
+        title: '先写它说了什么，再写您怎么理解',
+        body: '先把对方的原话放进去。对方的措辞和您的理解之间的距离，就是您要问的问题。',
+      },
+      {
+        title: '留下名字和日期',
+        body: '记下是谁、在哪一天、针对哪个问题给出了回答，这个回答才可以再次核对。',
+      },
+    ],
+    guidesHeading: '这些工具背后的指南',
+    guidesIntro: '每个工具都属于一个决定，而指南会把这个决定从头讲到尾。想先弄懂理由，再动表格，就从指南开始。',
+    allGuides: '全部指南',
     available: '现在可用',
     building: '即将上线',
     open: '打开工具',
