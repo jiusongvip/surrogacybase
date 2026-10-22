@@ -49,22 +49,22 @@ export const HOME_HERO: Record<Lang, {
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
-  /** A claim about how the site is funded, not about outcomes. */
+  /** The owner's line, set under the lead in the copy column. It is not a claim about outcomes. */
   note: string;
 }> = {
   en: {
-    h1: 'Surrogacy, compared item by item',
-    lead: 'Compare what each destination allows, who the child’s legal parents are at birth, and what a published figure actually covers. Every claim names its source, and anything unconfirmed is marked as such.',
-    ctaPrimary: 'Compare destinations',
-    ctaSecondary: 'Start with the guides',
-    note: 'Independent information. No provider pays to appear, and no destination is ranked for revenue.',
+    h1: 'Trusted guidance for your surrogacy journey',
+    lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
+    ctaPrimary: 'Explore destinations',
+    ctaSecondary: 'Contact us',
+    note: 'More clarity for your family’s future',
   },
   zh: {
-    h1: '代孕，逐项比较',
-    lead: '比较每个目的地允许什么、孩子出生时的法律父母是谁，以及公布出来的一个金额到底覆盖哪些环节。每条说法都写明来源，无法确认的部分会直接标出。',
-    ctaPrimary: '比较目的地',
-    ctaSecondary: '从指南开始',
-    note: '独立信息。没有服务方付费出现在这里，也没有目的地因营收被排名。',
+    h1: '为您的代孕之旅提供可靠指引',
+    lead: '弄清您实际有哪些选择，把目的地和费用放在一起比较，并在往前走之前，把法律、医疗和实操上的问题逐个问清楚。',
+    ctaPrimary: '查看目的地',
+    ctaSecondary: '联系我们',
+    note: '为您一家人的未来，多一分清楚',
   },
 };
 
