@@ -1,18 +1,17 @@
 ---
 /*
- * The destinations index, built as a decision page rather than a country list.
+ * The destinations index: a country picker first, the reasoning behind it after.
  *
- * The brief for this page is explicit about what it must not be: an article about which
- * countries allow surrogacy, or a shortlist with a winner. What a reader has to be able to do
- * here is work out which destinations are worth research time and which to drop first, from
- * four things: whether the rule names a family like theirs, who is a legal parent at birth,
- * whether the budget covers the whole process, and whether they can attend in person.
+ * The brief is explicit about what this page must not be: an article about which countries
+ * allow surrogacy, or a shortlist with a winner. The picker therefore shows only what a record
+ * carries, with its source and the date that source was read, and nothing is marked open, safe
+ * or best from prior knowledge or from a provider's summary. A reader who already knows which
+ * country to look at can open it in one click; a reader who does not can read the four tests
+ * below the cards and come back.
  *
- * The country cells below are only filled from the records in src/data/jurisdictions, each of
- * which carries an openable source and the date it was read. That is why the comparison is
- * presented as the ten things a comparison has to cover, with the published records showing the
- * subset of those columns we could actually source. Nothing here is marked open, safe or
- * best from prior knowledge or from a provider's summary.
+ * The cards and the admission table are filled only from the records in src/data/jurisdictions.
+ * That is why the comparison is presented as the ten things a comparison has to cover, with the
+ * published records showing the subset of those columns we could actually source.
  *
  * The wording is in src/i18n/ui.ts and the markup is here, so one route file per language can
  * build the same argument. The counts in the dictionary are tuple lengths, which is what keeps
@@ -23,19 +22,23 @@
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
-import JurisdictionTable from '@/components/destinations/JurisdictionTable.astro';
 import AdmissionTable from '@/components/destinations/AdmissionTable.astro';
 import DestinationNotes from '@/components/tools/DestinationNotes.astro';
 import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
+import { LANG_META } from '@/i18n/config';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { UI, fill } from '@/i18n/ui';
+import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
 import { formatDate } from '@/lib/dates';
+import { costText, headlineCost } from '@/lib/costs';
 import { getJurisdictions } from '@/lib/jurisdictions';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.destinations;
 const admitsCopy = UI[lang].admits;
+const tableCopy = UI[lang].table;
+const costsCopy = UI[lang].costs;
+const basis = BASIS_LABELS[lang];
 
 const rows = await getJurisdictions(lang);
 const verified = rows.filter((r) => !r.data.insufficientData).length;
@@ -74,9 +77,30 @@ const NEXT_HREFS = [
   '/tools/agency-quote-comparison',
 ];
 
-const flaggedNames = thin.map((r) => r.data.name).join(copy.records.thinJoin);
-const flaggedVerb = thin.length === 1 ? copy.records.thinOne : copy.records.thinMany;
+const flaggedNames = thin.map((r) => r.data.name).join(copy.picker.thinJoin);
 const home = localizedPath(lang, '/');
+
+const pageUrl = new URL(localizedPath(lang, '/destinations'), Astro.site).href;
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: copy.title,
+    description: copy.description,
+    url: pageUrl,
+    inLanguage: LANG_META[lang].htmlLang,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: rows.length,
+      itemListElement: rows.map((row, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: new URL(localizedPath(lang, `/destinations/${row.data.code}`), Astro.site).href,
+        name: row.data.name,
+      })),
+    },
+  },
+];
 
 /* The browser title is capped at 62 half-width units by scripts/audit-dist.mjs, which is where
  * Google truncates. The brief's title ran to 77 with the site suffix, so "Eligibility" is the
@@ -84,7 +108,7 @@ const home = localizedPath(lang, '/');
  * audit counts the raw entity as five characters. */
 ---
 
-<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description} jsonLd={jsonLd}>
   <Breadcrumbs crumbs={[{ label: copy.breadcrumb }]} />
 
   <header class="shell py-10 sm:py-14">
@@ -100,28 +124,119 @@ const home = localizedPath(lang, '/');
     </p>
 
     <div class="mt-7 flex flex-wrap gap-3">
-      <a href="#notes" class="btn-primary">
-        {copy.ctaNotes}
+      <a href="#destinations" class="btn-primary">
+        {copy.ctaPick}
         <Icon name="arrow-down-right" size={16} />
       </a>
-      <a href="#records" class="btn-ghost">{copy.ctaRecords}</a>
+      <a href="#factors" class="btn-ghost">{copy.ctaFactors}</a>
     </div>
 
-    <dl class="mt-8 grid gap-x-10 gap-y-3 border-t border-line pt-5 text-[15px] sm:grid-cols-3">
+    <dl class="mt-8 grid grid-cols-3 gap-x-4 gap-y-3 border-t border-line pt-5 sm:gap-x-10">
       <div>
-        <dt class="text-muted">{copy.stats.recorded}</dt>
-        <dd class="tnum mt-0.5 text-[22px] font-medium">{rows.length}</dd>
+        <dt class="text-[13px] leading-snug text-muted sm:text-[15px]">{copy.stats.recorded}</dt>
+        <dd class="tnum mt-0.5 text-[20px] font-medium sm:text-[22px]">{rows.length}</dd>
       </div>
       <div>
-        <dt class="text-muted">{copy.stats.sourced}</dt>
-        <dd class="tnum mt-0.5 text-[22px] font-medium">{verified}</dd>
+        <dt class="text-[13px] leading-snug text-muted sm:text-[15px]">{copy.stats.sourced}</dt>
+        <dd class="tnum mt-0.5 text-[20px] font-medium sm:text-[22px]">{verified}</dd>
       </div>
       <div>
-        <dt class="text-muted">{copy.stats.lastCheck}</dt>
-        <dd class="tnum mt-0.5 text-[22px] font-medium">{formatDate(lastChecked, lang)}</dd>
+        <dt class="text-[13px] leading-snug text-muted sm:text-[15px]">{copy.stats.lastCheck}</dt>
+        <dd class="tnum mt-0.5 text-[20px] font-medium sm:text-[22px]">{formatDate(lastChecked, lang)}</dd>
       </div>
     </dl>
   </header>
+
+  <section class="shell pb-16" id="destinations" aria-labelledby="destinations-h">
+    <div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-2">
+      <div class="max-w-[64ch]">
+        <h2 id="destinations-h" class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">
+          {copy.picker.heading}
+        </h2>
+        <p class="mt-3 text-[16px] leading-[1.7] text-muted">{copy.picker.intro}</p>
+      </div>
+      {
+        rows.length > 0 && (
+          <p class="tnum text-[14px] text-muted">{fill(copy.picker.count, { n: rows.length })}</p>
+        )
+      }
+    </div>
+
+    {
+      rows.length > 0 ? (
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {rows.map((row) => {
+            const figure = headlineCost(row.data.costs);
+            return (
+              <li>
+                <a
+                  href={localizedPath(lang, `/destinations/${row.data.code}`)}
+                  class="card card-hover group flex h-full flex-col p-5"
+                >
+                  <span class="flex items-start justify-between gap-3 text-[13px] leading-snug text-muted">
+                    <span>{row.data.region}</span>
+                    {row.data.insufficientData && (
+                      <span class="shrink-0 text-flag">{copy.picker.insufficient}</span>
+                    )}
+                  </span>
+                  <h3 class="mt-1.5 text-[24px] leading-[1.15] group-hover:text-accent">{row.data.name}</h3>
+                  <dl class="mt-4 flex flex-col gap-3 border-t border-line pt-4">
+                    <div>
+                      <dt class="text-[12px] leading-none text-muted">{tableCopy.legalBasis}</dt>
+                      <dd class="mt-1.5 text-[15px] leading-snug">{basis[row.data.basis] ?? row.data.basis}</dd>
+                    </div>
+                    <div>
+                      <dt class="text-[12px] leading-none text-muted">{costsCopy.table}</dt>
+                      <dd class="mt-1.5 tnum text-[15px] leading-snug">
+                        {figure ? (
+                          <>
+                            {costText(figure, lang)}
+                            <span class="mt-0.5 block text-[12px] text-muted">
+                              {fill(costsCopy.asOf, { year: figure.asOf })}
+                            </span>
+                          </>
+                        ) : (
+                          <span class="text-muted">{copy.picker.noCost}</span>
+                        )}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt class="text-[12px] leading-none text-muted">{tableCopy.checked}</dt>
+                      <dd class="mt-1.5 tnum text-[15px] leading-snug">
+                        {formatDate(row.data.statusVerifiedOn, lang)}
+                      </dd>
+                    </div>
+                  </dl>
+                  <span class="mt-auto inline-flex items-center gap-2 pt-5 text-[14px] font-medium text-accent">
+                    {copy.picker.open}
+                    <Icon name="arrow-right" size={15} />
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <div class="mt-8">
+          <EmptyState title={copy.picker.emptyTitle} body={copy.picker.emptyBody} />
+        </div>
+      )
+    }
+
+    {
+      thin.length > 0 && (
+        <p class="mt-5 max-w-[64ch] text-[14px] leading-[1.7] text-flag">
+          {fill(copy.picker.thinNote, { names: flaggedNames })}
+        </p>
+      )
+    }
+    <p class="mt-5 max-w-[64ch] text-[14px] leading-[1.7] text-muted">
+      {copy.picker.costNote}<a href={localizedPath(lang, '/tools/cost-figures')} class="textlink">
+        {copy.picker.costLink}
+        <Icon name="arrow-right" size={15} />
+      </a>
+    </p>
+  </section>
 
   <section class="shell pb-14" id="factors">
     <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.factors.heading}</h2>
@@ -149,37 +264,6 @@ const home = localizedPath(lang, '/');
     <DestinationNotes />
   </section>
 
-  <section class="shell pb-16" id="records">
-    <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{copy.records.heading}</h2>
-    <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
-      {copy.records.intro}
-    </p>
-
-    <div class="mt-7">
-      {
-        rows.length > 0 ? (
-          <JurisdictionTable rows={rows} compact />
-        ) : (
-          <EmptyState title={copy.records.emptyTitle} body={copy.records.emptyBody} />
-        )
-      }
-    </div>
-
-    {
-      thin.length > 0 && (
-        <p class="mt-5 max-w-[64ch] text-[14px] leading-[1.7] text-flag">
-          {fill(copy.records.thinNote, { names: flaggedNames, verb: flaggedVerb })}
-        </p>
-      )
-    }
-    <p class="mt-6 max-w-[64ch] text-[15px] leading-[1.7] text-muted">
-      {copy.records.costNote}<a href={localizedPath(lang, '/tools/cost-figures')} class="textlink">
-        {copy.records.costLink}
-        <Icon name="arrow-right" size={15} />
-      </a>
-    </p>
-  </section>
-
   <section class="shell pb-16" id="admission">
     <h2 class="text-[clamp(1.5rem,3vw,2rem)] leading-snug">{admitsCopy.matrix.heading}</h2>
     <p class="mt-3 max-w-[64ch] text-[16px] leading-[1.7] text-muted">
@@ -191,7 +275,7 @@ const home = localizedPath(lang, '/');
         rows.length > 0 ? (
           <AdmissionTable rows={rows} />
         ) : (
-          <EmptyState title={copy.records.emptyTitle} body={copy.records.emptyBody} />
+          <EmptyState title={copy.picker.emptyTitle} body={copy.picker.emptyBody} />
         )
       }
     </div>

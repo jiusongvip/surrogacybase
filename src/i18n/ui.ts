@@ -283,9 +283,25 @@ export const UI: Record<Lang, {
       h1: string;
       lede: string;
       notice: string;
-      ctaNotes: string;
-      ctaRecords: string;
+      ctaPick: string;
+      ctaFactors: string;
       stats: { recorded: string; sourced: string; lastCheck: string };
+      picker: {
+        heading: string;
+        intro: string;
+        /** {n} is the number of verified records. */
+        count: string;
+        open: string;
+        noCost: string;
+        insufficient: string;
+        /** {names} is the flagged destinations joined with {join}. */
+        thinNote: string;
+        thinJoin: string;
+        costNote: string;
+        costLink: string;
+        emptyTitle: string;
+        emptyBody: string;
+      };
       factors: {
         heading: string;
         intro: string;
@@ -295,20 +311,6 @@ export const UI: Record<Lang, {
           { q: string; a: string; test: string },
           { q: string; a: string; test: string },
         ];
-      };
-      records: {
-        heading: string;
-        intro: string;
-        emptyTitle: string;
-        emptyBody: string;
-        /** The line under the comparison table: the same figures, grouped another way. */
-        costNote: string;
-        costLink: string;
-        /** {names} is the flagged destinations joined with {join}; {verb} is one or many. */
-        thinNote: string;
-        thinJoin: string;
-        thinOne: string;
-        thinMany: string;
       };
       dimensions: {
         heading: string;
@@ -688,19 +690,36 @@ export const UI: Record<Lang, {
         title: 'Surrogacy Destinations',
         titleTag: 'Surrogacy Destinations: Compare Laws and Costs',
         description:
-          'Compare surrogacy destinations on eligibility, parentage at birth, payment rules, cost scope and attendance requirements, with every legal position sourced and dated.',
+          'Compare surrogacy destinations on eligibility, parentage at birth, payment rules, cost scope and attendance, with every legal position sourced and dated.',
         breadcrumb: 'Destinations',
         eyebrow: 'Independent destination research',
         h1: 'Which surrogacy destinations suit your situation?',
         lede: 'This page does not name a best country. It helps you decide which places are worth research time and which to exclude first, from four things: whether the rule covers your family, who is a legal parent at birth, whether the money covers the whole process, and whether you can be there when it is needed.',
         notice:
           'Surrogacy law differs between countries, and inside federal countries between states and provinces. It also differs by marital status, by whether a child is genetically yours, and by nationality and residence, and those three are separate tests rather than one. Nothing below is legal advice about your situation, and a country that permits an arrangement does not establish that you may use it or that your own country will accept the result.',
-        ctaNotes: 'What to verify first',
-        ctaRecords: 'Compare the verified records',
+        ctaPick: 'Choose a destination',
+        ctaFactors: 'See the four tests',
         stats: {
           recorded: 'Destinations recorded',
           sourced: 'Backed by an openable source',
           lastCheck: 'Last check',
+        },
+        picker: {
+          heading: 'Choose a destination',
+          intro:
+            'Each card is one verified record: the legal basis, the one cost figure a source published (or a note that there is none), and the date that source was last read. Open a record to see every position beside its citation and the questions still open.',
+          count: '{n} verified records, sorted by region',
+          open: 'Open the record',
+          noCost: 'No figure published',
+          insufficient: 'Sourcing incomplete',
+          thinNote:
+            'Some records are flagged because the sources we could open do not support a usable position: {names}. They stay on the page so a name you have already seen in a brochure is not missing without explanation.',
+          thinJoin: ' and ',
+          costNote: 'One figure per destination is what a card can show. ',
+          costLink: 'Read every published figure by the line it covers',
+          emptyTitle: 'Nothing verified yet',
+          emptyBody:
+            'Each destination needs a primary legal source with a date before it appears here. A list of places copied from agency blogs would be the fastest way to publish something wrong.',
         },
         factors: {
           heading: 'Four things decide a destination before any preference does',
@@ -732,21 +751,6 @@ export const UI: Record<Lang, {
                 'Get the attendance schedule in writing from the person who will handle each step, and say plainly how many windows you have.',
             },
           ],
-        },
-        records: {
-          heading: 'The verified records',
-          intro:
-            'A record states what a specific legal system says, who it appears to apply to, and when we last read the source behind it. Open a record to see each position beside its citation and the questions we could not settle.',
-          emptyTitle: 'Nothing verified yet',
-          emptyBody:
-            "Each destination needs a primary legal source with a date before it appears here. A list of places copied from agency blogs would be the fastest way to publish something wrong.",
-          costNote: 'One number per destination is what the column above can show. ',
-          costLink: 'Read every published figure by the line it covers',
-          thinNote:
-            '{names} {verb} listed with a flag because the sources we could open do not support a usable position. They stay on the page so that a name you have already seen in a brochure is not missing without explanation.',
-          thinJoin: ' and ',
-          thinOne: 'is',
-          thinMany: 'are',
         },
         dimensions: {
           heading: 'The ten things a destination comparison has to cover',
@@ -1213,12 +1217,26 @@ export const UI: Record<Lang, {
         h1: '哪些代孕目的地适合您的情况？',
         lede: '这一页不点名最好的国家。它帮您判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖您的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及您需要到场的时候您能不能到场。',
         notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有基因关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
-        ctaNotes: '先核实什么',
-        ctaRecords: '比较已核实的记录',
+        ctaPick: '选择目的地',
+        ctaFactors: '先看四件事',
         stats: {
           recorded: '已记录的目的地',
           sourced: '附有可打开的来源',
           lastCheck: '最近一次核查',
+        },
+        picker: {
+          heading: '选择目的地',
+          intro: '每张卡片对应一条已核实的记录：法律依据、来源发布的一个费用数字（或者说明没有发布），以及最后一次阅读来源的日期。打开记录，可以看到每一项立场与它的引用并列，以及仍未确定的问题。',
+          count: '{n} 条已核实的记录，按地区排列',
+          open: '打开记录',
+          noCost: '未发布费用数字',
+          insufficient: '来源不足',
+          thinNote: '有些记录带着标记，因为我们能打开的来源并不支持一个可用的结论：{names}。它们保留在页面上，是为了让您在宣传册里已经见过的名字，不至于没有任何说明就消失。',
+          thinJoin: '、',
+          costNote: '一张卡片对每个目的地只能显示一个数字。',
+          costLink: '按每个数字覆盖的那一行去读全部已发布的数字',
+          emptyTitle: '尚无已核实的内容',
+          emptyBody: '每个目的地都要先有一份带日期的一手法律来源，才会出现在这里。把机构博客上的地点清单抄过来，是发布错误内容最快的方式。',
         },
         factors: {
           heading: '在偏好起作用之前，先由四件事决定目的地',
@@ -1245,18 +1263,6 @@ export const UI: Record<Lang, {
               test: '让负责每一步的人把到场时间表以书面形式交给您，并清楚说明您有几个可用的时间窗口。',
             },
           ],
-        },
-        records: {
-          heading: '已核实的记录',
-          intro: '一条记录说明某个具体法律体系写了什么、它看起来适用于谁，以及我们最后一次阅读其背后来源的日期。打开一条记录，可以看到每一项立场与它的引用并列，以及我们未能确定的问题。',
-          emptyTitle: '尚无已核实的内容',
-          emptyBody: '每个目的地都要先有一份带日期的一手法律来源，才会出现在这里。把机构博客上的地点清单抄过来，是发布错误内容最快的方式。',
-          costNote: '上面这一列每个目的地只能显示一个数字。',
-          costLink: '按每个数字覆盖的那一行去读全部已发布的数字',
-          thinNote: '{names}带着标记列出，因为我们能打开的来源并不支持一个可用的结论。它们保留在页面上，是为了让您在宣传册里已经见过的名字，不至于没有任何说明就消失。',
-          thinJoin: '、',
-          thinOne: '',
-          thinMany: '',
         },
         dimensions: {
           heading: '比较一个目的地，必须覆盖的十项内容',
