@@ -1,0 +1,454 @@
+---
+/*
+ * The figure a published piece carries in place of a photograph.
+ *
+ * Every shape is derived from quantities in `src/data/content-figures.ts`, which are transcriptions
+ * of what the piece itself states. Nothing here is drawn freehand: the bars are the rates, the
+ * boxes are the documents, the gap in the chain is the point where the file leaves a country.
+ *
+ * The drawing area is a 320x180 box with 24 units of padding, and the same box is used whether the
+ * figure sits in a 280px card or a 900px article header, so a figure never re-composes at a new
+ * size — it only scales. `preserveAspectRatio` is left at its default so a container of another
+ * ratio centres the drawing rather than cropping through it.
+ *
+ * No text. The site is bilingual, a caption would have to be written and maintained twice, and at
+ * card size it would not be legible anyway. Counts read as geometry in either language.
+ *
+ * Colour comes from the semantic tokens, never from a literal, so the figures invert with the page
+ * under `prefers-color-scheme` the same way the rest of it does.
+ *
+ * `aria-hidden`: the figure restates what the card's title and summary already say, so a screen
+ * reader gains a duplicate and loses nothing by skipping it.
+ */
+import type { Figure } from '@/data/content-figures';
+
+type Props = { figure: Figure };
+const { figure } = Astro.props;
+
+/* Two weights, not three: `quiet` is the measuring background a mark is read against — a scale, a
+ * track, a gridline — and `ink` is the mark itself. They sit one step apart in the palette, so the
+ * distinction a reader needs is visible at card size: --line-strong against paper is under 2:1, which
+ * is fine for a track and not fine for the bar that carries a rate. `accent` stays reserved for the
+ * one item a piece is arguing about. */
+const C = {
+  quiet: 'var(--line)',
+  ink: 'var(--text-muted)',
+  accent: 'var(--accent)',
+  tint: 'var(--accent-tint)',
+  brand: 'var(--brand-fg)',
+  card: 'var(--surface)',
+};
+
+/* The box every figure is laid out inside. */
+const X = 24;
+const Y = 24;
+const W = 272;
+const H = 132;
+const MID = Y + H / 2;
+const n = (v: number) => Math.round(v * 10) / 10;
+
+/* Attributes are passed straight through to the SVG element, so anything a renderer accepts — a
+ * var() colour, a dash pattern, or an omitted dash — has to be legal here. */
+type Attrs = Record<string, number | string | undefined>;
+type Shape = { t: 'rect' | 'line' | 'circle' | 'path'; [key: string]: number | string | undefined };
+
+const shapes: Shape[] = [];
+
+/* SVG spells its attributes in kebab-case and spells a rect's size `width`/`height`, so the
+ * shorthand used below is normalised here rather than at every call. A dropped attribute is
+ * skipped: an undefined `stroke-dasharray` has to be absent, not the string "undefined". */
+const kebab = (s: Attrs): Attrs => {
+  const out: Attrs = {};
+  for (const [key, value] of Object.entries(s)) {
+    if (value === undefined) continue;
+    const name =
+      key === 'w' ? 'width' : key === 'h' ? 'height' : key.replace(/[A-Z]/g, (ch) => `-${ch.toLowerCase()}`);
+    /* Coordinates come out of divisions, and a float like 45.400000000000006 in published markup is
+     * just noise — the drawing cannot show a twentieth of a pixel. */
+    out[name] = typeof value === 'number' ? Math.round(value * 1000) / 1000 : value;
+  }
+  return out;
+};
+
+const rect = (s: Attrs) => shapes.push({ t: 'rect', ...kebab(s) });
+const line = (s: Attrs) => shapes.push({ t: 'line', ...kebab(s) });
+const circle = (s: Attrs) => shapes.push({ t: 'circle', ...kebab(s) });
+const path = (s: Attrs) => shapes.push({ t: 'path', ...kebab(s) });
+
+if (figure.kind === 'bars') {
+  /* One scale, several populations. The track behind each bar is the whole scale, so a short bar is
+   * visibly short rather than merely small. Bar height solves against the plate rather than being
+   * fixed: three rates have to fill the same box as five, and a fixed 20 units left three quarters
+   * of a three-bar plate empty. */
+  const count = figure.values.length;
+  const barH = n(H / (1.6 * count - 0.6));
+  const gap = n(barH * 0.6);
+  const rx = n(Math.min(barH / 2, 14));
+  const top = Y + (H - (count * barH + (count - 1) * gap)) / 2;
+  figure.values.forEach((v, i) => {
+    const y = n(top + i * (barH + gap));
+    rect({ x: X, y, w: W, h: barH, rx, fill: C.quiet });
+    rect({
+      x: X,
+      y,
+      w: n((W * v) / figure.max),
+      h: barH,
+      rx,
+      fill: i === figure.emphasis ? C.accent : C.ink,
+    });
+  });
+  if (figure.ref !== undefined) {
+    const x = n(X + (W * figure.ref) / figure.max);
+    line({ x1: x, y1: Y - 6, x2: x, y2: Y + H + 6, stroke: C.ink, strokeWidth: 1.5, strokeDasharray: '3 4' });
+  }
+}
+
+if (figure.kind === 'timeline') {
+  /* A window measured from one event, and a process that starts inside it and finishes outside. The
+   * axis runs the full horizon underneath, so the empty months past the deadline read as time that
+   * has gone by rather than as blank space. */
+  const at = (m: number) => n(X + (W * m) / figure.horizon);
+  const axis = Y + H - 6;
+  line({ x1: X, y1: axis, x2: X + W, y2: axis, stroke: C.quiet, strokeWidth: 1.5 });
+  [0, figure.window, figure.horizon].forEach((m) => {
+    line({ x1: at(m), y1: axis - 5, x2: at(m), y2: axis + 5, stroke: C.ink, strokeWidth: 1.5 });
+  });
+  rect({ x: at(0), y: MID - 32, w: at(figure.window) - at(0), h: 64, rx: 10, fill: C.tint });
+  line({ x1: at(0), y1: MID - 40, x2: at(0), y2: axis - 5, stroke: C.ink, strokeWidth: 1.5 });
+  line({
+    x1: at(figure.window),
+    y1: MID - 40,
+    x2: at(figure.window),
+    y2: axis - 5,
+    stroke: C.ink,
+    strokeWidth: 1.5,
+    strokeDasharray: '3 4',
+  });
+  const [from, to] = figure.run;
+  const inside = Math.min(to, figure.window);
+  rect({ x: at(from), y: MID - 7, w: at(inside) - at(from), h: 14, rx: 7, fill: C.brand });
+  if (to > figure.window) {
+    rect({
+      x: at(figure.window),
+      y: MID - 7,
+      w: at(to) - at(figure.window),
+      h: 14,
+      rx: 7,
+      fill: 'none',
+      stroke: C.brand,
+      strokeWidth: 1.5,
+      strokeDasharray: '4 4',
+    });
+  }
+  circle({ cx: at(from), cy: MID, r: 5, fill: C.card, stroke: C.brand, strokeWidth: 1.5 });
+  circle({ cx: at(to), cy: MID, r: 5, fill: C.accent });
+}
+
+if (figure.kind === 'outside-frame') {
+  /* The frame is a package price. What sits outside it is the list. */
+  const frameW = 132;
+  rect({ x: X, y: Y + 6, w: frameW, h: H - 12, rx: 10, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+  for (let i = 0; i < figure.inside; i += 1) {
+    const col = i % 3;
+    const row = Math.floor(i / 3);
+    rect({ x: n(X + 14 + col * 38), y: n(Y + 22 + row * 32), w: 24, h: 10, rx: 5, fill: C.ink });
+  }
+  for (let i = 0; i < figure.outside; i += 1) {
+    const col = i % 3;
+    const row = Math.floor(i / 3);
+    /* Spread the loose items across the whole width left beside the frame, so the plate reads as one
+     * composition instead of a drawing with an empty right margin. */
+    const colStep = n((X + W - 24 - (X + frameW + 22)) / 2);
+    rect({
+      x: n(X + frameW + 22 + col * colStep),
+      y: n(Y + 10 + row * 32 + (col === 1 ? 10 : 0)),
+      w: 24,
+      h: 10,
+      rx: 5,
+      fill: 'none',
+      stroke: C.accent,
+      strokeWidth: 1.5,
+      strokeDasharray: '3 3',
+    });
+  }
+}
+
+if (figure.kind === 'range') {
+  /* A published band, the tail a provider says it can reach, and no measurement at the middle — the
+   * crossed disc is the article's actual claim, that nobody has taken an average. The axis runs
+   * underneath with the band tied down to it, so the two are read together rather than as a box
+   * floating in the middle of a line. */
+  const at = (v: number) => n(X + (W * v) / figure.horizon);
+  const axis = Y + H - 6;
+  line({ x1: X, y1: axis, x2: X + W, y2: axis, stroke: C.quiet, strokeWidth: 1.5 });
+  [figure.band[0], figure.band[1], figure.tail].forEach((v) => {
+    line({ x1: at(v), y1: axis - 5, x2: at(v), y2: axis + 5, stroke: C.ink, strokeWidth: 1.5 });
+  });
+  rect({
+    x: at(figure.band[0]),
+    y: MID - 30,
+    w: at(figure.band[1]) - at(figure.band[0]),
+    h: 60,
+    rx: 10,
+    fill: C.tint,
+    stroke: C.accent,
+    strokeWidth: 1.5,
+  });
+  rect({
+    x: at(figure.band[1]),
+    y: MID - 8,
+    w: at(figure.tail) - at(figure.band[1]),
+    h: 16,
+    rx: 8,
+    fill: 'none',
+    stroke: C.accent,
+    strokeWidth: 1.5,
+    strokeDasharray: '4 4',
+  });
+  figure.band.forEach((v, i) => {
+    line({
+      x1: at(v),
+      y1: MID + (i === 0 ? 30 : 8),
+      x2: at(v),
+      y2: axis - 5,
+      stroke: C.quiet,
+      strokeWidth: 1.5,
+      strokeDasharray: '3 4',
+    });
+  });
+  const mid = n((at(figure.band[0]) + at(figure.band[1])) / 2);
+  circle({ cx: mid, cy: MID, r: 14, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+  line({ x1: n(mid - 10), y1: MID + 10, x2: n(mid + 10), y2: MID - 10, stroke: C.ink, strokeWidth: 1.5 });
+}
+
+if (figure.kind === 'chain') {
+  /* Steps in a sequence, held apart wherever a different institution takes over. The zigzag offset is
+   * tied to the spacing between nodes, because a fixed one turns into a steep sawtooth as soon as a
+   * nine-stage chain squeezes nine nodes across the same width. */
+  const last = figure.nodes - 1;
+  const spacing = W / (last || 1);
+  const amp = n(Math.min(20, spacing * 0.55));
+  const px = (i: number) => n(X + spacing * i);
+  const py = (i: number) => (figure.step ? MID + (i % 2 === 0 ? -amp : amp) : MID);
+  const r = n(Math.min(13, spacing * 0.22));
+  for (let i = 0; i < last; i += 1) {
+    const apart = figure.breaks?.includes(i) ?? false;
+    line({
+      x1: px(i) + (apart ? r + 2.5 : 0),
+      y1: py(i),
+      x2: px(i + 1) - (apart ? r + 2.5 : 0),
+      y2: py(i + 1),
+      stroke: apart ? C.accent : C.ink,
+      strokeWidth: 1.5,
+    });
+    if (apart) {
+      /* The gap is drawn as two short stubs rather than a dashed line, so it reads as a break in
+       * the sequence and not as a weaker link in the same chain. */
+      line({
+        x1: n((px(i) + px(i + 1)) / 2 - 3),
+        y1: n((py(i) + py(i + 1)) / 2),
+        x2: n((px(i) + px(i + 1)) / 2 + 3),
+        y2: n((py(i) + py(i + 1)) / 2),
+        stroke: C.accent,
+        strokeWidth: 1.5,
+      });
+    }
+  }
+  for (let i = 0; i < figure.nodes; i += 1) {
+    const filled = figure.markerAt === i;
+    const cx = px(i);
+    const cy = py(i);
+    if (figure.shapes === 'mixed' && i === 1) {
+      rect({ x: n(cx - r + 1), y: n(cy - r + 1), w: n(2 * (r - 1)), h: n(2 * (r - 1)), rx: 4, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+    } else if (figure.shapes === 'mixed' && i === 2) {
+      path({
+        d: `M ${cx} ${n(cy - r)} L ${n(cx + r)} ${cy} L ${cx} ${n(cy + r)} L ${n(cx - r)} ${cy} Z`,
+        fill: C.card,
+        stroke: C.ink,
+        strokeWidth: 1.5,
+      });
+    } else {
+      circle({
+        cx,
+        cy,
+        r: filled ? r + 3 : r,
+        fill: filled ? C.accent : C.card,
+        stroke: filled ? C.accent : C.ink,
+        strokeWidth: 1.5,
+      });
+    }
+    if (filled) {
+      line({ x1: cx, y1: n(cy + r + 3), x2: cx, y2: n(cy + 30), stroke: C.accent, strokeWidth: 1.5 });
+      circle({ cx, cy: n(cy + 36), r: 5, fill: C.accent });
+    }
+  }
+}
+
+if (figure.kind === 'matrix') {
+  /* Each dimension can be pushed up the scale of what a source is worth. */
+  const rowH = 10;
+  const gap = n((H - figure.rows * rowH) / (figure.rows - 1));
+  for (let l = 1; l < figure.levels; l += 1) {
+    const x = n(X + (W * l) / figure.levels);
+    line({ x1: x, y1: Y - 4, x2: x, y2: Y + H + 4, stroke: C.quiet, strokeWidth: 1.5 });
+  }
+  for (let i = 0; i < figure.rows; i += 1) {
+    const y = n(Y + i * (rowH + gap));
+    rect({ x: X, y: n(y + rowH / 2 - 1), w: W, h: 2, rx: 1, fill: C.quiet });
+    const level = Math.min(i + 1, figure.levels);
+    circle({
+      cx: n(X + (W * (level - 0.5)) / figure.levels),
+      cy: n(y + rowH / 2),
+      r: 8,
+      fill: level === figure.levels ? C.accent : C.card,
+      stroke: level === figure.levels ? C.accent : C.ink,
+      strokeWidth: 1.5,
+    });
+  }
+}
+
+if (figure.kind === 'before-line') {
+  /* Everything on the left is still negotiable. The line is the transfer. */
+  const lx = n(X + W * 0.64);
+  const rows = figure.items;
+  const boxH = 20;
+  const gap = n((H - rows * boxH) / (rows - 1));
+  for (let i = 0; i < rows; i += 1) {
+    const y = n(Y + i * (boxH + gap));
+    rect({ x: X, y, w: n(lx - X - 30), h: boxH, rx: 7, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+    path({
+      d: `M ${n(X + 8)} ${n(y + 11)} l 4 4 l 8 -9`,
+      fill: 'none',
+      stroke: C.accent,
+      strokeWidth: 2,
+    });
+  }
+  line({ x1: lx, y1: n(Y - 4), x2: lx, y2: 146, stroke: C.brand, strokeWidth: 2 });
+  circle({ cx: lx, cy: n(Y + H - 5), r: 5, fill: C.brand });
+}
+
+if (figure.kind === 'boxes') {
+  /* Four separate questions, and a fifth that is not asked of the destination at all. */
+  const cols = 2;
+  const gap = 14;
+  const cellW = 88;
+  const cellH = 52;
+  const gridW = cols * cellW + (cols - 1) * gap;
+  const dashedX = n(X + gridW + 26);
+  for (let i = 0; i < figure.solid; i += 1) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = n(X + col * (cellW + gap));
+    const y = n(Y + 8 + row * (cellH + gap));
+    rect({ x, y, w: cellW, h: cellH, rx: 10, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+    rect({ x: n(x + 14), y: n(y + 14), w: 40, h: 6, rx: 3, fill: C.ink });
+    rect({ x: n(x + 14), y: n(y + 28), w: 56, h: 6, rx: 3, fill: C.quiet });
+  }
+  if (figure.dashed) {
+    rect({
+      x: dashedX,
+      y: n(Y + 8),
+      w: n(X + W - dashedX),
+      h: n(2 * cellH + gap),
+      rx: 10,
+      fill: 'none',
+      stroke: C.accent,
+      strokeWidth: 1.5,
+      strokeDasharray: '4 4',
+    });
+  }
+}
+
+if (figure.kind === 'columns') {
+  /* The same list, split by the party who can actually answer it. The mark pitch is derived from the
+   * tallest column so eight questions reach the top of the plate instead of stopping short of it. */
+  const count = figure.counts.length;
+  const gap = 26;
+  const colW = n((W - (count - 1) * gap) / count);
+  const max = Math.max(...figure.counts);
+  const step = n((H - 4) / max);
+  const markH = n(step - 4);
+  for (let g = 2; g < max; g += 2) {
+    const y = n(Y + H - g * step);
+    line({ x1: X, y1: y, x2: X + W, y2: y, stroke: C.quiet, strokeWidth: 1 });
+  }
+  figure.counts.forEach((c, i) => {
+    const x = n(X + i * (colW + gap));
+    for (let j = 0; j < c; j += 1) {
+      rect({
+        x,
+        y: n(Y + H - (j + 1) * step + (step - markH) / 2),
+        w: colW,
+        h: markH,
+        rx: markH / 2,
+        fill: j === c - 1 ? C.accent : C.ink,
+      });
+    }
+  });
+}
+
+if (figure.kind === 'stack') {
+  /* One total, and the part of it nobody else is pricing. The two rules bracket the total, so the
+   * band reads as a divided whole rather than a strip floating in the middle of the plate. */
+  const gap = 5;
+  const partW = n((W - (figure.parts - 1) * gap) / figure.parts);
+  const bandH = 48;
+  for (let i = 0; i < figure.parts; i += 1) {
+    rect({
+      x: n(X + i * (partW + gap)),
+      y: MID - bandH / 2,
+      w: partW,
+      h: bandH,
+      rx: 8,
+      fill: i === figure.dashedAt ? 'none' : C.ink,
+      stroke: i === figure.dashedAt ? C.accent : 'none',
+      strokeWidth: 1.5,
+      strokeDasharray: i === figure.dashedAt ? '4 4' : undefined,
+    });
+  }
+  line({ x1: X, y1: n(MID - bandH / 2 - 10), x2: X + W, y2: n(MID - bandH / 2 - 10), stroke: C.quiet, strokeWidth: 1.5 });
+  line({ x1: X, y1: n(MID + bandH / 2 + 10), x2: X + W, y2: n(MID + bandH / 2 + 10), stroke: C.quiet, strokeWidth: 1.5 });
+}
+
+if (figure.kind === 'switches') {
+  /* Three decisions that are separable, converging on one arrangement. Each row is a two-position
+   * switch — the filled knob marks the position the piece describes — and all three leads run into one
+   * node, because the arrangement is the combination rather than any single choice. */
+  const trackEnd = n(X + 118);
+  const outX = n(X + W - 14);
+  const rows = figure.rows;
+  /* The outer rows keep their stroke inside the margin, which a row sitting exactly on the edge
+   * would not. */
+  const step = n((H - 24) / (rows - 1 || 1));
+  for (let i = 0; i < rows; i += 1) {
+    const y = n(Y + 12 + i * step);
+    line({ x1: X + 10, y1: y, x2: trackEnd, y2: y, stroke: C.ink, strokeWidth: 1.5 });
+    const onLeft = i !== 1;
+    circle({ cx: onLeft ? X + 10 : trackEnd, cy: y, r: 9, fill: C.accent, stroke: C.accent, strokeWidth: 1.5 });
+    circle({ cx: onLeft ? trackEnd : X + 10, cy: y, r: 9, fill: C.card, stroke: C.ink, strokeWidth: 1.5 });
+    path({
+      d: `M ${trackEnd} ${y} C ${n(trackEnd + 36)} ${y} ${n(outX - 40)} ${MID} ${n(outX - 14)} ${MID}`,
+      fill: 'none',
+      stroke: C.ink,
+      strokeWidth: 1.5,
+    });
+  }
+  circle({ cx: outX, cy: MID, r: 13, fill: C.card, stroke: C.brand, strokeWidth: 1.5 });
+  circle({ cx: outX, cy: MID, r: 5, fill: C.brand });
+}
+---
+
+<svg
+  viewBox="0 0 320 180"
+  class="h-full w-full"
+  aria-hidden="true"
+  focusable="false"
+>
+  {
+    shapes.map((s) => {
+      const { t, ...attrs } = s;
+      const El = t;
+      return <El {...attrs} />;
+    })
+  }
+</svg>
