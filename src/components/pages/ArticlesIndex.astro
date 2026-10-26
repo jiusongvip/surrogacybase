@@ -5,8 +5,8 @@ import Icon from '@/components/ui/Icon.astro';
 import ArticleCard from '@/components/content/ArticleCard.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { UI, fill, pick } from '@/i18n/ui';
-import { contentMedia } from '@/data/content-media';
+import { UI, fill } from '@/i18n/ui';
+import { contentImage } from '@/data/content-images';
 import { pathOf, getArticles, resolveRefs } from '@/lib/content';
 
 const lang = langFromPath(Astro.url.pathname);
@@ -109,13 +109,10 @@ const paths = (
             </h2>
             <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {articles.map((entry) => {
-                const media = contentMedia(entry.id);
+                const image = contentImage(entry.id);
                 return (
                   <li class="h-full">
-                    <ArticleCard
-                      entry={entry}
-                      image={media && { src: media.src, alt: pick(media.alt, lang) }}
-                    />
+                    <ArticleCard entry={entry} image={image} />
                   </li>
                 );
               })}

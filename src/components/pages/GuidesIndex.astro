@@ -5,9 +5,10 @@ import Icon from '@/components/ui/Icon.astro';
 import EmptyState from '@/components/ui/EmptyState.astro';
 import { LANG_META } from '@/i18n/config';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
-import { contentMedia } from '@/data/content-media';
-import { Image } from 'astro:assets';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { GUIDE_ORDER } from '@/data/guides';
+import { contentImage } from '@/data/content-images';
+import ContentPhoto from '@/components/content/ContentPhoto.astro';
 import { formatShortDate, readingTime } from '@/lib/dates';
 import { getArticles, getGuides, pathOf, refKeyOf, resolveRefs, type ContentEntry } from '@/lib/content';
 
@@ -24,17 +25,6 @@ const timeLabel = UI[lang].time.minRead;
 
 const [guides, articles] = await Promise.all([getGuides(lang), getArticles(lang)]);
 
-/* The order is the reading order, not the alphabet: process, the legal questions it raises,
- * money, the agency that spends it, the choices inside the program, then coming home. A guide
- * added later and left out of this list still appears after the preferred ones. */
-const GUIDE_ORDER = [
-  'guides/surrogacy-process',
-  'guides/surrogacy-legal-considerations',
-  'guides/surrogacy-cost',
-  'guides/choosing-a-surrogacy-agency',
-  'guides/gamete-and-surrogate-options',
-  'guides/bringing-your-child-home',
-];
 const preferred = await resolveRefs(GUIDE_ORDER, lang);
 const ordered = [...preferred, ...guides.filter((g) => !preferred.some((p) => p.id === g.id))];
 
@@ -54,7 +44,7 @@ const supporters = (guide: ContentEntry) => {
   return articles.filter((a) => a.data.relatedGuides.includes(key) || a.data.category === guide.data.category);
 };
 const [lead, ...rest] = ordered;
-const leadMedia = lead ? contentMedia(lead.id) : undefined;
+const leadImage = lead ? contentImage(lead.id) : undefined;
 const minutesOf = (entry: ContentEntry) => readingTime(entry.body ?? '');
 
 const pageUrl = new URL(localizedPath(lang, '/guides'), Astro.site).href;
@@ -159,16 +149,11 @@ const jsonLd = [
               </span>
             </span>
             {
-              leadMedia && (
-                <span class="block overflow-hidden rounded-(--radius) aspect-[4/3] bg-surface-2">
-                  <Image
-                    src={leadMedia.src}
-                    widths={[300, 600]}
-                    sizes="(min-width: 640px) 300px, 100vw"
-                    class="h-full w-full object-cover"
-                    alt={pick(leadMedia.alt, lang)}
-                    loading="lazy"
-                  />
+              leadImage && (
+                <span class="block overflow-hidden rounded-(--radius)">
+                  <span class="block aspect-[16/9] w-full">
+                    <ContentPhoto image={leadImage} sizes="(min-width: 640px) 300px, 100vw" />
+                  </span>
                 </span>
               )
             }
@@ -188,7 +173,7 @@ const jsonLd = [
         <ul class="mt-10">
           {rest.map((guide, i) => {
             const supports = supporters(guide);
-            const media = contentMedia(guide.id);
+            const image = contentImage(guide.id);
             return (
               <li class:list={[i === 0 ? '' : 'border-t border-line']}>
                 <a
@@ -196,16 +181,11 @@ const jsonLd = [
                   class="group grid gap-x-8 gap-y-3 py-6 sm:grid-cols-[132px_minmax(0,1fr)_200px] sm:items-center"
                 >
                   {
-                    media && (
-                      <span class="block aspect-[4/3] overflow-hidden rounded-(--radius) bg-surface-2">
-                        <Image
-                          src={media.src}
-                          widths={[132, 264]}
-                          sizes="(min-width: 640px) 132px, 34vw"
-                          class="h-full w-full object-cover transition-transform duration-(--dur) ease-out group-hover:scale-[1.04]"
-                          alt={pick(media.alt, lang)}
-                          loading="lazy"
-                        />
+                    image && (
+                      <span class="block overflow-hidden rounded-(--radius)">
+                        <span class="block aspect-[16/9] w-full">
+                          <ContentPhoto image={image} sizes="132px" />
+                        </span>
                       </span>
                     )
                   }

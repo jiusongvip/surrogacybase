@@ -1,0 +1,39 @@
+---
+/*
+ * The photograph a published piece carries, at whatever width its container offers.
+ *
+ * Both crops are the same 16:9 frame of the same picture, so the browser picks by density instead
+ * of by layout: a 280px card asks for the 640 file, an article header for the 1280 one. `sizes` is
+ * still worth passing per placement, because without it a browser guesses the image fills the
+ * viewport and every card on a grid downloads the large crop.
+ *
+ * The width and height attributes are the intrinsic ratio, which is what lets the browser reserve
+ * the box before the bytes arrive. `object-cover` then fills that box, so a container of another
+ * ratio crops the frame rather than stretching it.
+ */
+import { langFromPath } from '@/i18n/paths';
+import type { ContentImage } from '@/data/content-images';
+
+type Props = {
+  image: ContentImage;
+  /** How wide this placement actually renders, so the smaller crop is chosen when it will do. */
+  sizes?: string;
+  /** Set for the one image a reader is likely to see before scrolling. */
+  eager?: boolean;
+};
+
+const { image, sizes = '100vw', eager = false } = Astro.props;
+const lang = langFromPath(Astro.url.pathname);
+---
+
+<img
+  srcset={`${image.small} 640w, ${image.src} 1280w`}
+  sizes={sizes}
+  src={image.src}
+  width={1280}
+  height={720}
+  alt={image.alt[lang]}
+  loading={eager ? 'eager' : 'lazy'}
+  decoding="async"
+  class="h-full w-full object-cover"
+/>

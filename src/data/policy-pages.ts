@@ -75,7 +75,7 @@ export type TermsPage = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const EDITORIAL_REVISION = '2026-10-22';
+export const EDITORIAL_REVISION = '2026-10-26';
 
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
@@ -160,7 +160,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     imageryHeading: 'Imagery',
     imageryBody:
-      'Illustration on this site is generated, not photographed from anyone’s situation. It shows documents and desk objects, travel and coastal scenes, and occasionally people seen from behind. No picture here is documentary photography, no real surrogate, intended parent or child appears in one, and none is stock photography of an unidentified person. The choice is deliberate: on this subject a family photograph either stages something that did not happen or uses a real family’s circumstances to sell something to a stranger, and a borrowed stock image leaves you looking at a face that belongs to nobody in the story.',
+      'Where a page carries a picture, it is a stock photograph chosen for that page’s subject: documents, a courthouse, a bank vault, an airport hall. No picture claims to document anyone’s own surrogacy, no surrogate, intended parent or child appears in one, and no photograph of an identifiable person is used at all. The photographs come from a library whose licence allows commercial use without crediting the photographer, and the source of each is kept on record. The choice is deliberate: on this subject a staged family photograph either depicts something that did not happen or borrows a real family’s circumstances to sell something to a stranger, so the pictures here stay with the documents and the places a decision actually involves.',
     revised: 'Policy last revised {date}.',
   },
   zh: {
@@ -243,7 +243,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     ],
     imageryHeading: '配图',
     imageryBody:
-      '本站的插图是生成的，不是对任何家庭真实处境的拍摄。画面内容是文件与桌上的物件、旅途与海滨的场景，偶尔也有几个人朝海走去的背影。这里没有一张是纪实摄影，没有任何一张里出现真实的代孕者、意向父母或孩子，也没有一张是身份不明的图库照片。这个选择是刻意的：在代孕这个话题上，一张家庭照片要么摆拍出一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西；而借来的一张图库照片，只会让您盯着一张不属于这个故事里任何人的脸。',
+      '本站的配图是与该页主题相关的图库照片：文件、法院大楼、银行金库、机场候机楼。没有一张照片声称记录某个家庭的真实处境，画面里不出现代孕者、意向父母或孩子，也不使用任何能被认出身份的人像。照片来自允许商用、无需署名的图库，每一张的来源与授权都有留存记录。这个选择是刻意的：在代孕这个话题上，一张摆拍的家庭照片要么呈现一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西，所以这里的画面只停留在决定真正涉及的文件与场所上。',
     revised: '方针最近修订于 {date}。',
   },
 };

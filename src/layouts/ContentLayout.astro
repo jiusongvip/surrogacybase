@@ -11,9 +11,9 @@ import { SITE } from '@/const';
 import { CONTENT_NEXT } from '@/data/next-steps';
 import { LANG_META } from '@/i18n/config';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { CATEGORY_LABELS, UI, fill, pick } from '@/i18n/ui';
-import { contentMedia } from '@/data/content-media';
-import { Image } from 'astro:assets';
+import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
+import { contentImage } from '@/data/content-images';
+import ContentPhoto from '@/components/content/ContentPhoto.astro';
 import { formatDate, readingTime } from '@/lib/dates';
 import { pathOf, type ContentEntry, type Heading, type RenderedContent } from '@/lib/content';
 
@@ -35,7 +35,7 @@ const categoryLabel = CATEGORY_LABELS[lang][d.category] ?? d.category;
 const minutes = readingTime(entry.body ?? '');
 const isGuide = d.type === 'guide';
 const url = new URL(pathOf(entry), Astro.site);
-const media = contentMedia(entry.id);
+const image = contentImage(entry.id);
 const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 const next = CONTENT_NEXT[lang][d.category];
 
@@ -45,6 +45,7 @@ const jsonLd = [
     '@type': isGuide ? 'Article' : 'BlogPosting',
     headline: d.title,
     description: d.description,
+    ...(image ? { image: new URL(image.og, Astro.site).href } : {}),
     datePublished: d.publishedOn,
     dateModified: d.updatedOn,
     inLanguage: LANG_META[lang].htmlLang,
@@ -72,6 +73,7 @@ const jsonLd = [
   updatedOn={d.updatedOn}
   noindex={d.noIndex || d.evidence === 'draft'}
   ogType="article"
+  ogImage={image?.og}
   jsonLd={jsonLd}
 >
   <Breadcrumbs crumbs={crumbs} />
@@ -125,16 +127,12 @@ const jsonLd = [
         )}
       </p>
     {
-      media && (
-        <div class="mt-8 overflow-hidden rounded-(--radius-card) bg-surface-2">
-          <Image
-            src={media.src}
-            widths={[600, 900, 1200]}
-            sizes="(min-width: 1280px) 900px, (min-width: 640px) 92vw, 100vw"
-            class="aspect-[16/9] w-full object-cover lg:aspect-[21/9]"
-            alt={pick(media.alt, lang)}
-          />
-        </div>
+      image && (
+        <figure class="mt-8 overflow-hidden rounded-(--radius-card) border border-line">
+          <div class="aspect-[16/9] w-full">
+            <ContentPhoto image={image} sizes="(min-width: 768px) 720px, 100vw" eager />
+          </div>
+        </figure>
       )
     }
     </header>

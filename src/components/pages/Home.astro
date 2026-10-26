@@ -2,18 +2,23 @@
 /*
  * The homepage, in both languages.
  *
- * The section order follows the layout the site owner defined: hero, who we are, services,
- * destinations, reading, and the enquiry band last. Everything a reader sees comes from
+ * The section order is inventory first: hero and its counted strip, the country records, the
+ * reader's own situation, the explainers, the rules behind everything published, and the enquiry
+ * band last. Every count printed on the page is read off the collections it describes, so no
+ * section can advertise more than the site holds. Everything a reader sees comes from
  * src/data/home.ts or from the records it links to, so a section cannot be translated in one
  * place and left English in another.
  *
- * Two things the definition asks for are filled from data rather than written by hand. The
- * country cards are the published jurisdiction records, so a card cannot appear for a country
- * nobody has sourced; the reading cards are live content entries, so a card cannot point at an
- * article that does not exist.
+ * Each section follows the shape the reference sites use in this category: a noun heading that may
+ * carry its own count, one exit at the far right, and cards below. No section gets an eyebrow and
+ * an intro as well, because three lines of framing over four cards is the copy a reader skips.
+ * Two things the definition asks for are filled from data rather than written by hand. The country
+ * cards are the published jurisdiction records, so a card cannot appear for a country nobody has
+ * sourced; the reading cards are live content entries, so a card cannot point at an article that
+ * does not exist.
  *
- * This is a component rather than a page because / and /zh render the same argument twice, and
- * a second copy of the markup is a second place for the two languages to drift apart.
+ * This is a component rather than a page because / and /zh render the same argument twice, and a
+ * second copy of the markup is a second place for the two languages to drift apart.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Icon from '@/components/ui/Icon.astro';
@@ -22,24 +27,24 @@ import EmptyState from '@/components/ui/EmptyState.astro';
 import ConsultForm from '@/components/forms/ConsultForm.astro';
 import { SITE } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { fill, pick } from '@/i18n/ui';
-import { getLiveContent, resolveRefs } from '@/lib/content';
+import { UI, fill, pick } from '@/i18n/ui';
+import { getArticles, getGuides, getLiveContent, pathOf, resolveRefs, type ContentEntry } from '@/lib/content';
 import { getJurisdictions } from '@/lib/jurisdictions';
-import { formatDate } from '@/lib/dates';
+import { formatDate, readingTime } from '@/lib/dates';
 import {
-  HOME_ADVANTAGES,
   HOME_BAND,
   HOME_BAND_TRUST,
-  HOME_COUNTRY_MEDIA,
   HOME_COUNTRIES,
   HOME_HERO,
+  HOME_GUIDE_INDEX,
   HOME_META,
+  HOME_METHOD,
   HOME_READING,
-  HOME_STAGES,
-  HOME_STAGE_ITEMS,
-  HOME_WHO,
+  HOME_STATS,
 } from '@/data/home';
-import { contentMedia } from '@/data/content-media';
+import { GUIDE_CARDS, GUIDE_ORDER } from '@/data/guides';
+import { TOOLS } from '@/data/tools';
+import { contentImage } from '@/data/content-images';
 import { Image } from 'astro:assets';
 import heroTerrace from '@/assets/images/hero-terrace.jpg';
 import ctaLeaves from '@/assets/images/cta-leaves.jpg';
@@ -48,11 +53,22 @@ const lang = langFromPath(Astro.url.pathname);
 const records = await getJurisdictions(lang);
 const meta = HOME_META[lang];
 const hero = HOME_HERO[lang];
-const who = HOME_WHO[lang];
-const stages = HOME_STAGES[lang];
+const method = HOME_METHOD[lang];
+const guideIndex = HOME_GUIDE_INDEX[lang];
 const countries = HOME_COUNTRIES[lang];
 const readingCopy = HOME_READING[lang];
 const band = HOME_BAND[lang];
+const stats = HOME_STATS[lang];
+
+/* Numbers in the hero strip are counted, never typed: records from the collection, explainers
+ * from the live content, tools from the registry, and the newest check date from the records. */
+const articleCount = (await getArticles(lang)).length;
+const contentCount = (await getLiveContent(lang)).length;
+const toolCount = TOOLS.filter((tool) => tool.live).length;
+const lastCheckedOn = [...records]
+  .map((row) => row.data.statusVerifiedOn)
+  .sort()
+  .at(-1) ?? '';
 
 /** The mock's order, with any record that is not listed kept after it rather than dropped. */
 const COUNTRY_ORDER = ['us', 'ca', 'gb', 'co', 'gr'];
@@ -61,31 +77,27 @@ const byOrder = (a: { data: { code: string } }, b: { data: { code: string } }) =
   const j = COUNTRY_ORDER.indexOf(b.data.code);
   return (i < 0 ? COUNTRY_ORDER.length : i) - (j < 0 ? COUNTRY_ORDER.length : j);
 };
-const cards = [...records].sort(byOrder).map((row) => {
-  const media = HOME_COUNTRY_MEDIA[row.data.code];
-  return {
-    href: `/destinations/${row.data.code}`,
-    name: row.data.name,
-    region: row.data.region,
-    incomplete: row.data.insufficientData === true,
-    checked: formatDate(row.data.statusVerifiedOn, lang),
-    src: media?.src,
-    alt: media ? pick(media.alt, lang) : '',
-  };
-});
+/* The flag is the only picture a country card can carry without inventing something. A landscape
+ * under a country name implies the place was photographed, and none of these were; the flag says
+ * only what the record says, which is that the page is about that jurisdiction. */
+const cards = [...records].sort(byOrder).map((row) => ({
+  code: row.data.code,
+  href: `/destinations/${row.data.code}`,
+  name: row.data.name,
+  region: row.data.region,
+  facts: row.data.facts.length,
+  open: row.data.openQuestions.length,
+  incomplete: row.data.insufficientData === true,
+  checked: formatDate(row.data.statusVerifiedOn, lang),
+}));
 
-/* The four pieces a reader should get through before talking to anyone. The first four decide
- * what the row prints, so they answer the three questions the section's own copy names: how to
- * read a quote, what to ask a provider, and what parentage and nationality turn on. */
+/* The four explainers a reader should get through before talking to anyone, in the order the
+ * section's own line names them. Each is an article, so the count in the header is exact. */
 const readingOrder = [
   'surrogacy-costs-that-sit-outside-a-quote',
-  'choosing-a-surrogacy-agency',
+  'how-to-read-a-clinic-published-success-rate',
   'the-six-month-limit-on-a-uk-parental-order',
   'getting-a-birth-certificate-accepted-abroad',
-  'questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
-  'surrogacy-legal-considerations',
-  'what-must-be-signed-before-the-first-transfer',
-  'what-40177-transfers-do-not-promise-you',
 ];
 /* A language that cannot fill the row from the order above is topped up with its own newest
  * pages, so the section prints fewer cards only when the site has nothing left to print. */
@@ -93,7 +105,18 @@ const preferred = (await resolveRefs(readingOrder, lang)).slice(0, 4);
 const rest = preferred.length < 4 ? (await getLiveContent(lang)).filter((e) => !preferred.includes(e)) : [];
 const reading = [...preferred, ...rest.slice(0, 4 - preferred.length)];
 
-const eyebrow = 'text-[13px] font-semibold uppercase tracking-[0.16em] text-muted';
+/* The guides in reading order, topped up with anything the collection holds that the shared list
+ * does not, so a guide published later still reaches the homepage. Each row is a live entry, so
+ * the section cannot print a title with no page behind it. */
+const preferredGuides = await resolveRefs(GUIDE_ORDER, lang);
+const allGuides = await getGuides(lang);
+const guidesInOrder = [
+  ...preferredGuides,
+  ...allGuides.filter((guide) => !preferredGuides.some((preferred) => preferred.id === guide.id)),
+];
+const minutesOf = (entry: ContentEntry) => readingTime(entry.body ?? '');
+const minRead = UI[lang].time.minRead;
+
 const lp = (path: string) => localizedPath(lang, path);
 const home = localizedPath(lang, '/');
 ---
@@ -143,7 +166,9 @@ const home = localizedPath(lang, '/');
         <p class="rise rise-1 mt-5 max-w-[58ch] text-[17px] leading-[1.65] text-text lg:text-[18px] lg:leading-[1.7]">
           {hero.lead}
         </p>
-        <p class="rise rise-1 mt-4 max-w-[42ch] font-display text-[17px] leading-[1.5] text-brand-fg">
+        {/* The owner's line, set as a signature rather than a second paragraph: a rule above it
+            keeps it reading as one voice under the lead, not as more copy to get through. */}
+        <p class="rise rise-1 mt-5 max-w-[42ch] border-t border-brand-fg/25 pt-4 font-display text-[16px] leading-[1.5] text-brand-fg">
           {hero.note}
         </p>
         <div class="rise rise-2 mt-8 flex flex-wrap gap-3">
@@ -153,91 +178,69 @@ const home = localizedPath(lang, '/');
           </a>
           <a href={`${home}#assessment`} class="btn-ghost" data-enquiry-cta>{hero.ctaSecondary}</a>
         </div>
+
+        {/* The strip the reference sites put under the buttons: inventory, not adjectives. Every
+            number is counted from the collections, so it cannot outlive the pages it describes.
+            The record count is not repeated here: the next section's heading carries it. */}
+        <p class="rise rise-2 mt-7 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px] text-text/75">
+          <span class="tnum">{fill(stats.reading, { n: contentCount })}</span>
+          <span class="h-1 w-1 rounded-full bg-line-strong" aria-hidden="true"></span>
+          <span class="tnum">{fill(stats.tools, { n: toolCount })}</span>
+          <span class="h-1 w-1 rounded-full bg-line-strong" aria-hidden="true"></span>
+          <span class="tnum">{fill(stats.checked, { date: formatDate(lastCheckedOn, lang) })}</span>
+        </p>
       </div>
     </div>
   </section>
 
-  {/* C. Who we are, and the four claims a reader can go and test. */}
-  <section class="border-b border-line py-16 lg:py-24" id="who">
-    <div class="shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-      <div>
-        <p class={eyebrow}>{who.eyebrow}</p>
-        <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {who.heading}
+  {/* C. Destinations: the records themselves are the evidence, so they open the page. The count
+      sits in the heading rather than in a sentence under it. */}
+  <section class="py-14 lg:py-20" id="destinations">
+    <div class="shell">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
+        <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {fill(countries.heading, { n: cards.length })}
         </h2>
-        <p class="mt-5 max-w-[46ch] text-[16px] leading-[1.8] text-muted">{who.para}</p>
-        <a href={lp('/about')} class="textlink mt-7">
-          {who.link}
+        <a href={lp('/destinations')} class="textlink shrink-0">
+          {countries.cta}
           <Icon name="arrow-right" size={16} />
         </a>
       </div>
 
-      <div>
-        <h3 class="text-[22px]">{who.advantagesHeading}</h3>
-        <ul class="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2">
-          {
-            HOME_ADVANTAGES.map((a) => (
-              <li class="reveal">
-                <span class="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-accent">
-                  <Icon name={a.icon} size={19} />
-                </span>
-                <h4 class="mt-4 text-[17px] leading-snug">{pick(a.title, lang)}</h4>
-                <p class="mt-2 text-[14px] leading-[1.7] text-muted">{pick(a.body, lang)}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  {/* D. The point the reader has reached, each card pointing at pages that exist. */}
-  <section class="border-b border-line bg-surface-2 py-16 lg:py-24" id="start" aria-labelledby="start-h">
-    <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-      <div>
-        <p class={eyebrow}>{stages.eyebrow}</p>
-        <h2 id="start-h" class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {stages.heading}
-        </h2>
-        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{stages.intro}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={lp('/guides')} class="btn-primary">
-            {stages.ctaPrimary}
-            <Icon name="arrow-right" size={16} />
-          </a>
-          <a href={lp('/tools')} class="btn-ghost">
-            {stages.ctaSecondary}
-            <Icon name="arrow-right" size={16} />
-          </a>
-        </div>
-      </div>
-
-      <ul class="grid gap-5 sm:grid-cols-2">
+      {/*
+       * Eight records, two rows of four, each one a flag and the counts that fill the record. The
+       * card is the link; an "open the record" line under every card would print the same four
+       * words eight times.
+       */}
+      <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
-          HOME_STAGE_ITEMS.map((s) => (
-            <li class="reveal">
-              <div class="card flex h-full flex-col p-6">
-                <span class="grid h-11 w-11 place-items-center rounded-full border border-line-strong text-accent">
-                  <Icon name={s.icon} size={19} />
+          cards.map((c) => (
+            <li class="h-full">
+              <a href={lp(c.href)} class="card card-hover flex h-full items-center gap-4 p-4 sm:p-5">
+                <img
+                  src={`/flags/${c.code}.svg`}
+                  alt=""
+                  width={64}
+                  height={48}
+                  loading="lazy"
+                  decoding="async"
+                  class="shrink-0 self-start rounded-[3px] border border-line"
+                />
+                <span class="flex min-w-0 flex-1 flex-col">
+                  <h3 class="text-[17px] font-medium">
+                    {c.name}
+                    <span class="ml-2 text-[13px] font-normal text-muted">{c.region}</span>
+                  </h3>
+                  {!c.incomplete && (
+                    <span class="tnum mt-1 block text-[13px] text-text/80">
+                      {fill(countries.factsLine, { facts: c.facts, open: c.open })}
+                    </span>
+                  )}
+                  <span class:list={['tnum mt-0.5 block text-[13px]', c.incomplete ? 'text-flag' : 'text-muted']}>
+                    {c.incomplete ? countries.incomplete : fill(countries.checked, { date: c.checked })}
+                  </span>
                 </span>
-                <h3 class="mt-5 text-[18px] leading-snug">{pick(s.title, lang)}</h3>
-                <p class="mt-2 text-[14px] leading-[1.7] text-muted">{pick(s.body, lang)}</p>
-                <div class="mt-5 flex flex-col gap-2 border-t border-line pt-4">
-                  {s.links.map((link) => (
-                    <a
-                      href={lp(link.href)}
-                      class="group inline-flex items-start gap-2 text-[14px] font-medium text-accent"
-                    >
-                      <span class="group-hover:underline">{pick(link.label, lang)}</span>
-                      <Icon
-                        name="arrow-right"
-                        size={15}
-                        class="mt-0.5 shrink-0 transition-transform duration-(--dur) group-hover:translate-x-0.5"
-                      />
-                    </a>
-                  ))}
-                </div>
-              </div>
+              </a>
             </li>
           ))
         }
@@ -245,99 +248,81 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 
-  {/* E. The country cards are the published records, so an unsourced country has no card. */}
-  <section class="border-b border-line py-16 lg:py-24" id="destinations">
-    <div class="shell grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-      <div>
-        <p class={eyebrow}>{countries.eyebrow}</p>
-        <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {countries.heading}
+  {/* D. The guides themselves, in reading order. A reader locates their own position by the number
+      rather than by a card that restates it, so this section prints nothing but the titles and what
+      each one answers. No icons: the country grid above already uses them, and six icons in a row
+      turn an index into a feature list. No pictures: a guide's subject is a decision, and no
+      photograph of a decision would be truthful. Two columns keep six rows inside one screen. */}
+  <section class="bg-surface-2 py-14 lg:py-20" id="start" aria-labelledby="start-h">
+    <div class="shell">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
+        <h2 id="start-h" class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {fill(guideIndex.heading, { n: guidesInOrder.length })}
         </h2>
-        <p class="mt-5 max-w-[42ch] text-[16px] leading-[1.8] text-muted">{countries.intro}</p>
-        <a href={lp('/destinations')} class="btn-ghost mt-8">
-          {countries.cta}
+        <a href={lp(guideIndex.viewAll.href)} class="textlink shrink-0">
+          {guideIndex.viewAll.label}
           <Icon name="arrow-right" size={16} />
         </a>
       </div>
 
-      {/*
-       * min-w-0 is what keeps the rail inside the page. A grid item's automatic minimum size is
-       * its content's min-content width, and five fixed cards add up to more than any viewport,
-       * so without it the scroller stretches the column and the document gains a horizontal
-       * scrollbar instead of the rail gaining one.
-       */}
-      <div class="relative min-w-0">
-        <ul
-          class="-mx-5 flex w-full max-w-full snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0"
-          data-country-rail
-        >
-          {
-            cards.map((c) => (
-              <li class="w-[248px] shrink-0 snap-start sm:w-[268px]">
-                <a href={lp(c.href)} class="card card-hover flex h-full flex-col overflow-hidden">
-                  {
-                    c.src && (
-                      <span class="block aspect-[4/3] shrink-0 overflow-hidden bg-surface-2">
-                        <Image
-                          src={c.src}
-                          widths={[400, 600]}
-                          sizes="(min-width: 1024px) 25vw, 268px"
-                          class="h-full w-full object-cover transition-transform duration-(--dur-slow) ease-(--ease)"
-                          alt={c.alt}
-                        />
-                      </span>
-                    )
-                  }
-                  <span class="flex flex-1 flex-col gap-1.5 p-5">
-                    <span class="block text-[17px] font-medium">{c.name}</span>
-                    <span class="block text-[13px] text-muted">{c.region}</span>
-                    <span class:list={['tnum block text-[13px]', c.incomplete ? 'text-flag' : 'text-muted']}>
-                      {c.incomplete ? countries.incomplete : fill(countries.checked, { date: c.checked })}
-                    </span>
-                    <span class="mt-3 flex items-center gap-2 border-t border-line pt-3.5 text-[14px] font-medium">
-                      {countries.learnMore}
-                      <Icon name="arrow-right" size={15} class="text-accent" />
-                    </span>
+      {/* Cards, the way this category's reference sites print a row of choices: a surface each, one
+        * icon, a title, and a line short enough to take in without reading. Six long sentences in a
+        * plain list read as a table of contents and cost the reader a paragraph per row; the line
+        * under each title is lifted from that guide's own description, so the card promises nothing
+        * the page behind it does not. The order still matters, so the number stays in the corner. */}
+      <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          guidesInOrder.map((guide, i) => {
+            const card = GUIDE_CARDS[guide.id.split('/').pop() ?? ''];
+            return (
+              <li class="h-full">
+                <a href={pathOf(guide)} class="card card-hover group flex h-full flex-col p-6">
+                  <span class="flex items-start justify-between gap-4">
+                    <Icon name={card?.icon ?? 'book'} size={22} class="text-accent" />
+                    <span class="tnum text-[12px] text-muted">{String(i + 1).padStart(2, '0')}</span>
+                  </span>
+                  <h3 class="mt-5 text-[19px] leading-snug group-hover:text-accent">{guide.data.title}</h3>
+                  <span class="mt-2 block text-[14px] leading-[1.65] text-muted">
+                    {card ? pick(card.line, lang) : guide.data.description}
+                  </span>
+                  <span class="mt-auto flex items-center justify-between gap-4 pt-6 text-[13px] text-muted">
+                    <span class="tnum">{fill(minRead, { n: minutesOf(guide) })}</span>
+                    <Icon
+                      name="arrow-right"
+                      size={15}
+                      class="shrink-0 text-accent transition-transform duration-(--dur) group-hover:translate-x-0.5"
+                    />
                   </span>
                 </a>
               </li>
-            ))
-          }
-        </ul>
-
-        <button
-          type="button"
-          data-country-next
-          aria-label={countries.more}
-          class="absolute -top-1 right-0 hidden h-10 w-10 place-items-center rounded-full border border-line-strong bg-paper text-text transition-colors duration-(--dur) hover:border-accent hover:text-accent lg:grid"
-        >
-          <Icon name="chevron-right" size={18} />
-        </button>
-      </div>
+            );
+          })
+        }
+      </ul>
     </div>
   </section>
 
-  {/* F. Published reading only: every card is a live route, or the section says it is empty. */}
-  <section class="bg-surface-2 py-16 lg:py-24" id="reading">
+  {/* E. Published explainers only: every card is a live route, or the section says it is empty. */}
+  <section class="py-14 lg:py-20" id="reading">
     <div class="shell">
-      <div class="grid gap-6 lg:max-w-[52ch]">
-        <div>
-          <p class={eyebrow}>{readingCopy.eyebrow}</p>
-          <h2 class="mt-4 max-w-[20ch] text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-            {readingCopy.heading}
-          </h2>
-          <p class="mt-5 text-[16px] leading-[1.8] text-muted">{readingCopy.intro}</p>
-        </div>
+      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
+        <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
+          {readingCopy.heading}
+        </h2>
+        <a href={lp('/articles')} class="textlink shrink-0">
+          {fill(readingCopy.viewAll, { count: articleCount })}
+          <Icon name="arrow-right" size={16} />
+        </a>
       </div>
 
       {
         reading.length > 0 ? (
           <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {reading.map((entry) => {
-              const media = contentMedia(entry.id);
+              const image = contentImage(entry.id);
               return (
-                <li class="reveal h-full">
-                  <ArticleCard entry={entry} image={media && { src: media.src, alt: pick(media.alt, lang) }} />
+                <li class="h-full">
+                  <ArticleCard entry={entry} showKind={false} image={image} />
                 </li>
               );
             })}
@@ -352,11 +337,33 @@ const home = localizedPath(lang, '/');
           </div>
         )
       }
+    </div>
+  </section>
 
-      <a href={lp('/articles')} class="btn-ghost mt-10">
-        {readingCopy.viewAll}
-        <Icon name="arrow-right" size={16} />
-      </a>
+  {/* F. How we check: the rules behind everything above, placed last so the enquiry follows the proof. */}
+  <section class="bg-surface-2 py-14 lg:py-20" id="method">
+    <div class="shell">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
+        <div class="max-w-[56ch]">
+          <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">{method.heading}</h2>
+          <p class="mt-3 max-w-[48ch] text-[16px] leading-[1.7] text-muted">{method.intro}</p>
+        </div>
+        <a href={lp(method.link.href)} class="textlink shrink-0">
+          {method.link.label}
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      <ul class="mt-10 grid gap-x-8 gap-y-8 border-t border-line-strong pt-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          method.items.map((m) => (
+            <li>
+              <h3 class="text-[17px] leading-snug">{m.title}</h3>
+              <p class="mt-2 text-[14px] leading-[1.7] text-muted">{m.body}</p>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -378,13 +385,12 @@ const home = localizedPath(lang, '/');
 
     <div class="shell grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
       <div>
-        <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-band-muted">{band.eyebrow}</p>
-        <h2 class="mt-4 max-w-[16ch] text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.08] text-balance text-band" id="consult-heading">
+        <h2 class="max-w-[16ch] text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.08] text-balance text-band" id="consult-heading">
           {band.heading}
         </h2>
         <p class="mt-5 max-w-[46ch] text-[16px] leading-[1.8] text-band-muted">{band.para}</p>
 
-        <ul class="mt-9 grid gap-6 border-t border-white/15 pt-7 sm:grid-cols-3">
+        <ul class="mt-9 grid gap-6 border-t border-white/15 pt-7 sm:grid-cols-2">
           {
             HOME_BAND_TRUST.map((t) => (
               <li>
@@ -397,6 +403,17 @@ const home = localizedPath(lang, '/');
             ))
           }
         </ul>
+
+        {/* A reader who is not ready to write anything still has somewhere to go, so the band offers
+            one method page beside the form rather than only the form. Not .textlink: that class is
+            cut for a light surface, and its nowrap would overflow a narrow column. */}
+        <a
+          href={lp(band.link.href)}
+          class="mt-7 inline-flex items-center gap-2 border-b border-band/40 pb-1 text-[15px] font-medium text-band transition-colors duration-(--dur) hover:border-band"
+        >
+          {band.link.label}
+          <Icon name="arrow-right" size={15} />
+        </a>
       </div>
 
       <div class="shadow-lift">
@@ -405,15 +422,3 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 </PageLayout>
-
-<script>
-  const rail = document.querySelector<HTMLElement>('[data-country-rail]');
-  const next = document.querySelector<HTMLButtonElement>('[data-country-next]');
-  if (rail && next) {
-    next.addEventListener('click', () => {
-      const step = rail.firstElementChild?.clientWidth ?? rail.clientWidth * 0.8;
-      const last = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 8;
-      rail.scrollTo({ left: last ? 0 : rail.scrollLeft + step + 20, behavior: 'smooth' });
-    });
-  }
-</script>
