@@ -32,10 +32,10 @@ export type ChecklistPageCopy = {
   title: string;
   description: string;
   h1: string;
-  /** Split around the emphasized word so the English page keeps its own `<em>`. */
-  ledeBefore: string;
-  ledeEm: string;
-  ledeAfter: string;
+  /** A plain first line under the H1: what the reader actually does on this page. */
+  purpose: string;
+  /** The three moves a reader makes, printed as a numbered strip under the purpose. */
+  howTo: [string, string, string];
   /** The line beside the lock icon, which states where the entries go. */
   note: string;
   closing: { heading: string; body: string };
@@ -68,13 +68,15 @@ export const CHECKLISTS: Checklist[] = [
       en: {
         title: 'Destination Research Checklist',
         description:
-          'Every question to have answered for each country on a surrogacy shortlist: eligibility, parentage, nationality, medical scope, money, presence and dispute routes.',
+          'The questions to get answered for each destination on a surrogacy shortlist: eligibility, parentage, nationality, medical scope, money, presence and dispute routes.',
         h1: 'Destination research checklist',
-        ledeBefore:
-          'A country is not a decision. It is a set of questions that have to be answered for ',
-        ledeEm: 'your',
-        ledeAfter:
-          ' situation by a person who can answer them. This list is those questions, grouped by who usually owns the answer.',
+        purpose:
+          'What you do here: put the questions below to the local lawyer, clinic or agency for one candidate destination, and keep their written answers beside each question.',
+        howTo: [
+          'Pick one candidate destination. Use one copy of this list for each place.',
+          'Download the file and send the questions to the local lawyer, clinic or agency.',
+          'Write each answer back beside its question, with the name and the date. Leave a question blank until it is answered.',
+        ],
         note: 'Work through it once per destination. This page collects nothing: the questions are the page, and the file you download is a document you keep.',
         closing: {
           heading: 'What this list will not do for you',
@@ -88,9 +90,12 @@ export const CHECKLISTS: Checklist[] = [
         description:
           '每一个候选目的地都需要有人回答的问题：资格、亲权、国籍、医疗范围、资金、实地停留，以及争议的处理途径。',
         h1: '目的地研究清单',
-        ledeBefore: '一个国家不是一个决定。它是一组问题，必须由能够回答的人，针对',
-        ledeEm: '您自己',
-        ledeAfter: '的情况逐条回答。这份清单就是那些问题，按通常由谁负责回答来分组。',
+        purpose: '这一页做什么：把下面的问题交给当地律师、诊所或机构，逐个核实一个候选目的地，并把书面答复记在对应问题旁。',
+        howTo: [
+          '先选定一个候选目的地。每份清单只对照一个地方。',
+          '下载文件，把问题发给当地的律师、诊所或机构。',
+          '把书面答复写回对应问题旁，并记下回答人的姓名和日期。没有答复的题目保持空白。',
+        ],
         note: '每个目的地都用这一份。这个页面不收集任何东西：问题就是这份页面本身，而您下载到的文件由您自己保存。',
         closing: {
           heading: '这份清单不会替您做什么',
@@ -405,10 +410,13 @@ export const CHECKLISTS: Checklist[] = [
         description:
           'The questions to put to a surrogacy agency in writing before signing: scope of the fee, payment stages, refunds, screening, legal work, and what happens if a cycle fails.',
         h1: 'Agency question checklist',
-        ledeBefore: '',
-        ledeEm: '',
-        ledeAfter:
-          'Two firms can quote the same total and be selling different things. What makes the difference visible is an answer you can read again, in writing, beside the date it arrived and the name that gave it.',
+        purpose:
+          'What you do here: put the questions below to a surrogacy agency in writing before you sign, and keep each answer beside its question with the name and date.',
+        howTo: [
+          'Pick one agency you are considering.',
+          'Download the file and put the questions to the firm in your own words, asking for written answers.',
+          'Write each answer back beside its question, with the name and the date. Leave a question blank until it is answered.',
+        ],
         note: 'This page collects nothing and contacts no one for you. Download the list, put it to a firm in your own words, and keep what comes back in that file.',
         closing: {
           heading: 'Then put the answers next to the numbers',
@@ -422,10 +430,12 @@ export const CHECKLISTS: Checklist[] = [
         description:
           '签约之前要书面提交给代孕机构的问题：费用的范围、付款阶段、退款、筛查、法律工作，以及一次周期失败之后会怎样。',
         h1: '机构提问清单',
-        ledeBefore: '',
-        ledeEm: '',
-        ledeAfter:
-          '两家机构可以报出同一个总额，卖的却是不同的东西。让差别显现出来的，是一份您可以再读一遍的书面回答，旁边写着它收到的日期和给出回答的人。',
+        purpose: '这一页做什么：签约之前把下面的问题书面提给正在考虑的机构，并把答复、回答人的姓名和日期记在对应问题旁。',
+        howTo: [
+          '先选定一家您正在考虑的机构。',
+          '下载文件，用您自己的话把问题提给这家机构，并要求书面答复。',
+          '把每条回答写回对应问题旁，并记下回答人的姓名和日期。没有答复的题目保持空白。',
+        ],
         note: '这个页面不收集任何内容，也不会代您联系任何人。把清单下载下来，用您自己的话提给机构，再把对方的答复留在那份文件里。',
         closing: {
           heading: '然后将答案记在金额旁边',
