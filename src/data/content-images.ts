@@ -106,6 +106,25 @@ export const CONTENT_IMAGES: Record<string, ContentImage> = {
     zh: '空旷的银行金库房内，一扇圆形保险库门敞开着',
   }),
 
+  'what-a-carrier-profile-does-not-tell-you': image('what-a-carrier-profile-does-not-tell-you', 7789616, {
+    en: 'A bright empty examination room with a treatment couch, a desk and two chairs',
+    zh: '一间明亮的空诊室，里面有诊疗床、一张书桌和两把椅子',
+  }),
+
+  'what-an-anonymous-donor-page-does-not-promise': image(
+    'what-an-anonymous-donor-page-does-not-promise',
+    6550462,
+    {
+      en: 'An open wooden drawer of index cards set in a wall of archive catalogue drawers',
+      zh: '一整面档案目录柜中，一只装满索引卡的木抽屉被拉开',
+    }
+  ),
+
+  'what-happens-when-a-surrogacy-cycle-fails': image('what-happens-when-a-surrogacy-cycle-fails', 10514991, {
+    en: 'Small capped vials held in the circular tray of a laboratory instrument',
+    zh: '实验室仪器的圆形托盘上排列着带盖的小样品瓶',
+  }),
+
   'what-must-be-signed-before-the-first-transfer': image('what-must-be-signed-before-the-first-transfer', 955394, {
     en: 'A hand signing a printed document with a fountain pen',
     zh: '一只手正用钢笔在打印文件上签字',
