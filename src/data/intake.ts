@@ -52,8 +52,6 @@ export type ConsultChrome = {
   consentAfter: string;
   submit: string;
   submitting: string;
-  statusIdle: string;
-  previewSummary: string;
   previewHeading: string;
   copy: string;
   download: string;
@@ -114,8 +112,6 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     consentAfter: '.',
     submit: 'Get a free consultation',
     submitting: 'Sending',
-    statusIdle: 'Nothing is sent until you press send. Your draft stays in this browser.',
-    previewSummary: 'Review the text before sending',
     previewHeading: 'The message',
     copy: 'Copy it',
     download: 'Download as a file',
@@ -177,8 +173,6 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     consentAfter: '。',
     submit: '立即免费咨询',
     submitting: '正在提交',
-    statusIdle: '在您按下发送之前，什么都不会发出。草稿会留在这个浏览器里。',
-    previewSummary: '发送前查看正文',
     previewHeading: '咨询正文',
     copy: '复制',
     download: '下载为文件',
