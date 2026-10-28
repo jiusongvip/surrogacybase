@@ -23,7 +23,7 @@ export const NEXT_STEP: Record<Lang, NextStepCopy> = {
     eyebrow: 'Your own situation',
     heading: 'The general answer is only the start',
     body:
-      'Tell us where you are stuck. A consultant on the editorial team replies within 24 hours, and nothing you send goes to a clinic or agency.',
+      'Tell us about your situation. A consultant on the editorial team replies within 24 hours, and nothing you send goes to a clinic or agency.',
     primary: 'Free consultation',
     costGuide: 'Read the cost guide',
   },
@@ -31,7 +31,7 @@ export const NEXT_STEP: Record<Lang, NextStepCopy> = {
     eyebrow: '您自己的情况',
     heading: '通用答案只是起点',
     body:
-      '告诉我们您卡在哪里。编辑团队的顾问会在 24 小时内回复，您发来的内容不会转给诊所或机构。',
+      '告诉我们您的情况。编辑团队的顾问会在 24 小时内回复，您发来的内容不会转给诊所或机构。',
     primary: '免费咨询',
     costGuide: '阅读费用指南',
   },
