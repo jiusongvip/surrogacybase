@@ -46,7 +46,6 @@ import { GUIDE_CARDS, GUIDE_ORDER } from '@/data/guides';
 import { contentImage } from '@/data/content-images';
 import { Image } from 'astro:assets';
 import heroTerrace from '@/assets/images/hero-terrace.jpg';
-import ctaLeaves from '@/assets/images/cta-leaves.jpg';
 
 const lang = langFromPath(Astro.url.pathname);
 const records = await getJurisdictions(lang);
@@ -345,19 +344,6 @@ const home = localizedPath(lang, '/');
   {/* G. The enquiry. The form delivers when the inbox is configured, and falls back to a
       message the reader sends themselves when it is not. */}
   <section class="band-brand relative isolate overflow-hidden py-16 lg:py-24" id="assessment">
-    <div
-      class="absolute inset-y-0 left-0 hidden w-[calc((100vw-1240px)/2)] overflow-hidden 2xl:block"
-      aria-hidden="true"
-    >
-      <Image
-        src={ctaLeaves}
-        widths={[200, 350, 500]}
-        sizes="350px"
-        class="h-full w-full object-cover"
-        alt=""
-      />
-    </div>
-
     <div class="shell grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
       <div>
         <h2 class="max-w-[16ch] text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.08] text-balance text-band" id="consult-heading">
