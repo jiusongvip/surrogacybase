@@ -1,7 +1,7 @@
 ---
 title: "What a Gestational Carrier's Profile Does Not Tell You"
 titleTag: "Reading a Carrier Profile"
-description: "A carrier profile is the only document about her most intended parents receive. Here is what United States professional guidance requires to have happened first, which parts are recommendation rather than rule, and what the profile stays silent about."
+description: "What United States guidance expects to have happened before a carrier profile reaches you, and which parts of it are recommendation rather than rule."
 type: article
 category: preparation
 published: true

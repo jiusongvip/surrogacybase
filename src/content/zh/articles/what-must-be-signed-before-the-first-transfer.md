@@ -1,6 +1,6 @@
 ---
 title: "第一次移植之前必须签下什么"
-description: "一项妊娠代孕安排应该在胚胎移植之前备齐的五份文件、每一份的用途，以及为什么签了字不等于协议可以被强制执行。"
+description: "妊娠代孕安排应当在胚胎移植之前备齐的五份文件，以及每一份的用途。"
 type: article
 category: preparation
 published: true

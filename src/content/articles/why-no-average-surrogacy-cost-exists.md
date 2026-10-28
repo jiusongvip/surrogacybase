@@ -1,6 +1,6 @@
 ---
 title: "Why There Is No Average Cost of Surrogacy"
-description: "Every surrogacy cost figure you can find comes from a provider or a citation of a provider. Here is what the data infrastructure actually is, and what to use instead."
+description: "Every surrogacy cost figure you can find comes from a provider or a citation of one. Where those numbers actually come from, and what to use instead."
 type: article
 category: cost
 published: true

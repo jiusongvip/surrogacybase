@@ -8,6 +8,7 @@
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import HeroPurpose from '@/components/ui/HeroPurpose.astro';
 import Icon from '@/components/ui/Icon.astro';
 import QuoteComparison from '@/components/tools/QuoteComparison.astro';
 import { QUOTE_PAGE, TOOLS_INDEX_PAGE } from '@/data/tool-pages';
@@ -17,13 +18,14 @@ const lang = langFromPath(Astro.url.pathname);
 const copy = QUOTE_PAGE[lang];
 ---
 
-<PageLayout title={copy.title} description={copy.description}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description}>
   <Breadcrumbs
     crumbs={[{ label: TOOLS_INDEX_PAGE[lang].label, href: localizedPath(lang, '/tools') }, { label: copy.h1 }]}
   />
 
   <header class="shell py-10">
     <h1 class="text-[clamp(1.9rem,3.8vw,2.7rem)] leading-[1.08]">{copy.h1}</h1>
+    <HeroPurpose text={copy.purpose} />
     <p class="mt-3 max-w-[62ch] text-[17px] leading-relaxed text-muted">
       {copy.intro}
     </p>

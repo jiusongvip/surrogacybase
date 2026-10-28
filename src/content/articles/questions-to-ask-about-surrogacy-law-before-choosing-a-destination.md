@@ -1,7 +1,7 @@
 ---
 title: "How to Compare Surrogacy Destinations Without a Provider's Help"
 titleTag: "Surrogacy Law Questions to Ask First"
-description: "A destination comparison that a provider cannot frame for you: the six dimensions to score, the sources to insist on, and the traps that make most country pages worthless."
+description: "The six dimensions to score a destination on, the sources to insist on, and the four traps to check any destination page against."
 type: article
 category: destinations
 published: true

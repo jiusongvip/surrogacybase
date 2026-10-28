@@ -1,7 +1,7 @@
 ---
 title: "How to Evaluate a Surrogacy Agency Before You Sign"
 titleTag: "Evaluate a Surrogacy Agency First"
-description: "What an agency fee actually buys, what regulation does and does not cover, the documents that matter more than the website, and the questions to put in writing."
+description: "What an agency fee actually buys, what regulation does and does not cover, the five documents to ask for before signing, and the questions to put in writing."
 type: guide
 category: agencies
 published: true
@@ -68,7 +68,7 @@ Agencies describe the same service differently, which is why identical-looking f
 
 Then ask what the agency does **not** do. In a well-run program the answers are: it does not give you legal advice, it does not decide parentage, and it does not act as the carrier's adviser.
 
-## Documents that tell you more than the website
+## The five documents to ask for before signing
 
 Request these before any deposit, and read them as documents rather than as evidence of goodwill.
 

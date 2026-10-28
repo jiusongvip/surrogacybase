@@ -66,7 +66,7 @@ export const UI: Record<Lang, {
   nav: NavItem[];
   cta: NavItem;
   /** The header action, which opens the enquiry form in a dialog over the page you are on. */
-  enquiryDialog: { title: string; close: string };
+  enquiryDialog: { title: string; subtitle: string; close: string };
   footerGroups: FooterGroup[];
   /** The two content types, spelled the way a card or a byline row shows them. */
   kinds: { guide: string; article: string };
@@ -134,7 +134,19 @@ export const UI: Record<Lang, {
     /** The short text a matrix cell carries, with `none` for a type no source settles. */
     cell: { open: string; closed: string; conditional: string; none: string };
     note: Record<'cohabit-one-year' | 'citizen-only' | 'bill-pending' | 'residence-required' | 'genetic-link', string>;
-    matrix: { heading: string; intro: string; caption: string; destination: string };
+    matrix: {
+      heading: string;
+      intro: string;
+      caption: string;
+      destination: string;
+      /**
+       * The line above the list of qualifications behind the marked cells. A cell reading "on
+       * conditions" or "open" is only half an answer when the record attaches a condition to it, and
+       * that condition used to be printed on the destination page alone, so the matrix invited a
+       * reader to act on the half.
+       */
+      legend: string;
+    };
   };
   /**
    * The words printed around a cost figure. The number, its currency and its year are data in
@@ -215,22 +227,32 @@ export const UI: Record<Lang, {
     };
     articles: {
       title: string;
+      titleTag: string;
       description: string;
       intro: string;
-      countOne: string;
-      countMany: string;
       startHeading: string;
       startIntro: string;
       /** The four ways in, each paired by position with the article refs in ArticlesIndex. */
       paths: { title: string; body: string }[];
       allHeading: string;
-      readHeading: string;
-      readIntro: string;
-      readPoints: { title: string; body: string }[];
+      /**
+       * The way out to the editorial policy. This page used to carry a whole section here, under a
+       * heading that read "how each explainer is built", with three points: one question each, the
+       * source beside the claim, a stated edge. The section is gone for two reasons. It restated the
+       * intro one screen above it, and its framing - every piece written to one specification -
+       * advertised a production line, which is the last thing a page of independent research should
+       * put in front of a reader deciding whether to believe a figure. The substance survives in the
+       * intro below; this link is for the reader who wants to see the checking itself.
+       */
       standardsLink: string;
+      /**
+       * A bare label over the list of guides at the foot of the page. This block used to pitch: a
+       * heading about reading a whole subject, a sentence under it, and a button to /guides. All of
+       * that is gone and the six titles speak for themselves - a closing call to action that has to
+       * explain itself reads as unsure of the guides it is selling, and /guides is already in the
+       * header on every page, so the button was a second way to say the same nothing.
+       */
       guidesHeading: string;
-      guidesBody: string;
-      allGuides: string;
       emptyTitle: string;
       emptyBody: string;
       emptyAction: string;
@@ -291,6 +313,12 @@ export const UI: Record<Lang, {
       ctaPick: string;
       ctaFactors: string;
       ctaCompare: string;
+      /**
+       * The three figures under the intro. The middle one counts sourced positions, not records: it
+       * used to read "destinations backed by an openable source", which always printed the same
+       * number as the first cell, since a record without a source is not published at all. Two
+       * identical figures side by side advertise that one of them measures nothing.
+       */
       stats: { recorded: string; sourced: string; lastCheck: string };
       picker: {
         heading: string;
@@ -401,8 +429,12 @@ export const UI: Record<Lang, {
       { label: 'Guides', href: '/guides' },
       { label: 'About us', href: '/about' },
     ],
-    cta: { label: 'Contact us', href: '/#assessment' },
-    enquiryDialog: { title: 'Contact us', close: 'Close' },
+    cta: { label: 'Free consultation', href: '/#assessment' },
+    enquiryDialog: {
+      title: 'Free consultation',
+      subtitle: 'Leave a mobile number and one way to reach you. An advisor writes the reply; no clinic or agency sees it.',
+      close: 'Close',
+    },
     footerGroups: [
       {
         heading: 'Guides',
@@ -477,10 +509,10 @@ export const UI: Record<Lang, {
     admits: {
       heading: 'Which families this route is open to',
       intro:
-        'These rows come from the same record as the legal position above. A type appears only where a source listed on this page states it, and the row names that source; where the page can say less, the row says less.',
+        'These rows come from the same record as the legal position above, and each one names the source that states it. A family type appears only where that type is written into the provision.',
       notEstablished: 'No source listed on this page settles the position for: {families}.',
       noneForRecord:
-        'Which family types this route is open to is not settled by any source listed on this page, so no answer is claimed here for any of them.',
+        'None of the sources behind this record states which family types may use this route, so this page claims no answer for any of them.',
       join: ', ',
       family: {
         married: 'A married couple',
@@ -490,8 +522,13 @@ export const UI: Record<Lang, {
         femaleCouple: 'Two women as intended parents',
         international: 'Intended parents living abroad',
       },
-      status: { open: 'Open', closed: 'Not open', conditional: 'Open on conditions' },
-      cell: { open: 'Open', closed: 'Not open', conditional: 'On conditions', none: 'Not established' },
+      /**
+       * Stated as a verdict on the family type, since the family type is what sits beside it. The
+       * old pair read "open" and "not open", which is a description of a door rather than of a
+       * rule, and it invited a reader to take "not open" for a refusal the sources had made.
+       */
+      status: { open: 'Permitted', closed: 'Not permitted', conditional: 'Permitted on conditions' },
+      cell: { open: 'Permitted', closed: 'Not permitted', conditional: 'On conditions', none: 'Not settled' },
       note: {
         'cohabit-one-year': 'The same rule reaches a man and a woman who have lived together for at least one year.',
         'citizen-only': 'Marriage is not enough by itself: the rule names Kazakh citizenship as well.',
@@ -502,9 +539,10 @@ export const UI: Record<Lang, {
       matrix: {
         heading: 'Who each destination admits',
         intro:
-          'Read across a row for one destination, or down a column for one kind of family. A blank answer is not a refusal: it is this site saying that the sources behind that record do not settle the question, and the destination page names what they do settle.',
+          'Read across a row for one destination, down a column for one kind of family. A cell reading "not settled" describes how far this site\'s sources go, not the destination itself.',
         caption: 'Which family types each destination admits, limited to what the sources listed here establish',
         destination: 'Destination',
+        legend: 'The conditions behind a marked cell, with the record they come from',
       },
     },
     costs: {
@@ -544,55 +582,51 @@ export const UI: Record<Lang, {
     pages: {
       guides: {
         title: 'Guides',
-        titleTag: 'Surrogacy Guides',
+        titleTag: 'Surrogacy Guides: Law, Cost and Process',
         description:
           'Guides on surrogacy law, process, cost, agencies and bringing a child home, each claim traceable to a source you can open.',
-        intro:
-          'A guide works through one decision area from beginning to end, so you can see how the pieces fit before you compare providers.',
+        intro: 'A guide works through one subject, from the first question to the last step.',
         countOne: '1 published guide',
         countMany: '{n} published guides',
         startHeading: 'Where to start',
-        startIntro:
-          'Each path groups guides in the order the questions arrive. You can also read the full list and pick by subject.',
+        startIntro: 'Each path runs in the order the questions arrive. You can also read the full list.',
         paths: [
           {
             title: 'The law and the paperwork',
-            body: 'Start with the four questions every legal system has to answer. Then follow the documents your child needs to leave one country and enter another.',
+            body: 'The four legal questions, and the documents your child needs to come home.',
           },
           {
             title: 'The process and who carries',
-            body: 'See the stages a program runs through, then the choices about whose egg, whose sperm and who carries the pregnancy, which change what those stages ask of you.',
+            body: 'The stages a program runs, and whose egg, sperm and pregnancy each one involves.',
           },
           {
             title: 'The money and the agency',
-            body: 'Build the budget, see what a quote leaves out, then check what an agency fee buys and what to put in writing before you sign.',
+            body: 'What to budget, what a quote leaves out, and what to ask before you sign.',
           },
         ],
         howHeading: 'How a guide works',
-        howIntro:
-          'A guide is built to be used, not read once. Every one gives you the same three things.',
+        howIntro: 'A guide is meant to be used, not read once. Each one leaves you three things.',
         howPoints: [
           {
             title: 'A decision from end to end',
-            body: 'Each guide starts with the first choice in its area and follows it through to the document or conversation that closes it, so no step is explained without what depends on it.',
+            body: 'From the first choice in the subject to the document or conversation that closes it.',
           },
           {
             title: 'A source beside the claim',
-            body: 'Where a guide states a fact, the source and the date it was last opened sit beside it. You can check the answer instead of taking it on trust.',
+            body: 'Where a guide states a fact, its source and the date it was last checked sit beside it.',
           },
           {
             title: 'A next step you can use',
-            body: 'Every guide ends with the explainers that go deeper and the tools that turn its questions into something you can fill in or hand over.',
+            body: 'Each guide ends at the explainers that go deeper and the tools you can fill in.',
           },
         ],
         standardsLink: 'How sources are checked',
         explainerHeading: 'One question at a time',
-        explainerBody:
-          'An explainer answers a single question inside a guide and names the source behind its answer.',
+        explainerBody: 'An explainer answers a single question and names the source behind its answer.',
         explainerLink: 'Read the explainers',
         toolsHeading: 'Put a guide to work',
         toolsBody:
-          'The tools turn the questions in these guides into a table or a document you can take to a lawyer, clinic or agency.',
+          'The tools turn these questions into a form you can take to a lawyer, clinic or agency.',
         toolsLink: 'Open the tools',
         readGuide: 'Read the guide',
         relatedOne: '1 related explainer',
@@ -606,56 +640,34 @@ export const UI: Record<Lang, {
       },
       articles: {
         title: 'Explainers',
+        titleTag: 'Surrogacy Explainers: One Question Each',
         description:
           'Explainers on surrogacy cost, destinations, agency selection, process and preparation, each answering one question for intended parents.',
         intro:
-          'Each explainer takes one question and follows it to a source you can open. Start with the decision in front of you, or read the full list below.',
-        countOne: '1 published explainer',
-        countMany: '{n} published explainers',
+          'Each explainer answers one question about cost, destinations, law or the paperwork a child needs after birth, and names the source behind its answer.',
         startHeading: 'Start with the decision in front of you',
-        startIntro:
-          'You do not have to read these in order. Pick the question you need answered now, and follow the sequence below.',
+        startIntro: 'You do not have to read these in order. Pick the question you need answered now.',
         paths: [
           {
             title: 'You are building a budget',
-            body: 'Find out why no average exists, what a quote leaves out, and how the money moves before you compare totals.',
+            body: 'Why no average exists, what a quote leaves out, and how the money moves.',
           },
           {
             title: 'You are choosing a destination',
-            body: 'Start with the questions a legal system has to answer, then the paperwork your child will need, then the deadline that can decide parentage.',
+            body: 'The questions a legal system has to answer, then the paperwork your child needs and the deadlines around it.',
           },
           {
             title: 'You are close to signing',
-            body: 'Check what has to be in writing before the first transfer, and what each payment stage depends on.',
+            body: 'What has to be in writing before the first transfer, and what each payment stage depends on.',
           },
           {
             title: 'You are reading success rates',
-            body: 'A transfer count is not a promise. See what the largest published study of US transfers counts, and what it cannot tell you.',
+            body: 'What the largest published study of US transfers counts, and whose cases it covers.',
           },
         ],
         allHeading: 'All explainers',
-        readHeading: 'How to read one',
-        readIntro:
-          'Every explainer is built to be checked, not just read. Three things are worth doing before you act on one.',
-        readPoints: [
-          {
-            title: 'Start with the question',
-            body: 'Each piece answers one question. If that is not the question you have today, another path above may fit better.',
-          },
-          {
-            title: 'Open the source, note the date',
-            body: 'Where a piece cites a source, the date it was last checked sits beside it. Open the source and see whether the answer still holds.',
-          },
-          {
-            title: 'Take your own facts to a professional',
-            body: 'An explainer sets out how a rule generally works. A lawyer or clinic can tell you what it means for your circumstances.',
-          },
-        ],
         standardsLink: 'How sources are checked',
-        guidesHeading: 'Want the whole decision, not one answer?',
-        guidesBody:
-          'A guide works through a whole decision area from start to finish, and links to the explainers that go deeper.',
-        allGuides: 'All guides',
+        guidesHeading: 'Guides',
         emptyTitle: 'No explainers published yet',
         emptyBody:
           'An explainer is published once each of its claims has a source you can open. They appear one at a time.',
@@ -668,10 +680,10 @@ export const UI: Record<Lang, {
       jurisdiction: {
         title: 'Surrogacy in {name}: what the law says',
         description:
-          'Verified positions on surrogacy in {name} ({region}): legal basis, who may commission, payment rules and parentage, each with its source and check date.',
+          'Verified positions on surrogacy in {name}: legal basis, who may commission, payment rules and parentage, each with its source and check date.',
         heading: 'Surrogacy in {name}',
         intro:
-          'Every position below comes from a source listed with it, and was last opened on the date shown. Where a rule depends on your personal circumstances, that is stated instead of guessed.',
+          'Each position below names its source and the date it was last checked. Where a rule depends on your circumstances, it says so instead of guessing.',
         checked: 'Positions checked {date}',
         insufficient:
           'There is not enough verifiable public material on {name} for us to present it as a workable destination. Read it as a list of open questions, and take it to a lawyer qualified there before making any plan.',
@@ -702,74 +714,75 @@ export const UI: Record<Lang, {
         description:
           'Compare surrogacy destinations on eligibility, parentage at birth, payment rules, cost scope and attendance, with every legal position sourced and dated.',
         breadcrumb: 'Destinations',
-        eyebrow: 'Independent destination research',
+        eyebrow: 'Verified destination records',
         h1: 'Which surrogacy destinations suit your situation?',
-        lede: 'This page does not name a best country. It helps you decide which places are worth research time and which to exclude first, from four things: whether the rule covers your family, who is a legal parent at birth, whether the money covers the whole process, and whether you can be there when it is needed.',
+        lede:
+          'Four conditions decide whether a destination works: whether the rule names a family like yours, who is a legal parent at birth, what the money covers, and whether you have to attend in person. This page sets those four out for eight legal systems.',
         notice:
-          'Surrogacy law differs between countries, and inside federal countries between states and provinces. It also differs by marital status, by whether a child is genetically yours, and by nationality and residence, and those three are separate tests rather than one. Nothing below is legal advice about your situation, and a country that permits an arrangement does not establish that you may use it or that your own country will accept the result.',
-        ctaPick: 'Choose a destination',
-        ctaFactors: 'See the four tests',
-        ctaCompare: 'Compare a shortlist',
+          'Surrogacy law varies between countries, and inside federal countries between states and provinces. It also turns on marital status, on whether a child is genetically yours, and on nationality and residence, and those are separate tests. Nothing here is legal advice about your situation: a country that permits surrogacy has not established that you may use that route, or that the country you live in will accept the birth result.',
+        ctaPick: 'Read the records',
+        ctaFactors: 'The four conditions',
+        ctaCompare: 'Compare side by side',
         stats: {
-          recorded: 'Destinations recorded',
-          sourced: 'Backed by an openable source',
-          lastCheck: 'Last check',
+          recorded: 'Destination records',
+          sourced: 'Positions with an openable source',
+          lastCheck: 'Last checked',
         },
         picker: {
           heading: 'Choose a destination',
           intro:
-            'Each card is one verified record: the legal basis, the one cost figure a source published (or a note that there is none), and the date that source was last read. Open a record to see every position beside its citation and the questions still open.',
-          count: '{n} verified records, sorted by region',
+            'One record per place: the legal basis, the cost figures a source has published, and the questions still open. Open a record to read the whole of it.',
+          count: '{n} records, sorted by region',
           open: 'Open the record',
-          noCost: 'No figure published',
-          insufficient: 'Sourcing incomplete',
+          noCost: 'None published',
+          insufficient: 'Not fully verified',
           thinNote:
-            'Some records are flagged because the sources we could open do not support a usable position: {names}. They stay on the page so a name you have already seen in a brochure is not missing without explanation.',
+            'A flagged record is one whose openable sources do not yet establish a usable position: {names}. It stays listed so that a name you have seen elsewhere is not simply missing.',
           thinJoin: ' and ',
-          costNote: 'One figure per destination is what a card can show. ',
-          costLink: 'Read every published figure by the line it covers',
-          emptyTitle: 'Nothing verified yet',
+          costNote: 'Every published figure, grouped by the cost line it covers: ',
+          costLink: 'Cost figures by line',
+          emptyTitle: 'Nothing published yet',
           emptyBody:
-            'Each destination needs a primary legal source with a date before it appears here. A list of places copied from agency blogs would be the fastest way to publish something wrong.',
+            'A destination appears here once a dated primary legal source supports its position. The list grows at the pace of that.',
         },
         factors: {
-          heading: 'Four things decide a destination before any preference does',
+          heading: 'The four conditions, in order',
           intro:
-            'Work through these in order. Each one removes places faster than reading about them does, and each has a test you can put to a provider or a lawyer.',
+            'Each one removes candidates faster than reading about it does, and each comes down to a single question you can put to a provider or to a lawyer.',
           items: [
             {
               q: 'Does the rule name a family like yours?',
-              a: 'Permission in principle is not eligibility. Where a provision says who may commission, it usually turns on marital status, a genetic link to the child, or the composition of the family. A country described as surrogacy-friendly has answered a different question from this one.',
+              a: 'That surrogacy is permitted there and that you are eligible are two different things. Where a provision says who may commission, it usually turns on marital status, a genetic link to the child, or the make-up of the family. A country described as surrogacy-friendly has answered another question.',
               test:
-                'The answer is a rule when someone can point at the provision. It is practice when it comes from how many families like yours a provider has placed.',
+                'Something a person can point at in the text of a rule is a rule. Something that comes from how many families like yours a provider has placed is practice.',
             },
             {
               q: 'Who is the legal parent at birth?',
-              a: 'In some systems an intended parent is named at birth; in others the woman who gives birth is the legal mother whatever the agreement said, and parentage only moves afterwards through a court. That single difference decides whether your planning ends at the delivery room or begins there.',
+              a: 'In some systems an intended parent is named at birth. In others the woman who gives birth is the legal mother whatever the agreement said, and parentage only moves afterwards through a court. That one difference decides whether your planning ends at the delivery room or starts there.',
               test:
-                'Ask for the sequence: who is a parent on the day of birth, what application exists afterwards, who hears it, and how long a determination takes.',
+                'Ask for the sequence: who is a parent on the day of birth, what application exists afterwards, who hears it, and how long a determination actually takes.',
             },
             {
-              q: 'Does the budget cover the whole process?',
-              a: 'A destination you cannot afford is not a destination you should research. But the number that matters is scope, not total: which stages a program includes, what may lawfully be paid to the carrier, who bills outside the quote, and what returns to you if the program stops.',
+              q: 'How far does the money go?',
+              a: 'A destination outside your budget is not worth researching, but what decides feasibility is scope rather than the total: which stages a program includes, what may lawfully be paid to the carrier, what bills outside the quote, and what returns to you if the program stops.',
               test:
                 'Two quotes forty per cent apart can contain the same medicine. Compare item lists before comparing headline figures.',
             },
             {
-              q: 'Can you be there when it is needed?',
-              a: 'Signing before treatment, attending a court, collecting documents, and staying after the birth are separate requirements, and they are usually set by clinic practice, the registrar and the court rather than by the statute. Travel limits narrow a field faster than budget does.',
+              q: 'Can you be where you are needed?',
+              a: 'Signing before treatment, attending a court, collecting documents and staying after the birth are four separate requirements, and they usually come from clinic practice, the registrar and the court rather than from the statute. How much you can travel often settles the field before the budget does.',
               test:
-                'Get the attendance schedule in writing from the person who will handle each step, and say plainly how many windows you have.',
+                'Get the attendance schedule in writing from whoever handles each step, and say up front how many travel windows you have.',
             },
           ],
         },
         dimensions: {
-          heading: 'The ten things a destination comparison has to cover',
+          heading: 'The ten things a comparison has to cover',
           paraA:
-            'Most families end up with a table of countries and one figure for price, and that figure hides the three things which decide whether a destination works at all. These are the ten we hold every destination to.',
+            'Most families end up with a table of countries and one price column, and that column hides what actually decides feasibility: whether you can be named at birth, how many trips are required, and who holds the money while you wait. These are the ten fields every destination page here is written against.',
           paraB:
-            'A position is published only where there is a source behind it, which is why the records above carry some of these ten and list the rest as open questions. A gap you can see on a record is a finding in itself, not a formatting accident.',
-          link: 'How a claim gets sourced here',
+            'A field is filled where a source supports it and left open where one does not, with the unanswered question printed under the record.',
+          link: 'How this site checks a source',
           items: [
             {
               q: 'Local legal framework',
@@ -800,7 +813,7 @@ export const UI: Record<Lang, {
               ask: 'What may be paid, to whom, in what amounts, and who has to authorise it.',
             },
             {
-              q: 'Medical and service verification',
+              q: 'Licensing and oversight',
               ask: 'Which body licenses the clinic, and what that license actually covers.',
             },
             {
@@ -808,22 +821,21 @@ export const UI: Record<Lang, {
               ask: 'Who must be present, for how long, and at which stages.',
             },
             {
-              q: 'Source and verification date',
-              ask: 'The document each answer comes from, its publisher, and the date it was read.',
+              q: 'Source and check date',
+              ask: 'Nothing in the column is left without a document behind it, dated.',
             },
           ],
         },
         models: {
           heading: 'Legal systems come in three shapes',
-          intro:
-            'Knowing which shape a place has tells you what to expect from its name. Each sentence below is quoted from a record, with the document it came from and the date that document was opened.',
+          intro: 'The shape a system has decides how much its name can tell you. Every sentence below is quoted from a record and carries its own citation.',
           cite: 'published {published}, read {verified}',
           items: [
             {
               name: 'Parentage is transferred after the birth',
-              where: 'United Kingdom, and any system with a similar court route',
+              where: 'United Kingdom, and any system with a court route after delivery',
               plan:
-                'Your planning cannot finish at the delivery. There is an application, a hearing, and a waiting period in which the child legally belongs to someone else.',
+                'Planning cannot finish at the delivery. There is an application, a hearing, and a period in which the child is legally someone else\'s.',
               points: [
                 'The surrogate is the legal mother unless a parental order is obtained, a written arrangement is not legally binding, and payment is limited to her reasonable expenses.',
                 'Paying more than reasonable expenses has to be authorised by the family court before a parental order can be made, and advertising for or as a surrogate is illegal under the Surrogacy Arrangements Act 1985.',
@@ -831,17 +843,17 @@ export const UI: Record<Lang, {
               ],
             },
             {
-              name: 'Payment is restricted, and parentage sits elsewhere',
+              name: 'Payment is regulated, parentage sits elsewhere',
               where: 'Canada, and any federal system that legislates on money but not on birth',
               plan:
                 'A country can be lawful to enter and still not be where your parentage order comes from. Read the reimbursement rules and the provincial birth rules as two separate documents.',
               points: [
-                'Expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed under the federal regulations. Regulated reimbursement is permitted; the line between that and a prohibited payment turns on the specifics of an arrangement.',
-                'Our Canada record makes no eligibility statement, because the verified federal sources govern reimbursement rather than who may commission, and no claim about parentage, because provincial and territorial law sets it and we have not verified those rules.',
+                'Expenditures a surrogate incurs in relation to her surrogacy may be reimbursed, under subsection 12(1) of the Assisted Human Reproduction Act and the regulations made under it.',
+                'The regulator lists what counts as reimbursable: travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income before and after birth, with receipts required and records kept for six years.',
               ],
             },
             {
-              name: 'No single national rule, so the layer you land in decides',
+              name: 'No single national rule; the state or province sets it',
               where: 'United States, and any country where sub-national law governs',
               plan:
                 'A country name tells you almost nothing. The state, province or region sets the rule, and recognition where you live is a further legal system on top of it.',
@@ -854,18 +866,18 @@ export const UI: Record<Lang, {
           ],
         },
         questions: {
-          heading: 'Five questions to answer before you shortlist a destination',
+          heading: 'Five questions that need written answers before a shortlist',
           intro:
-            'If a destination cannot answer these in writing, it is not ready to be compared with another one.',
+            'A destination that cannot answer these in writing is not ready to sit beside another one.',
           items: [
             'Which provision says who may commission here, and where is it published?',
             'Who is the legal mother and the legal father at birth, before any order exists?',
             'What travel document does the child leave on, and which authority issues it?',
-            'What may be paid to the carrier, and does anything require a court or regulator to authorise it?',
+            'What may be paid or reimbursed to the carrier, and what needs a court or regulator to authorise it?',
             'Which stages require me in person, and what happens if I cannot attend one of them?',
           ],
           footnote:
-            'The full checklist holds thirty-three questions across seven groups. Download it, and write the name and the date beside a question once a professional has answered it for your own facts.',
+            'The full checklist holds thirty-three questions across seven groups, each with room beside it for who answered and when.',
           cta: 'Open the full checklist',
         },
         next: {
@@ -881,40 +893,40 @@ export const UI: Record<Lang, {
             },
             {
               label: 'Research checklist',
-              body: 'Thirty-three questions across seven groups, each with an empty box beside it in the file you download.',
+              body: 'Every question this page raises, collected in one file you can work through and keep.',
             },
             {
               label: 'Quote comparison',
-              body: 'Put two programs in the same rows so the difference is scope rather than a headline figure.',
+              body: 'Put two programs into the same rows and read the difference line by line.',
             },
           ],
         },
         band: {
-          heading: 'No destination has been chosen for you here',
+          heading: 'Bring what you have found to a consultation',
           body:
-            "That is deliberate. A page that named a best country would be repeating a provider's claim without the standing to test it. What this site can do is hold each legal system to its sources and keep the comparison honest.",
-          enquiry: 'Write the enquiry out',
+            'This site issues no legal opinion and represents no clinic or agency. What it does hold is the documents: bring your shortlist and any quote you already have, and the unclear parts turn into specific questions to put to a lawyer.',
+          enquiry: 'Free consultation',
         },
         standard: {
-          heading: 'What every destination record on this site has to carry',
+          heading: 'What is inside a destination record',
           items: [
-            'The legal basis is named: statute, case law, an assisted-reproduction act, or no single national rule.',
-            'Eligibility is described only as far as the sourced material goes, and where it does not reach, the page says so instead of guessing.',
-            'Every position carries the document it came from, the publisher, and the date we opened it.',
-            'Payment rules are stated as what the law permits, prohibits, or requires to be authorised, never as what providers normally do.',
-            'Parentage at birth and parentage afterwards are recorded as two separate answers.',
-            'Open questions are listed on the page, including sources we tried and could not open.',
-            'No page is marked open, safe, recommended or best for anyone.',
+            'The legal basis: statute, case law, an assisted-reproduction act, or no single national rule.',
+            'Who may commission, described as far as the sourced material goes.',
+            'Each position with the document it came from, its publisher, and the date it was read.',
+            'Payment rules stated as what the law permits, prohibits, or requires to be authorised.',
+            'Parentage at birth and parentage afterwards, as two separate answers.',
+            'The questions no source settled, including sources that would not open or sat behind a login.',
+            'Every conclusion readable against its own document, so you are checking a source rather than accepting a finding.',
           ],
         },
         why: {
-          heading: 'Why the list is short',
+          heading: 'How to read a record',
           body:
-            "We add a destination when we can cite the rule rather than repeat a provider's summary. Where the only material available is marketing, or a citation that does not check out once it is opened, the record says so rather than tidying the gap. Each record below lists the questions its own sources did not settle.",
-          readTitle: 'How to read a record',
+            'Read the legal basis first, then who is a parent at birth, then the figures. The cost lines are grouped at the foot of a record, and a field no source reaches is left as it stands.',
+          readTitle: 'Permitted is not the same as workable',
           readBody:
-            'Permitted in principle is not the same as workable for you. Eligibility, parentage, which court handles it and what documentation the child leaves on are separate questions, and any one of them can fail on its own.',
-          link: 'The five legal questions',
+            'Eligibility, parentage, which court handles it, and what the child leaves the country on are four separate questions, and any one of them can fail alone.',
+          link: 'Open the legal considerations guide',
         },
       },
     },
@@ -949,8 +961,12 @@ export const UI: Record<Lang, {
       { label: '指南', href: '/zh/guides' },
       { label: '关于我们', href: '/zh/about' },
     ],
-    cta: { label: '联系我们', href: '/zh#assessment' },
-    enquiryDialog: { title: '联系我们', close: '关闭' },
+    cta: { label: '免费咨询', href: '/zh#assessment' },
+    enquiryDialog: {
+      title: '免费咨询',
+      subtitle: '留下手机号和一种联系方式。回信由顾问本人写，不转给任何诊所或机构。',
+      close: '关闭',
+    },
     footerGroups: [
       {
         heading: '指南',
@@ -1022,10 +1038,9 @@ export const UI: Record<Lang, {
     },
     admits: {
       heading: '这条路径向哪些家庭开放',
-      intro: '这些条目与上面的法律立场出自同一份记录。只有本页列出的来源明确说明时才会印出某一类家庭，条目同时点名那个来源；来源只能说少一点的地方，条目也就只说少一点。',
+      intro: '这些条目与上面的法律立场出自同一份记录，每一条都点名写明它的那个来源。只有条文里写明的家庭类型才会印在这里。',
       notEstablished: '本页列出的来源没有就以下类型给出结论：{families}。',
-      noneForRecord:
-        '这条路径向哪些家庭类型开放，本页列出的来源都还没有定论，因此这里不为其中任何一类给出答案。',
+      noneForRecord: '这份记录背后的来源都没有写明这条路径向哪些家庭类型开放，因此这里不为其中任何一类给出答案。',
       join: '、',
       family: {
         married: '已婚伴侣',
@@ -1035,8 +1050,8 @@ export const UI: Record<Lang, {
         femaleCouple: '两位女性作为意向父母',
         international: '居住在国外的意向父母',
       },
-      status: { open: '开放', closed: '不开放', conditional: '有条件开放' },
-      cell: { open: '开放', closed: '不开放', conditional: '有条件', none: '未有结论' },
+      status: { open: '允许', closed: '不允许', conditional: '允许，但有条件' },
+      cell: { open: '允许', closed: '不允许', conditional: '有条件', none: '尚无结论' },
       note: {
         'cohabit-one-year': '同一条规则也覆盖共同生活至少一年的男女。',
         'citizen-only': '仅有婚姻并不足够：这条规则同时写明哈萨克斯坦国籍。',
@@ -1046,9 +1061,10 @@ export const UI: Record<Lang, {
       },
       matrix: {
         heading: '各个目的地允许哪些家庭',
-        intro: '横着读一行，看一个目的地；竖着读一列，看一类家庭。空着的回答不是拒绝：它表示这份记录背后的来源没有确定这个问题，而目的地页面会写明这些来源确实确定了什么。',
+        intro: '横着读一行是一个目的地，竖着读一列是一类家庭。写着「尚无结论」，说的是本站来源查到多少，不是那个目的地本身。',
         caption: '各目的地允许的家庭类型，以这里列出的来源所能确定为限',
         destination: '目的地',
+        legend: '带标记的格子背后的条件，以及它出自哪一份记录',
       },
     },
     costs: {
@@ -1088,49 +1104,49 @@ export const UI: Record<Lang, {
     pages: {
       guides: {
         title: '指南',
-        titleTag: '代孕指南',
+        titleTag: '代孕指南：法律、费用与流程',
         description: '关于代孕法律、流程、费用、机构选择与带孩子回国的指南，每一条结论都能追溯到您可以打开的来源。',
-        intro: '每篇指南把一个决定领域从头到尾讲清楚，让您在比较服务方之前先看清各个环节如何衔接。',
+        intro: '一份指南讲清一件事，从第一个问题讲到最后一步。',
         countOne: '已发布 1 篇指南',
         countMany: '已发布 {n} 篇指南',
         startHeading: '从哪里开始',
-        startIntro: '下面的每条路径按问题出现的顺序排列指南。您也可以直接看全部篇目，按主题挑选。',
+        startIntro: '每条路径按问题出现的先后排列。您也可以直接看全部篇目。',
         paths: [
           {
             title: '法律与文件',
-            body: '先弄清每个法律体系都必须回答的四个问题，再跟着孩子出生后需要的文件，看它如何离开一个国家、进入另一个国家。',
+            body: '四个法律问题，以及孩子回国要办的文件。',
           },
           {
             title: '流程与谁来孕育',
-            body: '先看一个方案要经过哪些阶段，再看用谁的卵子、谁的精子、由谁怀孕这三项选择，会怎样改变每个阶段对您的要求。',
+            body: '方案要经过哪些阶段，卵子、精子和怀孕分别由谁提供。',
           },
           {
             title: '费用与机构',
-            body: '先把预算搭起来，看清报价漏掉了什么，再核查机构费买到什么，以及签约前哪些问题必须写下来。',
+            body: '预算怎么搭、报价漏了什么、签约前该问什么。',
           },
         ],
         howHeading: '一篇指南是怎么搭起来的',
-        howIntro: '指南是用起来的，不只是读一遍。每一篇都会给您三样东西。',
+        howIntro: '指南是用起来的，不只是读一遍。每一篇都给您留下三样东西。',
         howPoints: [
           {
             title: '把决定从头讲到尾',
-            body: '每篇指南从所在领域的第一个选择讲起，一直讲到收尾时要用到的文件或对话，所以每讲一步，都会说清它后面接着什么。',
+            body: '从所在领域的第一个选择，一路讲到收尾时要用到的文件或对话。',
           },
           {
             title: '结论旁边就是来源',
-            body: '指南写到事实的地方，旁边就是来源和最近一次打开核对的日期。您可以自己核对，而不必直接相信。',
+            body: '写到事实的地方，旁边就是来源和最近一次核对的日期。',
           },
           {
             title: '读完能接着做下一步',
-            body: '每篇指南末尾都会给出讲得更深的专题解读，以及能把问题变成表格或文档的工具。',
+            body: '每篇指南末尾都接上更深的专题解读，和可以直接填写的工具。',
           },
         ],
         standardsLink: '来源如何核查',
         explainerHeading: '一次只回答一个问题',
-        explainerBody: '专题解读回答指南里的某一个具体问题，并为这个答案标明来源。',
+        explainerBody: '专题解读只回答指南里的某一个具体问题，并写明它的来源。',
         explainerLink: '阅读专题解读',
         toolsHeading: '把指南变成手上的文件',
-        toolsBody: '这些工具会把指南里的问题变成一张表或一份文档，您可以带去见律师、诊所或机构。',
+        toolsBody: '这些工具把指南里的问题变成一张表，您可以带去见律师、诊所或机构。',
         toolsLink: '打开工具',
         readGuide: '阅读指南',
         relatedOne: '关联专题解读 1 篇',
@@ -1143,52 +1159,33 @@ export const UI: Record<Lang, {
       },
       articles: {
         title: '专题解读',
+        titleTag: '代孕专题解读：每篇回答一个问题',
         description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇为意向父母回答一个问题。',
         intro:
-          '每一篇专题解读只回答一个问题，并把结论追到您可以打开核对的来源。您可以从眼前的决定开始，也可以直接看下面的全部篇目。',
-        countOne: '已发布 1 篇专题解读',
-        countMany: '已发布 {n} 篇专题解读',
+          '每一篇只回答一个问题：费用、目的地、法律，或孩子出生后需要的证件，并写明它依据的来源。',
         startHeading: '从眼前的决定开始',
-        startIntro: '不必从头读到尾。选一个您现在最需要回答的问题，按下面的顺序读。',
+        startIntro: '不必从头读到尾。选一个您现在最需要回答的问题。',
         paths: [
           {
             title: '正在做预算',
-            body: '先弄清为什么不存在平均费用，再看报价漏掉了什么，最后看钱在托管里怎么走。',
+            body: '为什么不存在平均费用，报价漏掉了什么，钱怎么走。',
           },
           {
             title: '正在挑目的地',
-            body: '先看一个法律体系必须回答的问题，再看孩子出生后需要的文件，最后看可能决定亲权的期限。',
+            body: '法律必须回答的问题，孩子要办的文件，以及决定亲权的期限。',
           },
           {
             title: '准备签约',
-            body: '先确认第一次移植前必须有哪些书面文件，再确认每一笔钱在什么条件下支付或退回。',
+            body: '第一次移植前必须有哪些书面文件，每笔钱在什么条件下支付。',
           },
           {
             title: '正在看成功率',
-            body: '移植数据不是承诺。看清已发表的美国最大规模研究统计的是什么，又无法告诉您什么。',
+            body: '美国最大规模的移植研究统计的是什么，适用于哪些人。',
           },
         ],
         allHeading: '全部专题解读',
-        readHeading: '怎么读一篇专题解读',
-        readIntro: '每一篇专题解读都经得起核查，而不只是读过去。在据此行动之前，有三件事值得做。',
-        readPoints: [
-          {
-            title: '先看它回答的问题',
-            body: '每篇只回答一个问题。如果这不是您今天要问的，上面可能有一条更适合您的阅读路径。',
-          },
-          {
-            title: '打开来源，记下日期',
-            body: '文中引用来源的地方，旁边都标着最近一次核查的日期。打开来源，看看这个答案是否仍然成立。',
-          },
-          {
-            title: '带着自己的情况去问专业人士',
-            body: '专题解读讲的是规则通常怎么运作。您的具体情况意味着什么，要由律师或诊所来判断。',
-          },
-        ],
         standardsLink: '来源如何核查',
-        guidesHeading: '想要整个决定，而不只是一个答案？',
-        guidesBody: '指南把一个决定领域从头讲到尾，并链接到讲得更深的专题解读。',
-        allGuides: '全部指南',
+        guidesHeading: '指南',
         emptyTitle: '尚无已发布的专题解读',
         emptyBody: '每一条结论都有您可以打开的来源之后，专题解读才会发布在这里。',
         emptyAction: '阅读研究标准',
@@ -1201,7 +1198,7 @@ export const UI: Record<Lang, {
         title: '{name}代孕：法律实际写了什么',
         description: '关于{name}（{region}）代孕的四项已核实立场：法律基础、谁可以委托、付款规则与亲权，每一条都附上来源与核查日期。',
         heading: '{name}的代孕法律',
-        intro: '下面每一项立场都来自与它一同列出的来源，并在标注的日期被最后一次打开。凡是一条规则取决于您的个人情况，页面就直接说明，而不是猜测。',
+        intro: '每项立场都标着它的来源和最近一次核对的日期。规则取决于您的个人情况时，页面直接写明，不做猜测。',
         checked: '立场核查于 {date}',
         insufficient: '关于{name}，我们没有找到足够的可核实公开资料，不足以把它作为一个可行目的地呈现。请把它当作一份待回答问题清单来读，并在作出任何计划之前交给当地有资格的律师。',
         positions: {
@@ -1228,123 +1225,123 @@ export const UI: Record<Lang, {
         titleTag: '代孕目的地：比较法律与费用',
         description: '按资格、出生时的亲权、付款规则、费用范围与到场要求比较代孕目的地，每一条法律立场都附有来源与日期。',
         breadcrumb: '目的地',
-        eyebrow: '独立的目的地研究',
+        eyebrow: '已核实的目的地记录',
         h1: '哪些代孕目的地适合您的情况？',
-        lede: '这一页不评判哪个国家最好。它帮您判断哪些地方值得花时间研究、哪些应当先排除，依据的是四件事：规则是否覆盖您的家庭，孩子在出生时的法律父母是谁，预算是否覆盖整个过程，以及您需要到场的时候您能不能到场。',
-        notice: '代孕法律在不同国家之间不同，在联邦国家内部也因州和省而异。它还因婚姻状况、孩子与您是否有基因关系、以及国籍和居住地而不同，而这三项是各自独立的检验，不是同一个。下面没有任何内容是关于您个人情况的法律意见；一个国家允许某种安排，并不能证明您可以使用它，也不能证明您自己的国家会接受这个结果。',
-        ctaPick: '选择目的地',
-        ctaFactors: '先看四件事',
+        lede: '一个目的地能不能走，看四件事：条文有没有写明您这样的家庭、出生时谁是法律父母、钱覆盖到哪一步、要不要本人到场。本页按这四项比较八个法律体系。',
+        notice: '代孕法律各国不同；在联邦国家，州与省之间也不同。它还分别看婚姻状况、孩子与您是否有基因关系、以及国籍和居住地，这几项是各自独立的检验。以下内容不构成针对您个人情况的法律意见：一个国家允许代孕，并不等于您可以走这条路，也不等于您住的国家会承认这次出生的结果。',
+        ctaPick: '阅读这些记录',
+        ctaFactors: '四个条件',
         ctaCompare: '并排对比候选目的地',
         stats: {
-          recorded: '已记录的目的地',
-          sourced: '附有可打开的来源',
+          recorded: '目的地记录',
+          sourced: '附有出处的立场',
           lastCheck: '最近一次核查',
         },
         picker: {
           heading: '选择目的地',
-          intro: '每张卡片对应一条已核实的记录：法律依据、来源公布的一项费用数据（或说明未公布），以及最后一次阅读来源的日期。打开记录，可以看到每一项立场与它的引用并列，以及仍未确定的问题。',
-          count: '{n} 条已核实的记录，按地区排列',
+          intro: '一个地方一条记录：法律依据、来源公布过的费用数据、以及还没有结论的问题。点开看全部。',
+          count: '{n} 条记录，按地区排列',
           open: '打开记录',
           noCost: '未公布',
-          insufficient: '来源不足',
-          thinNote: '有些记录带着标记，因为我们能打开的来源并不支持一个可用的结论：{names}。它们保留在页面上，是为了让您在宣传册里已经见过的名字，不至于没有任何说明就消失。',
+          insufficient: '尚未核实完整',
+          thinNote: '有些记录带着这个标记，因为能打开的来源还支撑不了一个可用的结论：{names}。它们仍留在列表里，您在别处见过的名字不该在这里连一句交代都没有。',
           thinJoin: '、',
-          costNote: '一张卡片对每个目的地只能呈现一项费用数据。',
-          costLink: '按费用条目查看全部已公布数据',
+          costNote: '全部已公布数据按费用条目归类：',
+          costLink: '按条目查看全部费用数据',
           emptyTitle: '尚无已核实的内容',
-          emptyBody: '每个目的地都要先有一份带日期的一手法律来源，才会出现在这里。把机构博客上的地点清单照搬过来，是发布错误内容最快的方式。',
+          emptyBody: '一个目的地要先有一份带日期的一手法律来源支持它的立场，才会出现在这里。名单就按文件出现的速度增长。',
         },
         factors: {
-          heading: '在偏好起作用之前，先由四件事决定目的地',
-          intro: '按顺序逐项处理。每一条都比阅读介绍更快地排除地点，而且每一条都有一个您可以拿去问机构、或者拿去问律师的检验方法。',
+          heading: '四个条件，按它们生效的顺序',
+          intro: '每一条都比阅读介绍更快地排除地点，也都能落到一个问题上，那个问题可以拿去问机构，也可以拿去问律师。',
           items: [
             {
-              q: '规则是否点名了像您这样的家庭？',
-              a: '原则上允许并不等于您有资格。凡是一条规定写明谁可以委托，它通常取决于婚姻状况、与孩子是否有基因关系，或者家庭的构成。一个被描述为「对代孕友好」的国家，回答的不是这个问题。',
-              test: '当有人能指向那条规定时，答案是规则。当答案来自某家机构已经安置过多少个类似的家庭时，那是惯例。',
+              q: '条文里点名了您这样的家庭吗？',
+              a: '一个地方允许代孕，和您有资格委托，是两件事。凡是写明谁可以委托的规定，通常卡在婚姻状况、与孩子是否有基因关系、或者家庭构成上。被称作「对代孕友好」的国家，回答的不是这个问题。',
+              test: '有人能指着条文里的某一句，那是规则。答案来自某家机构经手过多少个类似的家庭，那是惯例。',
             },
             {
               q: '孩子在出生时的法律父母是谁？',
-              a: '在一些体系里，意向父母在出生时就被确立；在另一些体系里，分娩的女性无论协议写了什么仍然在法律上是母亲，亲权只能在之后通过法院转移。仅此一项差别，就决定了您的规划是在产房结束，还是在产房开始。',
-              test: '要求给出顺序：出生当天谁是父母，之后存在哪一种申请，由谁审理，以及一项裁定实际需要多久。',
+              a: '有的体系在出生时就把意向父母写进去。有的体系里，分娩的女性无论协议写了什么都是法律上的母亲，亲权只能事后经法院转移。只这一项差别，就决定您的规划在孩子出生时结束，还是从那里才开始。',
+              test: '要求对方给出顺序：出生当天谁是父母、之后存在哪一种申请、由谁审理、一项裁定实际要多久。',
             },
             {
-              q: '预算是否覆盖整个过程？',
-              a: '一个您负担不起的目的地，不是您应该研究的目的地。但真正要紧的是费用范围，而不是总额：一个疗程包含哪些阶段，法律允许向代孕者支付什么，哪些费用在报价之外另行计费，以及疗程中止时有什么会退回给您。',
-              test: '两份相差百分之四十的报价可能包含同样的医疗内容。先比较费用条目，再比较报价总额。',
+              q: '钱能覆盖到哪一步？',
+              a: '超出预算的目的地不值得研究，但决定可行性的是范围而不是总额：一个疗程包含哪些阶段、法律允许向代孕者支付什么、哪些账单在报价之外另行计费、以及疗程中止时有什么会退回给您。',
+              test: '两份相差四成的报价，里面的医疗项目可能完全一样。先比条目，再比总额。',
             },
             {
-              q: '您能在它需要的时候到场吗？',
-              a: '治疗前签署文件、出席法院、领取文件、以及分娩之后的停留，是分开的几项要求，而且它们通常由诊所惯例、登记处和法院决定，而不是由法条决定。出行限制比预算更快地缩小范围。',
-              test: '让负责每一步的人把到场时间表以书面形式交给您，并清楚说明您有几个可用的时间窗口。',
+              q: '需要您到场的时候，您到得了吗？',
+              a: '治疗前签字、出庭、领取文件、孩子出生后停留，是分开的四项要求，而且它们多来自诊所惯例、登记处和法院，不是来自法条。能飞多少趟，往往比预算更快地缩小范围。',
+              test: '让负责每一步的人把到场时间表写成书面交给您，并先说清您有几个可行的出行窗口。',
             },
           ],
         },
         dimensions: {
-          heading: '比较一个目的地，必须覆盖的十项内容',
-          paraA: '多数家庭最后拿到的是一张国家对照表，加上一列价格，而那个价格恰好隐藏了真正决定一个目的地是否可行的那三项内容。下面这十项，是我们要求每个目的地逐项应答的。',
-          paraB: '只有在某一项背后有来源时我们才发布结论，所以上面的记录只承载这十项中的一部分，其余的以未回答的问题列出。您在一条记录上看得见的空缺，本身就是一个结论，不是排版上的意外。',
-          link: '本站如何为一条结论列出来源',
+          heading: '比较一个目的地要覆盖的十项',
+          paraA: '多数家庭最后拿到的是一张国家对照表加一列价格，而正是这一列价格藏住了决定可行性的东西：您能不能在出生时被写进父母栏、要飞几趟、以及等待期间钱由谁保管。下面十项，是这里每一份目的地记录都对着写的。',
+          paraB: '有来源支持的项目就填上，没有的就留着，未回答的问题印在那条记录下面。',
+          link: '本站如何核查一份来源',
           items: [
             { q: '当地法律框架', ask: '成文法、法院判决、一部辅助生殖法，还是各州各异的拼贴？' },
             { q: '谁可以委托', ask: '规则点名了哪些意向父母，以及是否要求基因联系。' },
-            { q: '国籍与居住', ask: '规则触及的是公民、居民，还是任何前往当地的人。' },
+            { q: '国籍与居住', ask: '规则管的是公民、居民，还是任何前往当地的人。' },
             { q: '出生时的法律亲权', ask: '在任何裁定存在之前，法律把谁视为母亲、把谁视为父亲。' },
             { q: '出生之后的程序', ask: '申请、受理它的法院或登记机关，以及实际所需的时间。' },
             { q: '孩子的国籍与文件', ask: '孩子取得什么国籍，以及凭借什么文件离开该国。' },
             { q: '付款规则', ask: '可以支付什么、付给谁、金额如何，以及必须由谁批准。' },
-            { q: '医疗与服务的核实', ask: '由哪个机构给诊所发牌，那张牌照实际覆盖什么。' },
+            { q: '牌照与监管', ask: '由哪个机构给诊所发牌，那张牌照实际覆盖什么。' },
             { q: '到场要求', ask: '谁必须出席、出席多久、在哪些阶段。' },
-            { q: '来源与核查日期', ask: '每个答案出自哪份文件、由谁发布，以及它是在哪一天被阅读的。' },
+            { q: '来源与核查日期', ask: '这十项里任何一句，背后都得有一份带日期的文件。' },
           ],
         },
         models: {
           heading: '法律体系有三种形态',
-          intro: '知道一个地方属于哪种形态，就知道它的名字意味着什么。下面每一句都摘自一条记录，并附上它出自哪份文件、那份文件是何时被打开的。',
+          intro: '一个地方属于哪种形态，决定它的名字能告诉您多少。下面每一句都摘自一条记录，出处与阅读它的日期就标在句子旁边。',
           cite: '发布于 {published}，阅读于 {verified}',
           items: [
             {
               name: '亲权在出生之后才转移',
-              where: '英国，以及任何有类似法院路径的体系',
-              plan: '您的规划无法在分娩时收尾。之后还有一份申请、一次庭审，以及一段孩子在法律上属于别人的等待期。',
+              where: '英国，以及任何分娩后需要走法院路径的体系',
+              plan: '规划没办法在分娩那一刻收尾：之后还有一份申请、一次庭审，以及一段孩子在法律上属于别人的等待期。',
               points: [
-                '除非取得亲权令，代孕者在法律上仍是母亲；书面安排不具有法律约束力；并且付款限于她的合理开支。',
-                '支付超过合理开支的部分，必须先经家事法院批准才能作出亲权令；依《1985年代孕安排法》，为代孕刊登广告或者以代孕者身份刊登广告均属违法。',
-                '意向父母要等到孩子出生之后才向法院申请，法律委员会描述这一步通常需要六个月到一年。它的改革建议仍会让安排不具可执行性，而草案法案目前还不是法律。',
+                '除非取得亲权令，分娩的女性就是法律上的母亲；书面安排不具法律约束力；付款以她的合理开支为限。',
+                '支付超过合理开支的部分，必须在作出亲权令之前经家事法院批准；依《1985 年代孕安排法》，为代孕刊登广告或以代孕者身份刊登广告均属违法。',
+                '意向父母要等孩子出生之后才向法院申请，法律委员会把这一步通常所需的时间描述为六个月到一年。它的改革建议仍会让安排不具可执行性，而草案法案目前还不是法律。',
               ],
             },
             {
-              name: '付款受限，而亲权在别处决定',
-              where: '加拿大，以及任何只就金钱立法、不就出生立法的联邦体系',
-              plan: '一个国家可以合法进入，却未必是您的亲权裁定的来源地。把报销规则和省级出生规则当作两份分开的文件来读。',
+              name: '付款受监管，亲权在别处决定',
+              where: '加拿大，以及联邦层面只管钱、不管出生的体系',
+              plan: '一个国家可以合法进入，却未必是您的亲权裁定的出处。报销规则和省级出生规则要当作两份分开的文件来读。',
               points: [
-                '依联邦法规，代孕母亲因代孕而产生的支出可以被报销。受规范约束的报销是允许的；它与被禁止的付款之间的界线，取决于某项安排的具体内容。',
-                '我们的加拿大记录没有就资格作出陈述，因为已核实的联邦来源规范的是报销而不是谁可以委托；也没有就亲权作出任何主张，因为亲权由省级与地区法律决定，而那些规则我们尚未核实。',
+                '依《辅助生育法》第 12(1) 条及据其制定的条例，代孕母亲因该代孕安排发生的开支可以被报销。',
+                '监管机构列出的可报销项目包括交通、托育、辅导、律师费、药物、孕妇装、产前课程、分娩、保险，以及孕前与产后期间损失的工作收入；需要保留票据，记录保存六年。',
               ],
             },
             {
-              name: '没有全国统一规则，由您落地的那一层决定',
-              where: '美国，以及任何由次国家法律管辖的国家',
-              plan: '国家名几乎不告诉您什么。规则由州、省或地区制定，而您居住地的承认问题，是在其上再加一整套法律体系。',
+              name: '规则不在全国层面，由州或省来定',
+              where: '美国，以及任何规则由州、省一级决定的国家',
+              plan: '国家名几乎说明不了什么。规则由州、省或地区制定，而您居住地的承认问题，是在这之上再加一整套法律体系。',
               points: [
                 '各州对代孕是否允许、以及如何监管各有自己的法律；不存在联邦框架。',
-                '在我们阅读的这项调查中，有 21 个州以成文法明确允许妊娠代孕，另有若干州既没有允许也没有禁止的成文法或公开判例。',
-                '在印第安纳州和内布拉斯加州，妊娠代孕合同不可强制执行并且违背公共政策；亚利桑那州居民则被禁止订立此类合同。',
+                '在我们阅读的这项调查里，21 个州以成文法明确允许妊娠代孕，另有若干州既没有允许也没有禁止的成文法或公开判例。',
+                '印第安纳州与内布拉斯加州的妊娠代孕合同不可强制执行且违背公共政策；亚利桑那州居民被禁止订立此类合同。',
               ],
             },
           ],
         },
         questions: {
-          heading: '确定候选目的地之前要回答的五个问题',
-          intro: '如果一个目的地无法以书面形式回答这几个问题，它就还没有准备好与另一个目的地放在一起比较。',
+          heading: '列进候选之前，要拿到书面答案的五个问题',
+          intro: '一个目的地如果给不出书面答案，就还没准备好与另一个放在一起比较。',
           items: [
             '哪一条规定写明此处谁可以委托，它发表在哪里？',
             '在任何裁定存在之前，出生时的法律母亲和法律父亲分别是谁？',
             '孩子凭哪种旅行文件离开该国，由哪个机关签发？',
-            '可以向代孕者支付什么，是否有事项需要法院或监管机构批准？',
-            '哪些阶段必须我本人到场，如果我无法出席其中一项会怎样？',
+            '可以向代孕者支付或报销什么，是否有事项需要法院或监管机构批准？',
+            '哪些阶段必须我本人到场，如果我到不了会怎样？',
           ],
-          footnote: '完整的清单共有七组三十三个问题。把它下载下来；一旦某位专业人士针对您自身的情况回答了某个问题，就在它旁边写下名字和日期。',
+          footnote: '完整清单共有七组三十三个问题，每个问题旁边都留了位置，写下是谁、在哪一天回答的。',
           cta: '打开完整清单',
         },
         next: {
@@ -1352,36 +1349,36 @@ export const UI: Record<Lang, {
           items: [
             {
               label: '法律与亲权',
-              body: '按顺序处理可执行性、出生时的亲权、资格、可以支付什么，以及您居住地的承认问题。',
+              body: '可执行性、出生时的亲权、资格、可以支付什么、您居住地的承认问题，按这个顺序处理。',
             },
-            { label: '费用指南', body: '一份预算由什么构成，报价通常漏掉什么，以及钱实际是怎么流转的。' },
-            { label: '研究清单', body: '七组共三十三个问题，下载的文件里每个问题前面都留着一个空的方框。' },
-            { label: '报价对比', body: '把两个疗程填进同样的行里，让差异体现在费用范围上，而不是报价总额上。' },
+            { label: '费用指南', body: '一份预算由什么构成、报价通常不涵盖什么，以及钱实际是怎么流转的。' },
+            { label: '研究清单', body: '这一页提出的问题，集中在一份可以逐条填写、也能留下的清单里。' },
+            { label: '报价对比', body: '把两个疗程填进同样的行里，一行一行读差别。' },
           ],
         },
         band: {
-          heading: '这里没有替您选定任何目的地',
-          body: '这是刻意的。一个点名最佳国家的页面，等于在没有任何验证资格的情况下重复机构的主张。本站能做的是把每个法律体系对着它的来源核对，并让比较保持诚实。',
-          enquiry: '把问询写出来',
+          heading: '把手上的材料带去咨询',
+          body: '本站不出具法律意见，也不代表任何诊所或机构。这里有的是文件本身：把您的候选名单和已经拿到的报价带来，含糊的部分就变成可以具体问律师的问题。',
+          enquiry: '免费咨询',
         },
         standard: {
-          heading: '本站每一条目的地记录都必须具备的内容',
+          heading: '一条目的地记录里有什么',
           items: [
-            '写明法律基础：成文法、法院判决、一部辅助生殖法，还是没有全国统一规则。',
-            '资格只按材料所能核实的范围描述；材料到不了的地方，页面直接说明，而不是猜测。',
-            '每一项立场都附上它出自哪份文件、由谁发布，以及我们打开它的日期。',
-            '付款规则按法律允许什么、禁止什么、要求批准什么来陈述，绝不写成机构通常怎么做。',
-            '出生时的亲权与之后的亲权，作为两个分开的答案记录。',
-            '在页面上列出尚未确定的问题，包括我们试过却打不开的来源。',
-            '任何页面都不会替任何人标注为开放、安全、推荐或最佳。',
+            '法律基础：成文法、法院判决、一部辅助生殖法，还是没有全国统一规则。',
+            '谁可以委托，按已核实材料所能达到的范围描述。',
+            '每一项立场都附上它出自哪份文件、由谁发布，以及它的阅读日期。',
+            '付款规则按法律允许什么、禁止什么、要求谁批准来写，不写成机构通常怎么做。',
+            '出生时的亲权与出生之后的亲权，作为两个分开的答案记录。',
+            '还没有结论的问题，包括打不开、或需要登录才能看到的来源。',
+            '每一条结论都可以对着它自己的文件读，您核对的是一份来源，不是接受一个说法。',
           ],
         },
         why: {
-          heading: '为什么这份名单很短',
-          body: '只有当我们能引用规则本身、而不是复述机构的概述时，我们才添加一个目的地。当可获得的材料只有营销内容，或者一条引用打开之后发现对不上时，记录会直接这样写明，而不是把空缺抹平。下面每条记录都列出自己的来源没能确定的问题。',
-          readTitle: '怎么读一条记录',
-          readBody: '原则上允许，和对您可行，不是一回事。资格、亲权、由哪个法院处理、孩子凭什么文件离开，是各自独立的问题，其中任何一个单独都可能不成立。',
-          link: '五个法律问题',
+          heading: '怎么读一条记录',
+          body: '先看法条基础那一行，再看出生时谁是父母，然后才看数字。费用条目按类别列在记录底部，来源到不了的地方就留在那里。',
+          readTitle: '允许，不等于对您可行',
+          readBody: '资格、亲权、由哪个法院处理、孩子凭什么文件离开，是四个各自独立的问题，任何一个单独都可能不成立。',
+          link: '打开《代孕的法律考量》指南',
         },
       },
     },

@@ -14,6 +14,7 @@ import type { Lang } from '@/i18n/config';
 
 export type AboutPage = {
   title: string;
+  titleTag: string;
   description: string;
   /** {name} is the site name, which is the same in both languages. */
   h1: string;
@@ -36,12 +37,13 @@ export type AboutPage = {
 export const ABOUT_PAGE: Record<Lang, AboutPage> = {
   en: {
     title: 'About',
+    titleTag: 'About SurrogacyBase and How We Source It',
     description:
       "Who runs SurrogacyBase, what the site does and does not do, how information is sourced, and how a correction is handled.",
     h1: 'About {name}',
     tagline: SITE.tagline,
     body: [
-      'SurrogacyBase publishes guides, destination pages and decision tools for people considering surrogacy. The site exists because most of what surfaces on the first results page is written by the parties selling the service. An information source should not be the same voice as a sales source, so the rule here is simple: a claim earns its place by naming where it came from.',
+      'SurrogacyBase is an independent information site, publishing guides, destination pages and decision tools for people considering surrogacy, and it is run by its own editorial team. It exists because most of what surfaces on the first results page is written by the parties selling the service: an information source should not be the same voice as a sales source. So the rule here is simple: a claim earns its place by naming where it came from.',
       "What we publish is limited by what we can verify. When the only available account of a rule comes from a provider's own marketing, the page says so, or the page does not exist yet.",
     ],
     notHeading: 'What this site is not',
@@ -60,7 +62,11 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: 'How does the site make money?',
-        a: 'SurrogacyBase is published by its editorial team and reviewed by its advisory board. No provider pays to appear, and no destination is ranked for revenue. If a commercial relationship ever reaches a page, that page labels it before the arrangement starts.',
+        a: 'No provider pays to appear anywhere on this site, and your question is not something we sell. Reading these pages, sending an enquiry and the reply a consultant writes you all cost you nothing. The site is published by its editorial team under a team name rather than a commercial banner, and no destination is ranked for revenue. If a commercial relationship ever reaches a page, that page labels it before the arrangement starts.',
+      },
+      {
+        q: 'What happens when I send an enquiry?',
+        a: 'A consultant on the editorial team reads it and replies within 24 hours on the channel you left. The enquiry goes to SurrogacyBase only: it is not forwarded to a clinic, agency or lawyer, and no account is created. A reply separates three things: what the sources on this site support, what they leave unsettled, and which question only a professional in that jurisdiction can settle for you. Where the answer is that we cannot answer it, the reply says so rather than guessing.',
       },
     ],
     whoHeading: 'Who is behind it',
@@ -80,12 +86,13 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
   },
   zh: {
     title: '关于我们',
+    titleTag: '关于 SurrogacyBase：由谁撰写、内容如何核实',
     description:
       'SurrogacyBase 由谁运营、本站做什么与不做什么、信息如何取得来源，以及一条更正会怎样处理。',
     h1: '关于 {name}',
     tagline: SITE.taglineZh,
     body: [
-      'SurrogacyBase 为正在考虑代孕的人发布指南、目的地页面和决策工具。本站之所以存在，是因为搜索结果第一页上的大部分内容，出自出售这项服务的一方之手。信息来源不应当与销售来源是同一种声音，所以这里的规则很简单：一条说法靠写明它来自哪里取得发表资格。',
+      'SurrogacyBase 是一个独立的信息站点，为正在考虑代孕的人提供指南、目的地页面和决策工具，由自己的编辑团队运营。本站之所以存在，是因为搜索结果第一页上的大部分内容，出自出售这项服务的一方之手：信息来源不应当与销售来源是同一种声音。所以这里的规则很简单：一条说法靠写明它来自哪里取得发表资格。',
       '我们发布什么，受限于我们能够核实什么。当一条规则仅有的说法来自服务方自己的宣传材料时，页面会这样写明，或者这个页面根本还不存在。',
     ],
     notHeading: '本站不是什么',
@@ -104,7 +111,11 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: '本站靠什么盈利？',
-        a: 'SurrogacyBase 由编辑团队发布、由医学顾问委员会审阅。没有服务方付费出现，也没有目的地因营收被排名。若某个页面真的出现商业关系，那会在这项安排开始前于该页标注出来。',
+        a: '没有任何服务方为出现在本站付费，您的问询也不是我们出售的东西。阅读这些页面、发出一封问询、以及顾问写给您的回复，都不向您收取费用。本站由编辑团队以团队之名发布，而不是挂在商业招牌之下，也没有目的地因营收被排名。若某个页面真的出现商业关系，那会在这项安排开始前于该页标注出来。',
+      },
+      {
+        q: '我发出问询之后会发生什么？',
+        a: '编辑团队的顾问会阅读它，并在 24 小时内通过您留下的联系方式回复。问询只到达 SurrogacyBase 自己：不会转给诊所、机构或律师，也不会为您建立任何账号。回复会把三件事分开写清：本站的资料支持到哪一步、资料没有解决什么、以及哪一个问题只能由该法域的专业人士替您定夺。如果答案是这个问题我们回答不了，回复会直接这样说，而不是猜测。',
       },
     ],
     whoHeading: '背后是谁',

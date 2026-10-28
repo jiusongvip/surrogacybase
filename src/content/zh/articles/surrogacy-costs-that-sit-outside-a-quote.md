@@ -1,6 +1,6 @@
 ---
 title: "落在代孕报价之外的成本"
-description: "通常落在套餐价格之外的十二类开支，为什么它们仍然算在您头上，以及要求服务方确认时该用什么样的一句话。"
+description: "套餐价格之外的十二类开支，为什么最后都由您承担，以及该向服务方要哪一句书面确认。"
 type: article
 category: cost
 published: true

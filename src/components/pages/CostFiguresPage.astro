@@ -11,6 +11,7 @@
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import HeroPurpose from '@/components/ui/HeroPurpose.astro';
 import Icon from '@/components/ui/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 import { COST_TOOL_PAGE, TOOLS_INDEX_PAGE } from '@/data/tool-pages';
@@ -56,13 +57,14 @@ const groups = LINES.map((line) => {
 const silent = records.filter((record) => record.costs.length === 0);
 ---
 
-<PageLayout title={copy.title} description={copy.description}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description}>
   <Breadcrumbs
     crumbs={[{ label: TOOLS_INDEX_PAGE[lang].label, href: localizedPath(lang, '/tools') }, { label: copy.h1 }]}
   />
 
   <header class="shell py-10 max-w-[74ch]">
     <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <HeroPurpose text={copy.purpose} />
     <p class="mt-4 text-[18px] leading-[1.65] text-muted">{copy.lede}</p>
     <p class="mt-4 flex items-start gap-2.5 text-[15px] leading-relaxed text-muted">
       <Icon name="file-text" size={17} class="mt-0.5 shrink-0 text-accent" />

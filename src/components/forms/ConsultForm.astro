@@ -40,19 +40,116 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
 ---
 
 <div
-  class:list={[framed ? 'rounded-(--radius) border border-line bg-paper p-6 text-text shadow-lift sm:p-7' : 'text-text']}
+  class:list={[framed ? 'rounded-(--radius-card) border border-line bg-paper p-6 text-text shadow-lift sm:p-7' : 'text-text']}
   data-consult={inbox}
   data-endpoint="/api/enquiry"
   data-source={source}
   data-copy={JSON.stringify(copy)}
 >
   <div data-form-body>
-    <div class="grid gap-5 sm:grid-cols-2">
+    <div class="grid gap-5">
+      {/* The dial select is narrow and the number takes the rest of the row. The script sets the
+        * code from the browser's locale before the reader touches it, so a reader in Hong Kong is
+        * not asked to change +86 by hand. */}
       <div>
-        <label class="field-label" for={`${idPrefix}-name`}>
-          {copy.nameLabel}
-          <span class="font-normal text-muted">{copy.optional}</span>
+        <label class="field-label" for={`${idPrefix}-phone`}>
+          {copy.phoneLabel}
+          <span class="text-flag" aria-hidden="true">{copy.required}</span>
         </label>
+        <div class="mt-1.5 flex gap-2">
+          <select
+            class="field-input w-[106px] shrink-0"
+            id={`${idPrefix}-dial`}
+            data-field="dial"
+            aria-label={copy.dialLabel}
+          >
+            {copy.dials.map((dial) => <option value={dial}>{dial}</option>)}
+          </select>
+          <input
+            class="field-input flex-1"
+            id={`${idPrefix}-phone`}
+            data-field="phone"
+            type="tel"
+            autocomplete="tel"
+            inputmode="tel"
+            maxlength="24"
+            aria-required="true"
+            aria-describedby={`${idPrefix}-phone-error`}
+            placeholder={copy.phonePlaceholder}
+          />
+        </div>
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-phone-error`}
+          data-error-for="phone"
+          hidden
+        ></p>
+      </div>
+
+      {/* One account is enough. The tabs are ordered by the language the page is in, and the input
+        * below them is relabelled per app in its placeholder: a WeChat ID is not a phone number and
+        * a Telegram handle starts with @, so one generic "{app} number" would be wrong twice. */}
+      <fieldset class="min-w-0">
+        <legend class="field-label">
+          {copy.channelLabel}
+          <span class="text-flag" aria-hidden="true">{copy.required}</span>
+          <span class="font-normal text-muted">{copy.channelHint}</span>
+        </legend>
+        <div class="mt-2 flex flex-wrap gap-x-5 border-b border-line">
+          {
+            copy.channels.map((channel) => (
+              <label class="-mb-px flex cursor-pointer items-center border-b-2 border-transparent pb-2 text-[13px] text-muted transition-colors duration-(--dur) hover:text-text has-[:checked]:border-accent has-[:checked]:text-accent has-[:focus-visible]:text-accent">
+                <input
+                  class="sr-only"
+                  type="radio"
+                  name={`${idPrefix}-channel`}
+                  data-field="platform"
+                  value={channel.value}
+                />
+                {channel.label}
+              </label>
+            ))
+          }
+        </div>
+        <input
+          class="field-input mt-3"
+          id={`${idPrefix}-handle`}
+          data-field="handle"
+          type="text"
+          autocomplete="off"
+          maxlength="80"
+          aria-label={copy.handleLabel}
+          aria-required="true"
+          aria-describedby={`${idPrefix}-handle-error ${idPrefix}-channel-error`}
+          placeholder={copy.channels[0].hint}
+        />
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-channel-error`}
+          data-error-for="platform"
+          hidden
+        ></p>
+        <p
+          class="mt-1.5 text-[13px] leading-snug text-flag"
+          id={`${idPrefix}-handle-error`}
+          data-error-for="handle"
+          hidden
+        ></p>
+        <p class="mt-2 text-[12.5px] leading-relaxed text-muted">{copy.channelNotice}</p>
+      </fieldset>
+
+      {/* The line between what the reply needs and what it does not. Below it, nothing is
+        * required, and the line itself says so, so the two labels under it are not each marked a
+        * second time. A reader who wants to be called but has not written the question yet can
+        * still send the two fields above. */}
+      <div class="flex items-center gap-3 pt-1 text-[12px] text-muted">
+        <span class="h-px flex-1 bg-line"></span>
+        {copy.optionalHeading}
+        <span class="h-px flex-1 bg-line"></span>
+      </div>
+
+      <div>
+        <label class="field-label" for={`${idPrefix}-name`}>{copy.nameLabel}</label>
         <input
           class="field-input mt-1.5"
           id={`${idPrefix}-name`}
@@ -65,125 +162,20 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
       </div>
 
       <div>
-        <label class="field-label" for={`${idPrefix}-email`}>
-          {copy.emailLabel}
-          <span class="text-flag" aria-hidden="true">{copy.required}</span>
-        </label>
-        <input
-          class="field-input mt-1.5"
-          id={`${idPrefix}-email`}
-          data-field="email"
-          type="email"
-          autocomplete="email"
-          inputmode="email"
-          maxlength="120"
-          aria-required="true"
-          aria-describedby={`${idPrefix}-email-error`}
-          placeholder={copy.emailPlaceholder}
-        />
-        <p
-          class="mt-1.5 text-[13px] leading-snug text-flag"
-          id={`${idPrefix}-email-error`}
-          data-error-for="email"
-          hidden
-        ></p>
-      </div>
-
-      <div>
-        <label class="field-label" for={`${idPrefix}-phone`}>
-          {copy.phoneLabel}
-          <span class="font-normal text-muted">{copy.optional}</span>
-        </label>
-        <input
-          class="field-input mt-1.5"
-          id={`${idPrefix}-phone`}
-          data-field="phone"
-          type="tel"
-          autocomplete="tel"
-          inputmode="tel"
-          maxlength="30"
-          aria-describedby={`${idPrefix}-phone-error`}
-          placeholder={copy.phonePlaceholder}
-        />
-        <p
-          class="mt-1.5 text-[13px] leading-snug text-flag"
-          id={`${idPrefix}-phone-error`}
-          data-error-for="phone"
-          hidden
-        ></p>
-      </div>
-
-      <div>
-        <label class="field-label" for={`${idPrefix}-platform`}>
-          {copy.platformLabel}
-          <span class="font-normal text-muted">{copy.optional}</span>
-        </label>
-        <select
-          class="field-input mt-1.5"
-          id={`${idPrefix}-platform`}
-          data-field="platform"
-          aria-describedby={`${idPrefix}-platform-error`}
-        >
-          <option value="">{copy.platformNone}</option>
-          {copy.platformOptions.map((option) => <option value={option.value}>{option.label}</option>)}
-        </select>
-        <p
-          class="mt-1.5 text-[13px] leading-snug text-flag"
-          id={`${idPrefix}-platform-error`}
-          data-error-for="platform"
-          hidden
-        ></p>
-      </div>
-
-      <div>
-        <label class="field-label" for={`${idPrefix}-handle`}>
-          {copy.handleLabel}
-          <span class="font-normal text-muted">{copy.optional}</span>
-        </label>
-        <input
-          class="field-input mt-1.5"
-          id={`${idPrefix}-handle`}
-          data-field="handle"
-          type="text"
-          autocomplete="off"
-          maxlength="80"
-          aria-describedby={`${idPrefix}-handle-error`}
-          placeholder={copy.handlePlaceholder}
-        />
-        <p
-          class="mt-1.5 text-[13px] leading-snug text-flag"
-          id={`${idPrefix}-handle-error`}
-          data-error-for="handle"
-          hidden
-        ></p>
-      </div>
-
-      <div class="sm:col-span-2">
-        <label class="field-label" for={`${idPrefix}-message`}>
-          {copy.messageLabel}
-          <span class="text-flag" aria-hidden="true">{copy.required}</span>
-        </label>
+        <label class="field-label" for={`${idPrefix}-message`}>{copy.messageLabel}</label>
         <textarea
           class="field-input mt-1.5 min-h-[112px]"
           id={`${idPrefix}-message`}
           data-field="message"
           rows="4"
           maxlength="1200"
-          aria-required="true"
-          aria-describedby={`${idPrefix}-message-error`}
           placeholder={copy.messagePlaceholder}></textarea>
-        <p
-          class="mt-1.5 text-[13px] leading-snug text-flag"
-          id={`${idPrefix}-message-error`}
-          data-error-for="message"
-          hidden
-        ></p>
       </div>
 
-      <div class="sm:col-span-2">
-        <label class="flex items-start gap-3 text-[14px] leading-relaxed text-muted" for={`${idPrefix}-consent`}>
+      <div>
+        <label class="flex items-start gap-3 text-[13px] leading-relaxed text-muted" for={`${idPrefix}-consent`}>
           <input
-            class="mt-0.5 h-4 w-4 shrink-0 rounded-[3px] border border-line-control text-accent accent-accent"
+            class="mt-0.5 h-4 w-4 shrink-0 rounded-[5px] border border-line-control text-accent accent-accent"
             id={`${idPrefix}-consent`}
             data-consent
             type="checkbox"
@@ -214,6 +206,18 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     <p class="mt-3 text-[14px] leading-relaxed text-muted" role="status" aria-live="polite" data-status>
       {copy.statusIdle}
     </p>
+
+    {
+      inbox ? (
+        <p class="mt-1 text-[12.5px] leading-relaxed text-muted">
+          {copy.mailNoteBefore}{' '}
+          <a class="text-accent underline decoration-accent/40 underline-offset-2" href={`mailto:${inbox}`}>
+            {inbox}
+          </a>
+          {copy.mailNoteAfter}
+        </p>
+      ) : null
+    }
 
     <details class="mt-4 rounded-(--radius) border border-line bg-surface-2 px-4 py-3" data-preview-box>
       <summary class="cursor-pointer text-[14px] font-medium text-muted">{copy.previewSummary}</summary>
@@ -256,16 +260,17 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
 <script>
   import type { ConsultChrome } from '@/data/intake';
 
-  const FIELD_NAMES = ['name', 'email', 'phone', 'platform', 'handle', 'message'] as const;
+  const FIELD_NAMES = ['name', 'dial', 'phone', 'platform', 'handle', 'message'] as const;
   type FieldName = (typeof FIELD_NAMES)[number];
   type Fields = Record<FieldName, string>;
   type Chrome = ConsultChrome;
   type Errors = Partial<Record<FieldName | 'consent', string>>;
 
-  const KEY = 'surrogacybase.consult.v2';
+  /* Bumped when the field set changed: a draft saved by the older form carries fields this
+   * one no longer has, and restoring it would leave a phone number behind a removed email. */
+  const KEY = 'surrogacybase.consult.v3';
   const SYNC = 'surrogacybase:consult-draft';
   const SENT = 'surrogacybase:consult-sent';
-  const ADDRESS = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   const PHONE = /^[+()\d\s.-]{6,30}$/;
 
   /** Same token syntax as src/i18n/ui.ts, kept local because a bundle cannot import it. */
@@ -294,11 +299,24 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     const box = (name: FieldName) =>
       root.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[data-field="${name}"]`);
 
-    const EMPTY: Fields = { name: '', email: '', phone: '', platform: '', handle: '', message: '' };
+    /** The channel is a radio group: its value is whichever one is checked, never the first. */
+    const radios = Array.from(root.querySelectorAll<HTMLInputElement>('input[data-field="platform"]'));
+    const handle = root.querySelector<HTMLInputElement>('[data-field="handle"]')!;
+    const checkedChannel = () =>
+      root.querySelector<HTMLInputElement>('input[data-field="platform"]:checked')?.value ?? '';
+
+    const EMPTY: Fields = { name: '', dial: '', phone: '', platform: '', handle: '', message: '' };
+
+    /** The dial code is part of the number everywhere it is stored or shown. */
+    const fullPhone = (v: Fields) => `${v.dial} ${v.phone}`.trim();
 
     const read = (): Fields => {
       const out = { ...EMPTY };
-      for (const name of FIELD_NAMES) out[name] = box(name)?.value ?? '';
+      for (const name of FIELD_NAMES) {
+        if (name === 'platform') continue;
+        out[name] = box(name)?.value ?? '';
+      }
+      out.platform = checkedChannel();
       return out;
     };
 
@@ -306,14 +324,13 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     function compose(v: Fields): string {
       const lines: string[] = [];
       if (v.name.trim()) lines.push(fill(T.lineName, { value: v.name.trim() }));
-      lines.push(fill(T.lineEmail, { value: v.email.trim() }));
-      if (v.phone.trim()) lines.push(fill(T.linePhone, { value: v.phone.trim() }));
+      if (v.phone.trim()) lines.push(fill(T.linePhone, { value: fullPhone(v) }));
       if (v.platform) {
-        const option = T.platformOptions.find((o) => o.value === v.platform);
-        lines.push(fill(T.linePlatform, { value: option?.label ?? v.platform }));
+        const option = T.channels.find((o) => o.value === v.platform);
+        lines.push(fill(T.lineChannel, { value: option?.label ?? v.platform }));
       }
       if (v.handle.trim()) lines.push(fill(T.lineHandle, { value: v.handle.trim() }));
-      lines.push(fill(T.lineMessage, { value: v.message.trim() }));
+      if (v.message.trim()) lines.push(fill(T.lineMessage, { value: v.message.trim() }));
       lines.push('', fill(T.lineSource, { value: window.location.pathname }));
       lines.push(T.lineFooter);
       return lines.join('\n');
@@ -322,14 +339,12 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     function validate(): Errors {
       const errors: Errors = {};
       const v = read();
-      const email = v.email.trim();
       const phone = v.phone.trim();
-      if (!email) errors.email = T.needEmail;
-      else if (!ADDRESS.test(email)) errors.email = T.badEmail;
-      if (phone && (!PHONE.test(phone) || (phone.match(/\d/g) ?? []).length < 6)) errors.phone = T.badPhone;
-      if (v.platform && !v.handle.trim()) errors.handle = T.needHandle;
-      if (!v.platform && v.handle.trim()) errors.platform = T.needPlatform;
-      if (!v.message.trim()) errors.message = T.needMessage;
+      const digits = (phone.match(/\d/g) ?? []).length;
+      if (!phone) errors.phone = T.needPhone;
+      else if (!PHONE.test(phone) || digits < 6) errors.phone = T.badPhone;
+      if (!v.platform) errors.platform = T.needChannel;
+      else if (!v.handle.trim()) errors.handle = T.needHandle;
       if (!consent.checked) errors.consent = T.needConsent;
       return errors;
     }
@@ -339,7 +354,7 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
         node.hidden = true;
         node.textContent = '';
       }
-      for (const name of FIELD_NAMES) box(name)?.removeAttribute('aria-invalid');
+      for (const el of inputs) el.removeAttribute('aria-invalid');
       consent.removeAttribute('aria-invalid');
     }
 
@@ -353,15 +368,17 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
           node.hidden = false;
         }
         if (name === 'consent') consent.setAttribute('aria-invalid', 'true');
+        else if (name === 'platform') for (const radio of radios) radio.setAttribute('aria-invalid', 'true');
         else box(name as FieldName)?.setAttribute('aria-invalid', 'true');
       }
     }
 
     function focusFirst(errors: Errors) {
-      const order: (FieldName | 'consent')[] = ['email', 'phone', 'platform', 'handle', 'message', 'consent'];
+      const order: (FieldName | 'consent')[] = ['phone', 'platform', 'handle', 'consent'];
       const hit = order.find((name) => errors[name]);
       if (!hit) return;
       if (hit === 'consent') consent.focus();
+      else if (hit === 'platform') (radios[0] ?? handle).focus();
       else box(hit)?.focus();
     }
 
@@ -398,6 +415,29 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
       }
     }
 
+    /** The placeholder names the chosen app, because the shape of the answer differs by app. */
+    function repaintHandleHint() {
+      const option = T.channels.find((o) => o.value === checkedChannel());
+      handle.setAttribute('placeholder', option?.hint ?? '');
+    }
+
+    /* The dial code follows the browser's region, but only while the form is untouched: a draft
+     * or a code the reader picked always wins over the guess. */
+    function preferredDial(fallback: string): string {
+      const select = box('dial') as HTMLSelectElement | null;
+      const options = Array.from(select?.options ?? []).map((option) => option.value);
+      const regions: Record<string, string> = {
+        CN: '+86', HK: '+852', MO: '+852', TW: '+886', SG: '+65',
+        US: '+1', CA: '+1', GB: '+44', AU: '+61', NZ: '+61',
+      };
+      for (const tag of [navigator.language, ...(navigator.languages ?? [])]) {
+        const region = (tag.split('-')[1] ?? '').toUpperCase();
+        const hit = regions[region];
+        if (hit && options.includes(hit)) return hit;
+      }
+      return fallback;
+    }
+
     function setBusy(busy: boolean) {
       submit.disabled = busy;
       submit.setAttribute('aria-busy', busy ? 'true' : 'false');
@@ -430,6 +470,8 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
         const el = box(name);
         if (el) el.value = '';
       }
+      for (const radio of radios) radio.checked = false;
+      repaintHandleHint();
       consent.checked = false;
       clearErrors();
       save(null);
@@ -439,7 +481,7 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
       body.hidden = false;
       status.textContent = T.statusIdle;
       repaint();
-      box('name')?.focus();
+      box('phone')?.focus();
     }
 
     for (const el of inputs) {
@@ -459,10 +501,27 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
       });
       el.addEventListener('change', () => {
         save(read());
+        repaintHandleHint();
         repaint();
         announce();
       });
     }
+
+    /* A mistyped number is cheaper to fix the moment the reader leaves the field than after they
+     * have written the message, so the phone field confirms itself on blur as well as on submit. */
+    const phoneInput = box('phone');
+    phoneInput?.addEventListener('blur', () => {
+      const value = phoneInput.value.trim();
+      if (!value) return;
+      const digits = (value.match(/\d/g) ?? []).length;
+      if (PHONE.test(value) && digits >= 6) return;
+      const node = root.querySelector<HTMLElement>('[data-error-for="phone"]');
+      if (node) {
+        node.textContent = T.badPhone;
+        node.hidden = false;
+      }
+      phoneInput.setAttribute('aria-invalid', 'true');
+    });
 
     consent.addEventListener('change', () => {
       if (consent.checked) {
@@ -480,9 +539,12 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     window.addEventListener(SYNC, (event) => {
       const v = (event as CustomEvent<Fields>).detail;
       for (const name of FIELD_NAMES) {
+        if (name === 'platform') continue;
         const el = box(name);
         if (el && el.value !== v[name] && document.activeElement !== el) el.value = v[name];
       }
+      for (const radio of radios) radio.checked = radio.value === v.platform;
+      repaintHandleHint();
       repaint();
     });
 
@@ -543,11 +605,9 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
               const messages: Errors = {};
               for (const field of fields) {
                 if (field === 'consent') messages.consent = T.needConsent;
-                else if (field === 'email') messages.email = T.badEmail;
                 else if (field === 'phone') messages.phone = T.badPhone;
-                else if (field === 'platform') messages.platform = T.needPlatform;
+                else if (field === 'platform') messages.platform = T.needChannel;
                 else if (field === 'handle') messages.handle = T.needHandle;
-                else if (field === 'message') messages.message = T.needMessage;
               }
               paintErrors(messages);
               status.textContent = T.invalidStatus;
@@ -598,10 +658,16 @@ const source = idPrefix === 'dlg' ? 'dialog' : 'home';
     const saved = load();
     if (saved) {
       for (const name of FIELD_NAMES) {
+        if (name === 'platform') continue;
         const el = box(name);
         if (el) el.value = saved[name];
       }
+      for (const radio of radios) radio.checked = radio.value === saved.platform;
+    } else {
+      const dial = box('dial') as HTMLSelectElement | null;
+      if (dial) dial.value = preferredDial(dial.value);
     }
+    repaintHandleHint();
     repaint();
   }
 </script>

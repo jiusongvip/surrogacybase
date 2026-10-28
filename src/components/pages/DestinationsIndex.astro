@@ -41,7 +41,10 @@ const costsCopy = UI[lang].costs;
 const basis = BASIS_LABELS[lang];
 
 const rows = await getJurisdictions(lang);
-const verified = rows.filter((r) => !r.data.insufficientData).length;
+/* The middle figure has to count something other than records. A position without an openable
+ * source is not published at all, so the old figure printed the first cell twice; this one is the
+ * number of legal positions on the page, each of which carries the document it was read from. */
+const sourcedPositions = rows.reduce((total, row) => total + row.data.facts.length, 0);
 const thin = rows.filter((r) => r.data.insufficientData);
 const lastChecked = rows.length > 0 ? rows.map((r) => r.data.statusVerifiedOn).sort().pop() : undefined;
 
@@ -112,7 +115,7 @@ const jsonLd = [
   <Breadcrumbs crumbs={[{ label: copy.breadcrumb }]} />
 
   <header class="shell py-10 sm:py-14">
-    <p class="text-[13px] font-semibold uppercase tracking-[0.16em] text-accent">{copy.eyebrow}</p>
+    <p class="eyebrow">{copy.eyebrow}</p>
     <h1 class="mt-4 text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06] text-balance">
       {copy.h1}
     </h1>
@@ -139,7 +142,7 @@ const jsonLd = [
       </div>
       <div>
         <dt class="text-[13px] leading-snug text-muted sm:text-[15px]">{copy.stats.sourced}</dt>
-        <dd class="tnum mt-0.5 text-[20px] font-medium sm:text-[22px]">{verified}</dd>
+        <dd class="tnum mt-0.5 text-[20px] font-medium sm:text-[22px]">{sourcedPositions}</dd>
       </div>
       <div>
         <dt class="text-[13px] leading-snug text-muted sm:text-[15px]">{copy.stats.lastCheck}</dt>

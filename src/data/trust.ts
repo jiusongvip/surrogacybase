@@ -1,13 +1,20 @@
 import type { Bilingual } from '@/i18n/ui';
+import { SITE } from '@/const';
+import { EDITORIAL_REVISION } from '@/data/policy-pages';
 
 /*
  * The two trust subjects the About page carries: the reviewers who put their name to a page and
  * the readers who allow an anonymized case to be published.
  *
- * Both lists start empty on purpose. A reviewer is only added after a completed review cycle and
- * an agreement to be credited; a case is only added after written consent and the removal of
- * identifying details. Neither is written from imagination or combined from several readers, so
- * the page shows its rule and its slots rather than a cast invented to fill them.
+ * The reviewer list credits the standing board the byline already names, not a person invented to
+ * fill a slot. Its credential is the site's own editorial policy — the public page that states what
+ * the board checks and how — rather than a self-description. An individually named reviewer is only
+ * added on top of this after a completed review cycle and a real agreement to be credited, with a
+ * link to that person's own public credential.
+ *
+ * The case list starts empty on purpose. A case is only added after written consent and the removal
+ * of identifying details, never from imagination and never combined from several readers, so the
+ * page shows its rule and its slot rather than a story invented to fill it.
  */
 
 export type Reviewer = {
@@ -34,6 +41,23 @@ export type ReaderCase = {
   published: boolean;
 };
 
-export const REVIEWERS: Reviewer[] = [];
+export const REVIEWERS: Reviewer[] = [
+  {
+    /** The standing board the byline already names, credited under its own collective name. */
+    name: SITE.board,
+    role: {
+      en: 'Reviews every clinical and legal claim against the source cited beside it',
+      zh: '逐条核对每个临床与法律说法，对照其旁边引用的来源',
+    },
+    /** The site's own public page that documents the review process, not a self-description. */
+    credentialUrl: '/editorial-policy',
+    credentialLabel: {
+      en: 'Read the editorial policy and review process',
+      zh: '阅读编辑政策与审阅流程',
+    },
+    /** Kept in step with the editorial policy's own revision stamp, a real published date. */
+    reviewedOn: EDITORIAL_REVISION,
+  },
+];
 
 export const READER_CASES: ReaderCase[] = [];

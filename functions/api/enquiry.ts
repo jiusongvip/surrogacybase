@@ -32,10 +32,11 @@ const MAX_BODY = 16_000;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE = /^[+()\d\s.-]{6,30}$/;
 const PLATFORMS: Record<string, string> = {
-  wechat: '微信',
   whatsapp: 'WhatsApp',
-  telegram: 'Telegram',
+  wechat: '微信',
   line: 'LINE',
+  messenger: 'Messenger',
+  telegram: 'Telegram',
   signal: 'Signal',
   other: '其他',
 };
@@ -177,13 +178,13 @@ function inboxText(fields: {
 }): string {
   const lines = [
     'New enquiry — SurrogacyBase',
-    `Name: ${fields.name || '—'}`,
-    `Email: ${fields.email}`,
-    fields.phone ? `Phone: ${fields.phone}` : '',
-    fields.platform ? `Messaging app: ${PLATFORMS[fields.platform] ?? fields.platform}` : '',
-    fields.handle ? `Handle: ${fields.handle}` : '',
+    `Mobile: ${fields.phone}`,
+    fields.platform ? `Reach on: ${PLATFORMS[fields.platform] ?? fields.platform}` : '',
+    fields.handle ? `Account: ${fields.handle}` : '',
+    fields.name ? `Name: ${fields.name}` : '',
+    fields.email ? `Email: ${fields.email}` : '',
     '',
-    fields.message,
+    fields.message || '(no message left)',
     '',
     `Page: ${fields.sourcePage || '—'}`,
     fields.sourceTitle ? `Page title: ${fields.sourceTitle}` : '',
@@ -240,12 +241,10 @@ export const onRequestPost = async ({ request, env }: Context): Promise<Response
   const language = line(body.language, 8);
 
   const fields: string[] = [];
-  if (!email || !EMAIL.test(email)) fields.push('email');
-  if (phone && (!PHONE.test(phone) || (phone.match(/\d/g) ?? []).length < 6)) fields.push('phone');
-  if (platform && !(platform in PLATFORMS)) fields.push('platform');
+  if (!phone || !PHONE.test(phone) || (phone.match(/\d/g) ?? []).length < 6) fields.push('phone');
+  if (!platform || !(platform in PLATFORMS)) fields.push('platform');
   if (platform && !handle) fields.push('handle');
-  if (!platform && handle) fields.push('platform');
-  if (!message) fields.push('message');
+  if (email && !EMAIL.test(email)) fields.push('email');
   if (body.consent !== true) fields.push('consent');
   if (fields.length > 0) return json({ ok: false, code: 'invalid', fields }, 400);
 

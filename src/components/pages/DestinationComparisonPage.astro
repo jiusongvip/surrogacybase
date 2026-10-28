@@ -8,6 +8,7 @@
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import HeroPurpose from '@/components/ui/HeroPurpose.astro';
 import Icon from '@/components/ui/Icon.astro';
 import DestinationComparison from '@/components/tools/DestinationComparison.astro';
 import { DESTINATION_COMPARE_PAGE } from '@/data/destination-comparison';
@@ -26,6 +27,7 @@ const home = localizedPath(lang, '/');
 
   <header class="shell py-10 max-w-[74ch]">
     <h1 class="text-[clamp(2.1rem,4.4vw,3.1rem)] leading-[1.06]">{copy.h1}</h1>
+    <HeroPurpose text={copy.purpose} />
     <p class="mt-4 text-[18px] leading-[1.65] text-muted">{copy.lede}</p>
     <p class="mt-4 flex items-start gap-2.5 text-[15px] leading-relaxed text-muted">
       <Icon name="scale" size={17} class="mt-0.5 shrink-0 text-accent" />

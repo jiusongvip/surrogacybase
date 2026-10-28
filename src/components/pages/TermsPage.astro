@@ -19,7 +19,7 @@ const lang = langFromPath(Astro.url.pathname);
 const copy = TERMS_PAGE[lang];
 ---
 
-<PageLayout title={copy.title} description={copy.description} updatedOn={UPDATED_ON}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description} updatedOn={UPDATED_ON}>
   <Breadcrumbs crumbs={[{ label: copy.title }]} />
 
   <article class="shell py-10 max-w-[74ch]">

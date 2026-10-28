@@ -6,6 +6,12 @@
  * carry reads as unsettled rather than as a refusal. That distinction is the content of the table:
  * the sites this comparison is written against sell wide access where the sources here establish
  * nothing, so the empty cells are the finding.
+ *
+ * A record also attaches a qualification to some answers, and that sentence used to be printed on
+ * the destination page alone. A matrix cell reading "permitted" without it is half an answer, and a
+ * reader who acts on the half is acting on a rule the source never stated, so every cell carrying
+ * one is marked and the conditions are listed under the table, named by the record and the family
+ * types they attach to.
  */
 import type { CollectionEntry } from 'astro:content';
 import { langFromPath, localizedPath } from '@/i18n/paths';
@@ -13,10 +19,29 @@ import { UI } from '@/i18n/ui';
 import { ADMISSION_FAMILIES, admissionFor, familyLabel } from '@/lib/admits';
 
 type Props = { rows: CollectionEntry<'jurisdictions'>[] };
+type NoteKey = NonNullable<Props['rows'][number]['data']['admits'][number]['note']>;
 
 const { rows } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].admits;
+
+/** One entry per record and qualification, gathering the family types that share it under one marker. */
+const legend: { marker: string; name: string; note: NoteKey; families: string[] }[] = [];
+const markers = new Map<string, string>();
+
+for (const row of rows) {
+  for (const family of ADMISSION_FAMILIES) {
+    const note = admissionFor(row.data.admits, family)?.note;
+    if (!note) continue;
+    let entry = legend.find((e) => e.note === note && e.name === row.data.name);
+    if (!entry) {
+      entry = { marker: String.fromCharCode(97 + legend.length), name: row.data.name, note, families: [] };
+      legend.push(entry);
+    }
+    entry.families.push(familyLabel(family, lang));
+    markers.set(`${row.data.code}:${family}`, entry.marker);
+  }
+}
 ---
 
 <div class="overflow-x-auto">
@@ -60,6 +85,11 @@ const copy = UI[lang].admits;
                   ]}
                 >
                   {copy.cell[admission.status]}
+                  {markers.get(`${row.data.code}:${family}`) !== undefined && (
+                    <sup class="tnum ml-0.5 text-[12px] font-medium text-accent">
+                      {markers.get(`${row.data.code}:${family}`)}
+                    </sup>
+                  )}
                 </td>
               );
             })}
@@ -68,4 +98,25 @@ const copy = UI[lang].admits;
       }
     </tbody>
   </table>
+  {
+    legend.length > 0 && (
+      <div class="mt-5 border-t border-line pt-4">
+        <p class="text-[13px] font-medium leading-snug text-muted">{copy.matrix.legend}</p>
+        <ul class="mt-3 space-y-2">
+          {legend.map((entry) => (
+            <li class="flex gap-2.5 text-[14px] leading-[1.65] text-muted">
+              <span class="tnum shrink-0 font-medium text-accent">{entry.marker}</span>
+              <span>
+                <span class="font-medium text-text">
+                  {entry.name}
+                  {entry.families.length > 0 && <> · {entry.families.join(copy.join)}</>}
+                </span>{' '}
+                {copy.note[entry.note]}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 </div>

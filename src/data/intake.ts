@@ -3,33 +3,50 @@ import type { Lang } from '@/i18n/config';
 /*
  * The enquiry form's wording, in both languages.
  *
- * The form posts to /api/enquiry. When delivery is not configured or fails, it does not claim
- * the message was sent: it composes the enquiry in the browser and offers the reader a mail
- * app, the clipboard or a downloaded file. The lines the script needs at runtime are
- * serialized into the DOM, so both languages share one bundle.
+ * Only the structure is borrowed from the consultation forms in this category: a mobile number,
+ * one messaging account to reach the reader on, then a name and a question if they want to add
+ * them. Both contact fields are required and the two extras are not. That layout is a convention
+ * readers already know, so following it costs nothing.
  *
- * The field set follows the one a reader arrives with: a reply address, the question, and how
- * they prefer to be reached. Only the email address and the question are required. A phone
- * number and a messaging handle are optional, because asking for a channel the reader does not
- * use is a reason to abandon the form, not a way to make the reply more likely.
+ * The sentences are this site's own, and deliberately not the ones those forms use. Their copy
+ * sells a service — "an advisor answers all your concerns", "fill it in with confidence" — and
+ * this site publishes information rather than advice and answers enquiries from an advisor who
+ * writes it. Repeating their lines would promise something the rest of the site spends its words
+ * refusing to promise.
+ *
+ * The form posts to /api/enquiry. When delivery is not configured or fails, it does not claim the
+ * message was sent: it composes the enquiry in the browser and offers the reader a mail app, the
+ * clipboard or a downloaded file. The lines the script needs at runtime are serialized into the
+ * DOM, so both languages share one bundle.
+ *
+ * Two lines were dropped rather than reworded. The optional marker no longer repeats on the two
+ * labels under the rule that already says "the following are optional", and the consent line stops
+ * at the consent: it used to hang a clause about what the details are used for off a semicolon, and
+ * that clause was already printed under the contact fields.
  */
 
+export type ConsultChannel = { value: string; label: string; hint: string };
+
 export type ConsultChrome = {
+  phoneLabel: string;
+  dialLabel: string;
+  dials: string[];
+  phonePlaceholder: string;
+  channelLabel: string;
+  channelHint: string;
+  /** The accessible name of the account field, which carries no visible label of its own. */
+  handleLabel: string;
+  channelNotice: string;
+  channels: ConsultChannel[];
+  optionalHeading: string;
+  /** The way out for a reader who uses none of the five apps, printed under the send button. */
+  mailNoteBefore: string;
+  mailNoteAfter: string;
   nameLabel: string;
   namePlaceholder: string;
-  emailLabel: string;
-  emailPlaceholder: string;
-  phoneLabel: string;
-  phonePlaceholder: string;
-  platformLabel: string;
-  platformNone: string;
-  platformOptions: { value: string; label: string }[];
-  handleLabel: string;
-  handlePlaceholder: string;
   messageLabel: string;
-  optional: string;
-  required: string;
   messagePlaceholder: string;
+  required: string;
   consentBefore: string;
   consentLink: string;
   consentAfter: string;
@@ -45,9 +62,8 @@ export type ConsultChrome = {
   successBody: string;
   sendAnother: string;
   lineName: string;
-  lineEmail: string;
   linePhone: string;
-  linePlatform: string;
+  lineChannel: string;
   lineHandle: string;
   lineMessage: string;
   lineSource: string;
@@ -56,12 +72,10 @@ export type ConsultChrome = {
   filename: string;
   subjectFallback: string;
   invalidStatus: string;
-  needEmail: string;
-  badEmail: string;
+  needPhone: string;
   badPhone: string;
-  needPlatform: string;
+  needChannel: string;
   needHandle: string;
-  needMessage: string;
   needConsent: string;
   fallbackStatus: string;
   copied: string;
@@ -71,33 +85,34 @@ export type ConsultChrome = {
 
 export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
   en: {
-    nameLabel: 'Your name',
-    namePlaceholder: 'How the reply should address you',
-    emailLabel: 'Email address',
-    emailPlaceholder: 'you@example.com',
-    phoneLabel: 'Phone',
-    phonePlaceholder: 'Include the country code',
-    platformLabel: 'Messaging app',
-    platformNone: 'No messaging app',
-    platformOptions: [
-      { value: 'wechat', label: 'WeChat' },
-      { value: 'whatsapp', label: 'WhatsApp' },
-      { value: 'telegram', label: 'Telegram' },
-      { value: 'line', label: 'LINE' },
-      { value: 'signal', label: 'Signal' },
-      { value: 'other', label: 'Other' },
+    phoneLabel: 'Mobile number',
+    dialLabel: 'Country code',
+    dials: ['+1', '+44', '+61', '+852', '+65', '+86', '+886'],
+    phonePlaceholder: 'Your mobile number',
+    channelLabel: 'How to reach you',
+    channelHint: '(choose one)',
+    handleLabel: 'Your account or number on the app you chose',
+    channelNotice: 'The number and account you leave are used to answer this enquiry, and nothing else.',
+    channels: [
+      { value: 'whatsapp', label: 'WhatsApp', hint: 'Number with country code' },
+      { value: 'telegram', label: 'Telegram', hint: '@username' },
+      { value: 'line', label: 'LINE', hint: 'LINE ID' },
+      { value: 'messenger', label: 'Messenger', hint: 'Profile name or link' },
+      { value: 'wechat', label: 'WeChat', hint: 'WeChat ID' },
     ],
-    handleLabel: 'Handle or number',
-    handlePlaceholder: 'The name or number to reach you on',
-    messageLabel: 'What would you like worked out?',
-    optional: '(optional)',
-    required: '*',
+    optionalHeading: 'The following are optional',
+    mailNoteBefore: 'Not on any of these apps? Write to',
+    mailNoteAfter: ' instead.',
+    nameLabel: 'Your name',
+    namePlaceholder: 'What the reply should call you',
+    messageLabel: 'What would you like to know?',
     messagePlaceholder:
-      'For example: the destinations in view, the timeline, and the question you are stuck on',
-    consentBefore: 'I agree to SurrogacyBase using these details to reply to this enquiry, as described in the ',
+      'The countries or timeline you are weighing, or the question you have not settled yet',
+    required: '*',
+    consentBefore: 'I have read the ',
     consentLink: 'privacy policy',
     consentAfter: '.',
-    submit: 'Send enquiry',
+    submit: 'Get a free consultation',
     submitting: 'Sending',
     statusIdle: 'Nothing is sent until you press send. Your draft stays in this browser.',
     previewSummary: 'Review the text before sending',
@@ -106,13 +121,13 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     download: 'Download as a file',
     sendMail: 'Open in my mail app',
     successHeading: 'Your enquiry has been received',
-    successBody: 'It is in our internal inbox. You will not be added to a mailing list.',
+    successBody:
+      'It is in our inbox. An advisor reads every enquiry and contacts you within 24 hours on the number or account you left. You will not be added to a mailing list.',
     sendAnother: 'Send another enquiry',
     lineName: 'Name: {value}',
-    lineEmail: 'Reply to: {value}',
-    linePhone: 'Phone: {value}',
-    linePlatform: 'Messaging app: {value}',
-    lineHandle: 'Handle: {value}',
+    linePhone: 'Mobile: {value}',
+    lineChannel: 'Reach me on: {value}',
+    lineHandle: 'Account: {value}',
     lineMessage: 'What I want worked out: {value}',
     lineSource: 'Sent from: {value}',
     lineFooter:
@@ -121,12 +136,10 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     filename: 'surrogacybase-enquiry.md',
     subjectFallback: 'Surrogacy enquiry',
     invalidStatus: 'Check the marked fields.',
-    needEmail: 'Add an email address so there is a reply route.',
-    badEmail: 'That does not look like an email address.',
-    badPhone: 'Check the phone number, including the country code.',
-    needPlatform: 'Choose the app this handle belongs to.',
-    needHandle: 'Add the handle for the app you chose.',
-    needMessage: 'Write the question you want answered.',
+    needPhone: 'Add a mobile number: it is how the advisor reaches you.',
+    badPhone: 'Check the number, including the country code.',
+    needChannel: 'Choose one way to be reached.',
+    needHandle: 'Add the number or account for the app you chose.',
     needConsent: 'Confirm that we may use these details to reply.',
     fallbackStatus:
       'Automatic delivery did not confirm receipt, so this enquiry has not been marked as sent. The message below is ready: open it in your mail app, copy it, or download it.',
@@ -136,64 +149,62 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     downloaded: 'Downloaded as {file}.',
   },
   zh: {
-    nameLabel: '您的称呼',
-    namePlaceholder: '希望回信怎样称呼您',
-    emailLabel: '邮箱地址',
-    emailPlaceholder: '您会查看的邮箱',
-    phoneLabel: '电话',
-    phonePlaceholder: '请包含国家代码',
-    platformLabel: '即时通讯',
-    platformNone: '不使用即时通讯',
-    platformOptions: [
-      { value: 'wechat', label: '微信' },
-      { value: 'whatsapp', label: 'WhatsApp' },
-      { value: 'telegram', label: 'Telegram' },
-      { value: 'line', label: 'LINE' },
-      { value: 'signal', label: 'Signal' },
-      { value: 'other', label: '其他' },
+    phoneLabel: '手机号',
+    dialLabel: '国家/地区代码',
+    dials: ['+86', '+852', '+886', '+65', '+1', '+44', '+61'],
+    phonePlaceholder: '您的手机号码',
+    channelLabel: '联系方式',
+    channelHint: '（选一种）',
+    handleLabel: '您所选应用里的账号或号码',
+    channelNotice: '留下的手机号和账号，只用来回复您的咨询。',
+    channels: [
+      { value: 'wechat', label: '微信', hint: '微信号' },
+      { value: 'whatsapp', label: 'WhatsApp', hint: '带国家代码的号码' },
+      { value: 'line', label: 'LINE', hint: 'LINE ID' },
+      { value: 'telegram', label: 'Telegram', hint: '@用户名' },
+      { value: 'messenger', label: 'Messenger', hint: '昵称或主页链接' },
     ],
-    handleLabel: '账号或号码',
-    handlePlaceholder: '用于联系您的账号或号码',
-    messageLabel: '您想理清什么？',
-    optional: '（选填）',
+    optionalHeading: '以下几项为选填',
+    mailNoteBefore: '没有任何一种即时通讯？也可以直接写信到',
+    mailNoteAfter: '。',
+    nameLabel: '姓名',
+    namePlaceholder: '回信时怎么称呼您',
+    messageLabel: '咨询内容',
+    messagePlaceholder: '正在考虑的国家、时间线，或者还没想清楚的那个问题',
     required: '*',
-    messagePlaceholder: '例如：正在考虑的目的地、时间线，以及您卡住的那个问题',
-    consentBefore: '我同意 SurrogacyBase 依据',
+    consentBefore: '我已阅读并同意',
     consentLink: '隐私政策',
-    consentAfter: '，使用这些信息回复本次问询。',
-    submit: '发送问询',
-    submitting: '正在发送',
+    consentAfter: '。',
+    submit: '立即免费咨询',
+    submitting: '正在提交',
     statusIdle: '在您按下发送之前，什么都不会发出。草稿会留在这个浏览器里。',
     previewSummary: '发送前查看正文',
-    previewHeading: '问询正文',
+    previewHeading: '咨询正文',
     copy: '复制',
     download: '下载为文件',
     sendMail: '在我的邮件应用中打开',
-    successHeading: '您的问询已收到',
-    successBody: '它已经进入我们的内部收件箱。您不会被加入任何邮件列表。',
-    sendAnother: '再发一份问询',
+    successHeading: '您的咨询已收到',
+    successBody: '它已经进入我们的收件箱。顾问会阅读每一封咨询，并在 24 小时内通过您留下的号码或账号与您联系。您不会被加入任何邮件列表。',
+    sendAnother: '再发一份咨询',
     lineName: '称呼：{value}',
-    lineEmail: '回复至：{value}',
-    linePhone: '电话：{value}',
-    linePlatform: '即时通讯：{value}',
+    linePhone: '手机：{value}',
+    lineChannel: '联系方式：{value}',
     lineHandle: '账号：{value}',
     lineMessage: '想要理清的：{value}',
     lineSource: '来自页面：{value}',
-    lineFooter: '本问询由 SurrogacyBase 发出，其中不包含身份证件、病历或付款信息。',
-    exportHeading: '代孕问询',
+    lineFooter: '本咨询由 SurrogacyBase 发出，其中不包含身份证件、病历或付款信息。',
+    exportHeading: '代孕咨询',
     filename: 'surrogacybase-enquiry-zh.md',
-    subjectFallback: '代孕问询',
+    subjectFallback: '代孕咨询',
     invalidStatus: '请检查标出的栏目。',
-    needEmail: '请填写邮箱地址，回复才有地方可去。',
-    badEmail: '这看起来不像一个邮箱地址。',
-    badPhone: '请核对电话号码，包括国家代码。',
-    needPlatform: '请选择这个账号所属的应用。',
-    needHandle: '请填写您所选应用的账号。',
-    needMessage: '请写下您希望得到回答的问题。',
+    needPhone: '请填写手机号码，顾问需要通过它联系您。',
+    badPhone: '请核对手机号码，包括国家/地区代码。',
+    needChannel: '请选择一种联系方式。',
+    needHandle: '请填写该方式下可以联系到您的号码或账号。',
     needConsent: '请确认我们可以使用这些信息回复您。',
     fallbackStatus:
-      '自动投递未能确认送达，因此这份问询尚未被标记为已发送。下面这份正文已经准备好：用您的邮件应用打开、复制，或下载它。',
-    copied: '已复制。问询现在在您的剪贴板里。',
+      '自动投递未能确认送达，因此这份咨询尚未被标记为已发送。下面这份正文已经准备好：用您的邮件应用打开、复制，或下载它。',
+    copied: '已复制。咨询现在在您的剪贴板里。',
     clipboardBlocked: '您的浏览器没有把剪贴板权限交给这个页面。请在上面选中正文后手动复制，或者下载为文件。',
     downloaded: '已下载为 {file}。',
   },

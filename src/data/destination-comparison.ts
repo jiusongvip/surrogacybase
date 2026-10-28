@@ -18,6 +18,8 @@ export type DestinationComparePage = {
   titleTag: string;
   description: string;
   h1: string;
+  /** A plain first line under the H1: what the reader actually does on this page. */
+  purpose: string;
   lede: string;
   note: string;
   pickerHeading: string;
@@ -63,6 +65,8 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
     description:
       'Put destination records side by side: legal basis, who may commission, parentage at birth, published cost figures and the date each record was last checked.',
     h1: 'Compare destinations on the same record',
+    purpose:
+      'What you do here: pick two or three candidate countries and see them side by side: legal basis, who may commission, parentage at birth and published costs, then download the comparison.',
     lede: 'Choose the places on your shortlist. Each column repeats a published destination record: the legal basis, who may commission, parentage at birth, the cost figures a source has published, and what the record leaves open.',
     note: 'No destination is scored or ranked. A record that does not publish a position says so, and opening it shows the source and the date behind every sentence.',
     pickerHeading: 'Choose the destinations',
@@ -107,7 +111,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
       'Use the board to remove places that cannot answer your situation, then take what remains to a professional in each jurisdiction.',
     checklist: 'Open the destination research checklist',
     legalGuide: 'Read the four legal questions',
-    enquiry: 'Write your enquiry',
+    enquiry: 'Free consultation',
   },
   zh: {
     title: '目的地对比',
@@ -115,6 +119,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
     description:
       '把目的地记录并排放在一起：法律依据、谁可以委托、出生时的亲权、已公布的费用数据，以及每份记录最近一次核查的日期。',
     h1: '在同样的记录上比较目的地',
+    purpose: '这一页做什么：选出两三个候选国家，把它们并排对比法律依据、谁可以委托、出生时的亲权和已公布的费用，然后下载这份对比。',
     lede: '选出您候选名单上的地方。每一列都复述一份已发布的目的地记录：法律依据、谁可以委托、出生时的亲权、来源公布过的费用数据，以及这份记录仍未解决的问题。',
     note: '本站不打分，也不排名。记录没有公布的内容会照实说明；打开记录，就能看到每一句话背后的来源和核查日期。',
     pickerHeading: '选择目的地',
@@ -156,7 +161,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
     closingBody: '用这块对比排除那些回答不了您情况的地方，再把剩下的问题交给当地的专业人士。',
     checklist: '打开目的地研究清单',
     legalGuide: '阅读四个法律问题',
-    enquiry: '发送您的问询',
+    enquiry: '免费咨询',
   },
 };
 

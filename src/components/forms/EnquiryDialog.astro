@@ -23,8 +23,11 @@ const copy = UI[lang].enquiryDialog;
   aria-labelledby="enquiry-dialog-title"
   data-enquiry-dialog
 >
-  <div class="flex items-center justify-between gap-6 border-b border-line px-6 py-4">
-    <h2 id="enquiry-dialog-title" class="text-[19px]">{copy.title}</h2>
+  <div class="flex items-start justify-between gap-6 border-b border-line px-6 py-4">
+    <div>
+      <h2 id="enquiry-dialog-title" class="text-[19px]">{copy.title}</h2>
+      <p class="mt-1 text-[13px] leading-relaxed text-muted">{copy.subtitle}</p>
+    </div>
     <button
       type="button"
       class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-(--radius) border border-line text-muted transition-colors duration-(--dur) hover:border-line-strong hover:text-text"
@@ -59,7 +62,7 @@ const copy = UI[lang].enquiryDialog;
           dialog.showModal();
           const target =
             dialog.querySelector<HTMLElement>('[data-success]:not([hidden])') ??
-            dialog.querySelector<HTMLInputElement>('[data-field="name"]');
+            dialog.querySelector<HTMLInputElement>('[data-field="phone"]');
           /* Chrome finishes its own dialog focus steps after showModal returns. */
           requestAnimationFrame(() => target?.focus());
         }

@@ -1,7 +1,7 @@
 ---
 title: "What Happens When a Surrogacy Cycle Fails"
-titleTag: "When a Cycle Fails"
-description: "A failed cycle is three events with three different owners: the attempt budget in your contract, the embryos left in storage, and the decisions that stay with the carrier. What United States guidance says each one is decided by."
+titleTag: "What Happens When a Surrogacy Cycle Fails"
+description: "A failed cycle is three events with three owners: the attempt budget in the contract, the embryos left in storage, and the decisions that stay with the carrier."
 type: article
 category: process
 published: true

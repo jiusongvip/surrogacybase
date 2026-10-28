@@ -408,7 +408,7 @@ export const CHECKLISTS: Checklist[] = [
       en: {
         title: 'Agency Question Checklist',
         description:
-          'The questions to put to a surrogacy agency in writing before signing: scope of the fee, payment stages, refunds, screening, legal work, and what happens if a cycle fails.',
+          'Questions to put to a surrogacy agency in writing before signing: fee scope, payment stages, refunds, screening, legal work, and what happens if a cycle fails.',
         h1: 'Agency question checklist',
         purpose:
           'What you do here: put the questions below to a surrogacy agency in writing before you sign, and keep each answer beside its question with the name and date.',

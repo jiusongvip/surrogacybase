@@ -82,15 +82,23 @@
     @apply border-t border-line;
   }
 
+  /* The small category label above a section heading. Kept as one shared class so the
+   * restraint rule (max one per three sections) is easy to audit and tune in a single place. */
+  .eyebrow {
+    @apply text-[12.5px] font-semibold uppercase tracking-[0.14em] text-muted;
+  }
+
   /* Primary is green on paper, paper on green. Never a rust-filled button. The hover
    * swaps the label to the token paired with the rust fill, because bottle green band
-   * text on rust measures 2.26:1 in the dark scheme. */
+   * text on rust measures 2.26:1 in the dark scheme.
+   * Flat, no drop shadow: an outer glow under a button is an AI tell (skill 9.A) and works
+   * against an editorial page. Elevation here comes from the fill, not from a shadow. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) bg-brand px-5 py-2.5 text-[15px] font-medium text-band shadow-[0_8px_18px_-10px_rgba(var(--shadow-tint)/0.6)] transition-[background-color,color,transform,box-shadow] duration-(--dur) ease-(--ease) hover:bg-accent hover:text-accent-on hover:shadow-[0_10px_22px_-10px_rgba(var(--shadow-tint)/0.7)] active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) bg-brand px-5 py-2.5 text-[15px] font-medium text-band transition-[background-color,color,transform] duration-(--dur) ease-(--ease) hover:bg-accent hover:text-accent-on active:scale-[0.98];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) border border-brand-fg/30 bg-brand/[0.05] px-5 py-2.5 text-[15px] font-medium text-brand-fg transition-[background-color,border-color,color] duration-(--dur) ease-(--ease) hover:border-brand-fg hover:bg-surface-2 active:scale-[0.99];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-(--radius-btn) border border-line-strong bg-transparent px-5 py-2.5 text-[15px] font-medium text-text transition-[background-color,border-color,color,transform] duration-(--dur) ease-(--ease) hover:border-brand-fg hover:bg-brand/[0.06] hover:text-brand-fg active:scale-[0.98];
   }
 
   .btn-ghost-on-band {

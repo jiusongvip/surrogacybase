@@ -1,7 +1,7 @@
 ---
 title: "Surrogacy Legal Considerations: The Four Questions to Settle First"
 titleTag: "Surrogacy Legal Considerations"
-description: "Enforceability, parentage, eligibility and payment are four separate legal questions. How each is decided, where the sources stop, and what to put to a lawyer."
+description: "Enforceability, parentage, eligibility and payment are four separate legal questions. How each one is decided, and what to put to a lawyer in writing."
 type: guide
 category: destinations
 published: true

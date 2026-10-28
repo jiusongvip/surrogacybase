@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { rehypeTableScroll } from './src/lib/rehype-table-scroll';
+import { rehypeTaskListLabels } from './src/lib/rehype-task-list-labels';
 import { collectRevisions, lastmodFor } from './src/lib/revisions.ts';
 
 const site = process.env.SITE_URL || 'https://surrogacybase.com';
@@ -26,7 +27,7 @@ export default defineConfig({
     // which needs @astrojs/markdown-remark as a direct dependency. Astro migrates this field
     // into that same default processor, so the output is identical without pinning a second
     // copy of a package Astro already owns.
-    rehypePlugins: [rehypeTableScroll],
+    rehypePlugins: [rehypeTableScroll, rehypeTaskListLabels],
   },
   build: {
     inlineStylesheets: 'always',

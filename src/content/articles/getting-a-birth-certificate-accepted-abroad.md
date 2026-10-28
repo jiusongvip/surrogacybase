@@ -1,6 +1,6 @@
 ---
 title: "Getting a Birth Certificate Accepted Abroad"
-description: "Which authority issues an apostille for a birth certificate, what it certifies, why a certified translation is a separate requirement, and how long the paperwork chain takes."
+description: "Which authority issues an apostille for a birth certificate, what it certifies, and why a certified translation is a separate requirement."
 type: article
 category: preparation
 published: true

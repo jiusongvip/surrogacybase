@@ -17,6 +17,8 @@ export type ToolsIndexPage = {
   /** The short form the breadcrumb and the tools index h1 both use. */
   label: string;
   description: string;
+  /** A plain first line under the H1: what the reader actually does on this page. */
+  purpose: string;
   intro: string;
   countOne: string;
   countMany: string;
@@ -40,8 +42,11 @@ export type ToolsIndexPage = {
 
 export type QuotePage = {
   title: string;
+  titleTag: string;
   description: string;
   h1: string;
+  /** A plain first line under the H1: what the reader actually does on this page. */
+  purpose: string;
   intro: string;
   howToHeading: string;
   howTo: [string, string, string, string];
@@ -60,31 +65,33 @@ export type QuotePage = {
 export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
   en: {
     title: 'Tools',
-    titleTag: 'Surrogacy Tools',
+    titleTag: 'Surrogacy Tools: Costs, Quotes, Destinations',
     label: 'Tools',
     description:
-      'Tools for intended parents: compare destination records side by side, compare agency quotes, read published cost figures, research a destination and put questions to an agency in writing.',
+      'Tools for intended parents: compare destinations and two agency quotes, read published cost figures, and put research questions to an agency in writing.',
+    purpose:
+      'What you do here: compare countries and quotes, read the published cost figures, and turn what you find into a document you can hand to a lawyer or agency.',
     intro:
-      'A guide tells you what to check. These are where you actually do it, on your own numbers and your own documents, and what you leave with is something you can show someone: a filled-in document, or a figure with its source attached.',
+      'A guide says what to check. These are where you do it, on your own numbers, and leave with something you can hand over.',
     countOne: '1 tool ready to use',
     countMany: '{n} tools ready to use',
     localNote:
-      'None of them asks you to create an account or sends what you type anywhere. The destination comparison and the quote comparison hold nothing once you close the tab, the two checklists download as documents you fill in yourself, and the cost figures page shows numbers that sources have already published, with nothing for you to enter.',
+      'No account, and nothing you type leaves your browser. The two comparisons hold nothing once you close the tab, the checklists download as files you fill in, and the cost figures page shows only what sources have already published.',
     fitHeading: 'How the tools fit together',
     fitIntro:
-      'None of them decides for you. They carry a decision from reading to a conversation, in three steps.',
+      'None of them decides for you. They carry a decision from reading into a conversation, in three steps.',
     fitSteps: [
       {
         title: 'Read the guide behind it',
-        body: 'Each tool asks questions a guide has already explained. Read that guide first when a term or a step is unfamiliar.',
+        body: 'Each tool asks questions a guide has already explained. Read that guide if a term is unfamiliar.',
       },
       {
         title: 'Fill it with your own facts',
-        body: 'Use the quote you were sent, the destination you are considering, or the questions you need answered. The tool works on your material, not a sample.',
+        body: 'Use the quote you were sent, the destination you are considering, or the questions you need answered.',
       },
       {
         title: 'Take the file into the conversation',
-        body: 'Download the table or document and bring it to the lawyer, clinic or agency. Your notes, names and dates stay together in one file.',
+        body: 'Download it and bring it to the lawyer, clinic or agency. Your notes, names and dates stay in one file.',
       },
     ],
     leavesHeading: 'What you leave with',
@@ -132,29 +139,30 @@ export const TOOLS_INDEX_PAGE: Record<Lang, ToolsIndexPage> = {
   },
   zh: {
     title: '工具',
-    titleTag: '代孕工具',
+    titleTag: '代孕工具：比较报价、费用与目的地',
     label: '工具',
     description:
       '给意向父母的工具：并排对比目的地记录、对比两份机构报价、查阅已公布的费用数据、逐题研究目的地、把问题书面提交给机构。不需要账户，也不会上传您的内容。',
+    purpose: '这一页做什么：对比国家和报价、查看已公布的费用数据，把结果整理成一份能交给律师或机构的文件。',
     intro:
-      '指南告诉您该核查什么。而这些页面才是您真正动手的地方：用您自己的报价与文件。您带走的内容都可以直接出示给他人：一份填好的文档，或一项标注来源与年份的费用数据。',
+      '指南告诉您该核查什么，这些页面是您动手的地方。用您自己的报价和文件，带走一份能直接出示的东西。',
     countOne: '1 个工具可直接使用',
     countMany: '{n} 个工具可直接使用',
-    localNote: '这些工具都不需要账户，也不会把您输入的内容发送到任何地方。目的地对比和报价对比在您关掉标签页后不保留任何内容；两份清单会下载成由您自己填写的文档；费用数据页面只呈现各来源已经公布的数据，您无需输入任何内容。',
+    localNote: '不需要账户，您输入的内容也不会离开这台浏览器。两个对比工具关掉标签页就不保留内容；两份清单下载后由您自己填写；费用数据页只呈现来源已经公布的数据。',
     fitHeading: '这些工具怎么接在一起',
-    fitIntro: '它们都不替您做决定，而是把一项决定从阅读带到一次谈话里，分三步走。',
+    fitIntro: '它们都不替您做决定，只是把一项决定从阅读带进一次谈话，分三步。',
     fitSteps: [
       {
         title: '先读它背后的指南',
-        body: '每个工具问的问题，指南里都已经讲过。遇到不熟悉的词或步骤，先读那一篇。',
+        body: '每个工具问的问题，指南里都已经讲过。遇到不熟悉的词，先读那一篇。',
       },
       {
         title: '用您自己的材料填写',
-        body: '用您收到的报价、您正在考虑的目的地，或您需要得到回答的问题。工具处理的是您的材料，不是示例。',
+        body: '用您收到的报价、正在考虑的目的地，或您需要得到回答的问题。',
       },
       {
         title: '把文件带进谈话',
-        body: '把表格或文档下载下来，带去见律师、诊所或机构。您的笔记、名字和日期都留在同一份文件里。',
+        body: '下载下来，带去见律师、诊所或机构。笔记、名字和日期都在同一份文件里。',
       },
     ],
     leavesHeading: '您会带走什么',
@@ -366,11 +374,14 @@ export const QUOTE_CHROME: Record<Lang, QuoteChrome> = {
 export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   en: {
     title: 'Agency quote comparison',
+    titleTag: 'Compare Two Surrogacy Agency Quotes',
     description:
       'Compare one or two surrogacy quotes across the same nine costs: what each includes, what it leaves out, and why a gap between totals is not yet a cost difference.',
     h1: 'Agency quote comparison',
+    purpose:
+      'What you do here: type the amounts from your quote into nine fixed cost lines and see what each total still leaves out.',
     intro:
-      'Two quotes rarely differ because one agency is cheaper. They differ because one quote counts things the other left out. Start with the quote you have; add a second when it arrives, and read each total for what it still leaves out.',
+      'Two quotes differ less because one agency is cheaper than because one counts things the other left out. Start with the quote you have.',
     howToHeading: 'How to use it',
     howTo: [
       'The nine costs a quote is usually built from are already printed. Type the amount the quote states beside each one; you do not need to build the table yourself.',
@@ -401,11 +412,13 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   },
   zh: {
     title: '机构报价对比',
+    titleTag: '代孕机构报价对比：并排看九项成本',
     description:
       '把一份或两份代孕报价对在同一组九项成本上：各自包含什么、漏掉什么，以及为什么总额之差还算不上一笔成本差异。',
     h1: '机构报价对比',
+    purpose: '这一页做什么：把您收到的一份（或两份）报价里的金额，填进九个固定成本项，然后看清每个合计还漏了什么。',
     intro:
-      '两份报价之所以不同，很少是因为某一家机构更便宜。它们的不同在于一份报价算了另一份没算的东西。先从手上这份报价开始；拿到第二份再加进来，并看清每个合计还漏了什么。',
+      '两份报价之所以不同，很少是因为某一家更便宜，而是因为一份算了另一份没算的东西。先从手上这份报价开始。',
     howToHeading: '怎么使用',
     howTo: [
       '报价通常由九项成本搭成，这张表已经把它们印好了。在每一项旁填入报价写明的金额，不必自己搭表。',
@@ -442,8 +455,11 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
  */
 export type CostToolPage = {
   title: string;
+  titleTag: string;
   description: string;
   h1: string;
+  /** A plain first line under the H1: what the reader actually does on this page. */
+  purpose: string;
   lede: string;
   /** The line beside the document icon: what this page adds to a figure, which is nothing. */
   note: string;
@@ -465,10 +481,13 @@ export type CostToolPage = {
 export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
   en: {
     title: 'Published cost figures',
+    titleTag: 'Published Surrogacy Cost Figures',
     description:
       'Every cost figure this site publishes, grouped by the line it covers rather than by country, each with its source and the year it describes.',
     h1: 'Published cost figures',
-    lede: 'A destination page shows the one figure that stands out for that place. Here every published figure sits under the line it covers, so whole-program numbers, medical costs and what is paid to a carrier can each be read across destinations and across the sources that wrote them.',
+    purpose:
+      'What you do here: read every cost figure this site has published, grouped by the line it covers, each with its source and year.',
+    lede: 'A destination page shows the one figure that stands out there. Here every published figure sits under the cost line it covers, so one line can be read across destinations and sources.',
     note: 'No figure here was worked out by us. Each one was published by a named source, in the currency that source wrote it in, for the year the row states.',
     groupsHeading: 'Every published figure, by the line it covers',
     groupsIntro:
@@ -488,8 +507,10 @@ export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
   },
   zh: {
     title: '已公布的费用数据',
+    titleTag: '已公布的代孕费用数据：按条目与来源查看',
     description: '把本站公布的每一项代孕费用数据按它覆盖的费用条目分组，而不是按国家；每项数据都标明公布来源与数据年份。',
     h1: '已公布的费用数据',
+    purpose: '这一页做什么：按费用条目查看本站已公布的每一项费用数据，每条都附来源和年份。这里不需要您输入任何内容。',
     lede: '目的地页面只呈现对当地而言最突出的一项费用数据。在这个页面上，每一项已公布的数据都归在它覆盖的费用条目下：整个流程、医疗成本、支付给代孕者的数据各自归组，可以跨目的地、跨来源对照阅读。',
     note: '这里没有任何一项数据由本站推算。每一项都由具名来源公布，沿用该来源写下的币种，并对应这一行标明的年份。',
     groupsHeading: '按费用条目分组',

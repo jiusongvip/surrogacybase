@@ -1,6 +1,6 @@
 ---
 title: "The Six Month Limit on a UK Parental Order"
-description: "What the six month deadline, the genetic link, the residence rule and the surrogate's consent mean for intended parents planning a birth under United Kingdom law."
+description: "What the six month deadline, the genetic link, the residence rule and consent from the carrier mean under United Kingdom law."
 type: article
 category: process
 published: true

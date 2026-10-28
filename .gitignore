@@ -2,6 +2,8 @@ node_modules
 dist
 .astro
 *.log
+.probe-chrome/
+.probe-*
 .env
 .dev.vars
 .dev.vars.*

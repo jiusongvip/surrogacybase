@@ -1,7 +1,7 @@
 ---
 title: "Gamete and Surrogate Options: What Each Choice Locks In"
 titleTag: "Gamete and Surrogate Options"
-description: "Whose egg, whose sperm and who carries the pregnancy are three separate decisions. What each combination changes about the medical steps, the questions a contract has to answer, and who owns each answer."
+description: "Whose egg, whose sperm and who carries are three separate decisions, and each one changes the medical steps, the contract and who decides."
 type: guide
 category: process
 published: true

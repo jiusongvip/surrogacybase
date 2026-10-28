@@ -1,7 +1,7 @@
 ---
 title: "如何在没有服务方帮助下比较代孕目的地"
 titleTag: "先问代孕法律的这几个问题"
-description: "一份服务方无法替您定调的目的地比较：该打分的六个维度、必须坚持的来源标准，以及让多数国家页面失去价值的四个陷阱。"
+description: "比较目的地时该打分的六个维度、必须坚持的来源标准，以及核对任何一份目的地页面都要过的四个陷阱。"
 type: article
 category: destinations
 published: true

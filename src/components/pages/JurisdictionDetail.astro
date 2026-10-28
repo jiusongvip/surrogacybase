@@ -68,7 +68,7 @@ const positions = [
 
 <PageLayout
   title={fill(copy.title, { name: d.name })}
-  description={fill(copy.description, { name: d.name, region: d.region })}
+  description={fill(copy.description, { name: d.name })}
 >
   <Breadcrumbs
     crumbs={[{ label: copy.breadcrumb, href: localizedPath(lang, '/destinations') }, { label: d.name }]}

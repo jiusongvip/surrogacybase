@@ -13,6 +13,7 @@ import type { Lang } from '@/i18n/config';
 
 export type EditorialPage = {
   title: string;
+  titleTag: string;
   description: string;
   eyebrow: string;
   h1: string;
@@ -41,6 +42,7 @@ export type EditorialPage = {
 
 export type PrivacyPage = {
   title: string;
+  titleTag: string;
   description: string;
   h1: string;
   intro: string;
@@ -63,6 +65,7 @@ export type PrivacyPage = {
 
 export type TermsPage = {
   title: string;
+  titleTag: string;
   description: string;
   h1: string;
   intro: string;
@@ -80,8 +83,9 @@ export const EDITORIAL_REVISION = '2026-10-26';
 export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   en: {
     title: 'Editorial policy',
+    titleTag: 'Editorial Policy: How We Research and Verify',
     description:
-      'The standards SurrogacyBase applies before a claim is published: evidence levels, source records, jurisdiction scoping, number handling, corrections and commercial disclosure.',
+      'How SurrogacyBase clears a claim before publishing it: evidence levels, source records, jurisdiction scoping, corrections and commercial disclosure.',
     eyebrow: 'Standards applied to every guide, explainer and destination page',
     h1: 'How we research',
     intro:
@@ -165,6 +169,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
   },
   zh: {
     title: '编辑方针',
+    titleTag: '编辑方针：我们如何核实一条说法',
     description:
       'SurrogacyBase 在发表一条说法之前适用的标准：证据等级、来源记录、法域限定、费用数据、更正流程与商业披露。',
     eyebrow: '以下标准适用于每一篇指南、每一篇专题解读和每一个目的地页面',
@@ -249,11 +254,12 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const PRIVACY_REVISION = '2026-10-22';
+export const PRIVACY_REVISION = '2026-10-26';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
     title: 'Privacy',
+    titleTag: 'Privacy Policy: What This Site Stores',
     description:
       'What SurrogacyBase stores and does not store: pages that set no cookies, a quote tool that keeps nothing at all, and how any information you send us is handled.',
     h1: 'Privacy',
@@ -274,7 +280,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: 'The enquiry form',
-        body: 'It is the only form on this site. It asks for the email address a reply should go to, your question in your own words, and a name if you want the reply addressed to someone. The name is optional. You may also add a phone number and a messaging app handle, but neither is needed to send an enquiry. Nothing asks for an identity document, a date of birth, a budget figure or a medical record, and there is nowhere in the form to attach a file. When you press send, the form sends those fields, the page you were on and the language you were reading to our internal enquiry inbox, which we receive through Feishu or WeCom. Those are business tools for receiving and tracking enquiries, not advertising or analytics services. If delivery is not configured or fails, the form shows the enquiry in your browser instead and offers three ways to send it: your mail app, the clipboard, or a downloaded file. A draft stays in this browser so a half-written enquiry survives a reload; clearing site data for this domain removes it.',
+        body: 'It is the only form on this site. It asks for a mobile number, one messaging account to reach you on (WhatsApp, WeChat, LINE, Messenger or Telegram), and, optionally, a name and what you want worked out. Nothing asks for an identity document, a date of birth, a budget figure or a medical record, and there is nowhere in the form to attach a file. When you press send, the form sends those fields, the page you were on and the language you were reading to our own enquiry inbox, which we receive through Feishu or WeCom. Those are the tools the owner reads and answers enquiries in; nothing in an enquiry is passed to a clinic, agency, lawyer or advertiser. If delivery is not configured or fails, the form shows the enquiry in your browser instead and offers three ways to send it: your mail app, the clipboard, or a downloaded file. A draft stays in this browser so a half-written enquiry survives a reload; clearing site data for this domain removes it.',
       },
       {
         h: 'Information you send us directly',
@@ -296,7 +302,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: 'If you contact us',
     contact: [
       'An enquiry should include only what is needed to understand the question. Names of other individuals, medical records, contract documents and payment details are not required to start a conversation about what to verify.',
-      'The enquiry form asks only for what is needed to answer: an email address, your question, and optionally a name, phone number or messaging handle. It has no way to attach a file. When delivery is configured, pressing send delivers those fields to our internal inbox through Feishu or WeCom; when it is not, the form hands the enquiry to your own mail app, clipboard or a downloaded file.',
+      'The enquiry form asks only for what is needed to start the conversation: a mobile number, one messaging account, and optionally a name and the question in your own words. It has no way to attach a file. When delivery is configured, pressing send delivers those fields to our internal inbox through Feishu or WeCom; when it is not, the form hands the enquiry to your own mail app, clipboard or a downloaded file.',
       'Documents about other people belong to those people. Do not send a surrogate’s, a clinic’s or another intended parent’s material without their agreement.',
     ],
     operatorHeading: 'Who runs this site',
@@ -309,6 +315,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   },
   zh: {
     title: '隐私',
+    titleTag: '隐私政策：本站存了什么、不存什么',
     description:
       'SurrogacyBase 存了什么、没存什么：不设置 cookie 的页面、什么都不留存的报价工具，以及您主动发给我们的信息如何被处理。',
     h1: '隐私',
@@ -329,7 +336,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       },
       {
         h: '问询表单',
-        body: '它是本站唯一的表单。它会问回复应寄往的邮箱地址、用您自己的话写下的问题，以及一个称呼（如果您希望回信称呼某个具体的人）。称呼是选填。您也可以留下电话号码和即时通讯账号，但两者都不是发送问询所必需的。没有任何一格要求身份证件、出生日期、预算金额或病历，表单里也没有附上文件的位置。当您按下发送，表单会把上述内容、您所在的页面以及您阅读的界面语言发送到我们自己的问询收件箱。这个收件箱通过飞书或企业微信接收，它们是我们接收和跟踪问询的业务工具，不是广告或分析服务。如果投递尚未配置或投递失败，表单会改为在您的浏览器里展示问询，并提供三种发送方式：邮件应用、复制或下载为文件。草稿会留在这个浏览器里，以便一份写了一半的问询在重新打开页面后仍然还在；清除这个域名的站点数据会移除它。',
+        body: '它是本站唯一的表单。它会问一个手机号码、一个可以联系到您的即时通讯账号（WhatsApp、微信、LINE、Messenger 或 Telegram），以及选填的称呼和您想弄清的问题。没有任何一格要求身份证件、出生日期、预算金额或病历，表单里也没有附上文件的位置。当您按下发送，表单会把上述内容、您所在的页面以及您阅读的界面语言发送到我们自己的问询收件箱。这个收件箱通过飞书或企业微信接收，它们只是站长本人读取并回复问询的工具，问询内容不会转给任何诊所、机构、律师或广告商。如果投递尚未配置或投递失败，表单会改为在您的浏览器里展示问询，并提供三种发送方式：邮件应用、复制或下载为文件。草稿会留在这个浏览器里，以便一份写了一半的问询在重新打开页面后仍然还在；清除这个域名的站点数据会移除它。',
       },
       {
         h: '您直接发给我们的信息',
@@ -351,7 +358,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
     contactHeading: '如果您联系我们',
     contact: [
       '一次问询只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
-      '问询表单只问回答所需的内容：邮箱地址、您的问题，以及选填的称呼、电话号码或即时通讯账号。它没有附上文件的途径。投递已配置时，按下发送会把上述内容送达我们通过飞书或企业微信接收的内部收件箱；未配置时，表单会把问询交给您的邮件应用、剪贴板或一个下载的文件。',
+      '问询表单只问开始这场对话所需的内容：一个手机号码、一个即时通讯账号，以及选填的称呼和用您自己的话写下的问题。它没有附上文件的途径。投递已配置时，按下发送会把上述内容送达我们通过飞书或企业微信接收的内部收件箱；未配置时，表单会把问询交给您的邮件应用、剪贴板或一个下载的文件。',
       '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
     operatorHeading: '本站由谁运营',
@@ -369,8 +376,9 @@ export const TERMS_REVISION = '2026-10-20';
 export const TERMS_PAGE: Record<Lang, TermsPage> = {
   en: {
     title: 'Terms',
+    titleTag: 'Terms of Use for SurrogacyBase Content',
     description:
-      'The boundary of what SurrogacyBase material is: published information rather than advice, dated sources rather than guarantees, and tools that organise your own inputs.',
+      'What SurrogacyBase material is: published information rather than advice, dated sources rather than guarantees, and tools that organise your own inputs.',
     h1: 'Terms of use',
     intro:
       'Written plainly because a page about high-stakes decisions should not hide its boundaries behind vocabulary you have to decode.',
@@ -410,6 +418,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
   },
   zh: {
     title: '条款',
+    titleTag: '使用条款：SurrogacyBase 内容的定位',
     description:
       'SurrogacyBase 的内容边界的说明：它是发布出来的信息而非建议，是带日期的来源而非保证，也是一组整理您自己输入的工具。',
     h1: '使用条款',

@@ -18,18 +18,9 @@
  * before a link; the Chinese full-width colon and 、 take none, so the space belongs in the
  * string rather than in the template.
  */
-import type { ImageMetadata } from 'astro';
 import type { Lang } from '@/i18n/config';
 import type { Bilingual } from '@/i18n/ui';
 import type { IconName } from '@/lib/icons';
-import stageCompass from '@/assets/images/stage-compass.jpg';
-import concernFlight from '@/assets/images/concern-flight.jpg';
-import concernPassport from '@/assets/images/concern-passport.jpg';
-import articleDestinations from '@/assets/images/article-destinations.jpg';
-import concernDestinationTown from '@/assets/images/concern-destination-town.jpg';
-import concernDestinations from '@/assets/images/concern-destinations.jpg';
-import concernPresence from '@/assets/images/concern-presence.jpg';
-import heroDeskMap from '@/assets/images/hero-desk-map.jpg';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
@@ -40,7 +31,7 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   zh: {
     titleTag: '跨境代孕指南与工具',
     description:
-      '关于跨境代孕的独立指引：用同样的四个问题比较目的地，查看带来源和年份的费用数据，并用工具核对您自己的报价。',
+      '关于跨境代孕的独立指引：按同一套标准比较目的地，查看带来源和年份的费用数据，并用工具核对您自己的报价。',
   },
 };
 
@@ -56,343 +47,246 @@ export const HOME_HERO: Record<Lang, {
     h1: 'Trusted guidance for your surrogacy journey',
     lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
     ctaPrimary: 'Explore destinations',
-    ctaSecondary: 'Contact us',
+    ctaSecondary: 'Free consultation',
     note: 'More clarity for your family’s future',
   },
   zh: {
     h1: '为您的代孕之旅提供可靠指引',
-    lead: '弄清您实际有哪些选择，把目的地和费用放在一起比较，并在往前走之前，把法律、医疗和实操上的问题逐个问清楚。',
+    lead: '帮助您理清可行的方案，系统比较各目的地与费用，并在迈出下一步之前，逐一梳理法律、医疗与实务层面的关键问题。',
     ctaPrimary: '查看目的地',
-    ctaSecondary: '联系我们',
+    ctaSecondary: '免费咨询',
     note: '为您一家人的未来，多一分清楚',
   },
 };
 
-export const HOME_WHO: Record<Lang, {
-  eyebrow: string;
-  heading: string;
-  para: string;
-  link: string;
-  advantagesHeading: string;
-}> = {
-  en: {
-    eyebrow: 'Why this site exists',
-    heading: 'Independent research, written to be checked',
-    para: 'SurrogacyBase publishes guides, destination records and tools for people comparing cross-border surrogacy. It does not match surrogates, run programs or hold money. Each page separates what a source states, what it leaves unsettled, and what only a professional in that jurisdiction can answer.',
-    link: 'More about how we work',
-    advantagesHeading: 'What you can check on every page',
-  },
-  zh: {
-    eyebrow: '本站为什么存在',
-    heading: '每一句都能核对',
-    para: 'SurrogacyBase 为正在比较跨境代孕的人发布指南、目的地记录和工具。本站不匹配代孕者、不运营项目，也不代管资金。每一页都把三件事分开写：来源说明了什么、来源没有解决什么，以及哪些问题只有当地专业人士才能回答。',
-    link: '进一步了解我们',
-    advantagesHeading: '每一页都可以核对什么',
-  },
-};
-
-/* Four claims, each written so the reader can go and test it on the page it points to. */
-export const HOME_ADVANTAGES: { icon: IconName; title: Bilingual; body: Bilingual }[] = [
-  {
-    icon: 'book',
-    title: { en: 'One decision, four sides', zh: '一个决定，四个面' },
-    body: {
-      en: 'Legal, medical, financial and practical, because a plan that answers three of them is not a plan.',
-      zh: '法律、医疗、财务与实操。只回答其中三项的方案，算不上方案。',
-    },
-  },
-  {
-    icon: 'scale',
-    title: { en: 'The same questions everywhere', zh: '同样的问题，问每个目的地' },
-    body: {
-      en: 'Eligibility, parentage, payment and cost are asked the same way of every destination, so two places can be compared on the same terms.',
-      zh: '准入、亲权、付款与费用，对每个目的地都按同样的方式提问，两个目的地才是在同样的口径上比较。',
-    },
-  },
-  {
-    icon: 'check',
-    title: { en: 'A source and a date', zh: '来源和日期' },
-    body: {
-      en: 'Every figure names its publisher and the year it applies to. Where no source exists, the page says so instead of estimating.',
-      zh: '每一个金额都写明公布方与对应的年份。没有来源时，页面直接说明，而不是给出估算。',
-    },
-  },
-  {
-    icon: 'arrow-up-right',
-    title: { en: 'Tools that use your papers', zh: '工具用您自己的材料' },
-    body: {
-      en: 'Two quote totals can be put on the same lines, or a checklist taken into a meeting. Nothing you type is uploaded.',
-      zh: '两份报价可以逐项并排，一份清单可以直接带进会面。您输入的内容不会被上传。',
-    },
-  },
-];
-
-export const HOME_STAGES: Record<Lang, {
-  eyebrow: string;
+/*
+ * The four standards, one dimension each: can you open it, who put it out, what the number was
+ * counted on, and whether it is current. The earlier drafts failed twice on the same section. One
+ * handed the reader the checking as a task, which is homework nobody does while deciding whether to
+ * keep scrolling. The next admitted what the edit had not found ("where there is no source we do
+ * not print it", "where we got something wrong we fix it"), which reads as a team that could not
+ * get the material. Both directions talk about the edit; these four lines talk about the document
+ * in front of the reader, and state it positively. The intro names the categories once, so no item
+ * below has to list them again.
+ */
+export const HOME_METHOD: Record<Lang, {
   heading: string;
   intro: string;
-  ctaPrimary: string;
-  ctaSecondary: string;
+  items: { title: string; body: string }[];
+  link: { label: string; href: string };
 }> = {
   en: {
-    eyebrow: 'Start where you are',
-    heading: 'Which step are you on?',
+    heading: 'Every figure has a source',
     intro:
-      'The pages are grouped by the decision in front of you, not by the kind of page. Choose the point that sounds closest to where you are.',
-    ctaPrimary: 'Browse every guide',
-    ctaSecondary: 'Open the tools',
+      'Costs, success rates and legal conditions each sit on a document, and each line names that document, who put it out, and when.',
+    items: [
+      {
+        title: 'Open the original',
+        body: 'Every figure carries the address of the document behind it, so you read the notice or the judgment itself rather than our summary of it.',
+      },
+      {
+        title: 'Publisher named',
+        body: 'Government, court, regulator or clinic annual report: the page says which of them put the figure out.',
+      },
+      {
+        title: 'Rates with their basis',
+        body: 'Each success rate carries the year it was counted and the sample behind it, so two clinics’ numbers never line up as though they matched.',
+      },
+      {
+        title: 'A revision record',
+        body: 'Every page shows when it was first published and when it was last revised. Figures move when their sources do.',
+      },
+    ],
+    link: { label: 'The editorial policy', href: '/editorial-policy' },
   },
   zh: {
-    eyebrow: '从您现在的处境开始',
-    heading: '您正处在哪一步？',
-    intro: '以下按您面前要做的决定来分，而不是按页面类型。选一个最接近您现在处境的位置。',
-    ctaPrimary: '浏览全部指南',
-    ctaSecondary: '打开工具',
+    heading: '每个数字都有出处',
+    intro: '价格、成功率与法律条件，背后都对应一份原始文件；每一条都注明文件名称、发布方与发布日期。',
+    items: [
+      {
+        title: '直接查原文',
+        body: '每个数字后面都附原文地址，您点开看到的是那份公告或判决本身，不是我们的转述。',
+      },
+      {
+        title: '标明发布方',
+        body: '政府、法院、监管机构还是诊所年报，写明这个数字由哪一家发布。',
+      },
+      {
+        title: '成功率带口径',
+        body: '每条成功率注明统计年份与样本范围，两家的数字不会被并排成一回事。',
+      },
+      {
+        title: '有修订记录',
+        body: '每页标注首次发表与最后一次修订的日期，数字随来源更新。',
+      },
+    ],
+    link: { label: '编辑方针', href: '/editorial-policy' },
   },
 };
 
-/* Each card points at pages that exist, and each link names the job it does. */
-export const HOME_STAGE_ITEMS: {
-  icon: IconName;
-  title: Bilingual;
-  body: Bilingual;
-  links: { label: Bilingual; href: string }[];
-}[] = [
-  {
-    icon: 'book',
-    title: { en: 'I am still working out whether this is possible', zh: '我还在确认这件事是否可行' },
-    body: {
-      en: 'Start with the process, then the four legal questions it raises. You do not need a destination yet.',
-      zh: '先看流程，再看它带出的四个法律问题。这一步还不需要选定目的地。',
-    },
-    links: [
-      { label: { en: 'Read the process guide', zh: '阅读流程指南' }, href: '/guides/surrogacy-process' },
-      {
-        label: { en: 'See the four legal questions', zh: '看四个法律问题' },
-        href: '/guides/surrogacy-legal-considerations',
-      },
-    ],
+/* The guide index: one heading that answers the question a reader at the top of the list is
+ * actually asking, and one exit. The count stays dynamic in the second half, so publishing a seventh
+ * guide cannot leave a heading that says six behind.
+ *
+ * A question here is not the same thing as a question in the enquiry band. That band is a terms
+ * sheet and must not chat; this heading names the state the reader is in and points at the fix,
+ * which is the one place on the page where a second person earns its keep. What it must not do is
+ * advertise a range the six rows do not cover: an earlier draft read "from the process to bringing
+ * your child home", which described only the first and the last card and left the four in between
+ * outside the promise. */
+export const HOME_GUIDE_INDEX: Record<Lang, {
+  /** {n} is the number of published guides. */
+  heading: string;
+  viewAll: { label: string; href: string };
+}> = {
+  en: {
+    heading: 'Not sure where to start? Read these {n} first',
+    viewAll: { label: 'All guides', href: '/guides' },
   },
-  {
-    icon: 'map-pin',
-    title: { en: 'I am comparing countries', zh: '我正在比较国家' },
-    body: {
-      en: 'Each destination record answers the same questions: the legal basis, who may commission, parentage at birth, and what has been published on cost.',
-      zh: '每一份目的地记录都回答同样的问题：法律依据、谁可以委托、出生时的亲权，以及已公布的费用数据。',
-    },
-    links: [
-      { label: { en: 'Compare destinations', zh: '比较目的地' }, href: '/destinations' },
-      {
-        label: { en: 'Compare a shortlist side by side', zh: '并排比较候选目的地' },
-        href: '/tools/destination-comparison',
-      },
-      {
-        label: { en: 'Open the research checklist', zh: '打开目的地研究清单' },
-        href: '/tools/destination-research-checklist',
-      },
-    ],
+  zh: {
+    /* "当前所处阶段" was removed with the four situation cards: the rows below carry numbers but no
+     * stage labels, so a heading about stages would ask the reader to map a state onto "03" with
+     * nothing on the page to map it with. Name what is printed instead. */
+    heading: '还没想好从哪开始？先看这 {n} 份',
+    viewAll: { label: '全部指南', href: '/guides' },
   },
-  {
-    icon: 'receipt',
-    title: { en: 'I have a quote and need to compare it', zh: '我拿到了报价，需要对比' },
-    body: {
-      en: 'Put two quotes on the same nine cost lines, then read what usually sits outside a quote before you treat either total as a budget.',
-      zh: '先把两份报价放在同样的九项费用上，再看报价之外通常还有什么，最后才把任何一个总额当成预算。',
-    },
-    links: [
-      {
-        label: { en: 'Compare two quotes', zh: '对比两份报价' },
-        href: '/tools/agency-quote-comparison',
-      },
-      {
-        label: { en: 'Read what sits outside a quote', zh: '看报价之外的成本' },
-        href: '/articles/surrogacy-costs-that-sit-outside-a-quote',
-      },
-    ],
-  },
-  {
-    icon: 'list-check',
-    title: { en: 'I am close to signing', zh: '我准备签约了' },
-    body: {
-      en: 'Take the questions that belong in writing into the meeting, and check what has to be signed before the first transfer.',
-      zh: '把该写进书面文件的问题带进会面，并核对第一次付款前必须签什么。',
-    },
-    links: [
-      {
-        label: { en: 'Open the agency checklist', zh: '打开机构提问清单' },
-        href: '/tools/agency-question-checklist',
-      },
-      {
-        label: { en: 'Read what must be signed', zh: '看签约前必须写清什么' },
-        href: '/articles/what-must-be-signed-before-the-first-transfer',
-      },
-    ],
-  },
-];
+};
 
 export const HOME_COUNTRIES: Record<Lang, {
-  eyebrow: string;
+  /** {n} is the number of published records. The count sits in the heading, the way a section
+   * title in the reference sites carries its own size instead of leaving it to a line below. */
   heading: string;
-  intro: string;
   cta: string;
-  learnMore: string;
-  /** {date} is the day the record's sources were last opened. */
-  checked: string;
-  incomplete: string;
-  more: string;
+  /**
+   * One line per record on who can actually use the route, compressed from that record's own
+   * eligibility field. It replaces "N facts · M open questions", which counted the edit instead of
+   * answering the reader: how many sentences were sourced and how many are still loose is our
+   * housekeeping, and printing it on every card said eight times over what the research had not
+   * settled. A reader comparing countries wants one thing: is this open to someone like me. The
+   * record page keeps the full eligibility statement; this is its headline, not a substitute for it.
+   * A code with no entry here prints no line, so a new record cannot inherit a wrong one.
+   */
+  notes: Record<string, string>;
 }> = {
   en: {
-    eyebrow: 'Destinations',
-    heading: 'Surrogacy, country by country',
-    intro: 'Each card opens a record that names its sources, the date they were read, and the questions those sources did not settle.',
-    cta: 'View all destinations',
-    learnMore: 'Learn more',
-    checked: 'Record checked {date}',
-    incomplete: 'Sources incomplete',
-    more: 'More destinations',
+    heading: '{n} countries',
+    cta: 'All records',
+    notes: {
+      us: 'Each state sets its own rules',
+      ca: 'Federal law settles reimbursement, not eligibility',
+      gb: 'Couples and singles, with a genetic link',
+      co: 'Settled case by case in the courts',
+      gr: 'Court approval, and permanent residence in Greece',
+      ua: 'Married couples only; foreign parents accepted',
+      ge: 'A man and a woman, married or cohabiting',
+      kz: 'Closed to international intended parents',
+    },
   },
   zh: {
-    eyebrow: '目的地',
-    heading: '代孕，一个国家一个国家地看',
-    intro: '每张卡片打开的是一份记录，它会写明自己的来源、阅读这些来源的日期，以及这些来源没能确定的问题。',
-    cta: '查看全部目的地',
-    learnMore: '了解更多',
-    checked: '记录核查于{date}',
-    incomplete: '来源尚不完整',
-    more: '更多目的地',
-  },
-};
-
-/**
- * One photograph per country card, keyed by jurisdiction code. These are the site's own
- * editorial images, so the alt text describes what is in the frame and never claims the
- * picture was taken in the country named under it.
- */
-export const HOME_COUNTRY_MEDIA: Record<string, { src: ImageMetadata; alt: Bilingual }> = {
-  us: {
-    src: stageCompass,
-    alt: { en: 'A brass compass resting on a folded paper map', zh: '一把黄铜指南针放在折叠的纸质地图上' },
-  },
-  ca: {
-    src: concernFlight,
-    alt: {
-      en: 'The wing of an aircraft above a bank of cloud at sunset',
-      zh: '日落时分飞机机翼越过一片云层',
-    },
-  },
-  gb: {
-    src: concernPassport,
-    alt: {
-      en: 'A passport lying on top of a stack of official forms on a wooden desk',
-      zh: '一本护照放在木桌上叠着的官方表格上面',
-    },
-  },
-  co: {
-    src: articleDestinations,
-    alt: { en: 'An old walled town running down to the sea at sunset', zh: '日落时分一座带城墙的老城一路延伸到海边' },
-  },
-  gr: {
-    src: concernDestinationTown,
-    alt: {
-      en: 'A coastal town built up a hillside above a harbour of small boats',
-      zh: '一座海滨小镇沿山坡向上铺开，山下是停满小船的港口',
-    },
-  },
-  ua: {
-    src: concernPresence,
-    alt: {
-      en: 'A blank month calendar laid out beside two boarding passes, a key and a luggage tag',
-      zh: '一张空白的月历与两张登机牌、一把钥匙和一只行李牌并排摆着',
-    },
-  },
-  ge: {
-    src: heroDeskMap,
-    alt: {
-      en: 'A world map spread out with a brass compass, a green notebook, a pencil and a pair of glasses',
-      zh: '一张摊开的地图上放着黄铜指南针、一本绿色笔记本、一支铅笔和一副眼镜',
-    },
-  },
-  kz: {
-    src: concernDestinations,
-    alt: {
-      en: 'Three sailboats moored in a still bay at dusk, with low hills and a few white houses on the shore',
-      zh: '黄昏时分三艘帆船停在平静的海湾里，对岸是低矮的山丘和几栋白房子',
+    heading: '{n} 个国家',
+    cta: '全部记录',
+    notes: {
+      us: '各州分别规定',
+      ca: '联邦只定报销，不管资格',
+      gb: '伴侣或个人均可，需有基因联系',
+      co: '由法院逐案认定',
+      gr: '需法院许可，且需希腊永居',
+      ua: '仅限已婚夫妇，外国人可做',
+      ge: '一男一女，已婚或同居',
+      kz: '已对国际委托父母关闭',
     },
   },
 };
 
+/* The heading is the label the reader scans for. What the four pieces are is already on every
+ * card's summary, so a line above them would say that twice. The exit names the destination, not the
+ * size of the archive: nine pieces is not a number that helps anyone decide to read one. */
 export const HOME_READING: Record<Lang, {
-  eyebrow: string;
   heading: string;
-  intro: string;
   viewAll: string;
-  readMore: string;
   emptyTitle: string;
   emptyBody: string;
   emptyAction: string;
 }> = {
   en: {
-    eyebrow: 'Guides and explainers',
-    heading: 'Before you talk to anyone, these are the questions',
-    intro: 'Three things usually have to be settled before a first conversation means anything: how to read a quote, what to ask a provider, and what parentage and nationality actually turn on.',
-    viewAll: 'View all explainers',
-    readMore: 'Read more',
+    heading: 'Explainers',
+    viewAll: 'All explainers',
     emptyTitle: 'Nothing is published here yet',
     emptyBody: 'A piece appears here once its sources have been checked and it is ready to read.',
     emptyAction: 'Read the publication standards',
   },
   zh: {
-    eyebrow: '指南与专题解读',
-    heading: '开口谈之前，先弄清这几个问题',
-    intro: '第一次开口谈之前，通常要先弄清三件事：怎么读一份报价、该问服务方什么，以及亲权与国籍究竟取决于什么。',
-    viewAll: '查看全部专题解读',
-    readMore: '阅读全文',
+    heading: '专题解读',
+    viewAll: '全部解读',
     emptyTitle: '这里还没有已发布的内容',
     emptyBody: '这一节只列出已经发布的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
     emptyAction: '阅读发布标准',
   },
 };
 
+/* The band's copy follows the register this category's sites use: a short noun heading, one sentence
+ * saying what the reader gets and who gives it, then four terms, each a four- to six-character noun
+ * label followed by one sentence that states the commitment and stops. It reads as a terms sheet,
+ * not a conversation, so nothing here addresses the reader as though they had dropped by for a chat.
+ *
+ * Every term is a commitment the site already keeps. The enquiry lands in our own inbox — the
+ * Feishu / WeCom workspace the owner reads and answers it in — and stops there, which is what lets
+ * "never shared with third parties" stand as a statement of fact rather than a slogan. */
 export const HOME_BAND: Record<Lang, {
-  eyebrow: string;
   heading: string;
   para: string;
+  /** Where the reader's words go, for a reader who wants to know before typing. */
+  link: { label: string; href: string };
 }> = {
   en: {
-    eyebrow: 'Write your enquiry',
-    heading: 'Not sure where to start?',
-    para:
-      'Write down the priorities and the questions you already have. A clear question is what makes the first reply useful, whoever you end up asking.',
+    heading: 'Free consultation',
+    para: 'Fill in where you are and what you want settled, even if it is not yet a finished question. Every enquiry is answered by one of our advisors.',
+    link: { label: 'How we use what you send', href: '/privacy' },
   },
   zh: {
-    eyebrow: '写下您的问询',
-    heading: '不确定该从哪里开始？',
-    para: '把您已经在意的优先级和手上已有的问题写下来。问题写得清楚，第一封回复才可能有用，无论您最后问的是谁。',
+    heading: '免费咨询',
+    para: '填写您目前的情况和想弄清的问题，不必先写成完整的表述。每一次咨询都由专业顾问本人回复。',
+    link: { label: '信息使用说明', href: '/privacy' },
   },
 };
 
 /*
- * Three lines under the heading. No turnaround is promised because none is measured. Each line
- * describes a property of the form the reader can verify: what leaves the browser, what is not
- * collected, and which contact details are required.
+ * Four terms, one commitment each, ordered the way a reader about to type personal details asks the
+ * questions: where does this go, how fast is the answer, who else sees it, what will it ask of me.
+ * The labels are noun phrases and the bodies stop after one sentence — a second clause only invites
+ * the reader to audit the wording instead of the promise.
  */
 export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingual }[] = [
   {
     icon: 'lock',
-    label: { en: 'Confidential and secure', zh: '保密且安全' },
-    body: { en: 'Nothing leaves your browser until you send it.', zh: '在您自己发送之前，任何内容都不会离开您的浏览器。' },
+    label: { en: 'Strictly confidential', zh: '信息严格保密' },
+    body: {
+      en: 'Your details are used only for your enquiry and are never shared with third parties.',
+      zh: '个人信息仅用于咨询，绝不向第三方泄露。',
+    },
+  },
+  {
+    icon: 'clock',
+    label: { en: 'Reply within 24 hours', zh: '24 小时快速响应' },
+    body: {
+      en: 'An advisor contacts you directly after you submit.',
+      zh: '提交后由顾问本人与您联系。',
+    },
   },
   {
     icon: 'check',
-    label: { en: 'No obligation', zh: '没有任何义务' },
-    body: { en: 'No account, no payment detail, no mailing list.', zh: '不建账号、不填付款信息、不进邮件列表。' },
+    label: { en: 'Never forwarded', zh: '咨询不外转' },
+    body: {
+      en: 'No clinic, agency or lawyer receives your enquiry.',
+      zh: '您的咨询不会转给诊所、机构或律师。',
+    },
   },
   {
-    icon: 'route',
-    label: { en: 'You choose how to reply', zh: '您决定回复方式' },
+    icon: 'list-check',
+    label: { en: 'Nothing sensitive', zh: '不问证件与病历' },
     body: {
-      en: 'An email address is required; a phone number or messaging handle is optional.',
-      zh: '邮箱地址为必填；电话或即时通讯账号为选填。',
+      en: 'We never ask for ID, medical records or a budget figure.',
+      zh: '我们不会询问您的证件、病历或预算。',
     },
   },
 ];

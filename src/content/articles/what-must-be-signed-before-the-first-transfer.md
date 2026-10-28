@@ -1,6 +1,6 @@
 ---
 title: "What Must Be Signed Before the First Transfer"
-description: "The five documents a gestational arrangement should have in place before an embryo is transferred, what each one is for, and why a signature is not the same thing as an enforceable agreement."
+description: "The five documents a gestational arrangement should have in place before an embryo is transferred, and what each one is for."
 type: article
 category: preparation
 published: true

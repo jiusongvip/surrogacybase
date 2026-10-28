@@ -2,8 +2,9 @@
 /*
  * The About page in whichever language the URL says it is.
  *
- * The four "we are not" statements are the same data on both sides of the mirror, so they come from
- * one dictionary entry rather than from two files that can drift apart.
+ * The "we are not" statements, and the statement about what an enquiry costs the reader, are the
+ * same data on both sides of the mirror, so they come from one dictionary entry rather than from
+ * two files that can drift apart.
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
@@ -20,7 +21,7 @@ const reviewers = REVIEWERS;
 const cases = READER_CASES.filter((entry) => entry.published);
 
 /*
- * The four questions are the page's own visible text, so the markup restates them rather than
+ * These questions are the page's own visible text, so the markup restates them rather than
  * adding a set of questions written for a search result. A machine reader gets the same answers
  * a visitor reads.
  */
@@ -37,7 +38,7 @@ const jsonLd = [
 ];
 ---
 
-<PageLayout title={copy.title} description={copy.description} jsonLd={jsonLd}>
+<PageLayout title={copy.title} titleTag={copy.titleTag} description={copy.description} jsonLd={jsonLd}>
   <Breadcrumbs crumbs={[{ label: copy.title }]} />
 
   <article class="shell py-10 max-w-[74ch]">
@@ -78,23 +79,27 @@ const jsonLd = [
       {
         reviewers.length > 0 && (
           <ul class="mt-6 grid gap-4 sm:grid-cols-2">
-            {reviewers.map((reviewer) => (
-              <li class="rounded-(--radius) border border-line bg-surface p-5">
-                <p class="text-[17px] font-semibold">{reviewer.name}</p>
-                <p class="mt-1 text-[15px] text-muted">{pick(reviewer.role, lang)}</p>
-                <a
-                  class="mt-2 inline-block text-[14px] text-accent underline"
-                  href={reviewer.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {pick(reviewer.credentialLabel, lang)}
-                </a>
-                <p class="mt-2 text-[13px] text-muted">
-                  {fill(copy.reviewerReviewed, { date: formatDate(reviewer.reviewedOn, lang) })}
-                </p>
-              </li>
-            ))}
+            {reviewers.map((reviewer) => {
+              const external = /^https?:\/\//.test(reviewer.credentialUrl);
+              const href = external ? reviewer.credentialUrl : localizedPath(lang, reviewer.credentialUrl);
+              return (
+                <li class="rounded-(--radius) border border-line bg-surface p-5">
+                  <p class="text-[17px] font-semibold">{reviewer.name}</p>
+                  <p class="mt-1 text-[15px] text-muted">{pick(reviewer.role, lang)}</p>
+                  <a
+                    class="mt-2 inline-block text-[14px] text-accent underline"
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                  >
+                    {pick(reviewer.credentialLabel, lang)}
+                  </a>
+                  <p class="mt-2 text-[13px] text-muted">
+                    {fill(copy.reviewerReviewed, { date: formatDate(reviewer.reviewedOn, lang) })}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         )
       }

@@ -1,6 +1,6 @@
 ---
 title: "What 40,177 Transfers Do Not Promise You"
-description: "The largest published study of gestational carrier transfers in the United States counts transfers, not journeys. What that difference means for how you read a success rate."
+description: "The largest published study of United States carrier transfers counts transfers, not journeys. What that difference does to a success rate."
 type: article
 category: process
 published: true

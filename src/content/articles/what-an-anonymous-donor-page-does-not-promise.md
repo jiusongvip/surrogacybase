@@ -1,7 +1,7 @@
 ---
 title: "What an Anonymous Donor's Page Does Not Promise You"
-titleTag: "What Anonymity Promises"
-description: "The word anonymous on a donor page hides two different claims and one promise technology has already withdrawn. Here is what professional guidance now says, what United Kingdom law gives by year of birth, and what to have in writing."
+titleTag: "What an Anonymous Donor Page Does Not Promise"
+description: "The word anonymous on a donor page hides two different claims. What guidance now says, and what United Kingdom law gives by year of birth."
 type: article
 category: preparation
 published: true

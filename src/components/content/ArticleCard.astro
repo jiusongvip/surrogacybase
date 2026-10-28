@@ -1,7 +1,7 @@
 ---
 import { langFromPath } from '@/i18n/paths';
 import { CATEGORY_LABELS, UI, fill } from '@/i18n/ui';
-import { formatShortDate, readingTime } from '@/lib/dates';
+import { formatDate, readingTime } from '@/lib/dates';
 import { pathOf, type ContentEntry } from '@/lib/content';
 import ContentPhoto from '@/components/content/ContentPhoto.astro';
 import type { ContentImage } from '@/data/content-images';
@@ -60,7 +60,7 @@ const label = CATEGORY_LABELS[lang][category] ?? category;
       <Heading class:list={[featured ? 'mt-2 text-[27px]' : 'mt-2 text-[21px]']}>{title}</Heading>
       <p class="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-muted">{description}</p>
       <p class="mt-4 tnum text-[13px] text-muted">
-        {copy.labels.updated} {formatShortDate(updatedOn, lang)}
+        {copy.labels.updated} {formatDate(updatedOn, lang)}
         {minutes > 0 && <span> · {fill(copy.time.minRead, { n: minutes })}</span>}
       </p>
     </div>

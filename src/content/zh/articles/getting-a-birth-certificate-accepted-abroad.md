@@ -1,6 +1,6 @@
 ---
 title: "让一张出生证明在境外被接受"
-description: "哪个机关为出生证明出具附加证明书，它证明的是什么，为什么认证翻译是另一项独立要求，以及这条文件链要花多久。"
+description: "哪个机关为出生证明出具附加证明书，它证明的是什么，以及为什么认证翻译是另一项独立要求。"
 type: article
 category: preparation
 published: true

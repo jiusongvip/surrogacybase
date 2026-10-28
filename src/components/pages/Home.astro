@@ -2,9 +2,10 @@
 /*
  * The homepage, in both languages.
  *
- * The section order is inventory first: hero and its counted strip, the country records, the
- * reader's own situation, the explainers, the rules behind everything published, and the enquiry
- * band last. Every count printed on the page is read off the collections it describes, so no
+ * The section order puts the records first: the hero, the country records, the guides in reading
+ * order, the explainers, the standards behind everything published, and the enquiry band last. The
+ * hero carries no counts and no date, because a reader deciding whether to scroll cannot check
+ * either from there. Where a number is printed, it is read off the collection it describes, so no
  * section can advertise more than the site holds. Everything a reader sees comes from
  * src/data/home.ts or from the records it links to, so a section cannot be translated in one
  * place and left English in another.
@@ -28,9 +29,9 @@ import ConsultForm from '@/components/forms/ConsultForm.astro';
 import { SITE } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { UI, fill, pick } from '@/i18n/ui';
-import { getArticles, getGuides, getLiveContent, pathOf, resolveRefs, type ContentEntry } from '@/lib/content';
+import { getGuides, getLiveContent, pathOf, resolveRefs, type ContentEntry } from '@/lib/content';
 import { getJurisdictions } from '@/lib/jurisdictions';
-import { formatDate, readingTime } from '@/lib/dates';
+import { readingTime } from '@/lib/dates';
 import {
   HOME_BAND,
   HOME_BAND_TRUST,
@@ -40,10 +41,8 @@ import {
   HOME_META,
   HOME_METHOD,
   HOME_READING,
-  HOME_STATS,
 } from '@/data/home';
 import { GUIDE_CARDS, GUIDE_ORDER } from '@/data/guides';
-import { TOOLS } from '@/data/tools';
 import { contentImage } from '@/data/content-images';
 import { Image } from 'astro:assets';
 import heroTerrace from '@/assets/images/hero-terrace.jpg';
@@ -58,17 +57,10 @@ const guideIndex = HOME_GUIDE_INDEX[lang];
 const countries = HOME_COUNTRIES[lang];
 const readingCopy = HOME_READING[lang];
 const band = HOME_BAND[lang];
-const stats = HOME_STATS[lang];
 
-/* Numbers in the hero strip are counted, never typed: records from the collection, explainers
- * from the live content, tools from the registry, and the newest check date from the records. */
-const articleCount = (await getArticles(lang)).length;
-const contentCount = (await getLiveContent(lang)).length;
-const toolCount = TOOLS.filter((tool) => tool.live).length;
-const lastCheckedOn = [...records]
-  .map((row) => row.data.statusVerifiedOn)
-  .sort()
-  .at(-1) ?? '';
+/* The hero carries no inventory strip. Fifteen explainers and five tools are small numbers to a
+ * reader deciding whether to stay, and printing them invites the comparison the site would lose;
+ * the sections below state their own counts where the pages behind them are visible. */
 
 /** The mock's order, with any record that is not listed kept after it rather than dropped. */
 const COUNTRY_ORDER = ['us', 'ca', 'gb', 'co', 'gr'];
@@ -79,16 +71,16 @@ const byOrder = (a: { data: { code: string } }, b: { data: { code: string } }) =
 };
 /* The flag is the only picture a country card can carry without inventing something. A landscape
  * under a country name implies the place was photographed, and none of these were; the flag says
- * only what the record says, which is that the page is about that jurisdiction. */
+ * only what the record says, which is that the page is about that jurisdiction. Under the name sits
+ * the one line a reader comparing countries is actually looking for: whether the route is open to
+ * someone like them. The record's own counts are not printed here — how many sentences an edit
+ * sourced and how many questions it left are the workshop, not the answer. */
 const cards = [...records].sort(byOrder).map((row) => ({
   code: row.data.code,
   href: `/destinations/${row.data.code}`,
   name: row.data.name,
   region: row.data.region,
-  facts: row.data.facts.length,
-  open: row.data.openQuestions.length,
-  incomplete: row.data.insufficientData === true,
-  checked: formatDate(row.data.statusVerifiedOn, lang),
+  note: countries.notes[row.data.code] ?? '',
 }));
 
 /* The four explainers a reader should get through before talking to anyone, in the order the
@@ -148,6 +140,7 @@ const home = localizedPath(lang, '/');
       widths={[720, 1100, 1536]}
       sizes="100vw"
       loading="eager"
+      fetchpriority="high"
       class="block h-[220px] w-full object-cover object-[62%_38%] sm:h-[320px] lg:absolute lg:inset-0 lg:h-full lg:object-[52%_42%]"
       alt=""
     />
@@ -178,17 +171,6 @@ const home = localizedPath(lang, '/');
           </a>
           <a href={`${home}#assessment`} class="btn-ghost" data-enquiry-cta>{hero.ctaSecondary}</a>
         </div>
-
-        {/* The strip the reference sites put under the buttons: inventory, not adjectives. Every
-            number is counted from the collections, so it cannot outlive the pages it describes.
-            The record count is not repeated here: the next section's heading carries it. */}
-        <p class="rise rise-2 mt-7 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px] text-text/75">
-          <span class="tnum">{fill(stats.reading, { n: contentCount })}</span>
-          <span class="h-1 w-1 rounded-full bg-line-strong" aria-hidden="true"></span>
-          <span class="tnum">{fill(stats.tools, { n: toolCount })}</span>
-          <span class="h-1 w-1 rounded-full bg-line-strong" aria-hidden="true"></span>
-          <span class="tnum">{fill(stats.checked, { date: formatDate(lastCheckedOn, lang) })}</span>
-        </p>
       </div>
     </div>
   </section>
@@ -208,9 +190,9 @@ const home = localizedPath(lang, '/');
       </div>
 
       {/*
-       * Eight records, two rows of four, each one a flag and the counts that fill the record. The
-       * card is the link; an "open the record" line under every card would print the same four
-       * words eight times.
+       * Eight records, two rows of four, each one a flag, the country, and the one line on who can
+       * use it. The card is the link; an "open the record" line under every card would print the
+       * same four words eight times.
        */}
       <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
@@ -231,14 +213,7 @@ const home = localizedPath(lang, '/');
                     {c.name}
                     <span class="ml-2 text-[13px] font-normal text-muted">{c.region}</span>
                   </h3>
-                  {!c.incomplete && (
-                    <span class="tnum mt-1 block text-[13px] text-text/80">
-                      {fill(countries.factsLine, { facts: c.facts, open: c.open })}
-                    </span>
-                  )}
-                  <span class:list={['tnum mt-0.5 block text-[13px]', c.incomplete ? 'text-flag' : 'text-muted']}>
-                    {c.incomplete ? countries.incomplete : fill(countries.checked, { date: c.checked })}
-                  </span>
+                  {c.note ? <span class="mt-1 block text-[13px] leading-snug text-text/80">{c.note}</span> : null}
                 </span>
               </a>
             </li>
@@ -310,7 +285,7 @@ const home = localizedPath(lang, '/');
           {readingCopy.heading}
         </h2>
         <a href={lp('/articles')} class="textlink shrink-0">
-          {fill(readingCopy.viewAll, { count: articleCount })}
+          {readingCopy.viewAll}
           <Icon name="arrow-right" size={16} />
         </a>
       </div>
