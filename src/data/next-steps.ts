@@ -22,15 +22,17 @@ export const NEXT_STEP: Record<Lang, NextStepCopy> = {
   en: {
     eyebrow: 'Your own situation',
     heading: 'The general answer is only the start',
-    body: 'If you already know which questions apply to you, send them with the facts you have. This site does not forward the enquiry to a clinic, agency or lawyer, and no account is needed.',
-    primary: 'Tell us about your situation',
+    body:
+      'Tell us where you are stuck. A consultant on the editorial team replies within 24 hours, and nothing you send goes to a clinic or agency.',
+    primary: 'Free consultation',
     costGuide: 'Read the cost guide',
   },
   zh: {
     eyebrow: '您自己的情况',
     heading: '通用答案只是起点',
-    body: '如果您已经知道自己要问哪些问题，就把它们和手上的情况一起发来。本站不会把问询自动转给诊所、机构或律师，也不需要您注册账号。',
-    primary: '告诉我们您的情况',
+    body:
+      '告诉我们您卡在哪里。编辑团队的顾问会在 24 小时内回复，您发来的内容不会转给诊所或机构。',
+    primary: '免费咨询',
     costGuide: '阅读费用指南',
   },
 };
