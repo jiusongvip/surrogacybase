@@ -79,7 +79,11 @@ const jsonLd = [
   <div class="shell grid gap-4 pb-16 md:grid-cols-2">
     {TOOLS.map((tool) => (
       <section class="card flex flex-col px-6 py-6">
-        <p class="text-[14px] text-muted">{tool.live ? copy.available : copy.building}</p>
+        {/*
+         * Only an unbuilt tool gets a status line. While every tool on the page was live, the label
+         * printed the same two words five times, which told a reader nothing about any of the five.
+         */}
+        {!tool.live && <p class="text-[14px] text-muted">{copy.building}</p>}
         <h2 class="mt-1 text-[24px] leading-snug">{tool[lang].name}</h2>
         <p class="mt-2 text-[16px] leading-relaxed text-muted">{tool[lang].summary}</p>
         <ul class="mt-4 space-y-2 text-[15px]">

@@ -14,7 +14,8 @@ import { EDITORIAL_REVISION } from '@/data/policy-pages';
  *
  * The case list starts empty on purpose. A case is only added after written consent and the removal
  * of identifying details, never from imagination and never combined from several readers, so the
- * page shows its rule and its slot rather than a story invented to fill it.
+ * About page renders the whole section only when a published case exists: an empty slot is not kept
+ * on the page as a promise.
  */
 
 export type Reviewer = {
@@ -46,14 +47,14 @@ export const REVIEWERS: Reviewer[] = [
     /** The standing board the byline already names, credited under its own collective name. */
     name: SITE.board,
     role: {
-      en: 'Reviews every clinical and legal claim against the source cited beside it',
-      zh: '逐条核对每个临床与法律说法，对照其旁边引用的来源',
+      en: 'The board named in every byline',
+      zh: '各页署名所载明的委员会',
     },
     /** The site's own public page that documents the review process, not a self-description. */
     credentialUrl: '/editorial-policy',
     credentialLabel: {
       en: 'Read the editorial policy and review process',
-      zh: '阅读编辑政策与审阅流程',
+      zh: '阅读编辑方针与审阅流程',
     },
     /** Kept in step with the editorial policy's own revision stamp, a real published date. */
     reviewedOn: EDITORIAL_REVISION,

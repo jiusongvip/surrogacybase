@@ -30,7 +30,7 @@ sources:
 
 Most people read a surrogacy quote as a price. The document that decides what happens to your money is not the quote. It is the agreement, and inside it, the escrow terms.
 
-The reason this deserves its own page is timing. Money in a surrogacy program moves early and in one direction, and the point at which it becomes difficult to get back is usually well before anything medical has happened.
+The reason this deserves separate treatment is timing. Money in a surrogacy program moves early and in one direction, and the point at which it becomes difficult to get back is usually well before anything medical has happened.
 
 ## The structure, in four parts
 
@@ -73,4 +73,4 @@ Escrow protects the movement of money. It does not decide enforceability, parent
 
 If you have two proposals in front of you, the [comparison tool](/tools/agency-quote-comparison) sets both against the same nine costs, with amounts left blank wherever a quote does not state one. The number you are comparing has to be the number you can name a payee for.
 
-This page describes how these arrangements are generally structured, based on professional guidance and its date. It is not legal or financial advice, and the terms that govern you are in your own agreement.
+What is described above is how these arrangements are generally structured, based on professional guidance and its date. It is not legal or financial advice, and the terms that govern you are in your own agreement.

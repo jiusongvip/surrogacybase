@@ -75,7 +75,7 @@ The deadline is not the hard part. What makes it tight is everything that has to
 - The expense question has to be answered with receipts. The United Kingdom position is a cap on reasonable expenses plus court authorisation for anything above it, so the paperwork about money is not optional administration; it is evidence in your own application.
 - The court process itself takes time. The [Law Commission's project page](https://lawcom.gov.uk/project/surrogacy/) states that the process typically takes six months to a year to complete after you apply, which is longer than the window in which you are allowed to apply.
 
-If you are still outside that window for a reason you cannot control, ask a United Kingdom family lawyer what the options are rather than deciding from a blog. This page states what the published guidance requires. It does not predict what a court will accept in a case it has not seen, and nobody who has not seen your file can do that either.
+If you are still outside that window for a reason you cannot control, ask a United Kingdom family lawyer what the options are rather than deciding from a blog. What is stated here is what the published guidance requires. It does not predict what a court will accept in a case it has not seen, and nobody who has not seen your file can do that either.
 
 ## What was proposed, and where that stands
 
@@ -97,4 +97,4 @@ Take these to a United Kingdom family lawyer, in writing, before a clinic does a
 
 Question five is where most cross border plans lose months, and it is almost never in the scope of a program description. The [agency question checklist](/tools/agency-question-checklist) downloads as a document with room beside every question to write who answered it and when, which is the only form in which the answer is useful to you later.
 
-This page describes the published rules and the state of the reform record. It is not legal advice, it is not a prediction about an application, and it is written for someone planning under United Kingdom law rather than for anyone's specific case.
+The lines above describe the published rules and the state of the reform record. It is not legal advice, it is not a prediction about an application, and it is written for someone planning under United Kingdom law rather than for anyone's specific case.

@@ -30,7 +30,7 @@ sources:
 
 In most United States programs the document you receive about a carrier is a few paragraphs: her age, whether she has been pregnant, whether she has delivered by caesarean, sometimes a photograph and a short account of why she wants to carry. It is what most of the choosing gets done on, and it is the only carrier-side paper most intended parents are ever handed.
 
-The guidance US reproductive medicine publishes for programs working with gestational carriers is considerably longer than that profile. Reading the two against each other is worth an hour before you commit to anyone. This page is that comparison: what the guidance expects to have happened, which parts of it are a recommendation rather than a rule, and what the profile stays silent about even when the program is careful.
+The guidance US reproductive medicine publishes for programs working with gestational carriers is considerably longer than that profile. Reading the two against each other is worth an hour before you commit to anyone. What follows is that comparison: what the guidance expects to have happened, which parts of it are a recommendation rather than a rule, and what the profile stays silent about even when the program is careful.
 
 ## What the guidance expects to have happened first
 
@@ -95,7 +95,7 @@ Ask these of the program, and keep the written answers with the documents in [th
 
 The fourth matters more than it looks. Federal rules require records on each genetic contributor to be kept for at least ten years, while ASRM's position is that a permanent record should be kept, with a mechanism to serve as a future medical resource for any child produced. Those are two different promises about your file, and it is worth knowing which one you sit under.
 
-## What this does not settle
+## What a profile cannot settle
 
 A profile is evidence that a process was run, not proof of what the process found. It does not decide whether a contract is enforceable where you signed it, who is a legal parent at birth, or what happens to money already committed if the arrangement stops.
 

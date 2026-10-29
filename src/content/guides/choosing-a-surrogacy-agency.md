@@ -53,7 +53,7 @@ sources:
 
 The question people ask is whether an agency is trustworthy. The more useful question is what would tell you, because most of the signals a surrogacy website asks you to rely on are ones the website controls.
 
-Start from an uncomfortable structural fact. In most destinations, no regulator is checking whether an agency is competent. Where regulation exists, it usually attaches to something else: the clinic, the laboratory, the escrow company, or the lawyers. In the United Kingdom, [it is illegal to advertise for, or as, a surrogate](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/) under the Surrogacy Arrangements Act 1985, and the regulator whose name appears on assisted reproduction oversight, HFEA, licenses treatment clinics. Support organisations in that space are named by HFEA as sources of information, and they may be entered on the [public charity register](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884), but registration records an organisation's stated purposes. It is not a licence to provide surrogacy services, and it does not mean anyone has assessed how well the organisation does it.
+In most destinations, no regulator is checking whether an agency is competent. Where regulation exists, it usually attaches to something else: the clinic, the laboratory, the escrow company, or the lawyers. In the United Kingdom, [it is illegal to advertise for, or as, a surrogate](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/) under the Surrogacy Arrangements Act 1985, and the regulator whose name appears on assisted reproduction oversight, HFEA, licenses treatment clinics. Support organisations in that space are named by HFEA as sources of information, and they may be entered on the [public charity register](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884), but registration records an organisation's stated purposes. It is not a licence to provide surrogacy services, and it does not mean anyone has assessed how well the organisation does it.
 
 That distinction is the whole discipline of evaluating a provider: ask what a given credential actually certifies.
 
@@ -118,8 +118,8 @@ None of these is proof of a bad provider. Each is a reason to slow down and get 
 
 ## Why there is no recommended-agency list
 
-There is no list of recommended agencies here, and no ranking. A defensible ranking would need audited data on how many programs each provider ran, what they charged, what happened when they failed, and how carriers were treated. [Registry surveillance in the United States records treatment cycles](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/) and does not record agreements, compensation or program outcomes. Nobody counts what a ranking would have to be built from.
+A defensible ranking would need audited data on how many programs each provider ran, what they charged, what happened when they failed, and how carriers were treated. [Registry surveillance in the United States records treatment cycles](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/) and does not record agreements, compensation or program outcomes. Nobody counts what a ranking would have to be built from.
 
-So the deliverable is a method: documents, questions, and a named professional for each question. If you want the two quotes you are holding laid out against each other on exactly these axes, use the [comparison tool](/tools/agency-quote-comparison), which prints the common costs for you and keeps nothing once the tab closes.
+So the deliverable is a method: documents, questions, and a named professional for each question. The [quote comparison tool](/tools/agency-quote-comparison) is where that method goes once you have two documents in hand.
 
-This page is information about how to evaluate a provider. It is not advice about any specific agency, and it is not a legal opinion about any agreement.
+None of this is advice about any specific agency, or a legal opinion about any agreement.

@@ -60,9 +60,9 @@ Read as a lesson rather than as a summary of British law, that history says: the
 
 Between the intention and the law sits the document. The terminology guidance describes **nonidentified** as the shared intention of everyone involved, including the clinic or bank, not to exchange identifying information, and it says that intention holds only so far as the law allows, or to whatever explicit and limited degree the paperwork states.
 
-That second half is where useful detail lives. The guidance notes that a consent or contract may allow contact to be arranged between a donor-conceived person and their donor once the child reaches a stated age, often the age of majority, and that those arrangements are what *open-identity* means. So there are at least three different products on the shelves: an intention with no written mechanism; a contract that arranges contact at a stated age; and a jurisdiction whose register will hand over identifying information if the child applies.
+That second half is where useful detail lives. The guidance notes that a consent or contract may allow contact to be arranged between a donor-conceived person and their donor once the child reaches a stated age, often the age of majority, and that those arrangements are what *open-identity* means. So there are at least three quite different arrangements on offer: an intention with no written mechanism; a contract that arranges contact at a stated age; and a jurisdiction whose register will hand over identifying information if the child applies.
 
-Which one you are buying changes what you can tell a future child. It is also a question the gamete donation guidance answers in one specific way worth asking about: it recommends that a donor's consent cover a future request for follow-up testing or medical information arising from a diagnosis in a donor-conceived child. That is a concrete promise you can request in writing, and it is worth more than a photograph of the donor as a teenager. The same guidance asks for a detailed three-generation family history from every donor so far as possible, and says a donor who was adopted and cannot supply one should be considered case by case. Ask which of those two situations your donor's page is actually describing.
+Which one you choose changes what you can tell a future child. The gamete donation guidance answers the part of that question you can put directly: it recommends that a donor's consent cover a future request for follow-up testing or medical information arising from a diagnosis in a donor-conceived child. That is a concrete promise you can request in writing, and it is worth more than a photograph of the donor as a teenager. The same guidance asks for a detailed three-generation family history from every donor so far as possible, and says a donor who was adopted and cannot supply one should be considered case by case. Ask which of those two situations your donor's page is actually describing.
 
 ## Three things to have in writing
 
@@ -70,8 +70,8 @@ Which one you are buying changes what you can tell a future child. It is also a 
 2. **Whether the donor consented to future medical information requests**, and what the bank or clinic will do if a health condition appears in a donor-conceived child.
 3. **Who holds the records and for how long**, and what happens to them if the clinic or bank stops operating. Ask whether the same answers appear in your contract and in the donor's consent, and compare them; the [carrier-side guide](/guides/gamete-and-surrogate-options) covers where those holdings usually sit.
 
-## What this does not settle
+## What no donor document settles
 
 Nothing here decides parentage, and no donor document tells you how many families this donor's gametes have already been used for. The information regime you are buying into is set by a destination's law as much as by a provider's paperwork, which is why it belongs in [the six dimensions a destination page should answer](/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination) rather than in a message from a sales team.
 
-This page describes what published guidance and a 2023 policy record say, with their dates. It is not legal advice, and the rules that apply to your child may be written after this page was.
+What is set out above follows published guidance and a 2023 policy record, with their dates. It is not legal advice, and the rules that apply to your child may have been written after those were.

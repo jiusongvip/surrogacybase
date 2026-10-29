@@ -31,7 +31,7 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   zh: {
     titleTag: '跨境代孕指南与工具',
     description:
-      '关于跨境代孕的独立指引：按同一套标准比较目的地，查看带来源和年份的费用数据，并用工具核对您自己的报价。',
+      '关于跨境代孕的独立指引：以同一组标准比较目的地，查阅附有来源与年份的费用数据，并借助工具核对您自身的报价。',
   },
 };
 
@@ -55,7 +55,7 @@ export const HOME_HERO: Record<Lang, {
     lead: '帮助您理清可行的方案，系统比较各目的地与费用，并在迈出下一步之前，逐一梳理法律、医疗与实务层面的关键问题。',
     ctaPrimary: '查看目的地',
     ctaSecondary: '免费咨询',
-    note: '为您一家人的未来，多一分清楚',
+    note: '为您家庭的未来，增添一分明晰',
   },
 };
 
@@ -100,24 +100,24 @@ export const HOME_METHOD: Record<Lang, {
     link: { label: 'The editorial policy', href: '/editorial-policy' },
   },
   zh: {
-    heading: '每个数字都有出处',
-    intro: '价格、成功率与法律条件，背后都对应一份原始文件；每一条都注明文件名称、发布方与发布日期。',
+    heading: '每一数字均有出处',
+    intro: '费用、成功率与法律条件之下均对应一份原始文件；每一条均注明文件名称、发布方与发布日期。',
     items: [
       {
-        title: '直接查原文',
-        body: '每个数字后面都附原文地址，您点开看到的是那份公告或判决本身，不是我们的转述。',
+        title: '原文可直接查阅',
+        body: '每一数字之后均附原文地址，您开启所见即为该公告或判决本身，而非本站的转述。',
       },
       {
         title: '标明发布方',
-        body: '政府、法院、监管机构还是诊所年报，写明这个数字由哪一家发布。',
+        body: '政府、法院、监管机构抑或诊所年报，均写明该数字的发布主体。',
       },
       {
-        title: '成功率带口径',
-        body: '每条成功率注明统计年份与样本范围，两家的数字不会被并排成一回事。',
+        title: '成功率载明口径',
+        body: '每条成功率均注明统计年份与样本范围，两家数字并不因并列而等同。',
       },
       {
-        title: '有修订记录',
-        body: '每页标注首次发表与最后一次修订的日期，数字随来源更新。',
+        title: '附修订记录',
+        body: '每页标注首次发表与最后一次修订的日期，数字随来源同步更新。',
       },
     ],
     link: { label: '编辑方针', href: '/editorial-policy' },
@@ -147,7 +147,7 @@ export const HOME_GUIDE_INDEX: Record<Lang, {
     /* "当前所处阶段" was removed with the four situation cards: the rows below carry numbers but no
      * stage labels, so a heading about stages would ask the reader to map a state onto "03" with
      * nothing on the page to map it with. Name what is printed instead. */
-    heading: '还没想好从哪开始？先看这 {n} 份',
+    heading: '尚未确定从何处着手？请先阅读这 {n} 份',
     viewAll: { label: '全部指南', href: '/guides' },
   },
 };
@@ -187,11 +187,11 @@ export const HOME_COUNTRIES: Record<Lang, {
     cta: '全部记录',
     notes: {
       us: '各州分别规定',
-      ca: '联邦只定报销，不管资格',
-      gb: '伴侣或个人均可，需有基因联系',
+      ca: '联邦仅规定报销，不涉及资格',
+      gb: '伴侣或个人均可；须存在基因联系',
       co: '由法院逐案认定',
       gr: '需法院许可，且需希腊永居',
-      ua: '仅限已婚夫妇，外国人可做',
+      ua: '仅限已婚夫妇；接受外国父母',
       ge: '一男一女，已婚或同居',
       kz: '已对国际委托父母关闭',
     },
@@ -218,8 +218,8 @@ export const HOME_READING: Record<Lang, {
   zh: {
     heading: '专题解读',
     viewAll: '全部解读',
-    emptyTitle: '这里还没有已发布的内容',
-    emptyBody: '这一节只列出已经发布的内容。一篇专题解读在来源核查完成、确实可以阅读之后，才会出现在这里。',
+    emptyTitle: '此处暂无已发布内容',
+    emptyBody: '本节仅列出已发布的内容。一篇专题解读须在来源核查完成、确可阅读之后方呈现于此。',
     emptyAction: '阅读发布标准',
   },
 };
@@ -245,7 +245,7 @@ export const HOME_BAND: Record<Lang, {
   },
   zh: {
     heading: '免费咨询',
-    para: '填写您目前的情况和想弄清的问题，不必先写成完整的表述。每一次咨询都由专业顾问本人回复。',
+    para: '请填写您目前的情况与希望厘清的问题，无须先构成完整表述。每次咨询均由专业顾问本人答复。',
     link: { label: '信息使用说明', href: '/privacy' },
   },
 };
@@ -278,7 +278,7 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
     label: { en: 'Never forwarded', zh: '咨询不外转' },
     body: {
       en: 'No clinic, agency or lawyer receives your enquiry.',
-      zh: '您的咨询不会转给诊所、机构或律师。',
+      zh: '您的咨询不会转达至诊所、机构或律师。',
     },
   },
   {
@@ -286,7 +286,7 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
     label: { en: 'Nothing sensitive', zh: '不问证件与病历' },
     body: {
       en: 'We never ask for ID, medical records or a budget figure.',
-      zh: '我们不会询问您的证件、病历或预算。',
+      zh: '本站不会向您索取证件、病历或预算金额。',
     },
   },
 ];

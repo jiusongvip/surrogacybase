@@ -28,10 +28,10 @@ export const NEXT_STEP: Record<Lang, NextStepCopy> = {
     costGuide: 'Read the cost guide',
   },
   zh: {
-    eyebrow: '您自己的情况',
-    heading: '让顾问替您理一遍',
+    eyebrow: '您的具体情况',
+    heading: '由顾问为您逐项梳理',
     body:
-      '告诉我们您的情况。编辑团队的顾问会在 24 小时内回复，您发来的内容不会转给诊所或机构。',
+      '请说明您的具体情况。编辑团队顾问将于 24 小时内答复，您发送的内容不会转达至诊所或机构。',
     primary: '免费咨询',
     costGuide: '阅读费用指南',
   },
@@ -52,7 +52,7 @@ export const CONTENT_NEXT: Record<Lang, Record<string, { href: string; label: st
   },
   zh: {
     cost: { href: '/tools/agency-quote-comparison', label: '对比两份报价' },
-    destinations: { href: '/tools/destination-comparison', label: '并排对比候选目的地' },
+    destinations: { href: '/tools/destination-comparison', label: '并列对比候选目的地' },
     agencies: { href: '/tools/agency-question-checklist', label: '打开机构提问清单' },
     process: { href: '/tools/destination-research-checklist', label: '打开目的地研究清单' },
     preparation: { href: '/tools/destination-research-checklist', label: '打开目的地研究清单' },

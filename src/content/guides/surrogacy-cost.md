@@ -43,12 +43,12 @@ sources:
     publisher: "Health Canada"
     publishedOn: "2019-08-30"
     verifiedOn: "2026-10-14"
-    supports: "The enumerated list of surrogate expenditures that may be reimbursed in Canada, the requirement for receipts, and the five year record keeping rule."
+    supports: "The enumerated list of surrogate expenditures that may be reimbursed in Canada, the requirement for receipts, and the six year record keeping rule."
 ---
 
 Every article about surrogacy cost opens with a number, and almost every one of those numbers was written by somebody selling the service. That is the first thing to understand about budgeting for surrogacy: the totals you find are quotes, not measurements.
 
-There is no audited or government cost dataset for surrogacy. Nothing counts what intended parents actually paid. So this guide does something more useful than repeating a range. It shows what a surrogacy budget is made of, where the money sits before it is spent, what a quote habitually leaves out, and what you have to confirm with a named professional before you sign.
+There is no audited or government cost dataset for surrogacy, and nothing counts what intended parents actually paid. So the starting point is not a total. It is what the money is made of: the components of a budget, where it sits before it is spent, what a quote habitually leaves out, and what to confirm with a named professional before you sign.
 
 ## What a surrogacy budget is made of
 
@@ -73,7 +73,7 @@ For a legal parentage route in the United States, the [professional guidance on 
 
 A quote is usually a package description, not a ledger, and the distance between a quoted number and a paid one is made of items nobody labels as surrogacy: a second transfer attempt, medication and monitoring billed by the clinic rather than the program, insurance for the carrier, an independent lawyer for her ([the academic review of US practice](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) records that separate representation is recommended and, sometimes, mandated), court and filing costs, neonatal care that runs past the discharge date, whatever is still owed when a pregnancy ends early, the trip itself, and the documents that have to exist before anyone flies home.
 
-[The explainer on the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time, and ends by showing how to turn each one into a written question addressed to a named party. The [quote comparison tool](/tools/agency-quote-comparison) exists for that work. It prints the nine costs a quote usually names: mark each one included, excluded, or needs checking, and leave unconfirmed amounts blank on purpose. The tool excludes them from the total so a number never looks finished when it is not.
+[The explainer on the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time and turns each into a written question for a named party. The [quote comparison tool](/tools/agency-quote-comparison) then puts two quotes side by side on the same nine cost lines.
 
 ## Why two agencies quote the same program differently
 
@@ -105,7 +105,7 @@ Concretely, check:
 
 ## The figures that exist, and what kind of number they are
 
-Here is what can honestly be said about the totals.
+The published totals are of three kinds: a provider's own marketing figure, an academic threshold, and a regulator's expenses range.
 
 **United States.** The figures this market repeats most often are a fertility clinic's own: [an average of 100,000 to 140,000 US dollars for surrogacy in 2025](https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states), rising to 250,000 dollars or more. The same page itemises an agency fee of 35,000 to 55,000 dollars, base compensation of 35,000 to 60,000 dollars, and legal costs of 10,000 to 25,000 dollars. No methodology is disclosed. It is a provider's marketing page, and it is quoted here as that.
 
@@ -117,7 +117,7 @@ A peer-reviewed review article states it as a threshold rather than a range: [US
 
 What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/articles/why-no-average-surrogacy-cost-exists).
 
-Every figure this site publishes, including the ones above, is laid out line by line with its source on [the published cost figures page](/tools/cost-figures).
+Every figure above, and the source behind it, is laid out line by line on [the published cost figures page](/tools/cost-figures).
 
 ## What to verify before you pay anything
 
@@ -134,5 +134,5 @@ Work through this list against documents rather than conversations. If an answer
 - [ ] The documentation needed to bring the child home, and who is responsible for obtaining it.
 - [ ] A contingency reserve you have decided on, sized against the exclusions rather than the brochure.
 
-Nothing on this page is legal, medical or financial advice. Cost structure and payment mechanics are set by documents specific to your arrangement, and the totals depend on your jurisdiction, your medical path, and the providers you engage. Every rule quoted above arrives with the document behind it and the date that document was read. Where a figure or rule is not among those sources, the honest answer is to verify it with a named professional rather than to assume one.
+None of this is legal, medical or financial advice. Cost structure and payment mechanics are set by the documents of your own arrangement, and the totals depend on your jurisdiction, your medical path, and the providers you engage. A figure or a rule that is not in one of the sources above needs a named professional to confirm it, not an assumption.
 

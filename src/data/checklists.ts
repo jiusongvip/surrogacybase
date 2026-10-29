@@ -71,38 +71,38 @@ export const CHECKLISTS: Checklist[] = [
           'The questions to get answered for each destination on a surrogacy shortlist: eligibility, parentage, nationality, medical scope, money, presence and dispute routes.',
         h1: 'Destination research checklist',
         purpose:
-          'What you do here: put the questions below to the local lawyer, clinic or agency for one candidate destination, and keep their written answers beside each question.',
+          'What you do here: put the questions below to the local lawyer, clinic or agency for one candidate destination at a time.',
         howTo: [
           'Pick one candidate destination. Use one copy of this list for each place.',
-          'Download the file and send the questions to the local lawyer, clinic or agency.',
+          'Download the file and send the questions out, asking for answers in writing.',
           'Write each answer back beside its question, with the name and the date. Leave a question blank until it is answered.',
         ],
-        note: 'Work through it once per destination. This page collects nothing: the questions are the page, and the file you download is a document you keep.',
+        note: 'Nothing is collected here and no one is contacted for you: the questions are the whole of it, and the answers belong in the file you download.',
         closing: {
-          heading: 'What this list will not do for you',
+          heading: 'Where the answers belong',
           body:
-            'It does not state what any country requires, and it holds no answers. An answer is one named professional saying something about your own facts, in writing. That sentence belongs beside the question in the file you download, with the date it arrived, and the list stays honest about the questions still without one.',
+            'A list of questions cannot stand in for an opinion. Who may commission, who the child is at birth, and what the money covers get answered by someone who has read your facts. The lines still blank in the file are the work left to do.',
         },
-        links: ['Read the sourced destination record', 'The four legal questions to settle first'],
+        links: ['Browse the destination records', 'The four legal questions to settle first'],
       },
       zh: {
         title: '目的地研究清单',
         description:
-          '每一个候选目的地都需要有人回答的问题：资格、亲权、国籍、医疗范围、资金、实地停留，以及争议的处理途径。',
+          '每一候选目的地均须获得答复的问题：资格、亲权、国籍、医疗范围、资金、本人停留，以及争议的处理途径。',
         h1: '目的地研究清单',
-        purpose: '这一页做什么：把下面的问题交给当地律师、诊所或机构，逐个核实一个候选目的地，并把书面答复记在对应问题旁。',
+        purpose: '本页用途：每次仅针对一个候选目的地，将下述问题提交给当地的律师、诊所或机构。',
         howTo: [
-          '先选定一个候选目的地。每份清单只对照一个地方。',
-          '下载文件，把问题发给当地的律师、诊所或机构。',
-          '把书面答复写回对应问题旁，并记下回答人的姓名和日期。没有答复的题目保持空白。',
+          '首先确定一个候选目的地，每份清单仅对照一处。',
+          '下载文件并发出上述问题，要求以书面答复。',
+          '将答复记录于对应问题旁，并写明答复人姓名与日期。未获得答复的题目保持空白。',
         ],
-        note: '每个目的地都用这一份。这个页面不收集任何东西：问题就是这份页面本身，而您下载到的文件由您自己保存。',
+        note: '此处不收集任何信息，亦不代您联系任何一方：问题本身即为全部内容，答复应填入您下载的那份文件。',
         closing: {
-          heading: '这份清单不会替您做什么',
+          heading: '答复应记录于何处',
           body:
-            '它不说明任何国家的要求，里面也没有答案。答案是一位具名的专业人士针对您自身的情况写下的那句话。那句话应当落在您下载的文件里，写在对应问题的旁边，并记下它收到的日期；而那些仍然没有答案的问题，这份清单会照实留着。',
+            '一份问题清单无法替代一项意见：何者可以委托、孩子于出生时归于何人、资金涵盖至何范围，均须由阅读过您实际情况的人作出判断。文件之中仍然空白的那几行，即为尚未完成的工作。',
         },
-        links: ['阅读有来源的目的地记录', '最先要确定的四个法律问题'],
+        links: ['查看目的地记录', '最应先确定的四个法律问题'],
       },
     },
     groups: [
@@ -110,32 +110,32 @@ export const CHECKLISTS: Checklist[] = [
         id: 'eligibility',
         title: {
           en: 'Who may commission, and whether we are inside that',
-          zh: '谁可以委托，以及我们是否在其中',
+          zh: '谁得以委托，以及我方是否属于该范围',
         },
         hint: {
-          en: 'A line counts as answered when one named professional has said it about your own facts, in writing.',
-          zh: '一条问题算作有了答案，是在一位具名的专业人士针对您自身的情况以书面形式说过之后。',
+          en: 'A rule often names some family types plainly and leaves others to draft text. Find out which one you are in.',
+          zh: '规则对某些家庭类型往往表述明确，对另一些则仅存在于草案文字之中。应予厘清的是您所属的那一类。',
         },
         items: [
           {
             id: 'who-may',
             question: {
               en: 'Who is permitted to commission a surrogacy here, stated as a rule rather than as practice?',
-              zh: '在这里谁被允许委托代孕？请以规则而非惯例来表述。',
+              zh: '此目的地允许何者委托代孕？请依规则而非惯例表述。',
             },
           },
           {
             id: 'our-facts',
             question: {
               en: 'Do our marital status, age, sexual orientation, existing children or health history fall inside or outside that?',
-              zh: '我们的婚姻状况、年龄、性取向、已有的孩子或健康史，落在这一规则的里面还是外面？',
+              zh: '我方的婚姻状况、年龄、性取向、既有子女或健康史，系落于该规则之内还是之外？',
             },
           },
           {
             id: 'genetic',
             question: {
               en: 'Is a genetic link to at least one intended parent required, and what changes if it is?',
-              zh: '是否要求与至少一位意向父母存在基因联系？如果有这一要求，会有什么变化？',
+              zh: '是否要求与至少一位意向父母存在基因联系？若存在该项要求，将产生何种变化？',
             },
           },
           {
@@ -156,45 +156,45 @@ export const CHECKLISTS: Checklist[] = [
       },
       {
         id: 'parentage',
-        title: { en: 'Who the child belongs to at birth', zh: '孩子出生时属于谁' },
+        title: { en: 'Who the child belongs to at birth', zh: '孩子于出生时归于何人' },
         hint: {
           en: 'Parentage and nationality are two different questions that people routinely merge into one.',
-          zh: '亲权和国籍是两个不同的问题，人们却常常把它们并成一个。',
+          zh: '亲权与国籍系两项不同的问题，实践中却常被合而为一。',
         },
         items: [
           {
             id: 'mother',
             question: {
               en: 'Who is the legal mother at birth, regardless of whose egg was used?',
-              zh: '无论使用的是谁的卵子，出生时的法律母亲是谁？',
+              zh: '无论卵子源自何人，出生时的法律母亲为谁？',
             },
           },
           {
             id: 'route',
             question: {
               en: 'By what order or registration does parentage move to us, and what is it called?',
-              zh: '亲权通过哪一项裁定或登记转移给我们？它在法律上叫什么？',
+              zh: '亲权通过哪一项裁定或登记转移至我方？该项程序的法律名称为何？',
             },
           },
           {
             id: 'timing',
             question: {
               en: 'When can that order be applied for, and how long does a determination take?',
-              zh: '那项裁定可以在什么时候申请？作出裁定需要多长时间？',
+              zh: '该裁定可在何时申请？作出裁定需要多长时间？',
             },
           },
           {
             id: 'certificate',
             question: {
               en: 'Which names appear on the birth certificate we are able to obtain, and on the one issued later?',
-              zh: '我们能够拿到的出生证明上写着谁的名字？之后签发的那一份又写着谁的名字？',
+              zh: '我方可取得的出生证明上登记何人姓名？其后签发的那一份又登记何人？',
             },
           },
           {
             id: 'consent',
             question: {
               en: 'Does the surrogate have to consent after birth, and can that consent be withheld?',
-              zh: '代孕者是否必须在分娩后表示同意？这份同意可以被拒绝给出吗？',
+              zh: '代孕者是否须于分娩后表示同意？该项同意能否不予给出？',
             },
           },
         ],
@@ -207,76 +207,76 @@ export const CHECKLISTS: Checklist[] = [
             id: 'basis',
             question: {
               en: 'What nationality does the child acquire at birth, and on which basis?',
-              zh: '孩子在出生时取得哪一国国籍？依据是什么？',
+              zh: '孩子于出生时取得哪一国国籍？依据为何？',
             },
           },
           {
             id: 'travel',
             question: {
               en: 'What travel document can the child leave the country on, and which authority issues it?',
-              zh: '孩子可以持哪种旅行证件离开这个国家？由哪一个机关签发？',
+              zh: '孩子可持何种旅行证件离开该国？由何机关签发？',
             },
           },
           {
             id: 'recognition',
             question: {
               en: 'Will our own country recognise the parentage established here, and through what process?',
-              zh: '我们自己的国家是否会承认在这里确立的亲权？通过什么程序？',
+              zh: '我方本国是否会承认于此确立的亲权？依何种程序？',
             },
           },
           {
             id: 'stay',
             question: {
               en: 'How long must the family remain in country after birth, and who can state that in writing?',
-              zh: '出生后全家必须在当地停留多久？谁能够把这一点书面写明？',
+              zh: '出生之后全家须于当地停留多久？何者得以书面写明此点？',
             },
           },
           {
             id: 'registration',
             question: {
               en: 'What has to be registered at home after arrival, and within what deadline?',
-              zh: '回到国内之后需要登记什么？登记的期限是多久？',
+              zh: '返抵国内之后尚须登记何种事项？登记的期限为何？',
             },
           },
         ],
       },
       {
         id: 'medical',
-        title: { en: 'What the medical program actually covers', zh: '医疗方案实际覆盖到什么' },
+        title: { en: 'What the medical program actually covers', zh: '医疗方案实际涵盖的范围' },
         items: [
           {
             id: 'clinic',
             question: {
               en: 'Which clinic runs the treatment, and who is accountable for it?',
-              zh: '由哪家诊所执行治疗？谁对它负责？',
+              zh: '由何诊所执行治疗？何者对其负责？',
             },
           },
           {
             id: 'material',
             question: {
               en: 'Whose eggs, whose sperm and whose uterus, and what screening applies to each?',
-              zh: '用的是谁的卵子、谁的精子、谁的子宫？每一项分别适用什么筛查？',
+              zh: '卵子、精子与完成妊娠者分属何人？每一项分别适用何种筛查？',
             },
           },
           {
             id: 'counselling',
             question: {
               en: 'Is counselling provided, to whom, and is it independent of the program?',
-              zh: '是否提供心理咨询？提供给谁？它是否独立于这个方案之外？',
+              zh: '是否提供心理咨询？面向对象为何？其是否独立于该方案之外？',
             },
           },
           {
             id: 'attempts',
             question: {
               en: 'How many transfer attempts are inside the quoted program before it is treated as unsuccessful?',
-              zh: '报价所含的方案里包含多少次移植？超过之后就被视为未成功？',
+              zh: '报价所含方案之内包含多少次移植？超出之后即视为未成功？',
             },
           },
           {
             id: 'storage',
             question: {
               en: 'What happens to stored embryos if the program ends before a pregnancy?',
-              zh: '如果方案在怀孕之前就结束，冷冻保存的胚胎会怎么处理？',
+              zh: '若方案在怀孕之前即已结束，冷冻保存的胚胎将如何处理？',
             },
           },
         ],
@@ -285,22 +285,22 @@ export const CHECKLISTS: Checklist[] = [
         id: 'money',
         title: { en: 'Money, stages and what comes back', zh: '资金、阶段与可退回的部分' },
         hint: {
-          en: 'The numbers go into the comparison tool. What belongs beside each question here is a name and a date.',
-          zh: '金额填入对比工具。这里每个问题旁边应保留的，是一个名字和一个日期。',
+          en: 'Ask about money by stage: which payment falls due when, which parts come back, and who holds the account.',
+          zh: '资金须按阶段询问：每一笔于何时到期、哪些可予退回、账户由何人持有。',
         },
         items: [
           {
             id: 'included',
             question: {
               en: 'What is inside the quoted fee, and what is billed later by a third party?',
-              zh: '报价之内包含什么？什么会由第三方在之后另行计费？',
+              zh: '报价之内包含何种项目？何者将由第三方于事后另行计费？',
             },
           },
           {
             id: 'stages',
             question: {
               en: 'When is each payment due against each stage, and how much is refundable at that point?',
-              zh: '每一笔付款对应哪一个阶段、何时到期？在那个时点有多少可以退回？',
+              zh: '每一笔付款对应哪一阶段、于何时到期？该时点可退回的金额为多少？',
             },
           },
           {
@@ -314,21 +314,21 @@ export const CHECKLISTS: Checklist[] = [
             id: 'insurance',
             question: {
               en: 'What insurance covers the surrogate, and what would our own cover have to pay for?',
-              zh: '代孕者由什么保险覆盖？哪些部分要由我们自己的保险来支付？',
+              zh: '代孕者由何种保险覆盖？哪些部分须由我方自身的保险支付？',
             },
           },
           {
             id: 'overrun',
             question: {
               en: 'What is the stated process when a cost falls outside the quote, and who approves it first?',
-              zh: '当一项支出落在报价之外时，书面规定的流程是什么？由谁先批准？',
+              zh: '若一项支出落于报价之外，条文规定的流程为何？由何者先行批准？',
             },
           },
         ],
       },
       {
         id: 'presence',
-        title: { en: 'Being there, and for how long', zh: '到场，以及停留多久' },
+        title: { en: 'Being there, and for how long', zh: '本人到场，以及停留时长' },
         items: [
           {
             id: 'attendance',
@@ -341,21 +341,21 @@ export const CHECKLISTS: Checklist[] = [
             id: 'trips',
             question: {
               en: 'How many trips, of what length, at which points in the process?',
-              zh: '需要几次行程？每次多长？分别在流程的哪个节点？',
+              zh: '需几次行程？每次时长为何？分别位于流程的哪一节点？',
             },
           },
           {
             id: 'documents',
             question: {
               en: 'What visas, appointments and documents does each trip require?',
-              zh: '每次行程需要什么签证、预约和文件？',
+              zh: '每次行程需备妥何种签证、预约与文件？',
             },
           },
           {
             id: 'disruption',
             question: {
               en: 'If a travel restriction or illness lands mid-program, what does the contract say happens next?',
-              zh: '如果旅行限制或疾病出现在方案中途，合同写明的下一步是什么？',
+              zh: '若旅行限制或疾病出现于方案中途，合同所载明的后续处理为何？',
             },
           },
         ],
@@ -364,35 +364,35 @@ export const CHECKLISTS: Checklist[] = [
         id: 'advice',
         title: {
           en: 'Independent advice and what happens in a dispute',
-          zh: '独立意见，以及发生争议时怎么办',
+          zh: '独立意见，以及发生争议时的处理方式',
         },
         items: [
           {
             id: 'our-lawyer',
             question: {
               en: 'Which lawyer will read the contract for us, in whose jurisdiction, and who pays?',
-              zh: '由哪位律师为我们审阅合同？在谁的法域执业？费用由谁承担？',
+              zh: '由何律师为我方审阅合同？其在何法域执业？费用由谁承担？',
             },
           },
           {
             id: 'their-lawyer',
             question: {
               en: 'Is the surrogate independently advised, and is that advice paid for from our money?',
-              zh: '代孕者是否获得了独立的法律意见？这份意见是不是用我们的钱支付的？',
+              zh: '代孕者是否已获得独立的法律意见？该意见是否由我方资金支付？',
             },
           },
           {
             id: 'disagreement',
             question: {
               en: 'What happens if we and the provider disagree on something material, and what is the first step?',
-              zh: '如果我们与服务方在实质性事项上不一致，会发生什么？第一步是什么？',
+              zh: '若我方与服务方就实质性事项存在分歧，将如何处理？第一步为何？',
             },
           },
           {
             id: 'forum',
             question: {
               en: 'Which court, register or body would hear a dispute, and in which country?',
-              zh: '争议会由哪个法院、登记机关或机构受理？在哪个国家？',
+              zh: '争议将由何法院、登记机关或机构受理？位于何国？',
             },
           },
         ],
@@ -411,36 +411,36 @@ export const CHECKLISTS: Checklist[] = [
           'Questions to put to a surrogacy agency in writing before signing: fee scope, payment stages, refunds, screening, legal work, and what happens if a cycle fails.',
         h1: 'Agency question checklist',
         purpose:
-          'What you do here: put the questions below to a surrogacy agency in writing before you sign, and keep each answer beside its question with the name and date.',
+          'What you do here: before you sign anything, get written answers to the questions below from an agency you are weighing.',
         howTo: [
           'Pick one agency you are considering.',
-          'Download the file and put the questions to the firm in your own words, asking for written answers.',
+          'Download the file and put the questions to them in your own words.',
           'Write each answer back beside its question, with the name and the date. Leave a question blank until it is answered.',
         ],
-        note: 'This page collects nothing and contacts no one for you. Download the list, put it to a firm in your own words, and keep what comes back in that file.',
+        note: 'Nothing you write here is stored, and no firm is contacted for you.',
         closing: {
           heading: 'Then put the answers next to the numbers',
           body:
-            'Once the answers are in, the quote becomes comparable rather than merely readable. The comparison tool sets two quotes against the same nine costs and keeps unconfirmed amounts out of the totals, so a total never looks finished when it is not.',
+            'With the answers written back in, a quote stops being an explanation and becomes a document to check line by line. Two quotes entered into the comparison tool sit on the same nine cost lines, and the lines still without a number show themselves.',
         },
         links: ['Compare the quotes', 'What a contract should state'],
       },
       zh: {
         title: '机构提问清单',
         description:
-          '签约之前要书面提交给代孕机构的问题：费用的范围、付款阶段、退款、筛查、法律工作，以及一次周期失败之后会怎样。',
+          '签约之前应要求代孕机构书面答复的问题：费用范围、付款阶段、退款安排、筛查、法律工作，以及周期失败之后的处理方式。',
         h1: '机构提问清单',
-        purpose: '这一页做什么：签约之前把下面的问题书面提给正在考虑的机构，并把答复、回答人的姓名和日期记在对应问题旁。',
+        purpose: '本页用途：在签署任何协议之前，要求您正在考虑的一家机构就下列问题作出书面答复。',
         howTo: [
-          '先选定一家您正在考虑的机构。',
-          '下载文件，用您自己的话把问题提给这家机构，并要求书面答复。',
-          '把每条回答写回对应问题旁，并记下回答人的姓名和日期。没有答复的题目保持空白。',
+          '首先确定一家您正在考虑的机构。',
+          '下载文件，以您自己的表述发出上述问题。',
+          '将每条答复记录于对应问题旁，并写明答复人姓名与日期。未获得答复的题目保持空白。',
         ],
-        note: '这个页面不收集任何内容，也不会代您联系任何人。把清单下载下来，用您自己的话提给机构，再把对方的答复留在那份文件里。',
+        note: '您在此填写的内容不会被存储，本站亦不会代您联系相关机构。',
         closing: {
-          heading: '然后将答案记在金额旁边',
+          heading: '再将答复与金额并列',
           body:
-            '答案到位之后，报价就变得可以对比，而不只是可以阅读。对比工具把两份报价对在同一组九项成本上，并且让未经确认的金额不进合计，于是一个总额永远不会在它并不完整的时候看起来已经完整。',
+            '将答复逐项记录之后，一份报价即不再只是一段说明，而成为一份可逐行核对的文件。两份报价填入对比工具后，会落在同一组九项成本之上；仍无数字的那几行会自行显现。',
         },
         links: ['对比这些报价', '合同应当写明什么'],
       },
@@ -448,17 +448,17 @@ export const CHECKLISTS: Checklist[] = [
     groups: [
       {
         id: 'scope',
-        title: { en: 'What the fee buys, and who does the work', zh: '这笔费用买到什么，由谁来做事' },
+        title: { en: 'What the fee buys, and who does the work', zh: '费用涵盖的内容，以及由谁执行工作' },
         hint: {
-          en: 'Ask for this in writing before the first payment. A verbal walk-through cannot be compared.',
-          zh: '在第一笔付款之前就要书面索取这些内容。口头讲解无法被对比。',
+          en: 'Two firms can describe a program almost identically out loud. Written down, their “included” turns out to cover different things.',
+          zh: '两家机构口头介绍方案时可能近乎一致；落成书面之后才会发现，两项「包含」各自涵盖的项目并不相同。',
         },
         items: [
           {
             id: 'services',
             question: {
               en: 'Which services does the fee cover, listed individually rather than as a program?',
-              zh: '这笔费用覆盖哪些服务？请逐项列出，而不是打包成一个方案。',
+              zh: '该费用覆盖哪些服务？请逐项列出，而非打包为一项方案。',
             },
           },
           {
@@ -472,21 +472,21 @@ export const CHECKLISTS: Checklist[] = [
             id: 'contact',
             question: {
               en: 'Who is our named contact, what are their qualifications, and what happens when they are unavailable?',
-              zh: '我们指定的对接人是谁？其资历如何？当其无法联系时会发生什么？',
+              zh: '我方的指定联络人为何人？其资历如何？若其无法联系，将如何处理？',
             },
           },
           {
             id: 'staffing',
             question: {
               en: 'How many families is that person carrying at once?',
-              zh: '这个人同时接手多少个家庭？',
+              zh: '该人员同时负责多少个家庭？',
             },
           },
           {
             id: 'responsibility',
             question: {
               en: 'Which responsibilities stay with us throughout?',
-              zh: '哪些责任自始至终都由我们自己承担？',
+              zh: '哪些责任自始至终均由我方自行承担？',
             },
           },
         ],
@@ -499,35 +499,35 @@ export const CHECKLISTS: Checklist[] = [
             id: 'estimate',
             question: {
               en: 'What is excluded from the quote that we should expect to pay anyway?',
-              zh: '报价排除了哪些我们仍然预期要支付的费用？',
+              zh: '报价排除了哪些我方仍将支付的费用？',
             },
           },
           {
             id: 'schedule',
             question: {
               en: 'Which payment falls due at which stage, and against what trigger?',
-              zh: '哪一笔付款落在哪一个阶段？以什么事件为触发条件？',
+              zh: '哪一笔付款对应哪一阶段？以何种事件为触发条件？',
             },
           },
           {
             id: 'refund',
             question: {
               en: 'If we withdraw at each stage, what is refundable and within how long?',
-              zh: '如果我们在各个阶段退出，哪些部分可以退回？在多长时间内退回？',
+              zh: '若我方于各阶段退出，哪些部分可予退回？退回期限为多久？',
             },
           },
           {
             id: 'holdings',
             question: {
               en: 'Where is our money held before it is spent, and in whose name?',
-              zh: '我们的钱在支出之前存放在哪里？以谁的名义持有？',
+              zh: '我方资金于支出之前存放于何处？以何人名义持有？',
             },
           },
           {
             id: 'overrun',
             question: {
               en: 'When a cost exceeds the estimate, who has to approve it before it is incurred?',
-              zh: '当一项支出超出估算时，在发生之前必须由谁批准？',
+              zh: '若一项支出超出估算，发生之前须经何人批准？',
             },
           },
         ],
@@ -536,15 +536,15 @@ export const CHECKLISTS: Checklist[] = [
         id: 'surrogate',
         title: { en: 'The surrogate’s own position', zh: '代孕者自身的处境' },
         hint: {
-          en: 'How this is answered usually tells you more about a program than any brochure does.',
-          zh: '这一组问题的回答，通常比任何宣传册都更能说明一个方案。',
+          en: 'A program is usually judged by what a firm does when one of these actually happens.',
+          zh: '一项方案的优劣，通常须待这几种情形实际发生之后方能判断。',
         },
         items: [
           {
             id: 'recruitment',
             question: {
               en: 'How are candidates recruited, and what do you tell them about us?',
-              zh: '人选是如何招募的？您会向他们如何描述我们？',
+              zh: '人选以何种方式招募？您将向我方作何描述？',
             },
           },
           {
@@ -558,21 +558,21 @@ export const CHECKLISTS: Checklist[] = [
             id: 'independent',
             question: {
               en: 'Does the surrogate have her own lawyer and her own independent advice before signing?',
-              zh: '代孕者在签署之前是否有自己的律师和自己的独立意见？',
+              zh: '代孕者于签署之前是否已自聘律师并取得独立意见？',
             },
           },
           {
             id: 'existing',
             question: {
               en: 'Has she been pregnant before and does she have her own children, and what has she been told about future fertility?',
-              zh: '她此前是否怀孕过、是否有自己的孩子？关于日后的生育能力，她被告知了什么？',
+              zh: '其此前是否妊娠过、是否育有子女？关于日后的生育能力，其已获告知何种内容？',
             },
           },
           {
             id: 'withdrawing',
             question: {
               en: 'At what points can she withdraw, and what does that do to our money and our timeline?',
-              zh: '她可以在哪些节点退出？那会对我们的资金和时间表造成什么影响？',
+              zh: '其可于哪些节点退出？该情形将对我方资金与时间表产生何种影响？',
             },
           },
         ],
@@ -585,28 +585,28 @@ export const CHECKLISTS: Checklist[] = [
             id: 'clinic',
             question: {
               en: 'Which clinic, which laboratory, and who is clinically responsible?',
-              zh: '是哪家诊所、哪家实验室？临床责任由谁承担？',
+              zh: '系何诊所、何实验室？临床责任由谁承担？',
             },
           },
           {
             id: 'attempts',
             question: {
               en: 'How many transfer attempts does the quoted program include?',
-              zh: '报价的方案包含多少次移植尝试？',
+              zh: '报价所含方案包括多少次移植尝试？',
             },
           },
           {
             id: 'reduction',
             question: {
               en: 'What is the stated position on selective reduction and who decides?',
-              zh: '关于选择性减胎的书面立场是什么？由谁决定？',
+              zh: '就选择性减胎的书面立场为何？由何人决定？',
             },
           },
           {
             id: 'multiples',
             question: {
               en: 'How do you limit the risk of a multiple pregnancy, and does that change the cost?',
-              zh: '您如何控制多胎妊娠的风险？这会改变费用吗？',
+              zh: '以何种方式控制多胎妊娠的风险？此项是否影响费用？',
             },
           },
         ],
@@ -626,21 +626,21 @@ export const CHECKLISTS: Checklist[] = [
             id: 'ours',
             question: {
               en: 'Are we free to instruct our own lawyer, and does the fee assume we will?',
-              zh: '我们是否可以自行委托自己的律师？这笔费用是否已经假定我们会这样做？',
+              zh: '我方能否自行委托自身律师？该费用是否已假定我方将作此安排？',
             },
           },
           {
             id: 'parentage',
             question: {
               en: 'Which order or registration will make us the legal parents, and in whose name does the child exist until then?',
-              zh: '哪一项裁定或登记会让我们成为法律上的父母？在此之前孩子登记在谁的名下？',
+              zh: '哪一项裁定或登记将使我方成为法律上的父母？在此之前，孩子登记于何人名下？',
             },
           },
           {
             id: 'enforceability',
             question: {
               en: 'Is the agreement itself enforceable where we are, and if not, what protects either side?',
-              zh: '协议本身在我们所在地是否可以强制执行？如果不行，是什么在保护任何一方？',
+              zh: '协议本身于我方所在地能否强制执行？若不能，以何种机制保障任何一方？',
             },
           },
         ],
@@ -653,66 +653,66 @@ export const CHECKLISTS: Checklist[] = [
             id: 'no-pregnancy',
             question: {
               en: 'If there is no pregnancy after the included attempts, what happens to the fee and what comes next?',
-              zh: '如果包含在内的移植次数之后没有怀孕，这笔费用会怎样？下一步是什么？',
+              zh: '若在所列的移植次数之后仍未妊娠，该笔费用将如何处理？后续步骤为何？',
             },
           },
           {
             id: 'loss',
             question: {
               en: 'If a pregnancy ends, who covers the surrogate’s medical and related costs, and for how long?',
-              zh: '如果妊娠终止，谁来承担代孕者的医疗及相关费用？承担多久？',
+              zh: '若妊娠终止，由谁承担代孕者的医疗及相关费用？承担多久？',
             },
           },
           {
             id: 'health',
             question: {
               en: 'If the surrogate’s health is affected, what has the program committed to and what has it not?',
-              zh: '如果代孕者的健康受到影响，方案已经承诺了什么？又有什么没有承诺？',
+              zh: '若代孕者的健康受到影响，方案已作出何种承诺？何种事项未作承诺？',
             },
           },
           {
             id: 'agency-failure',
             question: {
               en: 'If your organisation stops operating, what happens to our funds, our embryos and our file?',
-              zh: '如果您的机构停止运营，我们的资金、我们的胚胎和我们的档案会怎样？',
+              zh: '若贵机构停止运营，我方资金、胚胎与档案将作何处理？',
             },
           },
         ],
       },
       {
         id: 'evidence',
-        title: { en: 'Claims you can check', zh: '可以去核实的说法' },
+        title: { en: 'Claims you can check', zh: '可供核实的说法' },
         hint: {
-          en: 'A figure a provider gives about itself is a marketing claim. Record it as one, beside the evidence.',
-          zh: '服务方给出的关于自身的数据是一条宣传说法。把它记成一条说法，旁边放证据。',
+          en: 'A figure a firm quotes about itself is advertising. Write it down anyway, and put beside it something you can check without going back to them.',
+          zh: '机构述及自身时给出的数字属于宣传性质。仍应将其记录在案，并于旁侧附一项无须再向对方询问即可核对的材料。',
         },
         items: [
           {
             id: 'registration',
             question: {
               en: 'Under what registration, licence or regulation does the organisation operate, and what is its number?',
-              zh: '该机构依据什么登记、许可或监管运营？其编号是什么？',
+              zh: '该机构依据何种登记、许可或监管规定运营？其编号为何？',
             },
           },
           {
             id: 'history',
             question: {
               en: 'How many programs have you run here, and over what period?',
-              zh: '您在这里运行过多少个方案？跨越多长时间？',
+              zh: '您于此地已执行过多少项方案？跨越多长时间？',
             },
           },
           {
             id: 'references',
             question: {
               en: 'Can we speak to previous families directly, rather than to families you have selected for us?',
-              zh: '我们能否直接与此前的家庭交谈，而不是与您替我们挑选的家庭交谈？',
+              zh: '我方能否径行与此前的家庭交谈，而非与您为我方挑选的家庭交谈？',
             },
           },
           {
             id: 'writing',
             question: {
               en: 'Will the answers to everything on this list arrive in writing, and can we keep them?',
-              zh: '这份清单上所有问题的回答会以书面形式送达吗？我们可以留存它们吗？',
+              zh: '本清单全部问题的答复将以书面形式送达吗？我方可否予以留存？',
             },
           },
         ],
@@ -749,29 +749,27 @@ export const CHECKLIST_CHROME: Record<Lang, ChecklistChrome> = {
   en: {
     exportButton: 'Download as a document',
     exportNote:
-      'The file holds every question above with an empty box beside it, in the language this page is written in. Nothing here is collected, saved on a server, or sent anywhere.',
+      'The file holds every question above with an empty box before it, in the language you are reading.',
     contentsHeading: 'Contents',
     totalCount: '{groups} groups, {questions} questions',
     questionCount: '{n} questions',
-    bottomNote:
-      'The file holds every question on this page with an empty box beside it, in this language. Nothing is collected here.',
+    bottomNote: 'The list goes out, the answers come back, and the same file holds both.',
     fileHint:
       'Tick a box once a named professional has answered that question for your own situation, and write the name and the date beside it.',
     fallbackTitle: 'Checklist',
     savedLine: 'Saved',
-    exportFooter:
-      'Written to the file by SurrogacyBase, from the questions on the page. Nothing on the page is collected, and nothing was sent to a server.',
+    exportFooter: 'Written by SurrogacyBase from the questions above, to record who answered and when.',
   },
   zh: {
     exportButton: '下载为文档',
-    exportNote: '下载到的文件会带上上面每一个问题，每个问题前面留一个空的选择框，语言与本页一致。这里不会收集任何内容，没有保存在服务器上的东西，也不会发出任何东西。',
+    exportNote: '文件内含上述全部问题，每一问题之前留有空白选择框，语言与您正在阅读的版本一致。',
     contentsHeading: '目录',
     totalCount: '{groups} 组，{questions} 个问题',
     questionCount: '{n} 个问题',
-    bottomNote: '文件里带着这一页的每个问题，每个问题旁留一个空方框，语言与本页一致。这里不会收集任何内容。',
-    fileHint: '当一位具名的专业人士针对您自身的情况回答了某个问题，就勾上它前面的方框，并在旁边写下这个名字和日期。',
+    bottomNote: '清单发出，答复收回，两者均留存于同一份文件之中。',
+    fileHint: '当某位具名专业人士就您自身情况答复某项问题后，勾选其前方的方框，并在旁侧记录该姓名与日期。',
     fallbackTitle: '清单',
     savedLine: '保存于',
-    exportFooter: '本文件由 SurrogacyBase 依据页面上的问题写就。页面上不收集任何内容，也没有任何东西被发送到服务器。',
+    exportFooter: '本文件由 SurrogacyBase 依据上述问题生成，用于记录答复人与答复日期。',
   },
 };

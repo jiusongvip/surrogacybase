@@ -89,8 +89,8 @@ Question five is the one a good lawyer will answer without hesitation and a bad 
 
 Ready is not a feeling about the clinic or a level of comfort with an agency. It is a folder: the agreement with its amounts, triggers and dates; the fee schedule with the refund table; the escrow named and funded; two lawyers identified; the counselling record with names and dates; and a written answer to the enforceability question in the jurisdiction you are actually using.
 
-If any of those five is missing, the transfer can still proceed, and that is exactly why the list is worth holding. The calendar belongs to the clinic. The terms belong to you only for as long as nothing has been signed.
+If any of those five documents is missing, the transfer can still proceed, and that is exactly why the list is worth holding. The calendar belongs to the clinic. The terms belong to you only for as long as nothing has been signed.
 
 The paperwork that follows a birth is a different chain with different decision-makers, and it is set out in [getting a birth certificate accepted abroad](/articles/getting-a-birth-certificate-accepted-abroad).
 
-This page reports published guidance and the positions taken by professional bodies. It is not legal advice, it is not a template, and no document described here has been reviewed for your situation.
+What is reported above is published guidance and the positions taken by professional bodies. It is not legal advice, it is not a template, and no document described here has been reviewed for your situation.

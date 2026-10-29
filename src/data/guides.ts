@@ -38,18 +38,18 @@ export const GUIDE_CARDS: Record<string, { icon: IconName; line: Bilingual }> = 
   },
   'surrogacy-cost': {
     icon: 'receipt',
-    line: { en: 'What a quote usually leaves out', zh: '报价通常会漏掉什么' },
+    line: { en: 'What a quote usually leaves out', zh: '报价通常不含哪些项目' },
   },
   'choosing-a-surrogacy-agency': {
     icon: 'building',
-    line: { en: 'The five documents to ask for before signing', zh: '签约前该要的五份文件' },
+    line: { en: 'The five documents to ask for before signing', zh: '签约前应索取的五份文件' },
   },
   'gamete-and-surrogate-options': {
     icon: 'list-check',
-    line: { en: 'Three decisions, and what each one locks in', zh: '三个决定，各自锁定了什么' },
+    line: { en: 'Three decisions, and what each one locks in', zh: '三个决定，各自锁定哪些内容' },
   },
   'bringing-your-child-home': {
     icon: 'file-text',
-    line: { en: 'Which document lets the child cross', zh: '孩子凭什么文件过境' },
+    line: { en: 'Which document lets the child cross', zh: '孩子过境所凭的文件' },
   },
 };

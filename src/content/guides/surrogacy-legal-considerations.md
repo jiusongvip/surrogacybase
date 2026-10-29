@@ -61,7 +61,7 @@ sources:
     publisher: "Health Canada"
     publishedOn: "2019-08-30"
     verifiedOn: "2026-10-14"
-    supports: "The enumerated reimbursable expenditures, the requirement for receipts, and the five year record retention rule."
+    supports: "The enumerated reimbursable expenditures, the requirement for receipts, and the six year record retention rule."
   - label: "Sentencia T-968 de 2009"
     url: "https://www.corteconstitucional.gov.co/relatoria/2009/t-968-09.htm"
     publisher: "Corte Constitucional de Colombia"
@@ -103,9 +103,9 @@ In the United States the answer depends on the state, and on whether a pre-birth
 
 Who may commission an arrangement is set explicitly in some systems and by practice in others, and the criteria that recur are genetic connection, marital or relationship status, and residency or citizenship.
 
-ASRM's state survey records, for example, that [Louisiana restricts surrogacy agreements to married heterosexual genetic intended parents](https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1). UK material describes eligibility for a parental order as set by legislation, so the criteria applied to you are the ones written into the statute, and confirming that you meet them is a lawyer's reading of your facts rather than something a general guide can settle.
+ASRM's state survey records, for example, that [Louisiana restricts surrogacy agreements to married heterosexual genetic intended parents](https://connect.asrm.org/lpg/resources/surrogacy-by-state?ssopc=1). UK material describes eligibility for a parental order as set by legislation, so the criteria applied to you are the ones written into the statute.
 
-There is a limit to how far general information can go here, and it is worth being direct about it: eligibility findings are specific to your facts. Two people with the same plan in the same state can get different answers. This site will tell you what a source says, and will not infer the rest.
+Eligibility turns on facts about you, not on the plan alone. Two people with the same plan in the same state can get different answers.
 
 **Ask:** does a lawyer admitted in this jurisdiction think I qualify, on these facts, in writing?
 
@@ -115,23 +115,23 @@ Payment rules vary from "negotiated between parties" to criminal prohibition, an
 
 - **United Kingdom.** Only the surrogate's reasonable expenses may be paid. [Paying anything more must be authorised by the family court before a parental order can be made](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), and [advertising for, or as, a surrogate is illegal](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/) under the Surrogacy Arrangements Act 1985.
 - **Canada.** A reimbursement model. Under the [Assisted Human Reproduction Act regulations](https://laws-lois.justice.gc.ca/eng/regulations/SOR-2019-193/page-1.html), expenditures incurred by a surrogate mother in relation to her surrogacy may be reimbursed, and [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates them, requires receipts, and requires records to be kept for six years.
-- **United States.** State by state; there is no federal framework, and each state sets its own rules.
+- **United States.** No federal rule; what may be paid is settled state by state.
 - **Greece.** Surrogacy requires a prior court decision under Civil Code article 1458, applied through article 13 of Law 3305/2005, and the arrangement is altruistic by statute: the agreement for a third woman to carry must be made without any consideration, while the costs of achieving the pregnancy, of carrying, giving birth and the postnatal period, and the carrier's lost earnings, are expressly not consideration, with the amounts set by the independent regulator. Since Law 5197/2025 (16 May 2025) both the intending parents and the surrogate must hold permanent residence in Greece. The [Greece page](/destinations/gr) cites each of these to its source: the 2005 provisions come from the gazette text itself, while the 2025 amendment is so far recorded from corroborating law-firm accounts, so its exact wording and any transitional provisions remain unconfirmed.
 
 **Ask:** what may lawfully be paid here, to whom, on what documentation, and what does a court do about it afterwards?
 
 ## Five. Recognition where you live
 
-This is where cross-border plans fail most often, and it is not a question about the destination's law. A couple may be permitted to commission a surrogacy in one country and still face an unresolved question about whether the child's parentage, birth registration or passport will be recognised at home.
+This is where cross-border plans fail most often. A couple may be permitted to commission a surrogacy in one country and still face an unresolved question about whether the child's parentage, birth registration or passport will be recognised at home.
 
-Nothing on this site answers that for you, and a provider who answers it confidently without being a lawyer in your country is not giving you information. It is giving you reassurance.
+No destination record answers this question, because it is about the country you are returning to. A provider who answers it confidently without being a lawyer there is not giving you information. It is giving you reassurance.
 
 ## How to use the destination pages
 
-The [destination pages](/destinations) are organised around these five questions, with one claim per source and a date for every check. Eight jurisdictions have a published record: the United States, the United Kingdom, Canada, Colombia, Greece, Georgia, Kazakhstan and Ukraine. Each record names the source for every claim and states plainly what is still unverified: for Colombia, that the newest decision it rests on is dated 18 April 2024 and later legislative developments could not be confirmed; for Greece, that the 2025 amendment's exact wording and transitional provisions are not yet confirmed against the gazette text itself.
+The [destination pages](/destinations) carry the first four of these, and whatever a source has published about cost, for eight jurisdictions: the United States, the United Kingdom, Canada, Colombia, Greece, Georgia, Kazakhstan and Ukraine. Each record names the source behind every position and says what remains unverified; for Colombia, that the newest decision it rests on is dated 18 April 2024, and that later legislative developments could not be confirmed.
 
 That has a consequence you should expect. A short list of destinations is not a statement that other countries are closed to you. It means the law of those places has not been read against its sources by anyone in a position to tell you what it says.
 
-## What this page is not
+## What no published guide can settle
 
-It is not legal advice, and it does not create any professional relationship. Legal applicability depends on jurisdiction and on facts about you that no published guide has. Where this page states a rule, it names the source and the date the link was last opened, so you can check whether it still says that. And where a question can only be answered by a lawyer admitted in the jurisdiction, on your facts, no general page can honestly answer it for you.
+What is here is not legal advice, and it creates no professional relationship. Whether a rule reaches your plan turns on facts about you that no guide can hold, which is why that part belongs to a lawyer admitted in the jurisdiction, answering in writing.

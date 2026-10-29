@@ -78,4 +78,4 @@ When you read a destination claim, ask which level it comes from. If a page cann
 
 If you end up with two viable destinations and two quotes, the comparison in the [quote tool](/tools/agency-quote-comparison) is the same exercise on the financial side: same rows, same requirement to name a payee, and no total that quietly assumes nothing is missing.
 
-This page is a method, not advice about any country or program. Nothing here determines whether a destination is available to you, and that question needs a qualified lawyer in the relevant jurisdiction.
+What is set out here is a method, not advice about any country or program. Nothing here determines whether a destination is available to you, and that question needs a qualified lawyer in the relevant jurisdiction.

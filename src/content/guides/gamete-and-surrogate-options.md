@@ -21,10 +21,10 @@ three, and they are separable. Whose egg. Whose sperm. Who carries the pregnancy
 own medical step, its own consent document, and its own set of questions that only a lawyer, a
 clinic or an escrow administrator can answer for your situation.
 
-This page does not answer those questions. It shows what each choice changes, so you can see which
-questions you are actually creating, and put them to someone who can say something about your facts.
+Each choice changes what has to be asked next: which questions you are actually creating, and who
+can answer them on your facts.
 
-## Words this site uses
+## The words used here
 
 Getting the vocabulary straight is worth five minutes, because providers use these terms loosely and
 a contract will use one of them precisely.
@@ -37,8 +37,8 @@ a contract will use one of them precisely.
   genetically related to the child.
 - **Intended parents**: the people planning to raise and to be recognised as the child's parents.
 
-The distinction that matters most is the last one. Whether the carrier is genetically related to the
-child changes which questions exist, not merely how difficult they are.
+The distinction that carries the most weight is whether the carrier is genetically related to the
+child. It changes which questions exist, not merely how difficult they are.
 
 ## What each combination puts in motion
 
@@ -70,14 +70,13 @@ Questions worth asking, and the party that normally owns each one:
   ever obtain information, and whether the rules in place when you contract are rules that will still
   apply in twenty years. A lawyer and the relevant register answer this, not the agency.
 - **What happens to what is left.** Remaining embryos or stored gametes after your family is complete,
-  who decides, and who pays to keep them. This is where a written answer diverges from a spoken one
-  most often.
+  who decides, and who pays to keep them.
 - **Withdrawal of consent.** Whether the donor can withdraw before transfer, and what that does to
   your money and your timeline.
 
-The last two are the ones that cost the most to leave unasked, and they are also the ones most often
-answered verbally and never written down. Send them from the [agency question checklist](/tools/agency-question-checklist)
-and require the answer in writing.
+The last two cost the most to leave unasked, and they are also the ones most often answered verbally
+and never written down. Send them from the [agency question checklist](/tools/agency-question-checklist),
+and do not accept a spoken reply.
 
 ## The carrier has a position of her own
 
@@ -107,9 +106,9 @@ carrying the pregnancy is genetically related to the child, the questions you we
 parentage become harder, not merely more expensive, and they have to be asked before any treatment
 rather than at birth.
 
-This is not a judgment about whether such an arrangement can work anywhere. It is a note that the
-list of things a lawyer must confirm gets longer, and that a provider who describes it as a routine
-variation is worth pressing on exactly which documents they have in mind.
+That is not a judgment about whether such an arrangement can work anywhere. The list of things a
+lawyer must confirm gets longer, and a provider who describes it as a routine variation is worth
+pressing on exactly which documents they have in mind.
 
 ## The order in which these constrain each other
 
@@ -128,17 +127,16 @@ is still available afterwards:
 People who start with a country and then discover they need a donor egg usually have to start the
 research again. That is the specific waste this ordering avoids.
 
-## What this page does not tell you
+## What still needs someone with your facts
 
-It does not recommend a program, a clinic or a gamete provider. It does not state what any country
-permits, or what any of these arrangements does to your legal position there. It gives no success
-figures, because a figure about outcomes is a claim a provider makes about itself, and repeating
-such a claim would lend it a credibility it has not earned.
+Which program, clinic or gamete provider suits you, what any country permits, and what these
+arrangements do to your legal position there: none of that is settled by a general guide. There are no
+success figures here either. A number about outcomes is a claim a provider makes about itself, and
+repeating it would lend it a credibility it has not earned.
 
-What it does give you is the shape of the question list, and the name of the party who owes you an
-answer.
+What is here is the shape of the question list, and the name of the party who owes you an answer.
 
-## Questions people ask about this page
+## Questions people ask
 
 **Do we have to decide about donors before choosing a country?**
 Before you research seriously, yes. Whether you need donor gametes changes which clinics can serve
@@ -146,9 +144,8 @@ you, and therefore which countries are worth the work of checking. Deciding afte
 research.
 
 **Does using a donor make the legal side harder?**
-It changes which questions exist. Whether that is harder, easier or irrelevant depends on the place
-and on your own status, which is exactly the kind of question that has to be put to a lawyer who can
-answer it about your facts rather than read generally.
+It is not a matter of harder or easier. A donor changes who has to answer, and what has to be asked.
+That answer depends on the place and on your own status, so it belongs to a lawyer reading your facts.
 
 **Can we change our minds once treatment has started?**
 Some choices are revisable at the cost of money and time, and others stop being available once a

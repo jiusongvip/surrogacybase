@@ -89,5 +89,5 @@ Averaging across that distribution produces a number that describes no actual pr
 
 That is more work than reading a headline number, and it is the only version that survives contact with an actual invoice.
 
-This page is information about how surrogacy cost data is produced. It is not financial advice, and no figure here is a quote for your situation.
+What is described here is how surrogacy cost data gets produced. It is not financial advice, and no figure here is a quote for your situation.
 

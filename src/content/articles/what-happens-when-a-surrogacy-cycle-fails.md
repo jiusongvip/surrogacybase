@@ -87,8 +87,8 @@ After a failure, ask for the primary documents rather than an account: what was 
 
 Put these into [the question checklist](/tools/agency-question-checklist) alongside the financial ones, and read the answers against [the document set that should exist before a first transfer](/articles/what-must-be-signed-before-the-first-transfer). The figures a failed cycle leaves behind, in storage fees and repeat medication, are worth entering in [the cost figures tool](/tools/cost-figures) as their own lines rather than absorbed into a package.
 
-## What this does not settle
+## What the guidance does not settle
 
 Nothing above tells you how likely a failure is. Published carrier data counts transfers, and [why that number reads differently from a journey](/articles/what-40177-transfers-do-not-promise-you) is a separate problem from the paperwork it leaves. And the guidance quoted here is written for the United States; enforceability, parentage and what a contract can require vary widely by destination, which is what [the process guide](/guides/surrogacy-process) and your own lawyers are for.
 
-This page describes what US professional guidance states and the dates it was written. It is not legal or medical advice, and the clauses that bind you are in your own agreement.
+What is set out above is what US professional guidance states, with the dates it was written. It is not legal or medical advice, and the clauses that bind you are in your own agreement.

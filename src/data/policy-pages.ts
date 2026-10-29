@@ -92,7 +92,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       'Most search results about surrogacy are written by the parties selling it. A source that is also a sales channel is not neutral, so the difference here has to be the bar a claim clears before it appears. That bar is written down so you can hold us to it.',
     levelsHeading: 'Three evidence levels',
     levelsIntro:
-      'Every page declares which level it sits at, in a note under the title. This is the honest version of a badge: it tells you what kind of claim you are reading, not how confident we feel.',
+      'Every page declares which level it sits at, in a note under the title. The note says what kind of claim you are reading, not how confident we feel.',
     levels: [
       {
         name: 'Verified',
@@ -146,8 +146,8 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
         p: 'These pages are signed with the name of the team that writes and maintains them, and each page states that the medical advisory board carries the clinical review. Where an individual reviewer is named, the About page lists that person with their role and a public credential, and the credit is used only after they have completed a review cycle and agreed to it. The review checks what a source says and where it applies; it is not an endorsement of a reader’s own plan.',
       },
       {
-        h: 'Silence is a valid editorial decision',
-        p: 'Some subjects have no reliable public source. Rather than paraphrase marketing copy or a forum post, those pages are not published. Short sections in a large niche are usually a sign the sourcing bar held, not that the work was skipped.',
+        h: 'Not publishing is also a decision',
+        p: 'Some subjects have no reliable public source. Rather than paraphrase marketing copy or a forum post, those pages are not published.',
       },
     ],
     correctionsHeading: 'Updates, dates and corrections',
@@ -158,97 +158,97 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
     moneyHeading: 'Independence and money',
     commercial: [
       'These pages are published by the editorial team and reviewed by the medical advisory board, both named on the About page.',
-      'Paid placements, referral fees and sponsorships are not accepted while the site presents itself as independent. If any commercial relationship is introduced, this page and the affected pages disclose it before the arrangement starts.',
+      'While the site operates independently it takes no paid placement, referral fee or sponsorship. If any commercial relationship is introduced, the affected pages disclose it before the arrangement starts.',
       'Providers are not paid to be included, and inclusion is not an endorsement.',
       'Corrections from a named party are handled the same way as corrections from anyone else.',
     ],
     imageryHeading: 'Imagery',
     imageryBody:
-      'Where a page carries a picture, it is a stock photograph chosen for that page’s subject: documents, a courthouse, a bank vault, an airport hall. No picture claims to document anyone’s own surrogacy, no surrogate, intended parent or child appears in one, and no photograph of an identifiable person is used at all. The photographs come from a library whose licence allows commercial use without crediting the photographer, and the source of each is kept on record. The choice is deliberate: on this subject a staged family photograph either depicts something that did not happen or borrows a real family’s circumstances to sell something to a stranger, so the pictures here stay with the documents and the places a decision actually involves.',
+      'Where a page carries a picture, it is a stock photograph chosen for that page’s subject: documents, a courthouse, a bank vault, an airport hall. No picture claims to document anyone’s own surrogacy, no surrogate, intended parent or child appears in one, and no photograph of an identifiable person is used at all. The photographs come from a library whose licence allows commercial use without crediting the photographer, and the source of each is kept on record. On this subject a staged family photograph would either depict something that did not happen or borrow a real family’s circumstances to sell something to a stranger, so the pictures here stay with the documents and the places a decision actually involves.',
     revised: 'Policy last revised {date}.',
   },
   zh: {
     title: '编辑方针',
-    titleTag: '编辑方针：我们如何核实一条说法',
+    titleTag: '编辑方针：本站如何核实一条陈述',
     description:
-      'SurrogacyBase 在发表一条说法之前适用的标准：证据等级、来源记录、法域限定、费用数据、更正流程与商业披露。',
+      'SurrogacyBase 在发表一条陈述之前适用的标准：证据等级、来源记录、法域限定、费用数据、更正流程与商业披露。',
     eyebrow: '以下标准适用于每一篇指南、每一篇专题解读和每一个目的地页面',
-    h1: '我们如何做研究',
+    h1: '我们如何开展研究',
     intro:
-      '关于代孕的搜索结果，大多数出自出售这项服务的一方之手。一个既是信息来源又是销售渠道的主体并不中立，所以这里的差别必须体现在一条说法发表之前要跨过的门槛上。这道门槛写在下面，您可以据此问责我们。',
+      '关于代孕的搜索结果，多数出自出售该项服务的一方。一个既为信息来源又为销售渠道的主体并不中立，因此此处的差别必须体现于一条陈述发表之前所须跨过的门槛。该标准列于下文，您可据此核对本站的做法。',
     levelsHeading: '三个证据等级',
     levelsIntro:
-      '每个页面都在标题下方的一行注明自己处于哪个等级。这是徽章的诚实版本：它告诉您正在阅读的是哪一类说法，而不是我们对它有多有信心。',
+      '每个页面均在标题下方的一行注明其所处等级。该行标明的是您阅读的是哪一类陈述，而非我们对其所持的信心程度。',
     levels: [
       {
         name: '已核实',
-        body: '正文里每一条事实性说法都可以追溯到它下方列出的某个来源。一句话如果追不出来源，就不会以这个等级发表。',
+        body: '正文中每一条事实性陈述均可追溯至其下方所列的某一来源。无法追溯来源的陈述，不会以此等级发表。',
       },
       {
         name: '方法框架',
-        body: '这个页面教的是方法：该问什么、该查什么、怎么读一份文件。它对外部世界不作任何断言，因此不需要引证，也不会过期。',
+        body: '此类页面教授的是方法：应提出哪些问题、应核查哪些来源、如何阅读一份文件。其不对外部世界作出任何断言，因此无须引证，亦不会过期。',
       },
       {
         name: '草稿',
-        body: '已写完但未发表。您不会在站内遇到草稿：一个页面只有达到上面两个等级中的一个之后才会出现。',
+        body: '已撰写完成但尚未发表。站内不会出现草稿：一个页面仅在达到上述两个等级之一后方才发布。',
       },
     ],
     sourceHeading: '一条来源记录包含什么',
-    sourceIntro: '引证只有在您能重新核查它时才有用。每个页面下的每一条来源都带六项内容。',
-    sourceCaption: '已核实页面上的每一条来源都要记录，目的地的具体事实同样如此。',
+    sourceIntro: '引证只有在您能够重新核查它时才具备价值。每一页面下的每条来源均包含六项内容。',
+    sourceCaption: '已核实页面上的每条来源均须记录，目的地的具体事实亦然。',
     sourceFields: [
-      ['引证里的那行文字', '您在引证里看到的就是这一项。'],
-      ['链接', '一个打得开的地址。需要登录才能看到的来源会照此标注。'],
-      ['发布方', '对这条陈述负责的组织，而不是转载它的网站。'],
-      ['发布日期', '发布方自己说明这份文件写成或最后修订的时间。'],
-      ['核查日期', '有人打开这个链接并读过它的日期。会过期的正是这一项。'],
-      ['它支持的说法', '这份文件具体支持的那条说法，以便您核对它是否真的支持。'],
+      ['引证中的该行文字', '您在引证中所见即为该项内容。'],
+      ['链接', '一个可以打开的地址。需登录方可查阅的来源会照此标注。'],
+      ['发布方', '对该条陈述负责的组织，而非转载它的网站。'],
+      ['发布日期', '发布方自身说明该文件写成或最后修订的时间。'],
+      ['核查日期', '有人打开该链接并加以阅读的日期。会过期的正是这一项。'],
+      ['该文件具体支持的论断', '文件所支持的那一条论断，以便您核对它是否确实予以支持。'],
     ],
     methodBody:
-      '核查是怎么做的，直说：每一个被引用的地址都会被打开，并与它挂着的那句话逐句对照，使用自动化研究工具并在编辑审校之下完成，核查的日期会被记录。打不开、或者只能在登录后打开的页面，会照实写明，而不会绕过去。没有任何引证是为了让页面看起来做过研究而添加的。',
+      '核查的做法为：每一个被引用的地址均会被打开，并与其所支撑的陈述逐句对照；此一步骤以自动化研究工具完成，并在编辑审校之下进行，核查日期会被记录。无法打开或仅能在登录后查阅的页面，会照实写明，而不会加以规避。不会为使页面呈现经过研究的表象而添加引证。',
     supportsNote:
-      '这六项里最要紧的是最后一项，因为引证的过期与页面的过期是两条独立的时间线。一份文件可以仍然打得开、仍然在说些什么，却已经不再支持当初挂在它旁边的句子。核对这一对关系才是审校要做的事，只重读页面本身并不够。',
+      '上述六项中最为关键的是最后一项，因引证的过期与页面的过期属两条独立的时间线。一份文件可以仍然打得开、仍然表述某些内容，却已不再支持当初置于其旁的陈述。核对这一对应关系才是审校应做的事，仅重读页面本身并不充分。',
     rulesHeading: '会改变发表结果的几条规则',
     rules: [
       {
-        h: '没有带日期的来源，就不引用费用数据',
-        p: '费用数据、成功率、等待时间与周期次数，只在同时写明公布它的组织、日期以及（若披露）统计方法时才会出现。如果唯一可得的数据来自出售这项服务的乙方，页面会把它标为自我申报，并说明是否披露了方法。若没有数据能通过这一标准，页面会说明如何自行核实，而不是编造一个区间。',
+        h: '无带日期的来源，即不引用费用数据',
+        p: '费用数据、成功率、等待时间与周期次数，仅在同时写明公布该数据的组织、日期以及（若已披露）统计方法时方予呈现。若唯一可得的数据出自出售该项服务的乙方，页面会将其标注为自我申报，并说明是否披露了方法。若无数据能够满足上述标准，页面会说明应如何自行核实，而非编造一个区间。',
       },
       {
-        h: '法域是说法的一部分',
-        p: '在某个州、省或国家成立的规则，绝不写成好像在其他地方也成立。目的地页面把每一句话限定在它来源的那个法律体系内，意向父母的准入条件也只写到有来源的材料所覆盖的范围。本站没有任何内容是关于您自身情况的法律意见。',
+        h: '法域属于陈述本身的一部分',
+        p: '在某一州、省或国家成立的规则，绝不表述为在其他地方同样成立。目的地页面将每一条陈述限定于其来源所属的法律体系之内，意向父母的准入条件亦仅写至有来源的材料所覆盖的范围。本站不存在任何针对您自身情况的法律意见。',
       },
       {
-        h: '我们不从某个法律体系推算到您个人',
-        p: '读到某个法域允许某事，并不能确立您可以走这条路，也不能确立您的本国承认这一结果。跨国的亲权与证件问题，要交给相应体系里合格律师判断；触及这些内容的页面会在正文里说明，而不是放在脚注。',
+        h: '本站不从某一法律体系推定至您的个人情形',
+        p: '读到某一法域允许某事，并不能确立您可采用该路径，亦不能确立您的本国将承认这一结果。跨国的亲权与证件问题，应交由相应体系内具执业资格的律师判断；触及上述内容的页面会在正文中予以说明，而非置于脚注。',
       },
       {
         h: '不做排名，不做最佳名单',
-        p: '服务方不被排名、打分或列入优选名单，因为一个站得住的排名需要关于方案、付款与结果的经审计数据，而这些数据并不公开存在。当某个官方机构点名列出组织时，我们报告那次点名，以及它意味着什么、不意味着什么。',
+        p: '本站不对服务方进行排名、打分或列入优选名单，因一项站得住的排名需要有关方案、付款与结果的经审计数据，而此类数据并不公开存在。当某一官方机构点名列出相关组织时，本站报告该次点名，以及其意味着什么、不意味着什么。',
       },
       {
         h: '署名声称了什么，没有声称什么',
-        p: '这些页面以编写并维护它们的团队名义署名，每一页还写明临床审阅由医学顾问委员会承担。若署名为某位个人审阅人，关于页会列出其姓名、职务与一个可公开核对的资历，并且只在本人完成一轮审阅并同意之后才使用这项署名。审阅核对的是来源说了什么、适用于哪里，不是为某位读者自己的方案背书。',
+        p: '这些页面以编写并维护它们的团队名义署名，每一页另写明临床审阅由医学顾问委员会承担。若署名为某位个人审阅人，关于页将列出其姓名、职务与一项可公开核对的资历，并且仅在本人完成一轮审阅并表示同意之后方使用该项署名。审阅所核对的是来源表述了什么、适用于何处，而非为任何读者自身的方案背书。',
       },
       {
-        h: '不写，本身就是一种有效的编辑决定',
-        p: '有些主题没有可靠的公开来源。我们宁可不做转述宣传稿或论坛帖子的页面，也不发表它们。一个大领域里出现很短的章节，通常说明来源门槛守住了，而不是工作被跳过了。',
+        h: '不发表亦是一项决定',
+        p: '部分主题不存在可靠的公开来源。此类页面不予发表，亦不转述宣传稿或论坛帖子。',
       },
     ],
     correctionsHeading: '更新、日期与更正',
     correctionsBody:
-      '如果您发现某条说法连它自己的来源都不再支持，请告诉我们。处理方式要么是改正这条说法，要么是在核查期间先把它撤下。',
-    datesBody: '一个页面会显示它首次发表的日期，以及最后一次实质修改的日期。只把修改日期刷新而内容不变，不算更新，这里不会发生。每个页面还带一个必须重新核查其来源的期限日期。',
-    moneyHeading: '独立性与金钱',
+      '若您发现某条陈述连其自身的来源亦不再支持，请告知本站。处理方式为改正该条陈述，或在核查期间将其暂时撤下。',
+    datesBody: '每个页面均显示其首次发表的日期，以及最后一次实质修改的日期。仅刷新修改日期而内容不变，不构成更新，本站不会如此处理。每个页面另附一个必须重新核查其来源的期限日期。',
+    moneyHeading: '独立性与资金',
     commercial: [
-      '这些页面由编辑团队发布、由医学顾问委员会审阅，两者的名称都写在关于页上。',
-      '本站以独立自居期间，不接受付费排位、转介费与赞助。如果将来引入任何商业关系，本页与受影响的页面会在这项安排开始之前披露它。',
-      '服务方不会付费换取被收录，被收录也不构成背书。',
-      '来自具名一方的更正与其他任何人的更正走同样的流程。',
+      '这些页面由编辑团队发布、由医学顾问委员会审阅，两者的名称均载于关于页。',
+      '只要本站保持独立运营，即不接受付费排位、转介费与赞助。若日后引入任何商业关系，受影响的页面将在此项安排开始之前予以披露。',
+      '服务方不会付费换取被收录，被收录亦不构成背书。',
+      '来自具名一方的更正与其他任何人的更正适用同样的流程。',
     ],
     imageryHeading: '配图',
     imageryBody:
-      '本站的配图是与该页主题相关的图库照片：文件、法院大楼、银行金库、机场候机楼。没有一张照片声称记录某个家庭的真实处境，画面里不出现代孕者、意向父母或孩子，也不使用任何能被认出身份的人像。照片来自允许商用、无需署名的图库，每一张的来源与授权都有留存记录。这个选择是刻意的：在代孕这个话题上，一张摆拍的家庭照片要么呈现一个并没有发生过的场景，要么是拿一个真实家庭的处境向陌生人兜售东西，所以这里的画面只停留在决定真正涉及的文件与场所上。',
+      '若某一页面配图，该图选取的是与该页主题相关的图库照片：文件、法院建筑、银行金库、机场候机楼。所有照片均不声称记录任何家庭的真实处境，画面中不出现代孕者、意向父母或孩子，亦不使用任何可被识别身份的人像。照片取自允许商用、无需署名的图库，每一张的来源与授权均有留存记录。就代孕这一主题而言，一张摆拍的家庭照片要么呈现的是并未发生的场景，要么是以一个真实家庭的处境向陌生人作推销，因此本站的画面仅呈现该项决定实际涉及的文件与场所。',
     revised: '方针最近修订于 {date}。',
   },
 };
@@ -264,7 +264,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       'What SurrogacyBase stores and does not store: pages that set no cookies, a quote tool that keeps nothing at all, and how any information you send us is handled.',
     h1: 'Privacy',
     intro:
-      'This page describes what actually happens when you read this site and use its tools. It promises only what the site really does, which is why it is shorter than most privacy policies.',
+      'What follows describes what actually happens when you read this site and use its tools, and claims nothing beyond that.',
     shortHeading: 'The short version',
     shortBody:
       'Nothing you read here is stored about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you choose to send us through the enquiry form or by email.',
@@ -287,7 +287,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
         body: 'Once you send an enquiry from your own mail client, we hold what you chose to include, for as long as we need to answer and record the outcome. Do not send anything you would not want repeated back to you in an email thread.',
       },
     ],
-    avoidedHeading: 'What we deliberately do not do',
+    avoidedHeading: 'What this site does not do',
     avoided: [
       'No analytics, advertising, A/B or session-recording scripts are installed.',
       'No third-party embeds, videos, maps or fonts loaded from another company on your behalf.',
@@ -315,58 +315,58 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   },
   zh: {
     title: '隐私',
-    titleTag: '隐私政策：本站存了什么、不存什么',
+    titleTag: '隐私政策：本站保存什么、不保存什么',
     description:
-      'SurrogacyBase 存了什么、没存什么：不设置 cookie 的页面、什么都不留存的报价工具，以及您主动发给我们的信息如何被处理。',
+      'SurrogacyBase 保存了什么、未保存什么：不设置 cookie 的页面、不留存任何数据的报价工具，以及您主动发送的信息如何被处理。',
     h1: '隐私',
     intro:
-      '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
+      '以下内容陈述您阅读本站、使用这些工具时的实际数据处理情形，不作超出此范围的承诺。',
     shortHeading: '简短版',
     shortBody:
-      '您在这里读到的内容，不会被存成关于您的任何信息。使用这些工具同样不会，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您通过问询表单或电子邮件主动发给我们的那部分。',
-    storedHeading: '存了什么，存在哪里',
+      '您在本站阅读的内容不会被保存为任何关于您的信息。使用这些工具同样不会，因为全部运算均在您的浏览器内完成。我们唯一持有的信息，为您通过问询表单或电子邮件主动发送的内容。',
+    storedHeading: '保存了什么，保存在哪里',
     stored: [
       {
         h: '浏览本站',
-        body: '本站没有任何系统会监视您读了哪些页面。它不设置任何 cookie，也不在您阅读时于您的浏览器里存储关于您的任何内容。这里没有账户、没有登录、没有个人档案，因此不存在一个可以用来关联您阅读历史的标识符。问询表单唯一会向本站问一次的信息，是这次请求看起来来自哪个国家，而且只在表单出现在您屏幕上时才问。这个答案回到您的浏览器就结束了，只用来把区号和更可能用到的联系方式排到前面。它不会被写在任何地方，也不会附在问询里。',
+        body: '本站不设任何监测您阅读行为的系统。它不安装任何 cookie，也不在您阅读时于您的浏览器内存储任何关于您的内容。本站不提供账户、登录或个人档案，因此不存在可用于关联您阅读历史的标识符。问询表单仅有一项信息会向本站查询一次，即本次请求看似来自哪一国家，且仅在表单展示于您的屏幕时才查询。该答案返回您的浏览器后即终止，仅用于将区号及更可能适用的联系方式前置排列。它不会被写入任何位置，也不会随问询附带。',
       },
       {
         h: '报价对比工具',
-        body: '表格上的成本已经印在页面里，您要键入的只是两列金额。您键入的内容不会离开这个标签页，也没有被写下来：这个工具背后没有任何存储，关掉页面这些金额就消失了，而您下载的那份文档就是它唯一的副本。',
+        body: '表格中的成本项已预置于页面，您只需键入两列金额。您键入的内容不会离开该标签页，也不会被记录：该工具背后没有任何存储，关闭页面后这些金额即不再存在，您下载的文档是其唯一副本。',
       },
       {
         h: '问询表单',
-        body: '它是本站唯一的表单。它会问一个手机号码、一个可以联系到您的即时通讯账号（WhatsApp、微信、LINE、Messenger 或 Telegram），以及选填的称呼和您想弄清的问题。没有任何一格要求身份证件、出生日期、预算金额或病历，表单里也没有附上文件的位置。当您按下发送，表单会把上述内容、您所在的页面以及您阅读的界面语言发送到我们自己的问询收件箱。这个收件箱通过飞书或企业微信接收，它们只是站长本人读取并回复问询的工具，问询内容不会转给任何诊所、机构、律师或广告商。如果投递尚未配置或投递失败，表单会改为在您的浏览器里展示问询，并提供三种发送方式：邮件应用、复制或下载为文件。草稿会留在这个浏览器里，以便一份写了一半的问询在重新打开页面后仍然还在；清除这个域名的站点数据会移除它。',
+        body: '它是本站唯一的表单。它会询问一个手机号码、一个可联系到您的即时通讯账号（WhatsApp、微信、LINE、Messenger 或 Telegram），以及选填的称呼与需要澄清的问题。没有任何一格要求身份证件、出生日期、预算金额或病历，表单也不提供文件附件途径。按下发送后，表单会将上述内容、您所在的页面以及您阅读的界面语言发送至我们自己的问询收件箱。该收件箱经由飞书或企业微信接收，二者仅为站长本人读取与回复问询的工具，问询内容不会转给任何诊所、机构、律师或广告商。若投递尚未配置或投递失败，表单将改为在您的浏览器内展示问询，并提供三种发送方式：邮件应用、复制或下载为文件。草稿留存于该浏览器，以便未完成的问询在重新打开页面后仍然存在；清除该域名的站点数据即可将其移除。',
       },
       {
-        h: '您直接发给我们的信息',
-        body: '一旦您从自己的邮件客户端发出一份问询，我们就持有您选择写入的内容，保留到足以回答并记录结果为止。不要发送任何您不希望在一封邮件往来中被复述回来的东西。',
+        h: '您直接发送给我们的信息',
+        body: '一旦您从自己的邮件客户端发出一份问询，我们即持有您选择写入的内容，保留至足以回答并记录结果为止。请勿写入您不希望出现在邮件往来中的内容。',
       },
     ],
-    avoidedHeading: '我们刻意不做的事',
+    avoidedHeading: '本站不做的事',
     avoided: [
       '没有安装任何分析、广告、A/B 测试或会话录制脚本。',
       '没有任何第三方嵌入、视频、地图，也没有代您从另一家公司加载的字体。',
       '不以阅读或使用工具为条件，收集健康、生育、怀孕或家庭细节。',
-      '不出售、不出租任何关于您的东西，也不在接收和保存问询的业务工具之外分享它们。',
+      '任何关于您的信息都不出售、不出租，也不会分享给接收与保存问询的业务工具之外的任何一方。',
     ],
     avoidedTail:
-      '当链接离开本站时，适用目标网站自己的政策。引证指向官方登记机构、法院、代孕机构与诊所，而那些页面可以设置我们无法控制的 cookie。',
-    strictHeading: '本站为什么尽量不收集您的数据',
+      '当链接指向站外时，适用目标网站自身的政策。引证指向官方登记机构、法院、代孕机构与诊所，相关页面可设置我们无法控制的 cookie。',
+    strictHeading: '本站为何尽量不收集您的数据',
     strictBody:
-      '代孕问题紧邻医疗、家庭与身份信息，而一次问询可能在您还没有作出任何决定之前就把您的身份暴露出来。因此设计上的选择是一开始就不去收集，而不是事后承诺小心处理。工具无需邮箱地址即可使用；没有任何内容被挡在注册之后；本站也不问您来这里是为了什么。',
+      '代孕议题紧邻医疗、家庭与身份信息，一次问询可能在您尚未作出任何决定之前即暴露您的身份。因此设计上的选择是自始不收集，而非事后承诺审慎处理。工具无需邮箱地址即可使用；没有任何内容置于注册之后；本站亦不询问您的来意。',
     contactHeading: '如果您联系我们',
     contact: [
-      '一次问询只应包含理解这个问题所需的内容。其他人的姓名、病历、合同文件与付款信息，都不是开始一场「该核查什么」的对话所必需的。',
-      '问询表单只问开始这场对话所需的内容：一个手机号码、一个即时通讯账号，以及选填的称呼和用您自己的话写下的问题。它没有附上文件的途径。投递已配置时，按下发送会把上述内容送达我们通过飞书或企业微信接收的内部收件箱；未配置时，表单会把问询交给您的邮件应用、剪贴板或一个下载的文件。',
-      '关于他人的文件属于那些人本人。未经同意，不要发送代孕者的、诊所的或另一位意向父母的材料。',
+      '问询应仅包含理解该问题所需的内容。其他人的姓名、病历、合同文件与付款信息，均非开启「应核查什么」这一对话所必需。',
+      '问询表单只询问开启这场对话所需的内容：一个手机号码、一个即时通讯账号，以及选填的称呼与以您自己的表述写下的问题。该表单不提供文件附件途径。投递已配置时，按下发送会将上述内容送达我们通过飞书或企业微信接收的内部收件箱；未配置时，表单会将问询交给您的邮件应用、剪贴板或一个下载的文件。',
+      '关于他人的文件属于那些人本人。未经同意，请勿发送代孕者的、诊所的或另一位意向父母的材料。',
     ],
     operatorHeading: '本站由谁运营',
     operatorIntro:
-      'SurrogacyBase 由 {team} 发布，署名里的临床审阅由 {board} 完成。问询、更正，以及关于您发来的任何信息的请求，都寄往同一个地址：{email}。通过表单提交的问询也会保存在我们通过飞书或企业微信接收的内部收件箱里，保留到足以回答并记录结果为止。',
+      'SurrogacyBase 由 {team} 发布，署名里的临床审阅由 {board} 完成。问询、更正，以及关于您发送的任何信息的请求，均寄往同一地址：{email}。通过表单提交的问询也会保存在我们通过飞书或企业微信接收的内部收件箱里，保留至足以回答并记录结果为止。',
     rightsBody:
-      '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。如果您通过表单发过问询，可以要求我们从内部收件箱中删除它。如果您使用工具，删除其实已经在您自己手里：在浏览器设置里清除本站的数据。',
-    revised: '隐私政策最近修订于 {date}。实质性变更会在本页留下一条带日期的说明，而不会在不说明的情况下改写。',
+      '在适用法律允许的范围内，您可以询问我们关于您持有什么、要求更正，或要求删除。若您曾通过表单提交问询，可要求我们自内部收件箱中删除。若您使用的是工具，删除实际上已由您掌握：在浏览器设置中清除本站的数据。',
+    revised: '隐私政策最近修订于 {date}。实质性变更会在此留下带日期的说明，而非无声改写。',
   },
 };
 
@@ -381,10 +381,10 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
       'What SurrogacyBase material is: published information rather than advice, dated sources rather than guarantees, and tools that organise your own inputs.',
     h1: 'Terms of use',
     intro:
-      'Written plainly because a page about high-stakes decisions should not hide its boundaries behind vocabulary you have to decode.',
+      'These terms are written in plain language, and each limit is stated where it applies.',
     acceptance:
-      'By using this site you accept these terms. If you do not accept them, the useful move is to leave, not to read carefully and use it anyway.',
-    boundaryHeading: 'The boundary of what this is',
+      'By using this site you accept these terms. If you do not accept them, please do not use the site.',
+    boundaryHeading: 'What these pages are, and what they are not',
     terms: [
       {
         h: 'This is published information, not advice given to you',
@@ -420,41 +420,41 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
     title: '条款',
     titleTag: '使用条款：SurrogacyBase 内容的定位',
     description:
-      'SurrogacyBase 的内容边界的说明：它是发布出来的信息而非建议，是带日期的来源而非保证，也是一组整理您自己输入的工具。',
+      'SurrogacyBase 内容边界的说明：其定位为发布的信息而非建议，为带日期的来源而非保证，亦为一组仅整理您自身输入的工具。',
     h1: '使用条款',
-    intro: '用平实的话写，因为一个关于高风险决策的页面，不该把自己的边界藏在您需要破译的用词后面。',
+    intro: '本条款以平实语言书写，每一项限制均在其适用之处予以载明。',
     acceptance:
-      '使用本站即表示您接受这些条款。如果您不接受，有用的动作是离开，而不是仔细读完之后照样使用。',
-    boundaryHeading: '这是什么、不是什么的那条边界',
+      '使用本站即视为您接受本条款；若您不接受，请勿使用本站。',
+    boundaryHeading: '这些页面是什么，不是什么',
     terms: [
       {
-        h: '这是发布出来的信息，不是给您的建议',
-        body: '指南、专题解读与目的地页面描述某个来源说了什么、它适用于哪里。它们不是法律建议、医学建议、心理建议或财务建议，阅读其中任何一篇都不与任何人建立委托、医患或专业关系。一条规则是否触及您的情况，取决于您的法域、您的事实，以及您委托的那位合格专业人士。',
+        h: '本内容为发布的信息，而非向您提供的建议',
+        body: '指南、专题解读与目的地页面陈述某一来源的内容及其适用范围。它们不构成法律、医学、心理或财务建议，阅读其中任何一篇均不成立与任何人之间的委托、医患或专业关系。一条规则是否适用于您的情形，取决于您的法域、您的事实，以及您所委托的合格专业人士。',
       },
       {
-        h: '不核实活的来源，就不要据一个页面行事',
-        body: '成文法、法规、法院裁判、机构政策与价格都会变化，而页面描述的是某份文件在它旁边记录的那个日期上说过什么。在您依据这里的任何内容签字、付款或出行之前，请打开被引用的来源，核对它是否仍然如页面所述，并与相应体系里的专业人士确认您自己的位置。',
+        h: '在核对现行来源之前，请勿依据页面行事',
+        body: '成文法、法规、法院裁判、机构政策与价格均会变动，而页面陈述的是某份文件在其旁所记录日期上的内容。在您依据本站内容签署、付款或出行之前，请查阅被引用的来源，核对其是否仍与页面所述一致，并与相应体系中的专业人士确认您自身的处境。',
       },
       {
-        h: '别人的话属于别人',
-        body: '来自法院、监管机构、诊所、机构与出版方的引文和摘要，被转载是为了辨明他们陈述了什么。一个链接或一条引证不是背书；被此处引用的服务方并未同意任何事情，除非它自己这样说。服务方作出的陈述，责任仍归该服务方。',
+        h: '第三方言论的归属与责任',
+        body: '来自法院、监管机构、诊所、机构与出版方的引文和摘要，转载或摘要仅为还原其陈述内容。一个链接或一条引证不构成背书；除其自身明确表示外，被本站引用的服务方并未对任何内容表示同意；服务方所作陈述的责任仍由该服务方承担。',
       },
       {
-        h: '工具整理您的输入，不评判某个服务方',
-        body: '报价对比工具的算术反映您填入的内容。在两份报价的范围一致之前，两个总额之间的差额并不等于成本差异；这个工具产出的任何内容，都不构成我们对某个服务方是否合法、是否胜任、是否值得付费的意见。',
+        h: '工具仅整理您的输入，不评价任何服务方',
+        body: '报价对比工具的计算结果反映您所填入的内容。在两份报价的涵盖范围趋于一致之前，两个总额之间的差额并不等同于成本差异；本工具产出的任何内容，均不构成我们对某一服务方是否合法、是否胜任或是否值得付费的意见。',
       },
       {
         h: '材料的使用',
-        body: '您可以阅读、链接、引用并打印这些材料，用于您自己的决定，或用于与您自己的律师或诊所的讨论，引用时请注明出处并附上链接。不要整批转载、不要当作您自己的研究呈现、也不要用来为某项服务做营销。我们引用的页面之所以被选中，是因为它们可以打开并重新核查；当您把一条说法转述给别人时，请保留那条引证。',
+        body: '您可以阅读、链接、引用并打印这些材料，用于您自身的决策，或用于与您自己的律师或诊所的讨论，引用时请注明出处并附上链接。请勿整批转载、不得将其作为您自己的研究成果呈现，亦不得用于为某项服务进行营销。本站所选引用页面均可打开并重新核查；转述任何说法时，请保留相应引证。',
       },
       {
         h: '在法律允许的限度内，不作任何保证',
-        body: '本站按其现状提供，不担保它完整、最新或适合您的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。这句话不削减您依法享有的任何权利，也不能免除我们改正一条写错了的说法的义务。',
+        body: '本站按其现状提供，不担保其完整、最新或适合您的情况。在适用法律允许的范围内，运营者不对依据本站作出的决定承担责任。本条不削减您依法享有的任何权利，亦不免除我们更正错误陈述的义务。',
       },
     ],
-    sourceHeading: '这些条款出自谁',
+    sourceHeading: '这些条款由谁发布',
     sourceIntro:
-      '这些条款由 {team} 发布、由 {board} 审阅，可在 {email} 联系到。它们约束的是这份材料的使用方式。它们不是建议，而站上每一条事实性说法都对得上它旁边那个带日期的来源。',
+      '本条款由 {team} 发布、由 {board} 审阅，可通过 {email} 与我们取得联系。本条款约束的是这份材料的使用方式。本条款不构成建议；本站每一条事实性陈述均对应其旁侧带日期的来源。',
     revised: '条款最近修订于 {date}。变更从所显示的日期起适用，不溯及既往。',
   },
 };

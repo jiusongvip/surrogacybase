@@ -148,7 +148,8 @@ function dimensionText(row: CompareRow, dim: CompareDimension): string {
         ))
       }
     </div>
-    <p class="mt-2 text-[13px] text-muted">{copy.chooseDimension}</p>
+    {/* The buttons already say chooseDimension through their group label; this line says why. */}
+    <p class="mt-2 text-[13px] text-muted">{copy.dimensionHint}</p>
 
     <noscript>
       <style>{`

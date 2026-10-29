@@ -110,4 +110,4 @@ A provider who answers all six with specifics is not more likely to succeed for 
 
 If you are holding a specific figure and cannot tell which cell it came from, that is a question worth sending. Say which page it is on, quote the sentence, and name the population you are trying to place yourself in.
 
-This page explains how published fertility treatment data is constructed and what its stated limits are. It is not medical advice, and no figure here is an estimate of your own chances or of the cost of your program.
+What is explained above is how published fertility treatment data is constructed and what its stated limits are. It is not medical advice, and no figure here is an estimate of your own chances or of the cost of your program.
