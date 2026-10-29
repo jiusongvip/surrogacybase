@@ -254,7 +254,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
 };
 
 /** The date the wording on this page last changed. Both languages carry the same stamp. */
-export const PRIVACY_REVISION = '2026-10-26';
+export const PRIVACY_REVISION = '2026-10-29';
 
 export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   en: {
@@ -267,12 +267,12 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       'This page describes what actually happens when you read this site and use its tools. It promises only what the site really does, which is why it is shorter than most privacy policies.',
     shortHeading: 'The short version',
     shortBody:
-      'Reading this site gives us nothing about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you choose to send us through the enquiry form or by email.',
+      'Nothing you read here is stored about you. Working with the tools gives us nothing either, because the work stays in your browser. The only information we hold is what you choose to send us through the enquiry form or by email.',
     storedHeading: 'What is stored, and where',
     stored: [
       {
         h: 'Browsing this site',
-        body: 'This site has no system that watches which pages you read. It sets no cookies and stores nothing about you in your browser while you read. There is no account, no login, and no profile, so there is no identifier to link your reading history to.',
+        body: 'This site has no system that watches which pages you read. It sets no cookies and stores nothing about you in your browser while you read. There is no account, no login, and no profile, so there is no identifier to link your reading history to. The one thing the enquiry form asks this site is which country your request appears to come from, and only once the form is on your screen; that answer returns to your browser and ends there, used to put a dial code and a likely messaging app first. It is not written down anywhere, and it is never attached to an enquiry.',
       },
       {
         h: 'The quote comparison tool',
@@ -323,12 +323,12 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
       '本页描述您阅读本站、使用这些工具时实际发生的事情。它只承诺本站真正做到的部分，因此它比多数隐私政策更短。',
     shortHeading: '简短版',
     shortBody:
-      '阅读本站，我们得不到关于您的任何信息。使用这些工具同样得不到，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您通过问询表单或电子邮件主动发给我们的那部分。',
+      '您在这里读到的内容，不会被存成关于您的任何信息。使用这些工具同样不会，因为工作全部在您的浏览器里完成。我们唯一持有的信息，是您通过问询表单或电子邮件主动发给我们的那部分。',
     storedHeading: '存了什么，存在哪里',
     stored: [
       {
         h: '浏览本站',
-        body: '本站没有任何系统会监视您读了哪些页面。它不设置任何 cookie，也不在您阅读时于您的浏览器里存储关于您的任何内容。这里没有账户、没有登录、没有个人档案，因此不存在一个可以用来关联您阅读历史的标识符。',
+        body: '本站没有任何系统会监视您读了哪些页面。它不设置任何 cookie，也不在您阅读时于您的浏览器里存储关于您的任何内容。这里没有账户、没有登录、没有个人档案，因此不存在一个可以用来关联您阅读历史的标识符。问询表单唯一会向本站问一次的信息，是这次请求看起来来自哪个国家，而且只在表单出现在您屏幕上时才问。这个答案回到您的浏览器就结束了，只用来把区号和更可能用到的联系方式排到前面。它不会被写在任何地方，也不会附在问询里。',
       },
       {
         h: '报价对比工具',

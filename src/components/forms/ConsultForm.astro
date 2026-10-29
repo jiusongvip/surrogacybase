@@ -166,7 +166,10 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
         <div class="mt-2 -mx-1 flex gap-1 overflow-x-auto overflow-y-hidden border-b border-line px-1">
           {
             copy.channels.map((channel) => (
-              <label class="-mb-px flex shrink-0 cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-2.5 pb-2 text-[13px] text-muted transition-colors duration-(--dur) hover:text-text has-[:checked]:border-accent has-[:checked]:text-accent has-[:focus-visible]:text-accent">
+              <label
+                class="-mb-px flex shrink-0 cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-2.5 pb-2 text-[13px] text-muted transition-colors duration-(--dur) hover:text-text has-[:checked]:border-accent has-[:checked]:text-accent has-[:focus-visible]:text-accent"
+                data-channel-tab={channel.value}
+              >
                 <input
                   class="sr-only"
                   type="radio"
@@ -353,6 +356,37 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
     return template.replace(/\{(\w+)\}/g, (match, key: string) => (key in vars ? vars[key] : match));
   }
 
+  /* Where the network sees the reader, asked of this site's own endpoint. One call serves every
+   * copy of the form on the page, and a refusal or a missing endpoint answers null. */
+  function visitorRegion(): Promise<string | null> {
+    const seen = window as Window & { __surrogacybaseRegion?: Promise<string | null> };
+    if (!seen.__surrogacybaseRegion) {
+      seen.__surrogacybaseRegion = fetch('/api/region', { cache: 'no-store' })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((data: { country?: unknown } | null) =>
+          typeof data?.country === 'string' ? data.country : null,
+        )
+        .catch(() => null);
+    }
+    return seen.__surrogacybaseRegion;
+  }
+
+  /*
+   * The app a visitor is likeliest to already have installed, so its tab comes first. Only the
+   * places where one app clearly outranks the others are listed; everywhere else keeps the order
+   * the page's own language sets. LINE leads in Japan, where it is used by over 70% of the
+   * population, and in Thailand and Taiwan, which with Japan make up its largest user bases
+   * (Rest of World, 2023; LY Corporation FY2025 Q2 presentation). WeChat is the default contact
+   * app in China. KakaoTalk leads in South Korea and is not one of the five, so Korea keeps the
+   * language order rather than promoting an app the reader may not have.
+   */
+  const REGION_CHANNEL: Record<string, string> = {
+    CN: 'wechat',
+    JP: 'line',
+    TH: 'line',
+    TW: 'line',
+  };
+
   for (const root of Array.from(document.querySelectorAll<HTMLElement>('[data-consult]'))) {
     const T = JSON.parse(root.dataset.copy!) as Chrome;
     const inbox = root.getAttribute('data-consult') ?? '';
@@ -374,7 +408,7 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       root.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(`[data-field="${name}"]`);
 
     /** The channel is a radio group: its value is whichever one is checked, never the first. */
-    const radios = Array.from(root.querySelectorAll<HTMLInputElement>('input[data-field="platform"]'));
+    let radios = Array.from(root.querySelectorAll<HTMLInputElement>('input[data-field="platform"]'));
     const handle = root.querySelector<HTMLInputElement>('[data-field="handle"]')!;
     const checkedChannel = () =>
       root.querySelector<HTMLInputElement>('input[data-field="platform"]:checked')?.value ?? '';
@@ -610,6 +644,7 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
     }
 
     function chooseDial(row: HTMLElement) {
+      dialChosen = true;
       paintDial(row.dataset.code ?? '', row.dataset.dial ?? '');
       closeDial(true);
       save(draftNow());
@@ -660,19 +695,44 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       if (!dialPicker.contains(event.target as Node)) closeDial(false);
     });
 
-    /* The code follows the browser's region, but only while the form is untouched: a draft or a
-     * code the reader picked always wins over the guess. */
-    const REGION_DIAL: Record<string, string> = {
-      CN: '+86', HK: '+852', MO: '+853', TW: '+886', SG: '+65',
-      US: '+1', CA: '+1', GB: '+44', AU: '+61', NZ: '+64',
-    };
-
+    /* The browser's region is read as a country and looked up like any other, so no hand-kept
+     * table of codes can go stale on a country this list already knows. */
     function guessedDial(): DialOption | null {
       for (const tag of [navigator.language, ...(navigator.languages ?? [])]) {
-        const region = (tag.split('-')[1] ?? '').toUpperCase();
-        if (REGION_DIAL[region]) return dialByCode(region) ?? null;
+        const hit = dialByCode((tag.split('-')[1] ?? '').toUpperCase());
+        if (hit) return hit;
       }
       return null;
+    }
+
+    /* The network's answer outranks the browser's, because a browser is set up once and a phone
+     * travels. Neither outranks the reader: a code they picked, in this form or the other copy of
+     * it, is left alone. */
+    let ipDial: DialOption | null = null;
+    let dialChosen = false;
+
+    /** The likeliest app first, without disturbing whichever one is already checked. */
+    function raiseChannel(value: string) {
+      const tab = root.querySelector<HTMLElement>(`[data-channel-tab="${value}"]`);
+      const strip = tab?.parentElement;
+      if (!tab || !strip || strip.firstElementChild === tab) return;
+      strip.prepend(tab);
+      radios = Array.from(root.querySelectorAll<HTMLInputElement>('input[data-field="platform"]'));
+    }
+
+    function applyRegion(country: string | null) {
+      if (!country) return;
+      /* Reshuffling the tabs is welcome while they are still blank and intrusive once the reader
+       * has answered them, so an answered group keeps the order the page was written in. */
+      const channel = REGION_CHANNEL[country];
+      if (channel && !checkedChannel()) raiseChannel(channel);
+      const option = dialByCode(country);
+      if (!option) return;
+      ipDial = option;
+      if (dialChosen || load()?.dialCode) return;
+      paintDial(option.code, option.dial);
+      repaint();
+      announce();
     }
 
     /** Nothing is said until there is something about the send worth reading. */
@@ -718,7 +778,8 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
         const el = box(name);
         if (el) el.value = '';
       }
-      const guess = guessedDial();
+      const guess = ipDial ?? guessedDial();
+      dialChosen = false;
       paintDial(guess?.code ?? dialFallback.code, guess?.dial ?? dialFallback.dial);
       for (const radio of radios) radio.checked = false;
       repaintHandleHint();
@@ -914,11 +975,23 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       }
       for (const radio of radios) radio.checked = radio.value === saved.platform;
       paintDialByValue(saved.dial, saved.dialCode);
+      /* A draft that names its country was chosen by the reader. One that only carries a code was
+       * written by a guess, so the network is still allowed to correct it. */
+      dialChosen = Boolean(saved.dialCode);
     } else {
       const guess = guessedDial();
       if (guess) paintDial(guess.code, guess.dial);
     }
     repaintHandleHint();
     repaint();
+
+    /* The lookup waits until this copy of the form is on screen: a page whose enquiry band is
+     * never reached asks nothing, and the dialog copy is not on screen until it is opened. */
+    const onScreen = new IntersectionObserver((entries, seen) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      seen.disconnect();
+      void visitorRegion().then(applyRegion);
+    });
+    onScreen.observe(root);
   }
 </script>
