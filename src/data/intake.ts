@@ -30,7 +30,9 @@ export type ConsultChannel = { value: string; label: string; hint: string };
 export type ConsultChrome = {
   phoneLabel: string;
   dialLabel: string;
-  dials: string[];
+  /** The code the picker shows before it knows anything about the reader. */
+  defaultDial: string;
+  dialSearch: string;
   phonePlaceholder: string;
   channelLabel: string;
   channelHint: string;
@@ -85,7 +87,8 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
   en: {
     phoneLabel: 'Mobile number',
     dialLabel: 'Country code',
-    dials: ['+1', '+44', '+61', '+852', '+65', '+86', '+886'],
+    defaultDial: '+1',
+    dialSearch: 'Search a country or region',
     phonePlaceholder: 'Your mobile number',
     channelLabel: 'How to reach you',
     channelHint: '(choose one)',
@@ -147,7 +150,8 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
   zh: {
     phoneLabel: '手机号',
     dialLabel: '国家/地区代码',
-    dials: ['+86', '+852', '+886', '+65', '+1', '+44', '+61'],
+    defaultDial: '+86',
+    dialSearch: '搜索国家或地区',
     phonePlaceholder: '您的手机号码',
     channelLabel: '联系方式',
     channelHint: '（选一种）',

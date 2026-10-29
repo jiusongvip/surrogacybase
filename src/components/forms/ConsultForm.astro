@@ -23,6 +23,7 @@ import Icon from '@/components/ui/Icon.astro';
 import { SITE } from '@/const';
 import { CONSULT_CHROME } from '@/data/intake';
 import { langFromPath, localizedPath } from '@/i18n/paths';
+import { DIAL_OPTIONS } from '@/lib/dial-codes';
 
 interface Props {
   /** Field ids are printed into the page, so the dialog copy cannot reuse the inline one's. */
@@ -37,6 +38,7 @@ const lang = langFromPath(Astro.url.pathname);
 const copy = CONSULT_CHROME[lang];
 const privacyHref = localizedPath(lang, '/privacy');
 const source = idPrefix === 'dlg' ? 'dialog' : 'home';
+const initialDial = DIAL_OPTIONS.find((option) => option.dial === copy.defaultDial) ?? DIAL_OPTIONS[0];
 
 /**
  * Marks for the five apps, kept beside their names so a row of names is scannable
@@ -73,8 +75,8 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
 >
   <div data-form-body>
     <div class="grid gap-5">
-      {/* The dial select is narrow and the number takes the rest of the row. The script sets the
-        * code from the browser's locale before the reader touches it, so a reader in Hong Kong is
+      {/* The dial picker is narrow and the number takes the rest of the row. The script sets the
+        * code from the browser's region before the reader touches it, so a reader in Hong Kong is
         * not asked to change +86 by hand. */}
       <div>
         <label class="field-label" for={`${idPrefix}-phone`}>
@@ -82,20 +84,54 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
           <span class="text-flag" aria-hidden="true">{copy.required}</span>
         </label>
         <div class="mt-1.5 flex gap-2">
-          <div class="relative shrink-0">
-            <select
-              class="field-input h-full w-[86px] appearance-none py-2.5 pl-3 pr-7 text-[13px] font-medium tabular-nums"
-              id={`${idPrefix}-dial`}
-              data-field="dial"
+          <div class="relative shrink-0" data-dial-picker>
+            <button
+              type="button"
+              class="field-input flex h-full w-[104px] cursor-pointer items-center gap-1.5 py-2.5 pr-2 pl-2.5 text-[13px] font-medium"
+              data-dial-open
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls={`${idPrefix}-dial-list`}
               aria-label={copy.dialLabel}
             >
-              {copy.dials.map((dial) => <option value={dial}>{dial}</option>)}
-            </select>
-            <Icon
-              name="chevron-down"
-              size={13}
-              class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-muted"
+              <img
+                class="h-4 w-5 shrink-0 rounded-[3px] object-cover"
+                src={`/flags/${initialDial.code.toLowerCase()}.svg`}
+                alt=""
+                width={20}
+                height={15}
+                data-dial-flag
+              />
+              <span class="tabular-nums" data-dial-code>{initialDial.dial}</span>
+              <Icon name="chevron-down" size={13} class="shrink-0 text-muted" />
+            </button>
+            <input
+              type="hidden"
+              data-field="dial"
+              value={initialDial.dial}
+              data-code={initialDial.code}
             />
+            <div
+              class="absolute left-0 top-[calc(100%+4px)] z-30 w-[min(288px,78vw)] rounded-(--radius) border border-line bg-paper p-2 shadow-lift"
+              data-dial-panel
+              hidden
+            >
+              <label class="sr-only" for={`${idPrefix}-dial-search`}>{copy.dialSearch}</label>
+              <input
+                class="field-input text-[13px]"
+                id={`${idPrefix}-dial-search`}
+                type="search"
+                autocomplete="off"
+                placeholder={copy.dialSearch}
+                data-dial-search
+              />
+              <ul
+                class="mt-2 max-h-60 overflow-y-auto overflow-x-hidden outline-none"
+                id={`${idPrefix}-dial-list`}
+                role="listbox"
+                data-dial-list
+              ></ul>
+            </div>
           </div>
           <input
             class="field-input flex-1"
@@ -295,10 +331,13 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
 
 <script>
   import type { ConsultChrome } from '@/data/intake';
+  import { DIAL_OPTIONS, type DialOption } from '@/lib/dial-codes';
 
   const FIELD_NAMES = ['name', 'dial', 'phone', 'platform', 'handle', 'message'] as const;
   type FieldName = (typeof FIELD_NAMES)[number];
   type Fields = Record<FieldName, string>;
+  /** The draft plus the country the reader picked, which a shared code cannot carry on its own. */
+  type Draft = Fields & { dialCode?: string };
   type Chrome = ConsultChrome;
   type Errors = Partial<Record<FieldName | 'consent', string>>;
 
@@ -354,6 +393,10 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       out.platform = checkedChannel();
       return out;
     };
+
+    /* A code on its own does not say which country it came from, and several share one, so the
+     * draft and the other copy of the form are handed the reader's pick alongside the number. */
+    const draftNow = (): Draft => ({ ...read(), dialCode: dialField.dataset.code });
 
     /** One text for every exit: the preview, the mail body, the clipboard and the file. */
     function compose(v: Fields): string {
@@ -426,15 +469,16 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       }
     }
 
-    function load(): Fields | null {
+    function load(): Draft | null {
       try {
         const raw = localStorage.getItem(KEY);
         if (!raw) return null;
-        const parsed = JSON.parse(raw) as Partial<Fields>;
-        const out = { ...EMPTY };
+        const parsed = JSON.parse(raw) as Partial<Draft>;
+        const out: Draft = { ...EMPTY };
         for (const name of FIELD_NAMES) {
           if (typeof parsed[name] === 'string') out[name] = parsed[name] as string;
         }
+        if (typeof parsed.dialCode === 'string') out.dialCode = parsed.dialCode;
         return out;
       } catch {
         return null;
@@ -456,21 +500,179 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
       handle.setAttribute('placeholder', option?.hint ?? '');
     }
 
-    /* The dial code follows the browser's region, but only while the form is untouched: a draft
-     * or a code the reader picked always wins over the guess. */
-    function preferredDial(fallback: string): string {
-      const select = box('dial') as HTMLSelectElement | null;
-      const options = Array.from(select?.options ?? []).map((option) => option.value);
-      const regions: Record<string, string> = {
-        CN: '+86', HK: '+852', MO: '+852', TW: '+886', SG: '+65',
-        US: '+1', CA: '+1', GB: '+44', AU: '+61', NZ: '+61',
-      };
+    /* The dial picker: a flag and a code in the trigger, every country searchable, listed in the
+     * language the page is in. It is a button and a listbox rather than a select because a select
+     * cannot show the flag next to the code it is choosing. */
+    const dialPicker = root.querySelector<HTMLElement>('[data-dial-picker]')!;
+    const dialField = dialPicker.querySelector<HTMLInputElement>('input[data-field="dial"]')!;
+    const dialOpen = dialPicker.querySelector<HTMLButtonElement>('[data-dial-open]')!;
+    const dialFlag = dialPicker.querySelector<HTMLImageElement>('[data-dial-flag]')!;
+    const dialCode = dialPicker.querySelector<HTMLElement>('[data-dial-code]')!;
+    const dialPanel = dialPicker.querySelector<HTMLElement>('[data-dial-panel]')!;
+    const dialSearch = dialPicker.querySelector<HTMLInputElement>('[data-dial-search]')!;
+    const dialList = dialPicker.querySelector<HTMLElement>('[data-dial-list]')!;
+    const dialFallback = { code: dialField.dataset.code ?? '', dial: dialField.value };
+    const namedInZh = document.documentElement.lang.startsWith('zh');
+
+    const dialByCode = (code: string) => DIAL_OPTIONS.find((option) => option.code === code);
+
+    function paintDial(code: string, dial: string) {
+      dialField.value = dial;
+      dialField.dataset.code = code;
+      dialFlag.src = `/flags/${code.toLowerCase()}.svg`;
+      dialFlag.alt = code.toUpperCase();
+      dialCode.textContent = dial;
+    }
+
+    /** The face for a code that arrived from the other form or from a saved draft. Several
+     * countries share one code, so `from` carries the reader's own choice when anything knows it. */
+    function paintDialByValue(dial: string, from?: string) {
+      const named = from ? dialByCode(from) : undefined;
+      const carried = dialByCode(dialField.dataset.code ?? '');
+      const option =
+        named?.dial === dial
+          ? named
+          : carried?.dial === dial
+            ? carried
+            : DIAL_OPTIONS.find((o) => o.dial === dial);
+      if (option) paintDial(option.code, option.dial);
+    }
+
+    function dialRow(option: DialOption, selected: boolean): HTMLLIElement {
+      const row = document.createElement('li');
+      row.setAttribute('role', 'option');
+      row.tabIndex = -1;
+      row.setAttribute('aria-selected', selected ? 'true' : 'false');
+      row.dataset.code = option.code;
+      row.dataset.dial = option.dial;
+      row.className =
+        'flex cursor-pointer items-center gap-2 rounded-[7px] px-2 py-1.5 text-[13px] outline-none hover:bg-surface-2 focus:bg-surface-2' +
+        (selected ? ' text-accent' : '');
+
+      const flag = document.createElement('img');
+      flag.src = `/flags/${option.code.toLowerCase()}.svg`;
+      flag.alt = '';
+      flag.width = 20;
+      flag.height = 15;
+      flag.loading = 'lazy';
+      flag.className = 'h-4 w-5 shrink-0 rounded-[3px] object-cover';
+
+      const name = document.createElement('span');
+      name.className = 'min-w-0 flex-1 truncate';
+      name.textContent = namedInZh ? option.nameZh : option.name;
+
+      const code = document.createElement('span');
+      code.className = 'shrink-0 tabular-nums text-muted';
+      code.textContent = option.dial;
+
+      row.append(flag, name, code);
+      return row;
+    }
+
+    function renderDialList(query: string) {
+      const q = query.trim().toLowerCase();
+      const matches = q
+        ? DIAL_OPTIONS.filter(
+            (option) =>
+              option.name.toLowerCase().includes(q) ||
+              option.nameZh.includes(query.trim()) ||
+              option.dial.includes(q),
+          )
+        : DIAL_OPTIONS;
+      const selected = dialField.dataset.code ?? '';
+      dialList.replaceChildren(...matches.map((option) => dialRow(option, option.code === selected)));
+      dialList.dataset.cursor = '0';
+    }
+
+    function openDial() {
+      renderDialList(dialSearch.value);
+      dialPanel.hidden = false;
+      dialOpen.setAttribute('aria-expanded', 'true');
+      dialSearch.focus();
+    }
+
+    function closeDial(back: boolean) {
+      dialPanel.hidden = true;
+      dialOpen.setAttribute('aria-expanded', 'false');
+      dialSearch.value = '';
+      if (back) dialOpen.focus();
+    }
+
+    /** The reader is typing in the search box, so the arrows move a highlight, not the caret. */
+    function moveDialFocus(step: number) {
+      const rows = Array.from(dialList.querySelectorAll<HTMLElement>('[role="option"]'));
+      if (rows.length === 0) return;
+      const at = Number(dialList.dataset.cursor ?? '0');
+      const next = Math.min(rows.length - 1, Math.max(0, at + step));
+      dialList.dataset.cursor = String(next);
+      rows[next].focus();
+      rows[next].scrollIntoView({ block: 'nearest' });
+    }
+
+    function chooseDial(row: HTMLElement) {
+      paintDial(row.dataset.code ?? '', row.dataset.dial ?? '');
+      closeDial(true);
+      save(draftNow());
+      repaint();
+      announce();
+    }
+
+    dialOpen.addEventListener('click', () => {
+      if (dialPanel.hidden) openDial();
+      else closeDial(true);
+    });
+
+    dialSearch.addEventListener('input', () => renderDialList(dialSearch.value));
+
+    dialList.addEventListener('click', (event) => {
+      const row = (event.target as HTMLElement).closest<HTMLElement>('[role="option"]');
+      if (row) chooseDial(row);
+    });
+
+    dialPicker.addEventListener('keydown', (event) => {
+      const key = (event as KeyboardEvent).key;
+      if (dialPanel.hidden) {
+        if (key === 'ArrowDown' || key === 'ArrowUp') {
+          event.preventDefault();
+          openDial();
+        }
+        return;
+      }
+      if (key === 'Escape') {
+        event.preventDefault();
+        closeDial(true);
+      } else if (key === 'ArrowDown' || key === 'ArrowUp') {
+        event.preventDefault();
+        moveDialFocus(key === 'ArrowDown' ? 1 : -1);
+      } else if (key === 'Enter') {
+        const row = document.activeElement as HTMLElement | null;
+        if (row?.getAttribute('role') === 'option') {
+          event.preventDefault();
+          chooseDial(row);
+        }
+      } else if (key === 'Tab') {
+        closeDial(false);
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (dialPanel.hidden) return;
+      if (!dialPicker.contains(event.target as Node)) closeDial(false);
+    });
+
+    /* The code follows the browser's region, but only while the form is untouched: a draft or a
+     * code the reader picked always wins over the guess. */
+    const REGION_DIAL: Record<string, string> = {
+      CN: '+86', HK: '+852', MO: '+853', TW: '+886', SG: '+65',
+      US: '+1', CA: '+1', GB: '+44', AU: '+61', NZ: '+64',
+    };
+
+    function guessedDial(): DialOption | null {
       for (const tag of [navigator.language, ...(navigator.languages ?? [])]) {
         const region = (tag.split('-')[1] ?? '').toUpperCase();
-        const hit = regions[region];
-        if (hit && options.includes(hit)) return hit;
+        if (REGION_DIAL[region]) return dialByCode(region) ?? null;
       }
-      return fallback;
+      return null;
     }
 
     /** Nothing is said until there is something about the send worth reading. */
@@ -512,9 +714,12 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
 
     function reset() {
       for (const name of FIELD_NAMES) {
+        if (name === 'dial') continue;
         const el = box(name);
         if (el) el.value = '';
       }
+      const guess = guessedDial();
+      paintDial(guess?.code ?? dialFallback.code, guess?.dial ?? dialFallback.dial);
       for (const radio of radios) radio.checked = false;
       repaintHandleHint();
       consent.checked = false;
@@ -530,7 +735,7 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
 
     for (const el of inputs) {
       el.addEventListener('input', () => {
-        save(read());
+        save(draftNow());
         repaint();
         const name = el.getAttribute('data-field') as FieldName | 'website';
         if (name !== 'website') {
@@ -544,7 +749,7 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
         announce();
       });
       el.addEventListener('change', () => {
-        save(read());
+        save(draftNow());
         repaintHandleHint();
         repaint();
         announce();
@@ -581,13 +786,14 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
     /* The inline form and the dialog form hold the same draft, so neither may be left showing
      * what the other one typed. */
     window.addEventListener(SYNC, (event) => {
-      const v = (event as CustomEvent<Fields>).detail;
+      const { dialCode: picked, ...v } = (event as CustomEvent<Draft>).detail;
       for (const name of FIELD_NAMES) {
         if (name === 'platform') continue;
         const el = box(name);
         if (el && el.value !== v[name] && document.activeElement !== el) el.value = v[name];
       }
       for (const radio of radios) radio.checked = radio.value === v.platform;
+      paintDialByValue(v.dial, picked);
       repaintHandleHint();
       repaint();
     });
@@ -595,7 +801,7 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
     window.addEventListener(SENT, () => showSuccess());
 
     function announce() {
-      window.dispatchEvent(new CustomEvent(SYNC, { detail: read() }));
+      window.dispatchEvent(new CustomEvent(SYNC, { detail: draftNow() }));
     }
 
     root.addEventListener('click', async (event) => {
@@ -707,9 +913,10 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
         if (el) el.value = saved[name];
       }
       for (const radio of radios) radio.checked = radio.value === saved.platform;
+      paintDialByValue(saved.dial, saved.dialCode);
     } else {
-      const dial = box('dial') as HTMLSelectElement | null;
-      if (dial) dial.value = preferredDial(dial.value);
+      const guess = guessedDial();
+      if (guess) paintDial(guess.code, guess.dial);
     }
     repaintHandleHint();
     repaint();
