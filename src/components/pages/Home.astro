@@ -3,7 +3,7 @@
  * The homepage, in both languages.
  *
  * The section order puts the records first: the hero, the country records, the handful of pieces
- * readers open first as picture cards, and the enquiry band last. The
+ * to start with as picture cards, and the enquiry band last. The
  * hero carries no counts and no date, because a reader deciding whether to scroll cannot check
  * either from there. Where a number is printed, it is read off the collection it describes, so no
  * section can advertise more than the site holds. Everything a reader sees comes from
@@ -86,7 +86,7 @@ const cards = [...records].sort(byOrder).map((row) => ({
   note: countries.notes[row.data.code] ?? '',
 }));
 
-/* The single content module: the handful of pieces readers open first, as picture cards. Nothing
+/* The single content module: the handful of pieces to start with, as picture cards. Nothing
  * on a card names a subject — a photograph, a title, one line, and the question the piece answers
  * becomes clear on the page itself. The order is HOME_PICKS, an editorial list rather than a sort,
  * because "asked first" is not something a date can compute; a ref with no live page in this

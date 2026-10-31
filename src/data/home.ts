@@ -286,8 +286,8 @@ export const HOME_COUNTRIES: Record<Lang, {
  * pair can never put a dead card on the homepage.
  *
  * The list is short on purpose. The homepage is a shop window, not a second archive: everything
- * else stays behind the one exit to /guides, and the order is an editorial claim about what
- * readers ask first, which no sort on a date could work out. */
+ * else stays behind the one exit to /guides. The order is a judgement about which question a plan
+ * meets first, not a measurement of anything the site collects. */
 export const HOME_PICKS = [
   'guides/surrogacy-cost',
   'guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
@@ -299,22 +299,25 @@ export const HOME_PICKS = [
 
 /* The content module's copy. No topic names appear here or on the cards: a card carries a
  * photograph, a title and one line, and which question a piece answers becomes clear once it is
- * open. The intro therefore describes the module rather than enumerating its parts. */
+ * open.
+ *
+ * Nothing here claims how many people read these pages. The site keeps no analytics it could cite,
+ * so "most readers start here" would be an assertion the page cannot back up, and describing our
+ * own editorial practice ("each answers one question, sources at the end") tells a reader about the
+ * workshop instead of about their decision. The line says what the section is and stops. */
 export const HOME_CONTENT: Record<Lang, {
   heading: string;
   intro: string;
   viewAll: string;
 }> = {
   en: {
-    heading: 'Where most readers start',
-    intro:
-      'The pieces readers open first. Each answers one question in full, and lists the sources behind its answer at the end. Everything else sits in the guide archive.',
+    heading: 'Where to start',
+    intro: 'The questions a plan runs into first, in the order they usually arrive.',
     viewAll: 'All guides',
   },
   zh: {
-    heading: '大多数读者从这里开始',
-    intro:
-      '这几篇是读者打开最多的文章。每篇只回答一个问题，并在文末列出答案所依据的来源。其余内容都在指南库里。',
+    heading: '从哪里开始',
+    intro: '一个计划最先会遇到的几个问题，大致按它们出现的先后排列。',
     viewAll: '查看全部指南',
   },
 };
