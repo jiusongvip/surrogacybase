@@ -24,7 +24,7 @@ import type { IconName } from '@/lib/icons';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
-    titleTag: 'Cross-Border Surrogacy: Destinations, Law and Cost',
+    titleTag: 'Cross-Border Surrogacy: Law, Cost and Process',
     description:
       'Independent cross-border surrogacy information: compare destination eligibility, law and cost, and see which questions to settle before deciding what comes next.',
   },
@@ -370,7 +370,7 @@ export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingua
   },
   {
     icon: 'clock',
-    label: { en: 'Reply within 1 to 2 working days', zh: '通常于 1–2 个工作日内回复' },
+    label: { en: 'Reply within 1 to 2 working days', zh: '通常于 1 至 2 个工作日内回复' },
     body: {
       en: 'An advisor answers you directly after you submit.',
       zh: '提交后由顾问本人与您联系。',

@@ -87,7 +87,7 @@ sources:
 
 全国统计将代孕排除在外；那么是否存在纳入代孕的数字？
 
-在英格兰、威尔士和北爱尔兰，治疗必须向监管方报告，所以总量是已知的：[2022 年代孕占英国全部 IVF 治疗的 0.4%](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，担任代孕者的人数从 [2012 年约 130 人增至 2022 年约 230 人](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。千分之四——这正是单一诊所那份「代孕成功率」通常的计算基数：数十次周期，有时仅为个位数，再按营销选定的年数汇总而成。
+在英格兰、威尔士和北爱尔兰，治疗必须向监管方报告，所以总量是已知的：[2022 年代孕占英国全部 IVF 治疗的 0.4%](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，担任代孕者的人数从 [2012 年约 130 人增至 2022 年约 230 人](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。千分之四，这正是单一诊所那份「代孕成功率」通常的计算基数：数十次周期，有时仅为个位数，再按营销选定的年数汇总而成。
 
 同一份情况说明给出了监管方确实发表的唯一一个专门针对代孕的结局数字，而该数字并非成功率：代孕患者的多胎率从 [2013-2017 年的 14% 降至 2018-2022 年的 5%](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。它还给出了使该数字得以解读的人口学信息：代孕者首次接受 IVF 治疗的平均年龄[约为 34 岁](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。对任何将某一英国数字视为背书的人而言，另有一点尤为重要：监管方说明其职权覆盖持证诊所如何提供治疗与取得知情同意，[并不延伸至在英国境外达成的代孕安排](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。
 

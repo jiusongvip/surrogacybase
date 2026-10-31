@@ -614,11 +614,11 @@ export const UI: Record<Lang, {
     pages: {
       articles: {
         title: 'Guides',
-        titleTag: 'Surrogacy Guides: Law, Cost, Process and Explainers',
+        titleTag: 'Surrogacy Guides: Law, Cost and Process',
         description:
           'Guides and explainers on surrogacy law, cost, destinations, agency selection, process and preparation, each written to one standard and citing a source you can open.',
         intro:
-          'Every piece answers a question you actually face — eligibility, cost, choosing an agency, the process, the paperwork a child needs — and names the source behind its answer.',
+          'Every piece answers a question you actually face, from eligibility and cost to choosing an agency, the process and the paperwork a child needs, and names the source behind its answer.',
         startHeading: 'Start with the decision in front of you',
         startIntro: 'You do not have to read these in order. Pick the question you need answered now.',
         paths: [
@@ -651,9 +651,9 @@ export const UI: Record<Lang, {
         destinationConditionsNote: 'Compare what the law actually says.',
       },
       jurisdiction: {
-        title: 'Surrogacy in {name}: the complete guide',
+        title: 'Surrogacy in {name}: a complete guide',
         description:
-          'A complete surrogacy guide for {name}: legal basis, the process, costs, contracts and how parentage is set — every position carries its source and check date.',
+          'A complete surrogacy guide for {name}: legal basis, the process, costs, contracts and how parentage is set. Every position carries its source and check date.',
         heading: 'Surrogacy in {name}: the complete guide to law, process, cost and contract',
         intro:
           'Each position below names its source and the date it was last checked. Where a rule depends on your circumstances, it says so instead of guessing.',
@@ -1226,7 +1226,7 @@ export const UI: Record<Lang, {
       },
       jurisdiction: {
         title: '{name}代孕全攻略',
-        description: '关于{name}代孕的完整攻略：法律基础、流程、费用、合同要点，以及亲权如何确定——每一项立场都附上来源与核查日期。',
+        description: '关于{name}代孕的完整攻略：法律基础、流程、费用、合同要点，以及亲权如何确定。每一项立场都附上来源与核查日期。',
         heading: '{name}代孕全攻略：法律、流程、费用与合同要点',
         intro: '每项立场都标着它的来源和最近一次核对的日期。规则取决于您的个人情况时，页面会直接写明这一点，而不是替您猜一个。',
         checked: '立场核查于 {date}',
@@ -1388,7 +1388,7 @@ export const UI: Record<Lang, {
         },
         factors: {
           heading: '四个条件，按它们生效的顺序',
-          intro: '上述每一项均能以快于阅读介绍的速度排除若干地点，且均可归结为一个问题——该问题既可向机构提出，亦可向律师提出。',
+          intro: '上述每一项均能以快于阅读介绍的速度排除若干地点，且均可归结为一个问题。该问题既可向机构提出，亦可向律师提出。',
           items: [
             {
               q: '条文里点名了您这样的家庭吗？',
@@ -1550,7 +1550,7 @@ export const TOPIC_BLURBS: Record<Lang, Record<string, string>> = {
   en: {
     legal: 'Who may commission, which family types are admitted, and how parentage is recognised.',
     choice: 'How to vet an agency and a carrier, and what a profile or donor page does not promise.',
-    process: 'From matching and treatment to the paperwork after birth — the stages a journey moves through.',
+    process: 'From matching and treatment to the paperwork after birth: the stages a journey moves through.',
     cost: 'What a quote usually includes, what it leaves out, and how to verify a budget.',
     accommodation: 'Where intended parents stay and what the trip itself involves.',
   },

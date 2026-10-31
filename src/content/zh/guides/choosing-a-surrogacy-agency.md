@@ -53,7 +53,7 @@ sources:
 
 人们提出的问题通常是这家机构是否可信。更为有用的问题是：何者能够证明其可信，因为代孕网站要求您依赖的那些信号，大多由网站自身控制。
 
-在多数目的地，没有任何监管机构在核查一家机构是否有能力。存在监管的地方，其通常附着于其他对象：诊所、实验室、托管机构或律师。在英国，[依 1985 年《代孕安排法》，为代孕刊登广告或以代孕者身份刊登广告均属违法](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，而 HFEA——其名称出现在辅助生殖监管的范围内——发放牌照的对象是治疗诊所。本领域的支持组织被 HFEA 列为信息来源，它们也可能登记在[公开的慈善登记册](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884)上，但登记记录的是一个组织自述的宗旨。它不是提供代孕服务的执照，亦不意味着有任何方评估过其服务质量。
+在多数目的地，没有任何监管机构在核查一家机构是否有能力。存在监管的地方，其通常附着于其他对象：诊所、实验室、托管机构或律师。在英国，[依 1985 年《代孕安排法》，为代孕刊登广告或以代孕者身份刊登广告均属违法](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)，而 HFEA（其名称出现在辅助生殖监管的范围内）发放牌照的对象是治疗诊所。本领域的支持组织被 HFEA 列为信息来源，它们也可能登记在[公开的慈善登记册](https://register-of-charities.charitycommission.gov.uk/en/about-the-register-of-charities/-/charity-details/5210884)上，但登记记录的是一个组织自述的宗旨。它不是提供代孕服务的执照，亦不意味着有任何方评估过其服务质量。
 
 这一区别正是评估服务方整套方法的核心：应询问某一项资质实际证明了什么。
 
