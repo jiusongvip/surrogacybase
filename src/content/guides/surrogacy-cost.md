@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
-related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost", "guides/surrogacy-costs-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -73,7 +73,7 @@ For a legal parentage route in the United States, the [professional guidance on 
 
 A quote is usually a package description, not a ledger, and the distance between a quoted number and a paid one is made of items nobody labels as surrogacy: a second transfer attempt, medication and monitoring billed by the clinic rather than the program, insurance for the carrier, an independent lawyer for her ([the academic review of US practice](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) records that separate representation is recommended and, sometimes, mandated), court and filing costs, neonatal care that runs past the discharge date, whatever is still owed when a pregnancy ends early, the trip itself, and the documents that have to exist before anyone flies home.
 
-[The explainer on the costs that sit outside a quote](/guides/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time and turns each into a written question for a named party. The [quote comparison tool](/tools/agency-quote-comparison) then puts two quotes side by side on the same nine cost lines.
+[The explainer on the costs that sit outside a quote](/guides/surrogacy-costs-outside-a-quote) takes those twelve categories apart one at a time and turns each into a written question for a named party. The [quote comparison tool](/tools/agency-quote-comparison) then puts two quotes side by side on the same nine cost lines.
 
 ## Why two agencies quote the same program differently
 
@@ -115,7 +115,7 @@ A peer-reviewed review article states it as a threshold rather than a range: [US
 
 **Canada.** Canadian law governs what may be reimbursed rather than what things cost. [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates reimbursable expenditures, including travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income during the pre-pregnancy and post-partum period. Receipts are required and records must be kept for six years.
 
-What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/guides/why-no-average-surrogacy-cost-exists).
+What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/guides/why-no-average-surrogacy-cost).
 
 Every figure above, and the source behind it, is laid out line by line on [the published cost figures page](/tools/cost-figures).
 

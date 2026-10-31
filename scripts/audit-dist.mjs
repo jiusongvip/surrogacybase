@@ -1,7 +1,8 @@
 /*
- * Reads dist/ and fails on the things this site promises: a dead internal link, a
- * typographic separator the style guide forbids, a page with no H1 or a bloated title,
- * or any route whose HTML was never built. Run after `pnpm build`.
+ * Reads dist/ and fails on the things this site promises: a dead internal link, a guide that no
+ * other guide links to, a frontmatter reference that names a page which was never built, a
+ * typographic separator the style guide forbids, a page with no H1 or a bloated title, or any
+ * route whose HTML was never built. Run after `pnpm build`.
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -49,6 +50,25 @@ const byRoute = new Map(
 );
 const routes = new Set(byRoute.keys());
 
+/** A guide detail page, in either language. The list page and the home page are not guides. */
+const isGuideRoute = (route) => /^\/(zh\/)?guides\/[^/]+$/.test(route);
+
+/* Route -> the routes that link to it. Built once, because "who names this page" is a question
+ * the index cannot answer: the index names everyone, and so does the footer. */
+const inbound = new Map();
+for (const [route, html] of byRoute) {
+  for (const raw of html.match(/href="([^"]+)"/g) ?? []) {
+    const href = raw.slice(6, -1);
+    if (!href.startsWith('/')) continue;
+    const [path] = href.slice(1).split('#');
+    if (/^(assets|_astro|images|og)\//.test(path) || /\.[a-z0-9]+$/i.test(path)) continue;
+    const target = '/' + path.replace(/\/$/, '');
+    if (!byRoute.has(target) || target === route) continue;
+    if (!inbound.has(target)) inbound.set(target, new Set());
+    inbound.get(target).add(route);
+  }
+}
+
 /* Banned separators and non-Latin scripts, scanned in scripts as well as markup: the
  * checklist export lives in JS, and that document is what a reader hands to a lawyer.
  * Han characters are only a defect on an English route; on /zh they are the point.
@@ -67,6 +87,8 @@ const wide = new RegExp(CJK);
 const displayWidth = (text) => [...text].reduce((n, c) => n + (wide.test(c) ? 2 : 1), 0);
 
 let pendingLinks = 0;
+/** Title -> the first route that used it, so a duplicate can name the page it copies. */
+const titles = new Map();
 /** While any page is pending the mirror is mid-build, so the registry stays closed. */
 const underConstruction = pending.size > 0;
 let unopened = 0;
@@ -94,6 +116,14 @@ for (const [route, html] of byRoute) {
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '';
   if (!title) problems.push(`${route}: no title`);
   else if (displayWidth(title) > 62) problems.push(`${route}: title is ${displayWidth(title)} half-width units`);
+  else if (titles.has(title)) problems.push(`${route}: title is the same as ${titles.get(title)}`);
+  else titles.set(title, route);
+
+  /* Every piece carries one photograph from the shared catalogue. A page without one falls back
+   * to a bare card in the index and a preview with no image on every social card. */
+  if (isGuideRoute(route) && !html.includes('/images/content/')) {
+    problems.push(`${route}: no content photograph`);
+  }
 
   /* The same width rule as the title: a Chinese description of forty characters carries about
    * half the content of forty Latin ones, so the floor has to be measured in half-width units
@@ -148,6 +178,66 @@ for (const [route, html] of byRoute) {
   }
 }
 
+/* A guide nobody else names is reachable only by scrolling the index, and the index is the one
+ * page every visitor already has. Only links from other guides count: a sitewide footer or the
+ * index itself would otherwise make every page look woven in. */
+for (const route of byRoute.keys()) {
+  if (!isGuideRoute(route)) continue;
+  const fromGuides = [...(inbound.get(route) ?? [])].filter((from) => isGuideRoute(from));
+  if (fromGuides.length === 0) problems.push(`${route}: no other guide links to it`);
+}
+
+/* resolveRefs drops a reference it cannot resolve, so a misspelled slug costs a page its link
+ * and fails nothing anywhere else. The frontmatter is the only place that can prove the
+ * spelling, so it is read and checked against the routes that were actually built. */
+function collectMd(dir, out = []) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) collectMd(p, out);
+    else if (name.endsWith('.md')) out.push(p);
+  }
+  return out;
+}
+
+const now = new Date();
+const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+const overdue = [];
+const contentRoot = new URL('../src/content/', import.meta.url).pathname.replace(/^\/(\w:\/)/, '$1');
+
+/* relatedTools names a tool, not a page: toolLinksFor drops one whose live flag is still false on
+ * purpose, so a route is the wrong thing to look for. The catalogue is TypeScript, so its ids are
+ * read off the source rather than imported. */
+const toolIds = new Set(
+  [...readFileSync(new URL('../src/data/tools.ts', import.meta.url), 'utf8').matchAll(/^\s*id: '([^']+)'/gm)].map(
+    (m) => m[1],
+  ),
+);
+
+for (const file of collectMd(contentRoot)) {
+  const frontmatter = readFileSync(file, 'utf8').split(/^---$/m)[1] ?? '';
+  const zh = /[\\/]zh[\\/]/.test(file);
+  const where = relative(process.cwd(), file).replace(/\\/g, '/');
+
+  /* A related link is a route, and the built page is the only proof the slug was spelled right. */
+  const listed = (key) =>
+    (frontmatter.match(new RegExp(`^${key}:\\s*\\[(.*)\\]\\s*$`, 'm'))?.[1] ?? '').matchAll(/"([^"]+)"/g);
+
+  for (const [, ref] of listed('related')) {
+    const target = `/${zh ? 'zh/' : ''}${ref}`;
+    if (!routes.has(target)) problems.push(`${where}: related names ${ref}, which was not built`);
+  }
+  for (const [, ref] of listed('relatedTools')) {
+    if (!toolIds.has(ref.replace(/^tools\//, ''))) {
+      problems.push(`${where}: relatedTools names ${ref}, which is not in the tool catalogue`);
+    }
+  }
+
+  /* A review date is a promise to come back to a page, not a publish gate, so a date that has
+   * passed is printed and the build stays green. */
+  const due = frontmatter.match(/^reviewDueOn:\s*"?([\d-]+)"?/m)?.[1];
+  if (due && due < today) overdue.push(`${where} was due ${due}`);
+}
+
 /* Every built route should be reachable from the nav or a page, and every route in the
  * sitemap should exist on disk. */
 const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8');
@@ -172,6 +262,11 @@ for (const name of ['llms.txt', 'zh/llms.txt']) {
     if (!routes.has(path)) problems.push(`${name}: ${path} is not built`);
     if (wantZh !== path.startsWith('/zh')) problems.push(`${name}: ${path} is the wrong language`);
   }
+}
+
+if (overdue.length) {
+  console.log(`${overdue.length} piece(s) past their review date:`);
+  for (const item of overdue) console.log(' - ' + item);
 }
 
 if (problems.length) {

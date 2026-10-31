@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-23"
 jurisdictions: ["gb", "us"]
 evidence: verified
 relatedTools: ["tools/agency-question-checklist", "tools/cost-figures"]
-related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/what-40177-transfers-do-not-promise-you", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-success-rates-40177-transfers", "guides/surrogacy-law-questions-by-destination"]
 sources:
   - label: "辅助生殖治疗 2024：趋势与数字"
     url: "https://www.hfea.gov.uk/about-us/publications/research-and-data/fertility-treatment-2024-trends-and-figures/"
@@ -91,7 +91,7 @@ sources:
 
 同一份情况说明给出了监管方确实发表的唯一一个专门针对代孕的结局数字，而该数字并非成功率：代孕患者的多胎率从 [2013-2017 年的 14% 降至 2018-2022 年的 5%](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。它还给出了使该数字得以解读的人口学信息：代孕者首次接受 IVF 治疗的平均年龄[约为 34 岁](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。对任何将某一英国数字视为背书的人而言，另有一点尤为重要：监管方说明其职权覆盖持证诊所如何提供治疗与取得知情同意，[并不延伸至在英国境外达成的代孕安排](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/)。
 
-美国不设此类监管机构，但存在一套登记系统，而该系统另有其限度。[SART CORS 收录了九成以上美国诊所的周期数据](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/)，记录周期开始、患者人口学特征与关联周期。它不记录协议、不记录付款，也不记录一个项目的结局。因此该登记系统可支持一项临床统计，却无法支持一项项目层面的统计。此项区分已在[40,177 次移植不能向您承诺什么](/zh/guides/what-40177-transfers-do-not-promise-you)一文中详为说明。
+美国不设此类监管机构，但存在一套登记系统，而该系统另有其限度。[SART CORS 收录了九成以上美国诊所的周期数据](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/)，记录周期开始、患者人口学特征与关联周期。它不记录协议、不记录付款，也不记录一个项目的结局。因此该登记系统可支持一项临床统计，却无法支持一项项目层面的统计。此项区分已在[40,177 次移植不能向您承诺什么](/zh/guides/surrogacy-success-rates-40177-transfers)一文中详为说明。
 
 该登记系统中有一个数字直接关系到境外意向父母：[2014 至 2020 年间的 40,177 次妊娠代孕者胚胎移植中，32% 属于居住在美国境外的意向父母](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/)。应将其读作一项提醒，而非一句安慰。一个辖区的全国比率是在这样一个人群上求得的平均值：其中约三分之一的活动来自随后必须携子过境回国的人，而其年龄、诊断与治疗路径均非您的。
 

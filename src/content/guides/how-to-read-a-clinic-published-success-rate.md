@@ -1,6 +1,6 @@
 ---
 title: "How to Read a Fertility Clinic's Published Success Rate"
-titleTag: "Reading a Clinic's Success Rate"
+titleTag: "Reading a Fertility Clinic's Success Rate"
 description: "A clinic's published success rate is usually a true number about a different population. Read it with the denominator, who was counted, and who was excluded."
 type: guide
 category: preparation
@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-23"
 jurisdictions: ["gb", "us"]
 evidence: verified
 relatedTools: ["tools/agency-question-checklist", "tools/cost-figures"]
-related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/what-40177-transfers-do-not-promise-you", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-success-rates-40177-transfers", "guides/surrogacy-law-questions-by-destination"]
 sources:
   - label: "Fertility treatment 2024: trends and figures"
     url: "https://www.hfea.gov.uk/about-us/publications/research-and-data/fertility-treatment-2024-trends-and-figures/"
@@ -91,7 +91,7 @@ In England, Wales and Northern Ireland treatment is reported to a regulator, so 
 
 The same factsheet states the one surrogacy-specific outcome figure the regulator does publish, and it is not a success rate: the multiple birth rate for surrogacy patients fell from [14% in 2013-2017 to 5% in 2018-2022](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/). It also gives the demographic that makes that figure meaningful: the average age at first IVF treatment among surrogates is [about 34](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/). And, importantly for anyone reading a UK number as an endorsement, the regulator says its remit covers how licensed clinics deliver treatment and consent, and [does not extend to surrogacy arrangements made outside the UK](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/).
 
-In the United States there is no such regulator, but there is a registry, and it has a different limit. [SART CORS holds cycle data from more than 90 percent of US clinics](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/), recording cycle starts, patient demographics and linked cycles. It does not record the agreement, the payment or the program's outcome. So the registry can support a clinical statistic and cannot support a program-level one, the distinction drawn at length in [what 40,177 transfers do not promise you](/guides/what-40177-transfers-do-not-promise-you).
+In the United States there is no such regulator, but there is a registry, and it has a different limit. [SART CORS holds cycle data from more than 90 percent of US clinics](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/), recording cycle starts, patient demographics and linked cycles. It does not record the agreement, the payment or the program's outcome. So the registry can support a clinical statistic and cannot support a program-level one, the distinction drawn at length in [what 40,177 transfers do not promise you](/guides/surrogacy-success-rates-40177-transfers).
 
 One number from that registry does bear on international intended parents directly: of [40,177 embryo transfers to a gestational carrier from 2014 to 2020, 32% were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/). Read it as a caution rather than a comfort. A national rate for that jurisdiction is an average across a population in which roughly a third of the activity belongs to people who then have to take a child home across a border, whose ages, diagnoses and treatment routes are not yours.
 

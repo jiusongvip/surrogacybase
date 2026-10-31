@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedTools: ["tools/agency-question-checklist", "tools/agency-quote-comparison"]
-related: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
+related: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/surrogacy-law-questions-by-destination"]
 sources:
   - label: "Surrogacy: a factsheet"
     url: "https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/"

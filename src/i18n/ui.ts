@@ -201,7 +201,11 @@ export const UI: Record<Lang, {
       intro: string;
       startHeading: string;
       startIntro: string;
-      /** The four ways in, each paired by position with the article refs in ArticlesIndex. */
+      /**
+       * The four ways in, each paired by position with the article refs in ArticlesIndex. The
+       * titles name the situation the reader is in, not the subject, because a reader who is
+       * already looking for a subject has the grouped list further down the page.
+       */
       paths: { title: string; body: string }[];
       allHeading: string;
       /**
@@ -624,19 +628,19 @@ export const UI: Record<Lang, {
         paths: [
           {
             title: 'You are building a budget',
-            body: 'Why no average exists, what a quote leaves out, and how the money moves.',
+            body: 'Why no average exists, what a quote leaves out, how the money moves, and what a guarantee actually covers.',
           },
           {
             title: 'You are choosing a destination',
-            body: 'The questions a legal system has to answer, then the paperwork your child needs and the deadlines around it.',
+            body: 'The questions a legal system has to answer, the paperwork your child needs, and the deadlines around it.',
           },
           {
-            title: 'You are close to signing',
-            body: 'What has to be in writing before the first transfer, and what each payment stage depends on.',
+            title: 'You are choosing who does the work',
+            body: 'Agency, clinic and carrier are three different decisions: what a profile leaves out, and what has to be signed before the first transfer.',
           },
           {
-            title: 'You are reading success rates',
-            body: 'What the largest published study of US transfers counts, and whose cases it covers.',
+            title: 'You are weighing the odds',
+            body: 'How a clinic reports a success rate, what the largest US transfer study counts, and what a failed cycle changes.',
           },
         ],
         allHeading: 'All guides',
@@ -1199,19 +1203,19 @@ export const UI: Record<Lang, {
         paths: [
           {
             title: '正在编制预算',
-            body: '为何不存在平均费用、报价通常不含哪些项目、资金如何流转。',
+            body: '为何不存在平均费用、报价通常不含哪些项目、资金如何流转，以及保障条款实际覆盖什么。',
           },
           {
             title: '正在选择目的地',
             body: '法律必须回答的问题，孩子须办理的证件，以及决定亲权的期限。',
           },
           {
-            title: '准备签约',
-            body: '第一次移植前必须具备哪些书面文件，每笔资金于何种条件下支付。',
+            title: '正在选择由谁来办',
+            body: '机构、诊所与代孕者是三个彼此独立的决定：简介不会告诉您什么，第一次移植前必须写明什么。',
           },
           {
-            title: '正在阅读成功率',
-            body: '美国规模最大的移植研究所统计的内容，及其适用人群。',
+            title: '正在掂量成功的可能',
+            body: '诊所如何报告成功率、美国规模最大的移植研究统计了什么，以及周期失败会改变什么。',
           },
         ],
         allHeading: '全部指南',

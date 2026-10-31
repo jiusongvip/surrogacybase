@@ -290,11 +290,11 @@ export const HOME_COUNTRIES: Record<Lang, {
  * meets first, not a measurement of anything the site collects. */
 export const HOME_PICKS = [
   'guides/surrogacy-cost',
-  'guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
+  'guides/surrogacy-law-questions-by-destination',
   'guides/bringing-your-child-home',
   'guides/surrogacy-process',
   'guides/choosing-a-surrogacy-agency',
-  'guides/what-must-be-signed-before-the-first-transfer',
+  'guides/documents-before-embryo-transfer',
 ];
 
 /* The content module's copy. No topic names appear here or on the cards: a card carries a

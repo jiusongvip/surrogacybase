@@ -13,7 +13,7 @@ reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
-related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/surrogacy-law-questions-by-destination"]
 sources:
   - label: "FIGO 关于代孕的立场声明"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/"
@@ -103,7 +103,7 @@ sources:
 
 ### 8. 出生与亲权
 
-亲权路径决定的是产房内及其后的事项。[法律考量指南](/zh/guides/surrogacy-legal-considerations)写明最令家庭意外的一条规则，[英国一文](/zh/guides/the-six-month-limit-on-a-uk-parental-order)给出与之绑定的时限。在英国，分娩的女性在法院将该身份移交他人之前，始终为孩子的法律母亲，因此申请发生在出生之后而非之前；该处记录的等待时间为六个月至一年。另一些制度则在出生之前发出命令。何种路径适用于您，仅该辖区的律师能够回答，而它决定了您应以什么为中心制订计划。
+亲权路径决定的是产房内及其后的事项。[法律考量指南](/zh/guides/surrogacy-legal-considerations)写明最令家庭意外的一条规则，[英国一文](/zh/guides/uk-parental-order-six-month-limit)给出与之绑定的时限。在英国，分娩的女性在法院将该身份移交他人之前，始终为孩子的法律母亲，因此申请发生在出生之后而非之前；该处记录的等待时间为六个月至一年。另一些制度则在出生之前发出命令。何种路径适用于您，仅该辖区的律师能够回答，而它决定了您应以什么为中心制订计划。
 
 ### 9. 把孩子带回家
 

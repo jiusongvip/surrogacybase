@@ -54,7 +54,7 @@ export const CONCERNS: Concern[] = [
     question: { en: 'Can we use our own gametes, and who carries the pregnancy?', zh: '我们能否使用自己的配子，由谁完成妊娠？' },
     body: { en: 'What each gamete and carrier arrangement decides before you sign anything, and which professional owns each answer.', zh: '各项配子与妊娠安排于您签署任何文件之前即已确定何种内容，以及每项问题由哪一方专业人员答复。' },
     action: { en: 'Work through the options', zh: '逐项核对上述选择' },
-    href: '/guides/gamete-and-surrogate-options',
+    href: '/guides/egg-sperm-and-surrogate-options',
   },
   {
     id: 'cost',

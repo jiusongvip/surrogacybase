@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
-related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost", "guides/surrogacy-costs-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -73,7 +73,7 @@ sources:
 
 报价通常是一份套餐说明，不是一本账簿。报出的金额与实际支付的金额之间的差额，来自那些不会被称为代孕费用的项目：第二次移植尝试、由诊所而非项目收费的药物与监测、代孕者的保险、她自己的独立律师（[对美国实践的学术综述](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/)记载，各方分别获得代理是受推荐的，有时还是强制要求的）、法院与立案费用、延续至出院日期之后的新生儿治疗、妊娠提前结束时仍未清偿的款项、行程本身，以及在任何人的航班之前必须先行办妥的证件。
 
-[落在代孕报价之外的成本](/zh/guides/surrogacy-costs-that-sit-outside-a-quote)一文将上述十二类开支逐一展开，并把每一项转化为一个提交指定对象的书面问题。[报价比较工具](/zh/tools/agency-quote-comparison)则将两份报价并排置于同一组九项成本之上。
+[落在代孕报价之外的成本](/zh/guides/surrogacy-costs-outside-a-quote)一文将上述十二类开支逐一展开，并把每一项转化为一个提交指定对象的书面问题。[报价比较工具](/zh/tools/agency-quote-comparison)则将两份报价并排置于同一组九项成本之上。
 
 ## 同一项目在两家机构报价不同的原因
 
@@ -115,7 +115,7 @@ sources:
 
 **加拿大。** 加拿大法律规定的是哪些支出可以报销，而非这些支出应值多少金额。[加拿大卫生部的指引](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)逐项列出了可报销的开支，包括交通、托育、咨询、法律费用、药物、孕妇装、产前课程、分娩、保险，以及孕前与产后期间因怀孕损失的工作收入。须提供票据，且记录须保存六年。
 
-上述数据均非对您实际支付金额的测量，亦非真实项目之间的平均值。其原因陈述于[为什么不存在代孕平均费用](/zh/guides/why-no-average-surrogacy-cost-exists)一文。
+上述数据均非对您实际支付金额的测量，亦非真实项目之间的平均值。其原因陈述于[为什么不存在代孕平均费用](/zh/guides/why-no-average-surrogacy-cost)一文。
 
 上述每一项数字及其背后的来源，均在[已公布的费用数据](/zh/tools/cost-figures)页面中逐条列出。
 

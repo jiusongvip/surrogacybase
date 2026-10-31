@@ -82,7 +82,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       zh: '目的地决定出生时会发生什么。孩子将申领护照的国家，或您拟返回的国家，决定其是否接受这一出生结果。此为两套法律体系，亦须两位律师。',
     },
     link: { en: 'What to ask before you shortlist', zh: '列入候选之前应问什么' },
-    href: '/guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
+    href: '/guides/surrogacy-law-questions-by-destination',
   },
   {
     id: 'resident-not-citizen',
@@ -108,7 +108,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       zh: '卵子取自何人、精子取自何人、由谁完成妊娠，系三项彼此独立的决定；而在某些法域，必需的基因联系即载明于条文本身。上述结构须在列入候选目的地之前确定，因为一条路径可能恰恰在此一项问题上无法通行。',
     },
     link: { en: 'Gamete and surrogate options', zh: '生殖细胞与代孕者的选择' },
-    href: '/guides/gamete-and-surrogate-options',
+    href: '/guides/egg-sperm-and-surrogate-options',
   },
   {
     id: 'parentage-concern',
@@ -181,7 +181,7 @@ export const DESTINATION_NOTES: DestinationNote[] = [
       zh: '缺乏条目清单时，每一目的地看似均可负担，每份报价看似均无遗漏。加拿大说明了范围本身的作用：向代孕者付款在该国被禁止，而对其受监管开支的报销则属允许、且有文件依据；因此资金的构成方式出自法律，而非市场。',
     },
     link: { en: 'The costs a quote leaves out', zh: '报价不包含的费用' },
-    href: '/guides/surrogacy-costs-that-sit-outside-a-quote',
+    href: '/guides/surrogacy-costs-outside-a-quote',
     cite: { code: 'ca', fact: 1 },
   },
   {

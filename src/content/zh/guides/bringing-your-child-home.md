@@ -1,6 +1,6 @@
 ---
 title: "把孩子带回家：出生之后的文件、证件与国籍"
-titleTag: "把孩子带回家"
+titleTag: "代孕之后把孩子带回家"
 description: "孩子凭什么文件过境，出生地国与接收国各自要什么，哪一步会要求血缘关系，回到居住国之后还要办哪些登记。"
 type: guide
 category: process
@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-17"
 jurisdictions: ["us", "gb"]
 evidence: verified
 relatedTools: ["tools/destination-research-checklist"]
-related: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/getting-a-birth-certificate-accepted-abroad", "guides/the-six-month-limit-on-a-uk-parental-order"]
+related: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/birth-certificate-after-surrogacy-abroad", "guides/uk-parental-order-six-month-limit"]
 sources:
   - label: "代孕：通过法院裁定成为父母"
     url: "https://selfhelp.courts.ca.gov/parentage/surrogacy"
@@ -46,7 +46,7 @@ sources:
 
 医疗阶段于分娩时结束，而决定您的全家能否同行的阶段才刚刚开始；接管后一阶段的机构，无一由您这项安排中的任何一方雇用：出生地所在州的法院、登记机关、领事馆、护照办公室，以及您拟携子女返回之国的登记机关。它们均非您合同的当事人，亦无一家按您可施加影响的时间表运作。
 
-以下顺序即为此一链条必须依循的顺序。其中两环各另有专文：[附加证明书的办理方式与出具机关](/zh/guides/getting-a-birth-certificate-accepted-abroad)，以及[英国父母令的六个月期限](/zh/guides/the-six-month-limit-on-a-uk-parental-order)。
+以下顺序即为此一链条必须依循的顺序。其中两环各另有专文：[附加证明书的办理方式与出具机关](/zh/guides/birth-certificate-after-surrogacy-abroad)，以及[英国父母令的六个月期限](/zh/guides/uk-parental-order-six-month-limit)。
 
 应将出生地国与家庭拟返回的国家分开来看。一份合同不会让一国的亲子裁定在另一国自动生效；接收端的每一个机关，均会依其自身规则重新审阅文件。美国和英国出现在下文，是因为其政府、法院、登记机关和领事馆公开了此一链条上的某一环，而这两个国家各有一页目的地记录。澳大利亚之所以出现，是因为其政府公开了自身对本国公民的旅行建议。
 

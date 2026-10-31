@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: verified
 relatedTools: ["tools/destination-research-checklist", "tools/destination-comparison"]
-related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "guides/why-no-average-surrogacy-cost-exists"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost", "guides/surrogacy-law-questions-by-destination", "guides/why-no-average-surrogacy-cost"]
 sources:
   - label: "US Surrogacy Laws (resource page)"
     url: "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/"

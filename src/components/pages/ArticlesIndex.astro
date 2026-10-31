@@ -7,7 +7,7 @@ import EmptyState from '@/components/ui/EmptyState.astro';
 import { langFromPath, localizedPath } from '@/i18n/paths';
 import { UI, TOPIC_LABELS, TOPIC_BLURBS } from '@/i18n/ui';
 import { contentImage } from '@/data/content-images';
-import { pathOf, getGuides, resolveRefs } from '@/lib/content';
+import { pathOf, getGuides, resolveRefs, refKeyOf } from '@/lib/content';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages.articles;
@@ -20,23 +20,54 @@ const topicOrder = ['legal', 'choice', 'process', 'cost'];
  * paths below are curated reading orders; everything else is grouped by the question it answers. */
 const articles = await getGuides(lang);
 
+/* Four reading orders, one per situation a reader arrives in. Between them they cover every
+ * published piece, because a path that leaves two thirds of the library out is a table of
+ * contents rather than a route: the reader who follows one to the end still has no idea what
+ * they have not seen. Each order is the sequence in which the questions actually come up. */
 const PATH_REFS = [
   [
-    'guides/why-no-average-surrogacy-cost-exists',
-    'guides/surrogacy-costs-that-sit-outside-a-quote',
+    'guides/why-no-average-surrogacy-cost',
+    'guides/surrogacy-costs-outside-a-quote',
+    'guides/surrogacy-cost',
     'guides/surrogacy-escrow-accounts-and-payment-stages',
+    'guides/surrogacy-quote-insurance',
+    'guides/surrogacy-refund-guarantee',
   ],
   [
-    'guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
-    'guides/getting-a-birth-certificate-accepted-abroad',
-    'guides/the-six-month-limit-on-a-uk-parental-order',
+    'guides/surrogacy-law-questions-by-destination',
+    'guides/surrogacy-legal-considerations',
+    'guides/uk-parental-order-six-month-limit',
+    'guides/birth-certificate-after-surrogacy-abroad',
+    'guides/bringing-your-child-home',
   ],
   [
-    'guides/what-must-be-signed-before-the-first-transfer',
-    'guides/surrogacy-escrow-accounts-and-payment-stages',
+    'guides/choosing-a-surrogacy-agency',
+    'guides/surrogacy-clinic-vs-agency',
+    'guides/how-to-read-a-carrier-profile',
+    'guides/egg-sperm-and-surrogate-options',
+    'guides/anonymous-egg-donor-information',
+    'guides/fertility-tests-at-a-new-clinic',
+    'guides/male-fertility-checks-before-surrogacy',
+    'guides/documents-before-embryo-transfer',
   ],
-  ['guides/what-40177-transfers-do-not-promise-you'],
+  [
+    'guides/surrogacy-process',
+    'guides/how-to-read-a-clinic-published-success-rate',
+    'guides/surrogacy-success-rates-40177-transfers',
+    'guides/failed-surrogacy-cycle',
+    'guides/changing-clinics-after-a-failed-transfer',
+  ],
 ];
+
+/* The comment above is a claim about coverage, and a claim kept only in a comment stops being
+ * true the next time someone publishes. Checking it here fails the build at the one moment the
+ * omission is cheap to fix, naming the piece no route reaches rather than letting it sit in the
+ * index as a card nobody clicks. */
+const routed = new Set(PATH_REFS.flat());
+const unrouted = articles.filter((entry) => !routed.has(refKeyOf(entry)));
+if (unrouted.length > 0) {
+  throw new Error(`no reading path reaches ${unrouted.map((entry) => entry.id).join(', ')}`);
+}
 
 const paths = (
   await Promise.all(

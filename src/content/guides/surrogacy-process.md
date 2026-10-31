@@ -13,7 +13,7 @@ reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
-related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/surrogacy-law-questions-by-destination"]
 sources:
   - label: "FIGO position statement on surrogacy"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/"
@@ -103,7 +103,7 @@ Prenatal care runs through the carrier's obstetric provider. Your involvement, w
 
 ### 8. Birth and parentage
 
-The parentage route determines what happens in the delivery room and after it. The [legal considerations guide](/guides/surrogacy-legal-considerations) states the rule that surprises families most, and the [UK article](/guides/the-six-month-limit-on-a-uk-parental-order) gives the clock attached to it. In the United Kingdom the woman who gives birth is the child's legal mother until a court hands that status somewhere else, so the application follows the birth rather than preceding it, and the wait reported there runs from six months to a year. Other systems issue an order before the birth. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
+The parentage route determines what happens in the delivery room and after it. The [legal considerations guide](/guides/surrogacy-legal-considerations) states the rule that surprises families most, and the [UK article](/guides/uk-parental-order-six-month-limit) gives the clock attached to it. In the United Kingdom the woman who gives birth is the child's legal mother until a court hands that status somewhere else, so the application follows the birth rather than preceding it, and the wait reported there runs from six months to a year. Other systems issue an order before the birth. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
 
 ### 9. Bringing the child home
 

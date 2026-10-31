@@ -12,7 +12,7 @@ reviewDueOn: "2027-04-14"
 jurisdictions: ["us"]
 evidence: verified
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
-related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/why-no-average-surrogacy-cost-exists"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-costs-outside-a-quote", "guides/why-no-average-surrogacy-cost", "guides/surrogacy-refund-guarantee"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
