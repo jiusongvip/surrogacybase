@@ -1,17 +1,17 @@
 ---
 title: "第一次移植之前必须签下什么"
 description: "妊娠代孕安排应当在胚胎移植之前备齐的五份文件，以及每一份的用途。"
-type: article
+type: guide
 category: preparation
+topic: legal
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/getting-a-birth-certificate-accepted-abroad"]
 relatedTools: ["tools/agency-question-checklist", "tools/agency-quote-comparison"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/getting-a-birth-certificate-accepted-abroad"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -60,7 +60,7 @@ sources:
 由此产生三项后果，而它们正是本清单值得在资金流动之前逐条核对的原因。
 
 - 一份无法强制执行的文件，仍然作为证据发挥作用。约定过什么、披露过什么、支付过什么，都将由这些文件重建；因此在合同无法保护您的地方，文件质量仍在保护您。
-- 父母身份的问题由法院按其自身标准裁定，而非由协议裁定。[六个月时限一文](/zh/articles/the-six-month-limit-on-a-uk-parental-order)附有出处地给出该规则：分娩的女性为法律母亲，若其有配偶或民事伴侣，该人即为第二位法律父母，直至法院命令将这两个身份一并取代。
+- 父母身份的问题由法院按其自身标准裁定，而非由协议裁定。[六个月时限一文](/zh/guides/the-six-month-limit-on-a-uk-parental-order)附有出处地给出该规则：分娩的女性为法律母亲，若其有配偶或民事伴侣，该人即为第二位法律父母，直至法院命令将这两个身份一并取代。
 - 付款条款不具中性。当合法上限即为代孕者的合理开支、超出部分须待法官裁定时，一套激进的补偿结构便不仅意味着昂贵。它可能正内嵌于决定您能否成为孩子法律父母的那份申请之中。
 
 ## 专业组织视为强制的事项
@@ -83,7 +83,7 @@ sources:
 4. 代孕者的律师为何人，由谁支付其费用，我方可在签署之前多久看到草稿？
 5. 本清单中的哪一项要求为您所在法域所不强制执行；若不依赖该文件，您以何者替代？
 
-对于第五个问题，尽职的律师会毫不迟疑地作答，不够格的律师则以安慰性表述作答。它同时也在揭示：您即将注资的[托管付款阶段](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)，在安排中止时是否确有后果。
+对于第五个问题，尽职的律师会毫不迟疑地作答，不够格的律师则以安慰性表述作答。它同时也在揭示：您即将注资的[托管付款阶段](/zh/guides/surrogacy-escrow-accounts-and-payment-stages)，在安排中止时是否确有后果。
 
 ## 何谓准备就绪：文件齐备，而非感觉良好
 
@@ -91,6 +91,6 @@ sources:
 
 即使这五份文件中缺少任何一份，移植仍然可以进行，而这正是本清单值得留存的理由。日历属于诊所。条款属于您，但仅持续到任何文件被签署之前。
 
-出生之后的文件属于另一条链条、另一批决定者，相关内容由[让境外机关接受这张出生证明](/zh/articles/getting-a-birth-certificate-accepted-abroad)一文陈述。
+出生之后的文件属于另一条链条、另一批决定者，相关内容由[让境外机关接受这张出生证明](/zh/guides/getting-a-birth-certificate-accepted-abroad)一文陈述。
 
 以上内容报告的是已发布的指南与各专业组织的立场。它不是法律建议，也不是一份模板；本文所述任何文件均未针对您的具体情形审阅。

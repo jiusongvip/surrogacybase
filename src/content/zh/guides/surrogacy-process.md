@@ -4,15 +4,16 @@ titleTag: "代孕流程的九个阶段"
 description: "妊娠代孕项目通常会经过哪些阶段，每个阶段有谁参与，以及意向父母需要准备什么。每个阶段的时间与费用由谁控制。"
 type: guide
 category: process
+topic: process
+featured: true
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "FIGO 关于代孕的立场声明"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/"
@@ -88,7 +89,7 @@ sources:
 
 ### 5. 协议，以及协议背后的资金
 
-在治疗开始之前，该安排应以文件形式确立，且该文件应承载资金而非仅指向它。[收养与辅助生殖律师学会的指引](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/)将整个财务部分写入签署的那份协议，而非留待之后再行约定。这对您的资金敞口意味着什么，包括最常令人措手不及的注资时点，均已在[托管账户与付款阶段](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)一文中逐条说明。
+在治疗开始之前，该安排应以文件形式确立，且该文件应承载资金而非仅指向它。[收养与辅助生殖律师学会的指引](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/)将整个财务部分写入签署的那份协议，而非留待之后再行约定。这对您的资金敞口意味着什么，包括最常令人措手不及的注资时点，均已在[托管账户与付款阶段](/zh/guides/surrogacy-escrow-accounts-and-payment-stages)一文中逐条说明。
 
 律师层面同理：对美国实践的学术梳理记录，每一方均应拥有[自己的代理律师](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/)，而在部分州此为要求而非建议。为代孕者提供独立法律意见并非您代为支付的一道形式手续，而是使该安排得以站得住的保障。
 
@@ -102,7 +103,7 @@ sources:
 
 ### 8. 出生与亲权
 
-亲权路径决定的是产房内及其后的事项。[法律考量指南](/zh/guides/surrogacy-legal-considerations)写明最令家庭意外的一条规则，[英国一文](/zh/articles/the-six-month-limit-on-a-uk-parental-order)给出与之绑定的时限。在英国，分娩的女性在法院将该身份移交他人之前，始终为孩子的法律母亲，因此申请发生在出生之后而非之前；该处记录的等待时间为六个月至一年。另一些制度则在出生之前发出命令。何种路径适用于您，仅该辖区的律师能够回答，而它决定了您应以什么为中心制订计划。
+亲权路径决定的是产房内及其后的事项。[法律考量指南](/zh/guides/surrogacy-legal-considerations)写明最令家庭意外的一条规则，[英国一文](/zh/guides/the-six-month-limit-on-a-uk-parental-order)给出与之绑定的时限。在英国，分娩的女性在法院将该身份移交他人之前，始终为孩子的法律母亲，因此申请发生在出生之后而非之前；该处记录的等待时间为六个月至一年。另一些制度则在出生之前发出命令。何种路径适用于您，仅该辖区的律师能够回答，而它决定了您应以什么为中心制订计划。
 
 ### 9. 把孩子带回家
 

@@ -1,17 +1,17 @@
 ---
 title: "Why There Is No Average Cost of Surrogacy"
 description: "Every surrogacy cost figure you can find comes from a provider or a citation of one. Where those numbers actually come from, and what to use instead."
-type: article
+type: guide
 category: cost
+topic: cost
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost"]
-relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
+related: ["guides/surrogacy-cost", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "Average cost of surrogacy in the United States (clinic blog)"
     url: "https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states"
@@ -82,9 +82,9 @@ Averaging across that distribution produces a number that describes no actual pr
 ## What to use instead of an average
 
 1. **Build the budget from components.** A list of payees, each with a named biller, is a budget. One borrowed number is a hope. The [cost guide](/guides/surrogacy-cost) sets out the components and the contingent items.
-2. **Take the exclusions seriously.** The items outside a quote usually determine the final total. See [the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote).
+2. **Take the exclusions seriously.** The items outside a quote usually determine the final total. See [the costs that sit outside a quote](/guides/surrogacy-costs-that-sit-outside-a-quote).
 3. **Price the risk you carry.** How many attempts you agree to fund, and what happens to the plan if none of them produces a child, moves your number further than any market average can.
-4. **Ask for the escrow schedule.** When the money must be in an account, and what happens to it, is more predictive of your exposure than the headline fee. See [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).
+4. **Ask for the escrow schedule.** When the money must be in an account, and what happens to it, is more predictive of your exposure than the headline fee. See [escrow accounts and payment stages](/guides/surrogacy-escrow-accounts-and-payment-stages).
 5. **Label every figure you write down** with who published it, when, and whether they sell the service. If you cannot label it, do not put it in the budget. The [published cost figures](/tools/cost-figures) page lists the numbers that arrive with that labelling already attached: each row names the source that published it and the year those figures describe.
 
 That is more work than reading a headline number, and it is the only version that survives contact with an actual invoice.

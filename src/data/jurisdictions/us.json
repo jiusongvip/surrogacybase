@@ -8,6 +8,49 @@
   "parentage": "Parentage is decided under state law and state court practice, not federally. A US order is also a separate question from whether another country will recognise it.",
   "statusVerifiedOn": "2026-10-17",
   "insufficientData": false,
+  "subJurisdictions": [
+    { "name": "California", "status": "permitted" },
+    { "name": "Colorado", "status": "permitted" },
+    { "name": "Connecticut", "status": "permitted" },
+    { "name": "Florida", "status": "permitted" },
+    { "name": "Idaho", "status": "permitted" },
+    { "name": "Illinois", "status": "permitted" },
+    { "name": "Iowa", "status": "permitted" },
+    { "name": "Massachusetts", "status": "permitted" },
+    { "name": "Michigan", "status": "permitted" },
+    { "name": "Nevada", "status": "permitted" },
+    { "name": "New Hampshire", "status": "permitted" },
+    { "name": "New Jersey", "status": "permitted" },
+    { "name": "New York", "status": "permitted" },
+    { "name": "Oklahoma", "status": "permitted" },
+    { "name": "Rhode Island", "status": "permitted" },
+    { "name": "Texas", "status": "permitted" },
+    { "name": "Utah", "status": "permitted" },
+    { "name": "Vermont", "status": "permitted" },
+    { "name": "Virginia", "status": "permitted" },
+    { "name": "Washington", "status": "permitted" },
+    { "name": "West Virginia", "status": "permitted" },
+    {
+      "name": "Arizona",
+      "status": "restricted",
+      "note": "Residents are prohibited from entering into gestational carrier contracts; such contracts are described as statutorily unenforceable."
+    },
+    {
+      "name": "Indiana",
+      "status": "restricted",
+      "note": "Gestational carrier contracts are unenforceable and against public policy."
+    },
+    {
+      "name": "Louisiana",
+      "status": "restricted",
+      "note": "Surrogacy agreements are restricted to married heterosexual genetic intended parents."
+    },
+    {
+      "name": "Nebraska",
+      "status": "restricted",
+      "note": "Gestational carrier contracts are unenforceable and against public policy."
+    }
+  ],
   "facts": [
     {
       "claim": "Each state has its own laws about whether surrogacy is permitted and how it is regulated; there is no federal framework.",

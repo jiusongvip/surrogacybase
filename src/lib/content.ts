@@ -44,12 +44,6 @@ export function pathOf(entry: ContentEntry): string {
   return `/${entry.id}`;
 }
 
-/** entry.id is the file path under src/content, so slugs stay one-to-one with files. */
-export function idFor(type: 'guide' | 'article', slug: string, lang: Lang = 'en'): string {
-  const base = `${type === 'guide' ? 'guides' : 'articles'}/${slug}`;
-  return lang === 'en' ? base : `${ID_SEP}${base}`;
-}
-
 export async function getLiveContent(lang: Lang = 'en'): Promise<ContentEntry[]> {
   const all = await getCollection('content', (e) => isLive(e) && langOfEntry(e) === lang);
   return all.sort((a, b) => b.data.updatedOn.localeCompare(a.data.updatedOn));
@@ -58,11 +52,6 @@ export async function getLiveContent(lang: Lang = 'en'): Promise<ContentEntry[]>
 export async function getGuides(lang: Lang = 'en'): Promise<ContentEntry[]> {
   const all = await getCollection('content', (e) => e.data.type === 'guide' && isLive(e) && langOfEntry(e) === lang);
   return all.sort((a, b) => a.data.category.localeCompare(b.data.category));
-}
-
-export async function getArticles(lang: Lang = 'en'): Promise<ContentEntry[]> {
-  const all = await getCollection('content', (e) => e.data.type === 'article' && isLive(e) && langOfEntry(e) === lang);
-  return all.sort((a, b) => b.data.publishedOn.localeCompare(a.data.publishedOn));
 }
 
 /**
@@ -103,21 +92,16 @@ export async function resolveRefs(refs: string[], lang: Lang = 'en'): Promise<Co
 export async function relatedFor(
   entry: ContentEntry,
   lang: Lang = 'en'
-): Promise<{ guides: ContentEntry[]; articles: ContentEntry[] }> {
-  const guides = await resolveRefs(entry.data.relatedGuides, lang);
-  const articles = await resolveRefs(entry.data.relatedArticles, lang);
-  const chosen = [...guides, ...articles];
+): Promise<{ related: ContentEntry[] }> {
+  const direct = await resolveRefs(entry.data.related ?? [], lang);
   const others = (await getLiveContent(lang)).filter((e) => e.id !== entry.id);
   const returned: ContentEntry[] = [];
   for (const other of others) {
-    const refs = await resolveRefs([...other.data.relatedGuides, ...other.data.relatedArticles], lang);
-    if (refs.some((r) => r.id === entry.id) && !chosen.some((c) => c.id === other.id)) returned.push(other);
+    const refs = await resolveRefs(other.data.related ?? [], lang);
+    if (refs.some((r) => r.id === entry.id) && !direct.some((c) => c.id === other.id)) returned.push(other);
   }
   returned.sort((a, b) => a.id.localeCompare(b.id));
-  return {
-    guides: [...guides, ...returned.filter((e) => e.data.type === 'guide')],
-    articles: [...articles, ...returned.filter((e) => e.data.type === 'article')],
-  };
+  return { related: [...direct, ...returned] };
 }
 
 /**

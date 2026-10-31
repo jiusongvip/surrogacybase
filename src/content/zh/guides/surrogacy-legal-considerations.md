@@ -4,15 +4,15 @@ titleTag: "代孕的法律考量"
 description: "可执行性、亲权、资格与付款是四个各自独立的法律问题。每个问题由什么决定，以及该向律师提出什么。"
 type: guide
 category: destinations
+topic: legal
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/destination-research-checklist", "tools/destination-comparison"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "美国各州代孕法律（资料页）"
     url: "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/"

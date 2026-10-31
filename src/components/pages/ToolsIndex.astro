@@ -21,7 +21,6 @@ import { pathOf, resolveRefs } from '@/lib/content';
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = TOOLS_INDEX_PAGE[lang];
-const guideCopy = UI[lang].pages.guides;
 const labels = CATEGORY_LABELS[lang];
 const liveTools = TOOLS.filter((t) => t.live);
 
@@ -180,7 +179,6 @@ const jsonLd = [
               <h3 class="mt-1 text-[20px] leading-snug group-hover:text-accent">{guide.data.title}</h3>
               <p class="mt-1.5 max-w-[62ch] text-[15px] leading-[1.7] text-muted">{guide.data.description}</p>
               <span class="mt-3 inline-flex items-center gap-2 text-[14px] font-medium text-accent">
-                {guideCopy.readGuide}
                 <Icon name="arrow-right" size={15} />
               </span>
             </a>

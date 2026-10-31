@@ -82,6 +82,26 @@
     @apply border-t border-line;
   }
 
+  /* The one exit a section carries, set as a line of text with an arrow rather than a
+   * second button. A page of seven pill buttons competes with itself. */
+  .exit {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap text-[14.5px] font-medium text-text transition-colors duration-(--dur) hover:text-accent;
+  }
+
+  .exit-on-band {
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap text-[14.5px] font-medium text-band transition-colors duration-(--dur) hover:text-white;
+  }
+
+  .exit svg,
+  .exit-on-band svg {
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .exit:hover svg,
+  .exit-on-band:hover svg {
+    transform: translateX(3px);
+  }
+
   /* The small category label above a section heading. Kept as one shared class so the
    * restraint rule (max one per three sections) is easy to audit and tune in a single place. */
   .eyebrow {
@@ -146,6 +166,15 @@
   .band-sand {
     @apply bg-sand text-text;
   }
+}
+
+/*
+ * A page that closes on a full-bleed brand band runs straight into the footer. The footer
+ * carries a top margin so a paper page does not butt against it; between two greens that
+ * margin printed a strip of paper and made the band look like a mistake.
+ */
+main:has(> .band-brand:last-child) + footer {
+  margin-top: 0;
 }
 
 /* ---------------------------------------------------------------------------

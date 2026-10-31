@@ -76,6 +76,18 @@
       }
     }
   ],
+  "timeline": [
+    {
+      "on": "2026-05-07",
+      "claim": "Reporting in May 2026 described Ukraine as a global surrogacy hub still open to foreign intended parents, while noting that officials were considering ending access for them.",
+      "fact": 2
+    },
+    {
+      "on": "2026-08-13",
+      "claim": "A bill registered in parliament on 13 August 2026 would remove foreign intended parents from surrogacy programmes except where a spouse is Ukrainian; it has not been adopted.",
+      "fact": 1
+    }
+  ],
   "openQuestions": [
     "The verbatim text of Family Code article 123 and of the Ministry of Health instruction on assisted reproductive technology was not reachable here, so the exact certificate that establishes the genetic link, and whether any family status other than marriage qualifies, rest on a legal-aid summary.",
     "Ministry of Health order 383 of 6 March 2024 amends the assisted-reproduction instruction; its existence and date were confirmed but the changes it made could not be read, so the current procedural detail is unconfirmed.",

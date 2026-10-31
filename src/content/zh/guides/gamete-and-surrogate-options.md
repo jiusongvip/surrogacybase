@@ -4,16 +4,16 @@ titleTag: "配子与代孕者的选择"
 description: "卵子取自何人、精子取自何人、由谁怀孕，是三项独立的决定；每一项都会改变医疗步骤、合同需回答的问题，以及应由何人作答。"
 type: guide
 category: process
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-04-14"
 jurisdictions: []
 evidence: framework
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-cost"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
 sources: []
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-cost", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 ---
 
 人们通常将代孕视为一项决定：是否进行。实为三项，且彼此可分离：卵子取自何人，精子取自何人，由谁怀孕并分娩。每一项各自对应一项医疗步骤、一份同意文件，以及一组仅能由律师、诊所或托管账户管理人针对您的具体情况回答的问题。

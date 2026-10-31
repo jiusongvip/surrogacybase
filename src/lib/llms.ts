@@ -46,8 +46,6 @@ function heading(lang: Lang, en: string, zh: string) {
 export async function buildLlmsTxt(site: URL, lang: Lang) {
   const copy = UI[lang];
   const entries = await getLiveContent(lang);
-  const guides = entries.filter((e) => e.data.type === 'guide');
-  const explainers = entries.filter((e) => e.data.type === 'article');
   const jurisdictions = await getJurisdictions(lang);
   const tools = TOOLS.filter((t) => t.live);
 
@@ -66,11 +64,7 @@ export async function buildLlmsTxt(site: URL, lang: Lang) {
     '',
     heading(lang, 'Guides', '指南'),
     '',
-    ...guides.map((e) => piece(site, e)),
-    '',
-    heading(lang, 'Explainers', '专题解读'),
-    '',
-    ...explainers.map((e) => piece(site, e)),
+    ...entries.map((e) => piece(site, e)),
     '',
     heading(lang, 'Destinations', '目的地'),
     '',

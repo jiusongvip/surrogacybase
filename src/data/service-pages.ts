@@ -66,7 +66,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: 'What happens when I send an enquiry?',
-        a: 'A consultant on the editorial team reads it and replies within 24 hours on the channel you left. The enquiry stays with SurrogacyBase: it is not forwarded to a clinic, agency or lawyer, and no account is created for you. The reply separates three things: what the sources here support, what they leave unsettled, and which question only a lawyer or clinician in that jurisdiction can settle. Where public material cannot settle it, the reply says so instead of guessing.',
+        a: 'A consultant on the editorial team reads it and replies within 1 to 2 working days on the channel you left. The enquiry stays with SurrogacyBase: it is not forwarded to a clinic, agency or lawyer, and no account is created for you. The reply separates three things: what the sources here support, what they leave unsettled, and which question only a lawyer or clinician in that jurisdiction can settle. Where public material cannot settle it, the reply says so instead of guessing.',
       },
     ],
     whoHeading: 'Who is behind it',
@@ -115,7 +115,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
       },
       {
         q: '我发出问询之后会发生什么？',
-        a: '编辑团队的顾问将予以阅读，并在 24 小时内通过您留下的联系方式作出回复。问询仅送达 SurrogacyBase 自身：不会转交诊所、机构或律师，亦不会为您建立任何账号。回复将三项内容分别写明：本站资料支持至何程度、资料未能解决什么，以及哪一问题只能由该法域具执业资格的律师或临床医生裁断。公开资料无法回答的，回复将直述无法回答，而非加以推测。',
+        a: '编辑团队的顾问将予以阅读，并在 1 至 2 个工作日内通过您留下的联系方式作出回复。问询仅送达 SurrogacyBase 自身：不会转交诊所、机构或律师，亦不会为您建立任何账号。回复将三项内容分别写明：本站资料支持至何程度、资料未能解决什么，以及哪一问题只能由该法域具执业资格的律师或临床医生裁断。公开资料无法回答的，回复将直述无法回答，而非加以推测。',
       },
     ],
     whoHeading: '背后是谁',

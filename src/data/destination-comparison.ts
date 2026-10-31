@@ -114,7 +114,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
       'Remove a place as soon as a row shows it cannot answer the question you brought. What is left on the board is worth taking to a professional in that jurisdiction, question by question.',
     checklist: 'Open the destination research checklist',
     legalGuide: 'The four legal questions to settle first',
-    enquiry: 'Free consultation',
+    enquiry: 'Talk to an advisor',
   },
   zh: {
     title: '目的地对比',
@@ -165,7 +165,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
     closingBody: '任一行无法答复您提出的问题时，即可将该地排除。表中留存的部分，值得逐条提交当地法律人士确认。',
     checklist: '打开目的地研究清单',
     legalGuide: '最应先确定的四个法律问题',
-    enquiry: '免费咨询',
+    enquiry: '找顾问聊聊',
   },
 };
 

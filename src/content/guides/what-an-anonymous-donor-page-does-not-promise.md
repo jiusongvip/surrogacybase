@@ -2,17 +2,17 @@
 title: "What an Anonymous Donor's Page Does Not Promise You"
 titleTag: "What an Anonymous Donor Page Does Not Promise"
 description: "The word anonymous on a donor page hides two different claims. What guidance now says, and what United Kingdom law gives by year of birth."
-type: article
+type: guide
 category: preparation
+topic: choice
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/gamete-and-surrogate-options"]
-relatedArticles: ["articles/what-a-carrier-profile-does-not-tell-you", "articles/getting-a-birth-certificate-accepted-abroad"]
 relatedTools: ["tools/agency-question-checklist", "tools/destination-research-checklist"]
+related: ["guides/gamete-and-surrogate-options", "guides/what-a-carrier-profile-does-not-tell-you", "guides/getting-a-birth-certificate-accepted-abroad"]
 sources:
   - label: "Updated terminology for gamete and embryo donors: directed (identified) to replace known and nonidentified to replace anonymous: a committee opinion (2022)"
     url: "https://www.asrm.org/practice-guidance/ethics-opinions/updated-terminology-for-gamete-and-embryo-donors-directed-identied-to-replace-known-and-nonidentied-to-replace-anonymous-a-committee-opinion-2002/"
@@ -72,6 +72,6 @@ Which one you choose changes what you can tell a future child. The gamete donati
 
 ## What no donor document settles
 
-Nothing here decides parentage, and no donor document tells you how many families this donor's gametes have already been used for. The information regime you are buying into is set by a destination's law as much as by a provider's paperwork, which is why it belongs in [the six dimensions a destination page should answer](/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination) rather than in a message from a sales team.
+Nothing here decides parentage, and no donor document tells you how many families this donor's gametes have already been used for. The information regime you are buying into is set by a destination's law as much as by a provider's paperwork, which is why it belongs in [the six dimensions a destination page should answer](/guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination) rather than in a message from a sales team.
 
 What is set out above follows published guidance and a 2023 policy record, with their dates. It is not legal advice, and the rules that apply to your child may have been written after those were.

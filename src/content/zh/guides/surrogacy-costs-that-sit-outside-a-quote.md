@@ -1,17 +1,18 @@
 ---
 title: "落在代孕报价之外的成本"
 description: "套餐价格之外的十二类开支，为何最终均由您承担，以及应向服务方索取何种书面确认。"
-type: article
+type: guide
 category: cost
+topic: cost
+featured: true
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"

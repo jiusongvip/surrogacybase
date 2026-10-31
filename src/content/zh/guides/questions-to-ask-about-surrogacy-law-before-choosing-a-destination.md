@@ -2,18 +2,18 @@
 title: "如何在没有服务方帮助下比较代孕目的地"
 titleTag: "先问代孕法律的这几个问题"
 description: "比较目的地时该打分的六个维度、必须坚持的来源标准，以及核对任何一份目的地页面都要过的四个陷阱。"
-type: article
+type: guide
 category: destinations
+topic: legal
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: framework
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
 sources: []
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote"]
 ---
 
 互联网上几乎每一篇「代孕在哪里合法」的页面，都由在它所推荐的国家里出售项目的人撰写。这不是阴谋，只是最容易被访问到的那一方，恰好是有商业理由给目的地排名的那一方，而排名这件事在没有数据的情况下没有人能诚实完成。

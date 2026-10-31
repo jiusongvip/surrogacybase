@@ -22,12 +22,11 @@ type Props = {
   Content: RenderedContent['Content'];
   headings: Heading[];
   crumbs: { label: string; href?: string }[];
-  relatedGuides: ContentEntry[];
-  relatedArticles: ContentEntry[];
+  related: ContentEntry[];
   relatedTools: { label: string; href: string; note: string }[];
 };
 
-const { entry, Content, headings, crumbs, relatedGuides, relatedArticles, relatedTools } = Astro.props;
+const { entry, Content, headings, crumbs, related, relatedTools } = Astro.props;
 const d = entry.data;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang];
@@ -83,7 +82,7 @@ const jsonLd = [
       <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
         <span class="font-medium text-accent">{categoryLabel}</span>
         <span class="h-px w-6 bg-line-strong" aria-hidden="true"></span>
-        <span class="text-muted">{isGuide ? copy.kinds.guide : copy.kinds.article}</span>
+        <span class="text-muted">{copy.kinds.guide}</span>
       </p>
       <h1 class="mt-4 text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.06]">{d.title}</h1>
       <p class="mt-4 text-[19px] leading-[1.6] text-muted">{d.description}</p>
@@ -154,10 +153,10 @@ const jsonLd = [
 
         <SourceList sources={d.sources} />
 
-        {relatedGuides.length + relatedArticles.length > 0 && (
+        {related.length > 0 && (
           <RelatedLinks
             heading={copy.content.keepReading}
-            entries={[...relatedGuides, ...relatedArticles]}
+            entries={related}
             note={copy.content.keepReadingNote}
           />
         )}

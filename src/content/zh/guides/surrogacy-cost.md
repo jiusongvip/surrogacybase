@@ -4,15 +4,15 @@ titleTag: "代孕费用：应核实什么"
 description: "代孕预算的构成方式，报价通常未涵盖的项目，托管账户与退款条款的运作机制，以及公开费用数据能说明什么、不能说明什么。"
 type: guide
 category: cost
+topic: cost
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -73,7 +73,7 @@ sources:
 
 报价通常是一份套餐说明，不是一本账簿。报出的金额与实际支付的金额之间的差额，来自那些不会被称为代孕费用的项目：第二次移植尝试、由诊所而非项目收费的药物与监测、代孕者的保险、她自己的独立律师（[对美国实践的学术综述](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/)记载，各方分别获得代理是受推荐的，有时还是强制要求的）、法院与立案费用、延续至出院日期之后的新生儿治疗、妊娠提前结束时仍未清偿的款项、行程本身，以及在任何人的航班之前必须先行办妥的证件。
 
-[落在代孕报价之外的成本](/zh/articles/surrogacy-costs-that-sit-outside-a-quote)一文将上述十二类开支逐一展开，并把每一项转化为一个提交指定对象的书面问题。[报价比较工具](/zh/tools/agency-quote-comparison)则将两份报价并排置于同一组九项成本之上。
+[落在代孕报价之外的成本](/zh/guides/surrogacy-costs-that-sit-outside-a-quote)一文将上述十二类开支逐一展开，并把每一项转化为一个提交指定对象的书面问题。[报价比较工具](/zh/tools/agency-quote-comparison)则将两份报价并排置于同一组九项成本之上。
 
 ## 同一项目在两家机构报价不同的原因
 
@@ -90,7 +90,7 @@ sources:
 
 需要理解的机制是托管账户，因为它决定了您自何时起开始承担风险。[专业指引](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/)中有两句话定下了时间：账户通常在第一次胚胎移植之前注资，而非在孩子出生之前；而账户中应有多少资金，须由书面协议载明。
 
-这笔资金何时释放、账户是否确为中立、妊娠结束时余额如何处理，均属条款层面的问题，[代孕托管账户与付款阶段](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)一文已逐条说明，并列出了应同时向机构、您的律师与托管机构提出的问题。请先阅读该页，再看报价。一份报价可以给出正确的总数，却仍未回答其中的任何问题。
+这笔资金何时释放、账户是否确为中立、妊娠结束时余额如何处理，均属条款层面的问题，[代孕托管账户与付款阶段](/zh/guides/surrogacy-escrow-accounts-and-payment-stages)一文已逐条说明，并列出了应同时向机构、您的律师与托管机构提出的问题。请先阅读该页，再看报价。一份报价可以给出正确的总数，却仍未回答其中的任何问题。
 
 ## 付款时间表与退款条款
 
@@ -115,7 +115,7 @@ sources:
 
 **加拿大。** 加拿大法律规定的是哪些支出可以报销，而非这些支出应值多少金额。[加拿大卫生部的指引](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html)逐项列出了可报销的开支，包括交通、托育、咨询、法律费用、药物、孕妇装、产前课程、分娩、保险，以及孕前与产后期间因怀孕损失的工作收入。须提供票据，且记录须保存六年。
 
-上述数据均非对您实际支付金额的测量，亦非真实项目之间的平均值。其原因陈述于[为什么不存在代孕平均费用](/zh/articles/why-no-average-surrogacy-cost-exists)一文。
+上述数据均非对您实际支付金额的测量，亦非真实项目之间的平均值。其原因陈述于[为什么不存在代孕平均费用](/zh/guides/why-no-average-surrogacy-cost-exists)一文。
 
 上述每一项数字及其背后的来源，均在[已公布的费用数据](/zh/tools/cost-figures)页面中逐条列出。
 

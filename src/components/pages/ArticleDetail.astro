@@ -10,7 +10,7 @@ const { entry } = Astro.props;
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang].pages;
 const { Content, headings } = await renderContent(entry);
-const { guides: relatedGuides, articles: relatedArticles } = await relatedFor(entry, lang);
+const { related } = await relatedFor(entry, lang);
 
 const toolLinks = toolLinksFor(entry.data.relatedTools, lang);
 if (entry.data.category === 'destinations') {
@@ -22,7 +22,7 @@ if (entry.data.category === 'destinations') {
 }
 
 const crumbs = [
-  { label: copy.articles.title, href: localizedPath(lang, '/articles') },
+  { label: copy.articles.title, href: localizedPath(lang, '/guides') },
   { label: entry.data.title },
 ];
 ---
@@ -32,7 +32,6 @@ const crumbs = [
   Content={Content}
   headings={headings}
   crumbs={crumbs}
-  relatedGuides={relatedGuides}
-  relatedArticles={relatedArticles}
+  related={related}
   relatedTools={toolLinks}
 />

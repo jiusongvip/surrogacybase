@@ -4,15 +4,15 @@ titleTag: "Surrogacy Legal Considerations"
 description: "Enforceability, parentage, eligibility and payment are four separate legal questions. How each one is decided, and what to put to a lawyer in writing."
 type: guide
 category: destinations
+topic: legal
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/destination-research-checklist", "tools/destination-comparison"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-cost", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "US Surrogacy Laws (resource page)"
     url: "https://www.nclrights.org/get-help/resource/us-surrogacy-laws/"

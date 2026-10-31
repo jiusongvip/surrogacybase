@@ -41,6 +41,23 @@
   "parentage": "Registration is administrative rather than judicial. The intended parents are recorded as the child's parents, and the woman who carried the pregnancy and any donor are not entered as parents; the practitioner account read here describes the rule as a prohibition on naming them, not as a discretion the registry weighs. There is no equivalent of a United States pre-birth order, because no court order is the step that establishes parentage. What a Georgian birth entry is worth once the family reaches another country is a separate question this record does not answer.",
   "statusVerifiedOn": "2026-10-17",
   "insufficientData": false,
+  "timeline": [
+    {
+      "on": "2023-06-12",
+      "claim": "The prime minister announced draft laws that would have confined surrogacy and IVF to Georgian citizens and put both on an altruistic footing. Reporting at the time described the framework then in force as vague.",
+      "fact": 1
+    },
+    {
+      "on": "2024-01-01",
+      "claim": "The date the drafts were projected to take effect. They were not adopted, and no further parliamentary action was recorded after the announcement, so the pre-2023 rules are the ones that still apply.",
+      "fact": 1
+    },
+    {
+      "on": "2026-03-26",
+      "claim": "Three academics published fieldwork with women who had carried in Georgia's surrogacy sector, putting an arrangement at roughly 55,000 to 85,000 US dollars and the payment to the woman at around 20,000, in instalments.",
+      "fact": 2
+    }
+  ],
   "facts": [
     {
       "claim": "Surrogacy in Georgia is governed by article 143 of the Law of Georgia on Health Care together with the Law on Patient Rights and Ministry of Health orders; a contract requires a man and a woman married or cohabiting for at least one year, and single people and same-sex couples cannot be parties; the law does not distinguish Georgian citizens from foreigners; it neither expressly permits nor prohibits paying the carrier; the intended parents are registered as the child's parents and the surrogate and any donor can never be named.",

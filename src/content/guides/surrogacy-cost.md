@@ -4,15 +4,15 @@ titleTag: "Surrogacy Cost: What to Verify"
 description: "How a surrogacy budget is built, what a quote usually leaves out, how escrow and refund terms work, and what the published cost figures are and are not."
 type: guide
 category: cost
+topic: cost
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist", "tools/cost-figures"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -73,7 +73,7 @@ For a legal parentage route in the United States, the [professional guidance on 
 
 A quote is usually a package description, not a ledger, and the distance between a quoted number and a paid one is made of items nobody labels as surrogacy: a second transfer attempt, medication and monitoring billed by the clinic rather than the program, insurance for the carrier, an independent lawyer for her ([the academic review of US practice](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) records that separate representation is recommended and, sometimes, mandated), court and filing costs, neonatal care that runs past the discharge date, whatever is still owed when a pregnancy ends early, the trip itself, and the documents that have to exist before anyone flies home.
 
-[The explainer on the costs that sit outside a quote](/articles/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time and turns each into a written question for a named party. The [quote comparison tool](/tools/agency-quote-comparison) then puts two quotes side by side on the same nine cost lines.
+[The explainer on the costs that sit outside a quote](/guides/surrogacy-costs-that-sit-outside-a-quote) takes those twelve categories apart one at a time and turns each into a written question for a named party. The [quote comparison tool](/tools/agency-quote-comparison) then puts two quotes side by side on the same nine cost lines.
 
 ## Why two agencies quote the same program differently
 
@@ -90,7 +90,7 @@ There is a fifth reason, and it is the least comfortable one: quoted fees vary b
 
 The mechanism to understand is an escrow account, because it decides when you are exposed. Two propositions from the [professional guidance](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) set the timing: the account is typically funded before the first embryo transfer rather than before the birth, and the written agreement is what states how much money it has to hold.
 
-When that money is released, whether the account is genuinely neutral, and what happens to a balance if a pregnancy ends are clause-level questions, and the explainer on [surrogacy escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages) works through them one at a time, including the questions to put to the agency, your lawyer and the escrow provider. Read that page before you read a quote. A quote can state a correct total and still answer none of those questions.
+When that money is released, whether the account is genuinely neutral, and what happens to a balance if a pregnancy ends are clause-level questions, and the explainer on [surrogacy escrow accounts and payment stages](/guides/surrogacy-escrow-accounts-and-payment-stages) works through them one at a time, including the questions to put to the agency, your lawyer and the escrow provider. Read that page before you read a quote. A quote can state a correct total and still answer none of those questions.
 
 ## Payment schedules and refund terms
 
@@ -115,7 +115,7 @@ A peer-reviewed review article states it as a threshold rather than a range: [US
 
 **Canada.** Canadian law governs what may be reimbursed rather than what things cost. [Health Canada's guidance](https://www.canada.ca/en/health-canada/programs/consultation-reimbursement-assisted-human-reproduction/document.html) enumerates reimbursable expenditures, including travel, childcare, counselling, legal fees, medications, maternity clothing, prenatal classes, delivery, insurance, and lost work-related income during the pre-pregnancy and post-partum period. Receipts are required and records must be kept for six years.
 
-What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/articles/why-no-average-surrogacy-cost-exists).
+What none of these figures is: a measurement of what you will pay, or an average across real programs. The reasons are set out in [Why there is no average cost of surrogacy](/guides/why-no-average-surrogacy-cost-exists).
 
 Every figure above, and the source behind it, is laid out line by line on [the published cost figures page](/tools/cost-figures).
 

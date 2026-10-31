@@ -1,5 +1,5 @@
 ---
-import GuideDetail from '@/components/pages/GuideDetail.astro';
+import ArticleDetail from '@/components/pages/ArticleDetail.astro';
 import { getGuides } from '@/lib/content';
 
 export async function getStaticPaths() {
@@ -10,4 +10,4 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 ---
 
-<GuideDetail entry={entry} />
+<ArticleDetail entry={entry} />

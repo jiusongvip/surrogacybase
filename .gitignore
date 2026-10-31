@@ -9,3 +9,8 @@ dist
 .dev.vars.*
 .wrangler/
 .DS_Store
+# Local working files: preview builds, screenshots and agent notes are not part of the site.
+.shots/
+.make-preview.py
+homepage-preview.html
+.workbuddy-ai/

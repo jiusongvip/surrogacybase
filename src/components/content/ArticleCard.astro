@@ -23,9 +23,15 @@ type Props = {
    * explainers: printing the kind on each card there repeats the section heading four times.
    */
   showKind?: boolean;
+  /**
+   * Set false where the section deliberately does not sort its cards by subject, as on the
+   * homepage: there the label would turn six picks into six buckets, which is the taxonomy the
+   * section is trying not to be. The piece still carries its category on its own page.
+   */
+  showCategory?: boolean;
 };
 
-const { entry, featured = false, heading = 3, image, showKind = true } = Astro.props;
+const { entry, featured = false, heading = 3, image, showKind = true, showCategory = true } = Astro.props;
 const Heading = `h${heading}` as 'h2' | 'h3';
 const { title, description, category, type, updatedOn } = entry.data;
 const href = pathOf(entry);
@@ -49,14 +55,14 @@ const label = CATEGORY_LABELS[lang][category] ?? category;
       )
     }
     <div class="flex flex-1 flex-col px-5 py-5">
-      <p class="text-[13px] font-medium text-accent">
-        {label}
-        {
-          showKind && (
-            <span class="text-muted"> · {type === 'guide' ? copy.kinds.guide : copy.kinds.article}</span>
-          )
-        }
-      </p>
+      {
+        showCategory && (
+          <p class="text-[13px] font-medium text-accent">
+            {label}
+            {showKind && <span class="text-muted"> · {copy.kinds.guide}</span>}
+          </p>
+        )
+      }
       <Heading class:list={[featured ? 'mt-2 text-[27px]' : 'mt-2 text-[21px]']}>{title}</Heading>
       <p class="mt-2 max-w-[58ch] text-[15px] leading-relaxed text-muted">{description}</p>
       <p class="mt-4 tnum text-[13px] text-muted">

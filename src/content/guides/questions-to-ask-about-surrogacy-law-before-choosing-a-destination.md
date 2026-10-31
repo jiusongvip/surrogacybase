@@ -2,18 +2,18 @@
 title: "How to Compare Surrogacy Destinations Without a Provider's Help"
 titleTag: "Surrogacy Law Questions to Ask First"
 description: "The six dimensions to score a destination on, the sources to insist on, and the four traps to check any destination page against."
-type: article
+type: guide
 category: destinations
+topic: legal
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca", "co", "gr"]
 evidence: framework
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-costs-that-sit-outside-a-quote"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
 sources: []
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-costs-that-sit-outside-a-quote"]
 ---
 
 Almost every "where is surrogacy legal" page on the internet is written by someone who sells programs in the countries it recommends. That is not a conspiracy. It is simply that the parties with the most traffic are the parties with a commercial reason to rank destinations, and ranking is not something anyone can do honestly without data.

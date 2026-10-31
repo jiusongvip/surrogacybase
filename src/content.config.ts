@@ -30,6 +30,20 @@ const content = defineCollection({
       description: z.string(),
       type: z.enum(['guide', 'article']),
       category,
+      /**
+       * The reader-facing topic a piece is filed under on the homepage learning module: the
+       * questions people actually search for. Distinct from `category`, which is the editorial
+       * type. A piece with no topic is simply not surfaced in the topic module, so an empty bucket
+       * (for example accommodation, which has no content yet) never advertises itself. Optional so
+       * a piece can be published before it is classified.
+       */
+      topic: z.enum(['legal', 'choice', 'accommodation', 'process', 'cost']).optional(),
+      /**
+       * When true, the piece is offered as the homepage module's one featured pick for its topic.
+       * The homepage reads this field rather than naming articles in the component, so the
+       * selection stays in the content data and never goes stale if a piece is renamed.
+       */
+      featured: z.boolean().default(false).optional(),
       published: z.boolean(),
       publishedOn: z.string(),
       updatedOn: z.string(),
@@ -52,8 +66,9 @@ const content = defineCollection({
        */
       jurisdictions: z.array(z.string()).default([]),
       sources: z.array(source).default([]),
-      relatedGuides: z.array(z.string()).default([]),
-      relatedArticles: z.array(z.string()).default([]),
+      /** Other pieces this one points at, and the pieces that point back. Resolved into a single
+       * list by relatedFor(); the guide/article split is gone, so one field carries every link. */
+      related: z.array(z.string()).default([]),
       relatedTools: z.array(z.string()).default([]),
       /**
        * `verified`  = every factual claim in the body has a source below.
@@ -90,6 +105,19 @@ const admitsRow = z.object({
 const jurisdictionFact = z.object({
   claim: z.string(),
   source,
+});
+
+/**
+ * A dated event in the record's legal history. Printed in order, because a rule a reader is
+ * weighing is easier to judge against what changed and when than against a single undated
+ * sentence. Like a cost figure it names the index of the fact that cites it, so a date can never
+ * appear on the page without the document behind it.
+ */
+const timelineEntry = z.object({
+  /** The date the event carries, as the source states it: `2023-06-12`, `2024-01-01`, `2026`. */
+  on: z.string(),
+  claim: z.string(),
+  fact: z.number().int().min(0),
 });
 
 /**
@@ -153,8 +181,26 @@ const jurisdictions = defineCollection({
       /** Unknown enough that we should not recommend it as a destination at all. */
       insufficientData: z.boolean().default(false),
       facts: z.array(jurisdictionFact).default([]),
+      /** Dated events, oldest first. The page prints them only when a record carries any. */
+      timeline: z.array(timelineEntry).default([]),
       costs: z.array(costFigure).default([]),
       openQuestions: z.array(z.string()).default([]),
+      /**
+       * For jurisdictions whose legality is set below the national level (a federation, or a
+       * country of separate legal systems), the sub-jurisdictions a reader actually has to choose
+       * between. Surfaced as a legality map on the country page so the first thing a reader sees is
+       * where it is open, not where the record is silent. Optional: most records answer at national
+       * level and leave this empty.
+       */
+      subJurisdictions: z
+        .array(
+          z.object({
+            name: z.string(),
+            status: z.enum(['permitted', 'restricted', 'prohibited', 'unlegislated']),
+            note: z.string().optional(),
+          }),
+        )
+        .optional(),
       published: z.boolean().default(true),
     })
     .superRefine((record, ctx) => {
@@ -171,6 +217,14 @@ const jurisdictions = defineCollection({
           ctx.addIssue({
             code: 'custom',
             message: `${record.code}: the ${row.family} admission names fact ${row.fact}, and this record has ${record.facts.length}`,
+          });
+        }
+      }
+      for (const event of record.timeline) {
+        if (event.fact >= record.facts.length) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `${record.code}: the event dated ${event.on} names fact ${event.fact}, and this record has ${record.facts.length}`,
           });
         }
       }

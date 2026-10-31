@@ -13,6 +13,13 @@ import type { Lang } from '@/i18n/config';
 type Jurisdiction = CollectionEntry<'jurisdictions'>['data'];
 
 type ZhFact = { url: string; label: string; publisher: string; supports: string; claim: string };
+/** The date is the same in both files; only the sentence around it is translated. */
+type ZhEvent = { on: string; claim: string };
+type ZhSubJurisdiction = {
+  name: string;
+  status: 'permitted' | 'restricted' | 'prohibited' | 'unlegislated';
+  note?: string;
+};
 type ZhRecord = {
   name: string;
   region: string;
@@ -20,7 +27,14 @@ type ZhRecord = {
   paymentModel: string;
   parentage: string;
   facts: ZhFact[];
+  timeline?: ZhEvent[];
   openQuestions: string[];
+  /**
+   * The legality map for a divided jurisdiction, supplied in full when present. State/province
+   * names are proper nouns and stay identical across languages; only the explanatory notes are
+   * translated. When absent, the English record's own subJurisdictions is used unchanged.
+   */
+  subJurisdictions?: ZhSubJurisdiction[];
 };
 
 const overlays = zhOverlay as unknown as Record<string, ZhRecord>;
@@ -51,6 +65,23 @@ export function localize(data: Jurisdiction, lang: Lang): Jurisdiction {
     throw new Error(`${data.code}: ${data.openQuestions.length} open questions in English, ${zh.openQuestions.length} in Chinese`);
   }
 
+  /*
+   * The timeline is optional on the Chinese side because a record can gain one without every
+   * other record gaining one. What is not optional is the date: if the English record carries an
+   * event the Chinese file does not, the page would print a Chinese sentence beside a date nobody
+   * checked, so the mismatch fails the build instead.
+   */
+  const timeline = data.timeline.map((event, i) => {
+    const zhEvent = zh.timeline?.[i];
+    if (!zhEvent) {
+      throw new Error(`${data.code} event ${i} (${event.on}): no Chinese wording in jurisdictions-zh.json`);
+    }
+    if (zhEvent.on !== event.on) {
+      throw new Error(`${data.code} event ${i}: Chinese record dates it ${zhEvent.on}, the source says ${event.on}`);
+    }
+    return { ...event, claim: zhEvent.claim };
+  });
+
   const facts = data.facts.map((fact, i) => {
     const zhFact = zh.facts[i];
     if (zhFact.url !== fact.source.url) {
@@ -71,7 +102,12 @@ export function localize(data: Jurisdiction, lang: Lang): Jurisdiction {
     paymentModel: zh.paymentModel,
     parentage: zh.parentage,
     facts,
+    timeline,
     openQuestions: zh.openQuestions,
+    /* The legality map: use the Chinese overlay when it carries one (it translates only the notes),
+     * otherwise the English record's own array. A divided jurisdiction without a Chinese map would
+     * print English notes, so any record that has subJurisdictions should carry them here too. */
+    subJurisdictions: zh.subJurisdictions ?? data.subJurisdictions,
   };
 }
 

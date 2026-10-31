@@ -69,8 +69,8 @@ export function collectRevisions(cwd = process.cwd()): Revisions {
   for (const file of markdownFiles(contentDir)) {
     const path = contentPathOf(contentDir, file);
     if (path.startsWith('/zh/')) continue;
-    /* Only these two folders map onto routes; nothing else in src/content is a page. */
-    if (!/^\/(guides|articles)\//.test(path)) continue;
+    /* Every content page now lives under /guides/ after the guide/article merge. */
+    if (!/^\/guides\//.test(path)) continue;
     const markdown = readFileSync(file, 'utf8');
     newer(revisions, path, frontmatterValue(markdown, 'updatedOn') ?? frontmatterValue(markdown, 'publishedOn'));
   }

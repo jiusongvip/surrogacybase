@@ -4,15 +4,16 @@ titleTag: "How the Surrogacy Process Works"
 description: "The stages a gestational surrogacy program usually runs through, who is involved at each one, and what intended parents are expected to prepare."
 type: guide
 category: process
+topic: process
+featured: true
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-10-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-legal-considerations", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "FIGO position statement on surrogacy"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12553094/"
@@ -88,7 +89,7 @@ Matching is where an agency's stated service and its actual service are most oft
 
 ### 5. The agreement, and the money behind it
 
-Before treatment, the arrangement is documented, and the document is expected to carry the money rather than point at it: the [bar association for adoption and assisted reproduction attorneys](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) puts the whole financial side of the arrangement inside the signed agreement instead of leaving it to be agreed afterwards. What that does to your exposure, including the funding date that catches people out, is worked through on the page about [escrow accounts and payment stages](/articles/surrogacy-escrow-accounts-and-payment-stages).
+Before treatment, the arrangement is documented, and the document is expected to carry the money rather than point at it: the [bar association for adoption and assisted reproduction attorneys](https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/) puts the whole financial side of the arrangement inside the signed agreement instead of leaving it to be agreed afterwards. What that does to your exposure, including the funding date that catches people out, is worked through on the page about [escrow accounts and payment stages](/guides/surrogacy-escrow-accounts-and-payment-stages).
 
 The same holds for lawyers: academic review of US practice records that each side is expected to have [its own counsel](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/), and that in some states this is a requirement rather than a recommendation. Independent legal advice for the carrier is not a formality you are paying for on your behalf; it is the protection that makes the arrangement sound.
 
@@ -102,7 +103,7 @@ Prenatal care runs through the carrier's obstetric provider. Your involvement, w
 
 ### 8. Birth and parentage
 
-The parentage route determines what happens in the delivery room and after it. The [legal considerations guide](/guides/surrogacy-legal-considerations) states the rule that surprises families most, and the [UK article](/articles/the-six-month-limit-on-a-uk-parental-order) gives the clock attached to it. In the United Kingdom the woman who gives birth is the child's legal mother until a court hands that status somewhere else, so the application follows the birth rather than preceding it, and the wait reported there runs from six months to a year. Other systems issue an order before the birth. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
+The parentage route determines what happens in the delivery room and after it. The [legal considerations guide](/guides/surrogacy-legal-considerations) states the rule that surprises families most, and the [UK article](/guides/the-six-month-limit-on-a-uk-parental-order) gives the clock attached to it. In the United Kingdom the woman who gives birth is the child's legal mother until a court hands that status somewhere else, so the application follows the birth rather than preceding it, and the wait reported there runs from six months to a year. Other systems issue an order before the birth. Which one applies to you is a question for a lawyer in that jurisdiction, and it changes what you plan around.
 
 ### 9. Bringing the child home
 

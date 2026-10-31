@@ -1,17 +1,17 @@
 ---
 title: "为什么不存在代孕的平均费用"
 description: "凡可查得的费用数据，均出自服务方或出自对服务方的引用。上述数字的实际来源，以及应改用的依据。"
-type: article
+type: guide
 category: cost
+topic: cost
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost"]
-relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
+related: ["guides/surrogacy-cost", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "美国代孕平均费用（诊所博客）"
     url: "https://www.illumefertility.com/fertility-blog/average-cost-of-surrogacy-in-the-united-states"
@@ -82,9 +82,9 @@ sources:
 ## 平均值之外的可行做法
 
 1. **按组成部分编制预算**：一份收款方名单，且每一方都有具名的账单主体，方构成一份预算。援引他人的金额不能构成预算。[费用指南](/zh/guides/surrogacy-cost)列出了各个组成部分与或有项目。
-2. **认真对待排除项**：报价之外的那些项目通常决定了最终总额。参见[报价之外的成本](/zh/articles/surrogacy-costs-that-sit-outside-a-quote)。
+2. **认真对待排除项**：报价之外的那些项目通常决定了最终总额。参见[报价之外的成本](/zh/guides/surrogacy-costs-that-sit-outside-a-quote)。
 3. **为您承担的风险定价**：您同意为几次尝试付费，以及若没有任何一次带来孩子时该计划如何收束，这两项判断对您预算的影响超过任何市场平均值。
-4. **索要托管时间表**：资金必须在何时进入账户、之后将发生什么，比报价总额更能预测您的风险敞口。参见[托管账户与付款阶段](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)。
+4. **索要托管时间表**：资金必须在何时进入账户、之后将发生什么，比报价总额更能预测您的风险敞口。参见[托管账户与付款阶段](/zh/guides/surrogacy-escrow-accounts-and-payment-stages)。
 5. **为每一个已记载的金额加注标签**：由何人公布、于何时公布，以及公布方是否出售该项服务。若无法予以标注，则不应将其纳入预算。本身即带有此类标注的数据，列于[已公布的费用数据](/zh/tools/cost-figures)页面：每一行均写明公布该项数据的来源，以及数据对应的年份。
 
 此做法较之直接援引一个对外公布的总额更为耗时，但唯有这一版本在取得实际发票之后仍然成立。

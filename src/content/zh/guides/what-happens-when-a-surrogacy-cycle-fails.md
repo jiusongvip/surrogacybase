@@ -2,17 +2,17 @@
 title: "代孕周期失败之后将如何处理"
 titleTag: "周期失败之后"
 description: "一次失败的周期实为三项事件、各有其决定人：合同中的尝试次数上限、仍留存于保管之中的胚胎，以及仍归属代孕者本人的那些决定。"
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/what-must-be-signed-before-the-first-transfer", "articles/surrogacy-escrow-accounts-and-payment-stages", "articles/what-40177-transfers-do-not-promise-you", "articles/what-a-carrier-profile-does-not-tell-you"]
 relatedTools: ["tools/agency-question-checklist", "tools/cost-figures"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/what-must-be-signed-before-the-first-transfer", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/what-40177-transfers-do-not-promise-you", "guides/what-a-carrier-profile-does-not-tell-you"]
 sources:
   - label: "关于使用妊娠代孕者的项目的建议：委员会意见（2022）"
     url: "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
@@ -46,7 +46,7 @@ sources:
 
 第一点，用完并非医学判断。若协议允许三次移植尝试，那么第四次被拒绝即为一个合同事实，无需任何人解释，亦不须任何医生裁定。
 
-第二点，何者计入一次尝试，值得界定清楚。取卵前的周期取消、移植取消、六周时的妊娠丢失、孕中期的晚期丢失，以及一次走向与计划不同的活产，此为五种不同的情形，而可能各自计入五条不同的条款。应予厘清：其中哪些会动用尝试次数，哪些被视为重新开始。[托管一文](/zh/articles/surrogacy-escrow-accounts-and-payment-stages)对资金作出的是同一类区分，而此项恰是最常停留于未宣之于口之处的一条，因为没有人愿意提前讨论它。
+第二点，何者计入一次尝试，值得界定清楚。取卵前的周期取消、移植取消、六周时的妊娠丢失、孕中期的晚期丢失，以及一次走向与计划不同的活产，此为五种不同的情形，而可能各自计入五条不同的条款。应予厘清：其中哪些会动用尝试次数，哪些被视为重新开始。[托管一文](/zh/guides/surrogacy-escrow-accounts-and-payment-stages)对资金作出的是同一类区分，而此项恰是最常停留于未宣之于口之处的一条，因为没有人愿意提前讨论它。
 
 ## 指引期望事先讨论过的失败情形
 
@@ -85,10 +85,10 @@ sources:
 3. 若她拒绝合同预想的某项程序，双方约定随之发生什么？请索取该条款，而非索取安慰。
 4. 剩余胚胎由谁决定、依据哪份文书？若此项安排结束，由谁承担继续保管的费用？
 
-应将上述四个问题连同资金类问题一并纳入[机构提问清单](/zh/tools/agency-question-checklist)，并将答复对照[第一次移植之前本应具备的文件](/zh/articles/what-must-be-signed-before-the-first-transfer)逐条核查。一次失败所留下的费用，包括保管费与重复用药，应在[费用数据工具](/zh/tools/cost-figures)中作为独立条目录入，而非并为一个打包价格。
+应将上述四个问题连同资金类问题一并纳入[机构提问清单](/zh/tools/agency-question-checklist)，并将答复对照[第一次移植之前本应具备的文件](/zh/guides/what-must-be-signed-before-the-first-transfer)逐条核查。一次失败所留下的费用，包括保管费与重复用药，应在[费用数据工具](/zh/tools/cost-figures)中作为独立条目录入，而非并为一个打包价格。
 
 ## 指引未予解决的部分
 
-以上内容均不告知您失败的概率有多高。已发表的代孕者数据按移植计数，而[这个数字为何与一整段经历所指不同](/zh/articles/what-40177-transfers-do-not-promise-you)，这与您所留下的文书无关，是另一项独立的问题。且此处所引指引系为美国撰写；可执行性、亲权以及合同能够要求什么，在不同目的地差别很大，此正为[流程指南](/zh/guides/surrogacy-process)与您自身律师应处理的部分。
+以上内容均不告知您失败的概率有多高。已发表的代孕者数据按移植计数，而[这个数字为何与一整段经历所指不同](/zh/guides/what-40177-transfers-do-not-promise-you)，这与您所留下的文书无关，是另一项独立的问题。且此处所引指引系为美国撰写；可执行性、亲权以及合同能够要求什么，在不同目的地差别很大，此正为[流程指南](/zh/guides/surrogacy-process)与您自身律师应处理的部分。
 
 以上陈述的是美国专业指引所载明的内容及其成文日期。其不构成法律或医疗建议，而真正约束您的条款载于您自身的协议之中。

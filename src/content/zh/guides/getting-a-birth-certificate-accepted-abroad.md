@@ -1,17 +1,18 @@
 ---
 title: "让境外机关接受这张出生证明"
 description: "哪个机关为出生证明出具附加证明书，它证明的是什么，以及为什么认证翻译是另一项独立要求。"
-type: article
+type: guide
 category: preparation
+topic: legal
+featured: true
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/bringing-your-child-home"]
-relatedArticles: ["articles/the-six-month-limit-on-a-uk-parental-order", "articles/surrogacy-costs-that-sit-outside-a-quote"]
 relatedTools: ["tools/destination-research-checklist"]
+related: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/bringing-your-child-home", "guides/the-six-month-limit-on-a-uk-parental-order", "guides/surrogacy-costs-that-sit-outside-a-quote"]
 sources:
   - label: "1961 年 10 月 5 日取消外国公文书认证要求的公约：现状表"
     url: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
@@ -76,9 +77,9 @@ sources:
 
 在承诺任何分娩日期之前，应先将上述环节逐项累加，因为它们分属不同机构，而无一按您机构的日程运作。
 
-出生登记，继而为核证副本的取得与安全，再为出具机关办理附加证明书的周转时间，再为译员，再为接收机关自身的处理，最后为任何必须在固定窗口内递交的法院申请。在英国，亲权令的申请[必须在孩子出生后六个月内提出](/zh/articles/the-six-month-limit-on-a-uk-parental-order)，因此这条文件链运行于一个不会因邮政延误而停下的时限之上。
+出生登记，继而为核证副本的取得与安全，再为出具机关办理附加证明书的周转时间，再为译员，再为接收机关自身的处理，最后为任何必须在固定窗口内递交的法院申请。在英国，亲权令的申请[必须在孩子出生后六个月内提出](/zh/guides/the-six-month-limit-on-a-uk-parental-order)，因此这条文件链运行于一个不会因邮政延误而停下的时限之上。
 
-相关成本同样不在报价之内。[落在套餐价格之外的十二类开支](/zh/articles/surrogacy-costs-that-sit-outside-a-quote)中有一类即为登记、翻译与附加证明书，而它是竞争最少的一类，因为向您收取费用的机关并非可供比价的机构。
+相关成本同样不在报价之内。[落在套餐价格之外的十二类开支](/zh/guides/surrogacy-costs-that-sit-outside-a-quote)中有一类即为登记、翻译与附加证明书，而它是竞争最少的一类，因为向您收取费用的机关并非可供比价的机构。
 
 ## 应提的问题及提问顺序
 

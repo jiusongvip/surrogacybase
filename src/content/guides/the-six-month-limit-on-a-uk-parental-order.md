@@ -1,17 +1,17 @@
 ---
 title: "The Six Month Limit on a UK Parental Order"
 description: "What the six month deadline, the genetic link, the residence rule and consent from the carrier mean under United Kingdom law."
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-15"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["gb"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/agency-question-checklist", "tools/destination-research-checklist"]
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "Legal rights when using surrogates or donors: become the child's legal parent"
     url: "https://www.gov.uk/legal-rights-when-using-surrogates-and-donors/become-the-childs-legal-parent"
@@ -64,7 +64,7 @@ The [official guidance](https://www.gov.uk/legal-rights-when-using-surrogates-an
 5. **Agreement.** The surrogate, and her partner if she has one, must agree to the order. The guidance names the form the agreement is given on, which is A101A, and the application itself is made on form C51.
 6. **Money.** Payment to the surrogate is limited to reasonable expenses. Anything beyond that must be authorised by the family court before an order can be made, which is a point that has financial consequences long before a birth: an expense line nobody can characterise as reasonable is a problem sitting inside the application.
 
-Read as a list, these are conditions about your situation rather than about the quality of the advice you received. That is why the [questions to settle before choosing a destination](/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination) matter more than a comparison of prices.
+Read as a list, these are conditions about your situation rather than about the quality of the advice you received. That is why the [questions to settle before choosing a destination](/guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination) matter more than a comparison of prices.
 
 ## Where the six month window bites
 

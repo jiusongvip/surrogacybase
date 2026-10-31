@@ -1,17 +1,17 @@
 ---
 title: "英国亲权令的六个月期限"
 description: "六个月截止期、基因联系、居住要求与代孕者的同意，对按英国法律规划分娩的意向父母意味着什么。"
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-15"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["gb"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/agency-question-checklist", "tools/destination-research-checklist"]
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "使用代孕者或配子捐赠者时的法律权利：成为孩子的法律父母"
     url: "https://www.gov.uk/legal-rights-when-using-surrogates-and-donors/become-the-childs-legal-parent"
@@ -64,7 +64,7 @@ sources:
 5. **同意**：代孕者，以及她的伴侣（如她有），必须同意该命令。指南指明表达同意所用表格为 A101A，而申请本身使用 C51 表格。
 6. **金钱**：支付给代孕者的款项以合理开支为限。超出部分必须在命令作出之前获得家事法院授权，而这一点在分娩之前很久就有财务后果：一笔无法定性为合理的开支，即是一项内嵌于申请之中的问题。
 
-请将这些条件读作关于您自身状况的要求，而非关于您所得建议的质量。因此相较于比较价格，更应先行厘清[在选择目的地之前应问的法律问题](/zh/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination)。
+请将这些条件读作关于您自身状况的要求，而非关于您所得建议的质量。因此相较于比较价格，更应先行厘清[在选择目的地之前应问的法律问题](/zh/guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination)。
 
 ## 六个月期限在哪些环节收紧
 

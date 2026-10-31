@@ -56,6 +56,18 @@
       }
     }
   ],
+  "timeline": [
+    {
+      "on": "2005-01-27",
+      "claim": "Law 3305/2005, published in the Government Gazette on 27 January 2005, set the conditions under which surrogacy is permitted: a prior court decision, a medical inability to gestate, and no payment beyond the costs and lost earnings the regulator defines.",
+      "fact": 0
+    },
+    {
+      "on": "2025-05-16",
+      "claim": "Law 5197/2025, published on 16 May 2025, amended the Civil Code to require that both intending parents and the surrogate hold permanent residence in Greece, closing the route to international intended parents without Greek residence.",
+      "fact": 2
+    }
+  ],
   "openQuestions": [
     "The gazette text of Law 5197/2025 has not been read directly, so the residence requirement and the exclusion of male couples come from law firm accounts; the amendment's precise wording and transitional provisions remain unconfirmed.",
     "The amounts the regulator has actually fixed as the ceiling on reimbursable costs and lost earnings were not found on an openable official page.",

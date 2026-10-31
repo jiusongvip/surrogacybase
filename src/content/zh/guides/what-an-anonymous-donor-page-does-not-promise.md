@@ -2,17 +2,17 @@
 title: "匿名捐赠者的页面没有向您承诺什么"
 titleTag: "匿名性承诺了什么"
 description: "页面上「匿名」一词实际包含两层含义。本文说明专业指引现在的表述，以及英国法律按出生年份给出的不同答案。"
-type: article
+type: guide
 category: preparation
+topic: choice
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/gamete-and-surrogate-options"]
-relatedArticles: ["articles/what-a-carrier-profile-does-not-tell-you", "articles/getting-a-birth-certificate-accepted-abroad"]
 relatedTools: ["tools/agency-question-checklist", "tools/destination-research-checklist"]
+related: ["guides/gamete-and-surrogate-options", "guides/what-a-carrier-profile-does-not-tell-you", "guides/getting-a-birth-certificate-accepted-abroad"]
 sources:
   - label: "配子与胚胎捐赠者用词更新：以定向（具名）取代相识、以非具名取代匿名：委员会意见（2022）"
     url: "https://www.asrm.org/practice-guidance/ethics-opinions/updated-terminology-for-gamete-and-embryo-donors-directed-identied-to-replace-known-and-nonidentied-to-replace-anonymous-a-committee-opinion-2002/"
@@ -72,6 +72,6 @@ sources:
 
 ## 捐赠文件无法提供的事项
 
-以上内容不决定亲权，亦无任何捐赠者文件会告知您该捐赠者的配子已用于多少家庭。您日后所适用的信息规则在很大程度上由目的地的法律决定，而非仅由提供方的书面材料决定，因此它属于[选择目的地前应问的六个维度](/zh/articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination)，而不属于销售团队发来的信息。
+以上内容不决定亲权，亦无任何捐赠者文件会告知您该捐赠者的配子已用于多少家庭。您日后所适用的信息规则在很大程度上由目的地的法律决定，而非仅由提供方的书面材料决定，因此它属于[选择目的地前应问的六个维度](/zh/guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination)，而不属于销售团队发来的信息。
 
 以上内容依据已公布的指引与 2023 年的政策记录，并附各自的日期。它不构成法律建议；而约束您孩子的规则，可能在上述资料之后方才订立。

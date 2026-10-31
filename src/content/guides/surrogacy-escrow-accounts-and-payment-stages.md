@@ -2,17 +2,17 @@
 title: "Surrogacy Escrow Accounts and Payment Stages"
 titleTag: "Surrogacy Escrow and Payment Stages"
 description: "How escrow works in a surrogacy program, what the agreement has to state, who authorises a release, and the five questions that expose your real exposure."
-type: article
+type: guide
 category: agencies
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"

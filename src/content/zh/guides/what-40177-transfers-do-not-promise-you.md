@@ -1,17 +1,17 @@
 ---
 title: "40,177 次移植不能向您承诺什么"
 description: "美国最大规模的妊娠代孕者移植研究统计的是移植次数，而非一段段完整的经历。这一差别会改变您阅读一项成功率的方式。"
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-cost"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-process", "guides/surrogacy-cost", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "美国的妊娠代孕者胚胎移植"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/"
@@ -79,6 +79,6 @@ sources:
 
 上述任何一条均非断言美国妊娠代孕者项目的成功可能性较低。它说明的是：公开数据以每次移植为分母，而每次移植不等同于一整段经历，两者之间的差别正是一项计划能否成立的关键。
 
-一整段经历之所以没有可靠的平均值，与其没有可靠平均成本的理由相同，这一点在[为什么不存在代孕平均费用](/zh/articles/why-no-average-surrogacy-cost-exists)里有完整说明。两者追问的均是唯有您自己的卷宗方能厘清的一连串事件，而两者的回答方式都是追问分母，而非直接索要一个数值。
+一整段经历之所以没有可靠的平均值，与其没有可靠平均成本的理由相同，这一点在[为什么不存在代孕平均费用](/zh/guides/why-no-average-surrogacy-cost-exists)里有完整说明。两者追问的均是唯有您自己的卷宗方能厘清的一连串事件，而两者的回答方式都是追问分母，而非直接索要一个数值。
 
 以上内容报告的是已发表的数据及其定义。它不是对您治疗的预测，也不是医疗建议。

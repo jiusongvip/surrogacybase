@@ -4,16 +4,16 @@ titleTag: "Gamete and Surrogate Options"
 description: "Whose egg, whose sperm and who carries are three separate decisions, and each one changes the medical steps, the contract and who decides."
 type: guide
 category: process
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-04-14"
 jurisdictions: []
 evidence: framework
-relatedGuides: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-cost"]
-relatedArticles: ["articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/destination-research-checklist", "tools/agency-question-checklist"]
 sources: []
+related: ["guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-cost", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 ---
 
 People usually arrive at surrogacy thinking it is one decision: whether to do it. In practice it is

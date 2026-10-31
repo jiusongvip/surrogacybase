@@ -4,15 +4,15 @@ titleTag: "Evaluate a Surrogacy Agency First"
 description: "What an agency fee actually buys, what regulation does and does not cover, the five documents to ask for before signing, and the questions to put in writing."
 type: guide
 category: agencies
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/agency-question-checklist", "tools/agency-quote-comparison"]
+related: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "Surrogacy: a factsheet"
     url: "https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/"

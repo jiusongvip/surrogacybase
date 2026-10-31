@@ -23,16 +23,16 @@ export const NEXT_STEP: Record<Lang, NextStepCopy> = {
     eyebrow: 'Your own situation',
     heading: 'Have a consultant work through it with you',
     body:
-      'Tell us about your situation. A consultant on the editorial team replies within 24 hours, and nothing you send goes to a clinic or agency.',
-    primary: 'Free consultation',
+      'Tell us about your situation. A consultant on the editorial team replies within 1 to 2 working days, and nothing you send goes to a clinic or agency.',
+    primary: 'Talk to an advisor',
     costGuide: 'Read the cost guide',
   },
   zh: {
     eyebrow: '您的具体情况',
     heading: '由顾问为您逐项梳理',
     body:
-      '请说明您的具体情况。编辑团队顾问将于 24 小时内答复，您发送的内容不会转达至诊所或机构。',
-    primary: '免费咨询',
+      '请说明您的具体情况。编辑团队顾问将于 1 至 2 个工作日内答复，您发送的内容不会转达至诊所或机构。',
+    primary: '找顾问聊聊',
     costGuide: '阅读费用指南',
   },
 };

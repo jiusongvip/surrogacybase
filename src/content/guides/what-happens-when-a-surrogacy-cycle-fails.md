@@ -2,17 +2,17 @@
 title: "What Happens When a Surrogacy Cycle Fails"
 titleTag: "What Happens When a Surrogacy Cycle Fails"
 description: "A failed cycle is three events with three owners: the attempt budget in the contract, the embryos left in storage, and the decisions that stay with the carrier."
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/what-must-be-signed-before-the-first-transfer", "articles/surrogacy-escrow-accounts-and-payment-stages", "articles/what-40177-transfers-do-not-promise-you", "articles/what-a-carrier-profile-does-not-tell-you"]
 relatedTools: ["tools/agency-question-checklist", "tools/cost-figures"]
+related: ["guides/surrogacy-process", "guides/choosing-a-surrogacy-agency", "guides/what-must-be-signed-before-the-first-transfer", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/what-40177-transfers-do-not-promise-you", "guides/what-a-carrier-profile-does-not-tell-you"]
 sources:
   - label: "Recommendations for practices using gestational carriers: a committee opinion (2022)"
     url: "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
@@ -46,7 +46,7 @@ So your contract contains an attempt budget and a clock, whether or not anyone s
 
 The first is that running out is not a medical judgement. If the agreement allows three transfer attempts and the fourth is refused, that is a contractual fact. Nobody has to explain it, and no clinician is being asked to decide it.
 
-The second is that what consumes an attempt is worth knowing precisely. A cancelled cycle before retrieval, a cancelled transfer, a pregnancy loss at six weeks, a loss later in the second trimester, and a live birth that goes differently than planned are five different events, and they may be charged against five different clauses. Ask which of them draw on the attempt budget and which are treated as a fresh start. This is the same distinction [the escrow page](/articles/surrogacy-escrow-accounts-and-payment-stages) makes about money, and it is the clause most often left unspoken because nobody wants to say it in advance.
+The second is that what consumes an attempt is worth knowing precisely. A cancelled cycle before retrieval, a cancelled transfer, a pregnancy loss at six weeks, a loss later in the second trimester, and a live birth that goes differently than planned are five different events, and they may be charged against five different clauses. Ask which of them draw on the attempt budget and which are treated as a fresh start. This is the same distinction [the escrow page](/guides/surrogacy-escrow-accounts-and-payment-stages) makes about money, and it is the clause most often left unspoken because nobody wants to say it in advance.
 
 ## What the guidance expects you to have discussed already
 
@@ -85,10 +85,10 @@ After a failure, ask for the primary documents rather than an account: what was 
 3. If she declines a procedure the contract anticipates, what did the parties agree follows? Ask for that clause, not for reassurance.
 4. Who decides about the remaining embryos, on what paperwork, and who pays to keep them stored if this arrangement ends?
 
-Put these into [the question checklist](/tools/agency-question-checklist) alongside the financial ones, and read the answers against [the document set that should exist before a first transfer](/articles/what-must-be-signed-before-the-first-transfer). The figures a failed cycle leaves behind, in storage fees and repeat medication, are worth entering in [the cost figures tool](/tools/cost-figures) as their own lines rather than absorbed into a package.
+Put these into [the question checklist](/tools/agency-question-checklist) alongside the financial ones, and read the answers against [the document set that should exist before a first transfer](/guides/what-must-be-signed-before-the-first-transfer). The figures a failed cycle leaves behind, in storage fees and repeat medication, are worth entering in [the cost figures tool](/tools/cost-figures) as their own lines rather than absorbed into a package.
 
 ## What the guidance does not settle
 
-Nothing above tells you how likely a failure is. Published carrier data counts transfers, and [why that number reads differently from a journey](/articles/what-40177-transfers-do-not-promise-you) is a separate problem from the paperwork it leaves. And the guidance quoted here is written for the United States; enforceability, parentage and what a contract can require vary widely by destination, which is what [the process guide](/guides/surrogacy-process) and your own lawyers are for.
+Nothing above tells you how likely a failure is. Published carrier data counts transfers, and [why that number reads differently from a journey](/guides/what-40177-transfers-do-not-promise-you) is a separate problem from the paperwork it leaves. And the guidance quoted here is written for the United States; enforceability, parentage and what a contract can require vary widely by destination, which is what [the process guide](/guides/surrogacy-process) and your own lawyers are for.
 
 What is set out above is what US professional guidance states, with the dates it was written. It is not legal or medical advice, and the clauses that bind you are in your own agreement.

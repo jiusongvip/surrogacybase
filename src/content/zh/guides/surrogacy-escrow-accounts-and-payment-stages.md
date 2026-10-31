@@ -2,17 +2,17 @@
 title: "代孕托管账户与付款阶段"
 titleTag: "托管账户与付款阶段"
 description: "托管账户在代孕项目里如何运作，协议必须写明什么，一笔支出由谁授权，以及暴露您真实风险的五个问题。"
-type: article
+type: guide
 category: agencies
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-14"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/surrogacy-costs-that-sit-outside-a-quote", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-costs-that-sit-outside-a-quote", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "财务条款与托管账户"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"

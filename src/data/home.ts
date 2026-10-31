@@ -24,14 +24,14 @@ import type { IconName } from '@/lib/icons';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
-    titleTag: 'Cross-Border Surrogacy Guides & Tools',
+    titleTag: 'Cross-Border Surrogacy: Destinations, Law and Cost',
     description:
-      'Independent cross-border surrogacy guidance: compare destinations on the same terms, read sourced cost data, and use the tools on your own quote.',
+      'Independent cross-border surrogacy information: compare destination eligibility, law and cost, and see which questions to settle before deciding what comes next.',
   },
   zh: {
-    titleTag: '跨境代孕指南与工具',
+    titleTag: '跨境代孕：比较目的地、法律与费用',
     description:
-      '关于跨境代孕的独立指引：以同一组标准比较目的地，查阅附有来源与年份的费用数据，并借助工具核对您自身的报价。',
+      '跨境代孕的独立信息与决策支持：比较各国申请条件、法律框架与费用构成，了解哪些问题需要先核实，再决定下一步。',
   },
 };
 
@@ -40,22 +40,122 @@ export const HOME_HERO: Record<Lang, {
   lead: string;
   ctaPrimary: string;
   ctaSecondary: string;
-  /** The owner's line, set under the lead in the copy column. It is not a claim about outcomes. */
+  /**
+   * The owner's line, set under the lead in the copy column. It is not a claim about outcomes.
+   * Restored from the owner's own design, where it is set in a handwritten face at the right of
+   * the hero. The heading now states the three things a reader can do here rather than naming a
+   * feeling, because the design's promise of "guidance" only holds if the page says what the
+   * guidance consists of; the line below carries the register instead.
+   */
   note: string;
 }> = {
   en: {
-    h1: 'Trusted guidance for your surrogacy journey',
-    lead: 'Work out what your options actually are, compare destinations and costs side by side, and get the legal, medical and practical questions answered before you move forward.',
+    h1: 'Clear information at every step of cross-border surrogacy',
+    lead: 'Destination, cost, law and process information for intended parents worldwide, so you can see the options, work out what you actually need, and be ready for the next step.',
     ctaPrimary: 'Explore destinations',
-    ctaSecondary: 'Free consultation',
-    note: 'More clarity for your family’s future',
+    ctaSecondary: 'Get personalized guidance',
+    note: 'Let the important decisions rest on clear information',
   },
   zh: {
-    h1: '为您的代孕之旅提供可靠指引',
-    lead: '帮助您理清可行的方案，系统比较各目的地与费用，并在迈出下一步之前，逐一梳理法律、医疗与实务层面的关键问题。',
-    ctaPrimary: '查看目的地',
-    ctaSecondary: '免费咨询',
-    note: '为您家庭的未来，增添一分明晰',
+    h1: '让跨境代孕的每一步，都有清晰的信息参考',
+    lead: '为全球准父母提供代孕目的地、费用、法律与流程信息，帮助您了解不同选择，梳理实际需求，为下一步做好准备。',
+    ctaPrimary: '探索代孕目的地',
+    ctaSecondary: '获取个性化咨询',
+    note: '让重要决定建立在清晰信息之上',
+  },
+};
+
+/*
+ * Who we are. The owner's design pairs this with the four advantages in a two-column band: the
+ * left column makes the case for the site, the right column says what that case is made of.
+ *
+ * One paragraph, because the band is read beside four cards rather than on its own. A second
+ * paragraph made this column taller than the one beside it and turned a paired band into a block
+ * of prose next to a grid; the sentence below states what the site gathers and what that is for,
+ * and stops. Nothing here describes the team, the company or its history: a reader at this point
+ * is deciding whether to keep reading, not whether to hire anyone.
+ */
+export const HOME_WHO_WE_ARE: Record<Lang, {
+  heading: string;
+  body: string[];
+  link: { label: string; href: string };
+}> = {
+  en: {
+    heading: 'An independent platform focused on surrogacy worldwide',
+    body: [
+      'Law, eligibility, cost structure and medical arrangements, gathered across countries and regions, so a complicated process is easier to understand.',
+    ],
+    link: { label: 'Learn more about us', href: '/about' },
+  },
+  zh: {
+    heading: '一个专注全球代孕信息的独立平台',
+    body: ['整理不同国家和地区的法律环境、适用条件、费用结构与医疗安排，让跨境代孕的复杂信息更容易理解。'],
+    link: { label: '了解更多关于我们', href: '/about' },
+  },
+};
+
+/*
+ * The services band. The owner's design places it above the country records, because a reader who
+ * has just been told what this site can do needs to know what the help consists of before being
+ * asked to pick a country.
+ *
+ * Four cards, each one a thing the reader gets rather than a thing the site possesses. Each is a
+ * title and one line: the four are scanned side by side, and a paragraph in each would turn a row
+ * of choices into four blocks of prose. Nothing here names what the site will not do - the about
+ * page carries those limits, and four cards that each spent a line on an exclusion would read as
+ * a list of what is unavailable.
+ */
+export const HOME_SERVICES: Record<Lang, {
+  heading: string;
+  intro: string;
+  items: { title: string; body: string }[];
+  cta: string;
+}> = {
+  en: {
+    heading: 'How we can help',
+    intro: 'From choosing a destination to planning a budget, and on to the paperwork after birth.',
+    items: [
+      {
+        title: 'Destination research and comparison',
+        body: 'Policy, eligibility, law and process, country by country.',
+      },
+      {
+        title: 'Cost and budget planning',
+        body: 'The main cost lines, a quote, and what is usually left out.',
+      },
+      {
+        title: 'Parentage and the paperwork after birth',
+        body: 'How parentage is recognised, the birth certificate, and the documents to travel home.',
+      },
+      {
+        title: 'Your situation, and the next step',
+        body: 'Start from your circumstances, and what to confirm first.',
+      },
+    ],
+    cta: 'Get guidance for your situation',
+  },
+  zh: {
+    heading: '我们可以为您提供哪些帮助？',
+    intro: '从选目的地到算预算，再到孩子出生后的亲权与手续。',
+    items: [
+      {
+        title: '目的地研究与比较',
+        body: '政策、资格、法律与流程的实际差异。',
+      },
+      {
+        title: '费用与预算规划',
+        body: '主要费用、报价，以及容易被漏算的支出。',
+      },
+      {
+        title: '亲权与出生后的手续',
+        body: '亲子关系如何认定，出生证明与回国文件。',
+      },
+      {
+        title: '个人情况评估与下一步',
+        body: '从您的处境出发，理清要先确认什么。',
+      },
+    ],
+    cta: '获取针对性建议',
   },
 };
 
@@ -69,93 +169,68 @@ export const HOME_HERO: Record<Lang, {
  * in front of the reader, and state it positively. The intro names the categories once, so no item
  * below has to list them again.
  */
-export const HOME_METHOD: Record<Lang, {
+export const HOME_ADVANTAGES: Record<Lang, {
   heading: string;
   intro: string;
   items: { title: string; body: string }[];
   link: { label: string; href: string };
 }> = {
   en: {
-    heading: 'Every figure has a source',
-    intro:
-      'Costs, success rates and legal conditions each sit on a document, and each line names that document, who put it out, and when.',
+    heading: 'Our advantages',
+    intro: '',
     items: [
       {
-        title: 'Open the original',
-        body: 'Every figure carries the address of the document behind it, so you read the notice or the judgment itself rather than our summary of it.',
+        title: 'Comprehensive coverage',
+        body: 'Law, medicine, cost and process, in one place.',
       },
       {
-        title: 'Publisher named',
-        body: 'Government, court, regulator or clinic annual report: the page says which of them put the figure out.',
+        title: 'Clear side-by-side comparison',
+        body: 'One set of dimensions, so the differences show.',
       },
       {
-        title: 'Rates with their basis',
-        body: 'Each success rate carries the year it was counted and the sample behind it, so two clinics’ numbers never line up as though they matched.',
+        title: 'Sources you can trace',
+        body: 'Every claim has a publisher and a check date.',
       },
       {
-        title: 'A revision record',
-        body: 'Every page shows when it was first published and when it was last revised. Figures move when their sources do.',
+        title: 'Built around your situation',
+        body: 'Start from your circumstances, not a package.',
       },
     ],
     link: { label: 'The editorial policy', href: '/editorial-policy' },
   },
   zh: {
-    heading: '每一数字均有出处',
-    intro: '费用、成功率与法律条件之下均对应一份原始文件；每一条均注明文件名称、发布方与发布日期。',
+    heading: '我们的优势',
+    intro: '',
     items: [
       {
-        title: '原文可直接查阅',
-        body: '每一数字之后均附原文地址，您开启所见即为该公告或判决本身，而非本站的转述。',
+        title: '全面的信息覆盖',
+        body: '法律、医疗、费用、流程，集中在一处。',
       },
       {
-        title: '标明发布方',
-        body: '政府、法院、监管机构抑或诊所年报，均写明该数字的发布主体。',
+        title: '清晰的横向比较',
+        body: '同一组维度，差异一眼可见。',
       },
       {
-        title: '成功率载明口径',
-        body: '每条成功率均注明统计年份与样本范围，两家数字并不因并列而等同。',
+        title: '可追溯的信息来源',
+        body: '每条结论都有出处与核查日期。',
       },
       {
-        title: '附修订记录',
-        body: '每页标注首次发表与最后一次修订的日期，数字随来源同步更新。',
+        title: '结合实际需求',
+        body: '从您的处境出发，先解决最要紧的。',
       },
     ],
     link: { label: '编辑方针', href: '/editorial-policy' },
   },
 };
 
-/* The guide index: one heading that answers the question a reader at the top of the list is
- * actually asking, and one exit. The count stays dynamic in the second half, so publishing a seventh
- * guide cannot leave a heading that says six behind.
- *
- * A question here is not the same thing as a question in the enquiry band. That band is a terms
- * sheet and must not chat; this heading names the state the reader is in and points at the fix,
- * which is the one place on the page where a second person earns its keep. What it must not do is
- * advertise a range the six rows do not cover: an earlier draft read "from the process to bringing
- * your child home", which described only the first and the last card and left the four in between
- * outside the promise. */
-export const HOME_GUIDE_INDEX: Record<Lang, {
-  /** {n} is the number of published guides. */
-  heading: string;
-  viewAll: { label: string; href: string };
-}> = {
-  en: {
-    heading: 'Not sure where to start? Read these {n} first',
-    viewAll: { label: 'All guides', href: '/guides' },
-  },
-  zh: {
-    /* "当前所处阶段" was removed with the four situation cards: the rows below carry numbers but no
-     * stage labels, so a heading about stages would ask the reader to map a state onto "03" with
-     * nothing on the page to map it with. Name what is printed instead. */
-    heading: '尚未确定从何处着手？请先阅读这 {n} 份',
-    viewAll: { label: '全部指南', href: '/guides' },
-  },
-};
-
 export const HOME_COUNTRIES: Record<Lang, {
-  /** {n} is the number of published records. The count sits in the heading, the way a section
-   * title in the reference sites carries its own size instead of leaving it to a line below. */
+  /** The count no longer sits in the heading. A reader arriving here is choosing where to look
+   * first, and "8 countries" answers a question nobody asked; the number is still printed on the
+   * destinations index, where it describes the size of the archive rather than this section. */
   heading: string;
+  /** One sentence under the heading. It has to stop a reader from reading eight cards as eight
+   * interchangeable options, which is the mistake the row of flags invites on its own. */
+  intro: string;
   cta: string;
   /**
    * One line per record on who can actually use the route, compressed from that record's own
@@ -169,8 +244,10 @@ export const HOME_COUNTRIES: Record<Lang, {
   notes: Record<string, string>;
 }> = {
   en: {
-    heading: '{n} countries',
-    cta: 'All records',
+    heading: 'Surrogacy information by country and region',
+    intro:
+      'Countries and regions differ on surrogacy law, who may apply, cost, medical arrangements and how parentage is recognised. Knowing the local position is the first step in planning.',
+    cta: 'View all destinations',
     notes: {
       us: 'Each state sets its own rules',
       ca: 'Federal law settles reimbursement, not eligibility',
@@ -183,8 +260,9 @@ export const HOME_COUNTRIES: Record<Lang, {
     },
   },
   zh: {
-    heading: '{n} 个国家',
-    cta: '全部记录',
+    heading: '不同国家和地区的代孕信息',
+    intro: '不同国家和地区在代孕法律、申请资格、费用、医疗安排及亲子关系认定方面存在差异。了解当地情况，是规划跨境代孕的重要一步。',
+    cta: '查看所有目的地',
     notes: {
       us: '各州分别规定',
       ca: '联邦仅规定报销，不涉及资格',
@@ -198,29 +276,46 @@ export const HOME_COUNTRIES: Record<Lang, {
   },
 };
 
-/* The heading is the label the reader scans for. What the four pieces are is already on every
- * card's summary, so a line above them would say that twice. The exit names the destination, not the
- * size of the archive: nine pieces is not a number that helps anyone decide to read one. */
-export const HOME_READING: Record<Lang, {
+/* The pieces the homepage opens with, in the order a reader meets the questions: what it costs,
+ * where it is possible, what papers the child needs, how the process runs, how to judge an agency,
+ * and what has to be signed before anything starts.
+ *
+ * Written the way frontmatter writes a reference (collection/slug), so one list resolves to the
+ * English pages on / and to the Chinese pages on /zh. A ref with no live page in that language
+ * drops out rather than linking somewhere that was never built, which means a half-translated
+ * pair can never put a dead card on the homepage.
+ *
+ * The list is short on purpose. The homepage is a shop window, not a second archive: everything
+ * else stays behind the one exit to /guides, and the order is an editorial claim about what
+ * readers ask first, which no sort on a date could work out. */
+export const HOME_PICKS = [
+  'guides/surrogacy-cost',
+  'guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination',
+  'guides/bringing-your-child-home',
+  'guides/surrogacy-process',
+  'guides/choosing-a-surrogacy-agency',
+  'guides/what-must-be-signed-before-the-first-transfer',
+];
+
+/* The content module's copy. No topic names appear here or on the cards: a card carries a
+ * photograph, a title and one line, and which question a piece answers becomes clear once it is
+ * open. The intro therefore describes the module rather than enumerating its parts. */
+export const HOME_CONTENT: Record<Lang, {
   heading: string;
+  intro: string;
   viewAll: string;
-  emptyTitle: string;
-  emptyBody: string;
-  emptyAction: string;
 }> = {
   en: {
-    heading: 'Explainers',
-    viewAll: 'All explainers',
-    emptyTitle: 'Nothing is published here yet',
-    emptyBody: 'A piece appears here once its sources have been checked and it is ready to read.',
-    emptyAction: 'Read the publication standards',
+    heading: 'Where most readers start',
+    intro:
+      'The pieces readers open first. Each answers one question in full, and lists the sources behind its answer at the end. Everything else sits in the guide archive.',
+    viewAll: 'All guides',
   },
   zh: {
-    heading: '专题解读',
-    viewAll: '全部解读',
-    emptyTitle: '此处暂无已发布内容',
-    emptyBody: '本节仅列出已发布的内容。一篇专题解读须在来源核查完成、确可阅读之后方呈现于此。',
-    emptyAction: '阅读发布标准',
+    heading: '大多数读者从这里开始',
+    intro:
+      '这几篇是读者打开最多的文章。每篇只回答一个问题，并在文末列出答案所依据的来源。其余内容都在指南库里。',
+    viewAll: '查看全部指南',
   },
 };
 
@@ -239,13 +334,13 @@ export const HOME_BAND: Record<Lang, {
   link: { label: string; href: string };
 }> = {
   en: {
-    heading: 'Free consultation',
-    para: 'Fill in where you are and what you want settled, even if it is not yet a finished question. Every enquiry is answered by one of our advisors.',
+    heading: 'Not sure where to start?',
+    para: 'Every family’s situation and plan is different. Tell us what you are thinking about, which destinations interest you, or what you are stuck on, and we will help you work out what to look at and which direction to consider next.',
     link: { label: 'How we use what you send', href: '/privacy' },
   },
   zh: {
-    heading: '免费咨询',
-    para: '请填写您目前的情况与希望厘清的问题，无须先构成完整表述。每次咨询均由专业顾问本人答复。',
+    heading: '不确定从哪里开始？',
+    para: '每个家庭的情况和计划都不一样。告诉我们您目前的想法、感兴趣的目的地或遇到的问题，我们将协助您梳理需要了解的重点，并说明可以进一步考虑的方向。',
     link: { label: '信息使用说明', href: '/privacy' },
   },
 };
@@ -259,34 +354,26 @@ export const HOME_BAND: Record<Lang, {
 export const HOME_BAND_TRUST: { icon: IconName; label: Bilingual; body: Bilingual }[] = [
   {
     icon: 'lock',
-    label: { en: 'Strictly confidential', zh: '信息严格保密' },
+    label: { en: 'Information handled with care', zh: '信息谨慎处理' },
     body: {
-      en: 'Your details are used only for your enquiry and are never shared with third parties.',
-      zh: '个人信息仅用于咨询，绝不向第三方泄露。',
-    },
-  },
-  {
-    icon: 'clock',
-    label: { en: 'Reply within 24 hours', zh: '24 小时快速响应' },
-    body: {
-      en: 'An advisor contacts you directly after you submit.',
-      zh: '提交后由顾问本人与您联系。',
+      en: 'What you send is used to answer your question, and nothing else.',
+      zh: '您填写的内容只用于答复您的咨询。',
     },
   },
   {
     icon: 'check',
-    label: { en: 'Never forwarded', zh: '咨询不外转' },
+    label: { en: 'No obligation', zh: '无强制承诺' },
     body: {
-      en: 'No clinic, agency or lawyer receives your enquiry.',
-      zh: '您的咨询不会转达至诊所、机构或律师。',
+      en: 'Whether you go further is your decision, at every step.',
+      zh: '了解之后是否继续，由您决定。',
     },
   },
   {
-    icon: 'list-check',
-    label: { en: 'Nothing sensitive', zh: '不问证件与病历' },
+    icon: 'clock',
+    label: { en: 'Reply within 1 to 2 working days', zh: '通常于 1–2 个工作日内回复' },
     body: {
-      en: 'We never ask for ID, medical records or a budget figure.',
-      zh: '本站不会向您索取证件、病历或预算金额。',
+      en: 'An advisor answers you directly after you submit.',
+      zh: '提交后由顾问本人与您联系。',
     },
   },
 ];

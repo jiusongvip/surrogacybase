@@ -1,17 +1,17 @@
 ---
 title: "What 40,177 Transfers Do Not Promise You"
 description: "The largest published study of United States carrier transfers counts transfers, not journeys. What that difference does to a success rate."
-type: article
+type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-cost"]
-relatedArticles: ["articles/why-no-average-surrogacy-cost-exists", "articles/surrogacy-escrow-accounts-and-payment-stages"]
 relatedTools: ["tools/agency-quote-comparison", "tools/agency-question-checklist"]
+related: ["guides/surrogacy-process", "guides/surrogacy-cost", "guides/why-no-average-surrogacy-cost-exists", "guides/surrogacy-escrow-accounts-and-payment-stages"]
 sources:
   - label: "Gestational carrier embryo transfers in the United States"
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/"
@@ -79,6 +79,6 @@ Question five is the one that turns a clinical statistic into a budget. The [quo
 
 None of the above says a United States gestational carrier program is unlikely to work. It says the published numbers are per transfer, that per transfer is not per journey, and that the difference between those two is where a plan either holds or does not.
 
-The reason there is no reliable average for a whole journey is the same reason there is no reliable average cost, which is set out in [why no average surrogacy cost exists](/articles/why-no-average-surrogacy-cost-exists). Both are questions about a sequence of events that only your own file will resolve, and both are answered by asking for the denominator rather than the number.
+The reason there is no reliable average for a whole journey is the same reason there is no reliable average cost, which is set out in [why no average surrogacy cost exists](/guides/why-no-average-surrogacy-cost-exists). Both are questions about a sequence of events that only your own file will resolve, and both are answered by asking for the denominator rather than the number.
 
 What is reported above is published figures and the definitions attached to them. It is not a prediction about your treatment, and it is not medical advice.

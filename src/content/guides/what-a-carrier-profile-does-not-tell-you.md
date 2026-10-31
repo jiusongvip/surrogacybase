@@ -2,17 +2,18 @@
 title: "What a Gestational Carrier's Profile Does Not Tell You"
 titleTag: "Reading a Carrier Profile"
 description: "What United States guidance expects to have happened before a carrier profile reaches you, and which parts of it are recommendation rather than rule."
-type: article
+type: guide
 category: preparation
+topic: choice
+featured: true
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/gamete-and-surrogate-options", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/what-must-be-signed-before-the-first-transfer"]
 relatedTools: ["tools/agency-question-checklist"]
+related: ["guides/gamete-and-surrogate-options", "guides/choosing-a-surrogacy-agency", "guides/what-must-be-signed-before-the-first-transfer"]
 sources:
   - label: "Recommendations for practices using gestational carriers: a committee opinion (2022)"
     url: "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
@@ -86,7 +87,7 @@ One structural safeguard is worth knowing because it is easy to miss. The guidan
 
 ## Four questions to put in writing
 
-Ask these of the program, and keep the written answers with the documents in [the signing sequence](/articles/what-must-be-signed-before-the-first-transfer).
+Ask these of the program, and keep the written answers with the documents in [the signing sequence](/guides/what-must-be-signed-before-the-first-transfer).
 
 1. Which standard did you apply to her: ASRM recommendations, a state requirement, or your own protocol? Name it.
 2. Is her psychological evaluation current for this contract, given that the guidance asks for a new one when the previous evaluation is more than a year old?

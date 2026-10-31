@@ -47,13 +47,13 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
       <span class="font-display text-[21px] leading-none tracking-tight">{SITE.name}</span>
     </a>
 
-    <nav aria-label={copy.primaryNavLabel} class="hidden items-center gap-1 lg:flex">
+    <nav aria-label={copy.primaryNavLabel} class="hidden items-center gap-0.5 lg:flex xl:gap-1">
       {copy.nav.map((item) => (
         <a
           href={item.href}
           aria-current={isActive(item.href) ? 'page' : undefined}
           class:list={[
-            'rounded-(--radius) px-3 py-2 text-[15px] transition-colors duration-(--dur) hover:text-accent',
+            'whitespace-nowrap rounded-(--radius) px-2.5 py-2 text-[14.5px] transition-colors duration-(--dur) hover:text-accent xl:px-3 xl:text-[15px]',
             isActive(item.href) ? 'text-accent' : 'text-muted',
           ]}
         >
@@ -75,7 +75,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
               data-lang-trigger
             >
               <Icon name="world" size={16} class="text-muted" />
-              <span class="hidden sm:inline">{copy.languageLabel}</span>
+              <span class="hidden xl:inline">{copy.languageLabel}</span>
               {LANG_META[lang].selfName}
               <Icon name="chevron-down" size={14} class="text-muted" />
             </button>

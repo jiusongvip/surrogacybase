@@ -1,17 +1,17 @@
 ---
 title: "What Must Be Signed Before the First Transfer"
 description: "The five documents a gestational arrangement should have in place before an embryo is transferred, and what each one is for."
-type: article
+type: guide
 category: preparation
+topic: legal
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/getting-a-birth-certificate-accepted-abroad"]
 relatedTools: ["tools/agency-question-checklist", "tools/agency-quote-comparison"]
+related: ["guides/choosing-a-surrogacy-agency", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/getting-a-birth-certificate-accepted-abroad"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"
@@ -60,7 +60,7 @@ Published analysis of United States practice records that in some jurisdictions 
 Three consequences follow, and they are the reason this list is worth working through before money moves.
 
 - A document that cannot be enforced still functions as evidence. What was agreed, what was disclosed, and what was paid will be reconstructed from the paperwork, so the quality of the paperwork protects you even where the contract does not.
-- The parentage question is decided by a court applying its own test, not by the agreement. The article on [the six-month limit](/articles/the-six-month-limit-on-a-uk-parental-order) gives the rule with its source: the woman who gives birth is the legal mother, and where she has a spouse or civil partner that person is the second legal parent, until a court order displaces both.
+- The parentage question is decided by a court applying its own test, not by the agreement. The article on [the six-month limit](/guides/the-six-month-limit-on-a-uk-parental-order) gives the rule with its source: the woman who gives birth is the legal mother, and where she has a spouse or civil partner that person is the second legal parent, until a court order displaces both.
 - Payment terms are not neutral. Where the lawful ceiling is a carrier's reasonable expenses and anything above it waits on a judge, an aggressive compensation structure is not merely expensive. It can sit inside the application that decides whether you become the child's legal parents.
 
 ## What the professional bodies treat as mandatory
@@ -83,7 +83,7 @@ Ask them of the party who will be named in the paperwork, in writing, and keep e
 4. Who is the carrier's lawyer, who pays them, and how far in advance of my signature do they see the draft?
 5. Which requirement in this list does your jurisdiction not enforce, and what do you do about that instead of relying on the document?
 
-Question five is the one a good lawyer will answer without hesitation and a bad one will answer with reassurance. It is also the question that tells you whether the [escrow stages](/articles/surrogacy-escrow-accounts-and-payment-stages) you are about to fund have any consequence if the arrangement stops.
+Question five is the one a good lawyer will answer without hesitation and a bad one will answer with reassurance. It is also the question that tells you whether the [escrow stages](/guides/surrogacy-escrow-accounts-and-payment-stages) you are about to fund have any consequence if the arrangement stops.
 
 ## What being ready looks like
 
@@ -91,6 +91,6 @@ Ready is not a feeling about the clinic or a level of comfort with an agency. It
 
 If any of those five documents is missing, the transfer can still proceed, and that is exactly why the list is worth holding. The calendar belongs to the clinic. The terms belong to you only for as long as nothing has been signed.
 
-The paperwork that follows a birth is a different chain with different decision-makers, and it is set out in [getting a birth certificate accepted abroad](/articles/getting-a-birth-certificate-accepted-abroad).
+The paperwork that follows a birth is a different chain with different decision-makers, and it is set out in [getting a birth certificate accepted abroad](/guides/getting-a-birth-certificate-accepted-abroad).
 
 What is reported above is published guidance and the positions taken by professional bodies. It is not legal advice, it is not a template, and no document described here has been reviewed for your situation.

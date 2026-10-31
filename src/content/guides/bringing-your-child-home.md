@@ -4,15 +4,15 @@ titleTag: "Bringing Your Child Home"
 description: "Which document lets the child cross a border, what each country asks for, where a genetic link is required, and what registration waits at home."
 type: guide
 category: process
+topic: process
 published: true
 publishedOn: "2026-10-17"
 updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-17"
 jurisdictions: ["us", "gb"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations"]
-relatedArticles: ["articles/getting-a-birth-certificate-accepted-abroad", "articles/the-six-month-limit-on-a-uk-parental-order"]
 relatedTools: ["tools/destination-research-checklist"]
+related: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/getting-a-birth-certificate-accepted-abroad", "guides/the-six-month-limit-on-a-uk-parental-order"]
 sources:
   - label: "Surrogacy: becoming a parent through a court order"
     url: "https://selfhelp.courts.ca.gov/parentage/surrogacy"
@@ -46,7 +46,7 @@ sources:
 
 The medical part of a program ends at a birth. The part that decides whether your family travels home together starts there, and it belongs to institutions nobody in your arrangement employs: a court in the state of birth, a civil registry, a consulate, a passport office, and the registration authority of the country you are taking the child home to. None of them is a party to your contract, and none of them works to a schedule anyone selling you a program can influence.
 
-The order below is the order the chain has to run in. Two parts have pages of their own: [how an apostille is issued and by whom](/articles/getting-a-birth-certificate-accepted-abroad), and [the six-month limit on a UK parental order](/articles/the-six-month-limit-on-a-uk-parental-order).
+The order below is the order the chain has to run in. Two parts have pages of their own: [how an apostille is issued and by whom](/guides/getting-a-birth-certificate-accepted-abroad), and [the six-month limit on a UK parental order](/guides/the-six-month-limit-on-a-uk-parental-order).
 
 Keep the country of birth and the country the family returns to separate. A contract does not make one country's parentage decision automatically valid in another; each receiving authority reads the file again under its own rules. The United States and the United Kingdom appear because their governments, courts and consulates publish a part of this chain, and each has a destination record here. Australia appears because its government publishes what it tells its own citizens before they travel.
 

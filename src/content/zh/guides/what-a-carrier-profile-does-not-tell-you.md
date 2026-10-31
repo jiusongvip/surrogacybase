@@ -2,17 +2,18 @@
 title: "妊娠代孕者档案未能提供的信息"
 titleTag: "代孕者档案的阅读方法"
 description: "代孕者档案往往是您所取得的唯一一份关于她的文件。本文说明美国专业指引要求事先完成的步骤，并区分其中的推荐意见与强制性规定。"
-type: article
+type: guide
 category: preparation
+topic: choice
+featured: true
 published: true
 publishedOn: "2026-10-28"
 updatedOn: "2026-10-28"
 reviewDueOn: "2027-04-28"
 jurisdictions: ["us"]
 evidence: verified
-relatedGuides: ["guides/gamete-and-surrogate-options", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/what-must-be-signed-before-the-first-transfer"]
 relatedTools: ["tools/agency-question-checklist"]
+related: ["guides/gamete-and-surrogate-options", "guides/choosing-a-surrogacy-agency", "guides/what-must-be-signed-before-the-first-transfer"]
 sources:
   - label: "关于使用妊娠代孕者的项目的建议：委员会意见（2022）"
     url: "https://www.asrm.org/practice-guidance/practice-committee-documents/recommendations-for-practices-using-gestational-carriers-a-committee-opinion-2022/"
@@ -86,7 +87,7 @@ sources:
 
 ## 应以书面提出的四个问题
 
-向项目提出以下问题，并把书面答复与[签署顺序](/zh/articles/what-must-be-signed-before-the-first-transfer)里的文件一起保存。
+向项目提出以下问题，并把书面答复与[签署顺序](/zh/guides/what-must-be-signed-before-the-first-transfer)里的文件一起保存。
 
 1. 你们对她适用的是哪一套标准：美国生殖医学会的建议、某一州的法定要求，还是你们自定的流程？请指明。
 2. 她的心理评估对这份合同而言是否仍在有效期内，考虑到指引要求上一份评估超过一年时重新做一次？

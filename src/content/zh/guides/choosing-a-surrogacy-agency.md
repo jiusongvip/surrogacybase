@@ -4,15 +4,15 @@ titleTag: "先评估代孕机构"
 description: "机构费用实际涵盖什么，监管覆盖与不覆盖的范围，签约前应索取的五份文件，以及应当以书面形式提出的问题。"
 type: guide
 category: agencies
+topic: choice
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "gb", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 relatedTools: ["tools/agency-question-checklist", "tools/agency-quote-comparison"]
+related: ["guides/surrogacy-cost", "guides/surrogacy-legal-considerations", "guides/surrogacy-process", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/questions-to-ask-about-surrogacy-law-before-choosing-a-destination"]
 sources:
   - label: "代孕：情况说明"
     url: "https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/"

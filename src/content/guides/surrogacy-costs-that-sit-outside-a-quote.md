@@ -1,17 +1,18 @@
 ---
 title: "Surrogacy Costs That Sit Outside a Quote"
 description: "The twelve expense categories that usually fall outside a package price, why they land on you anyway, and the exact wording to ask a provider to confirm."
-type: article
+type: guide
 category: cost
+topic: cost
+featured: true
 published: true
 publishedOn: "2026-10-14"
 updatedOn: "2026-10-19"
 reviewDueOn: "2027-04-14"
 jurisdictions: ["us", "ca"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency"]
-relatedArticles: ["articles/surrogacy-escrow-accounts-and-payment-stages", "articles/why-no-average-surrogacy-cost-exists"]
 relatedTools: ["tools/agency-quote-comparison", "tools/cost-figures"]
+related: ["guides/surrogacy-cost", "guides/choosing-a-surrogacy-agency", "guides/surrogacy-escrow-accounts-and-payment-stages", "guides/why-no-average-surrogacy-cost-exists"]
 sources:
   - label: "Financial terms and escrow accounts"
     url: "https://adoptionart.org/assisted-reproduction/financial-terms-escrow-accounts/"

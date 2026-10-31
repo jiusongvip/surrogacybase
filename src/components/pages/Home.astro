@@ -2,17 +2,21 @@
 /*
  * The homepage, in both languages.
  *
- * The section order puts the records first: the hero, the country records, the guides in reading
- * order, the explainers, the standards behind everything published, and the enquiry band last. The
+ * The section order puts the records first: the hero, the country records, the handful of pieces
+ * readers open first as picture cards, and the enquiry band last. The
  * hero carries no counts and no date, because a reader deciding whether to scroll cannot check
  * either from there. Where a number is printed, it is read off the collection it describes, so no
  * section can advertise more than the site holds. Everything a reader sees comes from
  * src/data/home.ts or from the records it links to, so a section cannot be translated in one
  * place and left English in another.
  *
- * Each section follows the shape the reference sites use in this category: a noun heading that may
- * carry its own count, one exit at the far right, and cards below. No section gets an eyebrow and
- * an intro as well, because three lines of framing over four cards is the copy a reader skips.
+ * Composition. The page is a publication, so it is set like one: a photograph against the right
+ * edge of the hero, then sections that each carry their own shape rather than the same row of
+ * cards seven times. Cards appear only where a card is the thing itself (a country record, a
+ * guide in reading order); everything else is type, rules and white space. Four sections in a row
+ * of equal bordered tiles is what made the previous draft read as a template, and it is the one
+ * thing this layout will not do twice.
+ *
  * Two things the definition asks for are filled from data rather than written by hand. The country
  * cards are the published jurisdiction records, so a card cannot appear for a country nobody has
  * sourced; the reading cards are live content entries, so a card cannot point at an article that
@@ -23,27 +27,26 @@
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Icon from '@/components/ui/Icon.astro';
-import ArticleCard from '@/components/content/ArticleCard.astro';
-import EmptyState from '@/components/ui/EmptyState.astro';
 import ConsultForm from '@/components/forms/ConsultForm.astro';
+import ArticleCard from '@/components/content/ArticleCard.astro';
 import { SITE } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { UI, fill, pick } from '@/i18n/ui';
-import { getGuides, getLiveContent, pathOf, resolveRefs, type ContentEntry } from '@/lib/content';
+import { pick } from '@/i18n/ui';
+import { resolveRefs } from '@/lib/content';
+import { contentImage } from '@/data/content-images';
 import { getJurisdictions } from '@/lib/jurisdictions';
-import { readingTime } from '@/lib/dates';
 import {
+  HOME_ADVANTAGES,
   HOME_BAND,
   HOME_BAND_TRUST,
+  HOME_CONTENT,
   HOME_COUNTRIES,
   HOME_HERO,
-  HOME_GUIDE_INDEX,
   HOME_META,
-  HOME_METHOD,
-  HOME_READING,
+  HOME_PICKS,
+  HOME_SERVICES,
+  HOME_WHO_WE_ARE,
 } from '@/data/home';
-import { GUIDE_CARDS, GUIDE_ORDER } from '@/data/guides';
-import { contentImage } from '@/data/content-images';
 import { Image } from 'astro:assets';
 import heroTerrace from '@/assets/images/hero-terrace.jpg';
 
@@ -51,10 +54,11 @@ const lang = langFromPath(Astro.url.pathname);
 const records = await getJurisdictions(lang);
 const meta = HOME_META[lang];
 const hero = HOME_HERO[lang];
-const method = HOME_METHOD[lang];
-const guideIndex = HOME_GUIDE_INDEX[lang];
+const whoWeAre = HOME_WHO_WE_ARE[lang];
+const advantages = HOME_ADVANTAGES[lang];
+const services = HOME_SERVICES[lang];
 const countries = HOME_COUNTRIES[lang];
-const readingCopy = HOME_READING[lang];
+const homeContent = HOME_CONTENT[lang];
 const band = HOME_BAND[lang];
 
 /* The hero carries no inventory strip. Fifteen explainers and five tools are small numbers to a
@@ -72,7 +76,7 @@ const byOrder = (a: { data: { code: string } }, b: { data: { code: string } }) =
  * under a country name implies the place was photographed, and none of these were; the flag says
  * only what the record says, which is that the page is about that jurisdiction. Under the name sits
  * the one line a reader comparing countries is actually looking for: whether the route is open to
- * someone like them. The record's own counts are not printed here — how many sentences an edit
+ * someone like them. The record's own counts are not printed here - how many sentences an edit
  * sourced and how many questions it left are the workshop, not the answer. */
 const cards = [...records].sort(byOrder).map((row) => ({
   code: row.data.code,
@@ -82,88 +86,75 @@ const cards = [...records].sort(byOrder).map((row) => ({
   note: countries.notes[row.data.code] ?? '',
 }));
 
-/* The four explainers a reader should get through before talking to anyone, in the order the
- * section's own line names them. Each is an article, so the count in the header is exact. */
-const readingOrder = [
-  'surrogacy-costs-that-sit-outside-a-quote',
-  'how-to-read-a-clinic-published-success-rate',
-  'the-six-month-limit-on-a-uk-parental-order',
-  'getting-a-birth-certificate-accepted-abroad',
-];
-/* A language that cannot fill the row from the order above is topped up with its own newest
- * pages, so the section prints fewer cards only when the site has nothing left to print. */
-const preferred = (await resolveRefs(readingOrder, lang)).slice(0, 4);
-const rest = preferred.length < 4 ? (await getLiveContent(lang)).filter((e) => !preferred.includes(e)) : [];
-const reading = [...preferred, ...rest.slice(0, 4 - preferred.length)];
-
-/* The guides in reading order, topped up with anything the collection holds that the shared list
- * does not, so a guide published later still reaches the homepage. Each row is a live entry, so
- * the section cannot print a title with no page behind it. */
-const preferredGuides = await resolveRefs(GUIDE_ORDER, lang);
-const allGuides = await getGuides(lang);
-const guidesInOrder = [
-  ...preferredGuides,
-  ...allGuides.filter((guide) => !preferredGuides.some((preferred) => preferred.id === guide.id)),
-];
-const minutesOf = (entry: ContentEntry) => readingTime(entry.body ?? '');
-const minRead = UI[lang].time.minRead;
+/* The single content module: the handful of pieces readers open first, as picture cards. Nothing
+ * on a card names a subject — a photograph, a title, one line, and the question the piece answers
+ * becomes clear on the page itself. The order is HOME_PICKS, an editorial list rather than a sort,
+ * because "asked first" is not something a date can compute; a ref with no live page in this
+ * language drops out, so the row cannot hold a dead link. */
+const picks = await resolveRefs(HOME_PICKS, lang);
 
 const lp = (path: string) => localizedPath(lang, path);
 const home = localizedPath(lang, '/');
 ---
 
 <PageLayout title={SITE.name} titleTag={meta.titleTag} description={meta.description}>
-  {/* B. Hero: the frame keeps its light; the argument is set on it in bottle green. */}
+  {/*
+    * 1. Hero. The frame runs edge to edge and the copy sits on it. The section is 580px at
+    * desktop, so the heading of the section below shows above the fold and the reader can see
+    * the page continues.
+    *
+    * Two things are deliberately plain here. The photograph is placed at its own centre with no
+    * crop anchor, because a hand-picked anchor is a design decision the picture does not need;
+    * and the wash is one gradient from paper to clear, because a wash built out of several
+    * tuned stops is more machinery than a legible headline requires.
+    *
+    * Below lg the copy spans the full width, so a wash would have to cover the frame entirely.
+    * There the photograph keeps its own band above the copy and the copy sits on plain paper.
+    */}
   <section class="relative isolate overflow-hidden border-b border-line bg-paper" id="top">
-    {/*
-     * The wash is paper, not brand, and that reversal is the whole colour decision. A dark
-     * scrim has to beat the frame's brightest pixel, which over sunlit sea means 75 per cent
-     * green laid across the copy and no sea left to see. A light scrim only has to lift the
-     * frame's darkest pixel, and the darkest pixel behind the sentences is the headland, not
-     * the open water.
-     *
-     * The two colour schemes need different strengths here, and the difference is measured
-     * rather than guessed. In the light scheme the threat is a dark pixel under dark type, so
-     * the wash only has to reach 62 per cent: the heading is 36 to 64px, which WCAG treats as
-     * large text at 3:1, and the 18px body is the binding case at 4.5:1 and needs 57. In the
-     * dark scheme paper is near-black and the threat inverts to a bright pixel under light
-     * type, and the copy column's top row sits on open sky, which needs 74. So the light
-     * scheme gets a thin wash and the sea stays visible; the dark scheme keeps a heavy one,
-     * because a dark hero is meant to read dark.
-     *
-     * Below lg the copy spans the full width, so the wash would have to cover the frame
-     * entirely; there the photograph keeps its own band and the copy sits on plain paper.
-     */}
     <Image
       src={heroTerrace}
       widths={[720, 1100, 1536]}
       sizes="100vw"
       loading="eager"
       fetchpriority="high"
-      class="block h-[220px] w-full object-cover object-[62%_38%] sm:h-[320px] lg:absolute lg:inset-0 lg:h-full lg:object-[52%_42%]"
+      class="block h-[220px] w-full object-cover sm:h-[300px] lg:absolute lg:inset-0 lg:h-full lg:w-full"
       alt=""
     />
-    <div
-      class="absolute inset-0 hidden from-paper/62 via-paper/60 via-58% to-paper/0 to-82% bg-linear-to-r lg:block dark:from-paper/86 dark:via-paper/80"
-      aria-hidden="true"
-    >
-    </div>
+    <div class="absolute inset-0 hidden bg-linear-to-r from-paper via-paper/85 to-paper/0 lg:block" aria-hidden="true"></div>
 
-    <div class="shell relative py-10 sm:py-14 lg:py-28">
-      <div class="max-w-[560px] xl:max-w-[620px]">
-        <p class="rise text-[13px] font-semibold uppercase tracking-[0.18em] text-brand-fg">{SITE.name}</p>
-        <h1 class="rise mt-4 text-[clamp(2.3rem,5.2vw,4rem)] leading-[1.06] text-balance text-brand-fg">
+    <div class="shell relative flex items-center py-10 sm:py-12 lg:min-h-[640px] lg:py-16">
+      {/*
+        * The width cap is what keeps the wash honest: every line has to end where the paper is
+        * still paper, so the column stops at 600 rather than growing with the frame.
+        */}
+      <div class="max-w-[600px]">
+        <h1
+          class:list={[
+            'rise text-balance text-[clamp(2.05rem,3.4vw,3rem)] leading-[1.06] text-brand-fg',
+            /* Han characters are already full-width squares, so the display tracking that
+               stops a Latin headline looking loose crowds them. */
+            lang === 'zh' ? '' : 'tracking-[-0.02em]',
+          ]}
+        >
           {hero.h1}
         </h1>
-        <p class="rise rise-1 mt-5 max-w-[58ch] text-[17px] leading-[1.65] text-text lg:text-[18px] lg:leading-[1.7]">
+        <p class="rise rise-1 mt-6 max-w-[52ch] text-[16.5px] leading-[1.7] text-text lg:text-[17.5px]">
           {hero.lead}
         </p>
-        {/* The owner's line, set as a signature rather than a second paragraph: a rule above it
-            keeps it reading as one voice under the lead, not as more copy to get through. */}
-        <p class="rise rise-1 mt-5 max-w-[42ch] border-t border-brand-fg/25 pt-4 font-display text-[16px] leading-[1.5] text-brand-fg">
+        {/* The owner's line, set as a signature rather than a second paragraph: italic, in the
+            accent, and the only place on the page where the accent carries a sentence. Chinese
+            has no italic, and a synthesised oblique reads as a rendering fault, so it stays
+            upright there. */}
+        <p
+          class:list={[
+            'rise rise-1 mt-5 max-w-[46ch] pb-1 font-display text-[17.5px] leading-[1.5] text-accent',
+            lang === 'zh' ? '' : 'italic',
+          ]}
+        >
           {hero.note}
         </p>
-        <div class="rise rise-2 mt-8 flex flex-wrap gap-3">
+        <div class="rise rise-2 mt-9 flex flex-wrap items-center gap-3">
           <a href={lp('/destinations')} class="btn-primary">
             {hero.ctaPrimary}
             <Icon name="arrow-right" size={16} />
@@ -174,30 +165,113 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 
-  {/* C. Destinations: the records themselves are the evidence, so they open the page. The count
-      sits in the heading rather than in a sentence under it. */}
-  <section class="py-14 lg:py-20" id="destinations">
+  {/*
+    * 2. Who we are, then the four advantages under it as a register. The statement gets the full
+    * measure and the four entries sit beneath it in one row, separated by rules, so the section
+    * reads as an argument followed by what the argument is made of. The earlier draft put the two
+    * side by side and the right column shrank to four tiles the width of a footnote.
+    */}
+  <section class="py-16 lg:py-24" id="about">
     <div class="shell">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
-        <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {fill(countries.heading, { n: cards.length })}
-        </h2>
-        <a href={lp('/destinations')} class="textlink shrink-0">
-          {countries.cta}
-          <Icon name="arrow-right" size={16} />
+      <div class="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div class="lg:col-span-8">
+          <h2 class="max-w-[20ch] text-balance text-[clamp(1.85rem,3.1vw,2.7rem)] leading-[1.12]">
+            {whoWeAre.heading}
+          </h2>
+          <div class="mt-6 space-y-4 text-[16.5px] leading-[1.75] text-muted">
+            {whoWeAre.body.map((p) => <p class="max-w-[52ch]">{p}</p>)}
+          </div>
+        </div>
+        <div class="lg:col-span-4 lg:justify-self-end">
+          <a href={lp(whoWeAre.link.href)} class="textlink inline-flex">
+            {whoWeAre.link.label}
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-14 flex items-center justify-between gap-6" id="advantages">
+        <h3 class="shrink-0 font-display text-[1.2rem] leading-none">{advantages.heading}</h3>
+        <span class="hidden h-px flex-1 bg-line-strong sm:block" aria-hidden="true"></span>
+        <a href={lp(advantages.link.href)} class="exit shrink-0">
+          {advantages.link.label}
+          <Icon name="arrow-right" size={15} />
         </a>
       </div>
 
-      {/*
-       * Eight records, two rows of four, each one a flag, the country, and the one line on who can
-       * use it. The card is the link; an "open the record" line under every card would print the
-       * same four words eight times.
-       */}
-      <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="mt-7 grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          advantages.items.map((m, i) => (
+            <li class="border-t border-line pt-4">
+              <span class="text-[12px] tabular-nums text-accent">{String(i + 1).padStart(2, '0')}</span>
+              <h4 class="mt-1.5 text-[16.5px] leading-snug">{m.title}</h4>
+              <p class="mt-1.5 max-w-[32ch] text-[14.5px] leading-[1.6] text-muted">{m.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/*
+    * 3. Services. The heading takes a rail on the left and the four entries sit in two columns
+    * beside it: the numeral above each one, the title at display size, a line under it. The
+    * owner's design puts this above the country records, because a reader who has just been told
+    * what the site can do needs to know what the help consists of before being asked to pick a
+    * country.
+    */}
+  <section class="bg-surface-2 py-16 lg:py-24" id="services" aria-labelledby="services-h">
+    <div class="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4">
+        <h2 id="services-h" class="text-balance text-[clamp(1.8rem,2.6vw,2.35rem)] leading-[1.1]">
+          {services.heading}
+        </h2>
+        <p class="mt-5 max-w-[36ch] text-[16px] leading-[1.7] text-muted">{services.intro}</p>
+        <a href={`${home}#assessment`} class="exit mt-7" data-enquiry-cta>
+          {services.cta}
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+
+      <ul class="grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:col-span-8">
+        {
+          services.items.map((item, i) => (
+            <li>
+              <span class="font-display text-[2.1rem] leading-none tabular-nums text-accent/85">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-4 max-w-[24ch] text-balance font-display text-[clamp(1.3rem,1.8vw,1.55rem)] leading-[1.25]">
+                {item.title}
+              </h3>
+              <p class="mt-2.5 max-w-[36ch] text-[14.5px] leading-[1.65] text-muted">{item.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/*
+    * 4. The country records, on the deep green. This is the section the page exists for, so it is
+    * the one full-colour band above the fold of the scroll: eight cells that share their rules
+    * like a printed table, each a flag, the jurisdiction, and the line on who can use the route.
+    * Cells rather than cards, because eight cards float apart and eight cells read as one atlas.
+    */}
+  <section class="bg-brand py-16 lg:py-24" id="destinations">
+    <div class="shell">
+      <h2 class="max-w-[26ch] text-balance text-[clamp(1.9rem,3.2vw,2.85rem)] leading-[1.08] text-band">
+        {countries.heading}
+      </h2>
+      <p class="mt-5 max-w-[62ch] text-[16px] leading-[1.75] text-band-muted">{countries.intro}</p>
+
+      <ul class="mt-12 grid grid-cols-1 gap-px border border-band/15 bg-band/15 sm:grid-cols-2 lg:grid-cols-4">
         {
           cards.map((c) => (
-            <li class="h-full">
-              <a href={lp(c.href)} class="card card-hover flex h-full items-center gap-4 p-4 sm:p-5">
+            <li>
+              <a
+                href={lp(c.href)}
+                class="group flex h-full flex-col bg-brand p-6 transition-colors duration-(--dur) hover:bg-band/[0.07]"
+              >
                 <img
                   src={`/flags/${c.code}.svg`}
                   alt=""
@@ -205,135 +279,60 @@ const home = localizedPath(lang, '/');
                   height={48}
                   loading="lazy"
                   decoding="async"
-                  class="shrink-0 self-start rounded-[3px] border border-line"
+                  class="h-[36px] w-auto self-start rounded-[2px] ring-1 ring-band/25"
                 />
-                <span class="flex min-w-0 flex-1 flex-col">
-                  <h3 class="text-[17px] font-medium">
-                    {c.name}
-                    <span class="ml-2 text-[13px] font-normal text-muted">{c.region}</span>
-                  </h3>
-                  {c.note ? <span class="mt-1 block text-[13px] leading-snug text-text/80">{c.note}</span> : null}
-                </span>
+                <span class="mt-5 block font-display text-[1.25rem] leading-tight text-band">{c.name}</span>
+                <span class="mt-1 block text-[12.5px] leading-tight text-band-muted">{c.region}</span>
+                {c.note ? <span class="mt-3 block text-[14px] leading-[1.55] text-band-muted">{c.note}</span> : null}
               </a>
             </li>
           ))
         }
       </ul>
-    </div>
-  </section>
 
-  {/* D. The guides themselves, in reading order. A reader locates their own position by the number
-      rather than by a card that restates it, so this section prints nothing but the titles and what
-      each one answers. No icons: the country grid above already uses them, and six icons in a row
-      turn an index into a feature list. No pictures: a guide's subject is a decision, and no
-      photograph of a decision would be truthful. Two columns keep six rows inside one screen. */}
-  <section class="bg-surface-2 py-14 lg:py-20" id="start" aria-labelledby="start-h">
-    <div class="shell">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
-        <h2 id="start-h" class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {fill(guideIndex.heading, { n: guidesInOrder.length })}
-        </h2>
-        <a href={lp(guideIndex.viewAll.href)} class="textlink shrink-0">
-          {guideIndex.viewAll.label}
-          <Icon name="arrow-right" size={16} />
+      <div class="mt-7 flex justify-end">
+        <a href={lp('/destinations')} class="exit-on-band">
+          {countries.cta}
+          <Icon name="arrow-right" size={15} />
         </a>
       </div>
-
-      {/* Cards, the way this category's reference sites print a row of choices: a surface each, one
-        * icon, a title, and a line short enough to take in without reading. Six long sentences in a
-        * plain list read as a table of contents and cost the reader a paragraph per row; the line
-        * under each title is lifted from that guide's own description, so the card promises nothing
-        * the page behind it does not. The order still matters, so the number stays in the corner. */}
-      <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          guidesInOrder.map((guide, i) => {
-            const card = GUIDE_CARDS[guide.id.split('/').pop() ?? ''];
-            return (
-              <li class="h-full">
-                <a href={pathOf(guide)} class="card card-hover group flex h-full flex-col p-6">
-                  <span class="flex items-start justify-between gap-4">
-                    <Icon name={card?.icon ?? 'book'} size={22} class="text-accent" />
-                    <span class="tnum text-[12px] text-muted">{String(i + 1).padStart(2, '0')}</span>
-                  </span>
-                  <h3 class="mt-5 text-[19px] leading-snug group-hover:text-accent">{guide.data.title}</h3>
-                  <span class="mt-2 block text-[14px] leading-[1.65] text-muted">
-                    {card ? pick(card.line, lang) : guide.data.description}
-                  </span>
-                  <span class="mt-auto flex items-center justify-between gap-4 pt-6 text-[13px] text-muted">
-                    <span class="tnum">{fill(minRead, { n: minutesOf(guide) })}</span>
-                    <Icon
-                      name="arrow-right"
-                      size={15}
-                      class="shrink-0 text-accent transition-transform duration-(--dur) group-hover:translate-x-0.5"
-                    />
-                  </span>
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
     </div>
   </section>
 
-  {/* E. Published explainers only: every card is a live route, or the section says it is empty. */}
-  <section class="py-14 lg:py-20" id="reading">
+  {/*
+    * 5. The single content module: six picture cards, in the same shape as the archive on /guides,
+    * so a reader who likes what they see here recognises the archive when they get there. Cards
+    * carry no subject label — the module is a shop window for the questions people ask first, not
+    * a second taxonomy, and a label on each card would turn six picks into six buckets.
+    *
+    * The exit to the archive sits on the heading row rather than under the grid, because a reader
+    * who wants the full library should not have to scroll past six cards to find out it exists.
+    */}
+  <section class="py-16 lg:py-24" id="guides">
     <div class="shell">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
-        <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">
-          {readingCopy.heading}
-        </h2>
-        <a href={lp('/articles')} class="textlink shrink-0">
-          {readingCopy.viewAll}
-          <Icon name="arrow-right" size={16} />
-        </a>
-      </div>
-
-      {
-        reading.length > 0 ? (
-          <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {reading.map((entry) => {
-              const image = contentImage(entry.id);
-              return (
-                <li class="h-full">
-                  <ArticleCard entry={entry} showKind={false} image={image} />
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <div class="mt-10">
-            <EmptyState
-              title={readingCopy.emptyTitle}
-              body={readingCopy.emptyBody}
-              action={{ label: readingCopy.emptyAction, href: localizedPath(lang, '/editorial-policy') }}
-            />
-          </div>
-        )
-      }
-    </div>
-  </section>
-
-  {/* F. How we check: the rules behind everything above, placed last so the enquiry follows the proof. */}
-  <section class="bg-surface-2 py-14 lg:py-20" id="method">
-    <div class="shell">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-12 gap-y-4">
-        <div class="max-w-[56ch]">
-          <h2 class="text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] text-balance">{method.heading}</h2>
-          <p class="mt-3 max-w-[48ch] text-[16px] leading-[1.7] text-muted">{method.intro}</p>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div class="max-w-[64ch]">
+          <h2 class="max-w-[26ch] text-balance text-[clamp(1.9rem,3.2vw,2.85rem)] leading-[1.08]">
+            {homeContent.heading}
+          </h2>
+          <p class="mt-5 max-w-[62ch] text-[16px] leading-[1.75] text-muted">{homeContent.intro}</p>
         </div>
-        <a href={lp(method.link.href)} class="textlink shrink-0">
-          {method.link.label}
-          <Icon name="arrow-right" size={16} />
+        <a href={lp('/guides')} class="exit shrink-0">
+          {homeContent.viewAll}
+          <Icon name="arrow-right" size={15} />
         </a>
       </div>
 
-      <ul class="mt-10 grid gap-x-8 gap-y-8 border-t border-line-strong pt-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
-          method.items.map((m) => (
-            <li>
-              <h3 class="text-[17px] leading-snug">{m.title}</h3>
-              <p class="mt-2 text-[14px] leading-[1.7] text-muted">{m.body}</p>
+          picks.map((entry) => (
+            <li class="h-full">
+              <ArticleCard
+                entry={entry}
+                showKind={false}
+                showCategory={false}
+                image={contentImage(entry.id)}
+              />
             </li>
           ))
         }
@@ -341,25 +340,30 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 
-  {/* G. The enquiry. The form delivers when the inbox is configured, and falls back to a
-      message the reader sends themselves when it is not. */}
+  {/*
+    * 6. The enquiry. The form delivers when the inbox is configured, and falls back to a
+    * message the reader sends themselves when it is not.
+    */}
   <section class="band-brand relative isolate overflow-hidden py-16 lg:py-24" id="assessment">
-    <div class="shell grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
+    <div class="shell grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-16">
       <div>
-        <h2 class="max-w-[16ch] text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.08] text-balance text-band" id="consult-heading">
+        <h2
+          class="max-w-[16ch] text-balance text-[clamp(1.9rem,3.1vw,2.9rem)] leading-[1.08] text-band"
+          id="consult-heading"
+        >
           {band.heading}
         </h2>
-        <p class="mt-5 max-w-[46ch] text-[16px] leading-[1.8] text-band-muted">{band.para}</p>
+        <p class="mt-6 max-w-[46ch] text-[16px] leading-[1.8] text-band-muted">{band.para}</p>
 
-        <ul class="mt-9 grid gap-6 border-t border-white/15 pt-7 sm:grid-cols-2">
+        <ul class="mt-10 grid gap-x-10 gap-y-7 border-t border-white/15 pt-8 sm:grid-cols-2">
           {
             HOME_BAND_TRUST.map((t) => (
               <li>
-                <span class="flex items-center gap-2 text-band">
-                  <Icon name={t.icon} size={17} />
+                <span class="flex items-center gap-2 text-[14.5px] text-band">
+                  <Icon name={t.icon} size={16} />
                   {pick(t.label, lang)}
                 </span>
-                <p class="mt-1.5 max-w-[24ch] text-[13px] leading-[1.6] text-band-muted">{pick(t.body, lang)}</p>
+                <p class="mt-2 max-w-[26ch] text-[13.5px] leading-[1.6] text-band-muted">{pick(t.body, lang)}</p>
               </li>
             ))
           }
@@ -370,7 +374,7 @@ const home = localizedPath(lang, '/');
             cut for a light surface, and its nowrap would overflow a narrow column. */}
         <a
           href={lp(band.link.href)}
-          class="mt-7 inline-flex items-center gap-2 border-b border-band/40 pb-1 text-[15px] font-medium text-band transition-colors duration-(--dur) hover:border-band"
+          class="mt-8 inline-flex items-center gap-2 border-b border-band/40 pb-1 text-[15px] font-medium text-band transition-colors duration-(--dur) hover:border-band"
         >
           {band.link.label}
           <Icon name="arrow-right" size={15} />

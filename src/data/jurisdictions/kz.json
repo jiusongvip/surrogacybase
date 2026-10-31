@@ -66,6 +66,18 @@
       }
     }
   ],
+  "timeline": [
+    {
+      "on": "2026-07-14",
+      "claim": "Law No. 350-VIII ZRK, amending the family-code provisions on surrogacy, was signed; its amended article 54 limits surrogacy customers to married citizens of Kazakhstan.",
+      "fact": 0
+    },
+    {
+      "on": "2026-07-26",
+      "claim": "The amendment took effect, closing surrogacy programmes in Kazakhstan to foreigners, single people and unmarried couples.",
+      "fact": 1
+    }
+  ],
   "openQuestions": [
     "Whether agreements concluded or children conceived before 26 July 2026 were given transitional cover. Nothing in the material read settles how a family already part-way through a Kazakh programme is treated.",
     "Who is named on a Kazakh birth certificate after the amendment, and whether the intended parents can still be recorded. The registration provisions were not readable here.",

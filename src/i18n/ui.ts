@@ -68,8 +68,8 @@ export const UI: Record<Lang, {
   /** The header action, which opens the enquiry form in a dialog over the page you are on. */
   enquiryDialog: { title: string; subtitle: string; close: string };
   footerGroups: FooterGroup[];
-  /** The two content types, spelled the way a card or a byline row shows them. */
-  kinds: { guide: string; article: string };
+  /** The single content type, spelled the way a card or a byline row shows it. */
+  kinds: { guide: string };
   labels: {
     updated: string;
     firstPublished: string;
@@ -194,37 +194,6 @@ export const UI: Record<Lang, {
    * chrome is assembled from a dictionary cannot have its headings written in one language.
    */
   pages: {
-    guides: {
-      title: string;
-      titleTag: string;
-      description: string;
-      intro: string;
-      countOne: string;
-      countMany: string;
-      startHeading: string;
-      startIntro: string;
-      /** The three ways in, each paired by position with the guide refs in GuidesIndex. */
-      paths: { title: string; body: string }[];
-      howHeading: string;
-      howIntro: string;
-      howPoints: { title: string; body: string }[];
-      standardsLink: string;
-      explainerHeading: string;
-      explainerBody: string;
-      explainerLink: string;
-      toolsHeading: string;
-      toolsBody: string;
-      toolsLink: string;
-      readGuide: string;
-      relatedOne: string;
-      relatedMany: string;
-      open: string;
-      /** The lowercase word beside a date on the lead card, kept out of the label set. */
-      updated: string;
-      emptyTitle: string;
-      emptyBody: string;
-      emptyAction: string;
-    };
     articles: {
       title: string;
       titleTag: string;
@@ -245,14 +214,6 @@ export const UI: Record<Lang, {
        * intro below; this link is for the reader who wants to see the checking itself.
        */
       standardsLink: string;
-      /**
-       * A bare label over the list of guides at the foot of the page. This block used to pitch: a
-       * heading about reading a whole subject, a sentence under it, and a button to /guides. All of
-       * that is gone and the six titles speak for themselves - a closing call to action that has to
-       * explain itself reads as unsure of the guides it is selling, and /guides is already in the
-       * header on every page, so the button was a second way to say the same nothing.
-       */
-      guidesHeading: string;
       emptyTitle: string;
       emptyBody: string;
       emptyAction: string;
@@ -276,6 +237,16 @@ export const UI: Record<Lang, {
         payment: string;
         parentage: string;
       };
+      /**
+       * The four cells printed above the prose. Each is read off a structured field of the record
+       * rather than written by hand, so the strip cannot say something the record below does not
+       * say, and a reader deciding whether to keep reading gets the answer before the argument.
+       */
+      atGlance: { basis: string; international: string; families: string; cost: string; noCost: string };
+      /** The one-line qualifier under the family cell when the record admits nobody. */
+      atGlanceNone: string;
+      timelineTitle: string;
+      timelineIntro: string;
       restsTitle: string;
       citeChecked: string;
       openTitle: string;
@@ -288,6 +259,69 @@ export const UI: Record<Lang, {
       documentsGuide: string;
       costFiguresLink: string;
       breadcrumb: string;
+      /**
+       * The "related reading" block at the foot of a country page. It surfaces the articles whose
+       * jurisdictions field names this record's code, so a reader who came for the country also sees
+       * the deeper pieces scoped to it. Empty for a record no article is scoped to, so the block is
+       * simply not printed rather than shown empty.
+       */
+      relatedTitle: string;
+      relatedIntro: string;
+      /**
+       * The legality map shown at the top of a country page whose rules are set below the national
+       * level (a federation, or a country of separate legal systems). Rendered only when the record
+       * carries subJurisdictions; for every other record the country page simply does not show it,
+       * so no destination is invented to fill the space.
+       */
+      legalMap: {
+        title: string;
+        intro: string;
+        permittedLabel: string;
+        restrictedLabel: string;
+        prohibitedLabel: string;
+        unlegislatedLabel: string;
+        unlegislatedNote: string;
+      };
+      /**
+       * Full-guide sections that sit between the sourced legal core and the sources list. They are
+       * generic across destinations (the legal/data above is the country-specific part) and each
+       * links through to the matching guide, so the page reads as one guide without duplicating the
+       * guide prose. The FAQ is a fixed-length tuple so the two dictionaries cannot drift.
+       */
+      guide: {
+        processHeading: string;
+        processIntro: string;
+        processLink: string;
+        /** The nine stages, generic across destinations. The skeleton sits on the page; the detail
+         * lives in the process guide. A fixed-length tuple so the two dictionaries cannot drift. */
+        processStages: [
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+          { title: string; blurb: string },
+        ];
+        contractHeading: string;
+        contractIntro: string;
+        contractLink: string;
+        agencyHeading: string;
+        agencyIntro: string;
+        agencyLink: string;
+        faqHeading: string;
+        faq: [
+          { q: string; a: string },
+          { q: string; a: string },
+          { q: string; a: string },
+          { q: string; a: string },
+          { q: string; a: string },
+          { q: string; a: string },
+          { q: string; a: string },
+        ];
+      };
     };
     /**
      * The destinations index. The counts below are tuple lengths on purpose: this page's four
@@ -423,54 +457,52 @@ export const UI: Record<Lang, {
     disclaimerEnd: '.',
     siteDescription: SITE.description,
     nav: [
-      { label: 'Explainers', href: '/articles' },
+      { label: 'Guides', href: '/guides' },
       { label: 'Destinations', href: '/destinations' },
       { label: 'Tools', href: '/tools' },
-      { label: 'Guides', href: '/guides' },
       { label: 'About us', href: '/about' },
     ],
-    cta: { label: 'Free consultation', href: '/#assessment' },
+    cta: { label: 'Talk to an advisor', href: '/#assessment' },
     enquiryDialog: {
-      title: 'Free consultation',
-      subtitle: 'Leave a mobile number and one way to reach you. An advisor writes the reply; no clinic or agency sees it.',
+      title: 'Talk to an advisor',
+      subtitle: 'It is free, and what happens next is your call. Leave a mobile number and one way to reach you; an advisor replies, and no clinic or agency sees it.',
       close: 'Close',
     },
     footerGroups: [
+      {
+        heading: 'Explore',
+        links: [
+          { label: 'Home', href: '/' },
+          { label: 'Destinations', href: '/destinations' },
+          { label: 'Services', href: '/#services' },
+        ],
+      },
       {
         heading: 'Guides',
         links: [
           { label: 'All guides', href: '/guides' },
           { label: 'Cost guide', href: '/guides/surrogacy-cost' },
           { label: 'Law and parentage', href: '/guides/surrogacy-legal-considerations' },
-          { label: 'Choosing an agency', href: '/guides/choosing-a-surrogacy-agency' },
-          { label: 'Process', href: '/guides/surrogacy-process' },
-        ],
-      },
-      {
-        heading: 'Research',
-        links: [
-          { label: 'Explainers', href: '/articles' },
-          { label: 'Destinations', href: '/destinations' },
           { label: 'Tools', href: '/tools' },
         ],
       },
       {
-        heading: 'Standards',
+        heading: 'About',
         links: [
-          { label: 'How we research', href: '/editorial-policy' },
-          { label: 'About the site', href: '/about' },
-          { label: 'Contact', href: '/about#contact' },
+          { label: 'About us', href: '/about' },
+          { label: 'Contact us', href: '/about#contact' },
+          { label: 'Editorial policy', href: '/editorial-policy' },
         ],
       },
       {
         heading: 'Legal',
         links: [
-          { label: 'Privacy', href: '/privacy' },
-          { label: 'Terms', href: '/terms' },
+          { label: 'Privacy policy', href: '/privacy' },
+          { label: 'Terms of use', href: '/terms' },
         ],
       },
     ],
-    kinds: { guide: 'Guide', article: 'Explainer' },
+    kinds: { guide: 'Guide' },
     labels: {
       updated: 'Updated',
       firstPublished: 'First published',
@@ -580,71 +612,13 @@ export const UI: Record<Lang, {
       credential: 'Public credential',
     },
     pages: {
-      guides: {
-        title: 'Guides',
-        titleTag: 'Surrogacy Guides: Law, Cost and Process',
-        description:
-          'Guides on surrogacy law, process, cost, agencies and bringing a child home, each claim traceable to a source you can open.',
-        intro: 'A guide works through one subject, from the first question to the last step.',
-        countOne: '1 published guide',
-        countMany: '{n} published guides',
-        startHeading: 'Where to start',
-        startIntro: 'Three pairs, each in the order the questions arrive. Take the pair you are in.',
-        paths: [
-          {
-            title: 'The law and the paperwork',
-            body: 'Whether the plan holds where it is made, and whether the child can leave with you afterwards.',
-          },
-          {
-            title: 'The process and who carries',
-            body: 'One page is the schedule; the other decides which schedule you are following.',
-          },
-          {
-            title: 'The money and the agency',
-            body: 'A quote is an answer from one party, so these two belong together: what the money covers, and who says it covers it.',
-          },
-        ],
-        howHeading: 'What each guide leaves you',
-        howIntro: 'A guide is written so you can act on it, not just remember it.',
-        howPoints: [
-          {
-            title: 'Questions to put in writing',
-            body: 'Each guide closes with the questions its subject raises, and says who is in a position to answer each one.',
-          },
-          {
-            title: 'The source under each fact',
-            body: 'Where a guide states a rule or a number, the source and the date it was last opened sit under it.',
-          },
-          {
-            title: 'A next step already linked',
-            body: 'The bottom of every guide carries the explainers, destination records and tools that go deeper on the same subject.',
-          },
-        ],
-        standardsLink: 'How sources are checked',
-        explainerHeading: 'One question at a time',
-        explainerBody: 'Shorter pages, each answering one of the questions a guide raises.',
-        explainerLink: 'Read the explainers',
-        toolsHeading: 'Put a guide to work',
-        toolsBody:
-          'Tables and checklists take the same questions and hold your answers beside them, to take to a lawyer, clinic or agency.',
-        toolsLink: 'Open the tools',
-        readGuide: 'Read the guide',
-        relatedOne: '1 related explainer',
-        relatedMany: '{n} related explainers',
-        open: 'Open',
-        updated: 'updated',
-        emptyTitle: 'No guides published yet',
-        emptyBody:
-          'A guide is published once every claim in it has been checked against a named source. They appear one at a time.',
-        emptyAction: 'How we verify content',
-      },
       articles: {
-        title: 'Explainers',
-        titleTag: 'Surrogacy Explainers: One Question Each',
+        title: 'Guides',
+        titleTag: 'Surrogacy Guides: Law, Cost, Process and Explainers',
         description:
-          'Explainers on surrogacy cost, destinations, agency selection, process and preparation, each answering one question for intended parents.',
+          'Guides and explainers on surrogacy law, cost, destinations, agency selection, process and preparation, each written to one standard and citing a source you can open.',
         intro:
-          'Each explainer answers one question about cost, destinations, law or the paperwork a child needs after birth, and names the source behind its answer.',
+          'Every piece answers a question you actually face — eligibility, cost, choosing an agency, the process, the paperwork a child needs — and names the source behind its answer.',
         startHeading: 'Start with the decision in front of you',
         startIntro: 'You do not have to read these in order. Pick the question you need answered now.',
         paths: [
@@ -665,12 +639,11 @@ export const UI: Record<Lang, {
             body: 'What the largest published study of US transfers counts, and whose cases it covers.',
           },
         ],
-        allHeading: 'All explainers',
+        allHeading: 'All guides',
         standardsLink: 'How sources are checked',
-        guidesHeading: 'Guides',
-        emptyTitle: 'No explainers published yet',
+        emptyTitle: 'No guides published yet',
         emptyBody:
-          'An explainer is published once each of its claims has a source you can open. They appear one at a time.',
+          'A guide is published once every claim in it has been checked against a named source. They appear one at a time.',
         emptyAction: 'Read the research standards',
       },
       detail: {
@@ -678,10 +651,10 @@ export const UI: Record<Lang, {
         destinationConditionsNote: 'Compare what the law actually says.',
       },
       jurisdiction: {
-        title: 'Surrogacy in {name}: what the law says',
+        title: 'Surrogacy in {name}: the complete guide',
         description:
-          'Verified positions on surrogacy in {name}: legal basis, who may commission, payment rules and parentage, each with its source and check date.',
-        heading: 'Surrogacy in {name}',
+          'A complete surrogacy guide for {name}: legal basis, the process, costs, contracts and how parentage is set — every position carries its source and check date.',
+        heading: 'Surrogacy in {name}: the complete guide to law, process, cost and contract',
         intro:
           'Each position below names its source and the date it was last checked. Where a rule depends on your circumstances, it says so instead of guessing.',
         checked: 'Positions checked {date}',
@@ -693,6 +666,17 @@ export const UI: Record<Lang, {
           payment: 'Payment',
           parentage: 'Parentage',
         },
+        atGlance: {
+          basis: 'Legal basis',
+          international: 'Intended parents from abroad',
+          families: 'Families the route names',
+          cost: 'Published cost',
+          noCost: 'None published',
+        },
+        atGlanceNone: 'No family type is named',
+        timelineTitle: 'What changed, and when',
+        timelineIntro:
+          'Dates come from the same sources as the positions below. An entry that says a bill was not adopted is there because the record would be misleading without it.',
         restsTitle: 'What each position rests on',
         citeChecked: ', checked {date}',
         openTitle: 'What still needs local advice',
@@ -707,6 +691,110 @@ export const UI: Record<Lang, {
         documentsGuide: 'Documents after birth',
         costFiguresLink: 'See every published cost figure',
         breadcrumb: 'Destinations',
+        relatedTitle: 'Related reading for {name}',
+        relatedIntro: 'Articles that focus on {name} and the questions people ask about going there.',
+        legalMap: {
+          title: 'Where surrogacy is legal',
+          intro: 'This jurisdiction sets the rules below the national level, so whether surrogacy is open depends on where you go. The states named here are taken from the same sources as the positions below.',
+          permittedLabel: 'Expressly permitted by statute',
+          restrictedLabel: 'Restricted or unenforceable',
+          prohibitedLabel: 'Prohibited',
+          unlegislatedLabel: 'No specific statute or case law',
+          unlegislatedNote:
+            'The remaining states and territories have no statute or published case law that this record found specifically permitting or prohibiting surrogacy. Each still has to be checked on its own before any plan is made.',
+        },
+        guide: {
+          processHeading: 'The process, stage by stage',
+          processIntro:
+            'A surrogacy programme is a run of separate stages, not one decision. The order shifts with the destination and with whether you need donated eggs or sperm. The full walkthrough, with the questions each stage raises:',
+          processLink: 'Read the full process guide',
+          processStages: [
+            {
+              title: 'Set out your own situation',
+              blurb:
+                'Your medical, legal and financial facts come first, because they decide which destinations are open to you at all.',
+            },
+            {
+              title: 'Choose a destination before a clinic',
+              blurb:
+                'The place is chosen on legal grounds, before any money moves. The legal-considerations guide lists what to confirm.',
+            },
+            {
+              title: 'Screening, both ways',
+              blurb:
+                'Your fertility work-up and the carrier’s medical and psychological screening. FIGO’s position is that psychological screening and ongoing support should be mandatory.',
+            },
+            {
+              title: 'Matching',
+              blurb:
+                'How a programme pairs you with a carrier is where marketed and delivered service differ most. Ask in writing what happens if a match is not reached.',
+            },
+            {
+              title: 'The agreement, and the money behind it',
+              blurb:
+                'Before treatment, the arrangement is set down in writing and should carry the funds, not just point at them. Escrow is usually funded before the first transfer.',
+            },
+            {
+              title: 'Treatment and transfer',
+              blurb:
+                'Medication and monitoring, then the embryo transfer. From here the timeline is no longer yours: clinic schedule and the carrier’s cycle decide.',
+            },
+            {
+              title: 'Pregnancy',
+              blurb:
+                'Prenatal care is the obstetrician’s. What you pay for, and who decides, are contract questions that should already be settled.',
+            },
+            {
+              title: 'Birth and parentage',
+              blurb:
+                'The parentage path decides what happens in the delivery room and after. Only a lawyer in that jurisdiction can say which path applies to you.',
+            },
+            {
+              title: 'Bringing the child home',
+              blurb:
+                'Registration, passport or consular documents, and whatever your home country requires. Cross-border parents are not rare: a third of US surrogate transfers involved them.',
+            },
+          ],
+          contractHeading: 'The contract is the legal core',
+          contractIntro:
+            'Before any treatment begins, the arrangement should be written down and should carry the money, not merely point at it. What every contract must cover, and the clauses worth insisting on:',
+          contractLink: 'Read the legal-considerations guide',
+          agencyHeading: 'Choosing an agency',
+          agencyIntro:
+            'The agency is the one party whose incentives are not yours by default. We do not name agencies on this site: what follows is how to ask, and how to judge whether an agency is sound, before you sign.',
+          agencyLink: 'Read the agency-evaluation guide',
+          faqHeading: 'Questions people ask',
+          faq: [
+            {
+              q: 'Is surrogacy legal everywhere?',
+              a: 'No. It ranges from explicitly permitted to prohibited, and within federal countries it varies by state or province. The legal basis for each destination is set out at the top of this page, with its source and the date it was checked.',
+            },
+            {
+              q: 'Can intended parents from another country use this route?',
+              a: 'It depends on the destination. The "intended parents from abroad" cell in the summary strip above says whether the sources behind this record admit foreign commissioning parents, and the admissions section below names the family types each rule opens to.',
+            },
+            {
+              q: 'When is parentage settled?',
+              a: 'That is the single biggest planning difference between systems. Some name an intended parent at birth; others treat the woman who gives birth as the legal mother until a court moves parentage afterwards. Which one applies to you only a lawyer in that jurisdiction can say.',
+            },
+            {
+              q: 'What does the price usually include?',
+              a: 'A programme price is built from several lines, and scope matters more than the headline total. The figures a source has published for this destination are in the cost table above, and the full breakdown of what a quote usually leaves out is in the cost guide.',
+            },
+            {
+              q: 'Do I have to travel there myself?',
+              a: 'Usually, yes, at least for some steps. Signing before treatment, attending a court or registrar, collecting documents and staying after the birth are separate requirements that often come from clinic practice and the court rather than the statute. How many trips you can make often narrows the field before cost does.',
+            },
+            {
+              q: 'Is there an average surrogacy cost?',
+              a: 'No single figure applies. The total depends on the destination, on what the programme includes, and on what a quote leaves out, so an average would hide the differences that decide whether a plan is feasible. The per-line figures on this page and the cost guide show why.',
+            },
+            {
+              q: 'How does the child come home?',
+              a: 'Birth registration, a passport or consular documents, and whatever your home country requires to recognise the arrangement. The steps differ by where the child is born and where you live, and the documents guide walks through them.',
+            },
+          ],
+        },
       },
       destinations: {
         title: 'Surrogacy Destinations',
@@ -905,7 +993,7 @@ export const UI: Record<Lang, {
           heading: 'Bring what you have found to a consultation',
           body:
             'This site issues no legal opinion and represents no clinic or agency. What it does hold is the documents: bring your shortlist and any quote you already have, and the unclear parts turn into specific questions to put to a lawyer.',
-          enquiry: 'Free consultation',
+          enquiry: 'Talk to an advisor',
         },
         standard: {
           heading: 'What is inside a destination record',
@@ -955,54 +1043,52 @@ export const UI: Record<Lang, {
     disclaimerEnd: '。',
     siteDescription: '跨境代孕的独立指引：比较目的地，把费用拆成条目，厘清亲权与国籍，在付款之前核对报价。',
     nav: [
-      { label: '专题解读', href: '/zh/articles' },
-      { label: '目的地', href: '/zh/destinations' },
-      { label: '工具', href: '/zh/tools' },
       { label: '指南', href: '/zh/guides' },
+      { label: '全球代孕国家', href: '/zh/destinations' },
+      { label: '工具', href: '/zh/tools' },
       { label: '关于我们', href: '/zh/about' },
     ],
-    cta: { label: '免费咨询', href: '/zh#assessment' },
+    cta: { label: '找顾问聊聊', href: '/zh#assessment' },
     enquiryDialog: {
-      title: '免费咨询',
-      subtitle: '留下手机号和一种联系方式。回信由顾问本人写，不转给任何诊所或机构。',
+      title: '找顾问聊聊',
+      subtitle: '免费的，之后要不要继续由您决定。留一个手机号和一种能联系到您的方式，回复由顾问本人写，不转给任何诊所或机构。',
       close: '关闭',
     },
     footerGroups: [
+      {
+        heading: '探索',
+        links: [
+          { label: '首页', href: '/zh' },
+          { label: '全球代孕国家', href: '/zh/destinations' },
+          { label: '服务', href: '/zh#services' },
+        ],
+      },
       {
         heading: '指南',
         links: [
           { label: '全部指南', href: '/zh/guides' },
           { label: '费用指南', href: '/zh/guides/surrogacy-cost' },
           { label: '法律与亲权', href: '/zh/guides/surrogacy-legal-considerations' },
-          { label: '如何选择机构', href: '/zh/guides/choosing-a-surrogacy-agency' },
-          { label: '流程', href: '/zh/guides/surrogacy-process' },
-        ],
-      },
-      {
-        heading: '研究',
-        links: [
-          { label: '专题解读', href: '/zh/articles' },
-          { label: '目的地', href: '/zh/destinations' },
           { label: '工具', href: '/zh/tools' },
         ],
       },
       {
-        heading: '标准',
+        heading: '关于',
         links: [
-          { label: '我们如何做研究', href: '/zh/editorial-policy' },
-          { label: '关于本站', href: '/zh/about' },
+          { label: '关于我们', href: '/zh/about' },
           { label: '联系我们', href: '/zh/about#contact' },
+          { label: '编辑方针', href: '/zh/editorial-policy' },
         ],
       },
       {
         heading: '法律',
         links: [
-          { label: '隐私', href: '/zh/privacy' },
-          { label: '条款', href: '/zh/terms' },
+          { label: '隐私政策', href: '/zh/privacy' },
+          { label: '使用条款', href: '/zh/terms' },
         ],
       },
     ],
-    kinds: { guide: '指南', article: '专题解读' },
+    kinds: { guide: '指南' },
     labels: {
       updated: '更新于',
       firstPublished: '首次发布',
@@ -1102,67 +1188,12 @@ export const UI: Record<Lang, {
       credential: '公开资历',
     },
     pages: {
-      guides: {
-        title: '指南',
-        titleTag: '代孕指南：法律、费用与流程',
-        description: '关于代孕法律、流程、费用、机构选择与携子回国的指南，每一条结论均可追溯至您可开启的来源。',
-        intro: '一份指南仅处理一个主题，自第一个问题述及最后一步。',
-        countOne: '已发布 1 篇指南',
-        countMany: '已发布 {n} 篇指南',
-        startHeading: '应自何处着手',
-        startIntro: '共三组，每组两篇，按问题出现的先后次序排列。您所面临的是哪一组问题，即自该组开始。',
-        paths: [
-          {
-            title: '法律与文件',
-            body: '该安排在其订立地是否站得住，以及孩子其后能否与您一同出境。',
-          },
-          {
-            title: '流程与由谁孕育',
-            body: '一篇陈述流程本身，另一篇决定您遵循的是哪一套流程。',
-          },
-          {
-            title: '费用与机构',
-            body: '报价出自一方之口，故此两篇宜一并阅读：该笔资金涵盖至何范围，以及由何人声称其涵盖至此。',
-          },
-        ],
-        howHeading: '一篇指南读完时应留下什么',
-        howIntro: '每篇指南均以可据以行动为标准撰写，而非仅供阅读记忆。',
-        howPoints: [
-          {
-            title: '应以书面形式提出的问题',
-            body: '每篇指南于结尾列出其主题所引发的各项问题，并标明每一问题应由何人作答。',
-          },
-          {
-            title: '每项事实所依据的来源',
-            body: '凡指南陈述一项规则或一个数字，其下均注明该项来源及最后一次查阅的日期。',
-          },
-          {
-            title: '已予链接的下一步',
-            body: '每篇指南末尾均附有同一主题更为深入的解读、目的地记录，以及可直接填写的工具。',
-          },
-        ],
-        standardsLink: '来源如何核查',
-        explainerHeading: '一次只回答一个问题',
-        explainerBody: '更短的页面，各自回答指南提出的某一个具体问题。',
-        explainerLink: '阅读专题解读',
-        toolsHeading: '把指南变成手上的文件',
-        toolsBody: '清单和表格把同样的问题接过去，把答案记在旁边，可以带着它去见律师、诊所或机构。',
-        toolsLink: '打开工具',
-        readGuide: '阅读指南',
-        relatedOne: '关联专题解读 1 篇',
-        relatedMany: '关联专题解读 {n} 篇',
-        open: '打开',
-        updated: '更新于',
-        emptyTitle: '尚无已发布的指南',
-        emptyBody: '每一篇结论核对完成后的指南都会逐篇发布。这里暂时还没有。',
-        emptyAction: '我们如何核查内容',
-      },
       articles: {
-        title: '专题解读',
-        titleTag: '代孕专题解读：每篇回答一个问题',
-        description: '关于代孕费用、目的地、机构选择、流程与准备的专题解读，每一篇为意向父母回答一个问题。',
+        title: '指南',
+        titleTag: '代孕指南：法律、费用、流程与解读',
+        description: '关于代孕法律、费用、目的地、机构选择、流程与准备的指南与解读，均按同一标准撰写，并附上可开启的来源。',
         intro:
-          '每一篇仅回答一个问题：费用、目的地、法律，或孩子出生后所需的证件，并写明其所依据的来源。',
+          '每篇都只回答一个您实际会遇到的问题：资格、费用、机构选择、流程，以及孩子出生后所需的证件，并写明其所依据的来源。',
         startHeading: '从眼前的决定开始',
         startIntro: '无须自第一篇读至末篇。请择取您当前最需要回答的一个问题。',
         paths: [
@@ -1183,11 +1214,10 @@ export const UI: Record<Lang, {
             body: '美国规模最大的移植研究所统计的内容，及其适用人群。',
           },
         ],
-        allHeading: '全部专题解读',
+        allHeading: '全部指南',
         standardsLink: '来源如何核查',
-        guidesHeading: '指南',
-        emptyTitle: '尚无已发布的专题解读',
-        emptyBody: '仅在每一条结论均具备您可查阅的来源之后，专题解读方发布于此处。',
+        emptyTitle: '尚无已发布的指南',
+        emptyBody: '仅在每一条结论均具备您可查阅的来源之后，指南方发布于此处。',
         emptyAction: '阅读研究标准',
       },
       detail: {
@@ -1195,9 +1225,9 @@ export const UI: Record<Lang, {
         destinationConditionsNote: '核对法律实际写了什么。',
       },
       jurisdiction: {
-        title: '{name}代孕：法律实际写了什么',
-        description: '关于{name}（{region}）代孕的四项已核实立场：法律基础、谁可以委托、付款规则与亲权，每一条都附上来源与核查日期。',
-        heading: '{name}的代孕法律',
+        title: '{name}代孕全攻略',
+        description: '关于{name}代孕的完整攻略：法律基础、流程、费用、合同要点，以及亲权如何确定——每一项立场都附上来源与核查日期。',
+        heading: '{name}代孕全攻略：法律、流程、费用与合同要点',
         intro: '每项立场都标着它的来源和最近一次核对的日期。规则取决于您的个人情况时，页面会直接写明这一点，而不是替您猜一个。',
         checked: '立场核查于 {date}',
         insufficient: '关于{name}，可核实的公开资料不足以将其作为可行目的地呈现。请将本记录作为问题清单阅读，并在作出任何计划之前交由当地有资格的律师处理。',
@@ -1207,6 +1237,16 @@ export const UI: Record<Lang, {
           payment: '付款',
           parentage: '亲权',
         },
+        atGlance: {
+          basis: '法律基础',
+          international: '境外准父母',
+          families: '条文写明的家庭',
+          cost: '已公布费用',
+          noCost: '未公布',
+        },
+        atGlanceNone: '未写明任何家庭类型',
+        timelineTitle: '变了什么，什么时候变的',
+        timelineIntro: '日期与下方的立场同源。某条写着「草案未获通过」，是因为少了这一句，整条记录就会误导人。',
         restsTitle: '每一项立场依据什么',
         citeChecked: '，核查于 {date}',
         openTitle: '仍需要当地法律意见的问题',
@@ -1219,6 +1259,101 @@ export const UI: Record<Lang, {
         documentsGuide: '孩子出生后的证件',
         costFiguresLink: '查看全部已公布的费用数据',
         breadcrumb: '目的地',
+        relatedTitle: '关于{name}的相关阅读',
+        relatedIntro: '聚焦{name}、以及围绕前往该国而被反复问到的问题的文章。',
+        legalMap: {
+          title: '哪些地区可以合法代孕',
+          intro: '这个国家的代孕规则由各地区自行决定，因此能否进行取决于您前往哪里。下面列出的地区，与下方各项立场出自同一批来源。',
+          permittedLabel: '成文法明确允许',
+          restrictedLabel: '受限或不可执行',
+          prohibitedLabel: '禁止',
+          unlegislatedLabel: '无专门立法或判例',
+          unlegislatedNote:
+            '其余各州与属地，本记录未发现任何专门允许或禁止代孕的成文法或已公布判例。在作出任何计划前，每地仍需单独核查。',
+        },
+        guide: {
+          processHeading: '代孕流程，逐阶段说明',
+          processIntro:
+            '代孕项目是一连串各自独立的阶段，而非一个决定。先后顺序会因目的地、也因您是否需要捐赠卵子或精子而变化。完整的逐阶段说明，以及每个阶段抛出的问题：',
+          processLink: '阅读完整流程攻略',
+          processStages: [
+            {
+              title: '确定自身情形',
+              blurb: '您自身的医学、法律与财务事实应当最先理清，因为它们决定哪些目的地对您根本开放。',
+            },
+            {
+              title: '先于诊所选定目的地',
+              blurb: '在资金开始流动之前，依据法律理由选定地点；法律考量攻略列明了需要确认的内容。',
+            },
+            {
+              title: '双向筛查',
+              blurb: '您自身的生育能力评估，以及代孕者的医学与心理筛查。FIGO 的立场是，心理筛查与持续支持应当为强制。',
+            },
+            {
+              title: '匹配',
+              blurb: '项目将您与代孕者对接的方式，正是宣传所说与实际交付差异最大之处。若未能达成匹配，应以书面形式问清如何处理。',
+            },
+            {
+              title: '协议与协议背后的资金',
+              blurb: '治疗开始前，安排应落于书面，且应承载资金而非仅指向资金；托管账户通常在第一次胚胎移植之前完成注资。',
+            },
+            {
+              title: '医疗与移植',
+              blurb: '用药与监测，然后是胚胎移植。至此时间表已不再由您掌控：取决于诊所日程与代孕者的周期。',
+            },
+            {
+              title: '孕期',
+              blurb: '产前护理由产科医生负责；您支付什么、由谁决定，是早应确定的合同问题。',
+            },
+            {
+              title: '出生与亲权',
+              blurb: '亲权路径决定产房内及之后发生的事；只有该辖区的律师能回答哪一种适用于您。',
+            },
+            {
+              title: '把孩子带回家',
+              blurb: '出生登记、护照或领事文件，以及您的母国所要求的任何材料。跨境意向父母并不罕见：美国的妊娠代孕移植中，有三分之一属于居住境外的意向父母。',
+            },
+          ],
+          contractHeading: '合同是法律核心',
+          contractIntro:
+            '在开始任何治疗之前，这项安排应当落于书面，且应当承载资金，而非仅仅指向资金。每一份合同都必须涵盖的内容，以及值得坚持的条款：',
+          contractLink: '阅读法律考量攻略',
+          agencyHeading: '选择机构',
+          agencyIntro:
+            '机构是各方之中，利益默认不与您一致的一方。本站不点名任何机构：下文只说明该问什么、以及如何判断一家机构是否靠谱，供您签约前判断。',
+          agencyLink: '阅读机构评估攻略',
+          faqHeading: '常见问题',
+          faq: [
+            {
+              q: '代孕在所有地方都合法吗？',
+              a: '不。其跨度从明确允许到明令禁止；在联邦制国家，州或省之间亦不相同。每个目的地的法律基础，已在本页顶部列明。',
+            },
+            {
+              q: '其他国家的意向父母能否走这条路径？',
+              a: '取决于目的地。上方摘要条中的「境外准父母」一格，说明本记录的来源是否接纳外国委托父母；下方的准入部分，则逐一点名各条规定向哪些家庭开放。',
+            },
+            {
+              q: '亲权何时确定？',
+              a: '这是不同体系之间规划差异最大的一点。部分体系在出生时即将意向父母登记在内；另一些则将分娩的女性视为法律上的母亲，直至法院事后转移亲权。哪一种适用于您，唯有该辖区的律师能够作答。',
+            },
+            {
+              q: '价格通常包含哪些内容？',
+              a: '一项疗程的报价由若干条目构成，而范围比总额更关键。来源就本目的地公布过的数字，见上方费用表；一份报价通常漏掉什么，完整说明见费用攻略。',
+            },
+            {
+              q: '必须本人亲自前往吗？',
+              a: '通常需要，至少某些环节如此。治疗前签字、出庭或前往登记处、领取文件、以及孩子出生后停留，是彼此独立的要求，且多源自诊所惯例与法院，而非法律条文。您能出行几次，往往比费用更早地缩小可选范围。',
+            },
+            {
+              q: '代孕有平均费用吗？',
+              a: '不存在适用于所有情况的单一数字。总额取决于目的地、取决于一项疗程包含哪些内容、也取决于一份报价漏掉了什么，因此一个平均数字只会掩盖那些决定方案是否可行的差异。本页按条目的数字与费用攻略，正说明了原因。',
+            },
+            {
+              q: '孩子出生后怎么回国？',
+              a: '出生登记、护照或领事文件，以及您的母国为承认这项安排所要求的任何材料。具体步骤因孩子出生地、也因您居住地而异，携子回国的攻略逐步说明了它们。',
+            },
+          ],
+        },
       },
       destinations: {
         title: '代孕目的地',
@@ -1359,7 +1494,7 @@ export const UI: Record<Lang, {
         band: {
           heading: '将现有材料带去咨询',
           body: '本站不出具法律意见，也不代表任何诊所或机构。本站提供的是文件本身：请携带您的候选名单与已获得的报价前来，含糊之处随之变成可以具体向律师提出的问题。',
-          enquiry: '免费咨询',
+          enquiry: '找顾问聊聊',
         },
         standard: {
           heading: '一条目的地记录里有什么',
@@ -1391,6 +1526,43 @@ export const CATEGORY_LABELS: Record<Lang, Record<string, string>> = {
   zh: { cost: '费用', destinations: '目的地', agencies: '机构', process: '流程', preparation: '准备' },
 };
 
+/** The traffic-facing topic a piece belongs to on the homepage module (legal / choosing / process /
+ * cost / accommodation). Distinct from CATEGORY_LABELS, which is the editorial content type. */
+export const TOPIC_LABELS: Record<Lang, Record<string, string>> = {
+  en: {
+    legal: 'Legal & eligibility',
+    choice: 'Agency & selection',
+    process: 'Process & planning',
+    cost: 'Costs & budget',
+    accommodation: 'Accommodation',
+  },
+  zh: {
+    legal: '法律与资格',
+    choice: '机构与选择',
+    process: '流程与安排',
+    cost: '费用与预算',
+    accommodation: '住宿',
+  },
+};
+
+/** One line per topic, shown under the topic name in the homepage module's category index. */
+export const TOPIC_BLURBS: Record<Lang, Record<string, string>> = {
+  en: {
+    legal: 'Who may commission, which family types are admitted, and how parentage is recognised.',
+    choice: 'How to vet an agency and a carrier, and what a profile or donor page does not promise.',
+    process: 'From matching and treatment to the paperwork after birth — the stages a journey moves through.',
+    cost: 'What a quote usually includes, what it leaves out, and how to verify a budget.',
+    accommodation: 'Where intended parents stay and what the trip itself involves.',
+  },
+  zh: {
+    legal: '谁可以委托代孕、哪些家庭类型被允许，以及亲子关系如何认定。',
+    choice: '如何筛选机构与代孕者，看清档案与供体页没有承诺什么。',
+    process: '从匹配、医疗到出生后手续，代孕要经历哪些阶段。',
+    cost: '报价通常包含什么、遗漏什么，以及如何核实一笔预算。',
+    accommodation: '准父母住在何处，以及行程本身涉及什么。',
+  },
+};
+
 /** How a legal system arrives at its surrogacy position. */
 export const BASIS_LABELS: Record<Lang, Record<string, string>> = {
   en: {
@@ -1410,6 +1582,23 @@ export const BASIS_LABELS: Record<Lang, Record<string, string>> = {
     'no-specific-statute': '没有专门的代孕立法',
     restricted: '允许，但有条件限制',
     prohibited: '禁止',
+  },
+};
+
+/** The status of a sub-jurisdiction (a state, province or legal system) on the country page's
+ * legality map. Distinct from BASIS_LABELS, which describes the national-level basis. */
+export const SUB_STATUS_LABELS: Record<Lang, Record<string, string>> = {
+  en: {
+    permitted: 'Permitted',
+    restricted: 'Restricted',
+    prohibited: 'Prohibited',
+    unlegislated: 'Not specifically legislated',
+  },
+  zh: {
+    permitted: '允许',
+    restricted: '受限',
+    prohibited: '禁止',
+    unlegislated: '无专门立法',
   },
 };
 

@@ -9,13 +9,16 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
 import Icon from '@/components/ui/Icon.astro';
 import NextStep from '@/components/content/NextStep.astro';
+import ArticleCard from '@/components/content/ArticleCard.astro';
 import { NEXT_STEP } from '@/data/next-steps';
 import type { CollectionEntry } from 'astro:content';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { BASIS_LABELS, UI, fill } from '@/i18n/ui';
+import { BASIS_LABELS, SUB_STATUS_LABELS, UI, fill } from '@/i18n/ui';
 import { formatDate } from '@/lib/dates';
 import { localize } from '@/lib/jurisdictions';
 import { costText } from '@/lib/costs';
+import { getLiveContent } from '@/lib/content';
+import { contentImage } from '@/data/content-images';
 import { ADMISSION_FAMILIES, admissionFor, familyLabel, unadmitted } from '@/lib/admits';
 
 type Props = { entry: CollectionEntry<'jurisdictions'> };
@@ -26,6 +29,14 @@ const copy = UI[lang].pages.jurisdiction;
 const costsCopy = UI[lang].costs;
 const admitsCopy = UI[lang].admits;
 const d = localize(entry.data, lang);
+
+/*
+ * The related-reading block at the foot of the page. The articles a reader actually wants after a
+ * country page are the ones scoped to that country, and the articles collection already carries a
+ * jurisdictions field that names them. Filtering on it means the block writes itself from the data:
+ * a country no article is scoped to simply prints nothing rather than an empty heading.
+ */
+const related = (await getLiveContent(lang)).filter((e) => e.data.jurisdictions.includes(d.code));
 
 /**
  * The record's admission rows, gathered by what a reader has to weigh: same status, same
@@ -58,8 +69,52 @@ for (const family of ADMISSION_FAMILIES) {
 }
 const unsettled = unadmitted(d.admits);
 
-const positions = [
+/*
+ * The four cells a reader gets before the argument. Each is read off a structured field of the
+ * record rather than written here, so the strip cannot claim anything the sections below do not:
+ * the basis label, whether the record's own sources admit intended parents from abroad, which
+ * family types the provision names as open, and the one published total. Intended parents living
+ * abroad is excluded from the third cell because it has a cell of its own, and listing it twice
+ * would read as two separate findings.
+ */
+const internationalRow = admissionFor(d.admits, 'international');
+const openFamilies = ADMISSION_FAMILIES.filter(
+  (family) => family !== 'international' && admissionFor(d.admits, family)?.status === 'open',
+);
+const totalCost = d.costs.find((figure) => figure.item === 'total');
+
+/*
+ * The legality map, when the record carries one. A divided jurisdiction (a federation, or a country
+ * of separate legal systems) answers "is this open?" only region by region, so the first thing a
+ * reader should see is where it is open, not where the record is silent. Permitted states are plain
+ * chips; restricted ones carry the note that explains the limit; the unlegislated remainder is
+ * described once rather than listed state by state, because the sources name only the permitted and
+ * restricted ones by name.
+ */
+const subMap = d.subJurisdictions ?? [];
+const permittedSubs = subMap.filter((s) => s.status === 'permitted');
+const restrictedSubs = subMap.filter((s) => s.status === 'restricted');
+const prohibitedSubs = subMap.filter((s) => s.status === 'prohibited');
+
+const glance = [
   { label: copy.positions.legalBasis, value: BASIS_LABELS[lang][d.basis] ?? d.basis },
+  {
+    label: copy.atGlance.international,
+    value: internationalRow ? admitsCopy.status[internationalRow.status] : admitsCopy.cell.none,
+  },
+  {
+    label: copy.atGlance.families,
+    value: openFamilies.length
+      ? openFamilies.map((family) => familyLabel(family, lang)).join(admitsCopy.join)
+      : copy.atGlanceNone,
+  },
+  {
+    label: copy.atGlance.cost,
+    value: totalCost ? costText(totalCost, lang) : copy.atGlance.noCost,
+  },
+];
+
+const positions = [
   { label: copy.positions.whoMayCommission, value: d.eligibility },
   { label: copy.positions.payment, value: d.paymentModel },
   { label: copy.positions.parentage, value: d.parentage },
@@ -95,14 +150,106 @@ const positions = [
       </aside>
     )}
 
-    <section class="mt-10 grid gap-x-10 gap-y-6 border-t border-line pt-8 sm:grid-cols-2">
+    {
+      subMap.length > 0 && (
+        <section class="mt-8">
+          <h2 class="text-[22px]">{copy.legalMap.title}</h2>
+          <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{copy.legalMap.intro}</p>
+
+          <div class="mt-6 space-y-6">
+            <div>
+              <p class="text-[14px] font-semibold">
+                {copy.legalMap.permittedLabel}
+                <span class="ml-1 text-[13px] font-normal text-muted">({permittedSubs.length})</span>
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                {permittedSubs.map((s) => (
+                  <span class="rounded-full border border-line bg-surface px-3 py-1 text-[14px] leading-tight">
+                    {s.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {(restrictedSubs.length > 0 || prohibitedSubs.length > 0) && (
+              <div>
+                <p class="text-[14px] font-semibold text-flag">
+                  {copy.legalMap.restrictedLabel}
+                  <span class="ml-1 text-[13px] font-normal text-muted">
+                    ({restrictedSubs.length + prohibitedSubs.length})
+                  </span>
+                </p>
+                <ul class="mt-3 space-y-2">
+                  {[...restrictedSubs, ...prohibitedSubs].map((s) => (
+                    <li class="text-[15px] leading-relaxed">
+                      <span class="font-medium">{s.name}</span>
+                      <span class="ml-2 text-[12.5px] uppercase tracking-wide text-muted">
+                        {SUB_STATUS_LABELS[lang][s.status]}
+                      </span>
+                      {s.note && <span class="mt-0.5 block text-[14px] leading-[1.65] text-muted">{s.note}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <p class="max-w-[62ch] text-[14px] leading-[1.7] text-muted">{copy.legalMap.unlegislatedNote}</p>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="mt-8 grid gap-px overflow-hidden rounded-(--radius-card) border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      {
+        glance.map((cell) => (
+          <div class="bg-surface px-5 py-4">
+            <p class="text-[13px] font-medium text-muted">{cell.label}</p>
+            <p class="mt-1.5 text-[15px] leading-[1.5] font-medium">{cell.value}</p>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mt-10 grid gap-x-10 gap-y-6 border-t border-line pt-8 sm:grid-cols-3">
       {positions.map((p) => (
         <div>
           <h2 class="text-[14px] font-semibold text-muted">{p.label}</h2>
-          <p class="mt-1.5 text-[17px] leading-relaxed">{p.value}</p>
+          <p class="mt-1.5 text-[16px] leading-relaxed">{p.value}</p>
         </div>
       ))}
     </section>
+
+    {
+      d.timeline.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-[22px]">{copy.timelineTitle}</h2>
+          <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{copy.timelineIntro}</p>
+          <ol class="mt-6 space-y-5">
+            {d.timeline.map((event) => (
+              <li class="grid gap-x-6 gap-y-1 border-l-2 border-line-strong pl-5 sm:grid-cols-[7.5rem_minmax(0,1fr)]">
+                <time class="tnum text-[14px] font-medium text-accent" datetime={event.on}>
+                  {formatDate(event.on, lang)}
+                </time>
+                <div>
+                  <p class="text-[16px] leading-relaxed">{event.claim}</p>
+                  <p class="mt-1.5 text-[13px] text-muted">
+                    <a
+                      href={d.facts[event.fact].source.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class="link-underlined"
+                    >
+                      {d.facts[event.fact].source.label}
+                    </a>
+                    <span class="tnum">{fill(copy.citeChecked, { date: formatDate(d.facts[event.fact].source.verifiedOn, lang) })}</span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
 
     {
       groups.length > 0 ? (
@@ -156,6 +303,23 @@ const positions = [
     }
 
     <section class="mt-12">
+      <h2 class="text-[22px]">{copy.guide.processHeading}</h2>
+      <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{copy.guide.processIntro}</p>
+      <ol class="mt-6 space-y-4">
+        {copy.guide.processStages.map((stage, i) => (
+          <li class="grid gap-x-4 gap-y-1 sm:grid-cols-[2rem_minmax(0,1fr)]">
+            <span class="tnum text-[15px] font-semibold text-accent">{i + 1}</span>
+            <div>
+              <p class="text-[16px] leading-relaxed font-medium">{stage.title}</p>
+              <p class="mt-1 text-[15px] leading-relaxed text-muted">{stage.blurb}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <a href={localizedPath(lang, '/guides/surrogacy-process')} class="textlink mt-5">{copy.guide.processLink}</a>
+    </section>
+
+    <section class="mt-12">
       <h2 class="text-[22px]">{costsCopy.heading}</h2>
       <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{costsCopy.intro}</p>
 
@@ -198,6 +362,30 @@ const positions = [
         )
       }
       <a href={localizedPath(lang, '/tools/cost-figures')} class="textlink mt-5">{copy.costFiguresLink}</a>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-[22px]">{copy.guide.contractHeading}</h2>
+      <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{copy.guide.contractIntro}</p>
+      <a href={localizedPath(lang, '/guides/surrogacy-legal-considerations')} class="textlink mt-4">{copy.guide.contractLink}</a>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-[22px]">{copy.guide.agencyHeading}</h2>
+      <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">{copy.guide.agencyIntro}</p>
+      <a href={localizedPath(lang, '/guides/choosing-a-surrogacy-agency')} class="textlink mt-4">{copy.guide.agencyLink}</a>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-[22px]">{copy.guide.faqHeading}</h2>
+      <dl class="mt-6 space-y-5">
+        {copy.guide.faq.map((item) => (
+          <div class="border-l-2 border-accent pl-5">
+            <dt class="text-[17px] leading-relaxed font-medium">{item.q}</dt>
+            <dd class="mt-1.5 text-[16px] leading-relaxed text-muted">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
 
     {d.facts.length > 0 && (
@@ -258,6 +446,24 @@ const positions = [
         <a href={localizedPath(lang, '/guides/bringing-your-child-home')} class="textlink">{copy.documentsGuide}</a>
       </div>
     </section>
+
+    {
+      related.length > 0 && (
+        <section class="mt-12 border-t border-line pt-8">
+          <h2 class="text-[22px]">{fill(copy.relatedTitle, { name: d.name })}</h2>
+          <p class="mt-2 max-w-[62ch] text-[16px] leading-relaxed text-muted">
+            {fill(copy.relatedIntro, { name: d.name })}
+          </p>
+          <ul class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((entry) => (
+              <li class="h-full">
+                <ArticleCard entry={entry} showKind={true} image={contentImage(entry.id)} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     <section class="mt-16">
       <NextStep

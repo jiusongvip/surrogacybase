@@ -1,17 +1,18 @@
 ---
 title: "Getting a Birth Certificate Accepted Abroad"
 description: "Which authority issues an apostille for a birth certificate, what it certifies, and why a certified translation is a separate requirement."
-type: article
+type: guide
 category: preparation
+topic: legal
+featured: true
 published: true
 publishedOn: "2026-10-15"
 updatedOn: "2026-10-22"
 reviewDueOn: "2027-04-15"
 jurisdictions: ["us", "ca", "gb", "co", "gr"]
 evidence: verified
-relatedGuides: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/bringing-your-child-home"]
-relatedArticles: ["articles/the-six-month-limit-on-a-uk-parental-order", "articles/surrogacy-costs-that-sit-outside-a-quote"]
 relatedTools: ["tools/destination-research-checklist"]
+related: ["guides/surrogacy-process", "guides/surrogacy-legal-considerations", "guides/bringing-your-child-home", "guides/the-six-month-limit-on-a-uk-parental-order", "guides/surrogacy-costs-that-sit-outside-a-quote"]
 sources:
   - label: "Convention of 5 October 1961 Abolishing the Requirement of Legalisation for Foreign Public Documents: status table"
     url: "https://www.hcch.net/en/instruments/conventions/status-table/?cid=41"
@@ -76,9 +77,9 @@ This is a place to get the requirement in writing from the body that will read t
 
 Add the pieces up before you commit to a birth date, because each of them belongs to a different institution and none of them is working to your agency's schedule.
 
-Registration of the birth, then the security of the certified copies, then the issuing authority's turnaround for an apostille, then the translator, then the receiving authority's own processing, then any court application that has to be filed inside a fixed window. In the United Kingdom a parental order application [must be made within six months of the birth](/articles/the-six-month-limit-on-a-uk-parental-order), so this paperwork chain is running inside a clock that does not stop for a postal delay.
+Registration of the birth, then the security of the certified copies, then the issuing authority's turnaround for an apostille, then the translator, then the receiving authority's own processing, then any court application that has to be filed inside a fixed window. In the United Kingdom a parental order application [must be made within six months of the birth](/guides/the-six-month-limit-on-a-uk-parental-order), so this paperwork chain is running inside a clock that does not stop for a postal delay.
 
-The cost is also not in the quote. [One of the twelve cost categories that sit outside a package price](/articles/surrogacy-costs-that-sit-outside-a-quote) is registration, translation and apostille, and it is the category with the least competition, because the body charging you cannot be shopped around.
+The cost is also not in the quote. [One of the twelve cost categories that sit outside a package price](/guides/surrogacy-costs-that-sit-outside-a-quote) is registration, translation and apostille, and it is the category with the least competition, because the body charging you cannot be shopped around.
 
 ## What to ask, and in what order
 
