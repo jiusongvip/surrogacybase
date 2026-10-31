@@ -107,7 +107,7 @@ The parentage route determines what happens in the delivery room and after it. T
 
 ### 9. Bringing the child home
 
-Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Cross-border intended parents are not a rare edge case: of [the 40,177 gestational carrier transfers recorded in the US between 2014 and 2020, 32 percent belonged to intended parents living abroad](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
+Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Cross-border intended parents are not a rare edge case: of [the 40,177 transfers to surrogates recorded in the US between 2014 and 2020, 32 percent belonged to intended parents living abroad](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
 
 ## Who is involved, and what each one is accountable for
 
@@ -137,4 +137,4 @@ Realistically, four things, and none of them is a deposit:
 
 What happens to the money if a pregnancy is lost, a specific clinic's transfer protocol, whether a court in your country will recognise an order, how long any of it takes: these are document and jurisdiction questions, and they have specific answers nobody can give in general.
 
-US surveillance [records assisted reproduction cycle data from more than 90 percent of clinics](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/), including transfers to gestational carriers. It does not record surrogacy agreements, compensation, matching or program outcomes. So there is no official statistic for how many surrogacy journeys succeed, or how long they take, because nobody counts them.
+US surveillance [records assisted reproduction cycle data from more than 90 percent of clinics](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/), including transfers to surrogates. It does not record surrogacy agreements, compensation, matching or program outcomes. So there is no official statistic for how many surrogacy journeys succeed, or how long they take, because nobody counts them.

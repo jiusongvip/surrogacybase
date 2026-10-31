@@ -36,7 +36,7 @@ sources:
 
 A cycle that does not produce a baby is not one event. It is a contractual event, a medical event that belongs to somebody else's body, and a storage event involving embryos that are still there when everything else has stopped. Each of those three has a different document and a different decision-maker, which is why a failure that was handled well medically can still end an arrangement badly.
 
-United States professional guidance for programs using gestational carriers treats all three, and reading it with a failure in mind is more useful than reading it with a success in mind.
+United States professional guidance for programs using surrogates treats all three, and reading it with a failure in mind is more useful than reading it with a success in mind.
 
 ## The failure your contract already counts
 

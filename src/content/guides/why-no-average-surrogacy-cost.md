@@ -55,7 +55,7 @@ The closest thing to national infrastructure in the United States is the Society
 
 But it counts **treatment cycles**, not surrogacy programs. There is no element for the agreement, none for compensation, none for what an agency charged, and none for what the intended parents spent in total or what happened to the money when a cycle failed.
 
-That distinction matters, because registry data is what makes an honest average possible in other areas of medicine. Researchers have used this same registry to describe gestational carrier treatment: of [40,177 embryo transfers to a gestational carrier from 2014 to 2020, 32 percent were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/). That is a real, defensible statistic about a *clinical* activity. There is no equivalent for the commercial and legal half of the journey, because nobody collects it.
+That distinction matters, because registry data is what makes an honest average possible in other areas of medicine. Researchers have used this same registry to describe surrogate treatment: of [40,177 embryo transfers to a surrogate from 2014 to 2020, 32 percent were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/). That is a real, defensible statistic about a *clinical* activity. There is no equivalent for the commercial and legal half of the journey, because nobody collects it.
 
 ## What the published figures are
 
@@ -63,7 +63,7 @@ Take the most commonly cited US number. A fertility clinic's page, published Feb
 
 Read it as what it is: a provider's description of prices at providers, with no disclosed methodology, no sample, and no definition of what is inside the number. It is genuinely useful as a market signal. It is not a measurement.
 
-Even the academic literature is explicit about its own limits. The peer-reviewed review that states the cost of having a baby via a gestational carrier in the US [surpassed 100,000 dollars in 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) is citing other sources rather than presenting primary cost data. That is as good as the published evidence gets, and it is honest about being second-hand.
+Even the academic literature is explicit about its own limits. The peer-reviewed review that states the cost of having a baby via a surrogate in the US [surpassed 100,000 dollars in 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC11621256/) is citing other sources rather than presenting primary cost data. That is as good as the published evidence gets, and it is honest about being second-hand.
 
 The UK is a different case rather than a better one. The regulator reports that surrogates are typically reimbursed [10,000 to 15,000 pounds](https://www.hfea.gov.uk/about-us/media-centre/surrogacy-a-factsheet/), citing a report by the organisation Surrogacy UK. That figure exists because UK law limits payments to reasonable expenses, so the number being estimated is a legally defined category rather than an undefined market. There is no verified UK total-cost figure at all.
 

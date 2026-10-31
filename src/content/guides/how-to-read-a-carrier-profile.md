@@ -1,6 +1,6 @@
 ---
-title: "How to Read a Gestational Carrier's Profile"
-titleTag: "Reading a Gestational Carrier's Profile"
+title: "How to Read a Surrogate's Profile"
+titleTag: "Reading a Surrogate's Profile"
 description: "What United States guidance expects to have happened before a carrier profile reaches you, and which parts of it are recommendation rather than rule."
 type: guide
 category: preparation
@@ -31,7 +31,7 @@ sources:
 
 In most United States programs the document you receive about a carrier is a few paragraphs: her age, whether she has been pregnant, whether she has delivered by caesarean, sometimes a photograph and a short account of why she wants to carry. It is what most of the choosing gets done on, and it is the only carrier-side paper most intended parents are ever handed.
 
-The guidance US reproductive medicine publishes for programs working with gestational carriers is considerably longer than that profile. Reading the two against each other is worth an hour before you commit to anyone. What follows is that comparison: what the guidance expects to have happened, which parts of it are a recommendation rather than a rule, and what the profile stays silent about even when the program is careful.
+The guidance US reproductive medicine publishes for programs working with surrogates is considerably longer than that profile. Reading the two against each other is worth an hour before you commit to anyone. What follows is that comparison: what the guidance expects to have happened, which parts of it are a recommendation rather than a rule, and what the profile stays silent about even when the program is careful.
 
 ## What the guidance expects to have happened first
 
@@ -51,7 +51,7 @@ Her spouse or partner is expected to be evaluated and to consent as well. And th
 
 Two facts decide how much weight a profile can carry.
 
-First, United States federal requirements do not oblige any of this for the carrier. The guidance states plainly that the FDA does not require screening or testing of the gestational carrier, that ASRM recommends it, and that individual state rules may be stricter than the federal floor. There is no licence that compels a program to have completed the workup above, and no certificate that would tell you it was.
+First, United States federal requirements do not oblige any of this for the carrier. The guidance states plainly that the FDA does not require screening or testing of the surrogate, that ASRM recommends it, and that individual state rules may be stricter than the federal floor. There is no licence that compels a program to have completed the workup above, and no certificate that would tell you it was.
 
 Second, the guidance is written for the United States and says so. It notes that because the prevalence of infections and genetic conditions differs elsewhere, its recommendations may not be appropriate in other countries, or for people travelling to the US for treatment. A program in another destination is not measuring her against this list at all.
 

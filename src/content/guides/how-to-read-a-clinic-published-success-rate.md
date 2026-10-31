@@ -72,7 +72,7 @@ This is the same arithmetic that makes a comparison between two providers meanin
 
 ## Who is not in the table
 
-This is the section that matters most for anyone planning around a gestational carrier, and it is stated in the smallest print on the page.
+This is the section that matters most for anyone planning around a surrogate, and it is stated in the smallest print on the page.
 
 The notes under the UK regulator's success-rate figures say plainly which treatments have been taken out. For the birth-rate chart in the [2024 report](https://www.hfea.gov.uk/about-us/publications/research-and-data/fertility-treatment-2024-trends-and-figures/), the exclusions listed are treatments using PGT-A/M/SR, treatments using donor eggs **or surrogacy**, and cycles where a pregnancy was recorded but no birth outcome was. The [2022 report](https://www.hfea.gov.uk/about-us/publications/research-and-data/fertility-treatment-2022-preliminary-trends-and-figures/) carries the same exclusion in its chart notes.
 
@@ -93,7 +93,7 @@ The same factsheet states the one surrogacy-specific outcome figure the regulato
 
 In the United States there is no such regulator, but there is a registry, and it has a different limit. [SART CORS holds cycle data from more than 90 percent of US clinics](https://pmc.ncbi.nlm.nih.gov/articles/PMC9722991/), recording cycle starts, patient demographics and linked cycles. It does not record the agreement, the payment or the program's outcome. So the registry can support a clinical statistic and cannot support a program-level one, the distinction drawn at length in [what 40,177 transfers do not promise you](/guides/surrogacy-success-rates-40177-transfers).
 
-One number from that registry does bear on international intended parents directly: of [40,177 embryo transfers to a gestational carrier from 2014 to 2020, 32% were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/). Read it as a caution rather than a comfort. A national rate for that jurisdiction is an average across a population in which roughly a third of the activity belongs to people who then have to take a child home across a border, whose ages, diagnoses and treatment routes are not yours.
+One number from that registry does bear on international intended parents directly: of [40,177 embryo transfers to a surrogate from 2014 to 2020, 32% were for intended parents living outside the United States](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/). Read it as a caution rather than a comfort. A national rate for that jurisdiction is an average across a population in which roughly a third of the activity belongs to people who then have to take a child home across a border, whose ages, diagnoses and treatment routes are not yours.
 
 ## What to ask instead
 

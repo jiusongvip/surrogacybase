@@ -32,7 +32,8 @@ a contract will use one of them precisely.
 - **Gamete**: an egg or sperm.
 - **Donor**: a person providing a gamete who is not intended to become a parent of the child.
 - **Gestational carrier**: a woman who carries a pregnancy to which she has made no genetic
-  contribution. Some programs call her the surrogate; some call her the gestational carrier.
+  contribution. Some programs call her the surrogate and some the gestational carrier; this site uses
+  "surrogate" except where that has to be distinguished from a traditional arrangement.
 - **Traditional arrangement**: the person who carries the pregnancy also provides the egg, so she is
   genetically related to the child.
 - **Intended parents**: the people planning to raise and to be recognised as the child's parents.
@@ -80,7 +81,7 @@ and do not accept a spoken reply.
 
 ## The carrier has a position of her own
 
-If a gestational carrier is involved, she is a party to the medical plan and to a contract, not a
+If a surrogate is involved, she is a party to the medical plan and to a contract, not a
 service being supplied. That means there are questions about her that determine the shape of your own
 experience:
 

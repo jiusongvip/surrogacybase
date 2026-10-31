@@ -30,7 +30,7 @@ sources:
 
 A number of transfers is not a number of babies. That sounds obvious, and it is the distinction that most of the figures quoted at you during a surrogacy search quietly breaks.
 
-The largest published study of gestational carrier transfers in the United States analysed [40,177 transfers performed between 2014 and 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/), and its figures come from SART CORS, the reporting system the professional society for United States fertility clinics maintains. It is a useful document precisely because of what it does not do: it does not promise you anything, and it does not measure the thing a journey is actually made of.
+The largest published study of transfers to surrogates in the United States analysed [40,177 transfers performed between 2014 and 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/), and its figures come from SART CORS, the reporting system the professional society for United States fertility clinics maintains. It is a useful document precisely because of what it does not do: it does not promise you anything, and it does not measure the thing a journey is actually made of.
 
 ## What a rate is a rate of
 
@@ -78,7 +78,7 @@ Question five is the one that turns a clinical statistic into a budget. The [quo
 
 ## What this does not mean
 
-None of the above says a United States gestational carrier program is unlikely to work. It says the published numbers are per transfer, that per transfer is not per journey, and that the difference between those two is where a plan either holds or does not.
+None of the above says a United States surrogacy program is unlikely to work. It says the published numbers are per transfer, that per transfer is not per journey, and that the difference between those two is where a plan either holds or does not.
 
 The reason there is no reliable average for a whole journey is the same reason there is no reliable average cost, which is set out in [why no average surrogacy cost exists](/guides/why-no-average-surrogacy-cost). Both are questions about a sequence of events that only your own file will resolve, and both are answered by asking for the denominator rather than the number.
 
