@@ -121,7 +121,7 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     sendMail: 'Open in my mail app',
     successHeading: 'Your enquiry has been received',
     successBody:
-      'It is in our inbox. An advisor reads every enquiry and contacts you within 24 hours on the number or account you left. You will not be added to a mailing list.',
+      'It is in our inbox. An advisor reads every enquiry and replies within 1 to 2 working days on the number or account you left. You will not be added to a mailing list.',
     sendAnother: 'Send another enquiry',
     lineName: 'Name: {value}',
     linePhone: 'Mobile: {value}',
@@ -182,7 +182,7 @@ export const CONSULT_CHROME: Record<Lang, ConsultChrome> = {
     download: '下载为文件',
     sendMail: '在我的邮件应用中打开',
     successHeading: '您的咨询已收到',
-    successBody: '该咨询已进入本站收件箱。顾问会阅读每一封咨询，并于 24 小时内通过您所留号码或账号与您联系。您不会被加入任何邮件列表。',
+    successBody: '该咨询已进入本站收件箱。顾问会阅读每一封咨询，并于 1 至 2 个工作日内通过您所留号码或账号与您联系。您不会被加入任何邮件列表。',
     sendAnother: '提交新的咨询',
     lineName: '称呼：{value}',
     linePhone: '手机：{value}',

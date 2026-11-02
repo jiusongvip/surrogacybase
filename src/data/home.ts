@@ -41,11 +41,9 @@ export const HOME_HERO: Record<Lang, {
   ctaPrimary: string;
   ctaSecondary: string;
   /**
-   * The owner's line, set under the lead in the copy column. It is not a claim about outcomes.
-   * Restored from the owner's own design, where it is set in a handwritten face at the right of
-   * the hero. The heading now states the three things a reader can do here rather than naming a
-   * feeling, because the design's promise of "guidance" only holds if the page says what the
-   * guidance consists of; the line below carries the register instead.
+   * The line under the lead, set in the accent as a signature. It carries the site's boundary
+   * rather than a promise about outcomes: what this is not, and who pays for it. A reader weighing
+   * a page about law and money needs that before the first section, not two clicks away on /about.
    */
   note: string;
 }> = {
@@ -54,14 +52,14 @@ export const HOME_HERO: Record<Lang, {
     lead: 'Destination, cost, law and process information for intended parents worldwide, so you can see the options, work out what you actually need, and be ready for the next step.',
     ctaPrimary: 'Explore destinations',
     ctaSecondary: 'Get personalized guidance',
-    note: 'Let the important decisions rest on clear information',
+    note: 'Not a clinic, not a law firm, not an agency. No provider pays for a place here',
   },
   zh: {
     h1: '让跨境代孕的每一步，都有清晰的信息参考',
     lead: '为全球准父母提供代孕目的地、费用、法律与流程信息，帮助您了解不同选择，梳理实际需求，为下一步做好准备。',
     ctaPrimary: '探索代孕目的地',
     ctaSecondary: '获取个性化咨询',
-    note: '让重要决定建立在清晰信息之上',
+    note: '不是诊所，不是律所，不是机构。本站不向任何服务方收费，也不推荐任何一家。',
   },
 };
 

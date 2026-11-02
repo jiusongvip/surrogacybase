@@ -620,7 +620,7 @@ export const UI: Record<Lang, {
         title: 'Guides',
         titleTag: 'Surrogacy Guides: Law, Cost and Process',
         description:
-          'Guides and explainers on surrogacy law, cost, destinations, agency selection, process and preparation, each written to one standard and citing a source you can open.',
+          'Guides on surrogacy law, cost, destinations, agency selection, process and preparation, each written to one standard and citing a source you can open.',
         intro:
           'Every piece answers a question you actually face, from eligibility and cost to choosing an agency, the process and the paperwork a child needs, and names the source behind its answer.',
         startHeading: 'Start with the decision in front of you',
@@ -1194,8 +1194,8 @@ export const UI: Record<Lang, {
     pages: {
       articles: {
         title: '指南',
-        titleTag: '代孕指南：法律、费用、流程与解读',
-        description: '关于代孕法律、费用、目的地、机构选择、流程与准备的指南与解读，均按同一标准撰写，并附上可开启的来源。',
+        titleTag: '代孕指南：法律、费用与流程',
+        description: '关于代孕法律、费用、目的地、机构选择、流程与准备的指南，均按同一标准撰写，并附上可开启的来源。',
         intro:
           '每篇都只回答一个您实际会遇到的问题：资格、费用、机构选择、流程，以及孩子出生后所需的证件，并写明其所依据的来源。',
         startHeading: '从眼前的决定开始',
