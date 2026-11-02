@@ -1,6 +1,6 @@
 ---
-title: "What an Anonymous Egg Donor Page Can and Cannot Tell You"
-titleTag: "What an Anonymous Egg Donor Page Tells You"
+title: "What 'Anonymous' on an Egg Donor Page Actually Means"
+titleTag: "Anonymous Egg Donor: What the Page Means"
 description: "The word anonymous on a donor page hides two different claims. What guidance now says, and what United Kingdom law gives by year of birth."
 type: guide
 category: preparation

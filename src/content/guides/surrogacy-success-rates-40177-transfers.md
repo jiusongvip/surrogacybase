@@ -1,5 +1,5 @@
 ---
-title: "What 40,177 Surrogacy Transfers Say About Your Chances"
+title: "40,177 Transfers: What Surrogacy Success Rates Count"
 titleTag: "Surrogacy Success Rates: 40,177 Transfers"
 description: "The largest published study of United States carrier transfers counts transfers, not journeys. What that difference does to a success rate."
 type: guide

@@ -1,6 +1,6 @@
 ---
-title: "匿名捐卵：能知道捐卵者的哪些信息"
-titleTag: "匿名捐卵能知道哪些信息"
+title: "捐卵人页面写着「匿名」，实际意味着什么"
+titleTag: "捐卵人匿名意味着什么"
 description: "页面上「匿名」一词实际包含两层含义。本文说明专业指引现在的表述，以及英国法律按出生年份给出的不同答案。"
 type: guide
 category: preparation

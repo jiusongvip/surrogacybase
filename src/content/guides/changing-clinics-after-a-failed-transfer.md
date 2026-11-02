@@ -1,6 +1,6 @@
 ---
-title: "When a Failed Transfer Justifies Changing Clinics"
-titleTag: "Changing Clinics After a Failed Transfer"
+title: "After a Failed Transfer, Should You Change Clinics?"
+titleTag: "Surrogacy: Change Clinics After a Failure"
 description: "A failed transfer is an outcome, not a verdict on the clinic. What the clinic owes you before you decide, which signals belong to it, which belong to the case, and what leaving costs."
 type: guide
 category: agencies

@@ -1,6 +1,6 @@
 ---
-title: "代孕的法律考量：先定下四个问题"
-titleTag: "代孕的法律考量"
+title: "选国家之前，先定这 4 个法律问题"
+titleTag: "代孕选国家前的 4 个法律问题"
 description: "可执行性、亲权、资格与付款是四个各自独立的法律问题。每个问题由什么决定，以及该向律师提出什么。"
 type: guide
 category: destinations

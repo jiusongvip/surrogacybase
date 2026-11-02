@@ -1,6 +1,6 @@
 ---
-title: "Choosing a Fertility Clinic Is Not Choosing an Agency"
-titleTag: "Choosing a Clinic, Not an Agency"
+title: "Clinic or Agency? Two Contracts, Two Ways to Be Replaced"
+titleTag: "Surrogacy Clinic vs Agency"
 description: "Two contracts, two sets of obligations, and two independent ways to be replaced. Which questions belong to the clinic, which to the agency, and what the word programme is doing in the middle."
 type: guide
 category: agencies

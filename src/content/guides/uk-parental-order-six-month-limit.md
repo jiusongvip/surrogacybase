@@ -1,5 +1,5 @@
 ---
-title: "The Six-Month Limit on a UK Parental Order"
+title: "UK Parental Order: The Six-Month Deadline and Who It Hits"
 titleTag: "UK Parental Order: The Six-Month Limit"
 description: "What the six month deadline, the genetic link, the residence rule and consent from the carrier mean under United Kingdom law."
 type: guide

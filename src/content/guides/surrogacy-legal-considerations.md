@@ -1,6 +1,6 @@
 ---
-title: "Surrogacy Legal Considerations: The Four Questions to Settle First"
-titleTag: "Surrogacy Legal Considerations"
+title: "4 Legal Questions to Settle Before Choosing a Country"
+titleTag: "Surrogacy Law: 4 Questions Before a Country"
 description: "Enforceability, parentage, eligibility and payment are four separate legal questions. How each one is decided, and what to put to a lawyer in writing."
 type: guide
 category: destinations

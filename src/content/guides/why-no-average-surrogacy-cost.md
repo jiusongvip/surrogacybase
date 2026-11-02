@@ -1,5 +1,6 @@
 ---
-title: "Why There Is No Average Cost of Surrogacy"
+title: "Surrogacy Costs: Where the Numbers Come From"
+titleTag: "Surrogacy Costs: Where Numbers Come From"
 description: "Every surrogacy cost figure you can find comes from a provider or a citation of one. Where those numbers actually come from, and what to use instead."
 type: guide
 category: cost

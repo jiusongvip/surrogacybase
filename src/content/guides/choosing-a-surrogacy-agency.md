@@ -1,6 +1,6 @@
 ---
-title: "How to Evaluate a Surrogacy Agency Before You Sign"
-titleTag: "Evaluate a Surrogacy Agency First"
+title: "How to Check a Surrogacy Agency: 5 Documents to Ask For"
+titleTag: "Check a Surrogacy Agency: 5 Documents"
 description: "What an agency fee actually buys, what regulation does and does not cover, the five documents to ask for before signing, and the questions to put in writing."
 type: guide
 category: agencies

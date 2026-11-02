@@ -1,6 +1,6 @@
 ---
-title: "怎么看妊娠代孕者的档案"
-titleTag: "妊娠代孕者档案怎么看"
+title: "怎么看代孕者的档案：哪些核查过，哪些是推销"
+titleTag: "怎么看代孕者档案"
 description: "代孕者档案往往是您所取得的唯一一份关于她的文件。本文说明美国专业指引要求事先完成的步骤，并区分其中的推荐意见与强制性规定。"
 type: guide
 category: preparation

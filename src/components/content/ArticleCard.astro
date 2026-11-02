@@ -29,9 +29,23 @@ type Props = {
    * section is trying not to be. The piece still carries its category on its own page.
    */
   showCategory?: boolean;
+  /**
+   * Overrides the label printed above the title. The homepage groups by `topic` while a card
+   * defaults to `category`, and the two are different taxonomies: without this the card would
+   * name one grouping while the section around it named another.
+   */
+  label?: string;
 };
 
-const { entry, featured = false, heading = 3, image, showKind = true, showCategory = true } = Astro.props;
+const {
+  entry,
+  featured = false,
+  heading = 3,
+  image,
+  showKind = true,
+  showCategory = true,
+  label: labelOverride,
+} = Astro.props;
 const Heading = `h${heading}` as 'h2' | 'h3';
 const { title, description, category, type, updatedOn } = entry.data;
 const href = pathOf(entry);
@@ -39,7 +53,7 @@ const minutes = type === 'article' ? readingTime(entry.body ?? '') : 0;
 
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang];
-const label = CATEGORY_LABELS[lang][category] ?? category;
+const label = labelOverride ?? CATEGORY_LABELS[lang][category] ?? category;
 ---
 
 <article class:list={featured ? 'sm:col-span-2' : ''}>

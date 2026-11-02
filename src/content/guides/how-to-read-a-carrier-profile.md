@@ -1,5 +1,5 @@
 ---
-title: "How to Read a Surrogate's Profile"
+title: "Reading a Surrogate's Profile: What Is Checked, What Is Sales"
 titleTag: "Reading a Surrogate's Profile"
 description: "What United States guidance expects to have happened before a carrier profile reaches you, and which parts of it are recommendation rather than rule."
 type: guide

@@ -1,5 +1,5 @@
 ---
-title: "How the Surrogacy Process Works, Stage by Stage"
+title: "Surrogacy Process Step by Step: Who Does What, and When"
 titleTag: "How the Surrogacy Process Works"
 description: "The stages a gestational surrogacy program usually runs through, who is involved at each one, and what intended parents are expected to prepare."
 type: guide

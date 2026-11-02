@@ -31,19 +31,19 @@ import ConsultForm from '@/components/forms/ConsultForm.astro';
 import ArticleCard from '@/components/content/ArticleCard.astro';
 import { SITE } from '@/const';
 import { langFromPath, localizedPath } from '@/i18n/paths';
-import { pick } from '@/i18n/ui';
-import { resolveRefs } from '@/lib/content';
+import { pick, TOPIC_LABELS } from '@/i18n/ui';
+import { getLiveContent, type ContentEntry } from '@/lib/content';
 import { contentImage } from '@/data/content-images';
 import { getJurisdictions } from '@/lib/jurisdictions';
 import {
   HOME_ADVANTAGES,
+  HOME_AREAS,
   HOME_BAND,
   HOME_BAND_TRUST,
   HOME_CONTENT,
   HOME_COUNTRIES,
   HOME_HERO,
   HOME_META,
-  HOME_PICKS,
   HOME_SERVICES,
   HOME_WHO_WE_ARE,
 } from '@/data/home';
@@ -86,12 +86,27 @@ const cards = [...records].sort(byOrder).map((row) => ({
   note: countries.notes[row.data.code] ?? '',
 }));
 
-/* The single content module: the handful of pieces to start with, as picture cards. Nothing
- * on a card names a subject — a photograph, a title, one line, and the question the piece answers
- * becomes clear on the page itself. The order is HOME_PICKS, an editorial list rather than a sort,
- * because "asked first" is not something a date can compute; a ref with no live page in this
- * language drops out, so the row cannot hold a dead link. */
-const picks = await resolveRefs(HOME_PICKS, lang);
+/* The single content module: one card per area, and the card is the most recently published
+ * piece in that area. Nothing is hand-picked, so the section cannot go stale in the way a curated
+ * list does, and it cannot advertise a piece that was unpublished yesterday.
+ *
+ * The sort is explicit rather than relying on getLiveContent's updatedOn order: "newest" here
+ * means newest to be written, which is publishedOn. Ties fall back to updatedOn and then to the
+ * id, so the same build always produces the same four cards.
+ *
+ * An area with no live piece drops out instead of rendering an empty heading. */
+const content = await getLiveContent(lang);
+const latestByArea = HOME_AREAS.map(
+  (area) =>
+    content
+      .filter((e) => e.data.topic === area)
+      .sort(
+        (a, b) =>
+          b.data.publishedOn.localeCompare(a.data.publishedOn) ||
+          b.data.updatedOn.localeCompare(a.data.updatedOn) ||
+          a.id.localeCompare(b.id)
+      )[0]
+).filter((e): e is ContentEntry => Boolean(e));
 
 const lp = (path: string) => localizedPath(lang, path);
 const home = localizedPath(lang, '/');
@@ -300,13 +315,12 @@ const home = localizedPath(lang, '/');
   </section>
 
   {/*
-    * 5. The single content module: six picture cards, in the same shape as the archive on /guides,
-    * so a reader who likes what they see here recognises the archive when they get there. Cards
-    * carry no subject label — the module is a shop window for the questions people ask first, not
-    * a second taxonomy, and a label on each card would turn six picks into six buckets.
+    * 5. The single content module: four picture cards, one per area, each the newest piece in
+    * that area. The card carries the area name because one card per area means nothing without
+    * it, and a title alone cannot say which of the four questions it answers.
     *
     * The exit to the archive sits on the heading row rather than under the grid, because a reader
-    * who wants the full library should not have to scroll past six cards to find out it exists.
+    * who wants the full library should not have to scroll past the cards to find out it exists.
     */}
   <section class="py-16 lg:py-24" id="guides">
     <div class="shell">
@@ -323,14 +337,14 @@ const home = localizedPath(lang, '/');
         </a>
       </div>
 
-      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
-          picks.map((entry) => (
+          latestByArea.map((entry) => (
             <li class="h-full">
               <ArticleCard
                 entry={entry}
                 showKind={false}
-                showCategory={false}
+                label={TOPIC_LABELS[lang][entry.data.topic ?? '']}
                 image={contentImage(entry.id)}
               />
             </li>

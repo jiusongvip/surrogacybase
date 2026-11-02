@@ -1,6 +1,6 @@
 ---
-title: "代孕报价通常不含哪些费用"
-titleTag: "代孕报价不含哪些费用"
+title: "代孕报价里不写的 12 项费用"
+titleTag: "代孕报价外的 12 项费用"
 description: "套餐价之外的十二类开支，为什么最后都落在您手上，以及该向服务方要什么样的书面确认。"
 type: guide
 category: cost

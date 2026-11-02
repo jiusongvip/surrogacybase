@@ -1,6 +1,6 @@
 ---
-title: "Surrogacy Law: The Questions That Decide a Destination"
-titleTag: "Surrogacy Law Questions to Ask First"
+title: "Choosing a Surrogacy Country: 6 Questions That Decide It"
+titleTag: "Surrogacy: 6 Questions for a Country"
 description: "The six dimensions to score a destination on, the sources to insist on, and the four traps to check any destination page against."
 type: guide
 category: destinations

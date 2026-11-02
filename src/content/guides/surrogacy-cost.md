@@ -1,6 +1,6 @@
 ---
-title: "Surrogacy Cost: What to Budget For and What to Verify"
-titleTag: "Surrogacy Cost: What to Verify"
+title: "Surrogacy Cost: What to Budget, What a Quote Leaves Out"
+titleTag: "Surrogacy Cost: What to Budget"
 description: "How a surrogacy budget is built, what a quote usually leaves out, how escrow and refund terms work, and what the published cost figures are and are not."
 type: guide
 category: cost

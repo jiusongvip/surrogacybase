@@ -1,5 +1,5 @@
 ---
-title: "Surrogacy Escrow Accounts and Payment Stages"
+title: "Escrow in Surrogacy: Who Holds the Money, When It Moves"
 titleTag: "Surrogacy Escrow and Payment Stages"
 description: "How escrow works in a surrogacy program, what the agreement has to state, who authorises a release, and the five questions that expose your real exposure."
 type: guide

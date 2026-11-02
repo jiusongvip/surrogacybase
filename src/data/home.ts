@@ -276,48 +276,35 @@ export const HOME_COUNTRIES: Record<Lang, {
   },
 };
 
-/* The pieces the homepage opens with, in the order a reader meets the questions: what it costs,
- * where it is possible, what papers the child needs, how the process runs, how to judge an agency,
- * and what has to be signed before anything starts.
- *
- * Written the way frontmatter writes a reference (collection/slug), so one list resolves to the
- * English pages on / and to the Chinese pages on /zh. A ref with no live page in that language
- * drops out rather than linking somewhere that was never built, which means a half-translated
- * pair can never put a dead card on the homepage.
- *
- * The list is short on purpose. The homepage is a shop window, not a second archive: everything
- * else stays behind the one exit to /guides. The order is a judgement about which question a plan
- * meets first, not a measurement of anything the site collects. */
-export const HOME_PICKS = [
-  'guides/surrogacy-cost',
-  'guides/surrogacy-law-questions-by-destination',
-  'guides/bringing-your-child-home',
-  'guides/surrogacy-process',
-  'guides/choosing-a-surrogacy-agency',
-  'guides/documents-before-embryo-transfer',
-];
+/* The four areas the homepage shows, in the order a reader meets them. These are `topic` values,
+ * the same ones the archive groups by, so the two pages cannot describe the site's structure
+ * differently. `accommodation` is in the enum but has no live piece, and an empty area is dropped
+ * at render rather than advertised as a heading with nothing under it. */
+export const HOME_AREAS = ['legal', 'choice', 'process', 'cost'];
 
-/* The content module's copy. No topic names appear here or on the cards: a card carries a
- * photograph, a title and one line, and which question a piece answers becomes clear once it is
- * open.
+/* The content module's copy.
+ *
+ * The section shows one piece per area, and the piece is whatever was published most recently in
+ * that area: the homepage answers "what is new here" rather than "what did we decide you should
+ * read". The card carries the area name, because a single card per area is meaningless without
+ * it, and the title alone cannot say which of the four questions it answers.
  *
  * Nothing here claims how many people read these pages. The site keeps no analytics it could cite,
- * so "most readers start here" would be an assertion the page cannot back up, and describing our
- * own editorial practice ("each answers one question, sources at the end") tells a reader about the
- * workshop instead of about their decision. The line says what the section is and stops. */
+ * so "most readers start here" would be an assertion the page cannot back up. */
 export const HOME_CONTENT: Record<Lang, {
   heading: string;
   intro: string;
   viewAll: string;
 }> = {
   en: {
-    heading: 'Where to start',
-    intro: 'The questions a plan runs into first, in the order they usually arrive.',
+    heading: 'Latest in each area',
+    intro:
+      'The most recently published piece in each of the four areas: legal and eligibility, agencies and selection, the process, and cost.',
     viewAll: 'All guides',
   },
   zh: {
-    heading: '从哪里开始',
-    intro: '一个计划最先会遇到的几个问题，大致按它们出现的先后排列。',
+    heading: '每个分类的最新一篇',
+    intro: '四个分类各取最新发布的一篇：法律与资格、机构与选择、流程与安排、费用与预算。',
     viewAll: '查看全部指南',
   },
 };

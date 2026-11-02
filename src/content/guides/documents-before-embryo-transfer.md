@@ -1,6 +1,6 @@
 ---
-title: "What Must Be Signed Before the First Embryo Transfer"
-titleTag: "What to Sign Before the First Transfer"
+title: "5 Documents to Sign Before the First Embryo Transfer"
+titleTag: "5 Documents Before a Surrogacy Transfer"
 description: "The five documents a gestational arrangement should have in place before an embryo is transferred, and what each one is for."
 type: guide
 category: preparation

@@ -1,6 +1,6 @@
 ---
-title: "您带来的生育力检查，进诊所之后会怎样"
-titleTag: "换诊所后旧检查还有效吗"
+title: "带着检查报告换诊所：哪些结果还有效"
+titleTag: "代孕换诊所时哪些检查还有效"
 description: "哪些结果会随您进入代孕周期，每份由谁出具、带着什么日期，以及在诊所重做之前就该以书面形式定下来的几个问题。"
 type: guide
 category: preparation

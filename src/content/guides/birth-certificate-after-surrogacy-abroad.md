@@ -1,6 +1,6 @@
 ---
-title: "Birth Certificates After Surrogacy: Getting Them Accepted Abroad"
-titleTag: "Birth Certificate Abroad After Surrogacy"
+title: "Why a Surrogacy Birth Certificate Gets Rejected Abroad"
+titleTag: "Surrogacy Birth Certificate Abroad"
 description: "Which authority issues an apostille for a birth certificate, what it certifies, and why a certified translation is a separate requirement."
 type: guide
 category: preparation

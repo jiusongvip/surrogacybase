@@ -1,5 +1,5 @@
 ---
-title: "What a Surrogacy Refund Guarantee Actually Covers"
+title: "Refund Guarantees in Surrogacy: Trigger, Amount, Account"
 titleTag: "What Surrogacy Refund Guarantees Cover"
 description: "A refund guarantee stacks three promises: a trigger, an amount and an account. Read all three, and the clause stops reading like insurance."
 type: guide

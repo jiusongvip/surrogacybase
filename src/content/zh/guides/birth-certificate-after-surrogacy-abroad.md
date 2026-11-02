@@ -1,6 +1,6 @@
 ---
-title: "代孕出生的孩子：出生证明怎么在境外被承认"
-titleTag: "代孕出生证明境外承认"
+title: "代孕宝宝的出生证明，为什么在境外不被接受"
+titleTag: "代孕出生证明境外认证"
 description: "哪个机关为出生证明出具附加证明书，它证明的是什么，以及为什么认证翻译是另一项独立要求。"
 type: guide
 category: preparation

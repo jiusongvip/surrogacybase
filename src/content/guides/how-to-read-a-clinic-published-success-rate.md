@@ -1,6 +1,6 @@
 ---
-title: "How to Read a Fertility Clinic's Published Success Rate"
-titleTag: "Reading a Fertility Clinic's Success Rate"
+title: "A Clinic's Success Rate: What the Number Is Counting"
+titleTag: "Surrogacy Success Rates: What They Count"
 description: "A clinic's published success rate is usually a true number about a different population. Read it with the denominator, who was counted, and who was excluded."
 type: guide
 category: preparation

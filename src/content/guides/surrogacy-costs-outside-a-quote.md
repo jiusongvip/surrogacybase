@@ -1,6 +1,6 @@
 ---
-title: "What a Surrogacy Quote Leaves Out"
-titleTag: "What a Surrogacy Quote Leaves Out"
+title: "12 Costs a Surrogacy Quote Leaves Out"
+titleTag: "12 Costs Outside a Surrogacy Quote"
 description: "The twelve expense categories that usually fall outside a package price, why they land on you anyway, and the exact wording to ask a provider to confirm."
 type: guide
 category: cost

@@ -1,6 +1,6 @@
 ---
-title: "Bringing Your Child Home: Documents, Travel and Nationality After Birth"
-titleTag: "Bringing a Child Home After Surrogacy"
+title: "Taking Your Baby Home After Surrogacy: Papers, Flights, Nationality"
+titleTag: "Taking a Surrogacy Baby Home"
 description: "Which document lets the child cross a border, what each country asks for, where a genetic link is required, and what registration waits at home."
 type: guide
 category: process
