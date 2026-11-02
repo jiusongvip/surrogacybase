@@ -1,7 +1,7 @@
 ---
 title: "Clinic or Agency? Two Contracts, Two Ways to Be Replaced"
 titleTag: "Surrogacy Clinic vs Agency"
-description: "Four documents, four sets of obligations, and two independent ways to be replaced. Which questions belong to the clinic, which to the agency, and what the word programme is doing in the middle."
+description: "Four documents, four sets of obligations, and two ways to be replaced. Which questions belong to the clinic, which to the agency, and what programme covers."
 type: guide
 category: agencies
 topic: choice

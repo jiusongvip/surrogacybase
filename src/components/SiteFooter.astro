@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import logoMark from '@/assets/images/logo.png';
 import { SITE } from '@/const';
-import { langFromPath, localizedPath } from '@/i18n/paths';
+import { langFromPath, localizedPath, withSlash } from '@/i18n/paths';
 import { UI, fill } from '@/i18n/ui';
 
 const lang = langFromPath(Astro.url.pathname);
@@ -36,7 +36,7 @@ const copyright = fill(copy.copyright, { year, site: SITE.name });
             {group.links.map((link) => (
               <li>
                 <a
-                  href={link.href}
+                  href={withSlash(link.href)}
                   class="text-[15px] text-band decoration-band/50 underline-offset-4 transition-[text-decoration-color] duration-(--dur) hover:underline"
                 >
                   {link.label}

@@ -92,8 +92,12 @@ const MARKS: Record<string, { d: string; evenOdd?: boolean }> = {
               aria-haspopup="listbox"
               aria-expanded="false"
               aria-controls={`${idPrefix}-dial-list`}
-              aria-label={copy.dialLabel}
             >
+              {/* The name is built from the button's own contents rather than set on aria-label:
+                * the visible text is the dial code, and a name that leaves it out ("Country code"
+                * beside a shown "+86") is the mismatch WCAG 2.5.3 is written about. The script
+                * rewrites the visible code, so the name follows it without a second update. */}
+              <span class="sr-only">{copy.dialLabel}</span>
               <img
                 class="h-4 w-5 shrink-0 rounded-[3px] object-cover"
                 src={`/flags/${initialDial.code.toLowerCase()}.svg`}

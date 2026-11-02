@@ -3,16 +3,19 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { rehypeTableScroll } from './src/lib/rehype-table-scroll';
 import { rehypeTaskListLabels } from './src/lib/rehype-task-list-labels';
+import { rehypeTrailingSlashLinks } from './src/lib/rehype-trailing-slash-links';
 import { collectRevisions, lastmodFor } from './src/lib/revisions.ts';
 
-const site = process.env.SITE_URL || 'https://surrogacybase.com';
+const site = process.env.SITE_URL || 'https://www.surrogacybase.com';
 /* Read once, while the config loads: the dates live in the same files the pages render from. */
 const revisions = collectRevisions();
 
 export default defineConfig({
   // Canonical origin. Override with SITE_URL when a real host is attached.
   site,
-  trailingSlash: 'never',
+  // Every page ends with a slash; the site root is the bare origin. The internal links,
+  // canonical and sitemap all follow this, so a crawler never sees two spellings of one page.
+  trailingSlash: 'always',
   output: 'static',
   // English keeps the URLs it already has; Chinese lives under /zh. The site's own prefix
   // rules are in src/i18n/config.ts, and this block is what makes Astro validate that a
@@ -27,7 +30,7 @@ export default defineConfig({
     // which needs @astrojs/markdown-remark as a direct dependency. Astro migrates this field
     // into that same default processor, so the output is identical without pinning a second
     // copy of a package Astro already owns.
-    rehypePlugins: [rehypeTableScroll, rehypeTaskListLabels],
+    rehypePlugins: [rehypeTableScroll, rehypeTaskListLabels, rehypeTrailingSlashLinks],
   },
   build: {
     inlineStylesheets: 'always',

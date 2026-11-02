@@ -1,7 +1,7 @@
 ---
 title: "Insurance in a Surrogacy Quote: The Three Policies Behind It"
 titleTag: "Insurance Behind a Surrogacy Quote"
-description: "A quote is an inventory of work. Insurance answers for events, and the two are different documents. The three policies in play, the window that opens at birth, and the questions that locate the gap."
+description: "A quote is an inventory of work; insurance answers for events. The three policies, the window that opens at birth, and the questions that locate the gap."
 type: guide
 category: cost
 topic: cost

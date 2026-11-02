@@ -241,6 +241,9 @@ for (const file of collectMd(contentRoot)) {
 /* Every built route should be reachable from the nav or a page, and every route in the
  * sitemap should exist on disk. */
 const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8');
+/* The origin the build actually wrote, so changing the canonical host cannot leave this audit
+ * comparing against a host the site no longer uses. */
+const siteOrigin = new URL(sitemap.match(/<loc>([^<]+)<\/loc>/)[1]).origin;
 for (const loc of sitemap.match(/<loc>([^<]+)<\/loc>/g) ?? []) {
   const path = new URL(loc.replace(/<\/?loc>/g, '')).pathname.replace(/\/$/, '') || '/';
   if (!routes.has(path)) problems.push(`sitemap: ${path} is not built`);
@@ -254,7 +257,7 @@ for (const name of ['llms.txt', 'zh/llms.txt']) {
   const wantZh = name.startsWith('zh/');
   for (const href of text.match(/\]\((https?:[^)]+)\)/g) ?? []) {
     const url = new URL(href.slice(2, -1));
-    if (url.origin !== new URL('https://surrogacybase.com').origin) {
+    if (url.origin !== siteOrigin) {
       problems.push(`${name}: ${url.href} is not this site`);
       continue;
     }

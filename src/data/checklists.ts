@@ -68,7 +68,7 @@ export const CHECKLISTS: Checklist[] = [
       en: {
         title: 'Destination Research Checklist',
         description:
-          'The questions to get answered for each destination on a surrogacy shortlist: eligibility, parentage, nationality, medical scope, money, presence and dispute routes.',
+          'The questions to answer for each destination on a surrogacy shortlist: eligibility, parentage, nationality, medical scope, money, presence and disputes.',
         h1: 'Destination research checklist',
         purpose:
           'What you do here: put the questions below to the local lawyer, clinic or agency for one candidate destination at a time.',

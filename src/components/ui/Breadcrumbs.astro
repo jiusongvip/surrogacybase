@@ -1,6 +1,6 @@
 ---
 import Icon from '@/components/ui/Icon.astro';
-import { langFromPath } from '@/i18n/paths';
+import { absoluteFromPath, langFromPath } from '@/i18n/paths';
 import { HOME_BY_LANG } from '@/i18n/routes';
 import { UI } from '@/i18n/ui';
 
@@ -18,17 +18,16 @@ const copy = UI[lang];
  * Every entry but the last names a URL; the last is the page itself, so it repeats the canonical.
  */
 const trail = [{ label: copy.home, href: HOME_BY_LANG[lang] }, ...crumbs];
+const selfUrl = absoluteFromPath(Astro.site, Astro.url.pathname);
 const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  '@id': `${new URL(Astro.url.pathname, Astro.site).href}#breadcrumb`,
+  '@id': `${selfUrl}#breadcrumb`,
   itemListElement: trail.map((c, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: c.label,
-    item: c.href
-      ? new URL(c.href, Astro.site).href
-      : new URL(Astro.url.pathname, Astro.site).href,
+    item: c.href ? absoluteFromPath(Astro.site, c.href) : selfUrl,
   })),
 };
 ---

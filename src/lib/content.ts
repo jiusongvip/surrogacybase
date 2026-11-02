@@ -41,7 +41,8 @@ function sameLang(lang: Lang) {
 }
 
 export function pathOf(entry: ContentEntry): string {
-  return `/${entry.id}`;
+  /* The route the page is served on: every page URL ends in a slash. */
+  return `/${entry.id}/`;
 }
 
 export async function getLiveContent(lang: Lang = 'en'): Promise<ContentEntry[]> {

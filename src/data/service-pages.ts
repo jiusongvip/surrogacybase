@@ -86,7 +86,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
   },
   zh: {
     title: '关于我们',
-    titleTag: '关于本站：由谁撰写，一条说法如何被核实',
+    titleTag: '关于本站：内容如何撰写与核实',
     description:
       'SurrogacyBase 由谁撰写和维护、本站不会替您做什么、每条说法的来源与日期如何记录，以及您发来问题或更正之后会发生什么。',
     h1: '关于 {name}',

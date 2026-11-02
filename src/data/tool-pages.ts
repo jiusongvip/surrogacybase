@@ -370,7 +370,7 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
     title: 'Agency quote comparison',
     titleTag: 'Compare Two Surrogacy Agency Quotes',
     description:
-      'Compare one or two surrogacy quotes across the same nine costs: what each includes, what it leaves out, and why a gap between totals is not yet a cost difference.',
+      'Compare one or two surrogacy quotes across the same nine costs: what each includes, what it leaves out, and why a gap in totals is not a cost difference.',
     h1: 'Agency quote comparison',
     purpose:
       'What you do here: type the amounts from your quote into nine fixed cost lines and see what each total still leaves out.',
@@ -406,7 +406,7 @@ export const QUOTE_PAGE: Record<Lang, QuotePage> = {
   },
   zh: {
     title: '机构报价对比',
-    titleTag: '代孕机构报价对比：并列查看九项成本',
+    titleTag: '机构报价对比：并列查看九项成本',
     description:
       '将一份或两份代孕报价对应于同一组九项成本：各自包含与不含哪些项目，以及总额之差为何尚不构成成本差异。',
     h1: '机构报价对比',
@@ -500,7 +500,7 @@ export const COST_TOOL_PAGE: Record<Lang, CostToolPage> = {
   },
   zh: {
     title: '已公布的费用数据',
-    titleTag: '已公布的代孕费用数据：按条目与来源查看',
+    titleTag: '费用数据：按条目与来源查看',
     description: '按费用条目分组的代孕费用数据：整体方案、医疗环节、支付给代孕者的款项，每一数字均标明公布来源与对应年份。',
     h1: '已公布的费用数据',
     purpose: '本页用途：查阅某项费用条目，并读出其下所有已公布的数字。',

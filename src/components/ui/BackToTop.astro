@@ -95,7 +95,10 @@ const label = UI[lang].backToTop;
         btn.toggleAttribute('data-show', should);
       }
     };
-    toggle();
+    /* The first read waits a frame. At parse time the document is still dirty from the inlined
+     * stylesheet, so reading scrollY here forces the layout the browser is about to compute
+     * anyway: 56ms of blocked main thread for one attribute that is almost always false. */
+    requestAnimationFrame(toggle);
     window.addEventListener('scroll', toggle, { passive: true });
     btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' });

@@ -26,7 +26,7 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   en: {
     titleTag: 'Cross-Border Surrogacy: Law, Cost and Process',
     description:
-      'Independent cross-border surrogacy information: compare destination eligibility, law and cost, and see which questions to settle before deciding what comes next.',
+      'Independent cross-border surrogacy information: compare destination eligibility, law and cost, and see the questions to settle before you decide.',
   },
   zh: {
     titleTag: '跨境代孕：比较目的地、法律与费用',
@@ -46,6 +46,13 @@ export const HOME_HERO: Record<Lang, {
    * a page about law and money needs that before the first section, not two clicks away on /about.
    */
   note: string;
+  /**
+   * The hero photograph is the only content image on the page, so it carries a description rather
+   * than an empty alt. It says what is in the picture and stops: the picture illustrates the
+   * moment of looking ahead, and inventing a claim about it would be the page asserting something
+   * it cannot source.
+   */
+  imageAlt: string;
 }> = {
   en: {
     h1: 'Clear information at every step of cross-border surrogacy',
@@ -53,6 +60,8 @@ export const HOME_HERO: Record<Lang, {
     ctaPrimary: 'Explore destinations',
     ctaSecondary: 'Get personalized guidance',
     note: 'Not a clinic, not a law firm, not an agency. No provider pays for a place here',
+    imageAlt:
+      'A woman in a white dress at a terrace balustrade at sunset, looking out over a calm bay with a moored yacht and a wooded headland',
   },
   zh: {
     h1: '让跨境代孕的每一步，都有清晰的信息参考',
@@ -60,6 +69,7 @@ export const HOME_HERO: Record<Lang, {
     ctaPrimary: '探索代孕目的地',
     ctaSecondary: '获取个性化咨询',
     note: '不是诊所，不是律所，不是机构。本站不向任何服务方收费，也不推荐任何一家。',
+    imageAlt: '日落时分，一位身穿白裙的女士倚在露台栏杆前，望向平静的海湾、停泊的游艇与远处的山峦',
   },
 };
 

@@ -27,8 +27,10 @@ export const TRANSLATED_GROUPS: string[] = registry.groups;
 
 export function isTranslated(path: string): boolean {
   const base = stripLocale(path);
-  if (TRANSLATED.has(base)) return true;
-  return TRANSLATED_GROUPS.some((group) => base.startsWith(group));
+  /* The registry is written without trailing slashes; the site now serves them. */
+  const key = base === '/' ? '/' : base.replace(/\/$/, '');
+  if (TRANSLATED.has(key)) return true;
+  return TRANSLATED_GROUPS.some((group) => key.startsWith(group));
 }
 
 /**
@@ -47,5 +49,5 @@ export function twinFor(lang: Lang, path: string): Partial<Record<Lang, string>>
 
 export const HOME_BY_LANG: Record<Lang, string> = {
   en: PREFIX.en === '' ? '/' : `/${PREFIX.en}`,
-  zh: '/zh',
+  zh: '/zh/',
 };

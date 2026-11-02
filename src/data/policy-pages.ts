@@ -315,7 +315,7 @@ export const PRIVACY_PAGE: Record<Lang, PrivacyPage> = {
   },
   zh: {
     title: '隐私',
-    titleTag: '隐私政策：本站保存什么、不保存什么',
+    titleTag: '隐私政策：保存什么与不保存什么',
     description:
       'SurrogacyBase 保存了什么、未保存什么：不设置 cookie 的页面、不留存任何数据的报价工具，以及您主动发送的信息如何被处理。',
     h1: '隐私',
@@ -418,7 +418,7 @@ export const TERMS_PAGE: Record<Lang, TermsPage> = {
   },
   zh: {
     title: '条款',
-    titleTag: '使用条款：SurrogacyBase 内容的定位',
+    titleTag: '使用条款：本站内容的定位',
     description:
       'SurrogacyBase 内容边界的说明：其定位为发布的信息而非建议，为带日期的来源而非保证，亦为一组仅整理您自身输入的工具。',
     h1: '使用条款',

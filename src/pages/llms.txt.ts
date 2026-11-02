@@ -3,7 +3,7 @@ import { buildLlmsTxt } from '@/lib/llms';
 
 export const prerender = true;
 
-const FALLBACK = 'https://surrogacybase.com';
+const FALLBACK = 'https://www.surrogacybase.com';
 
 export async function GET(context: APIContext) {
   const body = await buildLlmsTxt(context.site ?? new URL(FALLBACK), 'en');

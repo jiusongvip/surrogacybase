@@ -118,7 +118,7 @@ export const DESTINATION_COMPARE_PAGE: Record<Lang, DestinationComparePage> = {
   },
   zh: {
     title: '目的地对比',
-    titleTag: '目的地对比：并列查看法律、亲权与费用',
+    titleTag: '目的地对比：法律、亲权与费用',
     description:
       '将目的地记录并列呈现：法律基础、委托资格、出生时的亲权、已公布的费用数据，以及每份记录最近一次核查的日期。',
     h1: '并排比较目的地记录',

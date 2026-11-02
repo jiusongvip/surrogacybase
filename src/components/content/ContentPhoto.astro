@@ -34,6 +34,7 @@ const lang = langFromPath(Astro.url.pathname);
   height={720}
   alt={image.alt[lang]}
   loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : undefined}
   decoding="async"
   class="h-full w-full object-cover"
 />

@@ -1,7 +1,7 @@
 ---
 title: "Male Fertility Checks: The Half of the File That Gets Missed"
 titleTag: "Male Fertility Checks Before Surrogacy"
-description: "The carrier's record runs to dozens of pages and the intended father's often to one, or none. Which decisions depend on his results, who should be asking for them, and what a semen analysis cannot settle."
+description: "The carrier's record runs to dozens of pages; the father's often to one. What depends on his results, who should ask, and what semen cannot settle."
 type: guide
 category: process
 topic: process

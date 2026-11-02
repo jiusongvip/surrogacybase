@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import logoMark from '@/assets/images/logo.png';
 import { SITE } from '@/const';
 import { LANG_META, LOCALES, type Lang } from '@/i18n/config';
-import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
+import { langFromPath, localizedPath, stripLocale, withSlash } from '@/i18n/paths';
 import { HOME_BY_LANG, isTranslated } from '@/i18n/routes';
 import { UI } from '@/i18n/ui';
 import Icon from '@/components/ui/Icon.astro';
@@ -11,7 +11,11 @@ import Icon from '@/components/ui/Icon.astro';
 const lang = langFromPath(Astro.url.pathname);
 const copy = UI[lang];
 const current = Astro.url.pathname;
-const isActive = (href: string) => current === href || current.startsWith(`${href}/`);
+/* Both the link and the active test read the same spelling: a section URL ends in a slash. */
+const isActive = (href: string) => {
+  const target = withSlash(href.split('#')[0]);
+  return current === target || current.startsWith(target);
+};
 
 /*
  * The switch is a dropdown listing every locale, the pattern the site owner pointed at on the
@@ -50,7 +54,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
     <nav aria-label={copy.primaryNavLabel} class="hidden items-center gap-0.5 lg:flex xl:gap-1">
       {copy.nav.map((item) => (
         <a
-          href={item.href}
+          href={withSlash(item.href)}
           aria-current={isActive(item.href) ? 'page' : undefined}
           class:list={[
             'whitespace-nowrap rounded-(--radius) px-2.5 py-2 text-[14.5px] transition-colors duration-(--dur) hover:text-accent xl:px-3 xl:text-[15px]',
@@ -115,7 +119,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
           </div>
         )
       }
-      <a href={copy.cta.href} class="btn-primary hidden text-sm sm:inline-flex" data-enquiry-cta>
+      <a href={withSlash(copy.cta.href)} class="btn-primary hidden text-sm sm:inline-flex" data-enquiry-cta>
         {copy.cta.label}
       </a>
       <button
@@ -143,7 +147,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
       {copy.nav.map((item) => (
         <li>
           <a
-            href={item.href}
+            href={withSlash(item.href)}
             class:list={[
               'block border-b border-line py-3.5 text-[17px]',
               isActive(item.href) ? 'text-accent' : 'text-text',
@@ -167,7 +171,7 @@ const hasOther = LOCALES.some((locale) => locale !== lang && pathsByLang[locale]
         ))
       }
       <li>
-        <a href={copy.cta.href} class="btn-primary mt-4 w-full" data-enquiry-cta>{copy.cta.label}</a>
+        <a href={withSlash(copy.cta.href)} class="btn-primary mt-4 w-full" data-enquiry-cta>{copy.cta.label}</a>
       </li>
     </ul>
   </nav>

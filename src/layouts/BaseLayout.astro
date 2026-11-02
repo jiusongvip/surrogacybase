@@ -8,11 +8,19 @@
  * that two different documents are the same page, which is worse than saying nothing.
  */
 import '@/styles/global.css';
+/*
+ * The two latin subsets every page paints in its first screen. Preloading them is what keeps the
+ * headline from swapping faces after layout: a variable font arrives a few hundred milliseconds in
+ * and, if the browser had already set the page in Georgia, every line above the fold re-wraps. The
+ * stylesheet is inlined, so these are the only two requests the first screen waits on.
+ */
+import displayFont from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
+import textFont from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 import EnquiryDialog from '@/components/forms/EnquiryDialog.astro';
 import BackToTop from '@/components/ui/BackToTop.astro';
 import { SITE } from '@/const';
 import { DEFAULT_LANG, LANG_META, type Lang } from '@/i18n/config';
-import { langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
+import { absoluteFromPath, langFromPath, localizedPath, stripLocale } from '@/i18n/paths';
 import { twinFor } from '@/i18n/routes';
 import { UI } from '@/i18n/ui';
 
@@ -48,21 +56,26 @@ const lang = langFromPath(Astro.url.pathname);
 const meta = LANG_META[lang];
 const base = stripLocale(Astro.url.pathname);
 const ownPath = localizedPath(lang, base);
-const canonical = new URL(ownPath, Astro.site);
+/*
+ * One URL per page, spelled once: locales and pages both end in a slash, the root does not.
+ * The canonical, the alternates, og:url and the JSON-LD all read from this, so the four
+ * cannot drift apart.
+ */
+const canonical = absoluteFromPath(Astro.site, ownPath);
 const twins = twinFor(lang, ownPath);
 const alternates: [string, string][] = [
-  [lang, ownPath],
-  ...Object.entries(twins),
+  [lang, canonical],
+  ...Object.entries(twins).map(([code, path]) => [code, absoluteFromPath(Astro.site, path)] as [string, string]),
 ];
 const pageTitle = title === SITE.name ? title : `${title} | ${SITE.titleSuffix}`;
 const docTitle = titleTag ? `${titleTag} | ${SITE.titleSuffix}` : pageTitle;
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': new URL('/#organization', Astro.site).href,
+  '@id': `${Astro.site!.origin}/#organization`,
   name: SITE.team,
-  url: Astro.site!.href,
-  logo: new URL('/logo.png', Astro.site).href,
+  url: Astro.site!.origin,
+  logo: `${Astro.site!.origin}/logo.png`,
   description: SITE.description,
 };
 ---
@@ -83,15 +96,17 @@ const orgLd = {
     {
       alternates.length > 1 && (
         <>
-          {alternates.map(([code, path]) => (
-            <link rel="alternate" hreflang={LANG_META[code as Lang].htmlLang} href={new URL(path, Astro.site)} />
+          {alternates.map(([code, href]) => (
+            <link rel="alternate" hreflang={LANG_META[code as Lang].htmlLang} href={href} />
           ))}
-          <link rel="alternate" hreflang="x-default" href={new URL(localizedPath(DEFAULT_LANG, base), Astro.site)} />
+          <link rel="alternate" hreflang="x-default" href={absoluteFromPath(Astro.site, localizedPath(DEFAULT_LANG, base))} />
         </>
       )
     }
 
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" as="font" type="font/woff2" href={displayFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={textFont} crossorigin />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <meta property="og:type" content={ogType} />

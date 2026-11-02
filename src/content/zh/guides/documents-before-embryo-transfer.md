@@ -1,7 +1,7 @@
 ---
 title: "第一次移植前必须签的 5 份文件"
 titleTag: "代孕移植前必签的 5 份文件"
-description: "妊娠代孕安排应当在胚胎移植之前备齐的五份文件，以及每一份的用途。"
+description: "妊娠代孕安排应当在胚胎移植之前备齐的五份文件，以及每一份的用途、由谁签署与办理的先后顺序。"
 type: guide
 category: preparation
 topic: legal

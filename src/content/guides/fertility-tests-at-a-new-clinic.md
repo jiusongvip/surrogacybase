@@ -1,7 +1,7 @@
 ---
 title: "Bringing Fertility Tests to a New Clinic: What Still Counts"
 titleTag: "Surrogacy: Fertility Tests at a New Clinic"
-description: "Which results travel into a surrogacy cycle, who produced each one, what date it carries, and the questions to settle in writing before a clinic repeats the work."
+description: "Which results travel into a surrogacy cycle, who produced each one, what date it carries, and the questions to settle before a clinic repeats the work."
 type: guide
 category: preparation
 topic: process
