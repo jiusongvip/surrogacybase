@@ -54,12 +54,12 @@ const lastChecked = HOME_SOURCES.reduce(
 );
 const heroKicker = fill(hero.kicker, { n: records.length, date: formatShortDate(lastChecked, lang) });
 
-/* The hero is deliberately thin: the anchors, the scope, the four questions, and the two ways
- * forward. The one count it prints is the number of records, because that is the scope the reader
- * is choosing to enter. The guides and tools stay unlisted, since those are small numbers to
- * someone deciding whether to stay, and the source list is printed at the foot of the page rather
- * than counted twice. There is no second invitation, because the ghost button already points at
- * the form. */
+/* The hero is deliberately thin: the brand, the anchors, one sentence on what can be compared,
+ * and the two ways forward. The one count it prints is the number of records, because that is the
+ * scope the reader is choosing to enter. The guides and tools stay unlisted, since those are small
+ * numbers to someone deciding whether to stay, and the source list is printed at the foot of the
+ * page rather than counted twice. There is no second invitation, because the primary button
+ * already opens the form. */
 
 /** The mock's order, with any record that is not listed kept after it rather than dropped. */
 const COUNTRY_ORDER = ['us', 'ca', 'gb', 'co', 'gr'];
@@ -104,12 +104,10 @@ const home = localizedPath(lang, '/');
     * desktop, so the heading of the section below shows above the fold and the reader can see
     * the page continues.
     *
-    * This block introduces the site, not the topic. The heading names what the site holds and the
-    * sentence under it names what a record answers, because a first-time reader's first question is
-    * what this place is for. The definition of the word is not repeated here: it opens the section
-    * immediately below, where it stands alone and can be quoted on its own.
-    * The primary action goes to the country records, which are what the site is; a reader who
-    * wants the explanation is already one scroll away from it.
+    * The heading opens on the phrase a first-time reader searched for, and the sentence under it
+    * names what the country records let them compare. The definition itself is not repeated here:
+    * it opens the section immediately below, where it stands alone and can be quoted on its own.
+    * The primary action opens the enquiry dialog; the second one goes to the country records.
     */}
   <section class="relative isolate overflow-hidden border-b border-line bg-paper" id="top">
     <Image
@@ -134,13 +132,22 @@ const home = localizedPath(lang, '/');
           * themselves: who compiled this, how many records it holds, when the material was last
           * opened. The heading under it names what the site holds.
           */}
+        <p class="rise mb-3 text-[11.5px] font-medium tracking-[0.1em] text-muted">{hero.brand}</p>
         <p class="eyebrow rise">{heroKicker}</p>
         <h1
           class:list={[
-            'rise rise-1 mt-3.5 text-balance text-[clamp(2.05rem,3.4vw,3rem)] leading-[1.06] text-brand-fg',
-            /* Han characters are already full-width squares, so the display tracking that
-               stops a Latin headline looking loose crowds them. */
-            lang === 'zh' ? '' : 'tracking-[-0.02em]',
+            'rise rise-1 mt-3.5 text-[clamp(2.05rem,3.4vw,3rem)] text-brand-fg',
+            /* Latin display type takes tight leading, negative tracking and a light weight.
+               Han is a square glyph with no 500 weight in the system faces, so the Chinese
+               headline gets a real Bold plus a taller line box instead of a faux-light one.
+               balance is off for Chinese: it evens 19 characters into 10/9 lines purely by
+               count, which cut the word 流程 in half. keep-all then confines breaks to the
+               punctuation, so no two-character word splits at any viewport width — narrow
+               screens simply take a third line rather than breaking a word.
+               This stays on the hero: the other headings keep the house display settings. */
+            lang === 'zh'
+              ? 'font-bold leading-[1.18] [text-wrap:wrap] [word-break:keep-all]'
+              : 'text-balance leading-[1.06] tracking-[-0.02em]',
           ]}
         >
           {hero.h1}
@@ -149,11 +156,11 @@ const home = localizedPath(lang, '/');
           {hero.lead}
         </p>
         <div class="rise rise-2 mt-9 flex flex-wrap items-center gap-3">
-          <a href={`${home}#destinations`} class="btn-primary">
+          <a href={`${home}#assessment`} class="btn-primary" data-enquiry-cta>
             {hero.ctaPrimary}
             <Icon name="arrow-down-right" size={16} />
           </a>
-          <a href={`${home}#assessment`} class="btn-ghost" data-enquiry-cta>{hero.ctaSecondary}</a>
+          <a href={`${home}#destinations`} class="btn-ghost">{hero.ctaSecondary}</a>
         </div>
       </div>
     </div>

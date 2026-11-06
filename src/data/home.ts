@@ -37,6 +37,8 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
 };
 
 export const HOME_HERO: Record<Lang, {
+  /** The brand line above the eyebrow. Names the site before the reader is asked anything. */
+  brand: string;
   /**
    * The line above the heading, in the eyebrow style. It carries three verifiable anchors rather
    * than a description of the reader: who compiled this, how many records it holds, and when the
@@ -46,10 +48,9 @@ export const HOME_HERO: Record<Lang, {
   kicker: string;
   h1: string;
   /**
-   * What a record actually answers, as four questions a reader can hold the page against. The
-   * method is already in the kicker above, so it is not said twice here; and the questions the
-   * sources had not settled stay on the record page, where a reader is working out what to ask a
-   * lawyer, rather than in the first line the page says about itself.
+   * One sentence on what the page lets a reader compare. It names the kinds of question the
+   * records answer without listing them in full — the four questions are the opening of the
+   * explanatory run below, and printing them here as well said the same thing twice.
    */
   lead: string;
   ctaPrimary: string;
@@ -63,6 +64,7 @@ export const HOME_HERO: Record<Lang, {
   imageAlt: string;
 }> = {
   en: {
+    brand: 'SURROGACYBASE · GLOBAL SURROGACY INFORMATION',
     kicker: 'Independently compiled · {n} countries and regions · checked {date}',
     h1: 'Surrogacy law and cost by country',
     lead: 'Each record answers four questions: who may apply, what may be paid, whether the agreement can be enforced, and who the legal parent is at birth. Each answer cites its provision.',
@@ -72,11 +74,12 @@ export const HOME_HERO: Record<Lang, {
       'A woman in a white dress at a terrace balustrade at sunset, looking out over a calm bay with a moored yacht and a wooded headland',
   },
   zh: {
-    kicker: '独立整理 · {n} 个国家与地区 · 查阅于 {date}',
-    h1: '各国代孕法律与费用记录',
-    lead: '每条记录写明四件事：谁可以申请、可以支付什么、协议能否执行、出生时谁是法律上的父母。每个答案都附条文依据。',
-    ctaPrimary: '查看全部记录',
-    ctaSecondary: '咨询顾问',
+    brand: 'SURROGACYBASE · 全球代孕信息',
+    kicker: '独立整理 · {n} 个国家与地区 · 资料核对至 {date}',
+    h1: '代孕是什么：含义、流程、费用与各国规定',
+    lead: '比较不同国家的法律、申请条件与费用口径，弄清孩子出生后谁是法律上的父母。',
+    ctaPrimary: '提交咨询',
+    ctaSecondary: '按国家查看',
     imageAlt: '日落时分，一位身穿白裙的女士倚在露台栏杆前，望向平静的海湾、停泊的游艇与远处的山峦',
   },
 };

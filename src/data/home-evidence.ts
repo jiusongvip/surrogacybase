@@ -88,7 +88,7 @@ export const HOME_COST: Record<Lang, {
     why:
       'A clinic’s price list, an academic statement about cost, and a reimbursement range under a law that forbids payment for the service itself are three different measurements. Set side by side as one number, or averaged, they produce a figure no source would stand behind.',
     links: [
-      { label: 'Read the cost guide', href: '/guides/surrogacy-cost' },
+      { label: 'How to build a budget, and what a quote leaves out', href: '/guides/surrogacy-cost' },
       { label: 'Every published cost figure, by destination', href: '/tools/cost-figures' },
     ],
   },
@@ -150,7 +150,7 @@ export const HOME_COST: Record<Lang, {
     why:
       '诊所的价格表、学术论文里的成本陈述、以及一条禁止为服务本身付费的法律下的报销区间，量的是三件不同的事。把它们并成一个数字来比较，或者求平均，得到的数字没有任何来源会为它负责。',
     links: [
-      { label: '阅读费用指南', href: '/guides/surrogacy-cost' },
+      { label: '预算怎么列，报价漏了什么', href: '/guides/surrogacy-cost' },
       { label: '按目的地查看全部已公布费用', href: '/tools/cost-figures' },
     ],
   },

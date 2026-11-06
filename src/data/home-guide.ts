@@ -67,18 +67,18 @@ export const HOME_MEANING: Record<Lang, {
           'Who the law treats as the child’s legal parents. Some systems settle it at birth; others move it afterwards by court order. Until it is settled, the documents that get the child home cannot be issued.',
       },
     ],
-    link: { label: 'How the law treats each of these', href: '/guides/surrogacy-legal-considerations' },
+    link: { label: 'Whose egg, whose pregnancy, and what each changes', href: '/guides/egg-sperm-and-surrogate-options' },
   },
   zh: {
     heading: '代孕是什么',
     lede:
-      '「代孕」其实指两种安排，两者不能混为一谈。一种是将实验室里形成的胚胎移植给代孕者；另一种使用代孕者本人的卵子。选择哪一种，手术方式、法律认定与费用都不同。',
+      '「代孕」指两种安排。一种是将实验室里形成的胚胎移植给代孕者；另一种使用代孕者本人的卵子。选择哪一种，手术方式、法律认定与费用都不同。',
     definitionLabel: '定义',
     definition:
       '代孕是一种安排：一位女性怀胎并分娩，孩子出生后由他人抚养，通常是委托这次怀孕的意向父母。',
     paragraphs: [
-      '日常用法里，这个词涵盖治疗、合同、费用与证件的全部环节。法律上的含义窄得多，而且每个法律体系分开回答三个问题：孩子出生当天谁是父母、这份协议能不能被执行、允许支付什么。诊所只能回答它所在国家的那一部分。',
-      '一个国家可以允许代孕，但出生记录的母亲一栏写的仍是代孕者。合同改变不了这一点，能改变它的是之后的法院或登记程序。',
+      '日常用法里，这个词涵盖治疗、合同、费用与证件的全部环节。法律上的含义窄得多。诊所只能回答它所在国家的那一部分。',
+      '一个国家可以允许代孕，但出生记录的母亲一栏写的仍是代孕者。合同改变不了这一点，变更要经过之后的法院或登记程序。',
     ],
     terms: [
       {
@@ -99,7 +99,7 @@ export const HOME_MEANING: Record<Lang, {
         body: '法律认定谁是孩子的父母。有的体系在出生时一次确定，有的要在此后由法院裁定；认定完成之前，无法签发把孩子带回家所需的证件。',
       },
     ],
-    link: { label: '法律如何看待这些差别', href: '/guides/surrogacy-legal-considerations' },
+    link: { label: '用谁的卵、谁来怀，会改变什么', href: '/guides/egg-sperm-and-surrogate-options' },
   },
 };
 
@@ -174,12 +174,12 @@ export const HOME_MECHANICS: Record<Lang, {
       note:
         'Legality where you live, and whether you would be recognised as the parent, are not in this table. Both depend on the country, and the country records below take them one at a time.',
     },
-    link: { label: 'Read the full process guide', href: '/guides/surrogacy-process' },
+    link: { label: 'The five documents before a first transfer', href: '/guides/documents-before-embryo-transfer' },
   },
   zh: {
-    heading: '代孕是怎么运作的',
+    heading: '一次代孕要办的五件事',
     lede:
-      '一个代孕项目其实是五项分开的安排：胚胎、筛查、合同、分娩、回国手续。五项由不同的人负责，任何一项都可能单独出问题。',
+      '一个代孕项目是五项分开的安排：胚胎、筛查、合同、分娩、回国手续。五项由不同的人负责，任何一项都可能单独出问题。',
     steps: [
       {
         title: '胚胎在实验室里形成',
@@ -189,7 +189,7 @@ export const HOME_MECHANICS: Record<Lang, {
       {
         title: '筛查在治疗之前，双方都要做',
         body:
-          '意向父母完成生育能力评估；代孕者完成医学与心理筛查。国际妇产科联盟（FIGO）认为，双方的心理筛查与持续支持应当为强制，而非可选项。',
+          '意向父母完成生育能力评估；代孕者完成医学与心理筛查。国际妇产科联盟（FIGO）认为，双方的心理筛查与持续支持应当为强制。',
         cite: 1,
       },
       {
@@ -229,7 +229,7 @@ export const HOME_MECHANICS: Record<Lang, {
       note:
         '在您住的地方是否合法、您会不会被承认为孩子的父母，这两件事不在表里。它们取决于国家，下面逐个国家的记录会分别说明。',
     },
-    link: { label: '阅读完整流程指南', href: '/guides/surrogacy-process' },
+    link: { label: '第一次移植前要签的 5 份文件', href: '/guides/documents-before-embryo-transfer' },
   },
 };
 
@@ -297,7 +297,7 @@ export const HOME_PROCESS: Record<Lang, {
     ],
     note:
       'Before you pay, ask who runs stage four (matching) and who runs stage eight (birth and parentage), and ask for the answer in writing.',
-    link: { label: 'Walk through the process in full', href: '/guides/surrogacy-process' },
+    link: { label: 'Who does what at each stage', href: '/guides/surrogacy-process' },
   },
   zh: {
     heading: '代孕流程，逐阶段说明',
@@ -342,6 +342,6 @@ export const HOME_PROCESS: Record<Lang, {
       },
     ],
     note: '付款之前，问清楚第四阶段（匹配）与第八阶段（出生与亲权）分别由谁负责，并请对方以书面形式答复。',
-    link: { label: '完整走一遍流程', href: '/guides/surrogacy-process' },
+    link: { label: '每个阶段谁在做什么', href: '/guides/surrogacy-process' },
   },
 };
