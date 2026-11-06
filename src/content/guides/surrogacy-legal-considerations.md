@@ -122,7 +122,7 @@ Payment rules vary from "negotiated between parties" to criminal prohibition, an
 
 ## Five. Recognition where you live
 
-This is where cross-border plans fail most often. A couple may be permitted to commission a surrogacy in one country and still face an unresolved question about whether the child's parentage, birth registration or passport will be recognised at home.
+This is where plans that span two legal systems fail most often. A couple may be permitted to commission a surrogacy in one country and still face an unresolved question about whether the child's parentage, birth registration or passport will be recognised at home.
 
 No destination record answers this question, because it is about the country you are returning to. A provider who answers it confidently without being a lawyer there is not giving you information. It is giving you reassurance.
 

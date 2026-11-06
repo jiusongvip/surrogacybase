@@ -1,0 +1,54 @@
+---
+/*
+ * The process, as a numbered run rather than a card grid.
+ *
+ * Nine stages read as one sequence only if they sit on one rule, so each row is a row of the
+ * same list: number, title, sentence. A grid of nine tiles would turn a sequence into nine
+ * separate products, which is what the rest of this page is arguing against.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { HOME_PROCESS } from '@/data/home-guide';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_PROCESS[lang];
+const lp = (path: string) => localizedPath(lang, path);
+---
+
+<section class="scroll-mt-20 border-t border-line bg-paper py-16 lg:py-24" id="process">
+  <div class="shell">
+    <div class="max-w-[68ch]">
+      <h2 class="h-section">{copy.heading}</h2>
+      <p class="mt-5 text-[16px] leading-[1.75] text-muted">{copy.lede}</p>
+    </div>
+
+    {/*
+      Nine stages, three across. Run as one column of nine rows, the section was a scroll rather
+      than a view: the reader could not see the whole sequence at once, which is the only thing
+      this section is for. Read row by row, 01 to 09, it is one glance. The rules are the grid,
+      not a border under every row, and they stay continuous because the cell backgrounds sit
+      on a one-pixel line.
+    */}
+    <ol class="mt-12 grid gap-px border-y border-line-strong bg-line lg:grid-cols-3">
+      {
+        copy.stages.map((stage, i) => (
+          <li class="bg-paper p-6 lg:p-7">
+            <span class="tnum text-[12.5px] text-accent">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2 text-[17px] leading-snug">{stage.title}</h3>
+            <p class="mt-2 text-[14.5px] leading-[1.65] text-muted">{stage.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+      <p class="max-w-[54ch] border-l-2 border-accent pl-4 font-display text-[clamp(1.02rem,1.4vw,1.2rem)] leading-[1.5] text-brand-fg">
+        {copy.note}
+      </p>
+      <a href={lp(copy.link.href)} class="exit shrink-0">
+        {copy.link.label}
+        <Icon name="arrow-right" size={15} />
+      </a>
+    </div>
+  </div>
+</section>

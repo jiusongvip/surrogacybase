@@ -1,0 +1,104 @@
+---
+/*
+ * Cost, on the homepage.
+ *
+ * The section's job is not to give a total; it is to show that the three numbers a reader will
+ * find elsewhere measure three different things. So the five lines come first, then the figures
+ * with the document each came from, then the sentence that says why they cannot be averaged.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { HOME_COST } from '@/data/home-evidence';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_COST[lang];
+const lp = (path: string) => localizedPath(lang, path);
+const citeLabel = lang === 'zh' ? '来源' : 'Source';
+---
+
+<section class="scroll-mt-20 border-t border-line bg-surface py-16 lg:py-24" id="cost">
+  <div class="shell">
+    <div class="max-w-[62ch]">
+      <h2 class="h-section">{copy.heading}</h2>
+      <p class="mt-5 text-[16px] leading-[1.75] text-muted">{copy.lede}</p>
+    </div>
+
+    {/*
+      The three published figures lead the section, at display size, because they are what a
+      reader arrived for and what the rest of the section then argues about. Each sits under its
+      own rule with its scope named above it: a number with a year and a country attached is a
+      measurement, a number on its own is a quote.
+    */}
+    <div class="mt-12">
+      <p class="label">{copy.figuresLabel}</p>
+      <ul class="mt-4 grid gap-x-10 gap-y-8 sm:grid-cols-3">
+        {
+          copy.figures.map((figure) => (
+            <li class="border-t border-line-strong pt-5">
+              <p class="text-[12.5px] font-medium text-muted">{figure.label}</p>
+              <p class="mt-2 font-display text-[clamp(1.6rem,2.5vw,2.1rem)] leading-[1.05] text-brand-fg">
+                {figure.value}
+              </p>
+              <p class="mt-3 max-w-[38ch] text-[13.5px] leading-[1.6] text-muted">
+                {figure.note}
+                <a
+                  href={`#source-${figure.cite}`}
+                  class="ml-0.5 align-super text-[11px] font-medium text-accent hover:underline"
+                  aria-label={`${citeLabel} ${figure.cite}`}
+                >
+                  [{figure.cite}]
+                </a>
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <h3 class="h-sub">{copy.linesLabel}</h3>
+        <dl class="mt-6 border-t border-line-strong">
+          {
+            copy.lines.map((line, i) => (
+              <div class="border-b border-line py-4">
+                <dt class="flex items-baseline gap-3 text-[16.5px] font-medium leading-snug">
+                  <span class="tnum shrink-0 text-[12.5px] text-accent">{String(i + 1).padStart(2, '0')}</span>
+                  {line.title}
+                </dt>
+                <dd class="mt-1.5 pl-[26px] text-[14.5px] leading-[1.65] text-muted">
+                  {line.body}
+                  {line.cite && (
+                    <a
+                      href={`#source-${line.cite}`}
+                      class="ml-0.5 align-super text-[11px] font-medium text-accent hover:underline"
+                      aria-label={`${citeLabel} ${line.cite}`}
+                    >
+                      [{line.cite}]
+                    </a>
+                  )}
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      {/* The argument sits beside the list rather than under it: it is a note on the five lines,
+          and a reader comparing them wants it in view at the same time. */}
+      <div class="lg:col-span-5">
+        <p class="border-l-2 border-accent pl-5 text-[15.5px] leading-[1.72] text-text">{copy.why}</p>
+        <div class="mt-8 flex flex-col items-start gap-4">
+          {
+            copy.links.map((link) => (
+              <a href={lp(link.href)} class="exit">
+                {link.label}
+                <Icon name="arrow-right" size={15} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

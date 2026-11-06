@@ -107,7 +107,7 @@ The parentage route determines what happens in the delivery room and after it. T
 
 ### 9. Bringing the child home
 
-Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Cross-border intended parents are not a rare edge case: of [the 40,177 transfers to surrogates recorded in the US between 2014 and 2020, 32 percent belonged to intended parents living abroad](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
+Registration, a birth certificate, a passport or consular document, and whatever your home country requires to recognise the arrangement. Intended parents living in another country are not a rare edge case: of [the 40,177 transfers to surrogates recorded in the US between 2014 and 2020, 32 percent belonged to intended parents living in a different country](https://pmc.ncbi.nlm.nih.gov/articles/PMC10978240/).
 
 ## Who is involved, and what each one is accountable for
 
@@ -129,7 +129,7 @@ The line that causes the most damage is the one between an agency and a lawyer. 
 Realistically, four things, and none of them is a deposit:
 
 1. **A decision about how much risk you will carry.** How many transfer attempts, over how long, and what you will do if it does not work. This is the number that determines your budget more than any fee schedule does.
-2. **Availability.** Transfers, appointments and birth dates are not scheduled around your leave. Cross-border journeys add immigration appointments to that list.
+2. **Availability.** Transfers, appointments and birth dates are not scheduled around your leave. A birth in another country adds immigration appointments to that list.
 3. **Documents in order.** Identity, relationship, marital status, medical records, and anything a court or registry will ask for later. Getting these translated or apostilled after a birth is a different and slower process.
 4. **A question list you wrote, not one you were handed.** A provider's own FAQ answers the questions the provider is comfortable with.
 

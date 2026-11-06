@@ -135,7 +135,7 @@ export const EDITORIAL_PAGE: Record<Lang, EditorialPage> = {
       },
       {
         h: 'We do not extrapolate from a legal system to you',
-        p: 'Reading that a jurisdiction permits something does not establish that you may use that route, or that your home country will recognise the outcome. Cross-border parentage and documentation are questions for a qualified lawyer in the relevant system, and pages that touch them say so in the body rather than in a footnote.',
+        p: 'Reading that a jurisdiction permits something does not establish that you may use that route, or that your home country will recognise the outcome. Parentage and documentation that span more than one legal system are questions for a qualified lawyer in the relevant system, and pages that touch them say so in the body rather than in a footnote.',
       },
       {
         h: 'No rankings, no lists of the best',

@@ -1,0 +1,56 @@
+---
+/*
+ * The source list.
+ *
+ * Every marker on the page above resolves here, which is why the ids are numbered rather than
+ * slugged: a reader following a marker expects the row to carry the same number. The publisher
+ * and the checking date are printed rather than hidden behind the link, because a clinic blog
+ * and a peer-reviewed review have to be distinguishable before the reader clicks anything.
+ */
+import { langFromPath } from '@/i18n/paths';
+import { formatDate } from '@/lib/dates';
+import { HOME_SOURCES, HOME_SOURCES_COPY } from '@/data/home-evidence';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_SOURCES_COPY[lang];
+---
+
+<section class="scroll-mt-20 border-t border-line bg-surface py-14 lg:py-16" id="sources" aria-labelledby="sources-heading">
+  <div class="shell">
+    <div class="max-w-[64ch]">
+      <h2 id="sources-heading" class="h-section max-w-[22ch] text-[1.35rem] lg:text-[1.5rem]">{copy.heading}</h2>
+      <p class="mt-3 max-w-[52ch] text-[14.5px] leading-[1.65] text-muted">{copy.lede}</p>
+    </div>
+
+    {/* Two columns of four rather than one column of eight: the list is a reference table, and a
+        table with eight rows of one cell leaves half the page empty while the reader scrolls. */}
+    <ol class="mt-10 grid gap-x-12 sm:grid-cols-2">
+      {
+        HOME_SOURCES.map((source) => (
+          <li
+            id={`source-${source.n}`}
+            class="grid scroll-mt-24 grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 border-t border-line py-5"
+          >
+            <span class="tnum text-[12.5px] leading-6 text-accent">[{source.n}]</span>
+            <div>
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[14.5px] font-medium leading-snug text-text underline decoration-line-strong decoration-1 underline-offset-[3px] transition-colors duration-(--dur) hover:text-accent hover:decoration-accent"
+              >
+                {source.label}
+              </a>
+              <p class="mt-1 text-[13px] leading-[1.6] text-muted">
+                {source.publisher} · {copy.checkedLabel} {formatDate(source.checkedOn, lang)}
+              </p>
+              <p class="mt-1.5 text-[13.5px] leading-[1.6] text-muted">
+                <span class="text-text">{copy.supportsLabel}:</span> {source.supports[lang]}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

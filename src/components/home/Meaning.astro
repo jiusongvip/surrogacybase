@@ -1,0 +1,64 @@
+---
+/*
+ * What the word means, on the homepage.
+ *
+ * The definition is set as a pull quote rather than as the first line of a paragraph, because it
+ * is the one sentence a reader arriving from a dictionary query can leave with. The four terms
+ * below it exist for the same reader: they are the words the rest of the site uses without
+ * explaining them again.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { HOME_MEANING } from '@/data/home-guide';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_MEANING[lang];
+const lp = (path: string) => localizedPath(lang, path);
+---
+
+<section class="scroll-mt-20 border-b border-line bg-paper py-16 lg:py-24" id="what-is-surrogacy">
+  <div class="shell">
+    <div class="max-w-[62ch]">
+      <h2 class="h-section">{copy.heading}</h2>
+      <p class="mt-5 text-[16.5px] leading-[1.72] text-muted">{copy.lede}</p>
+    </div>
+
+    {/*
+      The definition runs the full width of the page rather than sitting in a right-hand column:
+      it is the one sentence a reader arriving from a dictionary query leaves with, and everything
+      below it is commentary on it. Set at display size, it is also the one place in the section
+      where the answer is visible before any reading starts.
+    */}
+    <figure class="mt-10 border-t border-line-strong pt-6 lg:mt-12">
+      <figcaption class="label">{copy.definitionLabel}</figcaption>
+      <blockquote class="mt-3 max-w-[40ch] font-display text-[clamp(1.5rem,2.7vw,2.15rem)] leading-[1.28] text-brand-fg">
+        {copy.definition}
+      </blockquote>
+    </figure>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <div class="space-y-4 text-[16.5px] leading-[1.75] text-muted lg:col-span-7">
+        {copy.paragraphs.map((p) => <p class="max-w-[62ch]">{p}</p>)}
+      </div>
+
+      <div class="lg:col-span-5">
+        {/* The terms are a description list, not four cards: they define words the page goes on
+            to use, and a bordered tile would turn a glossary into a feature grid. */}
+        <dl class="border-t border-line-strong">
+          {
+            copy.terms.map((term) => (
+              <div class="border-b border-line py-4">
+                <dt class="text-[15.5px] font-semibold leading-snug text-text">{term.term}</dt>
+                <dd class="mt-1.5 max-w-[42ch] text-[14.5px] leading-[1.65] text-muted">{term.body}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <a href={lp(copy.link.href)} class="exit mt-7">
+          {copy.link.label}
+          <Icon name="arrow-right" size={15} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

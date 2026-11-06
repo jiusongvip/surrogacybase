@@ -108,6 +108,27 @@
     @apply text-[12.5px] font-semibold uppercase tracking-[0.14em] text-muted;
   }
 
+  /* One heading scale for the whole explanatory run. Every section opens at the same size on
+   * purpose: the page is chapters of one document, and a page that resizes its headings per
+   * section reads as a deck of slides instead. */
+  .h-section {
+    @apply text-balance text-[clamp(1.85rem,3vw,2.6rem)] leading-[1.1];
+  }
+
+  /* The heading of a block inside a section, one step below .h-section. Shared so the two
+   * sections that carry an internal block (the two-forms table, the budget list) open it at the
+   * same size instead of drifting a tenth of a rem apart. */
+  .h-sub {
+    @apply text-[clamp(1.15rem,1.7vw,1.45rem)] leading-snug;
+  }
+
+  /* A label that names a block rather than numbering it, and names it in sentence case. The
+   * uppercase tracked micro-label above every block is the templated rhythm this page avoids;
+   * the accent is what makes it a label here, not the letter-spacing. */
+  .label {
+    @apply text-[12.5px] font-semibold text-accent;
+  }
+
   /* Primary is green on paper, paper on green. Never a rust-filled button. The hover
    * swaps the label to the token paired with the rust fill, because bottle green band
    * text on rust measures 2.26:1 in the dark scheme.

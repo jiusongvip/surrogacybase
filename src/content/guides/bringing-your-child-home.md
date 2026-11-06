@@ -125,6 +125,6 @@ Take these questions to a lawyer in each country involved, and write each answer
 4. What does the registration authority in the country the child will live in require? Ask it in writing, including any translation and any paternity report.
 5. From birth to boarding, who physically holds each document, and how do you get the originals back?
 
-The fifth question is not administrative trivia. In a cross-border process, the person actually holding the birth certificate, the court judgment and the passport application is often a lawyer, an agency or a courier; a plan that does not say who holds them is a plan in which the child's documents are somewhere in transit.
+The fifth question is not administrative trivia. When the birth happens in another country, the person actually holding the birth certificate, the court judgment and the passport application is often a lawyer, an agency or a courier; a plan that does not say who holds them is a plan in which the child's documents are somewhere in transit.
 
 This describes published procedures and what official documents say at the dates recorded beside them. It is not legal advice, it does not determine any child's nationality, and it does not predict what any consulate, court or registration authority will accept.

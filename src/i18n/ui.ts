@@ -461,8 +461,8 @@ export const UI: Record<Lang, {
     disclaimerEnd: '.',
     siteDescription: SITE.description,
     nav: [
-      { label: 'Guides', href: '/guides' },
       { label: 'Destinations', href: '/destinations' },
+      { label: 'Guides', href: '/guides' },
       { label: 'Tools', href: '/tools' },
       { label: 'About us', href: '/about' },
     ],
@@ -478,7 +478,7 @@ export const UI: Record<Lang, {
         links: [
           { label: 'Home', href: '/' },
           { label: 'Destinations', href: '/destinations' },
-          { label: 'Services', href: '/#services' },
+          { label: 'The process', href: '/#process' },
         ],
       },
       {
@@ -756,7 +756,7 @@ export const UI: Record<Lang, {
             {
               title: 'Bringing the child home',
               blurb:
-                'Registration, passport or consular documents, and whatever your home country requires. Cross-border parents are not rare: a third of US surrogate transfers involved them.',
+                'Registration, passport or consular documents, and whatever your home country requires. Parents who travel to another country to give birth are not rare: a third of US surrogate transfers involved them.',
             },
           ],
           contractHeading: 'The contract is the legal core',
@@ -1045,10 +1045,10 @@ export const UI: Record<Lang, {
     disclaimerMid: '与',
     disclaimerStandards: '编辑方针',
     disclaimerEnd: '。',
-    siteDescription: '跨境代孕的独立指引：比较目的地，把费用拆成条目，厘清亲权与国籍，在付款之前核对报价。',
+    siteDescription: '代孕的独立指引：比较目的地，把费用拆成条目，厘清亲权与国籍，在付款之前核对报价。',
     nav: [
-      { label: '指南', href: '/zh/guides' },
       { label: '全球代孕国家', href: '/zh/destinations' },
+      { label: '指南', href: '/zh/guides' },
       { label: '工具', href: '/zh/tools' },
       { label: '关于我们', href: '/zh/about' },
     ],
@@ -1064,7 +1064,7 @@ export const UI: Record<Lang, {
         links: [
           { label: '首页', href: '/zh' },
           { label: '全球代孕国家', href: '/zh/destinations' },
-          { label: '服务', href: '/zh#services' },
+          { label: '代孕流程', href: '/zh#process' },
         ],
       },
       {
@@ -1315,7 +1315,7 @@ export const UI: Record<Lang, {
             },
             {
               title: '把孩子带回家',
-              blurb: '出生登记、护照或领事文件，以及您的母国所要求的任何材料。跨境意向父母并不罕见：美国的妊娠代孕移植中，有三分之一属于居住境外的意向父母。',
+              blurb: '出生登记、护照或领事文件，以及您的母国所要求的任何材料。居住在其他国家的意向父母并不罕见：美国的妊娠代孕移植中，有三分之一属于他们。',
             },
           ],
           contractHeading: '合同是法律核心',

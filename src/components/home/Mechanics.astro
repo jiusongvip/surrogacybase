@@ -1,0 +1,104 @@
+---
+/*
+ * How the arrangement actually works: five links in the chain, then the two forms side by side.
+ *
+ * The comparison is a table because the two columns are answering the same four questions in
+ * the same order. That is the only shape in which a reader can see that the difference is not
+ * one fact but four, and it is the reason this section is not a paragraph.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { HOME_MECHANICS } from '@/data/home-guide';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_MECHANICS[lang];
+const lp = (path: string) => localizedPath(lang, path);
+const citeLabel = lang === 'zh' ? '来源' : 'Source';
+---
+
+<section class="scroll-mt-20 bg-surface-2 py-16 lg:py-24" id="how-it-works">
+  <div class="shell">
+    <div class="max-w-[62ch]">
+      <h2 class="h-section">{copy.heading}</h2>
+      <p class="mt-5 text-[16px] leading-[1.75] text-muted">{copy.lede}</p>
+    </div>
+
+    {/*
+      Five links, one rule above them and no rules between them. A hairline under each of five
+      rows is the default that makes a sequence look like a form to fill in; the numbers carry
+      the order instead, and the space does the separating. The fifth cell leaves the last row
+      half empty on purpose: it is the last link in the chain, not a partner of the fourth.
+    */}
+    <ol class="mt-12 grid gap-x-12 gap-y-10 border-t border-line-strong pt-9 lg:grid-cols-2">
+      {
+        copy.steps.map((step, i) => (
+          <li class="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-1">
+            <span class="tnum pt-1 text-[12.5px] text-accent">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="max-w-[28ch] text-[17.5px] leading-snug">{step.title}</h3>
+              <p class="mt-2 max-w-[46ch] text-[15px] leading-[1.68] text-muted">
+                {step.body}
+                {step.cite && (
+                  <a
+                    href={`#source-${step.cite}`}
+                    class="ml-0.5 align-super text-[11px] font-medium text-accent hover:underline"
+                    aria-label={`${citeLabel} ${step.cite}`}
+                  >
+                    [{step.cite}]
+                  </a>
+                )}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    {/*
+      The comparison is a table, so it gets a table's clothes: a tinted header band, one rule
+      between the two columns, and a panel edge that stops the rows from running into the
+      section. The three columns stay a grid at sm and collapse to one column below it, where
+      each value carries its own short label rather than hiding behind a sideways scroll.
+    */}
+    <div class="mt-16">
+      <h3 class="h-sub">{copy.compare.title}</h3>
+      <p class="mt-2 max-w-[62ch] text-[13.5px] leading-[1.6] text-muted">{copy.compare.caption}</p>
+
+      <dl class="mt-6 overflow-hidden rounded-(--radius-card) border border-line bg-surface">
+        <div class="hidden gap-x-8 border-b border-line-strong bg-surface-2/70 px-5 py-3 sm:grid sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_minmax(0,1fr)]">
+          <span aria-hidden="true"></span>
+          <span class="text-[13px] font-semibold text-text">{copy.compare.gestational}</span>
+          <span class="text-[13px] font-semibold text-muted">{copy.compare.traditional}</span>
+        </div>
+
+        {
+          copy.compare.rows.map((row) => (
+            <div class="grid gap-y-1.5 border-b border-line px-5 py-4 last:border-b-0 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_minmax(0,1fr)] sm:gap-x-8 sm:gap-y-0 sm:py-3.5">
+              <dt class="text-[12.5px] font-semibold text-muted sm:text-[14px] sm:font-medium sm:text-text">
+                {row.label}
+              </dt>
+              <dd class="text-[15px] leading-[1.6] text-text">
+                <span class="mr-1.5 text-[12.5px] font-medium text-muted sm:hidden">
+                  {copy.compare.gestational}{lang === 'zh' ? '：' : ': '}
+                </span>
+                {row.gestational}
+              </dd>
+              <dd class="text-[15px] leading-[1.6] text-text sm:border-l sm:border-line sm:pl-8">
+                <span class="mr-1.5 text-[12.5px] font-medium text-muted sm:hidden">
+                  {copy.compare.traditional}{lang === 'zh' ? '：' : ': '}
+                </span>
+                {row.traditional}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="mt-4 max-w-[70ch] text-[14px] leading-[1.65] text-muted">{copy.compare.note}</p>
+    </div>
+
+    <a href={lp(copy.link.href)} class="exit mt-9">
+      {copy.link.label}
+      <Icon name="arrow-right" size={15} />
+    </a>
+  </div>
+</section>
