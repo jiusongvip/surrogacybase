@@ -1,0 +1,5 @@
+# robots.txt and every page point at sitemap-index.xml, which is the file the sitemap
+# integration writes. Search Console and the other crawlers that still ask for the
+# conventional /sitemap.xml path get sent to it rather than to a 404.
+
+/sitemap.xml  /sitemap-index.xml  301

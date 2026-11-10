@@ -37,7 +37,7 @@ export const ABOUT_PAGE: Record<Lang, AboutPage> = {
     title: 'About',
     titleTag: 'About the site and how its claims are checked',
     description:
-      'Who writes and reviews SurrogacyBase, how each claim is sourced and dated, and what happens when you send a correction.',
+      'Who writes and reviews SurrogacyBase, how each claim is sourced and dated, what the editorial policy covers, and what happens when you send a correction.',
     h1: 'About {name}',
     tagline: SITE.tagline,
     body: [

@@ -1,7 +1,7 @@
 ---
 title: "Why a Surrogacy Birth Certificate Gets Rejected Abroad"
 titleTag: "Surrogacy Birth Certificate Abroad"
-description: "Which authority issues an apostille for a birth certificate, what it certifies, and why a certified translation is a separate requirement."
+description: "Which authority issues an apostille for a birth certificate, what it certifies, and why a certified translation is a separate requirement. Neither is optional."
 type: guide
 category: preparation
 topic: legal

@@ -1,3 +1,10 @@
+# The HTML carries no fingerprint, so it cannot be cached for long. An edge copy held for a
+# minute absorbs a burst on a cold node, and stale-while-revalidate keeps a reader served while
+# the next build is picked up — short enough that a deploy is visible almost at once. The rules
+# below are more specific and keep their own lifetimes.
+/*
+  Cache-Control: public, max-age=0, s-maxage=60, stale-while-revalidate=3600
+
 # Astro fingerprints everything it bundles, so those files never change under one name and can be
 # served as immutable. The paths below it are copied straight out of public/, which keeps its names,
 # so they get a long but revisitable lifetime.

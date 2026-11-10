@@ -1,7 +1,7 @@
 ---
 title: "Choosing a Surrogacy Country: 6 Questions That Decide It"
 titleTag: "Surrogacy: 6 Questions for a Country"
-description: "The six dimensions to score a destination on, the sources to insist on, and the four traps to check any destination page against."
+description: "The six dimensions to score a destination on, the sources to insist on, and the four traps to check any destination page against. Use them on any page."
 type: guide
 category: destinations
 topic: legal

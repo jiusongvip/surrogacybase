@@ -27,7 +27,7 @@ export const HOME_META: Record<Lang, { titleTag: string; description: string }> 
   en: {
     titleTag: 'What Is Surrogacy? Meaning, Process & Cost',
     description:
-      'What surrogacy means, how it works, the nine-stage process, what it costs and the traps to avoid — explained country by country, with every figure and legal position sourced.',
+      'What surrogacy means, how it works, the nine-stage process, what it costs and the traps to avoid — explained country by country, with every figure sourced.',
   },
   zh: {
     titleTag: '代孕全解析：含义、流程、费用与各国规定',

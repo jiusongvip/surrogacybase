@@ -1,7 +1,7 @@
 ---
 title: "Whose Egg, Whose Sperm, Who Carries: What Each Choice Locks In"
 titleTag: "Egg, Sperm and Surrogate Options"
-description: "Whose egg, whose sperm and who carries are three separate decisions, and each one changes the medical steps, the contract and who decides."
+description: "Whose egg, whose sperm and who carries are three separate decisions, and each one changes the medical steps, the contract and who decides. Decide each in order."
 type: guide
 category: process
 topic: choice

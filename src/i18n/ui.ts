@@ -657,7 +657,7 @@ export const UI: Record<Lang, {
       jurisdiction: {
         title: 'Surrogacy in {name}: a complete guide',
         description:
-          'Surrogacy in {name}: legal basis, the process, costs, contracts and how parentage is set. Every position carries its source and check date.',
+          'Surrogacy in {name}: legal basis, the process, costs, contracts and how parentage is set after birth. Every position carries its source and check date.',
         heading: 'Surrogacy in {name}: the complete guide to law, process, cost and contract',
         intro:
           'Each position below names its source and the date it was last checked. Where a rule depends on your circumstances, it says so instead of guessing.',
