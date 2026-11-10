@@ -262,14 +262,6 @@ export const HOME_FAQ: Record<Lang, {
     lede: 'A direct answer first; where an answer rests on a figure or a legal position, the marker beside it points to the document behind it.',
     items: [
       {
-        q: 'What does surrogacy mean?',
-        a: 'An arrangement in which a woman carries a pregnancy and gives birth to a child who will be raised by someone else, usually the intended parents who commissioned it. Gestational and traditional surrogacy are the two forms, and they differ in whose egg is used.',
-      },
-      {
-        q: 'How does surrogacy work?',
-        a: 'An embryo is created by IVF and transferred to the carrier, or, in traditional surrogacy, the carrier is inseminated. Screening comes first, the terms are written down and funded before treatment, and after the birth a court or registry step confirms who the parents are.',
-      },
-      {
         q: 'Is surrogacy the same as adoption?',
         a: 'No. In adoption a child who already exists is placed with a family. In surrogacy the pregnancy is planned for the intended parents, so the legal question is parentage from birth rather than the ending of another family’s rights. Some systems still require an adoption-like step afterwards, which is a legal route rather than the same arrangement.',
       },
@@ -284,8 +276,16 @@ export const HOME_FAQ: Record<Lang, {
         cite: 5,
       },
       {
-        q: 'What does "the surrogacy trap" mean?',
-        a: 'It is a description rather than a legal term: treating permission as eligibility, a quote as a cost, a contract as an enforceable right, and the birth as the end of the process. Each of the four can be checked before any money moves.',
+        q: 'Can a single person or same-sex couple use surrogacy?',
+        a: 'It depends on the destination. Each country sets its own conditions — marital status, a genetic link to the child, nationality or residence — and those conditions are separate from whether surrogacy is allowed at all. This site lists, per country, which family types that record is open to, so check your own situation against it before going further.',
+      },
+      {
+        q: 'What does a surrogacy quote usually leave out?',
+        a: 'A programme quote tends to cover only the services it sells. Insurance, travel, time off work, the delivery itself, and the documents needed to bring the child home are often outside it; so is what happens to the money if a match is not reached. Comparing two quotes line by line beats comparing two totals.',
+      },
+      {
+        q: 'How do I tell whether a surrogacy arrangement is sound?',
+        a: 'Start with whether each claim it makes can be traced to a source; whether legal representation is independent for both sides; whether funds sit in an escrow named in the agreement; and whether refunds and disputes are written down. Treat any "guaranteed" or "risk-free" promise as a claim to check, not a conclusion — and have a lawyer who knows your own country review the specifics before you decide.',
       },
     ],
   },
@@ -293,14 +293,6 @@ export const HOME_FAQ: Record<Lang, {
     heading: '读者常问的问题',
     lede: '每题先给直接回答；用到数字或法律立场的，旁边标出它所依据的来源。',
     items: [
-      {
-        q: '代孕到底是什么意思？',
-        a: '一种安排：一位女性怀胎并分娩，孩子出生后由他人抚养，通常是委托这次怀孕的意向父母。形式分为妊娠代孕与传统代孕，区别在于用的是谁的卵子。',
-      },
-      {
-        q: '代孕具体是怎么进行的？',
-        a: '先通过体外受精形成胚胎，再移植到代孕者体内；传统代孕中则是对代孕者进行人工授精。筛查在最前，条款在治疗前以书面形式确定并落实资金，孩子出生后再由法院或登记机关确认谁是父母。',
-      },
       {
         q: '代孕和收养是一回事吗？',
         a: '不是。收养是把一个已经存在的孩子安置到家庭中；代孕则是为意向父母计划一次怀孕，所以要解决的问题从孩子出生那天起就是亲权归属，而不是终止另一个家庭已有的亲权。部分体系在出生后仍要求走一道类似收养的程序，那是一条法律路径，而不是同一种安排。',
@@ -316,8 +308,16 @@ export const HOME_FAQ: Record<Lang, {
         cite: 5,
       },
       {
-        q: '「代孕里的陷阱」指的是什么？',
-        a: '它是一种描述，不是法律术语：把「允许」当成「您符合资格」，把报价当成成本，把合同当成可执行的权利，把出生当成流程的终点。这四条，都可以在资金付出之前逐条核对。',
+        q: '一个人或同性伴侣可以走代孕吗？',
+        a: '这取决于目的地。每个国家对申请人有不同要求，常见条件包括婚姻状况、是否与孩子有基因联系、国籍或居留身份；这些条件和「是否允许代孕」是分开的两件事。本站每个国家记录里都单独列出了该地开放的家庭类型，需要先核对您自己的情况是否对得上，再继续。',
+      },
+      {
+        q: '代孕报价通常漏掉了哪些费用？',
+        a: '项目报价一般只覆盖它自己提供的服务。保险、往返出行、陪伴者的误工、分娩本身，以及把孩子带回国所需的证件和手续，常常不在报价里；匹配没有成功时的退款规则，也需要提前问清。把预算拆成具体条目再比总价，比直接比较两个数字更可靠。',
+      },
+      {
+        q: '怎么判断一个代孕安排是否靠谱？',
+        a: '先看它给出的结论能不能查到来源；法律代理是否双方独立、资金是否进入协议指定的托管账户、是否写明退款与争议处理。把任何「包成功」「零风险」这类承诺当作需要核实的说法，而不是结论。真正重要的决定，最终应由您本地的律师看过您的具体情况之后再做。',
       },
     ],
   },

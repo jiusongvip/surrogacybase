@@ -300,7 +300,7 @@ export const HOME_PROCESS: Record<Lang, {
     link: { label: 'Who does what at each stage', href: '/guides/surrogacy-process' },
   },
   zh: {
-    heading: '代孕流程，逐阶段说明',
+    heading: '代孕的流程是怎样的',
     lede:
       '九个阶段，按问题通常出现的先后排列。次序会因目的地、以及是否需要捐赠卵子或精子而变化。不变化的是法律工作所在的位置：一部分在治疗之前，其余在出生之后。',
     stages: [
@@ -343,5 +343,87 @@ export const HOME_PROCESS: Record<Lang, {
     ],
     note: '付款之前，问清楚第四阶段（匹配）与第八阶段（出生与亲权）分别由谁负责，并请对方以书面形式答复。',
     link: { label: '每个阶段谁在做什么', href: '/guides/surrogacy-process' },
+  },
+};
+
+/* ---------------------------------------------------------------------------------------------
+ * 3b. Who is involved
+ * ------------------------------------------------------------------------------------------- */
+
+export const HOME_PEOPLE: Record<Lang, {
+  heading: string;
+  lede: string;
+  roles: { role: string; body: string }[];
+  link: { label: string; href: string };
+}> = {
+  en: {
+    heading: 'Who is involved, and what each side does',
+    lede:
+      'A surrogacy arrangement brings several parties together. Who takes which step is where most of the risk sits, so the roles are worth naming before any money moves.',
+    roles: [
+      {
+        role: 'Intended parents',
+        body:
+          'Commission the pregnancy and will raise the child. They fund the programme, choose the destination, and handle parentage after the birth.',
+      },
+      {
+        role: 'Gestational carrier',
+        body:
+          'Carries and delivers the pregnancy. In gestational surrogacy she has no genetic link to the child, completes medical and psychological screening, and keeps some decisions during the pregnancy.',
+      },
+      {
+        role: 'Fertility clinic',
+        body:
+          'Runs ovarian stimulation, egg or sperm retrieval, embryo creation and transfer, and prenatal care. A clinic can only advise on the law where it operates.',
+      },
+      {
+        role: 'Lawyers, independent for each side',
+        body:
+          'Draft the agreement and handle parentage and cross-border paperwork. Separate representation is recommended and in some places required.',
+      },
+      {
+        role: 'Escrow',
+        body:
+          'Holds and releases funds at the milestones the agreement sets, typically funded before the first embryo transfer.',
+      },
+      {
+        role: 'Agency or programme coordinator',
+        body:
+          'Where one is used: matching, screening coordination and case management. Whether it is involved, and what it charges, varies and should be written down.',
+      },
+    ],
+    link: { label: 'What each party takes on, stage by stage', href: '/guides/surrogacy-process' },
+  },
+  zh: {
+    heading: '代孕涉及哪些人，各自负责什么',
+    lede:
+      '一次代孕安排需要几方配合。哪一方负责哪一步，风险就落在哪一方身上，所以在付款之前，先把角色理清楚。',
+    roles: [
+      {
+        role: '意向父母',
+        body: '委托这次怀孕、并计划抚养孩子的人。负责前期评估、选择目的地、承担费用，并在出生后办理亲权手续。',
+      },
+      {
+        role: '代孕者（妊娠代孕中的孕母）',
+        body: '承担怀孕与分娩。在妊娠代孕中，她与孩子没有基因关系，要经过医学与心理筛查，孕期的部分医疗决定属于她本人。',
+      },
+      {
+        role: '生育诊所 / IVF 中心',
+        body: '负责促排、取卵或取精、胚胎培养与移植，以及产前检查。诊所只能就它所在国家的规定给出意见。',
+      },
+      {
+        role: '律师（双方各自独立）',
+        body: '起草协议，处理亲权转移与跨国文件。意向父母与代孕者通常各有独立代理，部分地区这是强制要求。',
+      },
+      {
+        role: '托管账户',
+        body: '按协议约定的里程碑管理付款，钱通常在第一次移植之前完成注资。',
+      },
+      {
+        role: '代理机构 / 项目协调（部分安排才有）',
+        body: '负责匹配、筛查协调与个案管理。它是否参与、收费多少，因项目而异，应写进协议。',
+      },
+    ],
+    link: { label: '代孕流程里各方分别负责什么', href: '/guides/surrogacy-process' },
   },
 };

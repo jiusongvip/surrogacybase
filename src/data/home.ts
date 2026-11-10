@@ -25,14 +25,14 @@ import type { IconName } from '@/lib/icons';
 
 export const HOME_META: Record<Lang, { titleTag: string; description: string }> = {
   en: {
-    titleTag: 'Surrogacy Meaning, Process and Cost, Explained',
+    titleTag: 'What Is Surrogacy? Meaning, Process & Cost',
     description:
-      'What surrogacy means, how the two forms differ, the nine stages, what the money covers, and the four questions to settle before you pay.',
+      'What surrogacy means, how it works, the nine-stage process, what it costs and the traps to avoid — explained country by country, with every figure and legal position sourced.',
   },
   zh: {
-    titleTag: '代孕是什么：定义、流程与费用全解析',
+    titleTag: '代孕全解析：含义、流程、费用与各国规定',
     description:
-      '代孕的定义，妊娠代孕与传统代孕的区别，九个阶段，费用包含什么，以及付款之前需要确认的四个问题。每个数字都附来源。',
+      '代孕的含义与两种形式，涉及哪些人、各自负责什么，九个阶段，费用包含什么，以及付款前需要弄清的问题。每个数字与法律立场都附来源。',
   },
 };
 
@@ -66,17 +66,17 @@ export const HOME_HERO: Record<Lang, {
   en: {
     brand: 'SURROGACYBASE · GLOBAL SURROGACY INFORMATION',
     kicker: 'Independently compiled · {n} countries and regions · checked {date}',
-    h1: 'Surrogacy law and cost by country',
+    h1: 'What Is Surrogacy? Meaning, Process, Cost and Laws Explained',
     lead: 'Each record answers four questions: who may apply, what may be paid, whether the agreement can be enforced, and who the legal parent is at birth. Each answer cites its provision.',
-    ctaPrimary: 'View all records',
-    ctaSecondary: 'Talk to an advisor',
+    ctaPrimary: 'Talk to an advisor',
+    ctaSecondary: 'View all records',
     imageAlt:
       'A woman in a white dress at a terrace balustrade at sunset, looking out over a calm bay with a moored yacht and a wooded headland',
   },
   zh: {
     brand: 'SURROGACYBASE · 全球代孕信息',
     kicker: '独立整理 · {n} 个国家与地区 · 资料核对至 {date}',
-    h1: '代孕是什么：含义、流程、费用与各国规定',
+    h1: '代孕是什么？含义、流程、费用与各国规定',
     lead: '比较不同国家的法律、申请条件与费用口径，弄清孩子出生后谁是法律上的父母。',
     ctaPrimary: '提交咨询',
     ctaSecondary: '按国家查看',
@@ -118,6 +118,7 @@ export const HOME_COUNTRIES: Record<Lang, {
       ua: 'Married couples only; foreign parents accepted',
       ge: 'A man and a woman, married or cohabiting',
       kz: 'Closed to international intended parents',
+      kg: 'Defined in law, but the operating rules were not fully verified',
     },
   },
   zh: {
@@ -133,6 +134,7 @@ export const HOME_COUNTRIES: Record<Lang, {
       ua: '仅限已婚夫妇；接受外国父母',
       ge: '一男一女，已婚或同居',
       kz: '已对国际委托父母关闭',
+      kg: '法律有定义，但操作规则未能完整核实',
     },
   },
 };

@@ -1,0 +1,44 @@
+---
+/*
+ * Who is involved in a surrogacy arrangement, on the homepage.
+ *
+ * A new section: the roles a reader meets when they start comparing programmes. It sits between
+ * the definition and the process so the sequence reads meaning → who does it → how it runs. The
+ * wording stays at the level of what each role usually covers, because what any role is legally
+ * required to do depends on the country and the rest of the site holds those facts per jurisdiction.
+ */
+import Icon from '@/components/ui/Icon.astro';
+import { langFromPath, localizedPath } from '@/i18n/paths';
+import { HOME_PEOPLE } from '@/data/home-guide';
+
+const lang = langFromPath(Astro.url.pathname);
+const copy = HOME_PEOPLE[lang];
+const lp = (path: string) => localizedPath(lang, path);
+---
+
+<section class="scroll-mt-20 border-y border-line bg-surface py-16 lg:py-24" id="who-is-involved">
+  <div class="shell">
+    <div class="max-w-[64ch]">
+      <h2 class="h-section">{copy.heading}</h2>
+      <p class="mt-5 text-[16px] leading-[1.75] text-muted">{copy.lede}</p>
+    </div>
+
+    {/* Six roles on one grid, each a name and what it usually covers. A bordered list rather than
+      * floating cards keeps them reading as one roster, not six features to be sold. */}
+    <ul class="mt-12 grid gap-x-12 gap-y-9 border-t border-line-strong pt-9 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        copy.roles.map((role) => (
+          <li>
+            <h3 class="text-[16.5px] font-semibold leading-snug text-text">{role.role}</h3>
+            <p class="mt-2 text-[14.5px] leading-[1.65] text-muted">{role.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a href={lp(copy.link.href)} class="exit mt-9">
+      {copy.link.label}
+      <Icon name="arrow-right" size={15} />
+    </a>
+  </div>
+</section>

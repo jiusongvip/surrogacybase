@@ -22,6 +22,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import Icon from '@/components/ui/Icon.astro';
 import ConsultForm from '@/components/forms/ConsultForm.astro';
 import Meaning from '@/components/home/Meaning.astro';
+import People from '@/components/home/People.astro';
 import Mechanics from '@/components/home/Mechanics.astro';
 import Process from '@/components/home/Process.astro';
 import Cost from '@/components/home/Cost.astro';
@@ -166,8 +167,9 @@ const home = localizedPath(lang, '/');
     </div>
   </section>
 
-  {/* 2-6. The explanatory run: meaning, mechanics, process, cost, and the trap. */}
+  {/* 2-7. The explanatory run: meaning, who is involved, how it works, the process, the cost, and the trap. */}
   <Meaning />
+  <People />
   <Mechanics />
   <Process />
   <Cost />
